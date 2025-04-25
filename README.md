@@ -40,7 +40,7 @@ Each component plays a fixed cryptographic role, and all device interactions are
 
 ### Cryptographic Dependencies
 
-MPDC-I uses the QSC cryptographic library: [The QSC Library](https://github.com/QRCS-CORP/QSC).  
+AERN uses the QSC cryptographic library: [The QSC Library](https://github.com/QRCS-CORP/QSC).  
 *QRCS-PL private License. See license file for details. All rights reserved by QRCS Corporation, copyrighted and patents pending.*
 
 ## License
@@ -55,7 +55,7 @@ One or more patent applications (provisional and/or non-provisional) covering as
 Trademark Office (USPTO). Unauthorized use may result in patent infringement liability.  
 
 QRCS-PL private License. See license file for details.  
-Software is copyrighted and MPDC is patent pending.
+Software is copyrighted and AERN is patent pending.
 Written by John G. Underhill, under the QRCS-PL license, see the included license file for details. 
 Not to be redistributed or used commercially without the author's expressed written permission. 
 _All rights reserved by QRCS Corp. 2025._
