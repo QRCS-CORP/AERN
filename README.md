@@ -1,5 +1,15 @@
 # AERN – Authenticated Encrypted Relay Network
 
+## Introduction
+
+[![Platforms](https://img.shields.io/badge/platforms-Linux%20|%20macOS%20|%20Windows-blue)](#)
+[![Security Policy](https://img.shields.io/badge/security-policy-blue)](https://github.com/QRCS-CORP/DKTP/security/policy)
+[![License: QRCS License](https://img.shields.io/badge/License-QRCS%20License-blue.svg)](https://github.com/QRCS-CORP/DKTP/blob/main/License.txt)
+[![Language](https://img.shields.io/static/v1?label=Language&message=C%2023&color=blue)](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3220.pdf)
+[![docs](https://img.shields.io/badge/docs-online-brightgreen)](https://qrcs-corp.github.io/DKTP/)
+[![Custom: Standard](https://img.shields.io/static/v1?label=Security%20Standard&message=MISRA&color=blue)](https://misra.org.uk/)
+[![Custom: Target](https://img.shields.io/static/v1?label=Target%20Industry&message=Secure%20Infrastructure&color=brightgreen)](#)
+
 **AERN** is a cryptographic protocol for secure, anonymous, and authenticated communication across a mesh of fully verified proxy servers. Built as a successor to TOR, AERN avoids the vulnerabilities of public volunteer nodes and introduces post-quantum secure tunneling, dynamic route randomization, and fixed-size encrypted packets. Designed for deployment as a private, domain-based anonymity network, AERN delivers military-grade privacy with real-time performance.
 
 > This repository provides the official C-language reference implementation of the AERN protocol, developed by QRCS – Quantum Resistant Cryptographic Solutions.
