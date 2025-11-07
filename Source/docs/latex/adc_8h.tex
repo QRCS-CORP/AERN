@@ -1,0 +1,79 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/adc.h File Reference}
+\hypertarget{adc_8h}{}\label{adc_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/adc.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/adc.h}}
+
+
+AERN Domain Controller (ADC) Server.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{adc_8h_afd9bfcef3508e20a69db1bacfb5e5a70}{aern\+\_\+adc\+\_\+pause\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Pause the ADC server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API int32\+\_\+t \mbox{\hyperlink{adc_8h_ad1b51c131dd752933f60b15868e2d111}{aern\+\_\+adc\+\_\+start\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Start the ADC server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{adc_8h_aac6a55bac0174f1c22cd0ccaf177d34a}{aern\+\_\+adc\+\_\+stop\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Stop the ADC server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AERN Domain Controller (ADC) Server. 
+
+The AERN Domain Controller (ADC) is a central component of the Anonymous Encrypted Relay Network (AERN) responsible for managing the network\textquotesingle{}s device list (topology), certificate distribution, and convergence. The ADC server acts as an intermediary between remote devices (APS and clients) and the root certificate authority. It handles operations such as\+:
+
+
+\begin{DoxyItemize}
+\item Processing registration requests from devices seeking to join the network.
+\item Issuing incremental updates and convergence responses to synchronize device topology.
+\item Broadcasting revocation and announcement messages to update the network state.
+\end{DoxyItemize}
+
+The ADC server is implemented as a dedicated network server that listens for incoming TCP connections (supporting both IPv4 and IPv6). It uses a console-\/based command loop to accept administrator commands for configuration, certificate management, and topology control. An idle timeout mechanism automatically logs out inactive sessions.
+
+The implementation includes rigorous internal tests of its convergence, certificate verification, and topology update routines. These tests ensure that the ADC server reliably maintains an accurate network view and securely processes certificate-\/related transactions.
+
+\begin{DoxyNote}{Note}
+The public API provided in this header comprises functions to start, pause, and stop the ADC server. Internal operations (such as certificate generation, topology convergence, and node queries) are encapsulated within the ADC server\textquotesingle{}s implementation. 
+\end{DoxyNote}
+
+
+\label{doc-func-members}
+\Hypertarget{adc_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{adc_8h_afd9bfcef3508e20a69db1bacfb5e5a70}\index{adc.h@{adc.h}!aern\_adc\_pause\_server@{aern\_adc\_pause\_server}}
+\index{aern\_adc\_pause\_server@{aern\_adc\_pause\_server}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{aern\_adc\_pause\_server()}{aern\_adc\_pause\_server()}}
+{\footnotesize\ttfamily \label{adc_8h_afd9bfcef3508e20a69db1bacfb5e5a70} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+adc\+\_\+pause\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Pause the ADC server. 
+
+Temporarily suspends the ADC server\textquotesingle{}s processing of incoming network requests and command loop. \Hypertarget{adc_8h_ad1b51c131dd752933f60b15868e2d111}\index{adc.h@{adc.h}!aern\_adc\_start\_server@{aern\_adc\_start\_server}}
+\index{aern\_adc\_start\_server@{aern\_adc\_start\_server}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{aern\_adc\_start\_server()}{aern\_adc\_start\_server()}}
+{\footnotesize\ttfamily \label{adc_8h_ad1b51c131dd752933f60b15868e2d111} 
+AERN\+\_\+\+EXPORT\+\_\+\+API int32\+\_\+t aern\+\_\+adc\+\_\+start\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Start the ADC server. 
+
+Initializes and starts the AERN ADC server. This function configures the network listening socket, loads the local ADC certificate (importing the root certificate if necessary), initializes the topology database, and begins the interactive command loop.
+
+\begin{DoxyReturn}{Returns}
+Returns zero on success; a non-\/zero value indicates an error during initialization. 
+\end{DoxyReturn}
+\Hypertarget{adc_8h_aac6a55bac0174f1c22cd0ccaf177d34a}\index{adc.h@{adc.h}!aern\_adc\_stop\_server@{aern\_adc\_stop\_server}}
+\index{aern\_adc\_stop\_server@{aern\_adc\_stop\_server}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{aern\_adc\_stop\_server()}{aern\_adc\_stop\_server()}}
+{\footnotesize\ttfamily \label{adc_8h_aac6a55bac0174f1c22cd0ccaf177d34a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+adc\+\_\+stop\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Stop the ADC server. 
+
+Terminates the ADC server by shutting down the network socket, stopping the command loop, and releasing all allocated resources. 

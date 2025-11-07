@@ -1,0 +1,213 @@
+\doxysection{topology.\+h}
+\hypertarget{topology_8h_source}{}\label{topology_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/topology.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/topology.h}}
+\mbox{\hyperlink{topology_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ property\ of\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ The\ intellectual\ and\ technical\ concepts\ contained\ within\ this\ implementation\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ are\ proprietary\ to\ QRCS\ and\ its\ authorized\ licensors\ and\ are\ protected\ under\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ applicable\ U.S.\ and\ international\ copyright,\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ STANDAARS:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ algorithms\ such\ as\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ SHA3,\ AES,\ and\ others.\ These\ algorithms\ are\ public\ domain\ or\ standardized\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ by\ organizations\ such\ as\ NIST\ and\ are\ NOT\ the\ property\ of\ QRCS.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ -\/\ However,\ all\ source\ code,\ optimizations,\ and\ implementations\ in\ this\ library\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ are\ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ RESTRICTIONS:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ Redistribution,\ modification,\ or\ unauthorized\ distribution\ of\ this\ software,\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ in\ whole\ or\ in\ part,\ is\ strictly\ prohibited.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ provided\ for\ non-\/commercial,\ educational,\ and\ research\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \ \ purposes\ only.\ Commercial\ use\ in\ any\ form\ is\ expressly\ forbidden.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ Any\ use\ of\ this\ software\ implies\ acceptance\ of\ these\ restrictions.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ "{}as\ is,"{}\ without\ warranty\ of\ any\ kind,\ express\ or\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ implied,\ including\ but\ not\ limited\ to\ warranties\ of\ merchantability\ or\ fitness\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ for\ a\ particular\ purpose.\ QRCS\ disclaims\ all\ liability\ for\ any\ direct,\ indirect,\ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ incidental,\ or\ consequential\ damages\ resulting\ from\ the\ use\ or\ misuse\ of\ this\ software.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ **Quantum\ Resistant\ Cryptographic\ Solutions\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Proprietary\ License\ (QRCS-\/PL)**.\ The\ complete\ license\ terms\ are\ included\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ in\ the\ LICENSE.txt\ file\ distributed\ with\ this\ software.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ AERN\_TOPOLOGY\_H}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ AERN\_TOPOLOGY\_H}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aern_8h}{aern.h}}"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{certificate_8h}{certificate.h}}"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}ipinfo.h"{}}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ "{}list.h"{}}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}timestamp.h"{}}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ MACRO\ DEFINITIONS}}
+\DoxyCodeLine{00083\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#if\ defined(AERN\_NETWORK\_PROTOCOL\_IPV6)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_TOPOLOGY\_NODE\_ENCODED\_SIZE\ (AERN\_CHILD\_CERTIFICATE\_ISSUER\_PREFIX\_SIZE\ +\ AERN\_CERTIFICATE\_ISSUER\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_ADDRESS\_PREFIX\_SIZE\ +\ QSC\_IPINFO\_IPV6\_STRNLEN\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ AERN\_ROOT\_CERTIFICATE\_HASH\_PREFIX\_SIZE\ +\ (AERN\_CERTIFICATE\_HASH\_SIZE\ *\ 2U)\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_SERIAL\_PREFIX\_SIZE\ +\ (AERN\_CERTIFICATE\_SERIAL\_SIZE\ *\ 2U)\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_DESIGNATION\_PREFIX\_SIZE\ +\ AERN\_NETWORK\_DESIGNATION\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_VALID\_FROM\_PREFIX\_SIZE\ +\ QSC\_TIMESTAMP\_STRING\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_EXPIRATION\_TO\_PREFIX\_SIZE\ +\ QSC\_TIMESTAMP\_STRING\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_TOPOLOGY\_NODE\_ENCODED\_SIZE\ (AERN\_CHILD\_CERTIFICATE\_ISSUER\_PREFIX\_SIZE\ +\ AERN\_CERTIFICATE\_ISSUER\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_ADDRESS\_PREFIX\_SIZE\ +\ QSC\_IPINFO\_IPV4\_STRNLEN\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ AERN\_ROOT\_CERTIFICATE\_HASH\_PREFIX\_SIZE\ +\ (AERN\_CERTIFICATE\_HASH\_SIZE\ *\ 2U)\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_SERIAL\_PREFIX\_SIZE\ +\ (AERN\_CERTIFICATE\_SERIAL\_SIZE\ *\ 2U)\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_DESIGNATION\_PREFIX\_SIZE\ +\ AERN\_NETWORK\_DESIGNATION\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_VALID\_FROM\_PREFIX\_SIZE\ +\ QSC\_TIMESTAMP\_STRING\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \ \ AERN\_CHILD\_CERTIFICATE\_EXPIRATION\_TO\_PREFIX\_SIZE\ +\ QSC\_TIMESTAMP\_STRING\_SIZE\ +\ AERN\_CERTIFICATE\_SEPERATOR\_SIZE)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ AERN\_TOPOLOGY\_NODE\_MINIMUM\_ISSUER\_SIZE\ 3U}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ AERN\_TOPOLOGY\_NODE\_NOT\_FOUND\ -\/1}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ AERN\_NETWORK\_TOPOLOGY\_MAX\_SIZE\ 1024U}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ AERN\_NETWORK\_TOPOLOGY\_NODE\_SIZE\ (AERN\_CERTIFICATE\_ADDRESS\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \ AERN\_CERTIFICATE\_HASH\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \ \ AERN\_CERTIFICATE\_SERIAL\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \ \ AERN\_CERTIFICATE\_ISSUER\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ AERN\_CERTIFICATE\_EXPIRATION\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \ \ \ AERN\_CERTIFICATE\_DESIGNATION\_SIZE)}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ \ STATIC\ CONSTANTS}}
+\DoxyCodeLine{00141\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00146\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_TOPOLOGY\_NETWORK\_DELIMITER[]\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00151\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_TOPOLOGY\_CTYPE\_DELIMITER[]\ =\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_TOPOLOGY\_ALIAS\_DELIMITER[]\ =\ \textcolor{stringliteral}{"{}:"{}};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ DATA\ STRUCTURES}}
+\DoxyCodeLine{00160\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00168\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}}
+\DoxyCodeLine{00169\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__topology__node__state_a3a18d36344a1da93abea412f36aaa7c1}{address}}[\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\_CERTIFICATE\_ADDRESS\_SIZE}}];\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__topology__node__state_a9a748e742864eaf0f04b6e7d46a0195d}{chash}}[\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\_CERTIFICATE\_HASH\_SIZE}}];\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__topology__node__state_a65c4b2bf20a2a2d125705570a9b8b582}{serial}}[\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}];\ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__topology__node__state_a327495722fee1a0340fdca4b16e35239}{issuer}}[\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\_CERTIFICATE\_ISSUER\_SIZE}}];\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{structaern__certificate__expiration}{aern\_certificate\_expiration}}\ \mbox{\hyperlink{structaern__topology__node__state_a44fb0803ee0f4026ae9927fd4386beba}{expiration}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\_network\_designations}}\ \mbox{\hyperlink{structaern__topology__node__state_a73fb917b64a66523ca67f682c095ea03}{designation}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \}\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00184\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}}
+\DoxyCodeLine{00185\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structaern__topology__list__state_a03d916c2e96cc40000b839efa9252f24}{topology}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__topology__list__state_a86988a65e0d3ece7990c032c159786d6}{count}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00188\ \}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}};}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ \ FUNCTION\ PROTOTYPES}}
+\DoxyCodeLine{00192\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00204\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_ae228d7f793cf285c21550c5563cf3539}{aern\_topology\_address\_from\_issuer}}(\textcolor{keywordtype}{char}*\ address,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00214\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_ab2a963793b864e86ba9fea2bbd856d86}{aern\_topology\_node\_add\_alias}}(\mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ alias);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00225\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a99ac67fcd00c6cbe29dee4c818094978}{aern\_topology\_nodes\_are\_equal}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ b);}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00236\ AERN\_EXPORT\_API\ uint8\_t*\ \mbox{\hyperlink{topology_8h_a74a8a1adc8164dcbe2a3f5f2d2d36e01}{aern\_topology\_child\_add\_empty\_node}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00246\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_ac22232a375c020c8ab275015fe59b710}{aern\_topology\_child\_add\_item}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node);}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00259\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a918afa7cf062923f793a7541a5be57f5}{aern\_topology\_canonical\_to\_issuer\_name}}(\textcolor{keywordtype}{char}*\ issuer,\ \textcolor{keywordtype}{size\_t}\ isslen,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ domain,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ cname);}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00271\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_aaa77b6a969cd4c870070a4d25a70a058}{aern\_topology\_issuer\_to\_canonical\_name}}(\textcolor{keywordtype}{char}*\ cname,\ \textcolor{keywordtype}{size\_t}\ namelen,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00282\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_a568887d36a55d279486545dceedb568b}{aern\_topology\_child\_register}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ address);}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00292\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_afa94cc64e3238475493afcc927466791}{aern\_topology\_list\_clone}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ tlist,\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ tcopy);}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00303\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_a2e0d3a219a8f35eeb8851fef54678cde}{aern\_topology\_list\_deserialize}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ uint8\_t*\ input,\ \textcolor{keywordtype}{size\_t}\ inplen);}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00312\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_aaba156e2d7ffbaf91d776834fee1129e}{aern\_topology\_list\_dispose}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00321\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_aa1bc0f7777717c15b698a10ac9a533ae}{aern\_topology\_list\_initialize}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00333\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_ac1f4724bd207fa070c81592c0a389c9c}{aern\_topology\_list\_item}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00343\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_acdbe23ee78a6102e8a92502f87a73a1a}{aern\_topology\_list\_remove\_duplicates}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00354\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_a4796a2c320e2d862d788b3ee6a79af44}{aern\_topology\_list\_server\_count}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\_network\_designations}}\ ntype);}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00365\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_a2f300028662b4ff6dd35d88bb24a2ee3}{aern\_topology\_list\_serialize}}(uint8\_t*\ output,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00375\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_a3027f3b0a5b3013b3428e1c32b4b5b95}{aern\_topology\_list\_size}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00387\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_ac51f01e91c74076b4bffd66eb15ca4f0}{aern\_topology\_list\_to\_string}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keywordtype}{char}*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen);}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00399\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_a059e25aa0e6da06117673378ee9ebe0d}{aern\_topology\_list\_update\_pack}}(uint8\_t*\ output,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\_network\_designations}}\ ntype);}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00411\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_a48d2f5605357b33f8e6101980d506dd8}{aern\_topology\_list\_update\_unpack}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ uint8\_t*\ input,\ \textcolor{keywordtype}{size\_t}\ inplen);}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00424\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_aadea2f0fdc0e220c25e74e166c8c41b3}{aern\_topology\_ordered\_server\_list}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ olist,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ tlist,\ \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\_network\_designations}}\ ntype);}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00433\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_ac1244fd5967f1363a515324ee4011c26}{aern\_topology\_node\_clear}}(\mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node);}
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00443\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_a7bdd8a07e8b2d54a17f3d6a7e1b7758b}{aern\_topology\_node\_copy}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ source,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ destination);}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00453\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_abf635171357f5048f26d834df39fba9e}{aern\_topology\_node\_deserialize}}(\mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keyword}{const}\ uint8\_t*\ input);}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00464\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_a6648a673bfa558426c3f8c1bf3bc7484}{aern\_topology\_node\_encode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keywordtype}{char}\ output[\mbox{\hyperlink{topology_8h_a975417f5e7bb6193bc97a47f475b693d}{AERN\_TOPOLOGY\_NODE\_ENCODED\_SIZE}}]);}
+\DoxyCodeLine{00465\ }
+\DoxyCodeLine{00475\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_af7fa5f0d17f5425dfe11f1e4c36cc5ff}{aern\_topology\_node\_exists}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ uint8\_t*\ serial);}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00486\ AERN\_EXPORT\_API\ int32\_t\ \mbox{\hyperlink{topology_8h_a50cbd92c09d8194da8a2b0b7b2bf3a2b}{aern\_topology\_node\_get\_index}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ uint8\_t*\ serial);}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00498\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_ad2a0f683fc428d4559cc8ee088fd55a9}{aern\_topology\_node\_find}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keyword}{const}\ uint8\_t*\ serial);}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00510\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a0963f09c7e395c790decfa78c182e65a}{aern\_topology\_node\_find\_address}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ address);}
+\DoxyCodeLine{00511\ }
+\DoxyCodeLine{00522\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a919641ea29231d298a70a805d58dd4c9}{aern\_topology\_node\_find\_alias}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ alias);}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00533\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a00d1721d9035453c3c8fb6396259794e}{aern\_topology\_node\_find\_ads}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node);}
+\DoxyCodeLine{00534\ }
+\DoxyCodeLine{00545\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a28e22608bcc42bc5c6eb60198ed7fea1}{aern\_topology\_node\_find\_issuer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00546\ }
+\DoxyCodeLine{00556\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_aa063936c5158251e438b0024e4f81fad}{aern\_topology\_node\_find\_root}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node);}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00566\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_ab8ee8b35362ee9742ba21e1ba223a8c7}{aern\_topology\_node\_remove}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ uint8\_t*\ serial);}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00576\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_a00b47ba40d757b930e5741d60e833d08}{aern\_topology\_node\_remove\_duplicate}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00577\ }
+\DoxyCodeLine{00587\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a7cd8e44ae826afced77c2209fdac7d8c}{aern\_topology\_node\_verify\_ads}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert);}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00599\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a69d4de114861db56d8ff2139d017c1ea}{aern\_topology\_node\_verify\_issuer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00600\ }
+\DoxyCodeLine{00610\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{topology_8h_a574517482a327eda7c8e3ac6df2b9e19}{aern\_topology\_node\_verify\_root}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__root__certificate}{aern\_root\_certificate}}*\ rcert);}
+\DoxyCodeLine{00611\ }
+\DoxyCodeLine{00621\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{topology_8h_aa7c47e845d521be09de7060e607adf41}{aern\_topology\_node\_serialize}}(uint8\_t*\ output,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__node__state}{aern\_topology\_node\_state}}*\ node);}
+\DoxyCodeLine{00622\ }
+\DoxyCodeLine{00632\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_aadcf4363f8f44f245f8c38b89efbd238}{aern\_topology\_root\_register}}(\mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__root__certificate}{aern\_root\_certificate}}*\ rcert,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ address);}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00642\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_a36637c20013b6aee523425f26e9569d1}{aern\_topology\_from\_file}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fpath,\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list);}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00652\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{topology_8h_aa58bd8ad8f8cb17a67748b318262d610}{aern\_topology\_to\_file}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ list,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fpath);}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ \textcolor{preprocessor}{\#if\ defined(AERN\_DEBUG\_MODE)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00662\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_topology\_functions\_test();}
+\DoxyCodeLine{00663\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00664\ }
+\DoxyCodeLine{00665\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

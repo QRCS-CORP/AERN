@@ -1,0 +1,60 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/ars.h File Reference}
+\hypertarget{ars_8h}{}\label{ars_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/ars.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/ars.h}}
+
+
+The AERN Root Domain Security server.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{ars_8h_ae8c7abb48d2c1330de44d4807069a58a}{aern\+\_\+ars\+\_\+pause\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Pause the ARS server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{ars_8h_abc3ba7235262e970f5fd03821779e049}{aern\+\_\+ars\+\_\+start\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Start the ARS server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{ars_8h_a783bafa39e3bb68841fe9f1243a9b055}{aern\+\_\+ars\+\_\+stop\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Stop the ARS server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The AERN Root Domain Security server. 
+
+Detailed File Description\+: This header file defines the public interface for the AERN Root Domain Security (ARS) server. The ARS server is responsible for managing the root domain security functions within the AERN system. This includes handling operations related to the creation, storage, signing, and verification of the root certificate as well as coordinating secure communications with other nodes in the network. The public functions declared here allow the ARS server to be started, paused, and stopped. In addition, when the macro AERN\+\_\+\+DEBUG\+\_\+\+TESTS\+\_\+\+RUN is defined, a test function is provided to run self-\/diagnostic tests on the ARS server functionality.
+
+Every function declared in this header file is documented with its purpose, parameters, and return value (if any). 
+
+\label{doc-func-members}
+\Hypertarget{ars_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ars_8h_ae8c7abb48d2c1330de44d4807069a58a}\index{ars.h@{ars.h}!aern\_ars\_pause\_server@{aern\_ars\_pause\_server}}
+\index{aern\_ars\_pause\_server@{aern\_ars\_pause\_server}!ars.h@{ars.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ars\_pause\_server()}{aern\_ars\_pause\_server()}}
+{\footnotesize\ttfamily \label{ars_8h_ae8c7abb48d2c1330de44d4807069a58a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+ars\+\_\+pause\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Pause the ARS server. 
+
+This function pauses the operation of the ARS server. When called, the server will temporarily suspend processing of incoming network messages and connections until it is resumed. \Hypertarget{ars_8h_abc3ba7235262e970f5fd03821779e049}\index{ars.h@{ars.h}!aern\_ars\_start\_server@{aern\_ars\_start\_server}}
+\index{aern\_ars\_start\_server@{aern\_ars\_start\_server}!ars.h@{ars.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ars\_start\_server()}{aern\_ars\_start\_server()}}
+{\footnotesize\ttfamily \label{ars_8h_abc3ba7235262e970f5fd03821779e049} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+ars\+\_\+start\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Start the ARS server. 
+
+This function initializes and starts the ARS server. It sets up all necessary resources, initializes the application state, and begins accepting network connections. \Hypertarget{ars_8h_a783bafa39e3bb68841fe9f1243a9b055}\index{ars.h@{ars.h}!aern\_ars\_stop\_server@{aern\_ars\_stop\_server}}
+\index{aern\_ars\_stop\_server@{aern\_ars\_stop\_server}!ars.h@{ars.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ars\_stop\_server()}{aern\_ars\_stop\_server()}}
+{\footnotesize\ttfamily \label{ars_8h_a783bafa39e3bb68841fe9f1243a9b055} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+ars\+\_\+stop\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Stop the ARS server. 
+
+This function stops the ARS server by terminating its main command loop and releasing all allocated resources. After calling this function, the server will no longer process incoming network messages. 

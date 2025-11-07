@@ -1,0 +1,935 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/certificate.h File Reference}
+\hypertarget{certificate_8h}{}\label{certificate_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/certificate.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/certificate.h}}
+
+
+AERN Certificate Handling Functions.  
+
+
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} \mbox{\hyperlink{certificate_8h_a9e85e5038b4c8b238a05ca1256a72ecd}{aern\+\_\+certificate\+\_\+algorithm\+\_\+decode}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Decode the string algorithm-\/set number to the enumerated representation. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a4a4b34e632c37eef521e8676d85cebe1}{aern\+\_\+certificate\+\_\+algorithm\+\_\+enabled}} (\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} conf)
+\begin{DoxyCompactList}\small\item\em Test if the specified protocol-\/set is enabled on this system. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a11442c8f75a442ce126f09b3824f67ae}{aern\+\_\+certificate\+\_\+algorithm\+\_\+encode}} (char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} conf)
+\begin{DoxyCompactList}\small\item\em Encode the protocol-\/set enumerator into its string form. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_acfff407b34200fbefbd4d8e7961402a2}{aern\+\_\+certificate\+\_\+child\+\_\+are\+\_\+equal}} (const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compare two child certificates for equivalence. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_aa369c6ee805f6cae63e4288995e40280}{aern\+\_\+certificate\+\_\+child\+\_\+copy}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}output, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}input)
+\begin{DoxyCompactList}\small\item\em Copy a child certificate structure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_ac42dc0871ca5133a5b90b44c451ef067}{aern\+\_\+certificate\+\_\+child\+\_\+create}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}pubkey, const \mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}expiration, const char \texorpdfstring{$\ast$}{*}issuer, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} designation)
+\begin{DoxyCompactList}\small\item\em Create a child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a4df51792aea0d98e884dfbe1f680b8d6}{aern\+\_\+certificate\+\_\+child\+\_\+decode}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child, const char enck\mbox{[}AERN\+\_\+\+CHILD\+\_\+\+CERTIFICATE\+\_\+\+STRING\+\_\+\+SIZE\mbox{]})
+\begin{DoxyCompactList}\small\item\em Decode a child certificate string into a certificate structure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_ae4750f3f7b5242521f882dc86110259b}{aern\+\_\+certificate\+\_\+child\+\_\+deserialize}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}input)
+\begin{DoxyCompactList}\small\item\em Deserialize a child certificate from a byte array. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{certificate_8h_ad5bcbade3b641c203aeeb99dae26754a}{aern\+\_\+certificate\+\_\+child\+\_\+encode}} (char enck\mbox{[}AERN\+\_\+\+CHILD\+\_\+\+CERTIFICATE\+\_\+\+STRING\+\_\+\+SIZE\mbox{]}, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Encode a public child certificate into a human-\/readable string. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_aab57d23452c431e686e05c81e17249d9}{aern\+\_\+certificate\+\_\+child\+\_\+erase}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Delete (erase) a child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a656b4170a05eb700d5eb07e599a94892}{aern\+\_\+certificate\+\_\+child\+\_\+file\+\_\+to\+\_\+struct}} (const char \texorpdfstring{$\ast$}{*}fpath, \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Copy a serialized certificate from a file into a child certificate structure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a1719b17581ad8fc6c73606e510f2f7b5}{aern\+\_\+certificate\+\_\+child\+\_\+hash}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Compute the cryptographic hash of a child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_aec4ca63a4148b0ce39816d54501df985}{aern\+\_\+certificate\+\_\+child\+\_\+is\+\_\+valid}} (const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Test a child certificate for a valid format and expiration. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_ade0a08cce83a1fe69b18dd0bc4c12f4a}{aern\+\_\+certificate\+\_\+child\+\_\+message\+\_\+verify}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t \texorpdfstring{$\ast$}{*}msglen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}signature, size\+\_\+t siglen, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Verify a message signature using a child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_ac72818eca22be9110bd5e50aa58c889d}{aern\+\_\+certificate\+\_\+child\+\_\+serialize}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Serialize a child certificate into a contiguous byte array. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a5b1017abbba37e44186ef02a6da6dc7a}{aern\+\_\+certificate\+\_\+signature\+\_\+hash\+\_\+verify}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}signature, size\+\_\+t siglen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}lcert)
+\begin{DoxyCompactList}\small\item\em Verify that a signature hash matches a computed message hash using a child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_ac2e15260ffa833f8ced4edd71f80c8cb}{aern\+\_\+certificate\+\_\+child\+\_\+struct\+\_\+to\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}fpath, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Write a child certificate structure to a file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} \mbox{\hyperlink{certificate_8h_ae0a359fddcaea24a71a30ee948fae0d8}{aern\+\_\+certificate\+\_\+designation\+\_\+decode}} (const char \texorpdfstring{$\ast$}{*}sdsg)
+\begin{DoxyCompactList}\small\item\em Decode the network-\/designation string to its enumerated representation. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{certificate_8h_afc91c4d94d5132de62d117d6b9d558fd}{aern\+\_\+certificate\+\_\+designation\+\_\+encode}} (char \texorpdfstring{$\ast$}{*}sdsg, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} designation)
+\begin{DoxyCompactList}\small\item\em Encode the network-\/designation enumerator into a string. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a6a590303d90abbcd0b00f4282d777bb1}{aern\+\_\+certificate\+\_\+expiration\+\_\+set\+\_\+days}} (\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}expiration, uint16\+\_\+t start, uint16\+\_\+t duration)
+\begin{DoxyCompactList}\small\item\em Set the expiration days on a certificate expiration structure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a2eae919af2743148575679b51a0eff0a}{aern\+\_\+certificate\+\_\+expiration\+\_\+set\+\_\+seconds}} (\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}expiration, uint64\+\_\+t start, uint64\+\_\+t period)
+\begin{DoxyCompactList}\small\item\em Set the expiration seconds on a certificate expiration structure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a279a6394d9ed64e3e006c842f122082c}{aern\+\_\+certificate\+\_\+expiration\+\_\+time\+\_\+verify}} (const \mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}expiration)
+\begin{DoxyCompactList}\small\item\em Verify the expiration time against the current UTC time. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{certificate_8h_a3013d651ade561d11c9026765f9aaadf}{aern\+\_\+certificate\+\_\+message\+\_\+hash\+\_\+sign}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}signature, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}sigkey, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen)
+\begin{DoxyCompactList}\small\item\em Hash a message and sign the hash. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a7b3815ed685255004c41d9c3e5cfd5be}{aern\+\_\+certificate\+\_\+root\+\_\+compare}} (const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compare two root certificates for equivalence. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a79771ed4c17ac7f0cf78b8e795de68fb}{aern\+\_\+certificate\+\_\+root\+\_\+create}} (\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}pubkey, const \mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}expiration, const char \texorpdfstring{$\ast$}{*}issuer)
+\begin{DoxyCompactList}\small\item\em Create a root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_aa11b071020111ce7e8f040a29243272c}{aern\+\_\+certificate\+\_\+root\+\_\+decode}} (\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root, const char \texorpdfstring{$\ast$}{*}enck)
+\begin{DoxyCompactList}\small\item\em Decode a root certificate string into a certificate structure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a4fb6c963b9aa82bd5fe2896937e0939e}{aern\+\_\+certificate\+\_\+root\+\_\+deserialize}} (\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}input)
+\begin{DoxyCompactList}\small\item\em Deserialize a root certificate from a byte array. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{certificate_8h_a817eb4043c1ac8465ff0b2c9da200476}{aern\+\_\+certificate\+\_\+root\+\_\+encode}} (char \texorpdfstring{$\ast$}{*}enck, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Encode a public root certificate into a human-\/readable string. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a0aa7fa9a632b8f008fb749c6456472d3}{aern\+\_\+certificate\+\_\+root\+\_\+erase}} (\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Delete (erase) a root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_af36c1b71db610cdd51bcc42bb10fa453}{aern\+\_\+certificate\+\_\+root\+\_\+file\+\_\+to\+\_\+struct}} (const char \texorpdfstring{$\ast$}{*}fpath, \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Copy a serialized root certificate from a file into a root certificate structure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a9b7f3bc2a0c7dfc0d3bd3465e7c62472}{aern\+\_\+certificate\+\_\+root\+\_\+hash}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Compute the cryptographic hash of a root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a945f58c8838c2f6dbab6891e0da06dea}{aern\+\_\+certificate\+\_\+root\+\_\+serialize}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Serialize a root certificate into a contiguous byte array. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{certificate_8h_aece512c156c16091b6cc13d317aab882}{aern\+\_\+certificate\+\_\+root\+\_\+sign}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}rsigkey)
+\begin{DoxyCompactList}\small\item\em Sign a child certificate with the root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a6f19af38d69925d8719ac91e6952a915}{aern\+\_\+certificate\+\_\+root\+\_\+signature\+\_\+verify}} (const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}child, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Verify a child certificate against a root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a423b59c4e8b7b5f6d4cbd797430adcbd}{aern\+\_\+certificate\+\_\+root\+\_\+struct\+\_\+to\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}fpath, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Write a root certificate structure to a file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_a6299f05fc42d7136cf60824f22cad782}{aern\+\_\+certificate\+\_\+root\+\_\+is\+\_\+valid}} (const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Validate a root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{certificate_8h_a94552dd32d8a368951482ab9100de510}{aern\+\_\+certificate\+\_\+signature\+\_\+generate\+\_\+keypair}} (\mbox{\hyperlink{structaern__signature__keypair}{aern\+\_\+signature\+\_\+keypair}} \texorpdfstring{$\ast$}{*}keypair)
+\begin{DoxyCompactList}\small\item\em Generate and encode an asymmetric signature scheme keypair. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{certificate_8h_a7dc8dd7fe1430dffeea483608dc22f38}{aern\+\_\+certificate\+\_\+signature\+\_\+sign\+\_\+message}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}signature, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}prikey)
+\begin{DoxyCompactList}\small\item\em Sign a message using the asymmetric signature scheme. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{certificate_8h_ac4f715ab52aac1516b83b2b8ff40fec1}{aern\+\_\+certificate\+\_\+signature\+\_\+verify\+\_\+message}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}signature, size\+\_\+t siglen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}pubkey)
+\begin{DoxyCompactList}\small\item\em Verify a message signature using the asymmetric signature scheme. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AERN Certificate Handling Functions. 
+
+This header defines the functions for managing and processing certificates used by the Anonymous Encrypted Relay Network (AERN). The certificate module is responsible for creating, encoding, decoding, serializing, deserializing, signing, and verifying both child (device) and root (trust anchor) certificates. These certificates carry critical information such as\+:
+
+
+\begin{DoxyItemize}
+\item The issuer identity.
+\item Certificate validity periods.
+\item Public verification keys.
+\item Algorithm configuration identifiers.
+\item Digital signatures produced by the root certificate.
+\end{DoxyItemize}
+
+The functions provided in this module allow conversion between protocol-\/set strings and their enumerated representations, as well as conversion of network-\/designation values between string and enumerated forms. They also perform cryptographic operations such as hashing and digital signing, using the underlying QSC cryptographic primitives.
+
+\begin{DoxyNote}{Note}
+The certificate functions depend on the QSC library for routines including SHA3 (Keccak), base64 encoding/decoding, file I/O, and memory utilities. The active AERN configuration (protocol-\/set) is used to automatically populate certificate fields.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000002}{Test}}]When the AERN\+\_\+\+DEBUG\+\_\+\+TESTS\+\_\+\+RUN macro is defined, the function aern\+\_\+certificate\+\_\+functions\+\_\+test() executes a series of self-\/tests that verify\+:\end{DoxyRefDesc}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Algorithm Conversion\+:}} That protocol-\/set strings are correctly decoded into enumerated values (and vice versa) via \doxylink{certificate_8h_a9e85e5038b4c8b238a05ca1256a72ecd}{aern\+\_\+certificate\+\_\+algorithm\+\_\+decode()} and \doxylink{certificate_8h_a11442c8f75a442ce126f09b3824f67ae}{aern\+\_\+certificate\+\_\+algorithm\+\_\+encode()}.
+\item {\bfseries{Child Certificate Operations\+:}} The creation (\doxylink{certificate_8h_ac42dc0871ca5133a5b90b44c451ef067}{aern\+\_\+certificate\+\_\+child\+\_\+create()}), signing (\doxylink{certificate_8h_aece512c156c16091b6cc13d317aab882}{aern\+\_\+certificate\+\_\+root\+\_\+sign()}), encoding (\doxylink{certificate_8h_ad5bcbade3b641c203aeeb99dae26754a}{aern\+\_\+certificate\+\_\+child\+\_\+encode()}), serialization/deserialization (\doxylink{certificate_8h_ac72818eca22be9110bd5e50aa58c889d}{aern\+\_\+certificate\+\_\+child\+\_\+serialize()}/aern\+\_\+certificate\+\_\+child\+\_\+deserialize()), and validity testing (\doxylink{certificate_8h_aec4ca63a4148b0ce39816d54501df985}{aern\+\_\+certificate\+\_\+child\+\_\+is\+\_\+valid()}) of child certificates.
+\item {\bfseries{Root Certificate Operations\+:}} The creation (\doxylink{certificate_8h_a79771ed4c17ac7f0cf78b8e795de68fb}{aern\+\_\+certificate\+\_\+root\+\_\+create()}), encoding (\doxylink{certificate_8h_a817eb4043c1ac8465ff0b2c9da200476}{aern\+\_\+certificate\+\_\+root\+\_\+encode()}), serialization/deserialization (\doxylink{certificate_8h_a945f58c8838c2f6dbab6891e0da06dea}{aern\+\_\+certificate\+\_\+root\+\_\+serialize()}/aern\+\_\+certificate\+\_\+root\+\_\+deserialize()), and verification (\doxylink{certificate_8h_a6f19af38d69925d8719ac91e6952a915}{aern\+\_\+certificate\+\_\+root\+\_\+signature\+\_\+verify()}) of root certificates.
+\item {\bfseries{Equality and Copy\+:}} That child certificates can be compared (\doxylink{certificate_8h_acfff407b34200fbefbd4d8e7961402a2}{aern\+\_\+certificate\+\_\+child\+\_\+are\+\_\+equal()}) and copied (\doxylink{certificate_8h_aa369c6ee805f6cae63e4288995e40280}{aern\+\_\+certificate\+\_\+child\+\_\+copy()}) correctly.
+\item {\bfseries{Expiration and Signature Functions\+:}} That certificate expiration is properly set and verified, and that messages can be hashed and signed/verified (\doxylink{certificate_8h_a3013d651ade561d11c9026765f9aaadf}{aern\+\_\+certificate\+\_\+message\+\_\+hash\+\_\+sign()} and \doxylink{certificate_8h_ac4f715ab52aac1516b83b2b8ff40fec1}{aern\+\_\+certificate\+\_\+signature\+\_\+verify\+\_\+message()}).
+\end{DoxyItemize}
+
+These tests help ensure that the certificate operations function as expected in real-\/world use. 
+
+\label{doc-func-members}
+\Hypertarget{certificate_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{certificate_8h_a9e85e5038b4c8b238a05ca1256a72ecd}\index{certificate.h@{certificate.h}!aern\_certificate\_algorithm\_decode@{aern\_certificate\_algorithm\_decode}}
+\index{aern\_certificate\_algorithm\_decode@{aern\_certificate\_algorithm\_decode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_algorithm\_decode()}{aern\_certificate\_algorithm\_decode()}}
+{\footnotesize\ttfamily \label{certificate_8h_a9e85e5038b4c8b238a05ca1256a72ecd} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} aern\+\_\+certificate\+\_\+algorithm\+\_\+decode (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Decode the string algorithm-\/set number to the enumerated representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \mbox{[}in, const\mbox{]} The protocol-\/set string (for example, "{}dilithium-\/s1\+\_\+kyber-\/s1\+\_\+rcs-\/256\+\_\+sha3-\/256"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the corresponding protocol-\/set enumerator. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a4a4b34e632c37eef521e8676d85cebe1}\index{certificate.h@{certificate.h}!aern\_certificate\_algorithm\_enabled@{aern\_certificate\_algorithm\_enabled}}
+\index{aern\_certificate\_algorithm\_enabled@{aern\_certificate\_algorithm\_enabled}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_algorithm\_enabled()}{aern\_certificate\_algorithm\_enabled()}}
+{\footnotesize\ttfamily \label{certificate_8h_a4a4b34e632c37eef521e8676d85cebe1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+algorithm\+\_\+enabled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}}}]{conf}{}\end{DoxyParamCaption})}
+
+
+
+Test if the specified protocol-\/set is enabled on this system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conf} & The protocol-\/set enumerator to test.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the given protocol-\/set is enabled; otherwise, false. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a11442c8f75a442ce126f09b3824f67ae}\index{certificate.h@{certificate.h}!aern\_certificate\_algorithm\_encode@{aern\_certificate\_algorithm\_encode}}
+\index{aern\_certificate\_algorithm\_encode@{aern\_certificate\_algorithm\_encode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_algorithm\_encode()}{aern\_certificate\_algorithm\_encode()}}
+{\footnotesize\ttfamily \label{certificate_8h_a11442c8f75a442ce126f09b3824f67ae} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+algorithm\+\_\+encode (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}}}]{conf}{}\end{DoxyParamCaption})}
+
+
+
+Encode the protocol-\/set enumerator into its string form. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \mbox{[}out\mbox{]} The output buffer that will receive the protocol-\/set string. \\
+\hline
+{\em conf} & The protocol-\/set enumerator to encode. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_acfff407b34200fbefbd4d8e7961402a2}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_are\_equal@{aern\_certificate\_child\_are\_equal}}
+\index{aern\_certificate\_child\_are\_equal@{aern\_certificate\_child\_are\_equal}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_are\_equal()}{aern\_certificate\_child\_are\_equal()}}
+{\footnotesize\ttfamily \label{certificate_8h_acfff407b34200fbefbd4d8e7961402a2} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+child\+\_\+are\+\_\+equal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compare two child certificates for equivalence. 
+
+This function compares all the significant fields of two child certificate structures (including algorithm, version, designation, expiration, issuer, serial, signature, and public key).
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \mbox{[}in, const\mbox{]} The first certificate. \\
+\hline
+{\em b} & \mbox{[}in, const\mbox{]} The second certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the two certificates are equal. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_aa369c6ee805f6cae63e4288995e40280}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_copy@{aern\_certificate\_child\_copy}}
+\index{aern\_certificate\_child\_copy@{aern\_certificate\_child\_copy}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_copy()}{aern\_certificate\_child\_copy()}}
+{\footnotesize\ttfamily \label{certificate_8h_aa369c6ee805f6cae63e4288995e40280} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+child\+\_\+copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Copy a child certificate structure. 
+
+This function performs a deep copy of the child certificate from the {\ttfamily input} structure to the {\ttfamily output} structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The destination child certificate. \\
+\hline
+{\em input} & \mbox{[}in, const\mbox{]} The source child certificate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_ac42dc0871ca5133a5b90b44c451ef067}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_create@{aern\_certificate\_child\_create}}
+\index{aern\_certificate\_child\_create@{aern\_certificate\_child\_create}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_create()}{aern\_certificate\_child\_create()}}
+{\footnotesize\ttfamily \label{certificate_8h_ac42dc0871ca5133a5b90b44c451ef067} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+child\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pubkey}{, }\item[{const \mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}}]{expiration}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{issuer}{, }\item[{\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}]{designation}{}\end{DoxyParamCaption})}
+
+
+
+Create a child certificate. 
+
+This function initializes and populates a child certificate structure with the provided public key, expiration information, issuer string, and designation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & \mbox{[}out\mbox{]} A pointer to the empty child certificate to populate. \\
+\hline
+{\em pubkey} & \mbox{[}in\mbox{]} A pointer to the public signature key. \\
+\hline
+{\em expiration} & \mbox{[}in, const\mbox{]} The certificate expiration time structure. \\
+\hline
+{\em issuer} & \mbox{[}in, const\mbox{]} The certificate issuer string. \\
+\hline
+{\em designation} & The certificate designation type (e.\+g. aps, client, etc.). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_a4df51792aea0d98e884dfbe1f680b8d6}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_decode@{aern\_certificate\_child\_decode}}
+\index{aern\_certificate\_child\_decode@{aern\_certificate\_child\_decode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_decode()}{aern\_certificate\_child\_decode()}}
+{\footnotesize\ttfamily \label{certificate_8h_a4df51792aea0d98e884dfbe1f680b8d6} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+child\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{const char}]{enck}{\mbox{[}\+AERN\+\_\+\+CHILD\+\_\+\+CERTIFICATE\+\_\+\+STRING\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Decode a child certificate string into a certificate structure. 
+
+This function decodes an encoded child certificate string (with a fixed maximum size) into its corresponding certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & \mbox{[}out\mbox{]} The pointer to the child certificate structure to populate. \\
+\hline
+{\em enck} & \mbox{[}in\mbox{]} The encoded certificate string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate was successfully decoded. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_ae4750f3f7b5242521f882dc86110259b}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_deserialize@{aern\_certificate\_child\_deserialize}}
+\index{aern\_certificate\_child\_deserialize@{aern\_certificate\_child\_deserialize}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_deserialize()}{aern\_certificate\_child\_deserialize()}}
+{\footnotesize\ttfamily \label{certificate_8h_ae4750f3f7b5242521f882dc86110259b} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+child\+\_\+deserialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Deserialize a child certificate from a byte array. 
+
+This function converts a serialized child certificate (stored as a byte stream) into a certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & \mbox{[}out\mbox{]} The pointer to the child certificate structure to populate. \\
+\hline
+{\em input} & \mbox{[}in, const\mbox{]} The input byte array containing the serialized certificate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_ad5bcbade3b641c203aeeb99dae26754a}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_encode@{aern\_certificate\_child\_encode}}
+\index{aern\_certificate\_child\_encode@{aern\_certificate\_child\_encode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_encode()}{aern\_certificate\_child\_encode()}}
+{\footnotesize\ttfamily \label{certificate_8h_ad5bcbade3b641c203aeeb99dae26754a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+certificate\+\_\+child\+\_\+encode (\begin{DoxyParamCaption}\item[{char}]{enck}{\mbox{[}\+AERN\+\_\+\+CHILD\+\_\+\+CERTIFICATE\+\_\+\+STRING\+\_\+\+SIZE\mbox{]}, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Encode a public child certificate into a human-\/readable string. 
+
+This function encodes the given child certificate into a formatted string representation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enck} & \mbox{[}out\mbox{]} The output buffer that will receive the encoded certificate string. \\
+\hline
+{\em child} & \mbox{[}in, const\mbox{]} The child certificate to encode.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the size of the encoded certificate string. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_aab57d23452c431e686e05c81e17249d9}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_erase@{aern\_certificate\_child\_erase}}
+\index{aern\_certificate\_child\_erase@{aern\_certificate\_child\_erase}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_erase()}{aern\_certificate\_child\_erase()}}
+{\footnotesize\ttfamily \label{certificate_8h_aab57d23452c431e686e05c81e17249d9} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+child\+\_\+erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Delete (erase) a child certificate. 
+
+This function securely erases all fields of a child certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & \mbox{[}in,out\mbox{]} A pointer to the child certificate to erase. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_a656b4170a05eb700d5eb07e599a94892}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_file\_to\_struct@{aern\_certificate\_child\_file\_to\_struct}}
+\index{aern\_certificate\_child\_file\_to\_struct@{aern\_certificate\_child\_file\_to\_struct}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_file\_to\_struct()}{aern\_certificate\_child\_file\_to\_struct()}}
+{\footnotesize\ttfamily \label{certificate_8h_a656b4170a05eb700d5eb07e599a94892} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+child\+\_\+file\+\_\+to\+\_\+struct (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Copy a serialized certificate from a file into a child certificate structure. 
+
+This function reads a file containing a serialized child certificate, deserializes it, and populates the provided certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fpath} & \mbox{[}in, const\mbox{]} The file path from which to load the certificate. \\
+\hline
+{\em child} & \mbox{[}out\mbox{]} A pointer to the child certificate structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true on success. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a1719b17581ad8fc6c73606e510f2f7b5}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_hash@{aern\_certificate\_child\_hash}}
+\index{aern\_certificate\_child\_hash@{aern\_certificate\_child\_hash}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_hash()}{aern\_certificate\_child\_hash()}}
+{\footnotesize\ttfamily \label{certificate_8h_a1719b17581ad8fc6c73606e510f2f7b5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+child\+\_\+hash (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Compute the cryptographic hash of a child certificate. 
+
+The hash is computed over key fields such as algorithm, designation, version, expiration, issuer, serial, and public verification key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The output hash array (size\+: AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE). \\
+\hline
+{\em child} & \mbox{[}in, const\mbox{]} A pointer to the child certificate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_aec4ca63a4148b0ce39816d54501df985}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_is\_valid@{aern\_certificate\_child\_is\_valid}}
+\index{aern\_certificate\_child\_is\_valid@{aern\_certificate\_child\_is\_valid}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_is\_valid()}{aern\_certificate\_child\_is\_valid()}}
+{\footnotesize\ttfamily \label{certificate_8h_aec4ca63a4148b0ce39816d54501df985} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+child\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Test a child certificate for a valid format and expiration. 
+
+This function checks that the certificate fields (including algorithm, designation, version, signature, serial, and public key) are nonzero and that the current time is within the expiration period.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & \mbox{[}in, const\mbox{]} A pointer to the child certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is valid. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_ade0a08cce83a1fe69b18dd0bc4c12f4a}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_message\_verify@{aern\_certificate\_child\_message\_verify}}
+\index{aern\_certificate\_child\_message\_verify@{aern\_certificate\_child\_message\_verify}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_message\_verify()}{aern\_certificate\_child\_message\_verify()}}
+{\footnotesize\ttfamily \label{certificate_8h_ade0a08cce83a1fe69b18dd0bc4c12f4a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+child\+\_\+message\+\_\+verify (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{msglen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{signature}{, }\item[{size\+\_\+t}]{siglen}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Verify a message signature using a child certificate. 
+
+This function uses the public verification key from the child certificate to verify that a given signature correctly authenticates a message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \mbox{[}out\mbox{]} The output buffer for the recovered message (if applicable). \\
+\hline
+{\em msglen} & \mbox{[}in,out\mbox{]} A pointer to the length of the recovered message. \\
+\hline
+{\em signature} & \mbox{[}in, const\mbox{]} A pointer to the signature. \\
+\hline
+{\em siglen} & The length of the signature. \\
+\hline
+{\em child} & \mbox{[}in, const\mbox{]} A pointer to the child certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the message signature is verified. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_ac72818eca22be9110bd5e50aa58c889d}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_serialize@{aern\_certificate\_child\_serialize}}
+\index{aern\_certificate\_child\_serialize@{aern\_certificate\_child\_serialize}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_serialize()}{aern\_certificate\_child\_serialize()}}
+{\footnotesize\ttfamily \label{certificate_8h_ac72818eca22be9110bd5e50aa58c889d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+child\+\_\+serialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Serialize a child certificate into a contiguous byte array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} A pointer to the array receiving the serialized certificate (size\+: AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE). \\
+\hline
+{\em child} & \mbox{[}in, const\mbox{]} The child certificate to serialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_ac2e15260ffa833f8ced4edd71f80c8cb}\index{certificate.h@{certificate.h}!aern\_certificate\_child\_struct\_to\_file@{aern\_certificate\_child\_struct\_to\_file}}
+\index{aern\_certificate\_child\_struct\_to\_file@{aern\_certificate\_child\_struct\_to\_file}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_child\_struct\_to\_file()}{aern\_certificate\_child\_struct\_to\_file()}}
+{\footnotesize\ttfamily \label{certificate_8h_ac2e15260ffa833f8ced4edd71f80c8cb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+child\+\_\+struct\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})}
+
+
+
+Write a child certificate structure to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fpath} & \mbox{[}in, const\mbox{]} The file path where the certificate will be stored. \\
+\hline
+{\em child} & \mbox{[}in, const\mbox{]} A pointer to the child certificate structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true on success. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_ae0a359fddcaea24a71a30ee948fae0d8}\index{certificate.h@{certificate.h}!aern\_certificate\_designation\_decode@{aern\_certificate\_designation\_decode}}
+\index{aern\_certificate\_designation\_decode@{aern\_certificate\_designation\_decode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_designation\_decode()}{aern\_certificate\_designation\_decode()}}
+{\footnotesize\ttfamily \label{certificate_8h_ae0a359fddcaea24a71a30ee948fae0d8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} aern\+\_\+certificate\+\_\+designation\+\_\+decode (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{sdsg}{}\end{DoxyParamCaption})}
+
+
+
+Decode the network-\/designation string to its enumerated representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sdsg} & \mbox{[}in, const\mbox{]} The network-\/designation string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the corresponding network-\/designation enumerator. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_afc91c4d94d5132de62d117d6b9d558fd}\index{certificate.h@{certificate.h}!aern\_certificate\_designation\_encode@{aern\_certificate\_designation\_encode}}
+\index{aern\_certificate\_designation\_encode@{aern\_certificate\_designation\_encode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_designation\_encode()}{aern\_certificate\_designation\_encode()}}
+{\footnotesize\ttfamily \label{certificate_8h_afc91c4d94d5132de62d117d6b9d558fd} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+certificate\+\_\+designation\+\_\+encode (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{sdsg}{, }\item[{\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}]{designation}{}\end{DoxyParamCaption})}
+
+
+
+Encode the network-\/designation enumerator into a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sdsg} & \mbox{[}out\mbox{]} The output buffer that will receive the encoded network-\/designation string. \\
+\hline
+{\em designation} & The certificate designation type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the size of the encoded string. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a6a590303d90abbcd0b00f4282d777bb1}\index{certificate.h@{certificate.h}!aern\_certificate\_expiration\_set\_days@{aern\_certificate\_expiration\_set\_days}}
+\index{aern\_certificate\_expiration\_set\_days@{aern\_certificate\_expiration\_set\_days}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_expiration\_set\_days()}{aern\_certificate\_expiration\_set\_days()}}
+{\footnotesize\ttfamily \label{certificate_8h_a6a590303d90abbcd0b00f4282d777bb1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+expiration\+\_\+set\+\_\+days (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}}]{expiration}{, }\item[{uint16\+\_\+t}]{start}{, }\item[{uint16\+\_\+t}]{duration}{}\end{DoxyParamCaption})}
+
+
+
+Set the expiration days on a certificate expiration structure. 
+
+This function sets the {\ttfamily from} and {\ttfamily to} fields of the expiration structure using day intervals.
+
+
+\begin{DoxyParams}{Parameters}
+{\em expiration} & \mbox{[}in,out\mbox{]} A pointer to the expiration structure. \\
+\hline
+{\em start} & The number of days until the certificate becomes valid. \\
+\hline
+{\em duration} & The number of days the certificate remains valid. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_a2eae919af2743148575679b51a0eff0a}\index{certificate.h@{certificate.h}!aern\_certificate\_expiration\_set\_seconds@{aern\_certificate\_expiration\_set\_seconds}}
+\index{aern\_certificate\_expiration\_set\_seconds@{aern\_certificate\_expiration\_set\_seconds}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_expiration\_set\_seconds()}{aern\_certificate\_expiration\_set\_seconds()}}
+{\footnotesize\ttfamily \label{certificate_8h_a2eae919af2743148575679b51a0eff0a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+expiration\+\_\+set\+\_\+seconds (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}}]{expiration}{, }\item[{uint64\+\_\+t}]{start}{, }\item[{uint64\+\_\+t}]{period}{}\end{DoxyParamCaption})}
+
+
+
+Set the expiration seconds on a certificate expiration structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em expiration} & \mbox{[}in,out\mbox{]} A pointer to the expiration structure. \\
+\hline
+{\em start} & The number of seconds to delay before the certificate becomes valid. \\
+\hline
+{\em period} & The number of seconds the certificate remains valid. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_a279a6394d9ed64e3e006c842f122082c}\index{certificate.h@{certificate.h}!aern\_certificate\_expiration\_time\_verify@{aern\_certificate\_expiration\_time\_verify}}
+\index{aern\_certificate\_expiration\_time\_verify@{aern\_certificate\_expiration\_time\_verify}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_expiration\_time\_verify()}{aern\_certificate\_expiration\_time\_verify()}}
+{\footnotesize\ttfamily \label{certificate_8h_a279a6394d9ed64e3e006c842f122082c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+expiration\+\_\+time\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}}]{expiration}{}\end{DoxyParamCaption})}
+
+
+
+Verify the expiration time against the current UTC time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em expiration} & \mbox{[}in, const\mbox{]} A pointer to the expiration time structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the current time is within the certificate\textquotesingle{}s validity period. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a3013d651ade561d11c9026765f9aaadf}\index{certificate.h@{certificate.h}!aern\_certificate\_message\_hash\_sign@{aern\_certificate\_message\_hash\_sign}}
+\index{aern\_certificate\_message\_hash\_sign@{aern\_certificate\_message\_hash\_sign}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_message\_hash\_sign()}{aern\_certificate\_message\_hash\_sign()}}
+{\footnotesize\ttfamily \label{certificate_8h_a3013d651ade561d11c9026765f9aaadf} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+certificate\+\_\+message\+\_\+hash\+\_\+sign (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{signature}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{sigkey}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{}\end{DoxyParamCaption})}
+
+
+
+Hash a message and sign the hash. 
+
+This function computes the SHA3-\/256 hash of the provided message and then signs that hash using the given private signature key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em signature} & \mbox{[}out\mbox{]} The array receiving the signature (size\+: AERN\+\_\+\+ASYMMETRIC\+\_\+\+SIGNATURE\+\_\+\+SIZE). \\
+\hline
+{\em sigkey} & \mbox{[}in, const\mbox{]} The private signature key. \\
+\hline
+{\em message} & \mbox{[}in, const\mbox{]} The message to sign. \\
+\hline
+{\em msglen} & The length of the message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the size of the generated signature. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a7b3815ed685255004c41d9c3e5cfd5be}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_compare@{aern\_certificate\_root\_compare}}
+\index{aern\_certificate\_root\_compare@{aern\_certificate\_root\_compare}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_compare()}{aern\_certificate\_root\_compare()}}
+{\footnotesize\ttfamily \label{certificate_8h_a7b3815ed685255004c41d9c3e5cfd5be} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+root\+\_\+compare (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compare two root certificates for equivalence. 
+
+This function compares the key fields of two root certificates to determine if they are equal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \mbox{[}in, const\mbox{]} The first root certificate. \\
+\hline
+{\em b} & \mbox{[}in, const\mbox{]} The second root certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificates are equivalent. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a79771ed4c17ac7f0cf78b8e795de68fb}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_create@{aern\_certificate\_root\_create}}
+\index{aern\_certificate\_root\_create@{aern\_certificate\_root\_create}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_create()}{aern\_certificate\_root\_create()}}
+{\footnotesize\ttfamily \label{certificate_8h_a79771ed4c17ac7f0cf78b8e795de68fb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+root\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pubkey}{, }\item[{const \mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \texorpdfstring{$\ast$}{*}}]{expiration}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{issuer}{}\end{DoxyParamCaption})}
+
+
+
+Create a root certificate. 
+
+This function creates a root certificate by populating its fields with the provided public key, expiration structure, and issuer name. The generated certificate serves as the trust anchor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{[}out\mbox{]} A pointer to the empty root certificate to populate. \\
+\hline
+{\em pubkey} & \mbox{[}in\mbox{]} A pointer to the public signature key. \\
+\hline
+{\em expiration} & \mbox{[}in, const\mbox{]} The certificate expiration time structure. \\
+\hline
+{\em issuer} & \mbox{[}in, const\mbox{]} The issuer name string. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_aa11b071020111ce7e8f040a29243272c}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_decode@{aern\_certificate\_root\_decode}}
+\index{aern\_certificate\_root\_decode@{aern\_certificate\_root\_decode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_decode()}{aern\_certificate\_root\_decode()}}
+{\footnotesize\ttfamily \label{certificate_8h_aa11b071020111ce7e8f040a29243272c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+root\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{enck}{}\end{DoxyParamCaption})}
+
+
+
+Decode a root certificate string into a certificate structure. 
+
+This function decodes an encoded root certificate string into its corresponding root certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{[}out\mbox{]} The pointer to the root certificate structure to populate. \\
+\hline
+{\em enck} & \mbox{[}in, const\mbox{]} The encoded certificate string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate was successfully decoded. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a4fb6c963b9aa82bd5fe2896937e0939e}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_deserialize@{aern\_certificate\_root\_deserialize}}
+\index{aern\_certificate\_root\_deserialize@{aern\_certificate\_root\_deserialize}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_deserialize()}{aern\_certificate\_root\_deserialize()}}
+{\footnotesize\ttfamily \label{certificate_8h_a4fb6c963b9aa82bd5fe2896937e0939e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+root\+\_\+deserialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Deserialize a root certificate from a byte array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{[}out\mbox{]} A pointer to the root certificate structure to populate. \\
+\hline
+{\em input} & \mbox{[}in, const\mbox{]} A pointer to the input byte array (size\+: AERN\+\_\+\+CERTIFICATE\+\_\+\+ROOT\+\_\+\+SIZE). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_a817eb4043c1ac8465ff0b2c9da200476}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_encode@{aern\_certificate\_root\_encode}}
+\index{aern\_certificate\_root\_encode@{aern\_certificate\_root\_encode}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_encode()}{aern\_certificate\_root\_encode()}}
+{\footnotesize\ttfamily \label{certificate_8h_a817eb4043c1ac8465ff0b2c9da200476} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+certificate\+\_\+root\+\_\+encode (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{enck}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Encode a public root certificate into a human-\/readable string. 
+
+This function encodes the given root certificate into a formatted string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enck} & \mbox{[}out\mbox{]} The output buffer that will receive the encoded certificate string. \\
+\hline
+{\em root} & \mbox{[}in, const\mbox{]} The root certificate to encode.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the size of the encoded certificate string. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a0aa7fa9a632b8f008fb749c6456472d3}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_erase@{aern\_certificate\_root\_erase}}
+\index{aern\_certificate\_root\_erase@{aern\_certificate\_root\_erase}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_erase()}{aern\_certificate\_root\_erase()}}
+{\footnotesize\ttfamily \label{certificate_8h_a0aa7fa9a632b8f008fb749c6456472d3} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+root\+\_\+erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Delete (erase) a root certificate. 
+
+This function securely erases all fields of a root certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{[}in,out\mbox{]} A pointer to the root certificate to erase. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_af36c1b71db610cdd51bcc42bb10fa453}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_file\_to\_struct@{aern\_certificate\_root\_file\_to\_struct}}
+\index{aern\_certificate\_root\_file\_to\_struct@{aern\_certificate\_root\_file\_to\_struct}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_file\_to\_struct()}{aern\_certificate\_root\_file\_to\_struct()}}
+{\footnotesize\ttfamily \label{certificate_8h_af36c1b71db610cdd51bcc42bb10fa453} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+root\+\_\+file\+\_\+to\+\_\+struct (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Copy a serialized root certificate from a file into a root certificate structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fpath} & \mbox{[}in, const\mbox{]} The file path from which to read the certificate. \\
+\hline
+{\em root} & \mbox{[}out\mbox{]} A pointer to the root certificate structure to populate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true on success. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a9b7f3bc2a0c7dfc0d3bd3465e7c62472}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_hash@{aern\_certificate\_root\_hash}}
+\index{aern\_certificate\_root\_hash@{aern\_certificate\_root\_hash}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_hash()}{aern\_certificate\_root\_hash()}}
+{\footnotesize\ttfamily \label{certificate_8h_a9b7f3bc2a0c7dfc0d3bd3465e7c62472} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+root\+\_\+hash (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Compute the cryptographic hash of a root certificate. 
+
+The hash is computed over key fields such as algorithm, version, expiration times, issuer, serial, and public key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The output hash array. \\
+\hline
+{\em root} & \mbox{[}in, const\mbox{]} A pointer to the root certificate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_a6299f05fc42d7136cf60824f22cad782}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_is\_valid@{aern\_certificate\_root\_is\_valid}}
+\index{aern\_certificate\_root\_is\_valid@{aern\_certificate\_root\_is\_valid}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_is\_valid()}{aern\_certificate\_root\_is\_valid()}}
+{\footnotesize\ttfamily \label{certificate_8h_a6299f05fc42d7136cf60824f22cad782} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+root\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Validate a root certificate. 
+
+This function checks that the root certificate fields are nonzero and that the current time is within its expiration period.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{[}in, const\mbox{]} A pointer to the root certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the root certificate is valid. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a945f58c8838c2f6dbab6891e0da06dea}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_serialize@{aern\_certificate\_root\_serialize}}
+\index{aern\_certificate\_root\_serialize@{aern\_certificate\_root\_serialize}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_serialize()}{aern\_certificate\_root\_serialize()}}
+{\footnotesize\ttfamily \label{certificate_8h_a945f58c8838c2f6dbab6891e0da06dea} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+root\+\_\+serialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Serialize a root certificate into a contiguous byte array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} A pointer to the array receiving the serialized certificate (size\+: AERN\+\_\+\+CERTIFICATE\+\_\+\+ROOT\+\_\+\+SIZE). \\
+\hline
+{\em root} & \mbox{[}in, const\mbox{]} The root certificate to serialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_aece512c156c16091b6cc13d317aab882}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_sign@{aern\_certificate\_root\_sign}}
+\index{aern\_certificate\_root\_sign@{aern\_certificate\_root\_sign}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_sign()}{aern\_certificate\_root\_sign()}}
+{\footnotesize\ttfamily \label{certificate_8h_aece512c156c16091b6cc13d317aab882} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+certificate\+\_\+root\+\_\+sign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{rsigkey}{}\end{DoxyParamCaption})}
+
+
+
+Sign a child certificate with the root certificate. 
+
+This function hashes the child certificate, copies the root certificate serial number into the child, and then produces a digital signature over the child certificate hash using the provided root signing key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & \mbox{[}in,out\mbox{]} A pointer to the child certificate to sign. \\
+\hline
+{\em root} & \mbox{[}in, const\mbox{]} A pointer to the root certificate. \\
+\hline
+{\em rsigkey} & \mbox{[}in, const\mbox{]} A pointer to the root private signing key.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the size of the generated signature. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a6f19af38d69925d8719ac91e6952a915}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_signature\_verify@{aern\_certificate\_root\_signature\_verify}}
+\index{aern\_certificate\_root\_signature\_verify@{aern\_certificate\_root\_signature\_verify}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_signature\_verify()}{aern\_certificate\_root\_signature\_verify()}}
+{\footnotesize\ttfamily \label{certificate_8h_a6f19af38d69925d8719ac91e6952a915} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+root\+\_\+signature\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{child}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Verify a child certificate against a root certificate. 
+
+This function verifies that the digital signature on the child certificate (stored in its signed hash) was produced by the given root certificate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & \mbox{[}in, const\mbox{]} A pointer to the child certificate. \\
+\hline
+{\em root} & \mbox{[}in, const\mbox{]} A pointer to the root certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the child certificate signature is valid. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a423b59c4e8b7b5f6d4cbd797430adcbd}\index{certificate.h@{certificate.h}!aern\_certificate\_root\_struct\_to\_file@{aern\_certificate\_root\_struct\_to\_file}}
+\index{aern\_certificate\_root\_struct\_to\_file@{aern\_certificate\_root\_struct\_to\_file}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_root\_struct\_to\_file()}{aern\_certificate\_root\_struct\_to\_file()}}
+{\footnotesize\ttfamily \label{certificate_8h_a423b59c4e8b7b5f6d4cbd797430adcbd} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+root\+\_\+struct\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Write a root certificate structure to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fpath} & \mbox{[}in, const\mbox{]} The file path where the certificate will be written. \\
+\hline
+{\em root} & \mbox{[}in, const\mbox{]} A pointer to the root certificate structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true on success. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a94552dd32d8a368951482ab9100de510}\index{certificate.h@{certificate.h}!aern\_certificate\_signature\_generate\_keypair@{aern\_certificate\_signature\_generate\_keypair}}
+\index{aern\_certificate\_signature\_generate\_keypair@{aern\_certificate\_signature\_generate\_keypair}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_signature\_generate\_keypair()}{aern\_certificate\_signature\_generate\_keypair()}}
+{\footnotesize\ttfamily \label{certificate_8h_a94552dd32d8a368951482ab9100de510} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+certificate\+\_\+signature\+\_\+generate\+\_\+keypair (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__signature__keypair}{aern\+\_\+signature\+\_\+keypair}} \texorpdfstring{$\ast$}{*}}]{keypair}{}\end{DoxyParamCaption})}
+
+
+
+Generate and encode an asymmetric signature scheme keypair. 
+
+This function generates a new keypair for the AERN asymmetric signature scheme and populates the provided keypair container.
+
+
+\begin{DoxyParams}{Parameters}
+{\em keypair} & \mbox{[}out\mbox{]} A pointer to the keypair container. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{certificate_8h_a5b1017abbba37e44186ef02a6da6dc7a}\index{certificate.h@{certificate.h}!aern\_certificate\_signature\_hash\_verify@{aern\_certificate\_signature\_hash\_verify}}
+\index{aern\_certificate\_signature\_hash\_verify@{aern\_certificate\_signature\_hash\_verify}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_signature\_hash\_verify()}{aern\_certificate\_signature\_hash\_verify()}}
+{\footnotesize\ttfamily \label{certificate_8h_a5b1017abbba37e44186ef02a6da6dc7a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+signature\+\_\+hash\+\_\+verify (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{signature}{, }\item[{size\+\_\+t}]{siglen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{lcert}{}\end{DoxyParamCaption})}
+
+
+
+Verify that a signature hash matches a computed message hash using a child certificate. 
+
+This function first verifies the signature using the child certificate\textquotesingle{}s public key and then compares the resulting hash to an independently computed hash of the message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em signature} & \mbox{[}in, const\mbox{]} A pointer to the signed hash. \\
+\hline
+{\em siglen} & The length of the signed hash. \\
+\hline
+{\em message} & \mbox{[}in, const\mbox{]} A pointer to the message. \\
+\hline
+{\em msglen} & The length of the message. \\
+\hline
+{\em lcert} & \mbox{[}in, const\mbox{]} A pointer to the child certificate used for verification.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the signature hash verifies correctly. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_a7dc8dd7fe1430dffeea483608dc22f38}\index{certificate.h@{certificate.h}!aern\_certificate\_signature\_sign\_message@{aern\_certificate\_signature\_sign\_message}}
+\index{aern\_certificate\_signature\_sign\_message@{aern\_certificate\_signature\_sign\_message}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_signature\_sign\_message()}{aern\_certificate\_signature\_sign\_message()}}
+{\footnotesize\ttfamily \label{certificate_8h_a7dc8dd7fe1430dffeea483608dc22f38} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+certificate\+\_\+signature\+\_\+sign\+\_\+message (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{signature}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{prikey}{}\end{DoxyParamCaption})}
+
+
+
+Sign a message using the asymmetric signature scheme. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signature} & \mbox{[}out\mbox{]} The array that will receive the signature (size\+: AERN\+\_\+\+ASYMMETRIC\+\_\+\+SIGNATURE\+\_\+\+SIZE). \\
+\hline
+{\em message} & \mbox{[}in, const\mbox{]} The message to sign. \\
+\hline
+{\em msglen} & The length of the message. \\
+\hline
+{\em prikey} & \mbox{[}in\mbox{]} The private signature key.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the length of the generated signature. 
+\end{DoxyReturn}
+\Hypertarget{certificate_8h_ac4f715ab52aac1516b83b2b8ff40fec1}\index{certificate.h@{certificate.h}!aern\_certificate\_signature\_verify\_message@{aern\_certificate\_signature\_verify\_message}}
+\index{aern\_certificate\_signature\_verify\_message@{aern\_certificate\_signature\_verify\_message}!certificate.h@{certificate.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_signature\_verify\_message()}{aern\_certificate\_signature\_verify\_message()}}
+{\footnotesize\ttfamily \label{certificate_8h_ac4f715ab52aac1516b83b2b8ff40fec1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+signature\+\_\+verify\+\_\+message (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{signature}{, }\item[{size\+\_\+t}]{siglen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pubkey}{}\end{DoxyParamCaption})}
+
+
+
+Verify a message signature using the asymmetric signature scheme. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \mbox{[}in, const\mbox{]} The original message. \\
+\hline
+{\em msglen} & The length of the message. \\
+\hline
+{\em signature} & \mbox{[}in, const\mbox{]} The signature to verify. \\
+\hline
+{\em siglen} & The length of the signature. \\
+\hline
+{\em pubkey} & \mbox{[}in\mbox{]} The public signature verification key.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the signature is verified. 
+\end{DoxyReturn}

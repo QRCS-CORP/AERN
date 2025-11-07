@@ -1,0 +1,334 @@
+\doxysection{commands.\+h}
+\hypertarget{commands_8h_source}{}\label{commands_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/commands.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/commands.h}}
+\mbox{\hyperlink{commands_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ property\ of\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ The\ intellectual\ and\ technical\ concepts\ contained\ within\ this\ implementation\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ are\ proprietary\ to\ QRCS\ and\ its\ authorized\ licensors\ and\ are\ protected\ under\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ applicable\ U.S.\ and\ international\ copyright,\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ STANDAARS:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ algorithms\ such\ as\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ SHA3,\ AES,\ and\ others.\ These\ algorithms\ are\ public\ domain\ or\ standardized\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ by\ organizations\ such\ as\ NIST\ and\ are\ NOT\ the\ property\ of\ QRCS.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ -\/\ However,\ all\ source\ code,\ optimizations,\ and\ implementations\ in\ this\ library\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ are\ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ RESTRICTIONS:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ Redistribution,\ modification,\ or\ unauthorized\ distribution\ of\ this\ software,\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ in\ whole\ or\ in\ part,\ is\ strictly\ prohibited.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ provided\ for\ non-\/commercial,\ educational,\ and\ research\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \ \ purposes\ only.\ Commercial\ use\ in\ any\ form\ is\ expressly\ forbidden.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ Any\ use\ of\ this\ software\ implies\ acceptance\ of\ these\ restrictions.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ "{}as\ is,"{}\ without\ warranty\ of\ any\ kind,\ express\ or\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ implied,\ including\ but\ not\ limited\ to\ warranties\ of\ merchantability\ or\ fitness\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ for\ a\ particular\ purpose.\ QRCS\ disclaims\ all\ liability\ for\ any\ direct,\ indirect,\ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ incidental,\ or\ consequential\ damages\ resulting\ from\ the\ use\ or\ misuse\ of\ this\ software.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ **Quantum\ Resistant\ Cryptographic\ Solutions\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Proprietary\ License\ (QRCS-\/PL)**.\ The\ complete\ license\ terms\ are\ included\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ in\ the\ LICENSE.txt\ file\ distributed\ with\ this\ software.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#ifndef\ AERN\_COMMANDS\_H}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ AERN\_COMMANDS\_H}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aern_8h}{aern.h}}"{}}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648}{aern\_console\_commands}}}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ae6159bce6102b928fd49c3f875902b2b}{aern\_commands\_none}}\ =\ 0x00U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a8f0477c467f805ea90235a8a28c5cdc6}{aern\_commands\_certificate\_create}}\ =\ 0x01U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af8cb911862b83840ca401b06e9b55c85}{aern\_commands\_certificate\_change}}\ =\ 0x02U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648aa75e1358b97cd20338fc76c286ac2d58}{aern\_commands\_certificate\_sign}}\ =\ 0x03U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a31e5accfc665a5b0525568f7d4d362f4}{aern\_commands\_certificate\_revoke}}\ =\ 0x04U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ac38299b75499c1dafa783f7c6d352af9}{aern\_commands\_certificate\_format}}\ =\ 0x05U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a6d6dfe062b68cdc5a4246b35a3d3849e}{aern\_commands\_device\_add}}\ =\ 0x06U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a5c6773dfa256ff211b157eb9aba69760}{aern\_commands\_network\_converge}}\ =\ 0x07U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af151c0f696919302d572a041b5ca79e3}{aern\_commands\_adc\_election}}\ =\ 0x08U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \}\ \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648}{aern\_console\_commands}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\_application\_messages}}}
+\DoxyCodeLine{00073\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6e3bceb557de157bd8e73876ade1c1d3}{aern\_application\_not\_recognized}}\ =\ 0x00U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4c03a97bc4062b02d822de159847e818}{aern\_application\_erase\_erase\_all}}\ =\ 0x01U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4518576002d4281cccfb3e22862b85ff}{aern\_application\_erase\_config}}\ =\ 0x02U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a25b7b1fe4fc3662a08b105fe1f538313}{aern\_application\_erase\_log}}\ =\ 0x03U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a96aebca350c2012da60b7415ab7a19e7}{aern\_application\_authorization\_failure}}\ =\ 0x04U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6bb78bee25ebf287ad8f4108cb39c88c}{aern\_application\_retries\_exceeded}}\ =\ 0x05U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6f4284caf6b02b98e58e611878e4950c}{aern\_application\_application\_quit}}\ =\ 0x06U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab488901f007d6fa8e7a0ee6bce31e1ef}{aern\_application\_logging\_disabled}}\ =\ 0x07U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe1e26d59d341aae65a2e347aef8d72e}{aern\_application\_logging\_enabled}}\ =\ 0x08U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aea80faa41402a55cb348ceccc640f2d2}{aern\_application\_authentication\_failure}}\ =\ 0x09U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae45ef7e371d53e43e6e01e4eb3393467}{aern\_application\_operation\_aborted}}\ =\ 0x0AU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5cdfc7b7db85abaf3412ce2af5e44a09}{aern\_application\_system\_erased}}\ =\ 0x0BU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdfd844abce46361f938d8160a9c6eb}{aern\_application\_configuration\_erased}}\ =\ 0x0CU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2b2185486d6233838bdb5719ed398180}{aern\_application\_log\_erased}}\ =\ 0x0DU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac23bf1e073d5f3453e9d3ab2898a4c71}{aern\_application\_retry\_invalid}}\ =\ 0x0EU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9641ddccf33f394399bd4348520d7793}{aern\_application\_timeout\_invalid}}\ =\ 0x0FU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad862a72039bcfdde6168467e0332a323}{aern\_application\_domain\_invalid}}\ =\ 0x10U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a88896d1d47292743839a4e76ee45ea9a}{aern\_application\_hostname\_invalid}}\ =\ 0x11U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac33f5bae7f35bec1865311fdf1b2c7a0}{aern\_application\_configuration}}\ =\ 0x12U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9e8e6d45d95c15bf5fcf8294b70f425}{aern\_application\_connection}}\ =\ 0x13U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a66a6124a74a2f204475ce5e3e2b90659}{aern\_application\_connection\_details}}\ =\ 0x14U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab039ba456998f83a2c5c2d2c71c55556}{aern\_application\_log\_empty}}\ =\ 0x15U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aace20e024eaa4085c572bc1d923ceaeb}{aern\_application\_first\_login}}\ =\ 0x16U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a521f282d8c8c58a5dfae3b4a8e9bf42a}{aern\_application\_choose\_name}}\ =\ 0x17U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6cf65dfbc6f3920d3827341b3fae4ec}{aern\_application\_choose\_password}}\ =\ 0x18U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a63516da3cca88af70c44becc7f906420}{aern\_application\_password\_set}}\ =\ 0x19U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a382e9412feb825eb37e6cf0a3e845894}{aern\_application\_challenge\_user}}\ =\ 0x1AU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a55afc7e80bb976f7f9071a4db1516570}{aern\_application\_challenge\_user\_failure}}\ =\ 0x1BU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6181362bf66586610320d4110585c1a4}{aern\_application\_challenge\_password}}\ =\ 0x1CU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3ce27218a16dccecadf1eb56ffa67888}{aern\_application\_challenge\_password\_failure}}\ =\ 0x1DU,\ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4b66250ffec27f012586cbb3c5da0ccf}{aern\_application\_challenge\_device\_name}}\ =\ 0x1EU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04f839c619e0a563cfd8818131727477}{aern\_application\_challenge\_device\_name\_success}}\ =\ 0x1FU,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae5bc284adbadc1e85e34b121292af704}{aern\_application\_challenge\_device\_name\_failure}}\ =\ 0x20U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6b23ea0fd441fae1929425d2a35689d1}{aern\_application\_remote\_connect}}\ =\ 0x21U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a29669637b76de943ae94b783d6d3b08e}{aern\_application\_remote\_connect\_key}}\ =\ 0x22U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a94a594d9527aa5b7acc49566f6a68f07}{aern\_application\_remote\_connect\_success}}\ =\ 0x23U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad08a958f2ccca32067e9427d63da81ff}{aern\_application\_remote\_connect\_failure}}\ =\ 0x24U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81fad781eb0ee8f21b8e6b2e7b98ba5b}{aern\_application\_socket\_listen}}\ =\ 0x25U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0d50569f22ed7d1729d0aeb3b3099392}{aern\_application\_socket\_listen\_failure}}\ =\ 0x26U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec075fd4f930d4b4bc6856469bfc6912}{aern\_application\_socket\_listen\_success}}\ =\ 0x27U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a306753d285cc10dd8a6e78b6930b9234}{aern\_application\_generate\_key}}\ =\ 0x28U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731addec5aa59ccc55b33566297b0ed43a0f}{aern\_application\_generate\_key\_failure}}\ =\ 0x29U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9749886123a84a8ee1f97aad2efd2b5b}{aern\_application\_generate\_key\_success}}\ =\ 0x2AU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa93d7ebed6e70811f069e9c4eaca34bf}{aern\_application\_generate\_key\_overwrite}}\ =\ 0x2BU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aac14c3f924ad0cca260ea18f441be694}{aern\_application\_operation\_cancelled}}\ =\ 0x2CU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ce123393ab4795b6b12ada0baee1a94}{aern\_application\_client\_enter\_pubkey\_path}}\ =\ 0x2DU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46048123776d1b97535a25690173c8c5}{aern\_application\_client\_pubkey\_path\_invalid}}\ =\ 0x2EU,\ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f0ef8b4cb2c20954094f967e6035e9d}{aern\_application\_client\_connection\_success}}\ =\ 0x2FU,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a495ef2ee54946fecf7f258cf6bc4cac6}{aern\_application\_client\_connection\_failure}}\ =\ 0x30U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdab08df6c5a195f569f038121964a9}{aern\_application\_address\_invalid\_format}}\ =\ 0x31U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab3f7a979dbc3f2704692fb37e5ccc141}{aern\_application\_certificate\_exists}}\ =\ 0x32U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a47fdff69dc2b743fbee78b43a74de7da}{aern\_application\_certificate\_not\_revoked}}\ =\ 0x33U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ab1bbd53c14be876edf47cbc60e5b01}{aern\_application\_console\_timeout\_expired}}\ =\ 0x34U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8a3b584ba23b422ba2ea2bb5235f6e36}{aern\_application\_challenge\_root\_path}}\ =\ 0x35U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8f03cbb87e83176478b1cf1cf75ffe2e}{aern\_application\_challenge\_root\_path\_success}}\ =\ 0x36U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04c5b68e01f0499f18aa3d6158d771c4}{aern\_application\_challenge\_root\_path\_failure}}\ =\ 0x37U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a7eaacda0c050ff6651d90e6f58c782}{aern\_application\_root\_copy\_success}}\ =\ 0x38U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f6515c5b00c80d11f37a6b66b79a065}{aern\_application\_root\_copy\_failure}}\ =\ 0x39U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0ec62ba0d5f9968461e1d31026a4a662}{aern\_application\_root\_sign\_failure}}\ =\ 0x3AU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abd2acb25d98441d457d62eba4359c2da}{aern\_application\_root\_sign\_success}}\ =\ 0x3BU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a692b6e5c179cae2b8fe1695009e3a858}{aern\_application\_invalid\_input}}\ =\ 0x3CU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8848e7f9dc2df32b6d752593e6e04b57}{aern\_application\_register\_failure}}\ =\ 0x3DU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a10fd58d76b4857c563dbafc03310149b}{aern\_application\_register\_success}}\ =\ 0x3EU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635}{aern\_application\_register\_existing}}\ =\ 0x3FU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adcc0e0005ddb576ce5f3e2b37e5f8902}{aern\_application\_announce\_failure}}\ =\ 0x40U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a589d544298d8e2658b26528fd49f2f56}{aern\_application\_announce\_success}}\ =\ 0x41U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a9bb24cf5e7ef4480e8a761eaf87ea7}{aern\_application\_converge\_failure}}\ =\ 0x42U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a34d44369b690811cc910d840fdb2a426}{aern\_application\_converge\_success}}\ =\ 0x43U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a23231ec8a4c728bf993dd68307916b01}{aern\_application\_message\_time\_invalid}}\ =\ 0x44U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64}{aern\_application\_certificate\_not\_found}}\ =\ 0x45U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5d792f8355dc5497964bdbc2178b53a3}{aern\_application\_signature\_failure}}\ =\ 0x46U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1b3e8a30ce997e9af0d24b3d25ca4f66}{aern\_application\_network\_resign\_failure}}\ =\ 0x47U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe028016280b2a9bc35e7ca47fc0b94e}{aern\_application\_network\_resign\_success}}\ =\ 0x48U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a519d57e98b220f15aee941cabe5e8778}{aern\_application\_certificate\_revoke\_failure}}\ =\ 0x49U,\ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa6b96667e55697e391b4e2f9429699f8}{aern\_application\_certificate\_revoke\_success}}\ =\ 0x4AU,\ \ \ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2df9c02dd2daa9e00a3acafff2693261}{aern\_application\_address\_change\_failure}}\ =\ 0x4BU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3737f300fab9360c6bece5f4fa3861da}{aern\_application\_address\_change\_success}}\ =\ 0x4CU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1380000ea9991186e7a4d3ff206de4a2}{aern\_application\_address\_change\_challenge}}\ =\ 0x4DU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aae69e9aba90ff26901ca1ec0eed94ebc}{aern\_application\_address\_change\_current}}\ =\ 0x4EU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeca3ce54f2ee324c3e755370717d0227}{aern\_application\_address\_change\_message}}\ =\ 0x4FU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3432b995894c8065d9ec802b0e7a0c35}{aern\_application\_server\_service\_start\_failure}}\ =\ 0x50U,\ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9b5f7db2f4aad5309a87c0203c0349f}{aern\_application\_server\_service\_start\_success}}\ =\ 0x51U,\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a984f09f774fb973773f708668e240e2f}{aern\_application\_server\_service\_stopped}}\ =\ 0x52U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa7892847ee7577f61db8b27c5d2067ed}{aern\_application\_server\_service\_paused}}\ =\ 0x53U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a21511e4686f1f5ef427c1318bef4f10f}{aern\_application\_server\_service\_resume\_failure}}\ =\ 0x54U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aab84370d7c35b8a083028dfdb980252b}{aern\_application\_server\_service\_resume\_success}}\ =\ 0x55U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6fadf6e40ea7fa21b20aec4a363aa2c8}{aern\_application\_import\_certificate\_exists}}\ =\ 0x56U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b60515b2c2644ecc94366e02062a0d2}{aern\_application\_import\_certificate\_changed}}\ =\ 0x57U,\ \ \ \ \ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a50d1e619f7a68e338bac727d83241c5b}{aern\_application\_import\_certificate\_failure}}\ =\ 0x58U,\ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5e74314f816be24edf86ffdb27c5aae7}{aern\_application\_import\_certificate\_success}}\ =\ 0x59U,\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6828f56b3ab216e74d35f0c9b706fad}{aern\_application\_export\_certificate\_failure}}\ =\ 0x5AU,\ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aca6dc3c5f56dad49aa0d5dec1732f23a}{aern\_application\_export\_certificate\_success}}\ =\ 0x5BU,\ \ \ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa959b2a7570d001077bf8606cb198e22}{aern\_application\_server\_domain\_change\_challenge}}\ =\ 0x5CU,\ }
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0f6d592ff12b6377d3f18932cdaa2916}{aern\_application\_server\_domain\_change\_current}}\ =\ 0x5DU,\ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b7df2d1faf6dd8d768ab99c9b9c7409}{aern\_application\_server\_domain\_change\_failure}}\ =\ 0x5EU,\ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1c785f6de092c24d3d1cc1688fb6edcc}{aern\_application\_server\_domain\_change\_success}}\ =\ 0x5FU,\ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad61327908bd5b832d28fc83e3f0d6535}{aern\_application\_certificate\_period\_update}}\ =\ 0x60U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab515a79de8717d9e4740f42a7b0411f1}{aern\_application\_certificate\_root\_validate}}\ =\ 0x61U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a824690d4af752550daf108c845c68a00}{aern\_application\_command\_not\_supported}}\ =\ 0x62U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f390f441819ee6530adfd6bc7ed23b1}{aern\_application\_network\_ip\_address\_not\_set}}\ =\ 0x63U,\ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade1510d5cf6d341d92ed531da41c05be}{aern\_application\_network\_local\_error}}\ =\ 0x64U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d569560d04fc9cc202dd252e299f67a}{aern\_application\_network\_remote\_error}}\ =\ 0x65U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9ba7174df98e08cc2569414c1bac0ecf}{aern\_application\_topological\_query\_unknown}}\ =\ 0x66U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a26a8221b6e6dfa27d5dc9bbbb0992502}{aern\_application\_topological\_query\_failure}}\ =\ 0x67U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac0741e1ee01dc12590c1f147a06f62c5}{aern\_application\_topological\_query\_success}}\ =\ 0x68U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3d6261431928f3ac06b5a848fe26bec3}{aern\_application\_adc\_certificate\_path\_failure}}\ =\ 0x69U,\ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7294856fe2c007f32d8270da7685d4ea}{aern\_application\_adc\_certificate\_path\_success}}\ =\ 0x6AU,\ \ \ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aaf160c6a5f56a197e21c26521c8991c3}{aern\_application\_adc\_certificate\_address\_challenge}}\ =\ 0x6BU,\ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7751a41e2022d8e8f7740a1d436c7fcf}{aern\_application\_adc\_certificate\_address\_failure}}\ =\ 0x6CU,\ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4bc439e1d1440b049168f8ebdd7008a3}{aern\_application\_server\_backup\_restore\_challenge}}\ =\ 0x6DU,\ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ada50b181751c3a0ffb2bf88dd9922d06}{aern\_application\_server\_backup\_save\_confirmation}}\ =\ 0x6EU,\ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b269abc3657648775e06b6d26c48322}{aern\_application\_certificate\_remote\_sign\_failure}}\ =\ 0x6FU,\ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa1b9a204a9c6a5ed5ee3b6bdcbfc1dee}{aern\_application\_certificate\_remote\_sign\_success}}\ =\ 0x70U,\ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b5ea39e2d5b8a2b25fbdcdf56e01e93}{aern\_application\_log\_address\_change}}\ =\ 0x71U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00188\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8b1671319f6c516023646d3bc2555d3}{aern\_application\_log\_domain\_change}}\ =\ 0x72U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abee9d9fa5048e1523ca259f6a3e4cb1d}{aern\_application\_log\_hostname\_change}}\ =\ 0x73U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec3c9fcdc7e9a70958d6e9fa423a00a2}{aern\_application\_log\_user\_logged\_in}}\ =\ 0x74U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec6a912479b230fd49260310459808cd}{aern\_application\_log\_log\_created}}\ =\ 0x75U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a608b2a99615928910d6bc2373356f7fd}{aern\_application\_log\_log\_disabled}}\ =\ 0x76U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abcf96bc83f1692c2d5f8ad8d8560018a}{aern\_application\_log\_log\_enabled}}\ =\ 0x77U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1161cd81faef7ef6a445799c9e11b1f6}{aern\_application\_log\_log\_header}}\ =\ 0x78U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9a69a02ef61bda2d514c1e7d0ee3097c}{aern\_application\_log\_retries\_change}}\ =\ 0x79U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac9c01e041710814d3e673491a4f254d9}{aern\_application\_log\_timeout\_change}}\ =\ 0x7AU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a896eaca09f48184d236c570d8b2d5ee0}{aern\_application\_log\_user\_added}}\ =\ 0x7BU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf6eb9e79bfc9d34365bc4312e5a8930}{aern\_application\_log\_state\_restore}}\ =\ 0x7CU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7b9c87c4d8e187d70d8714a9c0c9f116}{aern\_application\_log\_state\_backup}}\ =\ 0x7DU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d26a33d7f2c84214d279f9c0df842b6}{aern\_application\_log\_service\_paused}}\ =\ 0x7EU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a77d7a378264d85c414ccceff407b4569}{aern\_application\_log\_service\_resumed}}\ =\ 0x7FU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46121c462aaf1b71a4d1f4905dadd0e2}{aern\_application\_log\_service\_started}}\ =\ 0x80U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac2a81696f3e5419770e37fd95c58aca6}{aern\_application\_log\_service\_stopped}}\ =\ 0x81U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf58df04634e81869b1570afe83d527f}{aern\_application\_log\_mfk\_exchange\_failure}}\ =\ 0x82U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a817550934ef0e5afd53e49d4bee0a11f}{aern\_application\_log\_mfk\_exchange\_success}}\ =\ 0x83U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5edd52d989b464f09eccb564db52467b}{aern\_application\_log\_generate\_delete}}\ =\ 0x84U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2d4f6f58d83f9173ee04c3792377f31f}{aern\_application\_log\_generate\_failure}}\ =\ 0x85U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a17e5d0804cc1d9cedc8a71af33b4d3bd}{aern\_application\_log\_generate\_success}}\ =\ 0x86U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8ff9cd0adbcb6df0e2f70636e86f5c0}{aern\_application\_log\_revocation\_failure}}\ =\ 0x87U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6c3a866cff2ae2457c498638c469a1ba}{aern\_application\_log\_revocation\_success}}\ =\ 0x88U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac189889f0745d240f95583e18db141bd}{aern\_application\_log\_convergence\_failure}}\ =\ 0x89U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a64fc764727a92c45c36d838882601c5f}{aern\_application\_log\_convergence\_success}}\ =\ 0x8AU,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4aa1610fc418546d71a9e3b59e18027c}{aern\_application\_log\_incremental\_failure}}\ =\ 0x8BU,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af54bb88decb83f568ff8cb07b0895367}{aern\_application\_log\_incremental\_success}}\ =\ 0x8CU,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a06c2cd8ab6f1a7a959ceee986b61a696}{aern\_application\_log\_allocation\_failure}}\ =\ 0x8DU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a32a0f61e2d7cd03718f0876e23cc1285}{aern\_application\_log\_connection\_terminated}}\ =\ 0x8EU,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac489d0c1a01b5c25436a935430a89399}{aern\_application\_log\_configuration\_erased}}\ =\ 0x8FU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a375206bb789fa64608f97dab63f9bcf8}{aern\_application\_log\_receive\_failure}}\ =\ 0x90U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29}{aern\_application\_log\_register\_failure}}\ =\ 0x91U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f}{aern\_application\_log\_register\_success}}\ =\ 0x92U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00221\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeed854b80b305cde18e92420fd7662a9}{aern\_application\_log\_fragment\_exchange\_failure}}\ =\ 0x93U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a088c8b68fba07712819842250a801f7e}{aern\_application\_log\_fragment\_exchange\_success}}\ =\ 0x94U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00223\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adb36159d429fa44fa6c4abeba478d2ec}{aern\_application\_log\_local\_resign\_failure}}\ =\ 0x95U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a369b972e42383b2537af7865a677b534}{aern\_application\_log\_local\_resign\_success}}\ =\ 0x96U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a50613f47f0d379471b97d335d7a9bb}{aern\_application\_log\_remote\_invalid\_request}}\ =\ 0x97U,\ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa814fc51767452005e378502afaa5923}{aern\_application\_log\_remote\_reported\_error}}\ =\ 0x98U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0009a6e38b3ac9ed3203b620a9f15c94}{aern\_application\_log\_connect\_failure}}\ =\ 0x99U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4095aab547fa174d7762ca41ae1293d0}{aern\_application\_log\_connect\_success}}\ =\ 0x9AU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a99227ed8d48518af1235c48261dd37a9}{aern\_application\_log\_topology\_node\_query\_failure}}\ =\ 0x9BU,\ \ \ }
+\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade59939d092b78f2730f725dcc1aff10}{aern\_application\_log\_topology\_node\_query\_success}}\ =\ 0x9CU,\ \ \ }
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a755d438d945acd740d5874b937f7466e}{aern\_application\_log\_announce\_failure}}\ =\ 0x9DU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00232\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae9a54ba14924fe73843112336135b16b}{aern\_application\_log\_announce\_success}}\ =\ 0x9EU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00233\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81f2628b9a74c6d0391129dc3e2a88c1}{aern\_application\_log\_remote\_signing\_failure}}\ =\ 0x9FU,\ \ \ \ \ }
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a377b4695eda9acad48fb28338664999d}{aern\_application\_log\_remote\_signing\_success}}\ =\ 0xA0U,\ \ \ \ \ }
+\DoxyCodeLine{00235\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a606575ed3564c53f0e38d43286fe72bd}{aern\_application\_log\_remote\_resign\_failure}}\ =\ 0xA1U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00236\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad1f4a3206aff5366f315277a7f4418cc}{aern\_application\_log\_remote\_resign\_success}}\ =\ 0xA2U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3c2bd708a6c292339e2e50338e36e61a}{aern\_application\_log\_converge\_node\_remove\_challenge}}\ =\ 0xA3U,}
+\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0afa84e2f3d5017234115eea1daf8317}{aern\_application\_ars\_certificate\_address\_challenge}}\ =\ 0xA4U,\ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af2886246612fc648fbeb63b841e3a662}{aern\_application\_ars\_certificate\_address\_failure}}\ =\ 0xA5U,\ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af1c831f958dc1c166181ee0bddd38ca0}{aern\_application\_server\_service\_not\_started}}\ =\ 0xA6U,\ \ \ \ \ }
+\DoxyCodeLine{00241\ \}\ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\_application\_messages}};}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00247\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\_command\_actions}}}
+\DoxyCodeLine{00248\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caf112be1908574c52515a8c14324ba187}{aern\_command\_action\_none}}\ =\ 0x00U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{comment}{/*\ configuration\ commands\ */}}
+\DoxyCodeLine{00252\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca6a726be44f2dbdc16190fe9687e4bc7a}{aern\_command\_action\_config\_address}}\ =\ 0x01U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00253\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca17a3529e6f778a75a0f4b420fef90b2b}{aern\_command\_action\_config\_certificate}}\ =\ 0x02U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00254\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca33fc1522d47efc524eb38f6daf7b3be0}{aern\_command\_action\_config\_clear\_all}}\ =\ 0x03U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca01ed0fb224c9092b03db99501e726cfd}{aern\_command\_action\_config\_clear\_config}}\ =\ 0x04U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00256\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca40652f093ebcc889f164522db82977a4}{aern\_command\_action\_config\_clear\_log}}\ =\ 0x05U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cabd1c3cb9fdc02acff106d97c250c1aae}{aern\_command\_action\_config\_exit}}\ =\ 0x06U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caebd689cff17d782ad99f3315d5e7571e}{aern\_command\_action\_config\_help}}\ =\ 0x07U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00259\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca7ddac00c409c56db52156b7dab3a48df}{aern\_command\_action\_config\_log\_host}}\ =\ 0x08U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00260\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacd4bdebfab6a2dffe4300120b514cf49}{aern\_command\_action\_config\_name\_domain}}\ =\ 0x09U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caf50df25b52ff3c0b1d3272cc957da2ef}{aern\_command\_action\_config\_name\_host}}\ =\ 0x0AU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00262\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca95d0d8de00558855371c4462210daa19}{aern\_command\_action\_config\_retries}}\ =\ 0x0BU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca5d95d5036bdbfe3f3991fa4246942274}{aern\_command\_action\_config\_server}}\ =\ 0x0CU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00264\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cac16b3ff3d9758ff57e9d7e52f07aea67}{aern\_command\_action\_config\_timeout}}\ =\ 0x0DU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{comment}{/*\ enable\ commands\ */}}
+\DoxyCodeLine{00267\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacd061584a66205b8b7f2c3184b33f033}{aern\_command\_action\_enable\_clear\_screen}}\ =\ 0x0EU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00268\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca75556fcae092f7f3a9c62b4ae99b48d2}{aern\_command\_action\_enable\_config}}\ =\ 0x0FU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca7707748dd06446562663f5f380cd96e2}{aern\_command\_action\_enable\_exit}}\ =\ 0x10U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caeaa9ce582dd774ca5486b4dfd097f9ee}{aern\_command\_action\_enable\_help}}\ =\ 0x11U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00271\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa7b217d3d8f9a741b23120a238aac04b}{aern\_command\_action\_enable\_quit}}\ =\ 0x12U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00272\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacce1aba5611200d7aac51e03877e2869}{aern\_command\_action\_enable\_show\_config}}\ =\ 0x13U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cab5f30afeb232e4ca1bf619576b3335e5}{aern\_command\_action\_enable\_show\_log}}\ =\ 0x14U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{comment}{/*\ user\ commands\ */}}
+\DoxyCodeLine{00276\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caedf7a8b36224fc080b7dc8db55b59945}{aern\_command\_action\_user\_enable}}\ =\ 0x15U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00277\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae5c85b77db5a42359c2c17a361571a3d}{aern\_command\_action\_user\_help}}\ =\ 0x16U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae6648635db65c8a3e3a36b0fb4f13e0f}{aern\_command\_action\_user\_quit}}\ =\ 0x17U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{comment}{/*\ config-\/certificate\ commands\ */}}
+\DoxyCodeLine{00281\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca4441a34aef01f95f47cf33fb5a6bd74d}{aern\_command\_action\_certificate\_exit}}\ =\ 0x18U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00282\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca326b0753d96df802170db85c804867ee}{aern\_command\_action\_certificate\_export}}\ =\ 0x19U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00283\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cab5c9a1c3ac3ffd88d66e6c6029e20a5f}{aern\_command\_action\_certificate\_generate}}\ =\ 0x1AU,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00284\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cafa8fda5220fa45d5a13294dd7b65c4d3}{aern\_command\_action\_certificate\_help}}\ =\ 0x1BU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00285\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caab89cd7be8a06de4776f61dd0a9e7861}{aern\_command\_action\_certificate\_import}}\ =\ 0x1CU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cadad2e5f1bcdd2ba50140efcc3d9b8a01}{aern\_command\_action\_certificate\_print}}\ =\ 0x1DU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{comment}{/*\ config-\/server\ commands\ */}}
+\DoxyCodeLine{00289\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca0c760bf4c469de6d05222c9f9d8ed9ab}{aern\_command\_action\_server\_backup}}\ =\ 0x1EU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00290\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca3678bbbb095e4408130e8f069187ebc9}{aern\_command\_action\_server\_connect}}\ =\ 0x1FU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00291\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cafbf3712842092372f5a2385918fc28d6}{aern\_command\_action\_server\_exit}}\ =\ 0x20U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa14b5222f876ed01471b0a1fb2989a2b}{aern\_command\_action\_server\_help}}\ =\ 0x21U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00293\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa849fbffd82f4958761a66aa8bf08f2c}{aern\_command\_action\_server\_list}}\ =\ 0x22U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00294\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cafadb267bdee2e9e2a1a61c5e65f261ee}{aern\_command\_action\_server\_register}}\ =\ 0x23U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00295\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cab9164e6764ec8f59805b6e5797293ad4}{aern\_command\_action\_server\_resign}}\ =\ 0x24U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00296\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca132db8838fee48f3351f3cda22a63339}{aern\_command\_action\_server\_restore}}\ =\ 0x25U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00297\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca07a60d4e0477ffc7425426dc184df0f9}{aern\_command\_action\_server\_service}}\ =\ 0x26U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{comment}{/*\ client\ config-\/connect\ commands\ */}}
+\DoxyCodeLine{00300\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca00a5374094320cf779749f706aa11572}{aern\_command\_action\_server\_query}}\ =\ 0x27U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca93eaed3bc25a2e92ac9e549ddb9f6b4f}{aern\_command\_action\_client\_connect\_help}}\ =\ 0x28U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00302\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae7f7a81233cb23976dd49168d0718746}{aern\_command\_action\_client\_connect\_quit}}\ =\ 0x29U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{comment}{/*\ ads\ config-\/certificate\ commands\ */}}
+\DoxyCodeLine{00305\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca8b14ef0e8d1d93d0fc21ec60f6a72a70}{aern\_command\_action\_adc\_certificate\_revoke}}\ =\ 0x2AU,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{comment}{/*\ ads\ config-\/server\ commands\ */}}
+\DoxyCodeLine{00308\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca5160fa96bae7d8d155202bbda39e6af7}{aern\_command\_action\_adc\_server\_announce}}\ =\ 0x2BU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00309\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca1f09998137a2a4a2113a033613136058}{aern\_command\_action\_adc\_server\_converge}}\ =\ 0x2CU,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00310\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cabfeda196bd2624443bdc19c1250e9354}{aern\_command\_action\_adc\_server\_revoke}}\ =\ 0x2DU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00311\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae6e566bf3b73dbc2589bf61aaa7f6182}{aern\_command\_action\_adc\_server\_sproxy}}\ =\ 0x2EU,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{comment}{/*\ rds\ config-\/certificate\ commands\ */}}
+\DoxyCodeLine{00314\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacfa38b6e0befb5455bb487eff38cae4e}{aern\_command\_action\_certificate\_sign}}\ =\ 0x2FU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{comment}{/*\ config\ sub\ commands\ */}}
+\DoxyCodeLine{00317\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa3096dbf3f7db55c156871c345ca6ba0}{aern\_command\_action\_config\_clear}}\ =\ 0x30U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00318\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca7d6be118350b169d9477f5c84b51051c}{aern\_command\_action\_config\_log}}\ =\ 0x31U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00319\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca2eba539140c60a1ecbae7b8f56a08740}{aern\_command\_action\_config\_name}}\ =\ 0x32U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00320\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca86a54d368df5092f18365543794098ea}{aern\_command\_action\_help\_enable\_all}}\ =\ 0x33U,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00321\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca49fadba99c10e30d2772b4da7f48f83a}{aern\_command\_action\_help\_enable\_show}}\ =\ 0x34U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00322\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca0f0b2c1b0812d12c3d14eeaa2a9c8f6a}{aern\_command\_action\_help\_enable\_user}}\ =\ 0x35U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00323\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca1735f87edb353d0ed2c4fe8175e3bb0b}{aern\_command\_action\_command\_unrecognized}}\ =\ 0x36U,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00324\ \}\ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\_command\_actions}};}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00330\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\_console\_modes}}}
+\DoxyCodeLine{00331\ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba4662861a9e00a4d12cfe2d90d22abeaf}{aern\_console\_mode\_name}}\ =\ 0x00U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00333\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba36270ca000222215a5a0497704a65e31}{aern\_console\_mode\_user}}\ =\ 0x01U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00334\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba957df918c9543a5006ce83bc465d328d}{aern\_console\_mode\_enable}}\ =\ 0x02U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00335\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d}{aern\_console\_mode\_config}}\ =\ 0x03U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafa07be8871ff2cabb8fa0134e7208748}{aern\_console\_mode\_certificate}}\ =\ 0x04U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00337\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba8a4834c048736bc7afd62e0a7988011d}{aern\_console\_mode\_server}}\ =\ 0x05U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafc9b8f6bbe97280bd5bee58702f4fbae}{aern\_console\_mode\_login\_message}}\ =\ 0x06U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00339\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba7b7b4a9a063ff38f6c25314693a6e309}{aern\_console\_mode\_login\_password}}\ =\ 0x07U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00340\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbaa20e04efe609b4a55f4414ec77618ce7}{aern\_console\_mode\_login\_user}}\ =\ 0x08U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00341\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbad92466c5f248180f0b4e5fc7771fff35}{aern\_console\_mode\_login\_hostname}}\ =\ 0x09U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00342\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba9c582aa608b6824fa7d16599b920487d}{aern\_console\_mode\_login\_address}}\ =\ 0x0AU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00343\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2e14ba02fee32428b62ecc88926c315a}{aern\_console\_mode\_login\_domain}}\ =\ 0x0BU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00344\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba39902153483da5af7edf324587914daa}{aern\_console\_mode\_login\_rootpath}}\ =\ 0x0CU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2f0e80a6cbfb626e8fafd5a1ac822bd6}{aern\_console\_mode\_client\_connected}}\ =\ 0x0DU,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00346\ \}\ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\_console\_modes}};}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

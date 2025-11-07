@@ -1,0 +1,1553 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/aern.h File Reference}
+\hypertarget{aern_8h}{}\label{aern_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/aern.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/aern.h}}
+
+
+AERN Common Definitions and Protocol Configuration.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}sha3.\+h"{}}\newline
+{\ttfamily \#include "{}socketbase.\+h"{}}\newline
+{\ttfamily \#include "{}rcs.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}}
+\begin{DoxyCompactList}\small\item\em The certificate expiration time structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}
+\begin{DoxyCompactList}\small\item\em The child certificate structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__idg__hint}{aern\+\_\+idg\+\_\+hint}}
+\begin{DoxyCompactList}\small\item\em The IDG hint structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__idg__certificate}{aern\+\_\+idg\+\_\+certificate}}
+\begin{DoxyCompactList}\small\item\em The IDG certificate structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The AERN socket connection state structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__keep__alive__state}{aern\+\_\+keep\+\_\+alive\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The AERN keep alive state structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__mfkey__state}{aern\+\_\+mfkey\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The AERN master fragment key structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}}
+\begin{DoxyCompactList}\small\item\em The AERN packet structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}}
+\begin{DoxyCompactList}\small\item\em The root certificate structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__serialized__symmetric__key}{aern\+\_\+serialized\+\_\+symmetric\+\_\+key}}
+\begin{DoxyCompactList}\small\item\em The structure for a serialized symmetric key. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__signature__keypair}{aern\+\_\+signature\+\_\+keypair}}
+\begin{DoxyCompactList}\small\item\em The AERN asymmetric signature scheme key container. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__cipher__keypair}{aern\+\_\+cipher\+\_\+keypair}}
+\begin{DoxyCompactList}\small\item\em The AERN asymmetric cipher key container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{aern_8h_aa16519ec1126eb4251cabf536cb9ed9d}\label{aern_8h_aa16519ec1126eb4251cabf536cb9ed9d} 
+\#define {\bfseries AERN\+\_\+\+USE\+\_\+\+RCS\+\_\+\+ENCRYPTION}
+\begin{DoxyCompactList}\small\item\em If the RCS encryption option is chosen SKDP uses the more modern RCS stream cipher with KMAC/\+QMAC authentication. The default symmetric cipher/authenticator is AES-\/256/\+GCM (GMAC Counter Mode) NIST standardized per SP800-\/38a. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ae07a553c0c3121bdcd5e393f0790a632}\label{aern_8h_ae07a553c0c3121bdcd5e393f0790a632} 
+\#define {\bfseries aern\+\_\+cipher\+\_\+state}~qsc\+\_\+rcs\+\_\+state
+\item 
+\Hypertarget{aern_8h_af365751ad16161d3dfe30e2a49ec722a}\label{aern_8h_af365751ad16161d3dfe30e2a49ec722a} 
+\#define {\bfseries aern\+\_\+cipher\+\_\+dispose}~qsc\+\_\+rcs\+\_\+dispose
+\item 
+\Hypertarget{aern_8h_acae57a5d8664787071a16fe59a6e6362}\label{aern_8h_acae57a5d8664787071a16fe59a6e6362} 
+\#define {\bfseries aern\+\_\+cipher\+\_\+initialize}~qsc\+\_\+rcs\+\_\+initialize
+\item 
+\Hypertarget{aern_8h_aafe4fc8a132c175e5c525f042da26e23}\label{aern_8h_aafe4fc8a132c175e5c525f042da26e23} 
+\#define {\bfseries aern\+\_\+cipher\+\_\+keyparams}~qsc\+\_\+rcs\+\_\+keyparams
+\item 
+\Hypertarget{aern_8h_a6352467351b8ede43ee2a46e590f56ce}\label{aern_8h_a6352467351b8ede43ee2a46e590f56ce} 
+\#define {\bfseries aern\+\_\+cipher\+\_\+set\+\_\+associated}~qsc\+\_\+rcs\+\_\+set\+\_\+associated
+\item 
+\Hypertarget{aern_8h_a024d648f5f66b928bab3ad87e0ef9784}\label{aern_8h_a024d648f5f66b928bab3ad87e0ef9784} 
+\#define {\bfseries aern\+\_\+cipher\+\_\+transform}~qsc\+\_\+rcs\+\_\+transform
+\item 
+\Hypertarget{aern_8h_a7358091d51053399328197ed32e4ccbc}\label{aern_8h_a7358091d51053399328197ed32e4ccbc} 
+\#define {\bfseries AERN\+\_\+\+ACTIVE\+\_\+\+VERSION}~1U
+\begin{DoxyCompactList}\small\item\em The AERN active version. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a994199375a244c4c144bfe9aef90cdfd}\label{aern_8h_a994199375a244c4c144bfe9aef90cdfd} 
+\#define {\bfseries AERN\+\_\+\+ACTIVE\+\_\+\+VERSION\+\_\+\+SIZE}~2U
+\begin{DoxyCompactList}\small\item\em The AERN active version size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a4d81d40bce4a2a524eb5be878bbf9fb3}\label{aern_8h_a4d81d40bce4a2a524eb5be878bbf9fb3} 
+\#define {\bfseries AERN\+\_\+\+APS\+\_\+\+FULL\+\_\+\+TRUST}~1000001U
+\begin{DoxyCompactList}\small\item\em The full trust designation number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_af611b1992fd0145e88b3e0d08a66adbd}\label{aern_8h_af611b1992fd0145e88b3e0d08a66adbd} 
+\#define {\bfseries AERN\+\_\+\+APS\+\_\+\+MINIMUM\+\_\+\+TRUST}~1U
+\begin{DoxyCompactList}\small\item\em The minimum trust designation number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_aef419ede1a27209b531b57c0b6472ef6}\label{aern_8h_aef419ede1a27209b531b57c0b6472ef6} 
+\#define {\bfseries AERN\+\_\+\+APS\+\_\+\+NAME\+\_\+\+MAX\+\_\+\+SIZE}~256U
+\begin{DoxyCompactList}\small\item\em The maximum aps name string length in characters. The last character must be a string terminator. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a9fa176223614832d778570e6d823f229}\label{aern_8h_a9fa176223614832d778570e6d823f229} 
+\#define {\bfseries AERN\+\_\+\+APS\+\_\+\+TWOWAY\+\_\+\+TRUST}~1000002U
+\begin{DoxyCompactList}\small\item\em The two-\/way trust designation number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ac2f75e44c9e423c072030f8b51d641e7}\label{aern_8h_ac2f75e44c9e423c072030f8b51d641e7} 
+\#define {\bfseries AERN\+\_\+\+APPLICATION\+\_\+\+ADC\+\_\+\+PORT}~38762U
+\begin{DoxyCompactList}\small\item\em The default ADC port number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a589a34e126c7c3752e847196c230ee69}\label{aern_8h_a589a34e126c7c3752e847196c230ee69} 
+\#define {\bfseries AERN\+\_\+\+APPLICATION\+\_\+\+APS\+\_\+\+PORT}~38766U
+\begin{DoxyCompactList}\small\item\em The default APS port number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_aaae8d1f69ce5b04ffaf2ea8de0791e02}\label{aern_8h_aaae8d1f69ce5b04ffaf2ea8de0791e02} 
+\#define {\bfseries AERN\+\_\+\+APPLICATION\+\_\+\+ARS\+\_\+\+PORT}~38764U
+\begin{DoxyCompactList}\small\item\em The default ARS port number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a452d35f128d36e2fffe3a140d38eaf0c}\label{aern_8h_a452d35f128d36e2fffe3a140d38eaf0c} 
+\#define {\bfseries AERN\+\_\+\+APPLICATION\+\_\+\+CLIENT\+\_\+\+PORT}~37761U
+\begin{DoxyCompactList}\small\item\em The default AERN Client port number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a7511d4b89a9335b155164fce9664dbb1}\label{aern_8h_a7511d4b89a9335b155164fce9664dbb1} 
+\#define {\bfseries AERN\+\_\+\+APPLICATION\+\_\+\+IDG\+\_\+\+PORT}~38763U
+\begin{DoxyCompactList}\small\item\em The default AERN IDG port number. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a0478951869fcce3d0e634e22928adb7d}\label{aern_8h_a0478951869fcce3d0e634e22928adb7d} 
+\#define {\bfseries AERN\+\_\+\+CANONICAL\+\_\+\+NAME\+\_\+\+MINIMUM\+\_\+\+SIZE}~3U
+\begin{DoxyCompactList}\small\item\em The minimum canonical name size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}\label{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE}~22U
+\begin{DoxyCompactList}\small\item\em The maximum IP address length. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a2bfc9e9b4a2a66e4354081fca548e6da}\label{aern_8h_a2bfc9e9b4a2a66e4354081fca548e6da} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+ALGORITHM\+\_\+\+SIZE}~1U
+\begin{DoxyCompactList}\small\item\em The algorithm type. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a3812ef33969d44086258072e4e7fa1cd}\label{aern_8h_a3812ef33969d44086258072e4e7fa1cd} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+DEFAULT\+\_\+\+PERIOD}~((uint64\+\_\+t)365U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
+\begin{DoxyCompactList}\small\item\em The default certificate validity period in milliseconds. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a6836977c34ee21da3a738579aad21ad9}\label{aern_8h_a6836977c34ee21da3a738579aad21ad9} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+DESIGNATION\+\_\+\+SIZE}~1U
+\begin{DoxyCompactList}\small\item\em The size of the child certificate designation field. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a2593a7ecd841afe60a7b882f202cd82f}\label{aern_8h_a2593a7ecd841afe60a7b882f202cd82f} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+EXPIRATION\+\_\+\+SIZE}~16U
+\begin{DoxyCompactList}\small\item\em The certificate expiration date length. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_acc789b9281e03dddcda4c72eed21404c}\label{aern_8h_acc789b9281e03dddcda4c72eed21404c} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The size of the certificate hash in bytes. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}\label{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}~256U
+\begin{DoxyCompactList}\small\item\em The maximum certificate issuer string length. The last character must be a string terminator. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a86c5cd9be73f89f00b1758a9657a1a80}\label{aern_8h_a86c5cd9be73f89f00b1758a9657a1a80} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+LINE\+\_\+\+LENGTH}~64U
+\begin{DoxyCompactList}\small\item\em The line length of the printed AERN certificate. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a50d5ab9369b3923eb7dec7e8d44beb5c}\label{aern_8h_a50d5ab9369b3923eb7dec7e8d44beb5c} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+MAXIMUM\+\_\+\+PERIOD}~(\mbox{\hyperlink{aern_8h_a3812ef33969d44086258072e4e7fa1cd}{AERN\+\_\+\+CERTIFICATE\+\_\+\+DEFAULT\+\_\+\+PERIOD}} \texorpdfstring{$\ast$}{*} 2U)
+\begin{DoxyCompactList}\small\item\em The maximum certificate validity period in milliseconds. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a76124e82c3370128b7f193f3f30cd972}\label{aern_8h_a76124e82c3370128b7f193f3f30cd972} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+MINIMUM\+\_\+\+PERIOD}~((uint64\+\_\+t)1U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
+\begin{DoxyCompactList}\small\item\em The minimum certificate validity period in milliseconds. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}\label{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}~16U
+\begin{DoxyCompactList}\small\item\em The certificate serial number field length. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ab62f0a8dd555533d2b11fbd7f68edd06}\label{aern_8h_ab62f0a8dd555533d2b11fbd7f68edd06} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+HINT\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em The topological hint. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}\label{aern_8h_a4a223f442a1553dd153be8a2eedf23cc} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}~(AERN\+\_\+\+ASYMMETRIC\+\_\+\+SIGNATURE\+\_\+\+SIZE + \mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em The size of the signature and hash field in a certificate. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_aabf1462d0b80bda01d5205156398f1fe}\label{aern_8h_aabf1462d0b80bda01d5205156398f1fe} 
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+VERSION\+\_\+\+SIZE}~1U
+\begin{DoxyCompactList}\small\item\em The version id. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}}
+\begin{DoxyCompactList}\small\item\em The length of a child certificate. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_a47ba45bdfde4351b4d70b8f4fc300f70}{AERN\+\_\+\+CERTIFICATE\+\_\+\+IDG\+\_\+\+SIZE}}
+\begin{DoxyCompactList}\small\item\em The length of an IDG certificate. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_a1a60c5405e4731892106843c78b87903}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ROOT\+\_\+\+SIZE}}
+\begin{DoxyCompactList}\small\item\em The length of the root certificate. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a8710089399fff14591d8a6e1fc180e45}\label{aern_8h_a8710089399fff14591d8a6e1fc180e45} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+KEY\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The byte length of the symmetric cipher key. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a20a2c2ffac25d56800118e7b1984eede}\label{aern_8h_a20a2c2ffac25d56800118e7b1984eede} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+NONCE\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The byte length of the symmetric cipher nonce. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a82b22b76cf6e231a84a3543d399d9190}\label{aern_8h_a82b22b76cf6e231a84a3543d399d9190} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SEED\+\_\+\+SIZE}~64U
+\begin{DoxyCompactList}\small\item\em The seed array byte size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a5bf580db8a53a23bdcd0e6c8cf0a29c4}\label{aern_8h_a5bf580db8a53a23bdcd0e6c8cf0a29c4} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+TOKEN\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The byte length of the symmetric token. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a4e29ba7fa10c7fe099652aad92c8c02c}\label{aern_8h_a4e29ba7fa10c7fe099652aad92c8c02c} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+HASH\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The hash function output byte size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ab6b6fc3236b3e30ea5323137d0ee065f}\label{aern_8h_ab6b6fc3236b3e30ea5323137d0ee065f} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+MAC\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The MAC function output byte size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ae973c0fec90018921f0eff6a381dbba9}\label{aern_8h_ae973c0fec90018921f0eff6a381dbba9} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+SECRET\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The shared secret byte size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_af17aa870354e15b90a8de7c6fd661711}\label{aern_8h_af17aa870354e15b90a8de7c6fd661711} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+SESSION\+\_\+\+KEY\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em The session key security size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a11d4754defdd3247f75cd2713275da49}\label{aern_8h_a11d4754defdd3247f75cd2713275da49} 
+\#define {\bfseries AERN\+\_\+\+ADC\+\_\+\+CONVERGENCE\+\_\+\+INTERVAL}~(60U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 24U)
+\begin{DoxyCompactList}\small\item\em The interval between aps convergence checks (default is 24 hours). \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a720514350d65177537914ba169f92672}\label{aern_8h_a720514350d65177537914ba169f92672} 
+\#define {\bfseries AERN\+\_\+\+ADC\+\_\+\+IP\+\_\+\+MAX}~0x41U
+\begin{DoxyCompactList}\small\item\em The maximum ip address length. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a8abe52f311eeae6be6b402fa3c05f702}\label{aern_8h_a8abe52f311eeae6be6b402fa3c05f702} 
+\#define {\bfseries AERN\+\_\+\+ADC\+\_\+\+PENALTY\+\_\+\+MAX}~0x100U
+\begin{DoxyCompactList}\small\item\em The maximum unreachable penalty before the ADC is deemed unreliable. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a38c9967f4245bba166da9fe5fb2c4b7c}\label{aern_8h_a38c9967f4245bba166da9fe5fb2c4b7c} 
+\#define {\bfseries AERN\+\_\+\+ADC\+\_\+\+REDUCTION\+\_\+\+INTERVAL}~1000000\+UL
+\begin{DoxyCompactList}\small\item\em The time before a penalty is reduced for a flapping ADC in milliseconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_adba9c258399bdf3c7fe1e2c37a7888cc}{AERN\+\_\+\+ADC\+\_\+\+UPDATE\+\_\+\+WAIT\+\_\+\+TIME}}~(7U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
+\begin{DoxyCompactList}\small\item\em The interval in milliseconds between topology full updates. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_acc368cea234b96d9c849a8aed4c0062c}\label{aern_8h_acc368cea234b96d9c849a8aed4c0062c} 
+\#define {\bfseries AERN\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+DEPTH}~26U
+\begin{DoxyCompactList}\small\item\em The number of error strings. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a142b20cdbeee92ea893ba7cdfe57fefe}\label{aern_8h_a142b20cdbeee92ea893ba7cdfe57fefe} 
+\#define {\bfseries AERN\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+WIDTH}~128U
+\begin{DoxyCompactList}\small\item\em The maximum size in characters of an error string. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_aec19e4948ffac205bcd2254af9f84dcd}\label{aern_8h_aec19e4948ffac205bcd2254af9f84dcd} 
+\#define {\bfseries AERN\+\_\+\+MESSAGE\+\_\+\+MAX\+\_\+\+SIZE}~1400000\+UL
+\begin{DoxyCompactList}\small\item\em The maximum message size (max signature + max certificate sizes). \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a2382672e9a39a489207781944f1167ed}\label{aern_8h_a2382672e9a39a489207781944f1167ed} 
+\#define {\bfseries AERN\+\_\+\+MFK\+\_\+\+EXPIRATION\+\_\+\+PERIOD}~((uint64\+\_\+t)60U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
+\begin{DoxyCompactList}\small\item\em The MFK validity period in milliseconds. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a64182cb49fd0a4eb0c3742a3b6f36c82}\label{aern_8h_a64182cb49fd0a4eb0c3742a3b6f36c82} 
+\#define {\bfseries AERN\+\_\+\+MINIMUM\+\_\+\+PATH\+\_\+\+LENGTH}~9U
+\begin{DoxyCompactList}\small\item\em The minimum file path length. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a62ec2bd43ca41cfabd59ebe58ef0a64f}\label{aern_8h_a62ec2bd43ca41cfabd59ebe58ef0a64f} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+CONNECTION\+\_\+\+MTU}~1500U
+\begin{DoxyCompactList}\small\item\em The AERN packet buffer size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a21d66d8c70e55d17e73351cfb424122f}\label{aern_8h_a21d66d8c70e55d17e73351cfb424122f} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+DOMAIN\+\_\+\+NAME\+\_\+\+MAX\+\_\+\+SIZE}~256U
+\begin{DoxyCompactList}\small\item\em The maximum domain name length in characters. The last character must be a string terminator. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ac0e791d84620a4671dd53b897a6cf469}\label{aern_8h_ac0e791d84620a4671dd53b897a6cf469} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+MAX\+\_\+\+APSS}~1000000\+UL
+\begin{DoxyCompactList}\small\item\em The maximum number of aps connections in a network. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a51c65ba4b50e3001dae28e6a97be5b21}\label{aern_8h_a51c65ba4b50e3001dae28e6a97be5b21} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+NODE\+\_\+\+ID\+\_\+\+SIZE}~16
+\begin{DoxyCompactList}\small\item\em The node identification string length. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a5794b1838525c4cedfc9a086732d2e0e}\label{aern_8h_a5794b1838525c4cedfc9a086732d2e0e} 
+\#define {\bfseries AERN\+\_\+\+PERIOD\+\_\+\+DAY\+\_\+\+TO\+\_\+\+SECONDS}~(24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
+\begin{DoxyCompactList}\small\item\em A period of one day in seconds. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a925221620f9474ce45751478ab406e21}\label{aern_8h_a925221620f9474ce45751478ab406e21} 
+\#define {\bfseries AERN\+\_\+\+SOCKET\+\_\+\+TERMINATOR\+\_\+\+SIZE}~1U
+\begin{DoxyCompactList}\small\item\em The packet delimiter byte size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a66469c47c10b000c1fdbd0bcf1127e82}\label{aern_8h_a66469c47c10b000c1fdbd0bcf1127e82} 
+\#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+ERROR\+\_\+\+SIZE}~1U
+\begin{DoxyCompactList}\small\item\em The packet error message byte size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}\label{aern_8h_a1e4c716459c858f6354c623dc94f8c9f} 
+\#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}~22U
+\begin{DoxyCompactList}\small\item\em The AERN packet header size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a65280709b2a62ecac126a76ca0e88d52}\label{aern_8h_a65280709b2a62ecac126a76ca0e88d52} 
+\#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}~16U
+\begin{DoxyCompactList}\small\item\em The AERN packet sub-\/header size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a861e7f1202b0fbf9f75bcf64299edd06}\label{aern_8h_a861e7f1202b0fbf9f75bcf64299edd06} 
+\#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+SEQUENCE\+\_\+\+TERMINATOR}~0x\+FFFFFFFFUL
+\begin{DoxyCompactList}\small\item\em The sequence number of a packet that closes a connection. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a6a97c720ecf0836062ebb91c6767a838}\label{aern_8h_a6a97c720ecf0836062ebb91c6767a838} 
+\#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+TIME\+\_\+\+SIZE}~8U
+\begin{DoxyCompactList}\small\item\em The byte size of the serialized packet time parameter. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_af854b89ab95207b9e0e4d012ed745fc2}\label{aern_8h_af854b89ab95207b9e0e4d012ed745fc2} 
+\#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+TIME\+\_\+\+THRESHOLD}~60U
+\begin{DoxyCompactList}\small\item\em The maximum number of seconds a packet is valid. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_af370eaf623d74045e9dd98eee2b8b0ad}\label{aern_8h_af370eaf623d74045e9dd98eee2b8b0ad} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+TERMINATION\+\_\+\+MESSAGE\+\_\+\+SIZE}~1U
+\begin{DoxyCompactList}\small\item\em The network termination message size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_abeee03d5f9f5c92caf5c0e1c962efe94}\label{aern_8h_abeee03d5f9f5c92caf5c0e1c962efe94} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+TERMINATION\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_af370eaf623d74045e9dd98eee2b8b0ad}{AERN\+\_\+\+NETWORK\+\_\+\+TERMINATION\+\_\+\+MESSAGE\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em The network termination packet size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a97a86103953ac85ca86662026e592e03}\label{aern_8h_a97a86103953ac85ca86662026e592e03} 
+\#define {\bfseries AERN\+\_\+\+X509\+\_\+\+CERTIFICATE\+\_\+\+SIZE}~4096U
+\begin{DoxyCompactList}\small\item\em x509 implementation where algorithm/signature output size is stored. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a1a53f0920e4dd10f0bd3f23f566848b2}\label{aern_8h_a1a53f0920e4dd10f0bd3f23f566848b2} 
+\#define {\bfseries AERN\+\_\+\+IDG\+\_\+\+HINT\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em Hint query; certificate hash, root serial number hi=(H(cert) \texorpdfstring{$\vert$}{|} rsn) idg query asks if a peer knows of the root security server for a domain; if the peer does know the root of the other domain, it sends back information about that rds (address, certificate hash, root serial number, and trust metric). \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a6e3b9b22e9f59f2ffa61498426ca444f}\label{aern_8h_a6e3b9b22e9f59f2ffa61498426ca444f} 
+\#define {\bfseries AERN\+\_\+\+PROTOCOL\+\_\+\+SET\+\_\+\+SIZE}~41U
+\begin{DoxyCompactList}\small\item\em The size of the protocol configuration string. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a4d82b84958203892b078d8b70e53c88f}\label{aern_8h_a4d82b84958203892b078d8b70e53c88f} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+DEPTH}~28U
+\item 
+\Hypertarget{aern_8h_af7276c7e7cf5e7413324ec4ba144e026}\label{aern_8h_af7276c7e7cf5e7413324ec4ba144e026} 
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+SIZE}~128U
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{aern_8h_a72e563bad1b378ebbe434d9404725e21}\label{aern_8h_a72e563bad1b378ebbe434d9404725e21} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API enum \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} {\bfseries aern\+\_\+configuration\+\_\+sets}
+\item 
+\Hypertarget{aern_8h_a2d83767f1a5d997bbe30ccccd4743213}\label{aern_8h_a2d83767f1a5d997bbe30ccccd4743213} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API enum \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} {\bfseries aern\+\_\+network\+\_\+designations}
+\item 
+\Hypertarget{aern_8h_a3ee484fa1ca8d1b5e7a72ec7385c5f69}\label{aern_8h_a3ee484fa1ca8d1b5e7a72ec7385c5f69} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API enum \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}} {\bfseries aern\+\_\+network\+\_\+errors}
+\item 
+\Hypertarget{aern_8h_a1f5af792b752601739bafeb67e3d28db}\label{aern_8h_a1f5af792b752601739bafeb67e3d28db} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API enum \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}} {\bfseries aern\+\_\+network\+\_\+flags}
+\item 
+\Hypertarget{aern_8h_a4391e3e4d9572658d416034ff008a2d9}\label{aern_8h_a4391e3e4d9572658d416034ff008a2d9} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API enum \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} {\bfseries aern\+\_\+protocol\+\_\+errors}
+\item 
+\Hypertarget{aern_8h_aed78e5adf93f923931b8164f450579e0}\label{aern_8h_aed78e5adf93f923931b8164f450579e0} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API enum \mbox{\hyperlink{aern_8h_ac74de094a5c7117514cba96e3a7fb962}{aern\+\_\+version\+\_\+sets}} {\bfseries aern\+\_\+version\+\_\+sets}
+\item 
+\Hypertarget{aern_8h_ac4cd736ecc2357ed2f49aece93d32d0b}\label{aern_8h_ac4cd736ecc2357ed2f49aece93d32d0b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+certificate\+\_\+expiration {\bfseries aern\+\_\+certificate\+\_\+expiration}
+\item 
+\Hypertarget{aern_8h_ab09f9d29209d3d814e46dbc521a4631b}\label{aern_8h_ab09f9d29209d3d814e46dbc521a4631b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+child\+\_\+certificate {\bfseries aern\+\_\+child\+\_\+certificate}
+\item 
+\Hypertarget{aern_8h_a50847cbfce48c70576c30390d344f1dd}\label{aern_8h_a50847cbfce48c70576c30390d344f1dd} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+idg\+\_\+hint {\bfseries aern\+\_\+idg\+\_\+hint}
+\item 
+\Hypertarget{aern_8h_a8bfa72af9e4f3617fba0370b712e1a1d}\label{aern_8h_a8bfa72af9e4f3617fba0370b712e1a1d} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+idg\+\_\+certificate {\bfseries aern\+\_\+idg\+\_\+certificate}
+\item 
+\Hypertarget{aern_8h_a009f6e9da28a80c9d91a313d1278a704}\label{aern_8h_a009f6e9da28a80c9d91a313d1278a704} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+connection\+\_\+state {\bfseries aern\+\_\+connection\+\_\+state}
+\item 
+\Hypertarget{aern_8h_ab5895c70046591db628155a8db98a16f}\label{aern_8h_ab5895c70046591db628155a8db98a16f} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+keep\+\_\+alive\+\_\+state {\bfseries aern\+\_\+keep\+\_\+alive\+\_\+state}
+\item 
+\Hypertarget{aern_8h_a5cbd3e80411e3bd700c20f82712f1d7f}\label{aern_8h_a5cbd3e80411e3bd700c20f82712f1d7f} 
+typedef struct aern\+\_\+mfkey\+\_\+state {\bfseries aern\+\_\+mfkey\+\_\+state}
+\item 
+\Hypertarget{aern_8h_a1d353d0e7257dcf453cba60a5b991f48}\label{aern_8h_a1d353d0e7257dcf453cba60a5b991f48} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+packet {\bfseries aern\+\_\+network\+\_\+packet}
+\item 
+\Hypertarget{aern_8h_a3ebd29e80452283d471b0cf76374e72b}\label{aern_8h_a3ebd29e80452283d471b0cf76374e72b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+root\+\_\+certificate {\bfseries aern\+\_\+root\+\_\+certificate}
+\item 
+\Hypertarget{aern_8h_aae1ad747757ee89bfc456c54d416007b}\label{aern_8h_aae1ad747757ee89bfc456c54d416007b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+serialized\+\_\+symmetric\+\_\+key {\bfseries aern\+\_\+serialized\+\_\+symmetric\+\_\+key}
+\item 
+\Hypertarget{aern_8h_a5ec173a44aec97e167bdbb02e7ae8228}\label{aern_8h_a5ec173a44aec97e167bdbb02e7ae8228} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+signature\+\_\+keypair {\bfseries aern\+\_\+signature\+\_\+keypair}
+\item 
+\Hypertarget{aern_8h_a8ec93c98f2bd9231c5a6f07be5be654d}\label{aern_8h_a8ec93c98f2bd9231c5a6f07be5be654d} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+cipher\+\_\+keypair {\bfseries aern\+\_\+cipher\+\_\+keypair}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} \{ \newline
+\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a94485d0ef7413445b3dc3c014a0bf076}{aern\+\_\+configuration\+\_\+set\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9ab8a83b72fba4843a6d0d6138f85f85ac}{aern\+\_\+configuration\+\_\+set\+\_\+dilithium1\+\_\+kyber1\+\_\+rcs256\+\_\+shake256}} = 0x01U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9afec401b8220f15b0a397342eb2a4403d}{aern\+\_\+configuration\+\_\+set\+\_\+dilithium3\+\_\+kyber3\+\_\+rcs256\+\_\+shake256}} = 0x02U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a0ccbe372120708988d804830554b03d4}{aern\+\_\+configuration\+\_\+set\+\_\+dilithium5\+\_\+kyber5\+\_\+rcs256\+\_\+shake256}} = 0x03U
+, \newline
+\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a49c361b3c0cd18cd03b6107615ecaea1}{aern\+\_\+configuration\+\_\+set\+\_\+dilithium5\+\_\+kyber6\+\_\+rcs512\+\_\+shake256}} = 0x04U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a52df1c3321fb97c82972dc62332f65bc}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus1f\+\_\+mceliece1\+\_\+rcs256\+\_\+shake256}} = 0x05U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9abd4510d2394de4c4fe30bb0f023d6ef9}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus1s\+\_\+mceliece1\+\_\+rcs256\+\_\+shake256}} = 0x06U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a05f44c31ee39fd09846203722cd7cfdf}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus3f\+\_\+mceliece3\+\_\+rcs256\+\_\+shake256}} = 0x07U
+, \newline
+\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a786aeba3aeb410c09d8100d26ddbe311}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus3s\+\_\+mceliece3\+\_\+rcs256\+\_\+shake256}} = 0x08U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a7010dd4a285f030c6babf8bea1feebd0}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5f\+\_\+mceliece5\+\_\+rcs256\+\_\+shake256}} = 0x09U
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9ac645ad5f98188496ab7c70daaf2ffbfc}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5s\+\_\+mceliece5\+\_\+rcs256\+\_\+shake256}} = 0x0\+AU
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9ad080ecc0f7f1fb7cdf7371558a2d297b}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5f\+\_\+mceliece6\+\_\+rcs256\+\_\+shake256}} = 0x0\+BU
+, \newline
+\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a8ddcaf2561d2257e10c34f39ea22373c}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5s\+\_\+mceliece6\+\_\+rcs256\+\_\+shake256}} = 0x0\+CU
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9a95df665e29d4e18ec0be8630a56400fa}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5f\+\_\+mceliece7\+\_\+rcs256\+\_\+shake256}} = 0x0\+DU
+, \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9ad143fecb5538ba74e20eb8baeb7c2efd}{aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5s\+\_\+mceliece7\+\_\+rcs256\+\_\+shake256}} = 0x0\+EU
+ \}
+\begin{DoxyCompactList}\small\item\em The AERN algorithm configuration sets. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} \{ \newline
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aaaf64dfba91eebe0afb406b6ffee41410}{aern\+\_\+network\+\_\+designation\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aacf426b6eb22e163768b5155582e8ec16}{aern\+\_\+network\+\_\+designation\+\_\+aps}} = 0x01U
+, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aad2fae914cf3f6aea5ca57d7e2d0f676e}{aern\+\_\+network\+\_\+designation\+\_\+client}} = 0x02U
+, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae}{aern\+\_\+network\+\_\+designation\+\_\+ads}} = 0x03U
+, \newline
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa}{aern\+\_\+network\+\_\+designation\+\_\+remote}} = 0x04U
+, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa63066aa50699bb1cbfb515b82c74c1c4}{aern\+\_\+network\+\_\+designation\+\_\+ars}} = 0x05U
+, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aabc9ad9142f1a69b26d9d4abe29d3e744}{aern\+\_\+network\+\_\+designation\+\_\+revoked}} = 0x06U
+, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa4d0abc209cf3a1833fd034953bd96b71}{aern\+\_\+network\+\_\+designation\+\_\+idg}} = 0x07U
+, \newline
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa2f7eb88c476742a72e42fdb2e8282ee7}{aern\+\_\+network\+\_\+designation\+\_\+all}} = 0x\+FFU
+ \}
+\begin{DoxyCompactList}\small\item\em The AERN device designation. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}} \{ \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aec86eb6c32911c62daf67c2694d77c38}{aern\+\_\+network\+\_\+error\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a691576e7d12cc0a7977d3445d7137ef7}{aern\+\_\+network\+\_\+error\+\_\+accept\+\_\+fail}} = 0x01U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0abec899e2e1846e55260b1710a0cd705c}{aern\+\_\+network\+\_\+error\+\_\+auth\+\_\+failure}} = 0x02U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ab7eb6347db7f4ff0366843bee4b8f1bd}{aern\+\_\+network\+\_\+error\+\_\+bad\+\_\+keep\+\_\+alive}} = 0x03U
+, \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a09efdec9f7c3f8580a0f124e04a82929}{aern\+\_\+network\+\_\+error\+\_\+channel\+\_\+down}} = 0x04U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a4e29db16be1b7f9a05bf6a01341eb3af}{aern\+\_\+network\+\_\+error\+\_\+connection\+\_\+failure}} = 0x05U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac5f7eae37f08540469921a2813619309}{aern\+\_\+network\+\_\+error\+\_\+decryption\+\_\+failure}} = 0x06U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a36aa399c61174fe65d9580efd308e8f1}{aern\+\_\+network\+\_\+error\+\_\+establish\+\_\+failure}} = 0x07U
+, \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a40ce29d3a84b1d526a38ecbd3b9103bc}{aern\+\_\+network\+\_\+error\+\_\+general\+\_\+failure}} = 0x08U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a56e25a8c9fd9688de76d38009193ca0a}{aern\+\_\+network\+\_\+error\+\_\+hosts\+\_\+exceeded}} = 0x09U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a7cc12a6cd84e3eeb91419373c82716ca}{aern\+\_\+network\+\_\+error\+\_\+identity\+\_\+unknown}} = 0x10U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a122e74d6ebadbadd6d040944c21f5b4a}{aern\+\_\+network\+\_\+error\+\_\+invalid\+\_\+input}} = 0x1\+AU
+, \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a8eb32912b22bdc5419fcfc4527ffabaf}{aern\+\_\+network\+\_\+error\+\_\+invalid\+\_\+request}} = 0x1\+BU
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a541bac1b24e5a06469a33091aacd4213}{aern\+\_\+network\+\_\+error\+\_\+keep\+\_\+alive\+\_\+expired}} = 0x1\+CU
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aab749b907a6672d5e7bf6403eee92930}{aern\+\_\+network\+\_\+error\+\_\+keep\+\_\+alive\+\_\+timeout}} = 0x1\+DU
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a8a2c69ba42b506812a48c0802e520ffd}{aern\+\_\+network\+\_\+error\+\_\+kex\+\_\+auth\+\_\+failure}} = 0x1\+EU
+, \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac575bcb42cc41619bf1cb01491202b7c}{aern\+\_\+network\+\_\+error\+\_\+key\+\_\+not\+\_\+recognized}} = 0x1\+FU
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac94a41d3dc03dec9ed39e97a72bfa454}{aern\+\_\+network\+\_\+error\+\_\+key\+\_\+has\+\_\+expired}} = 0x20U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a7b5e9c0b10102bf13189d061cc430b53}{aern\+\_\+network\+\_\+error\+\_\+listener\+\_\+fail}} = 0x21U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a96218df7bfe1849de4fbc10d2edfe253}{aern\+\_\+network\+\_\+error\+\_\+memory\+\_\+allocation}} = 0x22U
+, \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0afaff5910b2d17638f08711e8d97600e2}{aern\+\_\+network\+\_\+error\+\_\+packet\+\_\+unsequenced}} = 0x23U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ab23e3f0895a01d74ffaf6ac1a609d45f}{aern\+\_\+network\+\_\+error\+\_\+random\+\_\+failure}} = 0x24U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a222105ec24e907fa81f1c2868e3a2b53}{aern\+\_\+network\+\_\+error\+\_\+ratchet\+\_\+fail}} = 0x25U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aa89657099045cee93abf0c3569e26400}{aern\+\_\+network\+\_\+error\+\_\+receive\+\_\+failure}} = 0x26U
+, \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a31471abcc08064554d3806870e9afc3d}{aern\+\_\+network\+\_\+error\+\_\+transmit\+\_\+failure}} = 0x27U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ae608b54145023f9bd2d5156a9372db7a}{aern\+\_\+network\+\_\+error\+\_\+unknown\+\_\+protocol}} = 0x28U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a797ca028c0d4cfa9c0fdc9a7c60f721b}{aern\+\_\+network\+\_\+error\+\_\+unsequenced}} = 0x29U
+, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a6fb12f12ac8cce604551878bae9a4d05}{aern\+\_\+network\+\_\+error\+\_\+verify\+\_\+failure}} = 0x2\+AU
+ \}
+\begin{DoxyCompactList}\small\item\em The AERN network error values. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}} \{ \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac4224ad812f79d4255ba8a8fa2a8a641}{aern\+\_\+network\+\_\+flag\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9fa47daadb7d43736800d93403b9041d}{aern\+\_\+network\+\_\+flag\+\_\+connection\+\_\+terminate\+\_\+request}} = 0x01U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5afd68dfa140a99a87e5ced34ea501f8f3}{aern\+\_\+network\+\_\+flag\+\_\+error\+\_\+condition}} = 0x02U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8}{aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+request}} = 0x03U
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba}{aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+response}} = 0x04U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e}{aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+request}} = 0x05U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42}{aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+response}} = 0x06U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb}{aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+request}} = 0x07U
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022}{aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+response}} = 0x08U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa9227ce68893342c6c5f446c94aec798}{aern\+\_\+network\+\_\+flag\+\_\+incremental\+\_\+update\+\_\+request}} = 0x09U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac92ace80f18ca318b573fae847f28cf3}{aern\+\_\+network\+\_\+flag\+\_\+incremental\+\_\+update\+\_\+response}} = 0x0\+AU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a16efa3fa0f76642e2b51a61f7cdaa43b}{aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+request}} = 0x0\+BU
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a3cb56483e5f5282bf9fabdda4c47037f}{aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+response}} = 0x0\+CU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a66a4899b82626f11d1909556bbaafc22}{aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+update\+\_\+request}} = 0x0\+DU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1111d36567ae73d520aa40f7b1beaed2}{aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+update\+\_\+response}} = 0x0\+EU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab3739729c513be9081925b11e9a70d8b}{aern\+\_\+network\+\_\+flag\+\_\+keep\+\_\+alive\+\_\+request}} = 0x0\+FU
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1c6f52a33b3be698ba8bbd9a2d789fc7}{aern\+\_\+network\+\_\+flag\+\_\+keep\+\_\+alive\+\_\+response}} = 0x10U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5aae3b0814aade32544a22f8affa4aa951}{aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+establish}} = 0x11U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab5c1694d5ea1905716361de824c92978}{aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+request}} = 0x12U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5afff9ac1fde8ed24d84c2474729a80116}{aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+response}} = 0x13U
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a981a7366fb68103c55fa952f82421435}{aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+verify}} = 0x14U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a334fb0099419a12a8b0517f4a377ae0e}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+announce\+\_\+broadcast}} = 0x15U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac2e398a8cf94ee8218465743fd6258e2}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+converge\+\_\+request}} = 0x16U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a7697dc7cb9ab0aef05ebd1d1ce905c1d}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+converge\+\_\+response}} = 0x17U
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a228179b7f24a873917625cd377c83e41}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+converge\+\_\+update}} = 0x18U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2ce36ad55ee64b56b31426244dd99ef9}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+resign\+\_\+request}} = 0x19U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a41d48538025ac18a2f6b5fb170e60381}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+resign\+\_\+response}} = 0x1\+AU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a8f458eb448d7c094dc5a1b2f120fb293}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+revocation\+\_\+broadcast}} = 0x1\+BU
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa0d545359c9d75ab36a5c479fec86d3d}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+signature\+\_\+request}} = 0x1\+CU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a5abfaf48716f0e7f15a38a7b8cbdb525}{aern\+\_\+network\+\_\+flag\+\_\+system\+\_\+error\+\_\+condition}} = 0x1\+DU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a118ae81a8cb4ff096921071e27faa40f}{aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+connection\+\_\+terminate}} = 0x1\+EU
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab15c88c08b1cbf65a8e525f449e2957c}{aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+encrypted\+\_\+message}} = 0x1\+FU
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0e62721f4af30a8363d0dd22fd57d804}{aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+session\+\_\+established}} = 0x20U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a4f2ae56c751527f755102c0d5c8dcf74}{aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+transfer\+\_\+request}} = 0x21U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5acd018a3e4533643a3bd13d3feb9a95db}{aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+query\+\_\+request}} = 0x22U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a6295016ade57a0e8e7589b12158721b0}{aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+query\+\_\+response}} = 0x23U
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2fd84d8e023e283a6ca988c6d9c9013a}{aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+request}} = 0x24U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9467f89a37daa4cd0a3a72cbd9f3f414}{aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+response}} = 0x25U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ace81f682ce09da84dcfecf8ac0dbc18d}{aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+available}} = 0x26U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab36f1d2d991a2485b0bff2615f8370c8}{aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+synchronized}} = 0x27U
+, \newline
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0b00d38ee1385194be52b2fa64a1f602}{aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+unavailable}} = 0x28U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9b2fe85395733b7107d4aabce65e8cf3}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request}} = 0x29U
+, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a520314004d09025765af3c4f55dc4555}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response}} = 0x2\+AU
+ \}
+\begin{DoxyCompactList}\small\item\em The AERN network flags. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \{ \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa7f1199026b486871b3ffe0fbd36cf0a}{aern\+\_\+protocol\+\_\+error\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a21df65386393579abe6b3dcfffc90e24}{aern\+\_\+protocol\+\_\+error\+\_\+authentication\+\_\+failure}} = 0x01U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724abd6e759f0d93dc1b64790ce0fec24321}{aern\+\_\+protocol\+\_\+error\+\_\+certificate\+\_\+not\+\_\+found}} = 0x02U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a182b7b4587bd6216c0b8b48ab911199f}{aern\+\_\+protocol\+\_\+error\+\_\+channel\+\_\+down}} = 0x03U
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1199c62bb59d18c2d5b0bdf74f2860e3}{aern\+\_\+protocol\+\_\+error\+\_\+connection\+\_\+failure}} = 0x04U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a25ba416f4fba0aff12f8e51c5e38c6b7}{aern\+\_\+protocol\+\_\+error\+\_\+connect\+\_\+failure}} = 0x05U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ae56b12a70e998c239d0b23c93cce37e8}{aern\+\_\+protocol\+\_\+error\+\_\+convergence\+\_\+failure}} = 0x06U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ab245caccffd427cd1ab3060ffe8157ee}{aern\+\_\+protocol\+\_\+error\+\_\+convergence\+\_\+synchronized}} = 0x07U
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a68b2803a97997907b1d4b7bb321546ae}{aern\+\_\+protocol\+\_\+error\+\_\+decapsulation\+\_\+failure}} = 0x08U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a4ea1f215e4744073d3cf2793e849b3c2}{aern\+\_\+protocol\+\_\+error\+\_\+decoding\+\_\+failure}} = 0x09U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a88e5eab5dcbc8a3a4177a8d36dc391b4}{aern\+\_\+protocol\+\_\+error\+\_\+decryption\+\_\+failure}} = 0x0\+AU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a5c6a4166fca93826fa300d1a44872c73}{aern\+\_\+protocol\+\_\+error\+\_\+establish\+\_\+failure}} = 0x0\+BU
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ae2a1fa04dd12dc3dc747618cc646c313}{aern\+\_\+protocol\+\_\+error\+\_\+exchange\+\_\+failure}} = 0x0\+CU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a814fb60ffbdd05313e3b9bc3aab5cd62}{aern\+\_\+protocol\+\_\+error\+\_\+file\+\_\+not\+\_\+deleted}} = 0x0\+DU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a094fb129265fe5468d2d577af8c0d310}{aern\+\_\+protocol\+\_\+error\+\_\+file\+\_\+not\+\_\+found}} = 0x0\+EU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ab46a41d835852096d583179ce5e06347}{aern\+\_\+protocol\+\_\+error\+\_\+file\+\_\+not\+\_\+written}} = 0x0\+FU
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a99a9fa6b7de2f4692b6667c6dc314a9c}{aern\+\_\+protocol\+\_\+error\+\_\+hash\+\_\+invalid}} = 0x10U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724acbb13664003b3bd4d2154fe0c2203f2b}{aern\+\_\+protocol\+\_\+error\+\_\+hosts\+\_\+exceeded}} = 0x11U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780}{aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request}} = 0x12U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a9410c4234c6b1095b0608e6a60b404a3}{aern\+\_\+protocol\+\_\+error\+\_\+certificate\+\_\+expired}} = 0x13U
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a2a5386d69b992fe4b2056e7b73bcae8b}{aern\+\_\+protocol\+\_\+error\+\_\+key\+\_\+expired}} = 0x14U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad6ce7be33685e4154d80b240fb51ad18}{aern\+\_\+protocol\+\_\+error\+\_\+key\+\_\+unrecognized}} = 0x15U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a12918e123ad01532b35e253b2cc66eb5}{aern\+\_\+protocol\+\_\+error\+\_\+listener\+\_\+fail}} = 0x16U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad13453e6cf2d843cf32b3e9ee45e4617}{aern\+\_\+protocol\+\_\+error\+\_\+memory\+\_\+allocation}} = 0x17U
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a14d4236c6c7855ca479a58888f7baf33}{aern\+\_\+protocol\+\_\+error\+\_\+message\+\_\+time\+\_\+invalid}} = 0x18U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa003291f1c8f06bcc2f5a9d8222a4e47}{aern\+\_\+protocol\+\_\+error\+\_\+message\+\_\+verification\+\_\+failure}} = 0x19U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a4b69ba7702cf36c20c6b68a28921b434}{aern\+\_\+protocol\+\_\+error\+\_\+no\+\_\+usable\+\_\+address}} = 0x1\+AU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a3600f81106dbb9bdfdbfb7916a3bb304}{aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+not\+\_\+available}} = 0x1\+BU
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ac03816b0f3242cbdc26914d2f45345da}{aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+not\+\_\+found}} = 0x1\+CU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a49105af2a83456af7396993d035fa7b5}{aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+was\+\_\+registered}} = 0x1\+DU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1cdc3db84948f54e84ecdc17165b209d}{aern\+\_\+protocol\+\_\+error\+\_\+operation\+\_\+cancelled}} = 0x1\+EU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1d384f95e63413ee1889ff47c19fc07d}{aern\+\_\+protocol\+\_\+error\+\_\+packet\+\_\+header\+\_\+invalid}} = 0x1\+FU
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a743e4fb000c25f174f8a1312e9e3da8f}{aern\+\_\+protocol\+\_\+error\+\_\+packet\+\_\+unsequenced}} = 0x20U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a92107713632e9a3ff75ac8cabed283cf}{aern\+\_\+protocol\+\_\+error\+\_\+receive\+\_\+failure}} = 0x21U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a57453f7312a290d8bfac0fef16fe6c82}{aern\+\_\+protocol\+\_\+error\+\_\+root\+\_\+signature\+\_\+invalid}} = 0x22U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724af3d0f532057e7e5f80fd7ac1e8f9daa8}{aern\+\_\+protocol\+\_\+error\+\_\+serialization\+\_\+failure}} = 0x23U
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a0250f20656a292ee555dbd90c613976a}{aern\+\_\+protocol\+\_\+error\+\_\+signature\+\_\+failure}} = 0x24U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a27cc95e4cbc4049c8c991710e2c79d27}{aern\+\_\+protocol\+\_\+error\+\_\+signing\+\_\+failure}} = 0x25U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad48fd8368422a0bc53e4ead2c039c67c}{aern\+\_\+protocol\+\_\+error\+\_\+socket\+\_\+binding}} = 0x26U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a460510308bac5dbd086d799f4546db42}{aern\+\_\+protocol\+\_\+error\+\_\+socket\+\_\+creation}} = 0x27U
+, \newline
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a122d9a72c602e423b9f920db5ff2943a}{aern\+\_\+protocol\+\_\+error\+\_\+transmit\+\_\+failure}} = 0x28U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a84067da0df4803fb88ec0a3d25fdcda4}{aern\+\_\+protocol\+\_\+error\+\_\+topology\+\_\+no\+\_\+aps}} = 0x29U
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a7df311522baef4cce7045773aff01c26}{aern\+\_\+protocol\+\_\+error\+\_\+unknown\+\_\+protocol}} = 0x2\+AU
+, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724aaf9c2f3ec1ea2dd4721f11a99b27ebcf}{aern\+\_\+protocol\+\_\+error\+\_\+verification\+\_\+failure}} = 0x2\+BU
+ \}
+\begin{DoxyCompactList}\small\item\em The AERN protocol error values. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{aern_8h_ac74de094a5c7117514cba96e3a7fb962}{aern\+\_\+version\+\_\+sets}} \{ \mbox{\hyperlink{aern_8h_ac74de094a5c7117514cba96e3a7fb962a780d49b7f5040f8063947749de397f1b}{aern\+\_\+version\+\_\+set\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{aern_8h_ac74de094a5c7117514cba96e3a7fb962a5d46d108344370f320db3fc4c352ea63}{aern\+\_\+version\+\_\+set\+\_\+one\+\_\+zero}} = 0x01U
+ \}
+\begin{DoxyCompactList}\small\item\em The AERN version sets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a9523678f8ccadbe584dc33c69add03c8}{aern\+\_\+connection\+\_\+close}} (qsc\+\_\+socket \texorpdfstring{$\ast$}{*}rsock, \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}} err, bool notify)
+\begin{DoxyCompactList}\small\item\em Close the network connection between hosts. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{aern_8h_a73c3f452a923f12a50956a10421060a5}{aern\+\_\+decrypt\+\_\+packet}} (\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns, uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t \texorpdfstring{$\ast$}{*}msglen, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Decrypt a message and copy it to the output buffer. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{aern_8h_a9dd330bddc7e31403fb85a42e51d13a1}{aern\+\_\+encrypt\+\_\+packet}} (\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns, \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen)
+\begin{DoxyCompactList}\small\item\em Encrypt a message and build an output packet. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_ac7faf9729e19882b72f97b9988e1a885}{aern\+\_\+connection\+\_\+state\+\_\+dispose}} (\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns)
+\begin{DoxyCompactList}\small\item\em Dispose of the tunnel connection state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{aern_8h_a9ff6e0fed5834e3ad6fe15f21fa5ad98}{aern\+\_\+network\+\_\+error\+\_\+to\+\_\+string}} (\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Return a pointer to a string description of a network error code. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{aern_8h_aa95b31981a32810c2820e2c8c4081005}{aern\+\_\+protocol\+\_\+error\+\_\+to\+\_\+string}} (\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Return a pointer to a string description of a protocol error code. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a3f0786c848f56cd46fbdbb53c31887ff}{aern\+\_\+packet\+\_\+clear}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet)
+\begin{DoxyCompactList}\small\item\em Clear the state of a network packet. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a8e3439f91fff1df3184b8aeee1fc68f5}{aern\+\_\+packet\+\_\+error\+\_\+message}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Populate a packet structure with an error message. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a6fc4dadfffa09d47a24ca5ed442deab5}{aern\+\_\+packet\+\_\+header\+\_\+deserialize}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}header, \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet)
+\begin{DoxyCompactList}\small\item\em Deserialize a byte array into a packet header. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a43040bf7a96fe91043d2af94b7139034}{aern\+\_\+packet\+\_\+header\+\_\+serialize}} (const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet, uint8\+\_\+t \texorpdfstring{$\ast$}{*}header)
+\begin{DoxyCompactList}\small\item\em Serialize a packet header into a byte array. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a56507e954bca6540934e1154c3e3d8e7}{aern\+\_\+packet\+\_\+set\+\_\+utc\+\_\+time}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet)
+\begin{DoxyCompactList}\small\item\em Set the local UTC time in the packet header. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{aern_8h_aca1e36b6ef4e422a309c984894555e85}{aern\+\_\+packet\+\_\+time\+\_\+valid}} (const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet)
+\begin{DoxyCompactList}\small\item\em Check if the packet\textquotesingle{}s UTC time is within the valid time threshold. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{aern_8h_a198175d18de8dcc72efb347c1043bd58}{aern\+\_\+packet\+\_\+to\+\_\+stream}} (const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pstream)
+\begin{DoxyCompactList}\small\item\em Serialize a network packet to a byte stream. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a0de58f5f5e88bebed3d9ba98250563c6}{aern\+\_\+stream\+\_\+to\+\_\+packet}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}pstream, \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet)
+\begin{DoxyCompactList}\small\item\em Deserialize a byte stream into a network packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AERN Common Definitions and Protocol Configuration. 
+
+This header defines the common constants, macros, enumerations, structures, and function prototypes for the Anonymous Encrypted Relay Network (AERN). It provides configuration for the cryptographic parameter sets, certificate handling, network protocol operations, and socket communication required to implement the AERN protocol.
+
+The AERN protocol leverages a combination of asymmetric cipher and signature schemes from the QSC library. The parameter sets can be configured in the QSC library\textquotesingle{}s common.\+h file. For maximum security, the Mc\+Eliece/\+SPHINCS+ parameter set is recommended; for a balance of performance and security, the Dilithium/\+Kyber parameter set is advised.
+
+Key components defined in this header include\+:
+\begin{DoxyItemize}
+\item {\bfseries{Function Mapping Macros\+:}} Aliases that map AERN high-\/level cryptographic operations (key generation, encapsulation/decapsulation, signing, and verification) to the corresponding functions in the QSC library, based on the selected configuration.
+\item {\bfseries{Modifiable Constants\+:}} Preprocessor definitions that enable or disable protocol features (e.\+g., client-\/to-\/client encrypted tunneling, master fragment key cycling, IPv6 networking, and extended session security).
+\item {\bfseries{Parameter Macros\+:}} Definitions for key sizes, certificate field sizes, network settings, and timing values that ensure consistency across the AERN protocol implementation.
+\item {\bfseries{Enumerations\+:}} Enumerated types for AERN configuration sets, network designations, network and protocol error codes, and version sets.
+\item {\bfseries{Structures\+:}} Data structures representing various certificates (ADC, APS, ROOT), connection and keep alive states, network packets, and cryptographic key pairs. These structures are central to protocol operations such as certificate management and secure message exchange.
+\item {\bfseries{Static Constants\+:}} Predefined strings for certificate header/footer information and network designation labels.
+\item {\bfseries{Public API Functions\+:}} Prototypes for functions handling connection management, packet encryption/decryption, packet serialization/deserialization, and error string conversion.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+When using the Mc\+Eliece/\+SPHINCS+ configuration in Visual Studio, it is recommended to increase the maximum stack size (for example, to 200KB) to accommodate the larger key sizes.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000001}{Test}}]Although this header does not directly implement test routines, it underpins multiple test modules that validate\+:
+\begin{DoxyItemize}
+\item The correct mapping of AERN high-\/level function calls to the underlying QSC library routines.
+\item The consistency and accuracy of defined constants (e.\+g., key sizes, certificate sizes, network parameters).
+\item The proper serialization/deserialization of packet headers and full packets (via aern\+\_\+packet\+\_\+header\+\_\+serialize and aern\+\_\+stream\+\_\+to\+\_\+packet).
+\item The correct conversion of error codes to descriptive strings (using aern\+\_\+network\+\_\+error\+\_\+to\+\_\+string and aern\+\_\+protocol\+\_\+error\+\_\+to\+\_\+string).
+\end{DoxyItemize}\end{DoxyRefDesc}
+
+
+These tests collectively ensure the robustness, consistency, and security of the AERN protocol configuration. 
+
+\label{doc-define-members}
+\Hypertarget{aern_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{aern_8h_adba9c258399bdf3c7fe1e2c37a7888cc}\index{aern.h@{aern.h}!AERN\_ADC\_UPDATE\_WAIT\_TIME@{AERN\_ADC\_UPDATE\_WAIT\_TIME}}
+\index{AERN\_ADC\_UPDATE\_WAIT\_TIME@{AERN\_ADC\_UPDATE\_WAIT\_TIME}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_ADC\_UPDATE\_WAIT\_TIME}{AERN\_ADC\_UPDATE\_WAIT\_TIME}}
+{\footnotesize\ttfamily \label{aern_8h_adba9c258399bdf3c7fe1e2c37a7888cc} 
+\#define AERN\+\_\+\+ADC\+\_\+\+UPDATE\+\_\+\+WAIT\+\_\+\+TIME~(7U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)}
+
+
+
+The interval in milliseconds between topology full updates. 
+
+Note\+: Default is 7 days. \Hypertarget{aern_8h_a32787cceb2e337d19877ac25338c4c32}\index{aern.h@{aern.h}!AERN\_CERTIFICATE\_CHILD\_SIZE@{AERN\_CERTIFICATE\_CHILD\_SIZE}}
+\index{AERN\_CERTIFICATE\_CHILD\_SIZE@{AERN\_CERTIFICATE\_CHILD\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_CERTIFICATE\_CHILD\_SIZE}{AERN\_CERTIFICATE\_CHILD\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_a32787cceb2e337d19877ac25338c4c32} 
+\#define AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ (\mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ AERN\_ASYMMETRIC\_VERIFICATION\_KEY\_SIZE\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\_CERTIFICATE\_ISSUER\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a2593a7ecd841afe60a7b882f202cd82f}{AERN\_CERTIFICATE\_EXPIRATION\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a6836977c34ee21da3a738579aad21ad9}{AERN\_CERTIFICATE\_DESIGNATION\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a2bfc9e9b4a2a66e4354081fca548e6da}{AERN\_CERTIFICATE\_ALGORITHM\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_aabf1462d0b80bda01d5205156398f1fe}{AERN\_CERTIFICATE\_VERSION\_SIZE}})}
+
+\end{DoxyCode}
+
+
+The length of a child certificate. 
+
+\Hypertarget{aern_8h_a47ba45bdfde4351b4d70b8f4fc300f70}\index{aern.h@{aern.h}!AERN\_CERTIFICATE\_IDG\_SIZE@{AERN\_CERTIFICATE\_IDG\_SIZE}}
+\index{AERN\_CERTIFICATE\_IDG\_SIZE@{AERN\_CERTIFICATE\_IDG\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_CERTIFICATE\_IDG\_SIZE}{AERN\_CERTIFICATE\_IDG\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_a47ba45bdfde4351b4d70b8f4fc300f70} 
+\#define AERN\+\_\+\+CERTIFICATE\+\_\+\+IDG\+\_\+\+SIZE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ (AERN\_ASYMMETRIC\_SIGNATURE\_SIZE\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\_CERTIFICATE\_HASH\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ AERN\_ASYMMETRIC\_VERIFICATION\_KEY\_SIZE\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\_CERTIFICATE\_ISSUER\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\_CERTIFICATE\_ADDRESS\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a2593a7ecd841afe60a7b882f202cd82f}{AERN\_CERTIFICATE\_EXPIRATION\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a6836977c34ee21da3a738579aad21ad9}{AERN\_CERTIFICATE\_DESIGNATION\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a2bfc9e9b4a2a66e4354081fca548e6da}{AERN\_CERTIFICATE\_ALGORITHM\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_aabf1462d0b80bda01d5205156398f1fe}{AERN\_CERTIFICATE\_VERSION\_SIZE}})}
+
+\end{DoxyCode}
+
+
+The length of an IDG certificate. 
+
+\Hypertarget{aern_8h_a1a60c5405e4731892106843c78b87903}\index{aern.h@{aern.h}!AERN\_CERTIFICATE\_ROOT\_SIZE@{AERN\_CERTIFICATE\_ROOT\_SIZE}}
+\index{AERN\_CERTIFICATE\_ROOT\_SIZE@{AERN\_CERTIFICATE\_ROOT\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_CERTIFICATE\_ROOT\_SIZE}{AERN\_CERTIFICATE\_ROOT\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_a1a60c5405e4731892106843c78b87903} 
+\#define AERN\+\_\+\+CERTIFICATE\+\_\+\+ROOT\+\_\+\+SIZE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ (\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\_CERTIFICATE\_HASH\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ AERN\_ASYMMETRIC\_VERIFICATION\_KEY\_SIZE\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\_CERTIFICATE\_ISSUER\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a2593a7ecd841afe60a7b882f202cd82f}{AERN\_CERTIFICATE\_EXPIRATION\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_a2bfc9e9b4a2a66e4354081fca548e6da}{AERN\_CERTIFICATE\_ALGORITHM\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{aern_8h_aabf1462d0b80bda01d5205156398f1fe}{AERN\_CERTIFICATE\_VERSION\_SIZE}})}
+
+\end{DoxyCode}
+
+
+The length of the root certificate. 
+
+
+
+\label{doc-enum-members}
+\Hypertarget{aern_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9}\index{aern.h@{aern.h}!aern\_configuration\_sets@{aern\_configuration\_sets}}
+\index{aern\_configuration\_sets@{aern\_configuration\_sets}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_configuration\_sets}{aern\_configuration\_sets}}
+{\footnotesize\ttfamily \label{aern_8h_a6249420c8c2d55814707fff2f6caaef9} 
+enum \mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}}}
+
+
+
+The AERN algorithm configuration sets. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_none@{aern\_configuration\_set\_none}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_none@{aern\_configuration\_set\_none}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a94485d0ef7413445b3dc3c014a0bf076}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a94485d0ef7413445b3dc3c014a0bf076} 
+aern\+\_\+configuration\+\_\+set\+\_\+none&No algorithm identifier is set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_dilithium1\_kyber1\_rcs256\_shake256@{aern\_configuration\_set\_dilithium1\_kyber1\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_dilithium1\_kyber1\_rcs256\_shake256@{aern\_configuration\_set\_dilithium1\_kyber1\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9ab8a83b72fba4843a6d0d6138f85f85ac}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9ab8a83b72fba4843a6d0d6138f85f85ac} 
+aern\+\_\+configuration\+\_\+set\+\_\+dilithium1\+\_\+kyber1\+\_\+rcs256\+\_\+shake256&The Dilithium-\/\+S1/\+Kyber-\/\+S1/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_dilithium3\_kyber3\_rcs256\_shake256@{aern\_configuration\_set\_dilithium3\_kyber3\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_dilithium3\_kyber3\_rcs256\_shake256@{aern\_configuration\_set\_dilithium3\_kyber3\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9afec401b8220f15b0a397342eb2a4403d}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9afec401b8220f15b0a397342eb2a4403d} 
+aern\+\_\+configuration\+\_\+set\+\_\+dilithium3\+\_\+kyber3\+\_\+rcs256\+\_\+shake256&The Dilithium-\/\+S3/\+Kyber-\/\+S3/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_dilithium5\_kyber5\_rcs256\_shake256@{aern\_configuration\_set\_dilithium5\_kyber5\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_dilithium5\_kyber5\_rcs256\_shake256@{aern\_configuration\_set\_dilithium5\_kyber5\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a0ccbe372120708988d804830554b03d4}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a0ccbe372120708988d804830554b03d4} 
+aern\+\_\+configuration\+\_\+set\+\_\+dilithium5\+\_\+kyber5\+\_\+rcs256\+\_\+shake256&The Dilithium-\/\+S5/\+Kyber-\/\+S5/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_dilithium5\_kyber6\_rcs512\_shake256@{aern\_configuration\_set\_dilithium5\_kyber6\_rcs512\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_dilithium5\_kyber6\_rcs512\_shake256@{aern\_configuration\_set\_dilithium5\_kyber6\_rcs512\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a49c361b3c0cd18cd03b6107615ecaea1}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a49c361b3c0cd18cd03b6107615ecaea1} 
+aern\+\_\+configuration\+\_\+set\+\_\+dilithium5\+\_\+kyber6\+\_\+rcs512\+\_\+shake256&The Dilithium-\/\+S5/\+Kyber-\/\+S6/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus1f\_mceliece1\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus1f\_mceliece1\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus1f\_mceliece1\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus1f\_mceliece1\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a52df1c3321fb97c82972dc62332f65bc}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a52df1c3321fb97c82972dc62332f65bc} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus1f\+\_\+mceliece1\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S1\+F/\+Mc\+Eliece-\/\+S1/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus1s\_mceliece1\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus1s\_mceliece1\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus1s\_mceliece1\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus1s\_mceliece1\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9abd4510d2394de4c4fe30bb0f023d6ef9}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9abd4510d2394de4c4fe30bb0f023d6ef9} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus1s\+\_\+mceliece1\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S1\+S/\+Mc\+Eliece-\/\+S1/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus3f\_mceliece3\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus3f\_mceliece3\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus3f\_mceliece3\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus3f\_mceliece3\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a05f44c31ee39fd09846203722cd7cfdf}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a05f44c31ee39fd09846203722cd7cfdf} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus3f\+\_\+mceliece3\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S3\+F/\+Mc\+Eliece-\/\+S3/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus3s\_mceliece3\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus3s\_mceliece3\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus3s\_mceliece3\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus3s\_mceliece3\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a786aeba3aeb410c09d8100d26ddbe311}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a786aeba3aeb410c09d8100d26ddbe311} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus3s\+\_\+mceliece3\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S3\+S/\+Mc\+Eliece-\/\+S3/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus5f\_mceliece5\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5f\_mceliece5\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus5f\_mceliece5\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5f\_mceliece5\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a7010dd4a285f030c6babf8bea1feebd0}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a7010dd4a285f030c6babf8bea1feebd0} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5f\+\_\+mceliece5\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S5\+F/\+Mc\+Eliece-\/\+S5a/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus5s\_mceliece5\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5s\_mceliece5\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus5s\_mceliece5\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5s\_mceliece5\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9ac645ad5f98188496ab7c70daaf2ffbfc}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9ac645ad5f98188496ab7c70daaf2ffbfc} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5s\+\_\+mceliece5\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S5\+S/\+Mc\+Eliece-\/\+S5a/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus5f\_mceliece6\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5f\_mceliece6\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus5f\_mceliece6\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5f\_mceliece6\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9ad080ecc0f7f1fb7cdf7371558a2d297b}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9ad080ecc0f7f1fb7cdf7371558a2d297b} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5f\+\_\+mceliece6\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S5\+F/\+Mc\+Eliece-\/\+S5b/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus5s\_mceliece6\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5s\_mceliece6\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus5s\_mceliece6\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5s\_mceliece6\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a8ddcaf2561d2257e10c34f39ea22373c}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a8ddcaf2561d2257e10c34f39ea22373c} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5s\+\_\+mceliece6\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S5\+S/\+Mc\+Eliece-\/\+S5b/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus5f\_mceliece7\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5f\_mceliece7\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus5f\_mceliece7\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5f\_mceliece7\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9a95df665e29d4e18ec0be8630a56400fa}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9a95df665e29d4e18ec0be8630a56400fa} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5f\+\_\+mceliece7\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S5\+F/\+Mc\+Eliece-\/\+S5c/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_configuration\_set\_sphincsplus5s\_mceliece7\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5s\_mceliece7\_rcs256\_shake256}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_configuration\_set\_sphincsplus5s\_mceliece7\_rcs256\_shake256@{aern\_configuration\_set\_sphincsplus5s\_mceliece7\_rcs256\_shake256}}}\Hypertarget{aern_8h_a6249420c8c2d55814707fff2f6caaef9ad143fecb5538ba74e20eb8baeb7c2efd}\label{aern_8h_a6249420c8c2d55814707fff2f6caaef9ad143fecb5538ba74e20eb8baeb7c2efd} 
+aern\+\_\+configuration\+\_\+set\+\_\+sphincsplus5s\+\_\+mceliece7\+\_\+rcs256\+\_\+shake256&The SPHINCS+-\/\+S5\+S/\+Mc\+Eliece-\/\+S5c/\+RCS-\/256/\+SHAKE-\/256 algorithm set \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}\index{aern.h@{aern.h}!aern\_network\_designations@{aern\_network\_designations}}
+\index{aern\_network\_designations@{aern\_network\_designations}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_designations}{aern\_network\_designations}}
+{\footnotesize\ttfamily \label{aern_8h_ac7ca2a3bb609d399444bb84336afa62a} 
+enum \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}
+
+
+
+The AERN device designation. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_none@{aern\_network\_designation\_none}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_none@{aern\_network\_designation\_none}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aaaf64dfba91eebe0afb406b6ffee41410}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aaaf64dfba91eebe0afb406b6ffee41410} 
+aern\+\_\+network\+\_\+designation\+\_\+none&No designation was selected \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_aps@{aern\_network\_designation\_aps}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_aps@{aern\_network\_designation\_aps}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aacf426b6eb22e163768b5155582e8ec16}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aacf426b6eb22e163768b5155582e8ec16} 
+aern\+\_\+network\+\_\+designation\+\_\+aps&The device is an APS \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_client@{aern\_network\_designation\_client}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_client@{aern\_network\_designation\_client}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aad2fae914cf3f6aea5ca57d7e2d0f676e}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aad2fae914cf3f6aea5ca57d7e2d0f676e} 
+aern\+\_\+network\+\_\+designation\+\_\+client&The device is a client \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_ads@{aern\_network\_designation\_ads}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_ads@{aern\_network\_designation\_ads}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae} 
+aern\+\_\+network\+\_\+designation\+\_\+ads&The device is the ADC \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_remote@{aern\_network\_designation\_remote}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_remote@{aern\_network\_designation\_remote}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa} 
+aern\+\_\+network\+\_\+designation\+\_\+remote&The device is a remote aps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_ars@{aern\_network\_designation\_ars}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_ars@{aern\_network\_designation\_ars}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa63066aa50699bb1cbfb515b82c74c1c4}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa63066aa50699bb1cbfb515b82c74c1c4} 
+aern\+\_\+network\+\_\+designation\+\_\+ars&The device is an ARS security server \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_revoked@{aern\_network\_designation\_revoked}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_revoked@{aern\_network\_designation\_revoked}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aabc9ad9142f1a69b26d9d4abe29d3e744}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aabc9ad9142f1a69b26d9d4abe29d3e744} 
+aern\+\_\+network\+\_\+designation\+\_\+revoked&The device has been revoked \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_idg@{aern\_network\_designation\_idg}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_idg@{aern\_network\_designation\_idg}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa4d0abc209cf3a1833fd034953bd96b71}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa4d0abc209cf3a1833fd034953bd96b71} 
+aern\+\_\+network\+\_\+designation\+\_\+idg&The device is the IDG \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_all@{aern\_network\_designation\_all}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_all@{aern\_network\_designation\_all}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa2f7eb88c476742a72e42fdb2e8282ee7}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa2f7eb88c476742a72e42fdb2e8282ee7} 
+aern\+\_\+network\+\_\+designation\+\_\+all&Every server and client device on the network \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}\index{aern.h@{aern.h}!aern\_network\_errors@{aern\_network\_errors}}
+\index{aern\_network\_errors@{aern\_network\_errors}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_errors}{aern\_network\_errors}}
+{\footnotesize\ttfamily \label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0} 
+enum \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}}}
+
+
+
+The AERN network error values. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_none@{aern\_network\_error\_none}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_none@{aern\_network\_error\_none}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aec86eb6c32911c62daf67c2694d77c38}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aec86eb6c32911c62daf67c2694d77c38} 
+aern\+\_\+network\+\_\+error\+\_\+none&No error was detected \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_accept\_fail@{aern\_network\_error\_accept\_fail}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_accept\_fail@{aern\_network\_error\_accept\_fail}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a691576e7d12cc0a7977d3445d7137ef7}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a691576e7d12cc0a7977d3445d7137ef7} 
+aern\+\_\+network\+\_\+error\+\_\+accept\+\_\+fail&The socket accept function returned an error \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_auth\_failure@{aern\_network\_error\_auth\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_auth\_failure@{aern\_network\_error\_auth\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0abec899e2e1846e55260b1710a0cd705c}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0abec899e2e1846e55260b1710a0cd705c} 
+aern\+\_\+network\+\_\+error\+\_\+auth\+\_\+failure&The cipher authentication has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_bad\_keep\_alive@{aern\_network\_error\_bad\_keep\_alive}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_bad\_keep\_alive@{aern\_network\_error\_bad\_keep\_alive}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ab7eb6347db7f4ff0366843bee4b8f1bd}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ab7eb6347db7f4ff0366843bee4b8f1bd} 
+aern\+\_\+network\+\_\+error\+\_\+bad\+\_\+keep\+\_\+alive&The keep alive check failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_channel\_down@{aern\_network\_error\_channel\_down}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_channel\_down@{aern\_network\_error\_channel\_down}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a09efdec9f7c3f8580a0f124e04a82929}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a09efdec9f7c3f8580a0f124e04a82929} 
+aern\+\_\+network\+\_\+error\+\_\+channel\+\_\+down&The communications channel has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_connection\_failure@{aern\_network\_error\_connection\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_connection\_failure@{aern\_network\_error\_connection\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a4e29db16be1b7f9a05bf6a01341eb3af}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a4e29db16be1b7f9a05bf6a01341eb3af} 
+aern\+\_\+network\+\_\+error\+\_\+connection\+\_\+failure&The device could not make a connection to the remote host \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_decryption\_failure@{aern\_network\_error\_decryption\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_decryption\_failure@{aern\_network\_error\_decryption\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac5f7eae37f08540469921a2813619309}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac5f7eae37f08540469921a2813619309} 
+aern\+\_\+network\+\_\+error\+\_\+decryption\+\_\+failure&The decryption authentication has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_establish\_failure@{aern\_network\_error\_establish\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_establish\_failure@{aern\_network\_error\_establish\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a36aa399c61174fe65d9580efd308e8f1}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a36aa399c61174fe65d9580efd308e8f1} 
+aern\+\_\+network\+\_\+error\+\_\+establish\+\_\+failure&The transmission failed at the kex establish phase \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_general\_failure@{aern\_network\_error\_general\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_general\_failure@{aern\_network\_error\_general\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a40ce29d3a84b1d526a38ecbd3b9103bc}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a40ce29d3a84b1d526a38ecbd3b9103bc} 
+aern\+\_\+network\+\_\+error\+\_\+general\+\_\+failure&The connection experienced an unexpected error \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_hosts\_exceeded@{aern\_network\_error\_hosts\_exceeded}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_hosts\_exceeded@{aern\_network\_error\_hosts\_exceeded}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a56e25a8c9fd9688de76d38009193ca0a}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a56e25a8c9fd9688de76d38009193ca0a} 
+aern\+\_\+network\+\_\+error\+\_\+hosts\+\_\+exceeded&The server has run out of socket connections \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_identity\_unknown@{aern\_network\_error\_identity\_unknown}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_identity\_unknown@{aern\_network\_error\_identity\_unknown}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a7cc12a6cd84e3eeb91419373c82716ca}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a7cc12a6cd84e3eeb91419373c82716ca} 
+aern\+\_\+network\+\_\+error\+\_\+identity\+\_\+unknown&The random generator experienced a failure \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_invalid\_input@{aern\_network\_error\_invalid\_input}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_invalid\_input@{aern\_network\_error\_invalid\_input}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a122e74d6ebadbadd6d040944c21f5b4a}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a122e74d6ebadbadd6d040944c21f5b4a} 
+aern\+\_\+network\+\_\+error\+\_\+invalid\+\_\+input&The input is invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_invalid\_request@{aern\_network\_error\_invalid\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_invalid\_request@{aern\_network\_error\_invalid\_request}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a8eb32912b22bdc5419fcfc4527ffabaf}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a8eb32912b22bdc5419fcfc4527ffabaf} 
+aern\+\_\+network\+\_\+error\+\_\+invalid\+\_\+request&The request is invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_keep\_alive\_expired@{aern\_network\_error\_keep\_alive\_expired}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_keep\_alive\_expired@{aern\_network\_error\_keep\_alive\_expired}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a541bac1b24e5a06469a33091aacd4213}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a541bac1b24e5a06469a33091aacd4213} 
+aern\+\_\+network\+\_\+error\+\_\+keep\+\_\+alive\+\_\+expired&The keep alive has expired with no response \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_keep\_alive\_timeout@{aern\_network\_error\_keep\_alive\_timeout}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_keep\_alive\_timeout@{aern\_network\_error\_keep\_alive\_timeout}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aab749b907a6672d5e7bf6403eee92930}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aab749b907a6672d5e7bf6403eee92930} 
+aern\+\_\+network\+\_\+error\+\_\+keep\+\_\+alive\+\_\+timeout&The keepalive failure counter has exceeded maximum \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_kex\_auth\_failure@{aern\_network\_error\_kex\_auth\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_kex\_auth\_failure@{aern\_network\_error\_kex\_auth\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a8a2c69ba42b506812a48c0802e520ffd}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a8a2c69ba42b506812a48c0802e520ffd} 
+aern\+\_\+network\+\_\+error\+\_\+kex\+\_\+auth\+\_\+failure&The kex authentication has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_key\_not\_recognized@{aern\_network\_error\_key\_not\_recognized}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_key\_not\_recognized@{aern\_network\_error\_key\_not\_recognized}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac575bcb42cc41619bf1cb01491202b7c}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac575bcb42cc41619bf1cb01491202b7c} 
+aern\+\_\+network\+\_\+error\+\_\+key\+\_\+not\+\_\+recognized&The key-\/id is not recognized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_key\_has\_expired@{aern\_network\_error\_key\_has\_expired}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_key\_has\_expired@{aern\_network\_error\_key\_has\_expired}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac94a41d3dc03dec9ed39e97a72bfa454}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ac94a41d3dc03dec9ed39e97a72bfa454} 
+aern\+\_\+network\+\_\+error\+\_\+key\+\_\+has\+\_\+expired&The certificate has expired \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_listener\_fail@{aern\_network\_error\_listener\_fail}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_listener\_fail@{aern\_network\_error\_listener\_fail}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a7b5e9c0b10102bf13189d061cc430b53}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a7b5e9c0b10102bf13189d061cc430b53} 
+aern\+\_\+network\+\_\+error\+\_\+listener\+\_\+fail&The listener function failed to initialize \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_memory\_allocation@{aern\_network\_error\_memory\_allocation}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_memory\_allocation@{aern\_network\_error\_memory\_allocation}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a96218df7bfe1849de4fbc10d2edfe253}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a96218df7bfe1849de4fbc10d2edfe253} 
+aern\+\_\+network\+\_\+error\+\_\+memory\+\_\+allocation&The server has run out of memory \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_packet\_unsequenced@{aern\_network\_error\_packet\_unsequenced}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_packet\_unsequenced@{aern\_network\_error\_packet\_unsequenced}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0afaff5910b2d17638f08711e8d97600e2}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0afaff5910b2d17638f08711e8d97600e2} 
+aern\+\_\+network\+\_\+error\+\_\+packet\+\_\+unsequenced&The random generator experienced a failure \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_random\_failure@{aern\_network\_error\_random\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_random\_failure@{aern\_network\_error\_random\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ab23e3f0895a01d74ffaf6ac1a609d45f}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ab23e3f0895a01d74ffaf6ac1a609d45f} 
+aern\+\_\+network\+\_\+error\+\_\+random\+\_\+failure&The random generator experienced a failure \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_ratchet\_fail@{aern\_network\_error\_ratchet\_fail}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_ratchet\_fail@{aern\_network\_error\_ratchet\_fail}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a222105ec24e907fa81f1c2868e3a2b53}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a222105ec24e907fa81f1c2868e3a2b53} 
+aern\+\_\+network\+\_\+error\+\_\+ratchet\+\_\+fail&The ratchet operation has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_receive\_failure@{aern\_network\_error\_receive\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_receive\_failure@{aern\_network\_error\_receive\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aa89657099045cee93abf0c3569e26400}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0aa89657099045cee93abf0c3569e26400} 
+aern\+\_\+network\+\_\+error\+\_\+receive\+\_\+failure&The receiver failed at the network layer \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_transmit\_failure@{aern\_network\_error\_transmit\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_transmit\_failure@{aern\_network\_error\_transmit\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a31471abcc08064554d3806870e9afc3d}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a31471abcc08064554d3806870e9afc3d} 
+aern\+\_\+network\+\_\+error\+\_\+transmit\+\_\+failure&The transmitter failed at the network layer \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_unknown\_protocol@{aern\_network\_error\_unknown\_protocol}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_unknown\_protocol@{aern\_network\_error\_unknown\_protocol}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ae608b54145023f9bd2d5156a9372db7a}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ae608b54145023f9bd2d5156a9372db7a} 
+aern\+\_\+network\+\_\+error\+\_\+unknown\+\_\+protocol&The protocol version is unknown \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_unsequenced@{aern\_network\_error\_unsequenced}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_unsequenced@{aern\_network\_error\_unsequenced}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a797ca028c0d4cfa9c0fdc9a7c60f721b}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a797ca028c0d4cfa9c0fdc9a7c60f721b} 
+aern\+\_\+network\+\_\+error\+\_\+unsequenced&The packet was received out of sequence \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_verify\_failure@{aern\_network\_error\_verify\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_verify\_failure@{aern\_network\_error\_verify\_failure}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a6fb12f12ac8cce604551878bae9a4d05}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a6fb12f12ac8cce604551878bae9a4d05} 
+aern\+\_\+network\+\_\+error\+\_\+verify\+\_\+failure&The expected data could not be verified \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5}\index{aern.h@{aern.h}!aern\_network\_flags@{aern\_network\_flags}}
+\index{aern\_network\_flags@{aern\_network\_flags}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_flags}{aern\_network\_flags}}
+{\footnotesize\ttfamily \label{aern_8h_ae24cb3d879182c83bd3349e930176dc5} 
+enum \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}}}
+
+
+
+The AERN network flags. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_none@{aern\_network\_flag\_none}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_none@{aern\_network\_flag\_none}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac4224ad812f79d4255ba8a8fa2a8a641}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac4224ad812f79d4255ba8a8fa2a8a641} 
+aern\+\_\+network\+\_\+flag\+\_\+none&No flag was selected \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_connection\_terminate\_request@{aern\_network\_flag\_connection\_terminate\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_connection\_terminate\_request@{aern\_network\_flag\_connection\_terminate\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9fa47daadb7d43736800d93403b9041d}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9fa47daadb7d43736800d93403b9041d} 
+aern\+\_\+network\+\_\+flag\+\_\+connection\+\_\+terminate\+\_\+request&The packet contains a connection termination message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_error\_condition@{aern\_network\_flag\_error\_condition}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_error\_condition@{aern\_network\_flag\_error\_condition}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5afd68dfa140a99a87e5ced34ea501f8f3}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5afd68dfa140a99a87e5ced34ea501f8f3} 
+aern\+\_\+network\+\_\+flag\+\_\+error\+\_\+condition&The connection experienced an error message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_collection\_request@{aern\_network\_flag\_fragment\_collection\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_collection\_request@{aern\_network\_flag\_fragment\_collection\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8} 
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+request&The packet contains a server fragment collection request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_collection\_response@{aern\_network\_flag\_fragment\_collection\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_collection\_response@{aern\_network\_flag\_fragment\_collection\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba} 
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+response&The packet contains an aps fragment collection response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_request@{aern\_network\_flag\_fragment\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_request@{aern\_network\_flag\_fragment\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e} 
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+request&The packet contains a server fragment key request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_response@{aern\_network\_flag\_fragment\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_response@{aern\_network\_flag\_fragment\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42} 
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+response&The packet contains an aps fragment key response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_query\_request@{aern\_network\_flag\_fragment\_query\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_query\_request@{aern\_network\_flag\_fragment\_query\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb} 
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+request&The packet contains a server fragment key request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_query\_response@{aern\_network\_flag\_fragment\_query\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_query\_response@{aern\_network\_flag\_fragment\_query\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022} 
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+response&The packet contains an aps fragment key response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_incremental\_update\_request@{aern\_network\_flag\_incremental\_update\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_incremental\_update\_request@{aern\_network\_flag\_incremental\_update\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa9227ce68893342c6c5f446c94aec798}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa9227ce68893342c6c5f446c94aec798} 
+aern\+\_\+network\+\_\+flag\+\_\+incremental\+\_\+update\+\_\+request&The packet contains an incremental update request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_incremental\_update\_response@{aern\_network\_flag\_incremental\_update\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_incremental\_update\_response@{aern\_network\_flag\_incremental\_update\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac92ace80f18ca318b573fae847f28cf3}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac92ace80f18ca318b573fae847f28cf3} 
+aern\+\_\+network\+\_\+flag\+\_\+incremental\+\_\+update\+\_\+response&The packet contains an incremental update response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_register\_request@{aern\_network\_flag\_register\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_register\_request@{aern\_network\_flag\_register\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a16efa3fa0f76642e2b51a61f7cdaa43b}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a16efa3fa0f76642e2b51a61f7cdaa43b} 
+aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+request&The packet contains a join request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_register\_response@{aern\_network\_flag\_register\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_register\_response@{aern\_network\_flag\_register\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a3cb56483e5f5282bf9fabdda4c47037f}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a3cb56483e5f5282bf9fabdda4c47037f} 
+aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+response&The packet contains a join response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_register\_update\_request@{aern\_network\_flag\_register\_update\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_register\_update\_request@{aern\_network\_flag\_register\_update\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a66a4899b82626f11d1909556bbaafc22}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a66a4899b82626f11d1909556bbaafc22} 
+aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+update\+\_\+request&The packet contains a join update request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_register\_update\_response@{aern\_network\_flag\_register\_update\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_register\_update\_response@{aern\_network\_flag\_register\_update\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1111d36567ae73d520aa40f7b1beaed2}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1111d36567ae73d520aa40f7b1beaed2} 
+aern\+\_\+network\+\_\+flag\+\_\+register\+\_\+update\+\_\+response&The packet contains a join update response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_keep\_alive\_request@{aern\_network\_flag\_keep\_alive\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_keep\_alive\_request@{aern\_network\_flag\_keep\_alive\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab3739729c513be9081925b11e9a70d8b}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab3739729c513be9081925b11e9a70d8b} 
+aern\+\_\+network\+\_\+flag\+\_\+keep\+\_\+alive\+\_\+request&The packet contains a keep alive request \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_keep\_alive\_response@{aern\_network\_flag\_keep\_alive\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_keep\_alive\_response@{aern\_network\_flag\_keep\_alive\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1c6f52a33b3be698ba8bbd9a2d789fc7}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1c6f52a33b3be698ba8bbd9a2d789fc7} 
+aern\+\_\+network\+\_\+flag\+\_\+keep\+\_\+alive\+\_\+response&The packet contains a keep alive response \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_mfk\_establish@{aern\_network\_flag\_mfk\_establish}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_mfk\_establish@{aern\_network\_flag\_mfk\_establish}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5aae3b0814aade32544a22f8affa4aa951}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5aae3b0814aade32544a22f8affa4aa951} 
+aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+establish&The packet contains a server master fragment key establish message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_mfk\_request@{aern\_network\_flag\_mfk\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_mfk\_request@{aern\_network\_flag\_mfk\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab5c1694d5ea1905716361de824c92978}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab5c1694d5ea1905716361de824c92978} 
+aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+request&The packet contains a server master fragment key request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_mfk\_response@{aern\_network\_flag\_mfk\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_mfk\_response@{aern\_network\_flag\_mfk\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5afff9ac1fde8ed24d84c2474729a80116}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5afff9ac1fde8ed24d84c2474729a80116} 
+aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+response&The packet contains a client mfk exchange response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_mfk\_verify@{aern\_network\_flag\_mfk\_verify}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_mfk\_verify@{aern\_network\_flag\_mfk\_verify}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a981a7366fb68103c55fa952f82421435}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a981a7366fb68103c55fa952f82421435} 
+aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+verify&The packet contains a server master fragment key verify message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_announce\_broadcast@{aern\_network\_flag\_network\_announce\_broadcast}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_announce\_broadcast@{aern\_network\_flag\_network\_announce\_broadcast}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a334fb0099419a12a8b0517f4a377ae0e}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a334fb0099419a12a8b0517f4a377ae0e} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+announce\+\_\+broadcast&The packet contains a topology announce broadcast \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_converge\_request@{aern\_network\_flag\_network\_converge\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_converge\_request@{aern\_network\_flag\_network\_converge\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac2e398a8cf94ee8218465743fd6258e2}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac2e398a8cf94ee8218465743fd6258e2} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+converge\+\_\+request&The packet contains a network converge request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_converge\_response@{aern\_network\_flag\_network\_converge\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_converge\_response@{aern\_network\_flag\_network\_converge\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a7697dc7cb9ab0aef05ebd1d1ce905c1d}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a7697dc7cb9ab0aef05ebd1d1ce905c1d} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+converge\+\_\+response&The packet contains a network converge response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_converge\_update@{aern\_network\_flag\_network\_converge\_update}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_converge\_update@{aern\_network\_flag\_network\_converge\_update}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a228179b7f24a873917625cd377c83e41}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a228179b7f24a873917625cd377c83e41} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+converge\+\_\+update&The packet contains a network converge update message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_resign\_request@{aern\_network\_flag\_network\_resign\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_resign\_request@{aern\_network\_flag\_network\_resign\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2ce36ad55ee64b56b31426244dd99ef9}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2ce36ad55ee64b56b31426244dd99ef9} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+resign\+\_\+request&The packet contains a network resignation request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_resign\_response@{aern\_network\_flag\_network\_resign\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_resign\_response@{aern\_network\_flag\_network\_resign\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a41d48538025ac18a2f6b5fb170e60381}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a41d48538025ac18a2f6b5fb170e60381} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+resign\+\_\+response&The packet contains a network resignation response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_revocation\_broadcast@{aern\_network\_flag\_network\_revocation\_broadcast}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_revocation\_broadcast@{aern\_network\_flag\_network\_revocation\_broadcast}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a8f458eb448d7c094dc5a1b2f120fb293}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a8f458eb448d7c094dc5a1b2f120fb293} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+revocation\+\_\+broadcast&The packet contains a certificate revocation broadcast \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_signature\_request@{aern\_network\_flag\_network\_signature\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_signature\_request@{aern\_network\_flag\_network\_signature\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa0d545359c9d75ab36a5c479fec86d3d}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa0d545359c9d75ab36a5c479fec86d3d} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+signature\+\_\+request&The packet contains a certificate signing request \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_system\_error\_condition@{aern\_network\_flag\_system\_error\_condition}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_system\_error\_condition@{aern\_network\_flag\_system\_error\_condition}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a5abfaf48716f0e7f15a38a7b8cbdb525}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a5abfaf48716f0e7f15a38a7b8cbdb525} 
+aern\+\_\+network\+\_\+flag\+\_\+system\+\_\+error\+\_\+condition&The packet contains an error condition message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_tunnel\_connection\_terminate@{aern\_network\_flag\_tunnel\_connection\_terminate}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_tunnel\_connection\_terminate@{aern\_network\_flag\_tunnel\_connection\_terminate}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a118ae81a8cb4ff096921071e27faa40f}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a118ae81a8cb4ff096921071e27faa40f} 
+aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+connection\+\_\+terminate&The packet contains a socket close message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_tunnel\_encrypted\_message@{aern\_network\_flag\_tunnel\_encrypted\_message}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_tunnel\_encrypted\_message@{aern\_network\_flag\_tunnel\_encrypted\_message}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab15c88c08b1cbf65a8e525f449e2957c}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab15c88c08b1cbf65a8e525f449e2957c} 
+aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+encrypted\+\_\+message&The packet contains an encrypted message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_tunnel\_session\_established@{aern\_network\_flag\_tunnel\_session\_established}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_tunnel\_session\_established@{aern\_network\_flag\_tunnel\_session\_established}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0e62721f4af30a8363d0dd22fd57d804}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0e62721f4af30a8363d0dd22fd57d804} 
+aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+session\+\_\+established&The exchange is in the established state \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_tunnel\_transfer\_request@{aern\_network\_flag\_tunnel\_transfer\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_tunnel\_transfer\_request@{aern\_network\_flag\_tunnel\_transfer\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a4f2ae56c751527f755102c0d5c8dcf74}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a4f2ae56c751527f755102c0d5c8dcf74} 
+aern\+\_\+network\+\_\+flag\+\_\+tunnel\+\_\+transfer\+\_\+request&Reserved -\/ The host has received a transfer request \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_topology\_query\_request@{aern\_network\_flag\_topology\_query\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_topology\_query\_request@{aern\_network\_flag\_topology\_query\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5acd018a3e4533643a3bd13d3feb9a95db}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5acd018a3e4533643a3bd13d3feb9a95db} 
+aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+query\+\_\+request&The packet contains a topology query request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_topology\_query\_response@{aern\_network\_flag\_topology\_query\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_topology\_query\_response@{aern\_network\_flag\_topology\_query\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a6295016ade57a0e8e7589b12158721b0}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a6295016ade57a0e8e7589b12158721b0} 
+aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+query\+\_\+response&The packet contains a topology query response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_topology\_status\_request@{aern\_network\_flag\_topology\_status\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_topology\_status\_request@{aern\_network\_flag\_topology\_status\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2fd84d8e023e283a6ca988c6d9c9013a}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2fd84d8e023e283a6ca988c6d9c9013a} 
+aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+request&The packet contains a topology status request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_topology\_status\_response@{aern\_network\_flag\_topology\_status\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_topology\_status\_response@{aern\_network\_flag\_topology\_status\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9467f89a37daa4cd0a3a72cbd9f3f414}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9467f89a37daa4cd0a3a72cbd9f3f414} 
+aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+response&The packet contains a topology status response message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_topology\_status\_available@{aern\_network\_flag\_topology\_status\_available}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_topology\_status\_available@{aern\_network\_flag\_topology\_status\_available}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ace81f682ce09da84dcfecf8ac0dbc18d}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ace81f682ce09da84dcfecf8ac0dbc18d} 
+aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+available&The packet contains a topology status available message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_topology\_status\_synchronized@{aern\_network\_flag\_topology\_status\_synchronized}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_topology\_status\_synchronized@{aern\_network\_flag\_topology\_status\_synchronized}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab36f1d2d991a2485b0bff2615f8370c8}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ab36f1d2d991a2485b0bff2615f8370c8} 
+aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+synchronized&The packet contains a topology status synchronized message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_topology\_status\_unavailable@{aern\_network\_flag\_topology\_status\_unavailable}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_topology\_status\_unavailable@{aern\_network\_flag\_topology\_status\_unavailable}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0b00d38ee1385194be52b2fa64a1f602}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0b00d38ee1385194be52b2fa64a1f602} 
+aern\+\_\+network\+\_\+flag\+\_\+topology\+\_\+status\+\_\+unavailable&The packet contains a topology status unavailable message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_remote\_signing\_request@{aern\_network\_flag\_network\_remote\_signing\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_remote\_signing\_request@{aern\_network\_flag\_network\_remote\_signing\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9b2fe85395733b7107d4aabce65e8cf3}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9b2fe85395733b7107d4aabce65e8cf3} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request&The packet contains a remote signing request message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_network\_remote\_signing\_response@{aern\_network\_flag\_network\_remote\_signing\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_network\_remote\_signing\_response@{aern\_network\_flag\_network\_remote\_signing\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a520314004d09025765af3c4f55dc4555}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a520314004d09025765af3c4f55dc4555} 
+aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response&The packet contains a remote signing response message \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724}\index{aern.h@{aern.h}!aern\_protocol\_errors@{aern\_protocol\_errors}}
+\index{aern\_protocol\_errors@{aern\_protocol\_errors}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_protocol\_errors}{aern\_protocol\_errors}}
+{\footnotesize\ttfamily \label{aern_8h_a69dc871c4b6d5d947f6afdda81464724} 
+enum \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}
+
+
+
+The AERN protocol error values. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_none@{aern\_protocol\_error\_none}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_none@{aern\_protocol\_error\_none}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa7f1199026b486871b3ffe0fbd36cf0a}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa7f1199026b486871b3ffe0fbd36cf0a} 
+aern\+\_\+protocol\+\_\+error\+\_\+none&No error was detected \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_authentication\_failure@{aern\_protocol\_error\_authentication\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_authentication\_failure@{aern\_protocol\_error\_authentication\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a21df65386393579abe6b3dcfffc90e24}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a21df65386393579abe6b3dcfffc90e24} 
+aern\+\_\+protocol\+\_\+error\+\_\+authentication\+\_\+failure&The symmetric cipher had an authentication failure \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_certificate\_not\_found@{aern\_protocol\_error\_certificate\_not\_found}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_certificate\_not\_found@{aern\_protocol\_error\_certificate\_not\_found}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724abd6e759f0d93dc1b64790ce0fec24321}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724abd6e759f0d93dc1b64790ce0fec24321} 
+aern\+\_\+protocol\+\_\+error\+\_\+certificate\+\_\+not\+\_\+found&The node certificate could not be found \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_channel\_down@{aern\_protocol\_error\_channel\_down}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_channel\_down@{aern\_protocol\_error\_channel\_down}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a182b7b4587bd6216c0b8b48ab911199f}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a182b7b4587bd6216c0b8b48ab911199f} 
+aern\+\_\+protocol\+\_\+error\+\_\+channel\+\_\+down&The communications channel has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_connection\_failure@{aern\_protocol\_error\_connection\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_connection\_failure@{aern\_protocol\_error\_connection\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1199c62bb59d18c2d5b0bdf74f2860e3}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1199c62bb59d18c2d5b0bdf74f2860e3} 
+aern\+\_\+protocol\+\_\+error\+\_\+connection\+\_\+failure&The device could not make a connection to the remote host \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_connect\_failure@{aern\_protocol\_error\_connect\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_connect\_failure@{aern\_protocol\_error\_connect\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a25ba416f4fba0aff12f8e51c5e38c6b7}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a25ba416f4fba0aff12f8e51c5e38c6b7} 
+aern\+\_\+protocol\+\_\+error\+\_\+connect\+\_\+failure&The transmission failed at the KEX connection phase \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_convergence\_failure@{aern\_protocol\_error\_convergence\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_convergence\_failure@{aern\_protocol\_error\_convergence\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ae56b12a70e998c239d0b23c93cce37e8}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ae56b12a70e998c239d0b23c93cce37e8} 
+aern\+\_\+protocol\+\_\+error\+\_\+convergence\+\_\+failure&The convergence call has returned an error \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_convergence\_synchronized@{aern\_protocol\_error\_convergence\_synchronized}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_convergence\_synchronized@{aern\_protocol\_error\_convergence\_synchronized}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ab245caccffd427cd1ab3060ffe8157ee}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ab245caccffd427cd1ab3060ffe8157ee} 
+aern\+\_\+protocol\+\_\+error\+\_\+convergence\+\_\+synchronized&The database is already synchronized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_decapsulation\_failure@{aern\_protocol\_error\_decapsulation\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_decapsulation\_failure@{aern\_protocol\_error\_decapsulation\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a68b2803a97997907b1d4b7bb321546ae}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a68b2803a97997907b1d4b7bb321546ae} 
+aern\+\_\+protocol\+\_\+error\+\_\+decapsulation\+\_\+failure&The asymmetric cipher failed to decapsulate the shared secret \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_decoding\_failure@{aern\_protocol\_error\_decoding\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_decoding\_failure@{aern\_protocol\_error\_decoding\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a4ea1f215e4744073d3cf2793e849b3c2}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a4ea1f215e4744073d3cf2793e849b3c2} 
+aern\+\_\+protocol\+\_\+error\+\_\+decoding\+\_\+failure&The node or certificate decoding failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_decryption\_failure@{aern\_protocol\_error\_decryption\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_decryption\_failure@{aern\_protocol\_error\_decryption\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a88e5eab5dcbc8a3a4177a8d36dc391b4}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a88e5eab5dcbc8a3a4177a8d36dc391b4} 
+aern\+\_\+protocol\+\_\+error\+\_\+decryption\+\_\+failure&The decryption authentication has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_establish\_failure@{aern\_protocol\_error\_establish\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_establish\_failure@{aern\_protocol\_error\_establish\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a5c6a4166fca93826fa300d1a44872c73}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a5c6a4166fca93826fa300d1a44872c73} 
+aern\+\_\+protocol\+\_\+error\+\_\+establish\+\_\+failure&The transmission failed at the KEX establish phase \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_exchange\_failure@{aern\_protocol\_error\_exchange\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_exchange\_failure@{aern\_protocol\_error\_exchange\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ae2a1fa04dd12dc3dc747618cc646c313}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ae2a1fa04dd12dc3dc747618cc646c313} 
+aern\+\_\+protocol\+\_\+error\+\_\+exchange\+\_\+failure&The transmission failed at the KEX exchange phase \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_file\_not\_deleted@{aern\_protocol\_error\_file\_not\_deleted}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_file\_not\_deleted@{aern\_protocol\_error\_file\_not\_deleted}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a814fb60ffbdd05313e3b9bc3aab5cd62}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a814fb60ffbdd05313e3b9bc3aab5cd62} 
+aern\+\_\+protocol\+\_\+error\+\_\+file\+\_\+not\+\_\+deleted&The application could not delete a local file \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_file\_not\_found@{aern\_protocol\_error\_file\_not\_found}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_file\_not\_found@{aern\_protocol\_error\_file\_not\_found}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a094fb129265fe5468d2d577af8c0d310}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a094fb129265fe5468d2d577af8c0d310} 
+aern\+\_\+protocol\+\_\+error\+\_\+file\+\_\+not\+\_\+found&The file could not be found \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_file\_not\_written@{aern\_protocol\_error\_file\_not\_written}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_file\_not\_written@{aern\_protocol\_error\_file\_not\_written}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ab46a41d835852096d583179ce5e06347}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ab46a41d835852096d583179ce5e06347} 
+aern\+\_\+protocol\+\_\+error\+\_\+file\+\_\+not\+\_\+written&The file could not be written to storage \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_hash\_invalid@{aern\_protocol\_error\_hash\_invalid}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_hash\_invalid@{aern\_protocol\_error\_hash\_invalid}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a99a9fa6b7de2f4692b6667c6dc314a9c}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a99a9fa6b7de2f4692b6667c6dc314a9c} 
+aern\+\_\+protocol\+\_\+error\+\_\+hash\+\_\+invalid&The public-\/key hash is invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_hosts\_exceeded@{aern\_protocol\_error\_hosts\_exceeded}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_hosts\_exceeded@{aern\_protocol\_error\_hosts\_exceeded}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724acbb13664003b3bd4d2154fe0c2203f2b}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724acbb13664003b3bd4d2154fe0c2203f2b} 
+aern\+\_\+protocol\+\_\+error\+\_\+hosts\+\_\+exceeded&The server has run out of socket connections \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_invalid\_request@{aern\_protocol\_error\_invalid\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_invalid\_request@{aern\_protocol\_error\_invalid\_request}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780} 
+aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request&The packet flag was unexpected \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_certificate\_expired@{aern\_protocol\_error\_certificate\_expired}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_certificate\_expired@{aern\_protocol\_error\_certificate\_expired}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a9410c4234c6b1095b0608e6a60b404a3}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a9410c4234c6b1095b0608e6a60b404a3} 
+aern\+\_\+protocol\+\_\+error\+\_\+certificate\+\_\+expired&The certificate has expired \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_key\_expired@{aern\_protocol\_error\_key\_expired}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_key\_expired@{aern\_protocol\_error\_key\_expired}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a2a5386d69b992fe4b2056e7b73bcae8b}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a2a5386d69b992fe4b2056e7b73bcae8b} 
+aern\+\_\+protocol\+\_\+error\+\_\+key\+\_\+expired&The AERN public key has expired \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_key\_unrecognized@{aern\_protocol\_error\_key\_unrecognized}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_key\_unrecognized@{aern\_protocol\_error\_key\_unrecognized}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad6ce7be33685e4154d80b240fb51ad18}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad6ce7be33685e4154d80b240fb51ad18} 
+aern\+\_\+protocol\+\_\+error\+\_\+key\+\_\+unrecognized&The key identity is unrecognized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_listener\_fail@{aern\_protocol\_error\_listener\_fail}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_listener\_fail@{aern\_protocol\_error\_listener\_fail}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a12918e123ad01532b35e253b2cc66eb5}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a12918e123ad01532b35e253b2cc66eb5} 
+aern\+\_\+protocol\+\_\+error\+\_\+listener\+\_\+fail&The listener function failed to initialize \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_memory\_allocation@{aern\_protocol\_error\_memory\_allocation}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_memory\_allocation@{aern\_protocol\_error\_memory\_allocation}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad13453e6cf2d843cf32b3e9ee45e4617}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad13453e6cf2d843cf32b3e9ee45e4617} 
+aern\+\_\+protocol\+\_\+error\+\_\+memory\+\_\+allocation&The server has run out of memory \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_message\_time\_invalid@{aern\_protocol\_error\_message\_time\_invalid}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_message\_time\_invalid@{aern\_protocol\_error\_message\_time\_invalid}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a14d4236c6c7855ca479a58888f7baf33}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a14d4236c6c7855ca479a58888f7baf33} 
+aern\+\_\+protocol\+\_\+error\+\_\+message\+\_\+time\+\_\+invalid&The network time is invalid or has substantial delay \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_message\_verification\_failure@{aern\_protocol\_error\_message\_verification\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_message\_verification\_failure@{aern\_protocol\_error\_message\_verification\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa003291f1c8f06bcc2f5a9d8222a4e47}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa003291f1c8f06bcc2f5a9d8222a4e47} 
+aern\+\_\+protocol\+\_\+error\+\_\+message\+\_\+verification\+\_\+failure&The expected data could not be verified \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_no\_usable\_address@{aern\_protocol\_error\_no\_usable\_address}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_no\_usable\_address@{aern\_protocol\_error\_no\_usable\_address}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a4b69ba7702cf36c20c6b68a28921b434}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a4b69ba7702cf36c20c6b68a28921b434} 
+aern\+\_\+protocol\+\_\+error\+\_\+no\+\_\+usable\+\_\+address&The server has no usable IP address, assign in configuration \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_node\_not\_available@{aern\_protocol\_error\_node\_not\_available}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_node\_not\_available@{aern\_protocol\_error\_node\_not\_available}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a3600f81106dbb9bdfdbfb7916a3bb304}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a3600f81106dbb9bdfdbfb7916a3bb304} 
+aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+not\+\_\+available&The node is not available for a session \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_node\_not\_found@{aern\_protocol\_error\_node\_not\_found}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_node\_not\_found@{aern\_protocol\_error\_node\_not\_found}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ac03816b0f3242cbdc26914d2f45345da}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ac03816b0f3242cbdc26914d2f45345da} 
+aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+not\+\_\+found&The node could not be found in the database \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_node\_was\_registered@{aern\_protocol\_error\_node\_was\_registered}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_node\_was\_registered@{aern\_protocol\_error\_node\_was\_registered}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a49105af2a83456af7396993d035fa7b5}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a49105af2a83456af7396993d035fa7b5} 
+aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+was\+\_\+registered&The node was previously registered in the database \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_operation\_cancelled@{aern\_protocol\_error\_operation\_cancelled}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_operation\_cancelled@{aern\_protocol\_error\_operation\_cancelled}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1cdc3db84948f54e84ecdc17165b209d}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1cdc3db84948f54e84ecdc17165b209d} 
+aern\+\_\+protocol\+\_\+error\+\_\+operation\+\_\+cancelled&The operation was cancelled by the user \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_packet\_header\_invalid@{aern\_protocol\_error\_packet\_header\_invalid}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_packet\_header\_invalid@{aern\_protocol\_error\_packet\_header\_invalid}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1d384f95e63413ee1889ff47c19fc07d}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a1d384f95e63413ee1889ff47c19fc07d} 
+aern\+\_\+protocol\+\_\+error\+\_\+packet\+\_\+header\+\_\+invalid&The packet header received was invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_packet\_unsequenced@{aern\_protocol\_error\_packet\_unsequenced}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_packet\_unsequenced@{aern\_protocol\_error\_packet\_unsequenced}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a743e4fb000c25f174f8a1312e9e3da8f}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a743e4fb000c25f174f8a1312e9e3da8f} 
+aern\+\_\+protocol\+\_\+error\+\_\+packet\+\_\+unsequenced&The packet was received out of sequence \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_receive\_failure@{aern\_protocol\_error\_receive\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_receive\_failure@{aern\_protocol\_error\_receive\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a92107713632e9a3ff75ac8cabed283cf}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a92107713632e9a3ff75ac8cabed283cf} 
+aern\+\_\+protocol\+\_\+error\+\_\+receive\+\_\+failure&The receiver failed at the network layer \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_root\_signature\_invalid@{aern\_protocol\_error\_root\_signature\_invalid}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_root\_signature\_invalid@{aern\_protocol\_error\_root\_signature\_invalid}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a57453f7312a290d8bfac0fef16fe6c82}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a57453f7312a290d8bfac0fef16fe6c82} 
+aern\+\_\+protocol\+\_\+error\+\_\+root\+\_\+signature\+\_\+invalid&The root signature failed authentication \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_serialization\_failure@{aern\_protocol\_error\_serialization\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_serialization\_failure@{aern\_protocol\_error\_serialization\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724af3d0f532057e7e5f80fd7ac1e8f9daa8}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724af3d0f532057e7e5f80fd7ac1e8f9daa8} 
+aern\+\_\+protocol\+\_\+error\+\_\+serialization\+\_\+failure&The certificate could not be serialized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_signature\_failure@{aern\_protocol\_error\_signature\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_signature\_failure@{aern\_protocol\_error\_signature\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a0250f20656a292ee555dbd90c613976a}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a0250f20656a292ee555dbd90c613976a} 
+aern\+\_\+protocol\+\_\+error\+\_\+signature\+\_\+failure&The signature scheme could not sign a message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_signing\_failure@{aern\_protocol\_error\_signing\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_signing\_failure@{aern\_protocol\_error\_signing\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a27cc95e4cbc4049c8c991710e2c79d27}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a27cc95e4cbc4049c8c991710e2c79d27} 
+aern\+\_\+protocol\+\_\+error\+\_\+signing\+\_\+failure&The transmission failed to sign the data \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_socket\_binding@{aern\_protocol\_error\_socket\_binding}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_socket\_binding@{aern\_protocol\_error\_socket\_binding}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad48fd8368422a0bc53e4ead2c039c67c}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724ad48fd8368422a0bc53e4ead2c039c67c} 
+aern\+\_\+protocol\+\_\+error\+\_\+socket\+\_\+binding&The socket could not be bound to an IP address \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_socket\_creation@{aern\_protocol\_error\_socket\_creation}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_socket\_creation@{aern\_protocol\_error\_socket\_creation}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a460510308bac5dbd086d799f4546db42}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a460510308bac5dbd086d799f4546db42} 
+aern\+\_\+protocol\+\_\+error\+\_\+socket\+\_\+creation&The socket could not be created \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_transmit\_failure@{aern\_protocol\_error\_transmit\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_transmit\_failure@{aern\_protocol\_error\_transmit\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a122d9a72c602e423b9f920db5ff2943a}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a122d9a72c602e423b9f920db5ff2943a} 
+aern\+\_\+protocol\+\_\+error\+\_\+transmit\+\_\+failure&The transmitter failed at the network layer \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_topology\_no\_aps@{aern\_protocol\_error\_topology\_no\_aps}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_topology\_no\_aps@{aern\_protocol\_error\_topology\_no\_aps}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a84067da0df4803fb88ec0a3d25fdcda4}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a84067da0df4803fb88ec0a3d25fdcda4} 
+aern\+\_\+protocol\+\_\+error\+\_\+topology\+\_\+no\+\_\+aps&The topological database has no aps entries \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_unknown\_protocol@{aern\_protocol\_error\_unknown\_protocol}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_unknown\_protocol@{aern\_protocol\_error\_unknown\_protocol}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724a7df311522baef4cce7045773aff01c26}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724a7df311522baef4cce7045773aff01c26} 
+aern\+\_\+protocol\+\_\+error\+\_\+unknown\+\_\+protocol&The protocol string was not recognized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_protocol\_error\_verification\_failure@{aern\_protocol\_error\_verification\_failure}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_protocol\_error\_verification\_failure@{aern\_protocol\_error\_verification\_failure}}}\Hypertarget{aern_8h_a69dc871c4b6d5d947f6afdda81464724aaf9c2f3ec1ea2dd4721f11a99b27ebcf}\label{aern_8h_a69dc871c4b6d5d947f6afdda81464724aaf9c2f3ec1ea2dd4721f11a99b27ebcf} 
+aern\+\_\+protocol\+\_\+error\+\_\+verification\+\_\+failure&The transmission failed at the KEX verify phase \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{aern_8h_ac74de094a5c7117514cba96e3a7fb962}\index{aern.h@{aern.h}!aern\_version\_sets@{aern\_version\_sets}}
+\index{aern\_version\_sets@{aern\_version\_sets}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_version\_sets}{aern\_version\_sets}}
+{\footnotesize\ttfamily \label{aern_8h_ac74de094a5c7117514cba96e3a7fb962} 
+enum \mbox{\hyperlink{aern_8h_ac74de094a5c7117514cba96e3a7fb962}{aern\+\_\+version\+\_\+sets}}}
+
+
+
+The AERN version sets. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_version\_set\_none@{aern\_version\_set\_none}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_version\_set\_none@{aern\_version\_set\_none}}}\Hypertarget{aern_8h_ac74de094a5c7117514cba96e3a7fb962a780d49b7f5040f8063947749de397f1b}\label{aern_8h_ac74de094a5c7117514cba96e3a7fb962a780d49b7f5040f8063947749de397f1b} 
+aern\+\_\+version\+\_\+set\+\_\+none&No version identifier is set \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_version\_set\_one\_zero@{aern\_version\_set\_one\_zero}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_version\_set\_one\_zero@{aern\_version\_set\_one\_zero}}}\Hypertarget{aern_8h_ac74de094a5c7117514cba96e3a7fb962a5d46d108344370f320db3fc4c352ea63}\label{aern_8h_ac74de094a5c7117514cba96e3a7fb962a5d46d108344370f320db3fc4c352ea63} 
+aern\+\_\+version\+\_\+set\+\_\+one\+\_\+zero&The 1.\+0 version identifier \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{aern_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{aern_8h_a9523678f8ccadbe584dc33c69add03c8}\index{aern.h@{aern.h}!aern\_connection\_close@{aern\_connection\_close}}
+\index{aern\_connection\_close@{aern\_connection\_close}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_connection\_close()}{aern\_connection\_close()}}
+{\footnotesize\ttfamily \label{aern_8h_a9523678f8ccadbe584dc33c69add03c8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+connection\+\_\+close (\begin{DoxyParamCaption}\item[{qsc\+\_\+socket \texorpdfstring{$\ast$}{*}}]{rsock}{, }\item[{\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}}}]{err}{, }\item[{bool}]{notify}{}\end{DoxyParamCaption})}
+
+
+
+Close the network connection between hosts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rsock} & A pointer to the socket structure representing the connection. \\
+\hline
+{\em err} & The network error code to report. \\
+\hline
+{\em notify} & If true, notify the remote host that the connection is closing. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern_8h_ac7faf9729e19882b72f97b9988e1a885}\index{aern.h@{aern.h}!aern\_connection\_state\_dispose@{aern\_connection\_state\_dispose}}
+\index{aern\_connection\_state\_dispose@{aern\_connection\_state\_dispose}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_connection\_state\_dispose()}{aern\_connection\_state\_dispose()}}
+{\footnotesize\ttfamily \label{aern_8h_ac7faf9729e19882b72f97b9988e1a885} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+connection\+\_\+state\+\_\+dispose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{}\end{DoxyParamCaption})}
+
+
+
+Dispose of the tunnel connection state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cns} & A pointer to the connection state structure to dispose. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern_8h_a73c3f452a923f12a50956a10421060a5}\index{aern.h@{aern.h}!aern\_decrypt\_packet@{aern\_decrypt\_packet}}
+\index{aern\_decrypt\_packet@{aern\_decrypt\_packet}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_decrypt\_packet()}{aern\_decrypt\_packet()}}
+{\footnotesize\ttfamily \label{aern_8h_a73c3f452a923f12a50956a10421060a5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+decrypt\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{msglen}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Decrypt a message and copy it to the output buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cns} & A pointer to the connection state structure. \\
+\hline
+{\em message} & The output array for the decrypted message. \\
+\hline
+{\em msglen} & A pointer to a variable that will receive the length of the decrypted message. \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} A pointer to the input packet structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the network error state. 
+\end{DoxyReturn}
+\Hypertarget{aern_8h_a9dd330bddc7e31403fb85a42e51d13a1}\index{aern.h@{aern.h}!aern\_encrypt\_packet@{aern\_encrypt\_packet}}
+\index{aern\_encrypt\_packet@{aern\_encrypt\_packet}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_encrypt\_packet()}{aern\_encrypt\_packet()}}
+{\footnotesize\ttfamily \label{aern_8h_a9dd330bddc7e31403fb85a42e51d13a1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+encrypt\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{, }\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{}\end{DoxyParamCaption})}
+
+
+
+Encrypt a message and build an output packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cns} & A pointer to the connection state structure. \\
+\hline
+{\em packetout} & A pointer to the output packet structure. \\
+\hline
+{\em message} & \mbox{[}const\mbox{]} The input message array. \\
+\hline
+{\em msglen} & The length of the input message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the network error state. 
+\end{DoxyReturn}
+\Hypertarget{aern_8h_a9ff6e0fed5834e3ad6fe15f21fa5ad98}\index{aern.h@{aern.h}!aern\_network\_error\_to\_string@{aern\_network\_error\_to\_string}}
+\index{aern\_network\_error\_to\_string@{aern\_network\_error\_to\_string}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_error\_to\_string()}{aern\_network\_error\_to\_string()}}
+{\footnotesize\ttfamily \label{aern_8h_a9ff6e0fed5834e3ad6fe15f21fa5ad98} 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} aern\+\_\+network\+\_\+error\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Return a pointer to a string description of a network error code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & The network error code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to an error string or NULL if the code is unrecognized. 
+\end{DoxyReturn}
+\Hypertarget{aern_8h_a3f0786c848f56cd46fbdbb53c31887ff}\index{aern.h@{aern.h}!aern\_packet\_clear@{aern\_packet\_clear}}
+\index{aern\_packet\_clear@{aern\_packet\_clear}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_clear()}{aern\_packet\_clear()}}
+{\footnotesize\ttfamily \label{aern_8h_a3f0786c848f56cd46fbdbb53c31887ff} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+packet\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{}\end{DoxyParamCaption})}
+
+
+
+Clear the state of a network packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & A pointer to the packet structure to clear. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern_8h_a8e3439f91fff1df3184b8aeee1fc68f5}\index{aern.h@{aern.h}!aern\_packet\_error\_message@{aern\_packet\_error\_message}}
+\index{aern\_packet\_error\_message@{aern\_packet\_error\_message}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_error\_message()}{aern\_packet\_error\_message()}}
+{\footnotesize\ttfamily \label{aern_8h_a8e3439f91fff1df3184b8aeee1fc68f5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+packet\+\_\+error\+\_\+message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Populate a packet structure with an error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & A pointer to the packet structure. \\
+\hline
+{\em error} & The protocol error code to embed in the packet. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern_8h_a6fc4dadfffa09d47a24ca5ed442deab5}\index{aern.h@{aern.h}!aern\_packet\_header\_deserialize@{aern\_packet\_header\_deserialize}}
+\index{aern\_packet\_header\_deserialize@{aern\_packet\_header\_deserialize}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_header\_deserialize()}{aern\_packet\_header\_deserialize()}}
+{\footnotesize\ttfamily \label{aern_8h_a6fc4dadfffa09d47a24ca5ed442deab5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+packet\+\_\+header\+\_\+deserialize (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{header}{, }\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{}\end{DoxyParamCaption})}
+
+
+
+Deserialize a byte array into a packet header. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & \mbox{[}const\mbox{]} The header byte array to deserialize. \\
+\hline
+{\em packet} & A pointer to the packet structure that will be populated. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern_8h_a43040bf7a96fe91043d2af94b7139034}\index{aern.h@{aern.h}!aern\_packet\_header\_serialize@{aern\_packet\_header\_serialize}}
+\index{aern\_packet\_header\_serialize@{aern\_packet\_header\_serialize}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_header\_serialize()}{aern\_packet\_header\_serialize()}}
+{\footnotesize\ttfamily \label{aern_8h_a43040bf7a96fe91043d2af94b7139034} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+packet\+\_\+header\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Serialize a packet header into a byte array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & \mbox{[}const\mbox{]} A pointer to the packet structure to serialize. \\
+\hline
+{\em header} & The byte array that will receive the serialized header. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern_8h_a56507e954bca6540934e1154c3e3d8e7}\index{aern.h@{aern.h}!aern\_packet\_set\_utc\_time@{aern\_packet\_set\_utc\_time}}
+\index{aern\_packet\_set\_utc\_time@{aern\_packet\_set\_utc\_time}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_set\_utc\_time()}{aern\_packet\_set\_utc\_time()}}
+{\footnotesize\ttfamily \label{aern_8h_a56507e954bca6540934e1154c3e3d8e7} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+packet\+\_\+set\+\_\+utc\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{}\end{DoxyParamCaption})}
+
+
+
+Set the local UTC time in the packet header. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & A pointer to the network packet. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern_8h_aca1e36b6ef4e422a309c984894555e85}\index{aern.h@{aern.h}!aern\_packet\_time\_valid@{aern\_packet\_time\_valid}}
+\index{aern\_packet\_time\_valid@{aern\_packet\_time\_valid}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_time\_valid()}{aern\_packet\_time\_valid()}}
+{\footnotesize\ttfamily \label{aern_8h_aca1e36b6ef4e422a309c984894555e85} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+packet\+\_\+time\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{}\end{DoxyParamCaption})}
+
+
+
+Check if the packet\textquotesingle{}s UTC time is within the valid time threshold. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & \mbox{[}const\mbox{]} A pointer to the network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the packet was received within the valid time threshold. 
+\end{DoxyReturn}
+\Hypertarget{aern_8h_a198175d18de8dcc72efb347c1043bd58}\index{aern.h@{aern.h}!aern\_packet\_to\_stream@{aern\_packet\_to\_stream}}
+\index{aern\_packet\_to\_stream@{aern\_packet\_to\_stream}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_to\_stream()}{aern\_packet\_to\_stream()}}
+{\footnotesize\ttfamily \label{aern_8h_a198175d18de8dcc72efb347c1043bd58} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+packet\+\_\+to\+\_\+stream (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pstream}{}\end{DoxyParamCaption})}
+
+
+
+Serialize a network packet to a byte stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & \mbox{[}const\mbox{]} A pointer to the packet. \\
+\hline
+{\em pstream} & A pointer to the output byte stream.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the size of the serialized byte stream. 
+\end{DoxyReturn}
+\Hypertarget{aern_8h_aa95b31981a32810c2820e2c8c4081005}\index{aern.h@{aern.h}!aern\_protocol\_error\_to\_string@{aern\_protocol\_error\_to\_string}}
+\index{aern\_protocol\_error\_to\_string@{aern\_protocol\_error\_to\_string}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_protocol\_error\_to\_string()}{aern\_protocol\_error\_to\_string()}}
+{\footnotesize\ttfamily \label{aern_8h_aa95b31981a32810c2820e2c8c4081005} 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} aern\+\_\+protocol\+\_\+error\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Return a pointer to a string description of a protocol error code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & The protocol error code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to an error string or NULL if the code is unrecognized. 
+\end{DoxyReturn}
+\Hypertarget{aern_8h_a0de58f5f5e88bebed3d9ba98250563c6}\index{aern.h@{aern.h}!aern\_stream\_to\_packet@{aern\_stream\_to\_packet}}
+\index{aern\_stream\_to\_packet@{aern\_stream\_to\_packet}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_stream\_to\_packet()}{aern\_stream\_to\_packet()}}
+{\footnotesize\ttfamily \label{aern_8h_a0de58f5f5e88bebed3d9ba98250563c6} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+stream\+\_\+to\+\_\+packet (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pstream}{, }\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packet}{}\end{DoxyParamCaption})}
+
+
+
+Deserialize a byte stream into a network packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pstream} & \mbox{[}const\mbox{]} The byte stream containing the packet data. \\
+\hline
+{\em packet} & A pointer to the packet structure to populate. \\
+\hline
+\end{DoxyParams}

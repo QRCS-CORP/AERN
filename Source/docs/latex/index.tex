@@ -1,0 +1,37 @@
+\chapter{Authenticated Encrypted Relay Network (AERN) }
+\hypertarget{index}{}\label{index}\index{Authenticated Encrypted Relay Network (AERN)@{Authenticated Encrypted Relay Network (AERN)}}
+\hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro_sec}
+AERN is an authenticated, encrypted proxy-\/chaining protocol that forms a fully meshed “cloud” of proxy servers to provide secure, anonymous communications. Proxies perform asymmetric key exchange to derive shared secrets, then operate bi-\/directional symmetric tunnels for data forwarding. Clients enter the mesh by selecting an entry node at random from a controller-\/provided list and establishing an encrypted tunnel to it. Routes are built as randomized proxy circuits, enabling strong metadata resistance. ~\newline
+(See\+: Introduction and network overview.)\hypertarget{index_arch_sec}{}\doxysection{\texorpdfstring{Architecture and Roles}{Architecture and Roles}}\label{index_arch_sec}
+\hypertarget{index_ars_sec}{}\doxysubsection{\texorpdfstring{AERN Root Security (ARS)}{AERN Root Security (ARS)}}\label{index_ars_sec}
+Trust anchor that signs device certificates used for authentication across the mesh.\hypertarget{index_adc_sec}{}\doxysubsection{\texorpdfstring{AERN Domain Controller (ADC)}{AERN Domain Controller (ADC)}}\label{index_adc_sec}
+Manages device registration, certificate validation, topology distribution, and revocation; returns the authenticated proxy list to clients.\hypertarget{index_aps_sec}{}\doxysubsection{\texorpdfstring{AERN Proxy Server (APS)}{AERN Proxy Server (APS)}}\label{index_aps_sec}
+Authenticated server participating in a full-\/mesh; maintains per-\/peer tunnels, forwards encrypted traffic, and can serve as entry, intermediate, or exit node.\hypertarget{index_acd_sec}{}\doxysubsection{\texorpdfstring{AERN Client Device (ACD)}{AERN Client Device (ACD)}}\label{index_acd_sec}
+Authenticated endpoint that registers to obtain the proxy list, selects an entry node, performs key exchange, and transmits via the proxy mesh.\hypertarget{index_proto_sec}{}\doxysection{\texorpdfstring{Protocol Overview}{Protocol Overview}}\label{index_proto_sec}
+\hypertarget{index_join_sec}{}\doxysubsection{\texorpdfstring{Registration and Entry}{Registration and Entry}}\label{index_join_sec}
+Clients register with the ADC, which verifies certificates and returns a signed, hashed proxy list. The client chooses an entry proxy at random and performs an asymmetric key exchange to derive a shared secret. The shared secret is expanded (SHAKE) into RCS keys/nonces for a duplex symmetric tunnel.\hypertarget{index_routing_sec}{}\doxysubsection{\texorpdfstring{Route Maps and Forwarding}{Route Maps and Forwarding}}\label{index_routing_sec}
+For each message flow, the entry node composes a route map\+: a randomized sequence of proxy “hints” (16-\/bit indices into the shared topology list). The map and packet are encrypted; at each hop the next destination is looked up and the payload (including header fields) is re-\/encrypted and forwarded. Entry/exit nodes remain fixed for the session; intermediate hops are varied.\hypertarget{index_pkt_sec}{}\doxysubsection{\texorpdfstring{Framing and Header}{Framing and Header}}\label{index_pkt_sec}
+AERN uses a fixed 1500-\/byte MTU frame. The inter-\/proxy packet format (54-\/byte header + payload) includes\+: message/flag type, sequence number, fragment sequence, encrypted route map, and UTC timestamp used for anti-\/replay. Larger messages are fragmented and reassembled at exit/client as required.\hypertarget{index_crypto_sec}{}\doxysection{\texorpdfstring{Cryptographic Primitives}{Cryptographic Primitives}}\label{index_crypto_sec}
+Asymmetric\+: Kyber/\+ML-\/\+KEM and Mc\+Eliece for KEM; Dilithium or SPHINCS+ for signatures. ~\newline
+Symmetric\+: RCS AEAD stream cipher for tunnels. ~\newline
+Hash/\+KDF/\+MAC\+: SHA3-\/512, SHAKE, and KMAC for hashing, expansion, and authentication. Asymmetric operations are limited to registration and session setup; the data plane is symmetric for efficiency.\hypertarget{index_filesec_sec}{}\doxysection{\texorpdfstring{Files and Modules}{Files and Modules}}\label{index_filesec_sec}
+
+\begin{DoxyItemize}
+\item \doxylink{aern_8h}{aern.\+h} \+: Public API, constants, enums, and structures.
+\item aern\+\_\+client.\+h \+: Client initialization and tunnel establishment.
+\item aern\+\_\+proxy.\+h \+: Proxy synchronization, per-\/peer tunnels, forwarding.
+\item aern\+\_\+ctrl.\+h \+: Domain controller functions (registration, topology).
+\item aern\+\_\+crypto.\+h \+: KEM, signatures, KDF/\+MAC wrappers (QSC primitives).
+\item aern\+\_\+net.\+h \+: Packet structure, route-\/map handling, fragmentation.
+\end{DoxyItemize}\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{index_usage_sec}
+1) Deploy ARS (root) and ADC (domain controller); provision certificates. ~\newline
+2) Start proxies; synchronize topology and derive per-\/peer symmetric tunnels. ~\newline
+3) Register clients through ADC; obtain the signed proxy list. ~\newline
+4) Client selects entry node at random, performs KEX, and sends traffic via randomized multi-\/hop route maps.
+
+\begin{DoxyAuthor}{Author}
+QRCS Corporation 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/11-\/06 
+\end{DoxyDate}

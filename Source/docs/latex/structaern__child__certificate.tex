@@ -1,0 +1,99 @@
+\doxysection{aern\+\_\+child\+\_\+certificate Struct Reference}
+\hypertarget{structaern__child__certificate}{}\label{structaern__child__certificate}\index{aern\_child\_certificate@{aern\_child\_certificate}}
+
+
+The child certificate structure.  
+
+
+
+
+{\ttfamily \#include $<$aern.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__child__certificate_a43324b24423c72c1eb2705247ace7e73}{csig}} \mbox{[}\mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__child__certificate_acc9a769218a350a028307f9c4d6abb41}{verkey}} \mbox{[}AERN\+\_\+\+ASYMMETRIC\+\_\+\+VERIFICATION\+\_\+\+KEY\+\_\+\+SIZE\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__child__certificate_a327495722fee1a0340fdca4b16e35239}{issuer}} \mbox{[}\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__child__certificate_a65c4b2bf20a2a2d125705570a9b8b582}{serial}} \mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__child__certificate_afa9365fb9d83750e981998d255e19afb}{rootser}} \mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}
+\item 
+\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \mbox{\hyperlink{structaern__child__certificate_a44fb0803ee0f4026ae9927fd4386beba}{expiration}}
+\item 
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} \mbox{\hyperlink{structaern__child__certificate_a73fb917b64a66523ca67f682c095ea03}{designation}}
+\item 
+\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} \mbox{\hyperlink{structaern__child__certificate_a3c24e3f625b3e0b112e3730cbed72a19}{algorithm}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__child__certificate_ab22abc2906422da61885ac6c8e6a1a59}{version}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The child certificate structure. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__child__certificate_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__child__certificate_a3c24e3f625b3e0b112e3730cbed72a19}\index{aern\_child\_certificate@{aern\_child\_certificate}!algorithm@{algorithm}}
+\index{algorithm@{algorithm}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{algorithm}{algorithm}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_a3c24e3f625b3e0b112e3730cbed72a19} 
+\mbox{\hyperlink{aern_8h_a6249420c8c2d55814707fff2f6caaef9}{aern\+\_\+configuration\+\_\+sets}} algorithm}
+
+The algorithm configuration identifier \Hypertarget{structaern__child__certificate_a43324b24423c72c1eb2705247ace7e73}\index{aern\_child\_certificate@{aern\_child\_certificate}!csig@{csig}}
+\index{csig@{csig}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{csig}{csig}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_a43324b24423c72c1eb2705247ace7e73} 
+uint8\+\_\+t csig\mbox{[}\mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}}\mbox{]}}
+
+The certificate\textquotesingle{}s signed hash \Hypertarget{structaern__child__certificate_a73fb917b64a66523ca67f682c095ea03}\index{aern\_child\_certificate@{aern\_child\_certificate}!designation@{designation}}
+\index{designation@{designation}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{designation}{designation}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_a73fb917b64a66523ca67f682c095ea03} 
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} designation}
+
+The certificate type designation \Hypertarget{structaern__child__certificate_a44fb0803ee0f4026ae9927fd4386beba}\index{aern\_child\_certificate@{aern\_child\_certificate}!expiration@{expiration}}
+\index{expiration@{expiration}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{expiration}{expiration}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_a44fb0803ee0f4026ae9927fd4386beba} 
+\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} expiration}
+
+The from and to certificate expiration times \Hypertarget{structaern__child__certificate_a327495722fee1a0340fdca4b16e35239}\index{aern\_child\_certificate@{aern\_child\_certificate}!issuer@{issuer}}
+\index{issuer@{issuer}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{issuer}{issuer}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_a327495722fee1a0340fdca4b16e35239} 
+char issuer\mbox{[}\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}}\mbox{]}}
+
+The certificate issuer \Hypertarget{structaern__child__certificate_afa9365fb9d83750e981998d255e19afb}\index{aern\_child\_certificate@{aern\_child\_certificate}!rootser@{rootser}}
+\index{rootser@{rootser}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{rootser}{rootser}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_afa9365fb9d83750e981998d255e19afb} 
+uint8\+\_\+t rootser\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}}
+
+The root certificate\textquotesingle{}s serial number \Hypertarget{structaern__child__certificate_a65c4b2bf20a2a2d125705570a9b8b582}\index{aern\_child\_certificate@{aern\_child\_certificate}!serial@{serial}}
+\index{serial@{serial}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{serial}{serial}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_a65c4b2bf20a2a2d125705570a9b8b582} 
+uint8\+\_\+t serial\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}}
+
+The certificate serial number \Hypertarget{structaern__child__certificate_acc9a769218a350a028307f9c4d6abb41}\index{aern\_child\_certificate@{aern\_child\_certificate}!verkey@{verkey}}
+\index{verkey@{verkey}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{verkey}{verkey}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_acc9a769218a350a028307f9c4d6abb41} 
+uint8\+\_\+t verkey\mbox{[}AERN\+\_\+\+ASYMMETRIC\+\_\+\+VERIFICATION\+\_\+\+KEY\+\_\+\+SIZE\mbox{]}}
+
+The serialized public verification key \Hypertarget{structaern__child__certificate_ab22abc2906422da61885ac6c8e6a1a59}\index{aern\_child\_certificate@{aern\_child\_certificate}!version@{version}}
+\index{version@{version}!aern\_child\_certificate@{aern\_child\_certificate}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{structaern__child__certificate_ab22abc2906422da61885ac6c8e6a1a59} 
+uint8\+\_\+t version}
+
+The certificate version 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{aern_8h}{aern.\+h}}\end{DoxyCompactItemize}

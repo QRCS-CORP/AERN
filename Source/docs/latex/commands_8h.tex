@@ -1,0 +1,1380 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/commands.h File Reference}
+\hypertarget{commands_8h}{}\label{commands_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/commands.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/commands.h}}
+
+
+The AERN command enumerations.  
+
+
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{commands_8h_aa6656b84b1139727a844b751a062ffc1}\label{commands_8h_aa6656b84b1139727a844b751a062ffc1} 
+typedef enum \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648}{aern\+\_\+console\+\_\+commands}} {\bfseries aern\+\_\+console\+\_\+commands}
+\item 
+\Hypertarget{commands_8h_aa3d33f1e08394638654b4582d0178c9e}\label{commands_8h_aa3d33f1e08394638654b4582d0178c9e} 
+typedef enum \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}} {\bfseries aern\+\_\+application\+\_\+messages}
+\item 
+\Hypertarget{commands_8h_a5ec88cd6bb21ea9c1424a0f666cf3851}\label{commands_8h_a5ec88cd6bb21ea9c1424a0f666cf3851} 
+typedef enum \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}} {\bfseries aern\+\_\+command\+\_\+actions}
+\item 
+\Hypertarget{commands_8h_a5df2ee6e33ef93b38bfa3cdea61a059b}\label{commands_8h_a5df2ee6e33ef93b38bfa3cdea61a059b} 
+typedef enum \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} {\bfseries aern\+\_\+console\+\_\+modes}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648}{aern\+\_\+console\+\_\+commands}} \{ \newline
+\mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ae6159bce6102b928fd49c3f875902b2b}{aern\+\_\+commands\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a8f0477c467f805ea90235a8a28c5cdc6}{aern\+\_\+commands\+\_\+certificate\+\_\+create}} = 0x01U
+, \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af8cb911862b83840ca401b06e9b55c85}{aern\+\_\+commands\+\_\+certificate\+\_\+change}} = 0x02U
+, \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648aa75e1358b97cd20338fc76c286ac2d58}{aern\+\_\+commands\+\_\+certificate\+\_\+sign}} = 0x03U
+, \newline
+\mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a31e5accfc665a5b0525568f7d4d362f4}{aern\+\_\+commands\+\_\+certificate\+\_\+revoke}} = 0x04U
+, \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ac38299b75499c1dafa783f7c6d352af9}{aern\+\_\+commands\+\_\+certificate\+\_\+format}} = 0x05U
+, \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a6d6dfe062b68cdc5a4246b35a3d3849e}{aern\+\_\+commands\+\_\+device\+\_\+add}} = 0x06U
+, \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a5c6773dfa256ff211b157eb9aba69760}{aern\+\_\+commands\+\_\+network\+\_\+converge}} = 0x07U
+, \newline
+\mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af151c0f696919302d572a041b5ca79e3}{aern\+\_\+commands\+\_\+adc\+\_\+election}} = 0x08U
+ \}
+\begin{DoxyCompactList}\small\item\em The common console functions. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}} \{ \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6e3bceb557de157bd8e73876ade1c1d3}{aern\+\_\+application\+\_\+not\+\_\+recognized}} = 0x00U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4c03a97bc4062b02d822de159847e818}{aern\+\_\+application\+\_\+erase\+\_\+erase\+\_\+all}} = 0x01U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4518576002d4281cccfb3e22862b85ff}{aern\+\_\+application\+\_\+erase\+\_\+config}} = 0x02U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a25b7b1fe4fc3662a08b105fe1f538313}{aern\+\_\+application\+\_\+erase\+\_\+log}} = 0x03U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a96aebca350c2012da60b7415ab7a19e7}{aern\+\_\+application\+\_\+authorization\+\_\+failure}} = 0x04U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6bb78bee25ebf287ad8f4108cb39c88c}{aern\+\_\+application\+\_\+retries\+\_\+exceeded}} = 0x05U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6f4284caf6b02b98e58e611878e4950c}{aern\+\_\+application\+\_\+application\+\_\+quit}} = 0x06U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab488901f007d6fa8e7a0ee6bce31e1ef}{aern\+\_\+application\+\_\+logging\+\_\+disabled}} = 0x07U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe1e26d59d341aae65a2e347aef8d72e}{aern\+\_\+application\+\_\+logging\+\_\+enabled}} = 0x08U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aea80faa41402a55cb348ceccc640f2d2}{aern\+\_\+application\+\_\+authentication\+\_\+failure}} = 0x09U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae45ef7e371d53e43e6e01e4eb3393467}{aern\+\_\+application\+\_\+operation\+\_\+aborted}} = 0x0\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5cdfc7b7db85abaf3412ce2af5e44a09}{aern\+\_\+application\+\_\+system\+\_\+erased}} = 0x0\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdfd844abce46361f938d8160a9c6eb}{aern\+\_\+application\+\_\+configuration\+\_\+erased}} = 0x0\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2b2185486d6233838bdb5719ed398180}{aern\+\_\+application\+\_\+log\+\_\+erased}} = 0x0\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac23bf1e073d5f3453e9d3ab2898a4c71}{aern\+\_\+application\+\_\+retry\+\_\+invalid}} = 0x0\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9641ddccf33f394399bd4348520d7793}{aern\+\_\+application\+\_\+timeout\+\_\+invalid}} = 0x0\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad862a72039bcfdde6168467e0332a323}{aern\+\_\+application\+\_\+domain\+\_\+invalid}} = 0x10U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a88896d1d47292743839a4e76ee45ea9a}{aern\+\_\+application\+\_\+hostname\+\_\+invalid}} = 0x11U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac33f5bae7f35bec1865311fdf1b2c7a0}{aern\+\_\+application\+\_\+configuration}} = 0x12U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9e8e6d45d95c15bf5fcf8294b70f425}{aern\+\_\+application\+\_\+connection}} = 0x13U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a66a6124a74a2f204475ce5e3e2b90659}{aern\+\_\+application\+\_\+connection\+\_\+details}} = 0x14U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab039ba456998f83a2c5c2d2c71c55556}{aern\+\_\+application\+\_\+log\+\_\+empty}} = 0x15U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aace20e024eaa4085c572bc1d923ceaeb}{aern\+\_\+application\+\_\+first\+\_\+login}} = 0x16U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a521f282d8c8c58a5dfae3b4a8e9bf42a}{aern\+\_\+application\+\_\+choose\+\_\+name}} = 0x17U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6cf65dfbc6f3920d3827341b3fae4ec}{aern\+\_\+application\+\_\+choose\+\_\+password}} = 0x18U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a63516da3cca88af70c44becc7f906420}{aern\+\_\+application\+\_\+password\+\_\+set}} = 0x19U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a382e9412feb825eb37e6cf0a3e845894}{aern\+\_\+application\+\_\+challenge\+\_\+user}} = 0x1\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a55afc7e80bb976f7f9071a4db1516570}{aern\+\_\+application\+\_\+challenge\+\_\+user\+\_\+failure}} = 0x1\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6181362bf66586610320d4110585c1a4}{aern\+\_\+application\+\_\+challenge\+\_\+password}} = 0x1\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3ce27218a16dccecadf1eb56ffa67888}{aern\+\_\+application\+\_\+challenge\+\_\+password\+\_\+failure}} = 0x1\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4b66250ffec27f012586cbb3c5da0ccf}{aern\+\_\+application\+\_\+challenge\+\_\+device\+\_\+name}} = 0x1\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04f839c619e0a563cfd8818131727477}{aern\+\_\+application\+\_\+challenge\+\_\+device\+\_\+name\+\_\+success}} = 0x1\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae5bc284adbadc1e85e34b121292af704}{aern\+\_\+application\+\_\+challenge\+\_\+device\+\_\+name\+\_\+failure}} = 0x20U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6b23ea0fd441fae1929425d2a35689d1}{aern\+\_\+application\+\_\+remote\+\_\+connect}} = 0x21U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a29669637b76de943ae94b783d6d3b08e}{aern\+\_\+application\+\_\+remote\+\_\+connect\+\_\+key}} = 0x22U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a94a594d9527aa5b7acc49566f6a68f07}{aern\+\_\+application\+\_\+remote\+\_\+connect\+\_\+success}} = 0x23U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad08a958f2ccca32067e9427d63da81ff}{aern\+\_\+application\+\_\+remote\+\_\+connect\+\_\+failure}} = 0x24U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81fad781eb0ee8f21b8e6b2e7b98ba5b}{aern\+\_\+application\+\_\+socket\+\_\+listen}} = 0x25U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0d50569f22ed7d1729d0aeb3b3099392}{aern\+\_\+application\+\_\+socket\+\_\+listen\+\_\+failure}} = 0x26U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec075fd4f930d4b4bc6856469bfc6912}{aern\+\_\+application\+\_\+socket\+\_\+listen\+\_\+success}} = 0x27U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a306753d285cc10dd8a6e78b6930b9234}{aern\+\_\+application\+\_\+generate\+\_\+key}} = 0x28U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731addec5aa59ccc55b33566297b0ed43a0f}{aern\+\_\+application\+\_\+generate\+\_\+key\+\_\+failure}} = 0x29U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9749886123a84a8ee1f97aad2efd2b5b}{aern\+\_\+application\+\_\+generate\+\_\+key\+\_\+success}} = 0x2\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa93d7ebed6e70811f069e9c4eaca34bf}{aern\+\_\+application\+\_\+generate\+\_\+key\+\_\+overwrite}} = 0x2\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aac14c3f924ad0cca260ea18f441be694}{aern\+\_\+application\+\_\+operation\+\_\+cancelled}} = 0x2\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ce123393ab4795b6b12ada0baee1a94}{aern\+\_\+application\+\_\+client\+\_\+enter\+\_\+pubkey\+\_\+path}} = 0x2\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46048123776d1b97535a25690173c8c5}{aern\+\_\+application\+\_\+client\+\_\+pubkey\+\_\+path\+\_\+invalid}} = 0x2\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f0ef8b4cb2c20954094f967e6035e9d}{aern\+\_\+application\+\_\+client\+\_\+connection\+\_\+success}} = 0x2\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a495ef2ee54946fecf7f258cf6bc4cac6}{aern\+\_\+application\+\_\+client\+\_\+connection\+\_\+failure}} = 0x30U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdab08df6c5a195f569f038121964a9}{aern\+\_\+application\+\_\+address\+\_\+invalid\+\_\+format}} = 0x31U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab3f7a979dbc3f2704692fb37e5ccc141}{aern\+\_\+application\+\_\+certificate\+\_\+exists}} = 0x32U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a47fdff69dc2b743fbee78b43a74de7da}{aern\+\_\+application\+\_\+certificate\+\_\+not\+\_\+revoked}} = 0x33U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ab1bbd53c14be876edf47cbc60e5b01}{aern\+\_\+application\+\_\+console\+\_\+timeout\+\_\+expired}} = 0x34U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8a3b584ba23b422ba2ea2bb5235f6e36}{aern\+\_\+application\+\_\+challenge\+\_\+root\+\_\+path}} = 0x35U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8f03cbb87e83176478b1cf1cf75ffe2e}{aern\+\_\+application\+\_\+challenge\+\_\+root\+\_\+path\+\_\+success}} = 0x36U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04c5b68e01f0499f18aa3d6158d771c4}{aern\+\_\+application\+\_\+challenge\+\_\+root\+\_\+path\+\_\+failure}} = 0x37U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a7eaacda0c050ff6651d90e6f58c782}{aern\+\_\+application\+\_\+root\+\_\+copy\+\_\+success}} = 0x38U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f6515c5b00c80d11f37a6b66b79a065}{aern\+\_\+application\+\_\+root\+\_\+copy\+\_\+failure}} = 0x39U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0ec62ba0d5f9968461e1d31026a4a662}{aern\+\_\+application\+\_\+root\+\_\+sign\+\_\+failure}} = 0x3\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abd2acb25d98441d457d62eba4359c2da}{aern\+\_\+application\+\_\+root\+\_\+sign\+\_\+success}} = 0x3\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a692b6e5c179cae2b8fe1695009e3a858}{aern\+\_\+application\+\_\+invalid\+\_\+input}} = 0x3\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8848e7f9dc2df32b6d752593e6e04b57}{aern\+\_\+application\+\_\+register\+\_\+failure}} = 0x3\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a10fd58d76b4857c563dbafc03310149b}{aern\+\_\+application\+\_\+register\+\_\+success}} = 0x3\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635}{aern\+\_\+application\+\_\+register\+\_\+existing}} = 0x3\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adcc0e0005ddb576ce5f3e2b37e5f8902}{aern\+\_\+application\+\_\+announce\+\_\+failure}} = 0x40U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a589d544298d8e2658b26528fd49f2f56}{aern\+\_\+application\+\_\+announce\+\_\+success}} = 0x41U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a9bb24cf5e7ef4480e8a761eaf87ea7}{aern\+\_\+application\+\_\+converge\+\_\+failure}} = 0x42U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a34d44369b690811cc910d840fdb2a426}{aern\+\_\+application\+\_\+converge\+\_\+success}} = 0x43U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a23231ec8a4c728bf993dd68307916b01}{aern\+\_\+application\+\_\+message\+\_\+time\+\_\+invalid}} = 0x44U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64}{aern\+\_\+application\+\_\+certificate\+\_\+not\+\_\+found}} = 0x45U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5d792f8355dc5497964bdbc2178b53a3}{aern\+\_\+application\+\_\+signature\+\_\+failure}} = 0x46U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1b3e8a30ce997e9af0d24b3d25ca4f66}{aern\+\_\+application\+\_\+network\+\_\+resign\+\_\+failure}} = 0x47U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe028016280b2a9bc35e7ca47fc0b94e}{aern\+\_\+application\+\_\+network\+\_\+resign\+\_\+success}} = 0x48U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a519d57e98b220f15aee941cabe5e8778}{aern\+\_\+application\+\_\+certificate\+\_\+revoke\+\_\+failure}} = 0x49U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa6b96667e55697e391b4e2f9429699f8}{aern\+\_\+application\+\_\+certificate\+\_\+revoke\+\_\+success}} = 0x4\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2df9c02dd2daa9e00a3acafff2693261}{aern\+\_\+application\+\_\+address\+\_\+change\+\_\+failure}} = 0x4\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3737f300fab9360c6bece5f4fa3861da}{aern\+\_\+application\+\_\+address\+\_\+change\+\_\+success}} = 0x4\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1380000ea9991186e7a4d3ff206de4a2}{aern\+\_\+application\+\_\+address\+\_\+change\+\_\+challenge}} = 0x4\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aae69e9aba90ff26901ca1ec0eed94ebc}{aern\+\_\+application\+\_\+address\+\_\+change\+\_\+current}} = 0x4\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeca3ce54f2ee324c3e755370717d0227}{aern\+\_\+application\+\_\+address\+\_\+change\+\_\+message}} = 0x4\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3432b995894c8065d9ec802b0e7a0c35}{aern\+\_\+application\+\_\+server\+\_\+service\+\_\+start\+\_\+failure}} = 0x50U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9b5f7db2f4aad5309a87c0203c0349f}{aern\+\_\+application\+\_\+server\+\_\+service\+\_\+start\+\_\+success}} = 0x51U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a984f09f774fb973773f708668e240e2f}{aern\+\_\+application\+\_\+server\+\_\+service\+\_\+stopped}} = 0x52U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa7892847ee7577f61db8b27c5d2067ed}{aern\+\_\+application\+\_\+server\+\_\+service\+\_\+paused}} = 0x53U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a21511e4686f1f5ef427c1318bef4f10f}{aern\+\_\+application\+\_\+server\+\_\+service\+\_\+resume\+\_\+failure}} = 0x54U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aab84370d7c35b8a083028dfdb980252b}{aern\+\_\+application\+\_\+server\+\_\+service\+\_\+resume\+\_\+success}} = 0x55U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6fadf6e40ea7fa21b20aec4a363aa2c8}{aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+exists}} = 0x56U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b60515b2c2644ecc94366e02062a0d2}{aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+changed}} = 0x57U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a50d1e619f7a68e338bac727d83241c5b}{aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+failure}} = 0x58U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5e74314f816be24edf86ffdb27c5aae7}{aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+success}} = 0x59U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6828f56b3ab216e74d35f0c9b706fad}{aern\+\_\+application\+\_\+export\+\_\+certificate\+\_\+failure}} = 0x5\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aca6dc3c5f56dad49aa0d5dec1732f23a}{aern\+\_\+application\+\_\+export\+\_\+certificate\+\_\+success}} = 0x5\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa959b2a7570d001077bf8606cb198e22}{aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+challenge}} = 0x5\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0f6d592ff12b6377d3f18932cdaa2916}{aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+current}} = 0x5\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b7df2d1faf6dd8d768ab99c9b9c7409}{aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+failure}} = 0x5\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1c785f6de092c24d3d1cc1688fb6edcc}{aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+success}} = 0x5\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad61327908bd5b832d28fc83e3f0d6535}{aern\+\_\+application\+\_\+certificate\+\_\+period\+\_\+update}} = 0x60U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab515a79de8717d9e4740f42a7b0411f1}{aern\+\_\+application\+\_\+certificate\+\_\+root\+\_\+validate}} = 0x61U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a824690d4af752550daf108c845c68a00}{aern\+\_\+application\+\_\+command\+\_\+not\+\_\+supported}} = 0x62U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f390f441819ee6530adfd6bc7ed23b1}{aern\+\_\+application\+\_\+network\+\_\+ip\+\_\+address\+\_\+not\+\_\+set}} = 0x63U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade1510d5cf6d341d92ed531da41c05be}{aern\+\_\+application\+\_\+network\+\_\+local\+\_\+error}} = 0x64U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d569560d04fc9cc202dd252e299f67a}{aern\+\_\+application\+\_\+network\+\_\+remote\+\_\+error}} = 0x65U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9ba7174df98e08cc2569414c1bac0ecf}{aern\+\_\+application\+\_\+topological\+\_\+query\+\_\+unknown}} = 0x66U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a26a8221b6e6dfa27d5dc9bbbb0992502}{aern\+\_\+application\+\_\+topological\+\_\+query\+\_\+failure}} = 0x67U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac0741e1ee01dc12590c1f147a06f62c5}{aern\+\_\+application\+\_\+topological\+\_\+query\+\_\+success}} = 0x68U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3d6261431928f3ac06b5a848fe26bec3}{aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+path\+\_\+failure}} = 0x69U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7294856fe2c007f32d8270da7685d4ea}{aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+path\+\_\+success}} = 0x6\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aaf160c6a5f56a197e21c26521c8991c3}{aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+address\+\_\+challenge}} = 0x6\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7751a41e2022d8e8f7740a1d436c7fcf}{aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+address\+\_\+failure}} = 0x6\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4bc439e1d1440b049168f8ebdd7008a3}{aern\+\_\+application\+\_\+server\+\_\+backup\+\_\+restore\+\_\+challenge}} = 0x6\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ada50b181751c3a0ffb2bf88dd9922d06}{aern\+\_\+application\+\_\+server\+\_\+backup\+\_\+save\+\_\+confirmation}} = 0x6\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b269abc3657648775e06b6d26c48322}{aern\+\_\+application\+\_\+certificate\+\_\+remote\+\_\+sign\+\_\+failure}} = 0x6\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa1b9a204a9c6a5ed5ee3b6bdcbfc1dee}{aern\+\_\+application\+\_\+certificate\+\_\+remote\+\_\+sign\+\_\+success}} = 0x70U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b5ea39e2d5b8a2b25fbdcdf56e01e93}{aern\+\_\+application\+\_\+log\+\_\+address\+\_\+change}} = 0x71U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8b1671319f6c516023646d3bc2555d3}{aern\+\_\+application\+\_\+log\+\_\+domain\+\_\+change}} = 0x72U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abee9d9fa5048e1523ca259f6a3e4cb1d}{aern\+\_\+application\+\_\+log\+\_\+hostname\+\_\+change}} = 0x73U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec3c9fcdc7e9a70958d6e9fa423a00a2}{aern\+\_\+application\+\_\+log\+\_\+user\+\_\+logged\+\_\+in}} = 0x74U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec6a912479b230fd49260310459808cd}{aern\+\_\+application\+\_\+log\+\_\+log\+\_\+created}} = 0x75U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a608b2a99615928910d6bc2373356f7fd}{aern\+\_\+application\+\_\+log\+\_\+log\+\_\+disabled}} = 0x76U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abcf96bc83f1692c2d5f8ad8d8560018a}{aern\+\_\+application\+\_\+log\+\_\+log\+\_\+enabled}} = 0x77U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1161cd81faef7ef6a445799c9e11b1f6}{aern\+\_\+application\+\_\+log\+\_\+log\+\_\+header}} = 0x78U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9a69a02ef61bda2d514c1e7d0ee3097c}{aern\+\_\+application\+\_\+log\+\_\+retries\+\_\+change}} = 0x79U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac9c01e041710814d3e673491a4f254d9}{aern\+\_\+application\+\_\+log\+\_\+timeout\+\_\+change}} = 0x7\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a896eaca09f48184d236c570d8b2d5ee0}{aern\+\_\+application\+\_\+log\+\_\+user\+\_\+added}} = 0x7\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf6eb9e79bfc9d34365bc4312e5a8930}{aern\+\_\+application\+\_\+log\+\_\+state\+\_\+restore}} = 0x7\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7b9c87c4d8e187d70d8714a9c0c9f116}{aern\+\_\+application\+\_\+log\+\_\+state\+\_\+backup}} = 0x7\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d26a33d7f2c84214d279f9c0df842b6}{aern\+\_\+application\+\_\+log\+\_\+service\+\_\+paused}} = 0x7\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a77d7a378264d85c414ccceff407b4569}{aern\+\_\+application\+\_\+log\+\_\+service\+\_\+resumed}} = 0x7\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46121c462aaf1b71a4d1f4905dadd0e2}{aern\+\_\+application\+\_\+log\+\_\+service\+\_\+started}} = 0x80U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac2a81696f3e5419770e37fd95c58aca6}{aern\+\_\+application\+\_\+log\+\_\+service\+\_\+stopped}} = 0x81U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf58df04634e81869b1570afe83d527f}{aern\+\_\+application\+\_\+log\+\_\+mfk\+\_\+exchange\+\_\+failure}} = 0x82U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a817550934ef0e5afd53e49d4bee0a11f}{aern\+\_\+application\+\_\+log\+\_\+mfk\+\_\+exchange\+\_\+success}} = 0x83U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5edd52d989b464f09eccb564db52467b}{aern\+\_\+application\+\_\+log\+\_\+generate\+\_\+delete}} = 0x84U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2d4f6f58d83f9173ee04c3792377f31f}{aern\+\_\+application\+\_\+log\+\_\+generate\+\_\+failure}} = 0x85U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a17e5d0804cc1d9cedc8a71af33b4d3bd}{aern\+\_\+application\+\_\+log\+\_\+generate\+\_\+success}} = 0x86U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8ff9cd0adbcb6df0e2f70636e86f5c0}{aern\+\_\+application\+\_\+log\+\_\+revocation\+\_\+failure}} = 0x87U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6c3a866cff2ae2457c498638c469a1ba}{aern\+\_\+application\+\_\+log\+\_\+revocation\+\_\+success}} = 0x88U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac189889f0745d240f95583e18db141bd}{aern\+\_\+application\+\_\+log\+\_\+convergence\+\_\+failure}} = 0x89U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a64fc764727a92c45c36d838882601c5f}{aern\+\_\+application\+\_\+log\+\_\+convergence\+\_\+success}} = 0x8\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4aa1610fc418546d71a9e3b59e18027c}{aern\+\_\+application\+\_\+log\+\_\+incremental\+\_\+failure}} = 0x8\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af54bb88decb83f568ff8cb07b0895367}{aern\+\_\+application\+\_\+log\+\_\+incremental\+\_\+success}} = 0x8\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a06c2cd8ab6f1a7a959ceee986b61a696}{aern\+\_\+application\+\_\+log\+\_\+allocation\+\_\+failure}} = 0x8\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a32a0f61e2d7cd03718f0876e23cc1285}{aern\+\_\+application\+\_\+log\+\_\+connection\+\_\+terminated}} = 0x8\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac489d0c1a01b5c25436a935430a89399}{aern\+\_\+application\+\_\+log\+\_\+configuration\+\_\+erased}} = 0x8\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a375206bb789fa64608f97dab63f9bcf8}{aern\+\_\+application\+\_\+log\+\_\+receive\+\_\+failure}} = 0x90U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29}{aern\+\_\+application\+\_\+log\+\_\+register\+\_\+failure}} = 0x91U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f}{aern\+\_\+application\+\_\+log\+\_\+register\+\_\+success}} = 0x92U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeed854b80b305cde18e92420fd7662a9}{aern\+\_\+application\+\_\+log\+\_\+fragment\+\_\+exchange\+\_\+failure}} = 0x93U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a088c8b68fba07712819842250a801f7e}{aern\+\_\+application\+\_\+log\+\_\+fragment\+\_\+exchange\+\_\+success}} = 0x94U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adb36159d429fa44fa6c4abeba478d2ec}{aern\+\_\+application\+\_\+log\+\_\+local\+\_\+resign\+\_\+failure}} = 0x95U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a369b972e42383b2537af7865a677b534}{aern\+\_\+application\+\_\+log\+\_\+local\+\_\+resign\+\_\+success}} = 0x96U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a50613f47f0d379471b97d335d7a9bb}{aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+invalid\+\_\+request}} = 0x97U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa814fc51767452005e378502afaa5923}{aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+reported\+\_\+error}} = 0x98U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0009a6e38b3ac9ed3203b620a9f15c94}{aern\+\_\+application\+\_\+log\+\_\+connect\+\_\+failure}} = 0x99U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4095aab547fa174d7762ca41ae1293d0}{aern\+\_\+application\+\_\+log\+\_\+connect\+\_\+success}} = 0x9\+AU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a99227ed8d48518af1235c48261dd37a9}{aern\+\_\+application\+\_\+log\+\_\+topology\+\_\+node\+\_\+query\+\_\+failure}} = 0x9\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade59939d092b78f2730f725dcc1aff10}{aern\+\_\+application\+\_\+log\+\_\+topology\+\_\+node\+\_\+query\+\_\+success}} = 0x9\+CU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a755d438d945acd740d5874b937f7466e}{aern\+\_\+application\+\_\+log\+\_\+announce\+\_\+failure}} = 0x9\+DU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae9a54ba14924fe73843112336135b16b}{aern\+\_\+application\+\_\+log\+\_\+announce\+\_\+success}} = 0x9\+EU
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81f2628b9a74c6d0391129dc3e2a88c1}{aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+signing\+\_\+failure}} = 0x9\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a377b4695eda9acad48fb28338664999d}{aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+signing\+\_\+success}} = 0x\+A0U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a606575ed3564c53f0e38d43286fe72bd}{aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+resign\+\_\+failure}} = 0x\+A1U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad1f4a3206aff5366f315277a7f4418cc}{aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+resign\+\_\+success}} = 0x\+A2U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3c2bd708a6c292339e2e50338e36e61a}{aern\+\_\+application\+\_\+log\+\_\+converge\+\_\+node\+\_\+remove\+\_\+challenge}} = 0x\+A3U
+, \newline
+\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0afa84e2f3d5017234115eea1daf8317}{aern\+\_\+application\+\_\+ars\+\_\+certificate\+\_\+address\+\_\+challenge}} = 0x\+A4U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af2886246612fc648fbeb63b841e3a662}{aern\+\_\+application\+\_\+ars\+\_\+certificate\+\_\+address\+\_\+failure}} = 0x\+A5U
+, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af1c831f958dc1c166181ee0bddd38ca0}{aern\+\_\+application\+\_\+server\+\_\+service\+\_\+not\+\_\+started}} = 0x\+A6U
+ \}
+\begin{DoxyCompactList}\small\item\em The ARS application messages. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}} \{ \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caf112be1908574c52515a8c14324ba187}{aern\+\_\+command\+\_\+action\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca6a726be44f2dbdc16190fe9687e4bc7a}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+address}} = 0x01U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca17a3529e6f778a75a0f4b420fef90b2b}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+certificate}} = 0x02U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca33fc1522d47efc524eb38f6daf7b3be0}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear\+\_\+all}} = 0x03U
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca01ed0fb224c9092b03db99501e726cfd}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear\+\_\+config}} = 0x04U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca40652f093ebcc889f164522db82977a4}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear\+\_\+log}} = 0x05U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cabd1c3cb9fdc02acff106d97c250c1aae}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+exit}} = 0x06U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caebd689cff17d782ad99f3315d5e7571e}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+help}} = 0x07U
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca7ddac00c409c56db52156b7dab3a48df}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+log\+\_\+host}} = 0x08U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacd4bdebfab6a2dffe4300120b514cf49}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+name\+\_\+domain}} = 0x09U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caf50df25b52ff3c0b1d3272cc957da2ef}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+name\+\_\+host}} = 0x0\+AU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca95d0d8de00558855371c4462210daa19}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+retries}} = 0x0\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca5d95d5036bdbfe3f3991fa4246942274}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+server}} = 0x0\+CU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cac16b3ff3d9758ff57e9d7e52f07aea67}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+timeout}} = 0x0\+DU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacd061584a66205b8b7f2c3184b33f033}{aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+clear\+\_\+screen}} = 0x0\+EU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca75556fcae092f7f3a9c62b4ae99b48d2}{aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+config}} = 0x0\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca7707748dd06446562663f5f380cd96e2}{aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+exit}} = 0x10U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caeaa9ce582dd774ca5486b4dfd097f9ee}{aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+help}} = 0x11U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa7b217d3d8f9a741b23120a238aac04b}{aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+quit}} = 0x12U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacce1aba5611200d7aac51e03877e2869}{aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+show\+\_\+config}} = 0x13U
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cab5f30afeb232e4ca1bf619576b3335e5}{aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+show\+\_\+log}} = 0x14U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caedf7a8b36224fc080b7dc8db55b59945}{aern\+\_\+command\+\_\+action\+\_\+user\+\_\+enable}} = 0x15U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae5c85b77db5a42359c2c17a361571a3d}{aern\+\_\+command\+\_\+action\+\_\+user\+\_\+help}} = 0x16U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae6648635db65c8a3e3a36b0fb4f13e0f}{aern\+\_\+command\+\_\+action\+\_\+user\+\_\+quit}} = 0x17U
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca4441a34aef01f95f47cf33fb5a6bd74d}{aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+exit}} = 0x18U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca326b0753d96df802170db85c804867ee}{aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+export}} = 0x19U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cab5c9a1c3ac3ffd88d66e6c6029e20a5f}{aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+generate}} = 0x1\+AU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cafa8fda5220fa45d5a13294dd7b65c4d3}{aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+help}} = 0x1\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caab89cd7be8a06de4776f61dd0a9e7861}{aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+import}} = 0x1\+CU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cadad2e5f1bcdd2ba50140efcc3d9b8a01}{aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+print}} = 0x1\+DU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca0c760bf4c469de6d05222c9f9d8ed9ab}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+backup}} = 0x1\+EU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca3678bbbb095e4408130e8f069187ebc9}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+connect}} = 0x1\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cafbf3712842092372f5a2385918fc28d6}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+exit}} = 0x20U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa14b5222f876ed01471b0a1fb2989a2b}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+help}} = 0x21U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa849fbffd82f4958761a66aa8bf08f2c}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+list}} = 0x22U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cafadb267bdee2e9e2a1a61c5e65f261ee}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+register}} = 0x23U
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cab9164e6764ec8f59805b6e5797293ad4}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+resign}} = 0x24U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca132db8838fee48f3351f3cda22a63339}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+restore}} = 0x25U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca07a60d4e0477ffc7425426dc184df0f9}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+service}} = 0x26U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca00a5374094320cf779749f706aa11572}{aern\+\_\+command\+\_\+action\+\_\+server\+\_\+query}} = 0x27U
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca93eaed3bc25a2e92ac9e549ddb9f6b4f}{aern\+\_\+command\+\_\+action\+\_\+client\+\_\+connect\+\_\+help}} = 0x28U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae7f7a81233cb23976dd49168d0718746}{aern\+\_\+command\+\_\+action\+\_\+client\+\_\+connect\+\_\+quit}} = 0x29U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca8b14ef0e8d1d93d0fc21ec60f6a72a70}{aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+certificate\+\_\+revoke}} = 0x2\+AU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca5160fa96bae7d8d155202bbda39e6af7}{aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+announce}} = 0x2\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca1f09998137a2a4a2113a033613136058}{aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+converge}} = 0x2\+CU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cabfeda196bd2624443bdc19c1250e9354}{aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+revoke}} = 0x2\+DU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cae6e566bf3b73dbc2589bf61aaa7f6182}{aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+sproxy}} = 0x2\+EU
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53cacfa38b6e0befb5455bb487eff38cae4e}{aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+sign}} = 0x2\+FU
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53caa3096dbf3f7db55c156871c345ca6ba0}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear}} = 0x30U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca7d6be118350b169d9477f5c84b51051c}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+log}} = 0x31U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca2eba539140c60a1ecbae7b8f56a08740}{aern\+\_\+command\+\_\+action\+\_\+config\+\_\+name}} = 0x32U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca86a54d368df5092f18365543794098ea}{aern\+\_\+command\+\_\+action\+\_\+help\+\_\+enable\+\_\+all}} = 0x33U
+, \newline
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca49fadba99c10e30d2772b4da7f48f83a}{aern\+\_\+command\+\_\+action\+\_\+help\+\_\+enable\+\_\+show}} = 0x34U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca0f0b2c1b0812d12c3d14eeaa2a9c8f6a}{aern\+\_\+command\+\_\+action\+\_\+help\+\_\+enable\+\_\+user}} = 0x35U
+, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53ca1735f87edb353d0ed2c4fe8175e3bb0b}{aern\+\_\+command\+\_\+action\+\_\+command\+\_\+unrecognized}} = 0x36U
+ \}
+\begin{DoxyCompactList}\small\item\em The ARS command actions. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} \{ \newline
+\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba4662861a9e00a4d12cfe2d90d22abeaf}{aern\+\_\+console\+\_\+mode\+\_\+name}} = 0x00U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba36270ca000222215a5a0497704a65e31}{aern\+\_\+console\+\_\+mode\+\_\+user}} = 0x01U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba957df918c9543a5006ce83bc465d328d}{aern\+\_\+console\+\_\+mode\+\_\+enable}} = 0x02U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d}{aern\+\_\+console\+\_\+mode\+\_\+config}} = 0x03U
+, \newline
+\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafa07be8871ff2cabb8fa0134e7208748}{aern\+\_\+console\+\_\+mode\+\_\+certificate}} = 0x04U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba8a4834c048736bc7afd62e0a7988011d}{aern\+\_\+console\+\_\+mode\+\_\+server}} = 0x05U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafc9b8f6bbe97280bd5bee58702f4fbae}{aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+message}} = 0x06U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba7b7b4a9a063ff38f6c25314693a6e309}{aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+password}} = 0x07U
+, \newline
+\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbaa20e04efe609b4a55f4414ec77618ce7}{aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+user}} = 0x08U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbad92466c5f248180f0b4e5fc7771fff35}{aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+hostname}} = 0x09U
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba9c582aa608b6824fa7d16599b920487d}{aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+address}} = 0x0\+AU
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2e14ba02fee32428b62ecc88926c315a}{aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+domain}} = 0x0\+BU
+, \newline
+\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba39902153483da5af7edf324587914daa}{aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+rootpath}} = 0x0\+CU
+, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2f0e80a6cbfb626e8fafd5a1ac822bd6}{aern\+\_\+console\+\_\+mode\+\_\+client\+\_\+connected}} = 0x0\+DU
+ \}
+\begin{DoxyCompactList}\small\item\em The ARS console modes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The AERN command enumerations. 
+
+
+
+\label{doc-enum-members}
+\Hypertarget{commands_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}\index{commands.h@{commands.h}!aern\_application\_messages@{aern\_application\_messages}}
+\index{aern\_application\_messages@{aern\_application\_messages}!commands.h@{commands.h}}
+\doxysubsubsection{\texorpdfstring{aern\_application\_messages}{aern\_application\_messages}}
+{\footnotesize\ttfamily \label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731} 
+enum \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}}}
+
+
+
+The ARS application messages. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_not\_recognized@{aern\_application\_not\_recognized}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_not\_recognized@{aern\_application\_not\_recognized}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6e3bceb557de157bd8e73876ade1c1d3}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6e3bceb557de157bd8e73876ade1c1d3} 
+aern\+\_\+application\+\_\+not\+\_\+recognized&The command was not recognized. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_erase\_erase\_all@{aern\_application\_erase\_erase\_all}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_erase\_erase\_all@{aern\_application\_erase\_erase\_all}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4c03a97bc4062b02d822de159847e818}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4c03a97bc4062b02d822de159847e818} 
+aern\+\_\+application\+\_\+erase\+\_\+erase\+\_\+all&The system will be erased, including configuration and log files, do you want to proceed Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_erase\_config@{aern\_application\_erase\_config}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_erase\_config@{aern\_application\_erase\_config}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4518576002d4281cccfb3e22862b85ff}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4518576002d4281cccfb3e22862b85ff} 
+aern\+\_\+application\+\_\+erase\+\_\+config&The user configuration will be erased, do you want to proceed Y\texorpdfstring{$\vert$}{|}N"{} \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_erase\_log@{aern\_application\_erase\_log}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_erase\_log@{aern\_application\_erase\_log}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a25b7b1fe4fc3662a08b105fe1f538313}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a25b7b1fe4fc3662a08b105fe1f538313} 
+aern\+\_\+application\+\_\+erase\+\_\+log&The log files will be erased, do you want to proceed Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_authorization\_failure@{aern\_application\_authorization\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_authorization\_failure@{aern\_application\_authorization\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a96aebca350c2012da60b7415ab7a19e7}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a96aebca350c2012da60b7415ab7a19e7} 
+aern\+\_\+application\+\_\+authorization\+\_\+failure&The user is not authorized. Press any key to terminate the application. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_retries\_exceeded@{aern\_application\_retries\_exceeded}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_retries\_exceeded@{aern\_application\_retries\_exceeded}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6bb78bee25ebf287ad8f4108cb39c88c}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6bb78bee25ebf287ad8f4108cb39c88c} 
+aern\+\_\+application\+\_\+retries\+\_\+exceeded&Login has exceeded maximum retries. Press any key to terminate the application. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_application\_quit@{aern\_application\_application\_quit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_application\_quit@{aern\_application\_application\_quit}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6f4284caf6b02b98e58e611878e4950c}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6f4284caf6b02b98e58e611878e4950c} 
+aern\+\_\+application\+\_\+application\+\_\+quit&The quit command has been entered. Press any key to terminate the application. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_logging\_disabled@{aern\_application\_logging\_disabled}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_logging\_disabled@{aern\_application\_logging\_disabled}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab488901f007d6fa8e7a0ee6bce31e1ef}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab488901f007d6fa8e7a0ee6bce31e1ef} 
+aern\+\_\+application\+\_\+logging\+\_\+disabled&Activity logging has been disabled. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_logging\_enabled@{aern\_application\_logging\_enabled}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_logging\_enabled@{aern\_application\_logging\_enabled}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe1e26d59d341aae65a2e347aef8d72e}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe1e26d59d341aae65a2e347aef8d72e} 
+aern\+\_\+application\+\_\+logging\+\_\+enabled&Activity logging has been enabled. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_authentication\_failure@{aern\_application\_authentication\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_authentication\_failure@{aern\_application\_authentication\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aea80faa41402a55cb348ceccc640f2d2}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aea80faa41402a55cb348ceccc640f2d2} 
+aern\+\_\+application\+\_\+authentication\+\_\+failure&User authentication has failed. Press any key to terminate the application. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_operation\_aborted@{aern\_application\_operation\_aborted}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_operation\_aborted@{aern\_application\_operation\_aborted}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae45ef7e371d53e43e6e01e4eb3393467}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae45ef7e371d53e43e6e01e4eb3393467} 
+aern\+\_\+application\+\_\+operation\+\_\+aborted&The operation was aborted by the user. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_system\_erased@{aern\_application\_system\_erased}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_system\_erased@{aern\_application\_system\_erased}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5cdfc7b7db85abaf3412ce2af5e44a09}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5cdfc7b7db85abaf3412ce2af5e44a09} 
+aern\+\_\+application\+\_\+system\+\_\+erased&System reset\+: The application log and configuration have been erased. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_configuration\_erased@{aern\_application\_configuration\_erased}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_configuration\_erased@{aern\_application\_configuration\_erased}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdfd844abce46361f938d8160a9c6eb}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdfd844abce46361f938d8160a9c6eb} 
+aern\+\_\+application\+\_\+configuration\+\_\+erased&System reset\+: The application log and configuration have been erased. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_erased@{aern\_application\_log\_erased}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_erased@{aern\_application\_log\_erased}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2b2185486d6233838bdb5719ed398180}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2b2185486d6233838bdb5719ed398180} 
+aern\+\_\+application\+\_\+log\+\_\+erased&The log file has been erased. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_retry\_invalid@{aern\_application\_retry\_invalid}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_retry\_invalid@{aern\_application\_retry\_invalid}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac23bf1e073d5f3453e9d3ab2898a4c71}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac23bf1e073d5f3453e9d3ab2898a4c71} 
+aern\+\_\+application\+\_\+retry\+\_\+invalid&The retry setting is invaid; valid retry range is between one and five \mbox{[}1-\/5\mbox{]} login attempts. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_timeout\_invalid@{aern\_application\_timeout\_invalid}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_timeout\_invalid@{aern\_application\_timeout\_invalid}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9641ddccf33f394399bd4348520d7793}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9641ddccf33f394399bd4348520d7793} 
+aern\+\_\+application\+\_\+timeout\+\_\+invalid&The timeout setting is invalid; valid timeout setting is between one and sixty \mbox{[}1-\/60\mbox{]} minutes. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_domain\_invalid@{aern\_application\_domain\_invalid}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_domain\_invalid@{aern\_application\_domain\_invalid}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad862a72039bcfdde6168467e0332a323}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad862a72039bcfdde6168467e0332a323} 
+aern\+\_\+application\+\_\+domain\+\_\+invalid&The domain name setting is invalid; valid domain name length is between two and thirty \mbox{[}2-\/32\mbox{]} characters. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_hostname\_invalid@{aern\_application\_hostname\_invalid}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_hostname\_invalid@{aern\_application\_hostname\_invalid}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a88896d1d47292743839a4e76ee45ea9a}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a88896d1d47292743839a4e76ee45ea9a} 
+aern\+\_\+application\+\_\+hostname\+\_\+invalid&The hostname setting is invalid; valid hostname length is between two and thirty \mbox{[}2-\/32\mbox{]} characters. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_configuration@{aern\_application\_configuration}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_configuration@{aern\_application\_configuration}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac33f5bae7f35bec1865311fdf1b2c7a0}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac33f5bae7f35bec1865311fdf1b2c7a0} 
+aern\+\_\+application\+\_\+configuration&Printing configuration details\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_connection@{aern\_application\_connection}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_connection@{aern\_application\_connection}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9e8e6d45d95c15bf5fcf8294b70f425}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9e8e6d45d95c15bf5fcf8294b70f425} 
+aern\+\_\+application\+\_\+connection&Printing connection details\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_connection\_details@{aern\_application\_connection\_details}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_connection\_details@{aern\_application\_connection\_details}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a66a6124a74a2f204475ce5e3e2b90659}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a66a6124a74a2f204475ce5e3e2b90659} 
+aern\+\_\+application\+\_\+connection\+\_\+details&minutes \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_empty@{aern\_application\_log\_empty}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_empty@{aern\_application\_log\_empty}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab039ba456998f83a2c5c2d2c71c55556}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab039ba456998f83a2c5c2d2c71c55556} 
+aern\+\_\+application\+\_\+log\+\_\+empty&The log file is empty. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_first\_login@{aern\_application\_first\_login}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_first\_login@{aern\_application\_first\_login}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aace20e024eaa4085c572bc1d923ceaeb}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aace20e024eaa4085c572bc1d923ceaeb} 
+aern\+\_\+application\+\_\+first\+\_\+login&Running for the first time; please set the applications device name, username and password. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_choose\_name@{aern\_application\_choose\_name}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_choose\_name@{aern\_application\_choose\_name}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a521f282d8c8c58a5dfae3b4a8e9bf42a}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a521f282d8c8c58a5dfae3b4a8e9bf42a} 
+aern\+\_\+application\+\_\+choose\+\_\+name&Please choose a user name, minimum 6 characters, to a maximum 128 characters. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_choose\_password@{aern\_application\_choose\_password}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_choose\_password@{aern\_application\_choose\_password}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6cf65dfbc6f3920d3827341b3fae4ec}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6cf65dfbc6f3920d3827341b3fae4ec} 
+aern\+\_\+application\+\_\+choose\+\_\+password&Password must be 8-\/128 characters long \mbox{[}a-\/z, A-\/Z\mbox{]}, at least 1 number, and 1 symbol \mbox{[}0-\/9\mbox{]}\mbox{[}!\#\$\&\textquotesingle{}()\texorpdfstring{$\ast$}{*}+,\+\_\+./\mbox{]}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_password\_set@{aern\_application\_password\_set}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_password\_set@{aern\_application\_password\_set}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a63516da3cca88af70c44becc7f906420}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a63516da3cca88af70c44becc7f906420} 
+aern\+\_\+application\+\_\+password\+\_\+set&The user name and password have been set. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_user@{aern\_application\_challenge\_user}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_user@{aern\_application\_challenge\_user}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a382e9412feb825eb37e6cf0a3e845894}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a382e9412feb825eb37e6cf0a3e845894} 
+aern\+\_\+application\+\_\+challenge\+\_\+user&Please enter the user name\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_user\_failure@{aern\_application\_challenge\_user\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_user\_failure@{aern\_application\_challenge\_user\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a55afc7e80bb976f7f9071a4db1516570}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a55afc7e80bb976f7f9071a4db1516570} 
+aern\+\_\+application\+\_\+challenge\+\_\+user\+\_\+failure&The user name entered is not recognized. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_password@{aern\_application\_challenge\_password}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_password@{aern\_application\_challenge\_password}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6181362bf66586610320d4110585c1a4}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6181362bf66586610320d4110585c1a4} 
+aern\+\_\+application\+\_\+challenge\+\_\+password&Please enter the password\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_password\_failure@{aern\_application\_challenge\_password\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_password\_failure@{aern\_application\_challenge\_password\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3ce27218a16dccecadf1eb56ffa67888}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3ce27218a16dccecadf1eb56ffa67888} 
+aern\+\_\+application\+\_\+challenge\+\_\+password\+\_\+failure&The password entered is invalid. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_device\_name@{aern\_application\_challenge\_device\_name}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_device\_name@{aern\_application\_challenge\_device\_name}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4b66250ffec27f012586cbb3c5da0ccf}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4b66250ffec27f012586cbb3c5da0ccf} 
+aern\+\_\+application\+\_\+challenge\+\_\+device\+\_\+name&Please enter the device name, minimum 2 characters, to a maximum of 16 characters \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_device\_name\_success@{aern\_application\_challenge\_device\_name\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_device\_name\_success@{aern\_application\_challenge\_device\_name\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04f839c619e0a563cfd8818131727477}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04f839c619e0a563cfd8818131727477} 
+aern\+\_\+application\+\_\+challenge\+\_\+device\+\_\+name\+\_\+success&The device name has been set. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_device\_name\_failure@{aern\_application\_challenge\_device\_name\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_device\_name\_failure@{aern\_application\_challenge\_device\_name\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae5bc284adbadc1e85e34b121292af704}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae5bc284adbadc1e85e34b121292af704} 
+aern\+\_\+application\+\_\+challenge\+\_\+device\+\_\+name\+\_\+failure&The device name is invalid. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_remote\_connect@{aern\_application\_remote\_connect}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_remote\_connect@{aern\_application\_remote\_connect}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6b23ea0fd441fae1929425d2a35689d1}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6b23ea0fd441fae1929425d2a35689d1} 
+aern\+\_\+application\+\_\+remote\+\_\+connect&Enter the IPv4 or IPv6 address of the host name. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_remote\_connect\_key@{aern\_application\_remote\_connect\_key}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_remote\_connect\_key@{aern\_application\_remote\_connect\_key}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a29669637b76de943ae94b783d6d3b08e}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a29669637b76de943ae94b783d6d3b08e} 
+aern\+\_\+application\+\_\+remote\+\_\+connect\+\_\+key&No public key is associated with that address. Enter the encoded public key. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_remote\_connect\_success@{aern\_application\_remote\_connect\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_remote\_connect\_success@{aern\_application\_remote\_connect\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a94a594d9527aa5b7acc49566f6a68f07}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a94a594d9527aa5b7acc49566f6a68f07} 
+aern\+\_\+application\+\_\+remote\+\_\+connect\+\_\+success&Connecting to the server... \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_remote\_connect\_failure@{aern\_application\_remote\_connect\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_remote\_connect\_failure@{aern\_application\_remote\_connect\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad08a958f2ccca32067e9427d63da81ff}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad08a958f2ccca32067e9427d63da81ff} 
+aern\+\_\+application\+\_\+remote\+\_\+connect\+\_\+failure&Connection attempt failed. The server is unreachable. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_socket\_listen@{aern\_application\_socket\_listen}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_socket\_listen@{aern\_application\_socket\_listen}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81fad781eb0ee8f21b8e6b2e7b98ba5b}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81fad781eb0ee8f21b8e6b2e7b98ba5b} 
+aern\+\_\+application\+\_\+socket\+\_\+listen&The host has entered server mode. Type quit to exit server mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_socket\_listen\_failure@{aern\_application\_socket\_listen\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_socket\_listen\_failure@{aern\_application\_socket\_listen\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0d50569f22ed7d1729d0aeb3b3099392}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0d50569f22ed7d1729d0aeb3b3099392} 
+aern\+\_\+application\+\_\+socket\+\_\+listen\+\_\+failure&The listener failed to initialize. The host could not enter the listening state. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_socket\_listen\_success@{aern\_application\_socket\_listen\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_socket\_listen\_success@{aern\_application\_socket\_listen\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec075fd4f930d4b4bc6856469bfc6912}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec075fd4f930d4b4bc6856469bfc6912} 
+aern\+\_\+application\+\_\+socket\+\_\+listen\+\_\+success&The listener has initialized\+: The server is now in the listening state. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_generate\_key@{aern\_application\_generate\_key}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_generate\_key@{aern\_application\_generate\_key}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a306753d285cc10dd8a6e78b6930b9234}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a306753d285cc10dd8a6e78b6930b9234} 
+aern\+\_\+application\+\_\+generate\+\_\+key&Generating the public/private signature key-\/pair. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_generate\_key\_failure@{aern\_application\_generate\_key\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_generate\_key\_failure@{aern\_application\_generate\_key\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731addec5aa59ccc55b33566297b0ed43a0f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731addec5aa59ccc55b33566297b0ed43a0f} 
+aern\+\_\+application\+\_\+generate\+\_\+key\+\_\+failure&The certificate could not be generated. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_generate\_key\_success@{aern\_application\_generate\_key\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_generate\_key\_success@{aern\_application\_generate\_key\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9749886123a84a8ee1f97aad2efd2b5b}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9749886123a84a8ee1f97aad2efd2b5b} 
+aern\+\_\+application\+\_\+generate\+\_\+key\+\_\+success&The public key was saved to\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_generate\_key\_overwrite@{aern\_application\_generate\_key\_overwrite}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_generate\_key\_overwrite@{aern\_application\_generate\_key\_overwrite}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa93d7ebed6e70811f069e9c4eaca34bf}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa93d7ebed6e70811f069e9c4eaca34bf} 
+aern\+\_\+application\+\_\+generate\+\_\+key\+\_\+overwrite&The signature key-\/pair already exists, do you want to overwite it? Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_operation\_cancelled@{aern\_application\_operation\_cancelled}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_operation\_cancelled@{aern\_application\_operation\_cancelled}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aac14c3f924ad0cca260ea18f441be694}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aac14c3f924ad0cca260ea18f441be694} 
+aern\+\_\+application\+\_\+operation\+\_\+cancelled&The operation was cancelled by the user. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_client\_enter\_pubkey\_path@{aern\_application\_client\_enter\_pubkey\_path}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_client\_enter\_pubkey\_path@{aern\_application\_client\_enter\_pubkey\_path}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ce123393ab4795b6b12ada0baee1a94}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ce123393ab4795b6b12ada0baee1a94} 
+aern\+\_\+application\+\_\+client\+\_\+enter\+\_\+pubkey\+\_\+path&Enter the path to the remote hosts public key. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_client\_pubkey\_path\_invalid@{aern\_application\_client\_pubkey\_path\_invalid}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_client\_pubkey\_path\_invalid@{aern\_application\_client\_pubkey\_path\_invalid}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46048123776d1b97535a25690173c8c5}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46048123776d1b97535a25690173c8c5} 
+aern\+\_\+application\+\_\+client\+\_\+pubkey\+\_\+path\+\_\+invalid&Invalid path, could not find the hosts public key. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_client\_connection\_success@{aern\_application\_client\_connection\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_client\_connection\_success@{aern\_application\_client\_connection\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f0ef8b4cb2c20954094f967e6035e9d}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f0ef8b4cb2c20954094f967e6035e9d} 
+aern\+\_\+application\+\_\+client\+\_\+connection\+\_\+success&Client connected to the remote host successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_client\_connection\_failure@{aern\_application\_client\_connection\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_client\_connection\_failure@{aern\_application\_client\_connection\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a495ef2ee54946fecf7f258cf6bc4cac6}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a495ef2ee54946fecf7f258cf6bc4cac6} 
+aern\+\_\+application\+\_\+client\+\_\+connection\+\_\+failure&Connection attempt failed! Could not connect to the remote server. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_address\_invalid\_format@{aern\_application\_address\_invalid\_format}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_address\_invalid\_format@{aern\_application\_address\_invalid\_format}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdab08df6c5a195f569f038121964a9}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4fdab08df6c5a195f569f038121964a9} 
+aern\+\_\+application\+\_\+address\+\_\+invalid\+\_\+format&The IP address format was invalid! Enter a valid address format, ex. n.\+n.\+n.\+n \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_exists@{aern\_application\_certificate\_exists}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_exists@{aern\_application\_certificate\_exists}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab3f7a979dbc3f2704692fb37e5ccc141}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab3f7a979dbc3f2704692fb37e5ccc141} 
+aern\+\_\+application\+\_\+certificate\+\_\+exists&Warning! The root certificate exists, do you want to overwite it? Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_not\_revoked@{aern\_application\_certificate\_not\_revoked}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_not\_revoked@{aern\_application\_certificate\_not\_revoked}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a47fdff69dc2b743fbee78b43a74de7da}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a47fdff69dc2b743fbee78b43a74de7da} 
+aern\+\_\+application\+\_\+certificate\+\_\+not\+\_\+revoked&Cannot delete an active certificate; revoke the certificate before deleting the file. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_console\_timeout\_expired@{aern\_application\_console\_timeout\_expired}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_console\_timeout\_expired@{aern\_application\_console\_timeout\_expired}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ab1bbd53c14be876edf47cbc60e5b01}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2ab1bbd53c14be876edf47cbc60e5b01} 
+aern\+\_\+application\+\_\+console\+\_\+timeout\+\_\+expired&The console timeout period has expired, set to user mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_root\_path@{aern\_application\_challenge\_root\_path}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_root\_path@{aern\_application\_challenge\_root\_path}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8a3b584ba23b422ba2ea2bb5235f6e36}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8a3b584ba23b422ba2ea2bb5235f6e36} 
+aern\+\_\+application\+\_\+challenge\+\_\+root\+\_\+path&Enter the full path to the ARS root certificate. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_root\_path\_success@{aern\_application\_challenge\_root\_path\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_root\_path\_success@{aern\_application\_challenge\_root\_path\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8f03cbb87e83176478b1cf1cf75ffe2e}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8f03cbb87e83176478b1cf1cf75ffe2e} 
+aern\+\_\+application\+\_\+challenge\+\_\+root\+\_\+path\+\_\+success&The root certificate has been stored successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_challenge\_root\_path\_failure@{aern\_application\_challenge\_root\_path\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_challenge\_root\_path\_failure@{aern\_application\_challenge\_root\_path\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04c5b68e01f0499f18aa3d6158d771c4}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a04c5b68e01f0499f18aa3d6158d771c4} 
+aern\+\_\+application\+\_\+challenge\+\_\+root\+\_\+path\+\_\+failure&Could not find the certificate, or the file is invalid, please enter the path again. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_root\_copy\_success@{aern\_application\_root\_copy\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_root\_copy\_success@{aern\_application\_root\_copy\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a7eaacda0c050ff6651d90e6f58c782}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a7eaacda0c050ff6651d90e6f58c782} 
+aern\+\_\+application\+\_\+root\+\_\+copy\+\_\+success&The root certificate has been copied successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_root\_copy\_failure@{aern\_application\_root\_copy\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_root\_copy\_failure@{aern\_application\_root\_copy\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f6515c5b00c80d11f37a6b66b79a065}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f6515c5b00c80d11f37a6b66b79a065} 
+aern\+\_\+application\+\_\+root\+\_\+copy\+\_\+failure&The root certificate could not be copied, check the path and permissions. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_root\_sign\_failure@{aern\_application\_root\_sign\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_root\_sign\_failure@{aern\_application\_root\_sign\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0ec62ba0d5f9968461e1d31026a4a662}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0ec62ba0d5f9968461e1d31026a4a662} 
+aern\+\_\+application\+\_\+root\+\_\+sign\+\_\+failure&The certificate signing failed. The certificate was invalid or has incompatible parameters. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_root\_sign\_success@{aern\_application\_root\_sign\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_root\_sign\_success@{aern\_application\_root\_sign\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abd2acb25d98441d457d62eba4359c2da}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abd2acb25d98441d457d62eba4359c2da} 
+aern\+\_\+application\+\_\+root\+\_\+sign\+\_\+success&The certificate was signed successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_invalid\_input@{aern\_application\_invalid\_input}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_invalid\_input@{aern\_application\_invalid\_input}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a692b6e5c179cae2b8fe1695009e3a858}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a692b6e5c179cae2b8fe1695009e3a858} 
+aern\+\_\+application\+\_\+invalid\+\_\+input&The command input was invalid, operation failed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_register\_failure@{aern\_application\_register\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_register\_failure@{aern\_application\_register\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8848e7f9dc2df32b6d752593e6e04b57}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8848e7f9dc2df32b6d752593e6e04b57} 
+aern\+\_\+application\+\_\+register\+\_\+failure&The network join request has failed, check the address. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_register\_success@{aern\_application\_register\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_register\_success@{aern\_application\_register\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a10fd58d76b4857c563dbafc03310149b}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a10fd58d76b4857c563dbafc03310149b} 
+aern\+\_\+application\+\_\+register\+\_\+success&The network join request has succeeded. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_register\_existing@{aern\_application\_register\_existing}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_register\_existing@{aern\_application\_register\_existing}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635} 
+aern\+\_\+application\+\_\+register\+\_\+existing&The node is joined to an existing network, rejoin the ads? Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_announce\_failure@{aern\_application\_announce\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_announce\_failure@{aern\_application\_announce\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adcc0e0005ddb576ce5f3e2b37e5f8902}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adcc0e0005ddb576ce5f3e2b37e5f8902} 
+aern\+\_\+application\+\_\+announce\+\_\+failure&The certificate has been announced to the network. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_announce\_success@{aern\_application\_announce\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_announce\_success@{aern\_application\_announce\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a589d544298d8e2658b26528fd49f2f56}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a589d544298d8e2658b26528fd49f2f56} 
+aern\+\_\+application\+\_\+announce\+\_\+success&The certificate announce operation has failed, check the path. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_converge\_failure@{aern\_application\_converge\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_converge\_failure@{aern\_application\_converge\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a9bb24cf5e7ef4480e8a761eaf87ea7}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a9bb24cf5e7ef4480e8a761eaf87ea7} 
+aern\+\_\+application\+\_\+converge\+\_\+failure&The topology update has failed, memory or signing failure. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_converge\_success@{aern\_application\_converge\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_converge\_success@{aern\_application\_converge\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a34d44369b690811cc910d840fdb2a426}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a34d44369b690811cc910d840fdb2a426} 
+aern\+\_\+application\+\_\+converge\+\_\+success&The topology update has been announced to the network. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_message\_time\_invalid@{aern\_application\_message\_time\_invalid}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_message\_time\_invalid@{aern\_application\_message\_time\_invalid}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a23231ec8a4c728bf993dd68307916b01}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a23231ec8a4c728bf993dd68307916b01} 
+aern\+\_\+application\+\_\+message\+\_\+time\+\_\+invalid&The network time is invalid or has substantial delay. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_not\_found@{aern\_application\_certificate\_not\_found}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_not\_found@{aern\_application\_certificate\_not\_found}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64} 
+aern\+\_\+application\+\_\+certificate\+\_\+not\+\_\+found&The root, ads, or aps certificate could not be found. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_signature\_failure@{aern\_application\_signature\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_signature\_failure@{aern\_application\_signature\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5d792f8355dc5497964bdbc2178b53a3}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5d792f8355dc5497964bdbc2178b53a3} 
+aern\+\_\+application\+\_\+signature\+\_\+failure&The signature could not be generated for a message. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_network\_resign\_failure@{aern\_application\_network\_resign\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_network\_resign\_failure@{aern\_application\_network\_resign\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1b3e8a30ce997e9af0d24b3d25ca4f66}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1b3e8a30ce997e9af0d24b3d25ca4f66} 
+aern\+\_\+application\+\_\+network\+\_\+resign\+\_\+failure&The network resign has failed, check the address. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_network\_resign\_success@{aern\_application\_network\_resign\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_network\_resign\_success@{aern\_application\_network\_resign\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe028016280b2a9bc35e7ca47fc0b94e}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731afe028016280b2a9bc35e7ca47fc0b94e} 
+aern\+\_\+application\+\_\+network\+\_\+resign\+\_\+success&This node has resigned from the network. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_revoke\_failure@{aern\_application\_certificate\_revoke\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_revoke\_failure@{aern\_application\_certificate\_revoke\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a519d57e98b220f15aee941cabe5e8778}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a519d57e98b220f15aee941cabe5e8778} 
+aern\+\_\+application\+\_\+certificate\+\_\+revoke\+\_\+failure&The certificate revocation has failed, check the path. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_revoke\_success@{aern\_application\_certificate\_revoke\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_revoke\_success@{aern\_application\_certificate\_revoke\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa6b96667e55697e391b4e2f9429699f8}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa6b96667e55697e391b4e2f9429699f8} 
+aern\+\_\+application\+\_\+certificate\+\_\+revoke\+\_\+success&The certificate revocation has been broadcast to the network. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_address\_change\_failure@{aern\_application\_address\_change\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_address\_change\_failure@{aern\_application\_address\_change\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2df9c02dd2daa9e00a3acafff2693261}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2df9c02dd2daa9e00a3acafff2693261} 
+aern\+\_\+application\+\_\+address\+\_\+change\+\_\+failure&The address is not routable, or not properly formed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_address\_change\_success@{aern\_application\_address\_change\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_address\_change\_success@{aern\_application\_address\_change\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3737f300fab9360c6bece5f4fa3861da}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3737f300fab9360c6bece5f4fa3861da} 
+aern\+\_\+application\+\_\+address\+\_\+change\+\_\+success&The server ip address has been changed, restart the server for changes to take effect. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_address\_change\_challenge@{aern\_application\_address\_change\_challenge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_address\_change\_challenge@{aern\_application\_address\_change\_challenge}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1380000ea9991186e7a4d3ff206de4a2}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1380000ea9991186e7a4d3ff206de4a2} 
+aern\+\_\+application\+\_\+address\+\_\+change\+\_\+challenge&Do you want to change the ip address? Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_address\_change\_current@{aern\_application\_address\_change\_current}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_address\_change\_current@{aern\_application\_address\_change\_current}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aae69e9aba90ff26901ca1ec0eed94ebc}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aae69e9aba90ff26901ca1ec0eed94ebc} 
+aern\+\_\+application\+\_\+address\+\_\+change\+\_\+current&The auto-\/detected ip address is\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_address\_change\_message@{aern\_application\_address\_change\_message}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_address\_change\_message@{aern\_application\_address\_change\_message}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeca3ce54f2ee324c3e755370717d0227}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeca3ce54f2ee324c3e755370717d0227} 
+aern\+\_\+application\+\_\+address\+\_\+change\+\_\+message&Enter a routable IPv4 or IPv6 address. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_service\_start\_failure@{aern\_application\_server\_service\_start\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_service\_start\_failure@{aern\_application\_server\_service\_start\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3432b995894c8065d9ec802b0e7a0c35}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3432b995894c8065d9ec802b0e7a0c35} 
+aern\+\_\+application\+\_\+server\+\_\+service\+\_\+start\+\_\+failure&The server service could not be started, check for a valid signed certificate and network membership. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_service\_start\_success@{aern\_application\_server\_service\_start\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_service\_start\_success@{aern\_application\_server\_service\_start\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9b5f7db2f4aad5309a87c0203c0349f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab9b5f7db2f4aad5309a87c0203c0349f} 
+aern\+\_\+application\+\_\+server\+\_\+service\+\_\+start\+\_\+success&The server service was started successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_service\_stopped@{aern\_application\_server\_service\_stopped}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_service\_stopped@{aern\_application\_server\_service\_stopped}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a984f09f774fb973773f708668e240e2f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a984f09f774fb973773f708668e240e2f} 
+aern\+\_\+application\+\_\+server\+\_\+service\+\_\+stopped&The server service has been stopped, use the command \textquotesingle{}service start\textquotesingle{} to run. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_service\_paused@{aern\_application\_server\_service\_paused}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_service\_paused@{aern\_application\_server\_service\_paused}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa7892847ee7577f61db8b27c5d2067ed}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa7892847ee7577f61db8b27c5d2067ed} 
+aern\+\_\+application\+\_\+server\+\_\+service\+\_\+paused&The server service has been paused, use the command \textquotesingle{}service resume\textquotesingle{} to restart. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_service\_resume\_failure@{aern\_application\_server\_service\_resume\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_service\_resume\_failure@{aern\_application\_server\_service\_resume\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a21511e4686f1f5ef427c1318bef4f10f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a21511e4686f1f5ef427c1318bef4f10f} 
+aern\+\_\+application\+\_\+server\+\_\+service\+\_\+resume\+\_\+failure&The server service could not be resumed, use the command \textquotesingle{}service start\textquotesingle{} to run. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_service\_resume\_success@{aern\_application\_server\_service\_resume\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_service\_resume\_success@{aern\_application\_server\_service\_resume\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aab84370d7c35b8a083028dfdb980252b}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aab84370d7c35b8a083028dfdb980252b} 
+aern\+\_\+application\+\_\+server\+\_\+service\+\_\+resume\+\_\+success&The server service has resumed successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_import\_certificate\_exists@{aern\_application\_import\_certificate\_exists}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_import\_certificate\_exists@{aern\_application\_import\_certificate\_exists}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6fadf6e40ea7fa21b20aec4a363aa2c8}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6fadf6e40ea7fa21b20aec4a363aa2c8} 
+aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+exists&The server certificate already exists, do you want to replace it? Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_import\_certificate\_changed@{aern\_application\_import\_certificate\_changed}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_import\_certificate\_changed@{aern\_application\_import\_certificate\_changed}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b60515b2c2644ecc94366e02062a0d2}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b60515b2c2644ecc94366e02062a0d2} 
+aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+changed&Changing the server name or the domain name requires recreating the certificate, do you want to proceed? Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_import\_certificate\_failure@{aern\_application\_import\_certificate\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_import\_certificate\_failure@{aern\_application\_import\_certificate\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a50d1e619f7a68e338bac727d83241c5b}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a50d1e619f7a68e338bac727d83241c5b} 
+aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+failure&The server certificate could not be updated, check the path and root signature \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_import\_certificate\_success@{aern\_application\_import\_certificate\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_import\_certificate\_success@{aern\_application\_import\_certificate\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5e74314f816be24edf86ffdb27c5aae7}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5e74314f816be24edf86ffdb27c5aae7} 
+aern\+\_\+application\+\_\+import\+\_\+certificate\+\_\+success&The server certificate was updated successfully \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_export\_certificate\_failure@{aern\_application\_export\_certificate\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_export\_certificate\_failure@{aern\_application\_export\_certificate\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6828f56b3ab216e74d35f0c9b706fad}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab6828f56b3ab216e74d35f0c9b706fad} 
+aern\+\_\+application\+\_\+export\+\_\+certificate\+\_\+failure&The server certificate could not be exported, check the path \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_export\_certificate\_success@{aern\_application\_export\_certificate\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_export\_certificate\_success@{aern\_application\_export\_certificate\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aca6dc3c5f56dad49aa0d5dec1732f23a}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aca6dc3c5f56dad49aa0d5dec1732f23a} 
+aern\+\_\+application\+\_\+export\+\_\+certificate\+\_\+success&The server certificate was exported successfully \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_domain\_change\_challenge@{aern\_application\_server\_domain\_change\_challenge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_domain\_change\_challenge@{aern\_application\_server\_domain\_change\_challenge}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa959b2a7570d001077bf8606cb198e22}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa959b2a7570d001077bf8606cb198e22} 
+aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+challenge&Do you want to change the servers domain name? Y\texorpdfstring{$\vert$}{|}N \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_domain\_change\_current@{aern\_application\_server\_domain\_change\_current}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_domain\_change\_current@{aern\_application\_server\_domain\_change\_current}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0f6d592ff12b6377d3f18932cdaa2916}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0f6d592ff12b6377d3f18932cdaa2916} 
+aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+current&The current domain name string\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_domain\_change\_failure@{aern\_application\_server\_domain\_change\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_domain\_change\_failure@{aern\_application\_server\_domain\_change\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b7df2d1faf6dd8d768ab99c9b9c7409}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b7df2d1faf6dd8d768ab99c9b9c7409} 
+aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+failure&The server could not update the domain name. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_domain\_change\_success@{aern\_application\_server\_domain\_change\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_domain\_change\_success@{aern\_application\_server\_domain\_change\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1c785f6de092c24d3d1cc1688fb6edcc}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1c785f6de092c24d3d1cc1688fb6edcc} 
+aern\+\_\+application\+\_\+server\+\_\+domain\+\_\+change\+\_\+success&The domain name has been updated successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_period\_update@{aern\_application\_certificate\_period\_update}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_period\_update@{aern\_application\_certificate\_period\_update}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad61327908bd5b832d28fc83e3f0d6535}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad61327908bd5b832d28fc83e3f0d6535} 
+aern\+\_\+application\+\_\+certificate\+\_\+period\+\_\+update&The days entered exceeds the root expiration period; days reduced to\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_root\_validate@{aern\_application\_certificate\_root\_validate}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_root\_validate@{aern\_application\_certificate\_root\_validate}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab515a79de8717d9e4740f42a7b0411f1}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ab515a79de8717d9e4740f42a7b0411f1} 
+aern\+\_\+application\+\_\+certificate\+\_\+root\+\_\+validate&The certificate must be signed by the ARS server before joining the network. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_command\_not\_supported@{aern\_application\_command\_not\_supported}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_command\_not\_supported@{aern\_application\_command\_not\_supported}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a824690d4af752550daf108c845c68a00}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a824690d4af752550daf108c845c68a00} 
+aern\+\_\+application\+\_\+command\+\_\+not\+\_\+supported&The command is not supported on this server or version. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_network\_ip\_address\_not\_set@{aern\_application\_network\_ip\_address\_not\_set}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_network\_ip\_address\_not\_set@{aern\_application\_network\_ip\_address\_not\_set}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f390f441819ee6530adfd6bc7ed23b1}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2f390f441819ee6530adfd6bc7ed23b1} 
+aern\+\_\+application\+\_\+network\+\_\+ip\+\_\+address\+\_\+not\+\_\+set&The network address is invalid or not set. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_network\_local\_error@{aern\_application\_network\_local\_error}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_network\_local\_error@{aern\_application\_network\_local\_error}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade1510d5cf6d341d92ed531da41c05be}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade1510d5cf6d341d92ed531da41c05be} 
+aern\+\_\+application\+\_\+network\+\_\+local\+\_\+error&received a network error from remote host\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_network\_remote\_error@{aern\_application\_network\_remote\_error}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_network\_remote\_error@{aern\_application\_network\_remote\_error}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d569560d04fc9cc202dd252e299f67a}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d569560d04fc9cc202dd252e299f67a} 
+aern\+\_\+application\+\_\+network\+\_\+remote\+\_\+error&a network error occured with remote host\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_topological\_query\_unknown@{aern\_application\_topological\_query\_unknown}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_topological\_query\_unknown@{aern\_application\_topological\_query\_unknown}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9ba7174df98e08cc2569414c1bac0ecf}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9ba7174df98e08cc2569414c1bac0ecf} 
+aern\+\_\+application\+\_\+topological\+\_\+query\+\_\+unknown&The query name format is invalid, valid format is domain.\+client \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_topological\_query\_failure@{aern\_application\_topological\_query\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_topological\_query\_failure@{aern\_application\_topological\_query\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a26a8221b6e6dfa27d5dc9bbbb0992502}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a26a8221b6e6dfa27d5dc9bbbb0992502} 
+aern\+\_\+application\+\_\+topological\+\_\+query\+\_\+failure&The device is offline or unknown to the ADC \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_topological\_query\_success@{aern\_application\_topological\_query\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_topological\_query\_success@{aern\_application\_topological\_query\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac0741e1ee01dc12590c1f147a06f62c5}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac0741e1ee01dc12590c1f147a06f62c5} 
+aern\+\_\+application\+\_\+topological\+\_\+query\+\_\+success&The device is online and available for connection \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_adc\_certificate\_path\_failure@{aern\_application\_adc\_certificate\_path\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_adc\_certificate\_path\_failure@{aern\_application\_adc\_certificate\_path\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3d6261431928f3ac06b5a848fe26bec3}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3d6261431928f3ac06b5a848fe26bec3} 
+aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+path\+\_\+failure&The certificate was not found or is not signed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_adc\_certificate\_path\_success@{aern\_application\_adc\_certificate\_path\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_adc\_certificate\_path\_success@{aern\_application\_adc\_certificate\_path\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7294856fe2c007f32d8270da7685d4ea}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7294856fe2c007f32d8270da7685d4ea} 
+aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+path\+\_\+success&Provide the full path to the signed ADC certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_adc\_certificate\_address\_challenge@{aern\_application\_adc\_certificate\_address\_challenge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_adc\_certificate\_address\_challenge@{aern\_application\_adc\_certificate\_address\_challenge}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aaf160c6a5f56a197e21c26521c8991c3}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aaf160c6a5f56a197e21c26521c8991c3} 
+aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+address\+\_\+challenge&Provide the IP address of the ADC server \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_adc\_certificate\_address\_failure@{aern\_application\_adc\_certificate\_address\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_adc\_certificate\_address\_failure@{aern\_application\_adc\_certificate\_address\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7751a41e2022d8e8f7740a1d436c7fcf}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7751a41e2022d8e8f7740a1d436c7fcf} 
+aern\+\_\+application\+\_\+adc\+\_\+certificate\+\_\+address\+\_\+failure&The ADC IP address format is invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_backup\_restore\_challenge@{aern\_application\_server\_backup\_restore\_challenge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_backup\_restore\_challenge@{aern\_application\_server\_backup\_restore\_challenge}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4bc439e1d1440b049168f8ebdd7008a3}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4bc439e1d1440b049168f8ebdd7008a3} 
+aern\+\_\+application\+\_\+server\+\_\+backup\+\_\+restore\+\_\+challenge&Restore the configuration files from the last backup? \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_backup\_save\_confirmation@{aern\_application\_server\_backup\_save\_confirmation}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_backup\_save\_confirmation@{aern\_application\_server\_backup\_save\_confirmation}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ada50b181751c3a0ffb2bf88dd9922d06}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ada50b181751c3a0ffb2bf88dd9922d06} 
+aern\+\_\+application\+\_\+server\+\_\+backup\+\_\+save\+\_\+confirmation&The configuration files have been backed up. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_remote\_sign\_failure@{aern\_application\_certificate\_remote\_sign\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_remote\_sign\_failure@{aern\_application\_certificate\_remote\_sign\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b269abc3657648775e06b6d26c48322}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9b269abc3657648775e06b6d26c48322} 
+aern\+\_\+application\+\_\+certificate\+\_\+remote\+\_\+sign\+\_\+failure&The proxy service could not sign the certificate. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_certificate\_remote\_sign\_success@{aern\_application\_certificate\_remote\_sign\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_certificate\_remote\_sign\_success@{aern\_application\_certificate\_remote\_sign\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa1b9a204a9c6a5ed5ee3b6bdcbfc1dee}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa1b9a204a9c6a5ed5ee3b6bdcbfc1dee} 
+aern\+\_\+application\+\_\+certificate\+\_\+remote\+\_\+sign\+\_\+success&The certificate was signed by the proxy service. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_address\_change@{aern\_application\_log\_address\_change}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_address\_change@{aern\_application\_log\_address\_change}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b5ea39e2d5b8a2b25fbdcdf56e01e93}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3b5ea39e2d5b8a2b25fbdcdf56e01e93} 
+aern\+\_\+application\+\_\+log\+\_\+address\+\_\+change&The server address has been changed by the administrator \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_domain\_change@{aern\_application\_log\_domain\_change}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_domain\_change@{aern\_application\_log\_domain\_change}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8b1671319f6c516023646d3bc2555d3}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8b1671319f6c516023646d3bc2555d3} 
+aern\+\_\+application\+\_\+log\+\_\+domain\+\_\+change&The domain name was changed to \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_hostname\_change@{aern\_application\_log\_hostname\_change}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_hostname\_change@{aern\_application\_log\_hostname\_change}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abee9d9fa5048e1523ca259f6a3e4cb1d}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abee9d9fa5048e1523ca259f6a3e4cb1d} 
+aern\+\_\+application\+\_\+log\+\_\+hostname\+\_\+change&The host name was changed to \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_user\_logged\_in@{aern\_application\_log\_user\_logged\_in}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_user\_logged\_in@{aern\_application\_log\_user\_logged\_in}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec3c9fcdc7e9a70958d6e9fa423a00a2}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec3c9fcdc7e9a70958d6e9fa423a00a2} 
+aern\+\_\+application\+\_\+log\+\_\+user\+\_\+logged\+\_\+in&Local user logged in\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_log\_created@{aern\_application\_log\_log\_created}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_log\_created@{aern\_application\_log\_log\_created}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec6a912479b230fd49260310459808cd}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aec6a912479b230fd49260310459808cd} 
+aern\+\_\+application\+\_\+log\+\_\+log\+\_\+created&Log file created\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_log\_disabled@{aern\_application\_log\_log\_disabled}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_log\_disabled@{aern\_application\_log\_log\_disabled}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a608b2a99615928910d6bc2373356f7fd}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a608b2a99615928910d6bc2373356f7fd} 
+aern\+\_\+application\+\_\+log\+\_\+log\+\_\+disabled&Logging has been disabled on \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_log\_enabled@{aern\_application\_log\_log\_enabled}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_log\_enabled@{aern\_application\_log\_log\_enabled}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abcf96bc83f1692c2d5f8ad8d8560018a}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731abcf96bc83f1692c2d5f8ad8d8560018a} 
+aern\+\_\+application\+\_\+log\+\_\+log\+\_\+enabled&Logging has been enabled on \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_log\_header@{aern\_application\_log\_log\_header}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_log\_header@{aern\_application\_log\_log\_header}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1161cd81faef7ef6a445799c9e11b1f6}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1161cd81faef7ef6a445799c9e11b1f6} 
+aern\+\_\+application\+\_\+log\+\_\+log\+\_\+header&AERN version 1.\+0a, created September 2022. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_retries\_change@{aern\_application\_log\_retries\_change}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_retries\_change@{aern\_application\_log\_retries\_change}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9a69a02ef61bda2d514c1e7d0ee3097c}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a9a69a02ef61bda2d514c1e7d0ee3097c} 
+aern\+\_\+application\+\_\+log\+\_\+retries\+\_\+change&The login retries setting was changed to \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_timeout\_change@{aern\_application\_log\_timeout\_change}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_timeout\_change@{aern\_application\_log\_timeout\_change}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac9c01e041710814d3e673491a4f254d9}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac9c01e041710814d3e673491a4f254d9} 
+aern\+\_\+application\+\_\+log\+\_\+timeout\+\_\+change&The session timeout was changed to \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_user\_added@{aern\_application\_log\_user\_added}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_user\_added@{aern\_application\_log\_user\_added}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a896eaca09f48184d236c570d8b2d5ee0}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a896eaca09f48184d236c570d8b2d5ee0} 
+aern\+\_\+application\+\_\+log\+\_\+user\+\_\+added&Added user configuration\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_state\_restore@{aern\_application\_log\_state\_restore}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_state\_restore@{aern\_application\_log\_state\_restore}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf6eb9e79bfc9d34365bc4312e5a8930}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf6eb9e79bfc9d34365bc4312e5a8930} 
+aern\+\_\+application\+\_\+log\+\_\+state\+\_\+restore&The server state has been restored \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_state\_backup@{aern\_application\_log\_state\_backup}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_state\_backup@{aern\_application\_log\_state\_backup}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7b9c87c4d8e187d70d8714a9c0c9f116}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a7b9c87c4d8e187d70d8714a9c0c9f116} 
+aern\+\_\+application\+\_\+log\+\_\+state\+\_\+backup&The server state has been backed up \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_service\_paused@{aern\_application\_log\_service\_paused}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_service\_paused@{aern\_application\_log\_service\_paused}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d26a33d7f2c84214d279f9c0df842b6}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a8d26a33d7f2c84214d279f9c0df842b6} 
+aern\+\_\+application\+\_\+log\+\_\+service\+\_\+paused&The server service was paused \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_service\_resumed@{aern\_application\_log\_service\_resumed}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_service\_resumed@{aern\_application\_log\_service\_resumed}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a77d7a378264d85c414ccceff407b4569}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a77d7a378264d85c414ccceff407b4569} 
+aern\+\_\+application\+\_\+log\+\_\+service\+\_\+resumed&The server service was resumed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_service\_started@{aern\_application\_log\_service\_started}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_service\_started@{aern\_application\_log\_service\_started}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46121c462aaf1b71a4d1f4905dadd0e2}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a46121c462aaf1b71a4d1f4905dadd0e2} 
+aern\+\_\+application\+\_\+log\+\_\+service\+\_\+started&The server service was started \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_service\_stopped@{aern\_application\_log\_service\_stopped}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_service\_stopped@{aern\_application\_log\_service\_stopped}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac2a81696f3e5419770e37fd95c58aca6}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac2a81696f3e5419770e37fd95c58aca6} 
+aern\+\_\+application\+\_\+log\+\_\+service\+\_\+stopped&The server service was stopped \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_mfk\_exchange\_failure@{aern\_application\_log\_mfk\_exchange\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_mfk\_exchange\_failure@{aern\_application\_log\_mfk\_exchange\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf58df04634e81869b1570afe83d527f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adf58df04634e81869b1570afe83d527f} 
+aern\+\_\+application\+\_\+log\+\_\+mfk\+\_\+exchange\+\_\+failure&The network mfk exchange has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_mfk\_exchange\_success@{aern\_application\_log\_mfk\_exchange\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_mfk\_exchange\_success@{aern\_application\_log\_mfk\_exchange\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a817550934ef0e5afd53e49d4bee0a11f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a817550934ef0e5afd53e49d4bee0a11f} 
+aern\+\_\+application\+\_\+log\+\_\+mfk\+\_\+exchange\+\_\+success&The network mfk exchange has succeeded \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_generate\_delete@{aern\_application\_log\_generate\_delete}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_generate\_delete@{aern\_application\_log\_generate\_delete}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5edd52d989b464f09eccb564db52467b}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a5edd52d989b464f09eccb564db52467b} 
+aern\+\_\+application\+\_\+log\+\_\+generate\+\_\+delete&The server generated a replacement certificate\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_generate\_failure@{aern\_application\_log\_generate\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_generate\_failure@{aern\_application\_log\_generate\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2d4f6f58d83f9173ee04c3792377f31f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a2d4f6f58d83f9173ee04c3792377f31f} 
+aern\+\_\+application\+\_\+log\+\_\+generate\+\_\+failure&The certificate generation has failed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_generate\_success@{aern\_application\_log\_generate\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_generate\_success@{aern\_application\_log\_generate\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a17e5d0804cc1d9cedc8a71af33b4d3bd}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a17e5d0804cc1d9cedc8a71af33b4d3bd} 
+aern\+\_\+application\+\_\+log\+\_\+generate\+\_\+success&The certificate generation has succeeded\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_revocation\_failure@{aern\_application\_log\_revocation\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_revocation\_failure@{aern\_application\_log\_revocation\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8ff9cd0adbcb6df0e2f70636e86f5c0}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae8ff9cd0adbcb6df0e2f70636e86f5c0} 
+aern\+\_\+application\+\_\+log\+\_\+revocation\+\_\+failure&The certificate announcement has succeeded \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_revocation\_success@{aern\_application\_log\_revocation\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_revocation\_success@{aern\_application\_log\_revocation\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6c3a866cff2ae2457c498638c469a1ba}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a6c3a866cff2ae2457c498638c469a1ba} 
+aern\+\_\+application\+\_\+log\+\_\+revocation\+\_\+success&The certificate revocation has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_convergence\_failure@{aern\_application\_log\_convergence\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_convergence\_failure@{aern\_application\_log\_convergence\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac189889f0745d240f95583e18db141bd}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac189889f0745d240f95583e18db141bd} 
+aern\+\_\+application\+\_\+log\+\_\+convergence\+\_\+failure&The converce call has returned a failure \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_convergence\_success@{aern\_application\_log\_convergence\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_convergence\_success@{aern\_application\_log\_convergence\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a64fc764727a92c45c36d838882601c5f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a64fc764727a92c45c36d838882601c5f} 
+aern\+\_\+application\+\_\+log\+\_\+convergence\+\_\+success&The remote host has converged and updated its certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_incremental\_failure@{aern\_application\_log\_incremental\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_incremental\_failure@{aern\_application\_log\_incremental\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4aa1610fc418546d71a9e3b59e18027c}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4aa1610fc418546d71a9e3b59e18027c} 
+aern\+\_\+application\+\_\+log\+\_\+incremental\+\_\+failure&The topological update request failed or was denied \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_incremental\_success@{aern\_application\_log\_incremental\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_incremental\_success@{aern\_application\_log\_incremental\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af54bb88decb83f568ff8cb07b0895367}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af54bb88decb83f568ff8cb07b0895367} 
+aern\+\_\+application\+\_\+log\+\_\+incremental\+\_\+success&The topological update request was sent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_allocation\_failure@{aern\_application\_log\_allocation\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_allocation\_failure@{aern\_application\_log\_allocation\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a06c2cd8ab6f1a7a959ceee986b61a696}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a06c2cd8ab6f1a7a959ceee986b61a696} 
+aern\+\_\+application\+\_\+log\+\_\+allocation\+\_\+failure&Memory allocation failure, connection aborted to host \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_connection\_terminated@{aern\_application\_log\_connection\_terminated}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_connection\_terminated@{aern\_application\_log\_connection\_terminated}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a32a0f61e2d7cd03718f0876e23cc1285}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a32a0f61e2d7cd03718f0876e23cc1285} 
+aern\+\_\+application\+\_\+log\+\_\+connection\+\_\+terminated&Connection terminated by remote host \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_configuration\_erased@{aern\_application\_log\_configuration\_erased}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_configuration\_erased@{aern\_application\_log\_configuration\_erased}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac489d0c1a01b5c25436a935430a89399}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ac489d0c1a01b5c25436a935430a89399} 
+aern\+\_\+application\+\_\+log\+\_\+configuration\+\_\+erased&The configuration was erased by user\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_receive\_failure@{aern\_application\_log\_receive\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_receive\_failure@{aern\_application\_log\_receive\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a375206bb789fa64608f97dab63f9bcf8}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a375206bb789fa64608f97dab63f9bcf8} 
+aern\+\_\+application\+\_\+log\+\_\+receive\+\_\+failure&The network session has timed out \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_register\_failure@{aern\_application\_log\_register\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_register\_failure@{aern\_application\_log\_register\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29} 
+aern\+\_\+application\+\_\+log\+\_\+register\+\_\+failure&The network ads join request was denied \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_register\_success@{aern\_application\_log\_register\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_register\_success@{aern\_application\_log\_register\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f} 
+aern\+\_\+application\+\_\+log\+\_\+register\+\_\+success&The network ads join request has succeeded \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_fragment\_exchange\_failure@{aern\_application\_log\_fragment\_exchange\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_fragment\_exchange\_failure@{aern\_application\_log\_fragment\_exchange\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeed854b80b305cde18e92420fd7662a9}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aeed854b80b305cde18e92420fd7662a9} 
+aern\+\_\+application\+\_\+log\+\_\+fragment\+\_\+exchange\+\_\+failure&The key fragment exchange has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_fragment\_exchange\_success@{aern\_application\_log\_fragment\_exchange\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_fragment\_exchange\_success@{aern\_application\_log\_fragment\_exchange\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a088c8b68fba07712819842250a801f7e}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a088c8b68fba07712819842250a801f7e} 
+aern\+\_\+application\+\_\+log\+\_\+fragment\+\_\+exchange\+\_\+success&The key fragment exchange has succeeded \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_local\_resign\_failure@{aern\_application\_log\_local\_resign\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_local\_resign\_failure@{aern\_application\_log\_local\_resign\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adb36159d429fa44fa6c4abeba478d2ec}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731adb36159d429fa44fa6c4abeba478d2ec} 
+aern\+\_\+application\+\_\+log\+\_\+local\+\_\+resign\+\_\+failure&The host resignation from the network failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_local\_resign\_success@{aern\_application\_log\_local\_resign\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_local\_resign\_success@{aern\_application\_log\_local\_resign\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a369b972e42383b2537af7865a677b534}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a369b972e42383b2537af7865a677b534} 
+aern\+\_\+application\+\_\+log\+\_\+local\+\_\+resign\+\_\+success&The host has resigned from the network \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_remote\_invalid\_request@{aern\_application\_log\_remote\_invalid\_request}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_remote\_invalid\_request@{aern\_application\_log\_remote\_invalid\_request}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a50613f47f0d379471b97d335d7a9bb}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a1a50613f47f0d379471b97d335d7a9bb} 
+aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+invalid\+\_\+request&The remote device sent an invalid or unknown request \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_remote\_reported\_error@{aern\_application\_log\_remote\_reported\_error}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_remote\_reported\_error@{aern\_application\_log\_remote\_reported\_error}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa814fc51767452005e378502afaa5923}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731aa814fc51767452005e378502afaa5923} 
+aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+reported\+\_\+error&The remote device responded with an error code \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_connect\_failure@{aern\_application\_log\_connect\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_connect\_failure@{aern\_application\_log\_connect\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0009a6e38b3ac9ed3203b620a9f15c94}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0009a6e38b3ac9ed3203b620a9f15c94} 
+aern\+\_\+application\+\_\+log\+\_\+connect\+\_\+failure&Remote connection failed at \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_connect\_success@{aern\_application\_log\_connect\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_connect\_success@{aern\_application\_log\_connect\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4095aab547fa174d7762ca41ae1293d0}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a4095aab547fa174d7762ca41ae1293d0} 
+aern\+\_\+application\+\_\+log\+\_\+connect\+\_\+success&Connected to remote host\+: \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_topology\_node\_query\_failure@{aern\_application\_log\_topology\_node\_query\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_topology\_node\_query\_failure@{aern\_application\_log\_topology\_node\_query\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a99227ed8d48518af1235c48261dd37a9}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a99227ed8d48518af1235c48261dd37a9} 
+aern\+\_\+application\+\_\+log\+\_\+topology\+\_\+node\+\_\+query\+\_\+failure&The node query failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_topology\_node\_query\_success@{aern\_application\_log\_topology\_node\_query\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_topology\_node\_query\_success@{aern\_application\_log\_topology\_node\_query\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade59939d092b78f2730f725dcc1aff10}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ade59939d092b78f2730f725dcc1aff10} 
+aern\+\_\+application\+\_\+log\+\_\+topology\+\_\+node\+\_\+query\+\_\+success&The device answered a node query successfully \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_announce\_failure@{aern\_application\_log\_announce\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_announce\_failure@{aern\_application\_log\_announce\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a755d438d945acd740d5874b937f7466e}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a755d438d945acd740d5874b937f7466e} 
+aern\+\_\+application\+\_\+log\+\_\+announce\+\_\+failure&The node was not found in the topological database \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_announce\_success@{aern\_application\_log\_announce\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_announce\_success@{aern\_application\_log\_announce\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae9a54ba14924fe73843112336135b16b}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ae9a54ba14924fe73843112336135b16b} 
+aern\+\_\+application\+\_\+log\+\_\+announce\+\_\+success&The certificate announcement has failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_remote\_signing\_failure@{aern\_application\_log\_remote\_signing\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_remote\_signing\_failure@{aern\_application\_log\_remote\_signing\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81f2628b9a74c6d0391129dc3e2a88c1}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a81f2628b9a74c6d0391129dc3e2a88c1} 
+aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+signing\+\_\+failure&The remote certificate could not be signed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_remote\_signing\_success@{aern\_application\_log\_remote\_signing\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_remote\_signing\_success@{aern\_application\_log\_remote\_signing\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a377b4695eda9acad48fb28338664999d}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a377b4695eda9acad48fb28338664999d} 
+aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+signing\+\_\+success&The remote certificate was signed successfully \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_remote\_resign\_failure@{aern\_application\_log\_remote\_resign\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_remote\_resign\_failure@{aern\_application\_log\_remote\_resign\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a606575ed3564c53f0e38d43286fe72bd}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a606575ed3564c53f0e38d43286fe72bd} 
+aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+resign\+\_\+failure&The remote host resignation from the network failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_remote\_resign\_success@{aern\_application\_log\_remote\_resign\_success}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_remote\_resign\_success@{aern\_application\_log\_remote\_resign\_success}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad1f4a3206aff5366f315277a7f4418cc}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731ad1f4a3206aff5366f315277a7f4418cc} 
+aern\+\_\+application\+\_\+log\+\_\+remote\+\_\+resign\+\_\+success&The remote host has resigned from the network \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_log\_converge\_node\_remove\_challenge@{aern\_application\_log\_converge\_node\_remove\_challenge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_log\_converge\_node\_remove\_challenge@{aern\_application\_log\_converge\_node\_remove\_challenge}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3c2bd708a6c292339e2e50338e36e61a}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a3c2bd708a6c292339e2e50338e36e61a} 
+aern\+\_\+application\+\_\+log\+\_\+converge\+\_\+node\+\_\+remove\+\_\+challenge&Do you want to revoke this device and remove it from the database? \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_ars\_certificate\_address\_challenge@{aern\_application\_ars\_certificate\_address\_challenge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_ars\_certificate\_address\_challenge@{aern\_application\_ars\_certificate\_address\_challenge}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0afa84e2f3d5017234115eea1daf8317}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731a0afa84e2f3d5017234115eea1daf8317} 
+aern\+\_\+application\+\_\+ars\+\_\+certificate\+\_\+address\+\_\+challenge&Provide the IP address of the ARS server \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_ars\_certificate\_address\_failure@{aern\_application\_ars\_certificate\_address\_failure}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_ars\_certificate\_address\_failure@{aern\_application\_ars\_certificate\_address\_failure}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af2886246612fc648fbeb63b841e3a662}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af2886246612fc648fbeb63b841e3a662} 
+aern\+\_\+application\+\_\+ars\+\_\+certificate\+\_\+address\+\_\+failure&The ARS IP address format is invalid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_application\_server\_service\_not\_started@{aern\_application\_server\_service\_not\_started}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_application\_server\_service\_not\_started@{aern\_application\_server\_service\_not\_started}}}\Hypertarget{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af1c831f958dc1c166181ee0bddd38ca0}\label{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731af1c831f958dc1c166181ee0bddd38ca0} 
+aern\+\_\+application\+\_\+server\+\_\+service\+\_\+not\+\_\+started&The server service must be started before issuing this command \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53c}\index{commands.h@{commands.h}!aern\_command\_actions@{aern\_command\_actions}}
+\index{aern\_command\_actions@{aern\_command\_actions}!commands.h@{commands.h}}
+\doxysubsubsection{\texorpdfstring{aern\_command\_actions}{aern\_command\_actions}}
+{\footnotesize\ttfamily \label{commands_8h_ad68782564f96643016e3bd878aa0b53c} 
+enum \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}}}
+
+
+
+The ARS command actions. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_none@{aern\_command\_action\_none}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_none@{aern\_command\_action\_none}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caf112be1908574c52515a8c14324ba187}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caf112be1908574c52515a8c14324ba187} 
+aern\+\_\+command\+\_\+action\+\_\+none&unknown command \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_address@{aern\_command\_action\_config\_address}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_address@{aern\_command\_action\_config\_address}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca6a726be44f2dbdc16190fe9687e4bc7a}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca6a726be44f2dbdc16190fe9687e4bc7a} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+address&address \mbox{[}ip address\mbox{]} -\/Assign the server\textquotesingle{}s network interface address; requires a restart. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_certificate@{aern\_command\_action\_config\_certificate}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_certificate@{aern\_command\_action\_config\_certificate}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca17a3529e6f778a75a0f4b420fef90b2b}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca17a3529e6f778a75a0f4b420fef90b2b} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+certificate&crypto -\/enter the cryptographic command interface \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_clear\_all@{aern\_command\_action\_config\_clear\_all}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_clear\_all@{aern\_command\_action\_config\_clear\_all}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca33fc1522d47efc524eb38f6daf7b3be0}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca33fc1522d47efc524eb38f6daf7b3be0} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear\+\_\+all&clear all -\/requires auth challenge, deletes everything \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_clear\_config@{aern\_command\_action\_config\_clear\_config}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_clear\_config@{aern\_command\_action\_config\_clear\_config}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca01ed0fb224c9092b03db99501e726cfd}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca01ed0fb224c9092b03db99501e726cfd} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear\+\_\+config&clear config -\/requires auth challenge, deletes public key cache \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_clear\_log@{aern\_command\_action\_config\_clear\_log}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_clear\_log@{aern\_command\_action\_config\_clear\_log}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca40652f093ebcc889f164522db82977a4}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca40652f093ebcc889f164522db82977a4} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear\+\_\+log&clear log -\/requires auth challenge, clears the logs \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_exit@{aern\_command\_action\_config\_exit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_exit@{aern\_command\_action\_config\_exit}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cabd1c3cb9fdc02acff106d97c250c1aae}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cabd1c3cb9fdc02acff106d97c250c1aae} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+exit&exit -\/exits to enable mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_help@{aern\_command\_action\_config\_help}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_help@{aern\_command\_action\_config\_help}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caebd689cff17d782ad99f3315d5e7571e}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caebd689cff17d782ad99f3315d5e7571e} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+help&help for config mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_log\_host@{aern\_command\_action\_config\_log\_host}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_log\_host@{aern\_command\_action\_config\_log\_host}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca7ddac00c409c56db52156b7dab3a48df}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca7ddac00c409c56db52156b7dab3a48df} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+log\+\_\+host&log \mbox{[}enable \texorpdfstring{$\vert$}{|} disable\mbox{]} -\/log command and connection activity \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_name\_domain@{aern\_command\_action\_config\_name\_domain}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_name\_domain@{aern\_command\_action\_config\_name\_domain}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cacd4bdebfab6a2dffe4300120b514cf49}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cacd4bdebfab6a2dffe4300120b514cf49} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+name\+\_\+domain&name domain \mbox{[}domain-\/name\mbox{]} -\/fully qualified domain-\/name \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_name\_host@{aern\_command\_action\_config\_name\_host}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_name\_host@{aern\_command\_action\_config\_name\_host}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caf50df25b52ff3c0b1d3272cc957da2ef}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caf50df25b52ff3c0b1d3272cc957da2ef} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+name\+\_\+host&name host \mbox{[}host-\/name\mbox{]} \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_retries@{aern\_command\_action\_config\_retries}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_retries@{aern\_command\_action\_config\_retries}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca95d0d8de00558855371c4462210daa19}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca95d0d8de00558855371c4462210daa19} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+retries&retries \mbox{[}count\mbox{]} -\/authentication retries, default is 2 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_server@{aern\_command\_action\_config\_server}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_server@{aern\_command\_action\_config\_server}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca5d95d5036bdbfe3f3991fa4246942274}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca5d95d5036bdbfe3f3991fa4246942274} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+server&server -\/enter server configuration mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_timeout@{aern\_command\_action\_config\_timeout}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_timeout@{aern\_command\_action\_config\_timeout}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cac16b3ff3d9758ff57e9d7e52f07aea67}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cac16b3ff3d9758ff57e9d7e52f07aea67} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+timeout&timeout \mbox{[}seconds\mbox{]} -\/session default 120 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_enable\_clear\_screen@{aern\_command\_action\_enable\_clear\_screen}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_enable\_clear\_screen@{aern\_command\_action\_enable\_clear\_screen}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cacd061584a66205b8b7f2c3184b33f033}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cacd061584a66205b8b7f2c3184b33f033} 
+aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+clear\+\_\+screen&clear the screen \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_enable\_config@{aern\_command\_action\_enable\_config}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_enable\_config@{aern\_command\_action\_enable\_config}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca75556fcae092f7f3a9c62b4ae99b48d2}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca75556fcae092f7f3a9c62b4ae99b48d2} 
+aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+config&config -\/enter configuration mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_enable\_exit@{aern\_command\_action\_enable\_exit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_enable\_exit@{aern\_command\_action\_enable\_exit}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca7707748dd06446562663f5f380cd96e2}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca7707748dd06446562663f5f380cd96e2} 
+aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+exit&exit -\/exits to user mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_enable\_help@{aern\_command\_action\_enable\_help}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_enable\_help@{aern\_command\_action\_enable\_help}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caeaa9ce582dd774ca5486b4dfd097f9ee}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caeaa9ce582dd774ca5486b4dfd097f9ee} 
+aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+help&help for enable mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_enable\_quit@{aern\_command\_action\_enable\_quit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_enable\_quit@{aern\_command\_action\_enable\_quit}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caa7b217d3d8f9a741b23120a238aac04b}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caa7b217d3d8f9a741b23120a238aac04b} 
+aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+quit&quit -\/closes the application \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_enable\_show\_config@{aern\_command\_action\_enable\_show\_config}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_enable\_show\_config@{aern\_command\_action\_enable\_show\_config}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cacce1aba5611200d7aac51e03877e2869}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cacce1aba5611200d7aac51e03877e2869} 
+aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+show\+\_\+config&show config -\/show configuration \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_enable\_show\_log@{aern\_command\_action\_enable\_show\_log}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_enable\_show\_log@{aern\_command\_action\_enable\_show\_log}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cab5f30afeb232e4ca1bf619576b3335e5}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cab5f30afeb232e4ca1bf619576b3335e5} 
+aern\+\_\+command\+\_\+action\+\_\+enable\+\_\+show\+\_\+log&show user log -\/show the user activity log \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_user\_enable@{aern\_command\_action\_user\_enable}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_user\_enable@{aern\_command\_action\_user\_enable}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caedf7a8b36224fc080b7dc8db55b59945}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caedf7a8b36224fc080b7dc8db55b59945} 
+aern\+\_\+command\+\_\+action\+\_\+user\+\_\+enable&enable -\/triggers authentication challenge \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_user\_help@{aern\_command\_action\_user\_help}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_user\_help@{aern\_command\_action\_user\_help}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cae5c85b77db5a42359c2c17a361571a3d}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cae5c85b77db5a42359c2c17a361571a3d} 
+aern\+\_\+command\+\_\+action\+\_\+user\+\_\+help&help -\/lists the help for user commands \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_user\_quit@{aern\_command\_action\_user\_quit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_user\_quit@{aern\_command\_action\_user\_quit}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cae6648635db65c8a3e3a36b0fb4f13e0f}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cae6648635db65c8a3e3a36b0fb4f13e0f} 
+aern\+\_\+command\+\_\+action\+\_\+user\+\_\+quit&quit -\/closes the application \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_certificate\_exit@{aern\_command\_action\_certificate\_exit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_certificate\_exit@{aern\_command\_action\_certificate\_exit}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca4441a34aef01f95f47cf33fb5a6bd74d}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca4441a34aef01f95f47cf33fb5a6bd74d} 
+aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+exit&exit -\/exits to config mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_certificate\_export@{aern\_command\_action\_certificate\_export}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_certificate\_export@{aern\_command\_action\_certificate\_export}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca326b0753d96df802170db85c804867ee}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca326b0753d96df802170db85c804867ee} 
+aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+export&export \mbox{[}path\mbox{]} -\/exports the local certificate to a file \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_certificate\_generate@{aern\_command\_action\_certificate\_generate}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_certificate\_generate@{aern\_command\_action\_certificate\_generate}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cab5c9a1c3ac3ffd88d66e6c6029e20a5f}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cab5c9a1c3ac3ffd88d66e6c6029e20a5f} 
+aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+generate&generate \mbox{[}period\mbox{]} -\/generate the public certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_certificate\_help@{aern\_command\_action\_certificate\_help}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_certificate\_help@{aern\_command\_action\_certificate\_help}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cafa8fda5220fa45d5a13294dd7b65c4d3}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cafa8fda5220fa45d5a13294dd7b65c4d3} 
+aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+help&help -\/command help for certificate mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_certificate\_import@{aern\_command\_action\_certificate\_import}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_certificate\_import@{aern\_command\_action\_certificate\_import}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caab89cd7be8a06de4776f61dd0a9e7861}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caab89cd7be8a06de4776f61dd0a9e7861} 
+aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+import&import \mbox{[}path\mbox{]} -\/imports a certificate from a file \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_certificate\_print@{aern\_command\_action\_certificate\_print}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_certificate\_print@{aern\_command\_action\_certificate\_print}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cadad2e5f1bcdd2ba50140efcc3d9b8a01}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cadad2e5f1bcdd2ba50140efcc3d9b8a01} 
+aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+print&print -\/print a certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_backup@{aern\_command\_action\_server\_backup}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_backup@{aern\_command\_action\_server\_backup}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca0c760bf4c469de6d05222c9f9d8ed9ab}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca0c760bf4c469de6d05222c9f9d8ed9ab} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+backup&backup -\/save a backup of the aps state \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_connect@{aern\_command\_action\_server\_connect}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_connect@{aern\_command\_action\_server\_connect}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca3678bbbb095e4408130e8f069187ebc9}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca3678bbbb095e4408130e8f069187ebc9} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+connect&connect \mbox{[}ip address\mbox{]} -\/connects to an application server or client \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_exit@{aern\_command\_action\_server\_exit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_exit@{aern\_command\_action\_server\_exit}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cafbf3712842092372f5a2385918fc28d6}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cafbf3712842092372f5a2385918fc28d6} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+exit&exit -\/exits to config mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_help@{aern\_command\_action\_server\_help}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_help@{aern\_command\_action\_server\_help}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caa14b5222f876ed01471b0a1fb2989a2b}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caa14b5222f876ed01471b0a1fb2989a2b} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+help&help -\/command help for server mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_list@{aern\_command\_action\_server\_list}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_list@{aern\_command\_action\_server\_list}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caa849fbffd82f4958761a66aa8bf08f2c}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caa849fbffd82f4958761a66aa8bf08f2c} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+list&list -\/display the topological database \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_register@{aern\_command\_action\_server\_register}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_register@{aern\_command\_action\_server\_register}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cafadb267bdee2e9e2a1a61c5e65f261ee}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cafadb267bdee2e9e2a1a61c5e65f261ee} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+register&register \mbox{[}address\mbox{]} -\/register aps with the ADC \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_resign@{aern\_command\_action\_server\_resign}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_resign@{aern\_command\_action\_server\_resign}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cab9164e6764ec8f59805b6e5797293ad4}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cab9164e6764ec8f59805b6e5797293ad4} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+resign&resign \mbox{[}address\mbox{]} -\/resign from the ADC \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_restore@{aern\_command\_action\_server\_restore}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_restore@{aern\_command\_action\_server\_restore}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca132db8838fee48f3351f3cda22a63339}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca132db8838fee48f3351f3cda22a63339} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+restore&restore -\/restore the device state from backup \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_service@{aern\_command\_action\_server\_service}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_service@{aern\_command\_action\_server\_service}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca07a60d4e0477ffc7425426dc184df0f9}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca07a60d4e0477ffc7425426dc184df0f9} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+service&service -\/\mbox{[}start \texorpdfstring{$\vert$}{|} stop \texorpdfstring{$\vert$}{|} pause \texorpdfstring{$\vert$}{|} resume\mbox{]} the server service \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_server\_query@{aern\_command\_action\_server\_query}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_server\_query@{aern\_command\_action\_server\_query}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca00a5374094320cf779749f706aa11572}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca00a5374094320cf779749f706aa11572} 
+aern\+\_\+command\+\_\+action\+\_\+server\+\_\+query&query \mbox{[}canonical-\/name\mbox{]} -\/Request node information for a device from the ADC \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_client\_connect\_help@{aern\_command\_action\_client\_connect\_help}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_client\_connect\_help@{aern\_command\_action\_client\_connect\_help}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca93eaed3bc25a2e92ac9e549ddb9f6b4f}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca93eaed3bc25a2e92ac9e549ddb9f6b4f} 
+aern\+\_\+command\+\_\+action\+\_\+client\+\_\+connect\+\_\+help&help -\/command help for connect mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_client\_connect\_quit@{aern\_command\_action\_client\_connect\_quit}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_client\_connect\_quit@{aern\_command\_action\_client\_connect\_quit}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cae7f7a81233cb23976dd49168d0718746}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cae7f7a81233cb23976dd49168d0718746} 
+aern\+\_\+command\+\_\+action\+\_\+client\+\_\+connect\+\_\+quit&quit -\/quits the remote server connection \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_adc\_certificate\_revoke@{aern\_command\_action\_adc\_certificate\_revoke}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_adc\_certificate\_revoke@{aern\_command\_action\_adc\_certificate\_revoke}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca8b14ef0e8d1d93d0fc21ec60f6a72a70}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca8b14ef0e8d1d93d0fc21ec60f6a72a70} 
+aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+certificate\+\_\+revoke&revoke \mbox{[}certificate path\mbox{]} -\/revoke the local device certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_adc\_server\_announce@{aern\_command\_action\_adc\_server\_announce}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_adc\_server\_announce@{aern\_command\_action\_adc\_server\_announce}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca5160fa96bae7d8d155202bbda39e6af7}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca5160fa96bae7d8d155202bbda39e6af7} 
+aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+announce&announce \mbox{[}certificate-\/path, ip-\/address\mbox{]} -\/announce an aps to servers in the network \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_adc\_server\_converge@{aern\_command\_action\_adc\_server\_converge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_adc\_server\_converge@{aern\_command\_action\_adc\_server\_converge}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca1f09998137a2a4a2113a033613136058}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca1f09998137a2a4a2113a033613136058} 
+aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+converge&converge -\/announce a topology update to the network \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_adc\_server\_revoke@{aern\_command\_action\_adc\_server\_revoke}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_adc\_server\_revoke@{aern\_command\_action\_adc\_server\_revoke}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cabfeda196bd2624443bdc19c1250e9354}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cabfeda196bd2624443bdc19c1250e9354} 
+aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+revoke&revoke \mbox{[}certificate path\mbox{]} -\/revoke an aps\textquotesingle{}s credentials by announcing it to the network \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_adc\_server\_sproxy@{aern\_command\_action\_adc\_server\_sproxy}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_adc\_server\_sproxy@{aern\_command\_action\_adc\_server\_sproxy}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cae6e566bf3b73dbc2589bf61aaa7f6182}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cae6e566bf3b73dbc2589bf61aaa7f6182} 
+aern\+\_\+command\+\_\+action\+\_\+adc\+\_\+server\+\_\+sproxy&sproxy \mbox{[}certificate path\mbox{]} -\/send a remote certificate signing request to the ARS server \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_certificate\_sign@{aern\_command\_action\_certificate\_sign}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_certificate\_sign@{aern\_command\_action\_certificate\_sign}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53cacfa38b6e0befb5455bb487eff38cae4e}\label{commands_8h_ad68782564f96643016e3bd878aa0b53cacfa38b6e0befb5455bb487eff38cae4e} 
+aern\+\_\+command\+\_\+action\+\_\+certificate\+\_\+sign&sign \mbox{[}certificate path\mbox{]} -\/sign a child certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_clear@{aern\_command\_action\_config\_clear}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_clear@{aern\_command\_action\_config\_clear}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53caa3096dbf3f7db55c156871c345ca6ba0}\label{commands_8h_ad68782564f96643016e3bd878aa0b53caa3096dbf3f7db55c156871c345ca6ba0} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+clear&clear the configuration \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_log@{aern\_command\_action\_config\_log}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_log@{aern\_command\_action\_config\_log}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca7d6be118350b169d9477f5c84b51051c}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca7d6be118350b169d9477f5c84b51051c} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+log&print the configuration log \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_config\_name@{aern\_command\_action\_config\_name}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_config\_name@{aern\_command\_action\_config\_name}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca2eba539140c60a1ecbae7b8f56a08740}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca2eba539140c60a1ecbae7b8f56a08740} 
+aern\+\_\+command\+\_\+action\+\_\+config\+\_\+name&get the configuration name \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_help\_enable\_all@{aern\_command\_action\_help\_enable\_all}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_help\_enable\_all@{aern\_command\_action\_help\_enable\_all}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca86a54d368df5092f18365543794098ea}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca86a54d368df5092f18365543794098ea} 
+aern\+\_\+command\+\_\+action\+\_\+help\+\_\+enable\+\_\+all&enable all mode help \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_help\_enable\_show@{aern\_command\_action\_help\_enable\_show}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_help\_enable\_show@{aern\_command\_action\_help\_enable\_show}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca49fadba99c10e30d2772b4da7f48f83a}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca49fadba99c10e30d2772b4da7f48f83a} 
+aern\+\_\+command\+\_\+action\+\_\+help\+\_\+enable\+\_\+show&enable show mode help \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_help\_enable\_user@{aern\_command\_action\_help\_enable\_user}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_help\_enable\_user@{aern\_command\_action\_help\_enable\_user}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca0f0b2c1b0812d12c3d14eeaa2a9c8f6a}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca0f0b2c1b0812d12c3d14eeaa2a9c8f6a} 
+aern\+\_\+command\+\_\+action\+\_\+help\+\_\+enable\+\_\+user&enable user mode help \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_command\_action\_command\_unrecognized@{aern\_command\_action\_command\_unrecognized}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_command\_action\_command\_unrecognized@{aern\_command\_action\_command\_unrecognized}}}\Hypertarget{commands_8h_ad68782564f96643016e3bd878aa0b53ca1735f87edb353d0ed2c4fe8175e3bb0b}\label{commands_8h_ad68782564f96643016e3bd878aa0b53ca1735f87edb353d0ed2c4fe8175e3bb0b} 
+aern\+\_\+command\+\_\+action\+\_\+command\+\_\+unrecognized&the command was unrecognized \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648}\index{commands.h@{commands.h}!aern\_console\_commands@{aern\_console\_commands}}
+\index{aern\_console\_commands@{aern\_console\_commands}!commands.h@{commands.h}}
+\doxysubsubsection{\texorpdfstring{aern\_console\_commands}{aern\_console\_commands}}
+{\footnotesize\ttfamily \label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648} 
+enum \mbox{\hyperlink{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648}{aern\+\_\+console\+\_\+commands}}}
+
+
+
+The common console functions. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_none@{aern\_commands\_none}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_none@{aern\_commands\_none}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ae6159bce6102b928fd49c3f875902b2b}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ae6159bce6102b928fd49c3f875902b2b} 
+aern\+\_\+commands\+\_\+none&No command is recognized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_certificate\_create@{aern\_commands\_certificate\_create}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_certificate\_create@{aern\_commands\_certificate\_create}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a8f0477c467f805ea90235a8a28c5cdc6}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a8f0477c467f805ea90235a8a28c5cdc6} 
+aern\+\_\+commands\+\_\+certificate\+\_\+create&Create a new root certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_certificate\_change@{aern\_commands\_certificate\_change}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_certificate\_change@{aern\_commands\_certificate\_change}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af8cb911862b83840ca401b06e9b55c85}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af8cb911862b83840ca401b06e9b55c85} 
+aern\+\_\+commands\+\_\+certificate\+\_\+change&Broadcast a root certificate change \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_certificate\_sign@{aern\_commands\_certificate\_sign}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_certificate\_sign@{aern\_commands\_certificate\_sign}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648aa75e1358b97cd20338fc76c286ac2d58}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648aa75e1358b97cd20338fc76c286ac2d58} 
+aern\+\_\+commands\+\_\+certificate\+\_\+sign&Sign a device certificate \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_certificate\_revoke@{aern\_commands\_certificate\_revoke}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_certificate\_revoke@{aern\_commands\_certificate\_revoke}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a31e5accfc665a5b0525568f7d4d362f4}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a31e5accfc665a5b0525568f7d4d362f4} 
+aern\+\_\+commands\+\_\+certificate\+\_\+revoke&Broadcast a certificate revocation \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_certificate\_format@{aern\_commands\_certificate\_format}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_certificate\_format@{aern\_commands\_certificate\_format}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ac38299b75499c1dafa783f7c6d352af9}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648ac38299b75499c1dafa783f7c6d352af9} 
+aern\+\_\+commands\+\_\+certificate\+\_\+format&Convert a certificate to a readable string \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_device\_add@{aern\_commands\_device\_add}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_device\_add@{aern\_commands\_device\_add}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a6d6dfe062b68cdc5a4246b35a3d3849e}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a6d6dfe062b68cdc5a4246b35a3d3849e} 
+aern\+\_\+commands\+\_\+device\+\_\+add&Add a device to the AERN network \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_network\_converge@{aern\_commands\_network\_converge}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_network\_converge@{aern\_commands\_network\_converge}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a5c6773dfa256ff211b157eb9aba69760}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648a5c6773dfa256ff211b157eb9aba69760} 
+aern\+\_\+commands\+\_\+network\+\_\+converge&Broadcast a network reconvergence event \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_commands\_adc\_election@{aern\_commands\_adc\_election}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_commands\_adc\_election@{aern\_commands\_adc\_election}}}\Hypertarget{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af151c0f696919302d572a041b5ca79e3}\label{commands_8h_ac98968c5f6b3a947e8e9fc4bdeefd648af151c0f696919302d572a041b5ca79e3} 
+aern\+\_\+commands\+\_\+adc\+\_\+election&Broadcast a ADC election \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}\index{commands.h@{commands.h}!aern\_console\_modes@{aern\_console\_modes}}
+\index{aern\_console\_modes@{aern\_console\_modes}!commands.h@{commands.h}}
+\doxysubsubsection{\texorpdfstring{aern\_console\_modes}{aern\_console\_modes}}
+{\footnotesize\ttfamily \label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb} 
+enum \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}
+
+
+
+The ARS console modes. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_name@{aern\_console\_mode\_name}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_name@{aern\_console\_mode\_name}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba4662861a9e00a4d12cfe2d90d22abeaf}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba4662861a9e00a4d12cfe2d90d22abeaf} 
+aern\+\_\+console\+\_\+mode\+\_\+name&The name prompt \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_user@{aern\_console\_mode\_user}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_user@{aern\_console\_mode\_user}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba36270ca000222215a5a0497704a65e31}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba36270ca000222215a5a0497704a65e31} 
+aern\+\_\+console\+\_\+mode\+\_\+user&The user mode prompt \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_enable@{aern\_console\_mode\_enable}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_enable@{aern\_console\_mode\_enable}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba957df918c9543a5006ce83bc465d328d}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba957df918c9543a5006ce83bc465d328d} 
+aern\+\_\+console\+\_\+mode\+\_\+enable&The enable mode prompt \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_config@{aern\_console\_mode\_config}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_config@{aern\_console\_mode\_config}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d} 
+aern\+\_\+console\+\_\+mode\+\_\+config&The config mode prompt \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_certificate@{aern\_console\_mode\_certificate}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_certificate@{aern\_console\_mode\_certificate}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafa07be8871ff2cabb8fa0134e7208748}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafa07be8871ff2cabb8fa0134e7208748} 
+aern\+\_\+console\+\_\+mode\+\_\+certificate&The certificate mode prompt \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_server@{aern\_console\_mode\_server}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_server@{aern\_console\_mode\_server}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba8a4834c048736bc7afd62e0a7988011d}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba8a4834c048736bc7afd62e0a7988011d} 
+aern\+\_\+console\+\_\+mode\+\_\+server&The server mode prompt \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_login\_message@{aern\_console\_mode\_login\_message}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_login\_message@{aern\_console\_mode\_login\_message}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafc9b8f6bbe97280bd5bee58702f4fbae}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbafc9b8f6bbe97280bd5bee58702f4fbae} 
+aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+message&The login message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_login\_password@{aern\_console\_mode\_login\_password}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_login\_password@{aern\_console\_mode\_login\_password}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba7b7b4a9a063ff38f6c25314693a6e309}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba7b7b4a9a063ff38f6c25314693a6e309} 
+aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+password&The login password message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_login\_user@{aern\_console\_mode\_login\_user}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_login\_user@{aern\_console\_mode\_login\_user}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbaa20e04efe609b4a55f4414ec77618ce7}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbaa20e04efe609b4a55f4414ec77618ce7} 
+aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+user&The login user name message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_login\_hostname@{aern\_console\_mode\_login\_hostname}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_login\_hostname@{aern\_console\_mode\_login\_hostname}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbad92466c5f248180f0b4e5fc7771fff35}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbad92466c5f248180f0b4e5fc7771fff35} 
+aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+hostname&The login host name message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_login\_address@{aern\_console\_mode\_login\_address}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_login\_address@{aern\_console\_mode\_login\_address}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba9c582aa608b6824fa7d16599b920487d}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba9c582aa608b6824fa7d16599b920487d} 
+aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+address&The login address message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_login\_domain@{aern\_console\_mode\_login\_domain}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_login\_domain@{aern\_console\_mode\_login\_domain}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2e14ba02fee32428b62ecc88926c315a}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2e14ba02fee32428b62ecc88926c315a} 
+aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+domain&The login domain name message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_login\_rootpath@{aern\_console\_mode\_login\_rootpath}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_login\_rootpath@{aern\_console\_mode\_login\_rootpath}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba39902153483da5af7edf324587914daa}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba39902153483da5af7edf324587914daa} 
+aern\+\_\+console\+\_\+mode\+\_\+login\+\_\+rootpath&The login root path message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_console\_mode\_client\_connected@{aern\_console\_mode\_client\_connected}!commands.h@{commands.h}}\index{commands.h@{commands.h}!aern\_console\_mode\_client\_connected@{aern\_console\_mode\_client\_connected}}}\Hypertarget{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2f0e80a6cbfb626e8fafd5a1ac822bd6}\label{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdba2f0e80a6cbfb626e8fafd5a1ac822bd6} 
+aern\+\_\+console\+\_\+mode\+\_\+client\+\_\+connected&The client is connected to a remore server \\
+\hline
+
+\end{DoxyEnumFields}

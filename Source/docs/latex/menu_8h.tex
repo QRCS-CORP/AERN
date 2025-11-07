@@ -1,0 +1,310 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/menu.h File Reference}
+\hypertarget{menu_8h}{}\label{menu_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/menu.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/menu.h}}
+
+
+The AERN console menu functions.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}commands.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8h_ae66fb3583f778660608276d881247085}{aern\+\_\+menu\+\_\+get\+\_\+prompt}} (\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode)
+\begin{DoxyCompactList}\small\item\em Returns the console prompt string. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a07621deb5291e8bf1eb38bafadfd6a81}{aern\+\_\+menu\+\_\+print\+\_\+error}} (\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print an error message to the console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_af3ff13bf63ee0a9b57af28bb9351c200}{aern\+\_\+menu\+\_\+print\+\_\+message}} (const char \texorpdfstring{$\ast$}{*}message, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print a message to the console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{menu_8h_a13ea924d7138408e494696d07e6f0b13}{aern\+\_\+menu\+\_\+print\+\_\+message\+\_\+confirm}} (const char \texorpdfstring{$\ast$}{*}message, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print a message to the console and wait for confirmation. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a7799fcef1f24ee86843585e41c812398}{aern\+\_\+menu\+\_\+print\+\_\+predefined\+\_\+message}} (\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}} msgnum, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print a predefined message to the console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{menu_8h_a46058809e627feabcb004ce2f666e0c1}{aern\+\_\+menu\+\_\+print\+\_\+predefined\+\_\+message\+\_\+confirm}} (\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}} msgnum, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print a predefined message to the console and wait for confirmation. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a8206377e1bf1c39812959ea8ee9003e0}{aern\+\_\+menu\+\_\+print\+\_\+prompt}} (\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print the application prompt. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a2c7853c8bfbe4a5d40f4b227c85ee8aa}{aern\+\_\+menu\+\_\+print\+\_\+prompt\+\_\+text}} (const char \texorpdfstring{$\ast$}{*}message, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print a prompt and text with no line terminator. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a04f86ab4e17096e369ca64a39757e9b5}{aern\+\_\+menu\+\_\+print\+\_\+predefined\+\_\+text}} (\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}} msgnum, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, const char \texorpdfstring{$\ast$}{*}host)
+\begin{DoxyCompactList}\small\item\em Print a predefined message with no line terminator. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a9edb820246deaa8bead5d37d57866486}{aern\+\_\+menu\+\_\+print\+\_\+text}} (const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Print a text string to the console without a newline. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a38c7a884ff21836a4ce09edf26495622}{aern\+\_\+menu\+\_\+print\+\_\+text\+\_\+line}} (const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Print a text string to the console with a newline. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{menu_8h_a22317664b95083eb8c3d267392ba1188}{aern\+\_\+menu\+\_\+print\+\_\+prompt\+\_\+empty}} (void)
+\begin{DoxyCompactList}\small\item\em Print the application prompt on an empty line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The AERN console menu functions. 
+
+This module provides functions for printing prompts, messages, and errors to the AERN console. These functions are used to interact with the user by displaying status messages, predefined texts, and user confirmations.
+
+The functions include\+:
+\begin{DoxyItemize}
+\item Retrieving the prompt string for a given console mode.
+\item Printing error messages derived from protocol error codes.
+\item Printing plain text messages and predefined messages.
+\item Printing prompts (with or without text) to the console.
+\end{DoxyItemize}
+
+All messages are printed in plain ASCII. No Unicode characters are used.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Get\ and\ print\ the\ console\ prompt\ for\ configuration\ mode.}}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ prompt\ =\ aern\_menu\_get\_prompt(\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d}{aern\_console\_mode\_config}});}
+\DoxyCodeLine{qsc\_consoleutils\_print\_safe(prompt);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Print\ an\ error\ message\ based\ on\ a\ protocol\ error.}}
+\DoxyCodeLine{aern\_menu\_print\_error(\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780}{aern\_protocol\_error\_invalid\_request}},\ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d}{aern\_console\_mode\_config}},\ \textcolor{stringliteral}{"{}Host1"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Print\ a\ predefined\ message\ and\ wait\ for\ confirmation.}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (aern\_menu\_print\_predefined\_message\_confirm(aern\_application\_log\_backup,\ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d}{aern\_console\_mode\_config}},\ \textcolor{stringliteral}{"{}Host1"{}}))}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Proceed\ with\ backup...}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+\label{doc-func-members}
+\Hypertarget{menu_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{menu_8h_ae66fb3583f778660608276d881247085}\index{menu.h@{menu.h}!aern\_menu\_get\_prompt@{aern\_menu\_get\_prompt}}
+\index{aern\_menu\_get\_prompt@{aern\_menu\_get\_prompt}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_get\_prompt()}{aern\_menu\_get\_prompt()}}
+{\footnotesize\ttfamily \label{menu_8h_ae66fb3583f778660608276d881247085} 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} aern\+\_\+menu\+\_\+get\+\_\+prompt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Returns the console prompt string. 
+
+This function returns the appropriate prompt string based on the specified console mode. The prompt is selected from an internal array of mode strings.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The current console mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the prompt string. 
+\end{DoxyReturn}
+\Hypertarget{menu_8h_a07621deb5291e8bf1eb38bafadfd6a81}\index{menu.h@{menu.h}!aern\_menu\_print\_error@{aern\_menu\_print\_error}}
+\index{aern\_menu\_print\_error@{aern\_menu\_print\_error}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_error()}{aern\_menu\_print\_error()}}
+{\footnotesize\ttfamily \label{menu_8h_a07621deb5291e8bf1eb38bafadfd6a81} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print an error message to the console. 
+
+This function converts a protocol error code into a descriptive string and prints it to the console. It prints the prompt first (based on the mode and host) and then the error message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & The protocol error enumerator. \\
+\hline
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_af3ff13bf63ee0a9b57af28bb9351c200}\index{menu.h@{menu.h}!aern\_menu\_print\_message@{aern\_menu\_print\_message}}
+\index{aern\_menu\_print\_message@{aern\_menu\_print\_message}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_message()}{aern\_menu\_print\_message()}}
+{\footnotesize\ttfamily \label{menu_8h_af3ff13bf63ee0a9b57af28bb9351c200} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+message (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print a message to the console. 
+
+This function prints the given message string to the console. It first prints the prompt (using the current mode and host) and then the message on a new line.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message string to print. \\
+\hline
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a13ea924d7138408e494696d07e6f0b13}\index{menu.h@{menu.h}!aern\_menu\_print\_message\_confirm@{aern\_menu\_print\_message\_confirm}}
+\index{aern\_menu\_print\_message\_confirm@{aern\_menu\_print\_message\_confirm}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_message\_confirm()}{aern\_menu\_print\_message\_confirm()}}
+{\footnotesize\ttfamily \label{menu_8h_a13ea924d7138408e494696d07e6f0b13} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+menu\+\_\+print\+\_\+message\+\_\+confirm (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print a message to the console and wait for confirmation. 
+
+This function prints a message and then waits for the user to input a single character. If the user enters \textquotesingle{}y\textquotesingle{} or \textquotesingle{}Y\textquotesingle{}, the function returns true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message string. \\
+\hline
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the user confirms (answers \textquotesingle{}y\textquotesingle{} or \textquotesingle{}Y\textquotesingle{}); false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{menu_8h_a7799fcef1f24ee86843585e41c812398}\index{menu.h@{menu.h}!aern\_menu\_print\_predefined\_message@{aern\_menu\_print\_predefined\_message}}
+\index{aern\_menu\_print\_predefined\_message@{aern\_menu\_print\_predefined\_message}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_predefined\_message()}{aern\_menu\_print\_predefined\_message()}}
+{\footnotesize\ttfamily \label{menu_8h_a7799fcef1f24ee86843585e41c812398} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+predefined\+\_\+message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}}}]{msgnum}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print a predefined message to the console. 
+
+This function prints a message that is predefined in the AERN application. The message is chosen based on the msgnum parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msgnum} & The predefined message enumerator. \\
+\hline
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a46058809e627feabcb004ce2f666e0c1}\index{menu.h@{menu.h}!aern\_menu\_print\_predefined\_message\_confirm@{aern\_menu\_print\_predefined\_message\_confirm}}
+\index{aern\_menu\_print\_predefined\_message\_confirm@{aern\_menu\_print\_predefined\_message\_confirm}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_predefined\_message\_confirm()}{aern\_menu\_print\_predefined\_message\_confirm()}}
+{\footnotesize\ttfamily \label{menu_8h_a46058809e627feabcb004ce2f666e0c1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+menu\+\_\+print\+\_\+predefined\+\_\+message\+\_\+confirm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}}}]{msgnum}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print a predefined message to the console and wait for confirmation. 
+
+This function prints a predefined message and then waits for the user to provide confirmation. A response of \textquotesingle{}y\textquotesingle{} or \textquotesingle{}Y\textquotesingle{} returns true.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msgnum} & The predefined message enumerator. \\
+\hline
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the user confirms; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{menu_8h_a04f86ab4e17096e369ca64a39757e9b5}\index{menu.h@{menu.h}!aern\_menu\_print\_predefined\_text@{aern\_menu\_print\_predefined\_text}}
+\index{aern\_menu\_print\_predefined\_text@{aern\_menu\_print\_predefined\_text}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_predefined\_text()}{aern\_menu\_print\_predefined\_text()}}
+{\footnotesize\ttfamily \label{menu_8h_a04f86ab4e17096e369ca64a39757e9b5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+predefined\+\_\+text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}}}]{msgnum}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print a predefined message with no line terminator. 
+
+This function prints a predefined message (as defined in the AERN application messages) without a newline at the end.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msgnum} & The predefined message enumerator. \\
+\hline
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a8206377e1bf1c39812959ea8ee9003e0}\index{menu.h@{menu.h}!aern\_menu\_print\_prompt@{aern\_menu\_print\_prompt}}
+\index{aern\_menu\_print\_prompt@{aern\_menu\_print\_prompt}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_prompt()}{aern\_menu\_print\_prompt()}}
+{\footnotesize\ttfamily \label{menu_8h_a8206377e1bf1c39812959ea8ee9003e0} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+prompt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print the application prompt. 
+
+This function prints the application prompt string to the console using the current console mode and host name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a22317664b95083eb8c3d267392ba1188}\index{menu.h@{menu.h}!aern\_menu\_print\_prompt\_empty@{aern\_menu\_print\_prompt\_empty}}
+\index{aern\_menu\_print\_prompt\_empty@{aern\_menu\_print\_prompt\_empty}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_prompt\_empty()}{aern\_menu\_print\_prompt\_empty()}}
+{\footnotesize\ttfamily \label{menu_8h_a22317664b95083eb8c3d267392ba1188} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+prompt\+\_\+empty (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Print the application prompt on an empty line. 
+
+This function prints the default application prompt on a new line. \Hypertarget{menu_8h_a2c7853c8bfbe4a5d40f4b227c85ee8aa}\index{menu.h@{menu.h}!aern\_menu\_print\_prompt\_text@{aern\_menu\_print\_prompt\_text}}
+\index{aern\_menu\_print\_prompt\_text@{aern\_menu\_print\_prompt\_text}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_prompt\_text()}{aern\_menu\_print\_prompt\_text()}}
+{\footnotesize\ttfamily \label{menu_8h_a2c7853c8bfbe4a5d40f4b227c85ee8aa} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+prompt\+\_\+text (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{host}{}\end{DoxyParamCaption})}
+
+
+
+Print a prompt and text with no line terminator. 
+
+This function prints a prompt followed by a message string. The message is printed without appending a newline character.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message string to print. \\
+\hline
+{\em mode} & The current console mode. \\
+\hline
+{\em host} & The host name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a9edb820246deaa8bead5d37d57866486}\index{menu.h@{menu.h}!aern\_menu\_print\_text@{aern\_menu\_print\_text}}
+\index{aern\_menu\_print\_text@{aern\_menu\_print\_text}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_text()}{aern\_menu\_print\_text()}}
+{\footnotesize\ttfamily \label{menu_8h_a9edb820246deaa8bead5d37d57866486} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+text (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Print a text string to the console without a newline. 
+
+This function prints the specified text string using a safe console print, without appending a newline.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message string to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a38c7a884ff21836a4ce09edf26495622}\index{menu.h@{menu.h}!aern\_menu\_print\_text\_line@{aern\_menu\_print\_text\_line}}
+\index{aern\_menu\_print\_text\_line@{aern\_menu\_print\_text\_line}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{aern\_menu\_print\_text\_line()}{aern\_menu\_print\_text\_line()}}
+{\footnotesize\ttfamily \label{menu_8h_a38c7a884ff21836a4ce09edf26495622} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+menu\+\_\+print\+\_\+text\+\_\+line (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Print a text string to the console with a newline. 
+
+This function prints the specified text string and then appends a newline.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message string to print. \\
+\hline
+\end{DoxyParams}

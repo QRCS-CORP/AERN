@@ -1,0 +1,83 @@
+\doxysection{aern\+\_\+connection\+\_\+state Struct Reference}
+\hypertarget{structaern__connection__state}{}\label{structaern__connection__state}\index{aern\_connection\_state@{aern\_connection\_state}}
+
+
+The AERN socket connection state structure.  
+
+
+
+
+{\ttfamily \#include $<$aern.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+qsc\+\_\+socket \mbox{\hyperlink{structaern__connection__state_ae6865db404fdc42e72fdb48510d5a558}{target}}
+\item 
+aern\+\_\+cipher\+\_\+state \mbox{\hyperlink{structaern__connection__state_ab9c79848036c04cdcb486fd21b18fe79}{rxcpr}}
+\item 
+aern\+\_\+cipher\+\_\+state \mbox{\hyperlink{structaern__connection__state_a5bf1623d0a763c43c5ee499ef55aca9b}{txcpr}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__connection__state_a9bc7a133c2f47895567d675d3679e15a}{rxseq}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__connection__state_a1b9dac0a156c3747fc39192a04f01aa0}{txseq}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__connection__state_a9ed36c4f5392e9f1819ec7c9eb9aff80}{instance}}
+\item 
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}} \mbox{\hyperlink{structaern__connection__state_ab377880fb1d13048afc00a87d35368ed}{exflag}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The AERN socket connection state structure. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__connection__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__connection__state_ab377880fb1d13048afc00a87d35368ed}\index{aern\_connection\_state@{aern\_connection\_state}!exflag@{exflag}}
+\index{exflag@{exflag}!aern\_connection\_state@{aern\_connection\_state}}
+\doxysubsubsection{\texorpdfstring{exflag}{exflag}}
+{\footnotesize\ttfamily \label{structaern__connection__state_ab377880fb1d13048afc00a87d35368ed} 
+\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}} exflag}
+
+The network stage flag \Hypertarget{structaern__connection__state_a9ed36c4f5392e9f1819ec7c9eb9aff80}\index{aern\_connection\_state@{aern\_connection\_state}!instance@{instance}}
+\index{instance@{instance}!aern\_connection\_state@{aern\_connection\_state}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \label{structaern__connection__state_a9ed36c4f5392e9f1819ec7c9eb9aff80} 
+uint32\+\_\+t instance}
+
+The connection\textquotesingle{}s instance count \Hypertarget{structaern__connection__state_ab9c79848036c04cdcb486fd21b18fe79}\index{aern\_connection\_state@{aern\_connection\_state}!rxcpr@{rxcpr}}
+\index{rxcpr@{rxcpr}!aern\_connection\_state@{aern\_connection\_state}}
+\doxysubsubsection{\texorpdfstring{rxcpr}{rxcpr}}
+{\footnotesize\ttfamily \label{structaern__connection__state_ab9c79848036c04cdcb486fd21b18fe79} 
+aern\+\_\+cipher\+\_\+state rxcpr}
+
+The receive channel cipher state \Hypertarget{structaern__connection__state_a9bc7a133c2f47895567d675d3679e15a}\index{aern\_connection\_state@{aern\_connection\_state}!rxseq@{rxseq}}
+\index{rxseq@{rxseq}!aern\_connection\_state@{aern\_connection\_state}}
+\doxysubsubsection{\texorpdfstring{rxseq}{rxseq}}
+{\footnotesize\ttfamily \label{structaern__connection__state_a9bc7a133c2f47895567d675d3679e15a} 
+uint64\+\_\+t rxseq}
+
+The receive channel\textquotesingle{}s packet sequence number \Hypertarget{structaern__connection__state_ae6865db404fdc42e72fdb48510d5a558}\index{aern\_connection\_state@{aern\_connection\_state}!target@{target}}
+\index{target@{target}!aern\_connection\_state@{aern\_connection\_state}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{structaern__connection__state_ae6865db404fdc42e72fdb48510d5a558} 
+qsc\+\_\+socket target}
+
+The target socket structure \Hypertarget{structaern__connection__state_a5bf1623d0a763c43c5ee499ef55aca9b}\index{aern\_connection\_state@{aern\_connection\_state}!txcpr@{txcpr}}
+\index{txcpr@{txcpr}!aern\_connection\_state@{aern\_connection\_state}}
+\doxysubsubsection{\texorpdfstring{txcpr}{txcpr}}
+{\footnotesize\ttfamily \label{structaern__connection__state_a5bf1623d0a763c43c5ee499ef55aca9b} 
+aern\+\_\+cipher\+\_\+state txcpr}
+
+The transmit channel cipher state \Hypertarget{structaern__connection__state_a1b9dac0a156c3747fc39192a04f01aa0}\index{aern\_connection\_state@{aern\_connection\_state}!txseq@{txseq}}
+\index{txseq@{txseq}!aern\_connection\_state@{aern\_connection\_state}}
+\doxysubsubsection{\texorpdfstring{txseq}{txseq}}
+{\footnotesize\ttfamily \label{structaern__connection__state_a1b9dac0a156c3747fc39192a04f01aa0} 
+uint64\+\_\+t txseq}
+
+The transmit channel\textquotesingle{}s packet sequence number 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{aern_8h}{aern.\+h}}\end{DoxyCompactItemize}

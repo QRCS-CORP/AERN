@@ -1,0 +1,908 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/network.h File Reference}
+\hypertarget{network_8h}{}\label{network_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/network.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/network.h}}
+
+
+The AERN network functions.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}topology.\+h"{}}\newline
+{\ttfamily \#include "{}collection.\+h"{}}\newline
+{\ttfamily \#include "{}sha3.\+h"{}}\newline
+{\ttfamily \#include "{}socket.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__network__announce__request__state}{aern\+\_\+network\+\_\+announce\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate announce request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__announce__response__state}{aern\+\_\+network\+\_\+announce\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate announce response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__converge__request__state}{aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate converge request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__converge__response__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate converge response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__converge__response__verify__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+verify\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate converge verify function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__converge__update__verify__state}{aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+verify\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate converge update verify function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__fkey__request__state}{aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The fkey request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__fkey__response__state}{aern\+\_\+network\+\_\+fkey\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The fkey response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The incremental update request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__incremental__update__response__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The incremental update response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__register__request__state}{aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The network join request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__register__response__state}{aern\+\_\+network\+\_\+register\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The network join response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__register__update__request__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The network join request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__register__update__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The network join update response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__mfk__request__state}{aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The mfk request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__mfk__response__state}{aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The mfk response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate remote signing request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate remote signing response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__resign__request__state}{aern\+\_\+network\+\_\+resign\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate resign request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__resign__response__state}{aern\+\_\+network\+\_\+resign\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate resign request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__revoke__request__state}{aern\+\_\+network\+\_\+revoke\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate revoke request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__revoke__response__state}{aern\+\_\+network\+\_\+revoke\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The certificate revoke response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The topological query request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}}
+\item 
+struct \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The topological status request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The topological status response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__fragment__collection__request__state}{aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The fkey collection request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__fragment__collection__response__state}{aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The fkey collection response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__fragment__query__request__state}{aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The fkey query request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__fragment__query__response__state}{aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The fkey query response function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__key__exchange__request__state}{aern\+\_\+network\+\_\+key\+\_\+exchange\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The key exchange request function state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__key__exchange__response__state}{aern\+\_\+network\+\_\+key\+\_\+exchange\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The key exchange response function state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{network_8h_ab787164c471ac439c84d0e1c50a180e3}\label{network_8h_ab787164c471ac439c84d0e1c50a180e3} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+announce\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+announce\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a45b03cc4640275490d7a9bb48aee99d6}\label{network_8h_a45b03cc4640275490d7a9bb48aee99d6} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+announce\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+announce\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a33e82ed448495f25b00965b1e9544c76}\label{network_8h_a33e82ed448495f25b00965b1e9544c76} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a978ec861ca3345368811088c03c19bb0}\label{network_8h_a978ec861ca3345368811088c03c19bb0} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a8efd755c202438e6ca57bb4146600b12}\label{network_8h_a8efd755c202438e6ca57bb4146600b12} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+verify\+\_\+state {\bfseries aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+verify\+\_\+state}
+\item 
+\Hypertarget{network_8h_a0d0a8e16e534324e20cabc01e7e8b1aa}\label{network_8h_a0d0a8e16e534324e20cabc01e7e8b1aa} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+verify\+\_\+state {\bfseries aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+verify\+\_\+state}
+\item 
+\Hypertarget{network_8h_aea2937d339c1730bdc68ee7c04274cad}\label{network_8h_aea2937d339c1730bdc68ee7c04274cad} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_ac9e4d07b1efa9e3929a367fd44f43f8a}\label{network_8h_ac9e4d07b1efa9e3929a367fd44f43f8a} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+fkey\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+fkey\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_ae32c8046b1f56f7329c2a55142097bbf}\label{network_8h_ae32c8046b1f56f7329c2a55142097bbf} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_ab3e6f36e7e076b4cde7b3f51b45b7e5b}\label{network_8h_ab3e6f36e7e076b4cde7b3f51b45b7e5b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a1ce8a56dec299b8b3d2f57cf3556592c}\label{network_8h_a1ce8a56dec299b8b3d2f57cf3556592c} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a542e0ce5bb72283370798e02fe6cf90b}\label{network_8h_a542e0ce5bb72283370798e02fe6cf90b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+register\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+register\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_ae2bcb2cd90959cd776461dd1871c1ed1}\label{network_8h_ae2bcb2cd90959cd776461dd1871c1ed1} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a60bce06a72f24a0e4f5ba959ab6ca399}\label{network_8h_a60bce06a72f24a0e4f5ba959ab6ca399} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a7bb31936d168b579b0ce661dac9c1534}\label{network_8h_a7bb31936d168b579b0ce661dac9c1534} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a88c3bcca3112c4fc2d7cec6e39433b94}\label{network_8h_a88c3bcca3112c4fc2d7cec6e39433b94} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_ad60aee94e6b6a804a87159b5fc1dd8c7}\label{network_8h_ad60aee94e6b6a804a87159b5fc1dd8c7} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a9e4cb4729bcacbee4b0118cfec088df7}\label{network_8h_a9e4cb4729bcacbee4b0118cfec088df7} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a13720f3a2aad3f6ba78de7058c2a716a}\label{network_8h_a13720f3a2aad3f6ba78de7058c2a716a} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+resign\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+resign\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_ae912eb09a592b98d7be985aeb99c3b17}\label{network_8h_ae912eb09a592b98d7be985aeb99c3b17} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+resign\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+resign\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a68bc112da99c4461c9c0a3271c90ef94}\label{network_8h_a68bc112da99c4461c9c0a3271c90ef94} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+revoke\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+revoke\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a701b31f3dac9925e75f25c022f8f7faa}\label{network_8h_a701b31f3dac9925e75f25c022f8f7faa} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+revoke\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+revoke\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a69b96bcb88faf3982d910f4fd807c07b}\label{network_8h_a69b96bcb88faf3982d910f4fd807c07b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_adcfa051888908f2944a4a70df65e40aa}\label{network_8h_adcfa051888908f2944a4a70df65e40aa} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a489df08421ee977ba0af41c27d3d2cfc}\label{network_8h_a489df08421ee977ba0af41c27d3d2cfc} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_a9e7cabc881d03a83d3b40fcc0351e0ca}\label{network_8h_a9e7cabc881d03a83d3b40fcc0351e0ca} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a3739bec47becd4121e03c2c6e911f2fd}\label{network_8h_a3739bec47becd4121e03c2c6e911f2fd} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_ad7666dc851758d7a345079813ed6f559}\label{network_8h_ad7666dc851758d7a345079813ed6f559} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a32692e2acb7e68d1961eb5414e9d51da}\label{network_8h_a32692e2acb7e68d1961eb5414e9d51da} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_aa267ac4bb9cc21c46e62674481526de1}\label{network_8h_aa267ac4bb9cc21c46e62674481526de1} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network_8h_a1f6509fa5f727f0f1cfe08aa8204ff2b}\label{network_8h_a1f6509fa5f727f0f1cfe08aa8204ff2b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+key\+\_\+exchange\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+key\+\_\+exchange\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network_8h_aefda91a380b863791e0bac0009a8ecc3}\label{network_8h_aefda91a380b863791e0bac0009a8ecc3} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+key\+\_\+exchange\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+key\+\_\+exchange\+\_\+response\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a846dbcc50582be3a539aa3444709bf16}{aern\+\_\+network\+\_\+announce\+\_\+broadcast}} (\mbox{\hyperlink{structaern__network__announce__request__state}{aern\+\_\+network\+\_\+announce\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Announce a certificate using the ads, and broadcast it to the network. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_ad338a161016cd917a66b3152cd0f30b1}{aern\+\_\+network\+\_\+announce\+\_\+response}} (\mbox{\hyperlink{structaern__network__announce__response__state}{aern\+\_\+network\+\_\+announce\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Process a announce response message. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint16\+\_\+t \mbox{\hyperlink{network_8h_ae8a09ec7b811975d8b21480003dad3fb}{aern\+\_\+network\+\_\+application\+\_\+to\+\_\+port}} (\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} tnode)
+\begin{DoxyCompactList}\small\item\em Gets the network designation from a port number. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{network_8h_a61145d7d4f63cdff64cde12cb98a3223}{aern\+\_\+network\+\_\+broadcast\+\_\+message}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} tnode)
+\begin{DoxyCompactList}\small\item\em Broadcast a message to a node type on the network. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API qsc\+\_\+socket\+\_\+exceptions \mbox{\hyperlink{network_8h_a83e1096acdbbbfab2bfe39b13cfca844}{aern\+\_\+network\+\_\+connect\+\_\+to\+\_\+device}} (qsc\+\_\+socket \texorpdfstring{$\ast$}{*}csock, const char \texorpdfstring{$\ast$}{*}address, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} designation)
+\begin{DoxyCompactList}\small\item\em Connect a socket to a remote address. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a99f9a9223217e6e5985b1972728ddc6f}{aern\+\_\+network\+\_\+converge\+\_\+request}} (const \mbox{\hyperlink{structaern__network__converge__request__state}{aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em The ADC sends out a convergence request, and broadcast it to the network. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a11a5c04d09ac124397ac5cef01c880cd}{aern\+\_\+network\+\_\+converge\+\_\+response}} (const \mbox{\hyperlink{structaern__network__converge__response__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Respond to a ads network converge request. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API qsc\+\_\+socket\+\_\+exceptions \mbox{\hyperlink{network_8h_a4ecfdfbb2ccedda1c5922273495a60ac}{aern\+\_\+network\+\_\+connect\+\_\+to\+\_\+address}} (qsc\+\_\+socket \texorpdfstring{$\ast$}{*}csock, const char \texorpdfstring{$\ast$}{*}address, uint16\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Connect a socket to a remote address and port. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_af23cd1d6b675aca30c7484831e8ab642}{aern\+\_\+network\+\_\+fkey\+\_\+request}} (\mbox{\hyperlink{structaern__network__fkey__request__state}{aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Request and execute a key exchange for a fragmentation key. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a709fd101ec050d16be7fb5ce98b3a2b5}{aern\+\_\+network\+\_\+fkey\+\_\+response}} (\mbox{\hyperlink{structaern__network__fkey__response__state}{aern\+\_\+network\+\_\+fkey\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Respond and execute a key exchange for a fragmentation key. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{network_8h_a283215bb8caea786e846542266cf592c}{aern\+\_\+network\+\_\+get\+\_\+local\+\_\+address}} (char address\mbox{[}\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Get the local IP address. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_aca189955bc3ed78df1e6bd597407c468}{aern\+\_\+network\+\_\+send\+\_\+error}} (const qsc\+\_\+socket \texorpdfstring{$\ast$}{*}csock, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Send an error message. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{network_8h_af2537c65e4e43744cdbc721647f62d8e}{aern\+\_\+network\+\_\+socket\+\_\+dispose}} (qsc\+\_\+socket \texorpdfstring{$\ast$}{*}csock)
+\begin{DoxyCompactList}\small\item\em Shut down and dispose of a socket instance. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a622978bd0c133ef70eb10ad90998fdb8}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request}} (const \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send an incremental update request. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a33ed3fdf5132226a9dbe371e594af939}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response}} (const \mbox{\hyperlink{structaern__network__incremental__update__response__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Send a copy of a certificate to a remote host. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_aa71b433ff891b6f9c26e4dc0319e7ee8}{aern\+\_\+network\+\_\+register\+\_\+request}} (\mbox{\hyperlink{structaern__network__register__request__state}{aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send an APS join request to the ADC. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_ae5521c2dd286674fc385958073f7147e}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request}} (\mbox{\hyperlink{structaern__network__register__update__request__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send a MAS or Client join update request to the ADC. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a71febf643cee942cfb974f61354db437}{aern\+\_\+network\+\_\+register\+\_\+response}} (\mbox{\hyperlink{structaern__network__register__response__state}{aern\+\_\+network\+\_\+register\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Send a join response to the aps. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a83607e60f8e20a85cecb72f5306c2065}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response}} (\mbox{\hyperlink{structaern__network__register__update__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Send a join update response to the server or client. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a6d10bbd888edcc745511fbdbad24dce7}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request}} (\mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send a certificate signing request from the ADC to the ARS. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_acdf433ec60149e529565861cd4fee3f5}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response}} (\mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Send a signed certificate response from the ARS to the ADC. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a4dffd8a95fc59b50a2d591706686dd13}{aern\+\_\+network\+\_\+mfk\+\_\+exchange\+\_\+request}} (\mbox{\hyperlink{structaern__network__mfk__request__state}{aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Request and execute a key exchange request for a master fragmentation key. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a31a786d6e3f520de60f3c3a1466d95c4}{aern\+\_\+network\+\_\+mfk\+\_\+exchange\+\_\+response}} (\mbox{\hyperlink{structaern__network__mfk__response__state}{aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Request and execute a key exchange response for a master fragmentation key. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} \mbox{\hyperlink{network_8h_acb6ae2c68b1785f71ed6e04db2d9b88d}{aern\+\_\+network\+\_\+port\+\_\+to\+\_\+application}} (uint16\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Gets the network designation from a port number. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a6e2042bc607de76cab9f86c8491f0ba9}{aern\+\_\+network\+\_\+certificate\+\_\+verify}} (const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root)
+\begin{DoxyCompactList}\small\item\em Verify a certificates format and root signature. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a2edb0938753f0dff2b8d4a8085b846c4}{aern\+\_\+network\+\_\+resign\+\_\+request}} (const \mbox{\hyperlink{structaern__network__resign__request__state}{aern\+\_\+network\+\_\+resign\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send a resign request to the ads. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_ac5a2830e3d45c26ce7863bd9c3a54fd1}{aern\+\_\+network\+\_\+resign\+\_\+response}} (\mbox{\hyperlink{structaern__network__resign__response__state}{aern\+\_\+network\+\_\+resign\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Send a resign response to the aps or server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_aab4e4a7d012e44ffc5de8346a19ca7a5}{aern\+\_\+network\+\_\+revoke\+\_\+broadcast}} (\mbox{\hyperlink{structaern__network__revoke__request__state}{aern\+\_\+network\+\_\+revoke\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send a revocation request from the ADC. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_a23b78a5daef38f0d40f424b8c34c0ebf}{aern\+\_\+network\+\_\+revoke\+\_\+response}} (\mbox{\hyperlink{structaern__network__revoke__response__state}{aern\+\_\+network\+\_\+revoke\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a revocation request sent from the ADC. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_afc276ab7c807d3bd7f8aed896aef82d2}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request}} (const \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Query a device for its topological information. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_aa9cd0de570ee2b1cf0a9aa8c658aa54e}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response}} (const \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Respond to a topological query request. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_af86e7f9c4db6ed6827d1a60de497686f}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request}} (const \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send a status request from the ADC to a client device. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network_8h_abf993346e034038e8e68489b1597e40b}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response}} (const \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Process the status response from the client device and send a response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The AERN network functions. 
+
+This header defines the public network functions and data types used by AERN to perform secure network operations. These operations include certificate announcement, network convergence, registration and update of network nodes, key exchange, remote signing, revocation, and topological queries.
+
+Each network message is encapsulated in a packet that includes a header (with a time-\/stamp, sequence number, and flag), a payload, and a digital signature that covers the payload and header. This ensures integrity, authenticity, and protection against replay attacks.
+
+\begin{DoxyNote}{Note}
+This header declares only the public API. Many internal functions (such as those for constructing and validating packet headers, hashing, signing, etc.) are defined as static in the implementation file.
+\end{DoxyNote}
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structaern__network__announce__request__state}{aern\_network\_announce\_request\_state}}\ req\_state;}
+\DoxyCodeLine{req\_state.\mbox{\hyperlink{structaern__network__announce__request__state_a044e5ee2280951b6fb5ee43ee42998e7}{list}}\ \ \ =\ \&global\_topology\_list;}
+\DoxyCodeLine{req\_state.\mbox{\hyperlink{structaern__network__announce__request__state_a3a2a85e286a80274e1cbe1ef31d57db9}{rnode}}\ \ =\ \&remote\_node;}
+\DoxyCodeLine{req\_state.\mbox{\hyperlink{structaern__network__announce__request__state_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}\ =\ local\_signing\_key;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ err\ =\ aern\_network\_announce\_broadcast(\&req\_state);}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (err\ !=\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa7f1199026b486871b3ffe0fbd36cf0a}{aern\_protocol\_error\_none}})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Handle\ error.}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+
+\label{doc-func-members}
+\Hypertarget{network_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{network_8h_a846dbcc50582be3a539aa3444709bf16}\index{network.h@{network.h}!aern\_network\_announce\_broadcast@{aern\_network\_announce\_broadcast}}
+\index{aern\_network\_announce\_broadcast@{aern\_network\_announce\_broadcast}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_announce\_broadcast()}{aern\_network\_announce\_broadcast()}}
+{\footnotesize\ttfamily \label{network_8h_a846dbcc50582be3a539aa3444709bf16} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+announce\+\_\+broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__announce__request__state}{aern\+\_\+network\+\_\+announce\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Announce a certificate using the ads, and broadcast it to the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The announce state structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_ad338a161016cd917a66b3152cd0f30b1}\index{network.h@{network.h}!aern\_network\_announce\_response@{aern\_network\_announce\_response}}
+\index{aern\_network\_announce\_response@{aern\_network\_announce\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_announce\_response()}{aern\_network\_announce\_response()}}
+{\footnotesize\ttfamily \label{network_8h_ad338a161016cd917a66b3152cd0f30b1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+announce\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__announce__response__state}{aern\+\_\+network\+\_\+announce\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Process a announce response message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The announce response state structure \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the announce request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_ae8a09ec7b811975d8b21480003dad3fb}\index{network.h@{network.h}!aern\_network\_application\_to\_port@{aern\_network\_application\_to\_port}}
+\index{aern\_network\_application\_to\_port@{aern\_network\_application\_to\_port}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_application\_to\_port()}{aern\_network\_application\_to\_port()}}
+{\footnotesize\ttfamily \label{network_8h_ae8a09ec7b811975d8b21480003dad3fb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint16\+\_\+t aern\+\_\+network\+\_\+application\+\_\+to\+\_\+port (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}]{tnode}{}\end{DoxyParamCaption})}
+
+
+
+Gets the network designation from a port number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tnode} & The target network designation type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the port number, or zero if the node type is invalid 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a61145d7d4f63cdff64cde12cb98a3223}\index{network.h@{network.h}!aern\_network\_broadcast\_message@{aern\_network\_broadcast\_message}}
+\index{aern\_network\_broadcast\_message@{aern\_network\_broadcast\_message}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_broadcast\_message()}{aern\_network\_broadcast\_message()}}
+{\footnotesize\ttfamily \label{network_8h_a61145d7d4f63cdff64cde12cb98a3223} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+network\+\_\+broadcast\+\_\+message (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{, }\item[{\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}]{tnode}{}\end{DoxyParamCaption})}
+
+
+
+Broadcast a message to a node type on the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}const\mbox{]} A pointer to the topology list \\
+\hline
+{\em message} & The message to send \\
+\hline
+{\em msglen} & The length of the message \\
+\hline
+{\em tnode} & The target node-\/type designation \\
+\hline
+\end{DoxyParams}
+\Hypertarget{network_8h_a6e2042bc607de76cab9f86c8491f0ba9}\index{network.h@{network.h}!aern\_network\_certificate\_verify@{aern\_network\_certificate\_verify}}
+\index{aern\_network\_certificate\_verify@{aern\_network\_certificate\_verify}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_certificate\_verify()}{aern\_network\_certificate\_verify()}}
+{\footnotesize\ttfamily \label{network_8h_a6e2042bc607de76cab9f86c8491f0ba9} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+certificate\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{ccert}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{}\end{DoxyParamCaption})}
+
+
+
+Verify a certificates format and root signature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ccert} & \mbox{[}const\mbox{]} The child certificate \\
+\hline
+{\em root} & \mbox{[}const\mbox{]} The root certificate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a4ecfdfbb2ccedda1c5922273495a60ac}\index{network.h@{network.h}!aern\_network\_connect\_to\_address@{aern\_network\_connect\_to\_address}}
+\index{aern\_network\_connect\_to\_address@{aern\_network\_connect\_to\_address}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_connect\_to\_address()}{aern\_network\_connect\_to\_address()}}
+{\footnotesize\ttfamily \label{network_8h_a4ecfdfbb2ccedda1c5922273495a60ac} 
+AERN\+\_\+\+EXPORT\+\_\+\+API qsc\+\_\+socket\+\_\+exceptions aern\+\_\+network\+\_\+connect\+\_\+to\+\_\+address (\begin{DoxyParamCaption}\item[{qsc\+\_\+socket \texorpdfstring{$\ast$}{*}}]{csock}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{uint16\+\_\+t}]{port}{}\end{DoxyParamCaption})}
+
+
+
+Connect a socket to a remote address and port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em csock} & A pointer to the socket \\
+\hline
+{\em address} & \mbox{[}const\mbox{]} The remote hosts address \\
+\hline
+{\em port} & The application port number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the socket error 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a83e1096acdbbbfab2bfe39b13cfca844}\index{network.h@{network.h}!aern\_network\_connect\_to\_device@{aern\_network\_connect\_to\_device}}
+\index{aern\_network\_connect\_to\_device@{aern\_network\_connect\_to\_device}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_connect\_to\_device()}{aern\_network\_connect\_to\_device()}}
+{\footnotesize\ttfamily \label{network_8h_a83e1096acdbbbfab2bfe39b13cfca844} 
+AERN\+\_\+\+EXPORT\+\_\+\+API qsc\+\_\+socket\+\_\+exceptions aern\+\_\+network\+\_\+connect\+\_\+to\+\_\+device (\begin{DoxyParamCaption}\item[{qsc\+\_\+socket \texorpdfstring{$\ast$}{*}}]{csock}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}]{designation}{}\end{DoxyParamCaption})}
+
+
+
+Connect a socket to a remote address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em csock} & A pointer to the socket \\
+\hline
+{\em address} & \mbox{[}const\mbox{]} The remote hosts address \\
+\hline
+{\em designation} & The remote hosts designation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the socket error 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a99f9a9223217e6e5985b1972728ddc6f}\index{network.h@{network.h}!aern\_network\_converge\_request@{aern\_network\_converge\_request}}
+\index{aern\_network\_converge\_request@{aern\_network\_converge\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_converge\_request()}{aern\_network\_converge\_request()}}
+{\footnotesize\ttfamily \label{network_8h_a99f9a9223217e6e5985b1972728ddc6f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+converge\+\_\+request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__converge__request__state}{aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+The ADC sends out a convergence request, and broadcast it to the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The converge request state structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a11a5c04d09ac124397ac5cef01c880cd}\index{network.h@{network.h}!aern\_network\_converge\_response@{aern\_network\_converge\_response}}
+\index{aern\_network\_converge\_response@{aern\_network\_converge\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_converge\_response()}{aern\_network\_converge\_response()}}
+{\footnotesize\ttfamily \label{network_8h_a11a5c04d09ac124397ac5cef01c880cd} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+converge\+\_\+response (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__converge__response__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Respond to a ads network converge request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The converge response state structure \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the verify response \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_af23cd1d6b675aca30c7484831e8ab642}\index{network.h@{network.h}!aern\_network\_fkey\_request@{aern\_network\_fkey\_request}}
+\index{aern\_network\_fkey\_request@{aern\_network\_fkey\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_fkey\_request()}{aern\_network\_fkey\_request()}}
+{\footnotesize\ttfamily \label{network_8h_af23cd1d6b675aca30c7484831e8ab642} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+fkey\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__fkey__request__state}{aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Request and execute a key exchange for a fragmentation key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The fkey request state structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a709fd101ec050d16be7fb5ce98b3a2b5}\index{network.h@{network.h}!aern\_network\_fkey\_response@{aern\_network\_fkey\_response}}
+\index{aern\_network\_fkey\_response@{aern\_network\_fkey\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_fkey\_response()}{aern\_network\_fkey\_response()}}
+{\footnotesize\ttfamily \label{network_8h_a709fd101ec050d16be7fb5ce98b3a2b5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+fkey\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__fkey__response__state}{aern\+\_\+network\+\_\+fkey\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Respond and execute a key exchange for a fragmentation key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The fkey response state structure \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a283215bb8caea786e846542266cf592c}\index{network.h@{network.h}!aern\_network\_get\_local\_address@{aern\_network\_get\_local\_address}}
+\index{aern\_network\_get\_local\_address@{aern\_network\_get\_local\_address}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_get\_local\_address()}{aern\_network\_get\_local\_address()}}
+{\footnotesize\ttfamily \label{network_8h_a283215bb8caea786e846542266cf592c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+network\+\_\+get\+\_\+local\+\_\+address (\begin{DoxyParamCaption}\item[{char}]{address}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Get the local IP address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The output address byte array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the address is retrieved 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a622978bd0c133ef70eb10ad90998fdb8}\index{network.h@{network.h}!aern\_network\_incremental\_update\_request@{aern\_network\_incremental\_update\_request}}
+\index{aern\_network\_incremental\_update\_request@{aern\_network\_incremental\_update\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_incremental\_update\_request()}{aern\_network\_incremental\_update\_request()}}
+{\footnotesize\ttfamily \label{network_8h_a622978bd0c133ef70eb10ad90998fdb8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send an incremental update request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The incremental update request function state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a33ed3fdf5132226a9dbe371e594af939}\index{network.h@{network.h}!aern\_network\_incremental\_update\_response@{aern\_network\_incremental\_update\_response}}
+\index{aern\_network\_incremental\_update\_response@{aern\_network\_incremental\_update\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_incremental\_update\_response()}{aern\_network\_incremental\_update\_response()}}
+{\footnotesize\ttfamily \label{network_8h_a33ed3fdf5132226a9dbe371e594af939} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__incremental__update__response__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Send a copy of a certificate to a remote host. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The update response function state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a4dffd8a95fc59b50a2d591706686dd13}\index{network.h@{network.h}!aern\_network\_mfk\_exchange\_request@{aern\_network\_mfk\_exchange\_request}}
+\index{aern\_network\_mfk\_exchange\_request@{aern\_network\_mfk\_exchange\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_mfk\_exchange\_request()}{aern\_network\_mfk\_exchange\_request()}}
+{\footnotesize\ttfamily \label{network_8h_a4dffd8a95fc59b50a2d591706686dd13} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+mfk\+\_\+exchange\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__mfk__request__state}{aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Request and execute a key exchange request for a master fragmentation key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The mfk request state structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a31a786d6e3f520de60f3c3a1466d95c4}\index{network.h@{network.h}!aern\_network\_mfk\_exchange\_response@{aern\_network\_mfk\_exchange\_response}}
+\index{aern\_network\_mfk\_exchange\_response@{aern\_network\_mfk\_exchange\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_mfk\_exchange\_response()}{aern\_network\_mfk\_exchange\_response()}}
+{\footnotesize\ttfamily \label{network_8h_a31a786d6e3f520de60f3c3a1466d95c4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+mfk\+\_\+exchange\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__mfk__response__state}{aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Request and execute a key exchange response for a master fragmentation key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The mfk response state structure \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_acb6ae2c68b1785f71ed6e04db2d9b88d}\index{network.h@{network.h}!aern\_network\_port\_to\_application@{aern\_network\_port\_to\_application}}
+\index{aern\_network\_port\_to\_application@{aern\_network\_port\_to\_application}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_port\_to\_application()}{aern\_network\_port\_to\_application()}}
+{\footnotesize\ttfamily \label{network_8h_acb6ae2c68b1785f71ed6e04db2d9b88d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} aern\+\_\+network\+\_\+port\+\_\+to\+\_\+application (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{port}{}\end{DoxyParamCaption})}
+
+
+
+Gets the network designation from a port number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The network application port \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the network designation type 
+\end{DoxyReturn}
+\Hypertarget{network_8h_aa71b433ff891b6f9c26e4dc0319e7ee8}\index{network.h@{network.h}!aern\_network\_register\_request@{aern\_network\_register\_request}}
+\index{aern\_network\_register\_request@{aern\_network\_register\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_register\_request()}{aern\_network\_register\_request()}}
+{\footnotesize\ttfamily \label{network_8h_aa71b433ff891b6f9c26e4dc0319e7ee8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+register\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__register__request__state}{aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send an APS join request to the ADC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The join request function state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a71febf643cee942cfb974f61354db437}\index{network.h@{network.h}!aern\_network\_register\_response@{aern\_network\_register\_response}}
+\index{aern\_network\_register\_response@{aern\_network\_register\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_register\_response()}{aern\_network\_register\_response()}}
+{\footnotesize\ttfamily \label{network_8h_a71febf643cee942cfb974f61354db437} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+register\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__register__response__state}{aern\+\_\+network\+\_\+register\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Send a join response to the aps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The join response function state \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a protocol error flag 
+\end{DoxyReturn}
+\Hypertarget{network_8h_ae5521c2dd286674fc385958073f7147e}\index{network.h@{network.h}!aern\_network\_register\_update\_request@{aern\_network\_register\_update\_request}}
+\index{aern\_network\_register\_update\_request@{aern\_network\_register\_update\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_register\_update\_request()}{aern\_network\_register\_update\_request()}}
+{\footnotesize\ttfamily \label{network_8h_ae5521c2dd286674fc385958073f7147e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__register__update__request__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send a MAS or Client join update request to the ADC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The join update request function state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a83607e60f8e20a85cecb72f5306c2065}\index{network.h@{network.h}!aern\_network\_register\_update\_response@{aern\_network\_register\_update\_response}}
+\index{aern\_network\_register\_update\_response@{aern\_network\_register\_update\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_register\_update\_response()}{aern\_network\_register\_update\_response()}}
+{\footnotesize\ttfamily \label{network_8h_a83607e60f8e20a85cecb72f5306c2065} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__register__update__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Send a join update response to the server or client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The join response function state \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a protocol error flag 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a6d10bbd888edcc745511fbdbad24dce7}\index{network.h@{network.h}!aern\_network\_remote\_signing\_request@{aern\_network\_remote\_signing\_request}}
+\index{aern\_network\_remote\_signing\_request@{aern\_network\_remote\_signing\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_remote\_signing\_request()}{aern\_network\_remote\_signing\_request()}}
+{\footnotesize\ttfamily \label{network_8h_a6d10bbd888edcc745511fbdbad24dce7} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send a certificate signing request from the ADC to the ARS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The remote signing request state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a protocol error flag 
+\end{DoxyReturn}
+\Hypertarget{network_8h_acdf433ec60149e529565861cd4fee3f5}\index{network.h@{network.h}!aern\_network\_remote\_signing\_response@{aern\_network\_remote\_signing\_response}}
+\index{aern\_network\_remote\_signing\_response@{aern\_network\_remote\_signing\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_remote\_signing\_response()}{aern\_network\_remote\_signing\_response()}}
+{\footnotesize\ttfamily \label{network_8h_acdf433ec60149e529565861cd4fee3f5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Send a signed certificate response from the ARS to the ADC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The remote signing response state \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a protocol error flag 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a2edb0938753f0dff2b8d4a8085b846c4}\index{network.h@{network.h}!aern\_network\_resign\_request@{aern\_network\_resign\_request}}
+\index{aern\_network\_resign\_request@{aern\_network\_resign\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_resign\_request()}{aern\_network\_resign\_request()}}
+{\footnotesize\ttfamily \label{network_8h_a2edb0938753f0dff2b8d4a8085b846c4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+resign\+\_\+request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__resign__request__state}{aern\+\_\+network\+\_\+resign\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send a resign request to the ads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The resign request state structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_ac5a2830e3d45c26ce7863bd9c3a54fd1}\index{network.h@{network.h}!aern\_network\_resign\_response@{aern\_network\_resign\_response}}
+\index{aern\_network\_resign\_response@{aern\_network\_resign\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_resign\_response()}{aern\_network\_resign\_response()}}
+{\footnotesize\ttfamily \label{network_8h_ac5a2830e3d45c26ce7863bd9c3a54fd1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+resign\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__resign__response__state}{aern\+\_\+network\+\_\+resign\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Send a resign response to the aps or server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The resign response state structure \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_aab4e4a7d012e44ffc5de8346a19ca7a5}\index{network.h@{network.h}!aern\_network\_revoke\_broadcast@{aern\_network\_revoke\_broadcast}}
+\index{aern\_network\_revoke\_broadcast@{aern\_network\_revoke\_broadcast}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_revoke\_broadcast()}{aern\_network\_revoke\_broadcast()}}
+{\footnotesize\ttfamily \label{network_8h_aab4e4a7d012e44ffc5de8346a19ca7a5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+revoke\+\_\+broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__revoke__request__state}{aern\+\_\+network\+\_\+revoke\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send a revocation request from the ADC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The revocation broadcast function state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a protocol error flag 
+\end{DoxyReturn}
+\Hypertarget{network_8h_a23b78a5daef38f0d40f424b8c34c0ebf}\index{network.h@{network.h}!aern\_network\_revoke\_response@{aern\_network\_revoke\_response}}
+\index{aern\_network\_revoke\_response@{aern\_network\_revoke\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_revoke\_response()}{aern\_network\_revoke\_response()}}
+{\footnotesize\ttfamily \label{network_8h_a23b78a5daef38f0d40f424b8c34c0ebf} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+revoke\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__revoke__response__state}{aern\+\_\+network\+\_\+revoke\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a revocation request sent from the ADC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The revocation verify function state \\
+\hline
+{\em packetin} & \mbox{[}const\mbox{]} The input packet containing the request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a protocol error flag 
+\end{DoxyReturn}
+\Hypertarget{network_8h_aca189955bc3ed78df1e6bd597407c468}\index{network.h@{network.h}!aern\_network\_send\_error@{aern\_network\_send\_error}}
+\index{aern\_network\_send\_error@{aern\_network\_send\_error}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_send\_error()}{aern\_network\_send\_error()}}
+{\footnotesize\ttfamily \label{network_8h_aca189955bc3ed78df1e6bd597407c468} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+send\+\_\+error (\begin{DoxyParamCaption}\item[{const qsc\+\_\+socket \texorpdfstring{$\ast$}{*}}]{csock}{, }\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Send an error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em csock} & A pointer to the socket \\
+\hline
+{\em error} & The error code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_af2537c65e4e43744cdbc721647f62d8e}\index{network.h@{network.h}!aern\_network\_socket\_dispose@{aern\_network\_socket\_dispose}}
+\index{aern\_network\_socket\_dispose@{aern\_network\_socket\_dispose}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_socket\_dispose()}{aern\_network\_socket\_dispose()}}
+{\footnotesize\ttfamily \label{network_8h_af2537c65e4e43744cdbc721647f62d8e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+network\+\_\+socket\+\_\+dispose (\begin{DoxyParamCaption}\item[{qsc\+\_\+socket \texorpdfstring{$\ast$}{*}}]{csock}{}\end{DoxyParamCaption})}
+
+
+
+Shut down and dispose of a socket instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em csock} & A pointer to the socket \\
+\hline
+\end{DoxyParams}
+\Hypertarget{network_8h_afc276ab7c807d3bd7f8aed896aef82d2}\index{network.h@{network.h}!aern\_network\_topological\_query\_request@{aern\_network\_topological\_query\_request}}
+\index{aern\_network\_topological\_query\_request@{aern\_network\_topological\_query\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_topological\_query\_request()}{aern\_network\_topological\_query\_request()}}
+{\footnotesize\ttfamily \label{network_8h_afc276ab7c807d3bd7f8aed896aef82d2} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Query a device for its topological information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The topological query request state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_aa9cd0de570ee2b1cf0a9aa8c658aa54e}\index{network.h@{network.h}!aern\_network\_topological\_query\_response@{aern\_network\_topological\_query\_response}}
+\index{aern\_network\_topological\_query\_response@{aern\_network\_topological\_query\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_topological\_query\_response()}{aern\_network\_topological\_query\_response()}}
+{\footnotesize\ttfamily \label{network_8h_aa9cd0de570ee2b1cf0a9aa8c658aa54e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Respond to a topological query request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & topological query response state \\
+\hline
+{\em packetin} & The packet containing the topological query request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_af86e7f9c4db6ed6827d1a60de497686f}\index{network.h@{network.h}!aern\_network\_topological\_status\_request@{aern\_network\_topological\_status\_request}}
+\index{aern\_network\_topological\_status\_request@{aern\_network\_topological\_status\_request}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_topological\_status\_request()}{aern\_network\_topological\_status\_request()}}
+{\footnotesize\ttfamily \label{network_8h_af86e7f9c4db6ed6827d1a60de497686f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send a status request from the ADC to a client device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The topological status request state \\
+\hline
+{\em query} & The device query string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}
+\Hypertarget{network_8h_abf993346e034038e8e68489b1597e40b}\index{network.h@{network.h}!aern\_network\_topological\_status\_response@{aern\_network\_topological\_status\_response}}
+\index{aern\_network\_topological\_status\_response@{aern\_network\_topological\_status\_response}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_topological\_status\_response()}{aern\_network\_topological\_status\_response()}}
+{\footnotesize\ttfamily \label{network_8h_abf993346e034038e8e68489b1597e40b} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Process the status response from the client device and send a response. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The topological status response state \\
+\hline
+{\em packetin} & The packet containing the topological status request \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code 
+\end{DoxyReturn}

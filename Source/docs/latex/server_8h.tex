@@ -1,0 +1,1316 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/server.h File Reference}
+\hypertarget{server_8h}{}\label{server_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/server.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/server.h}}
+
+
+The common AERN server functions.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}certificate.\+h"{}}\newline
+{\ttfamily \#include "{}commands.\+h"{}}\newline
+{\ttfamily \#include "{}logger.\+h"{}}\newline
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+{\ttfamily \#include "{}topology.\+h"{}}\newline
+{\ttfamily \#include "{}collection.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The AERN server state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{server_8h_aa5c2c3777eb5f6674b69f8bd5e82ae81}\label{server_8h_aa5c2c3777eb5f6674b69f8bd5e82ae81} 
+\#define {\bfseries AERN\+\_\+\+SERVER\+\_\+\+MINIMUM\+\_\+\+COMMAND\+\_\+\+LENGTH}~4U
+\begin{DoxyCompactList}\small\item\em The minimum valid length for a server command. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{server_8h_afb7942efa7c4fb94ac2296846386f390}{AERN\+\_\+\+SERVER\+\_\+\+APPLICATION\+\_\+\+STATE\+\_\+\+SIZE}}
+\begin{DoxyCompactList}\small\item\em Calculates the size of the AERN server application state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{server_8h_a16232fdaafa8269822ae25c694e807ba}\label{server_8h_a16232fdaafa8269822ae25c694e807ba} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API enum \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3ae}{aern\+\_\+server\+\_\+server\+\_\+loop\+\_\+status}} {\bfseries aern\+\_\+server\+\_\+server\+\_\+loop\+\_\+status}
+\item 
+\Hypertarget{server_8h_a1179ab46c09371189c4267bd7d381df5}\label{server_8h_a1179ab46c09371189c4267bd7d381df5} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+server\+\_\+application\+\_\+state {\bfseries aern\+\_\+server\+\_\+application\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3ae}{aern\+\_\+server\+\_\+server\+\_\+loop\+\_\+status}} \{ \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3aea465f17d84f3d161878b56c6b356b3a23}{aern\+\_\+server\+\_\+loop\+\_\+status\+\_\+stopped}} = 0x00U
+, \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3aea72787539a0199a1760cbeb2ce5dd76c3}{aern\+\_\+server\+\_\+loop\+\_\+status\+\_\+started}} = 0x01U
+, \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3aeacf47afbd8bfa4a6ecda04878f87883f9}{aern\+\_\+server\+\_\+loop\+\_\+status\+\_\+paused}} = 0x02U
+ \}
+\begin{DoxyCompactList}\small\item\em The AERN server loop status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_abb3f04065300eb0a2b00ea1644ba3b5a}{aern\+\_\+server\+\_\+certificate\+\_\+directory}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, char \texorpdfstring{$\ast$}{*}dpath, size\+\_\+t pathlen)
+\begin{DoxyCompactList}\small\item\em Get the full delimited path to the certificate storage directory. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a7bee7a5f16e12897def7c06cc9647476}{aern\+\_\+server\+\_\+certificate\+\_\+path}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, char \texorpdfstring{$\ast$}{*}fpath, size\+\_\+t pathlen, const char \texorpdfstring{$\ast$}{*}issuer)
+\begin{DoxyCompactList}\small\item\em Get the full path to a certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a1a5b70fb22c850531fdebff00b35b2d9}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+export}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}dpath)
+\begin{DoxyCompactList}\small\item\em Export the local certificate to a file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a9031a86b19de10ca04ec45b5c3171fb1}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+from\+\_\+issuer}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert, const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}issuer)
+\begin{DoxyCompactList}\small\item\em Get the certificate instance from file using the issuer string. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a3b487902b81e7c4e50b5ca4ebfa6aae8}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+from\+\_\+serial}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert, const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}serial)
+\begin{DoxyCompactList}\small\item\em Get the certificate instance from file using the serial number. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a75b5fb26b3f8b0a32b568b379e6cac18}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+generate}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert, uint64\+\_\+t period)
+\begin{DoxyCompactList}\small\item\em Generate a new child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a6eb77f4db628b47951e5918e97e162d9}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+import}} (\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}lcert, \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}fpath)
+\begin{DoxyCompactList}\small\item\em Import the local certificate signed by the root. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a26fd649492e2d0ddf76b7c431945b6cb}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+path}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, char \texorpdfstring{$\ast$}{*}fpath, size\+\_\+t pathlen)
+\begin{DoxyCompactList}\small\item\em Get the full path to the child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a9034f2ee252b3737c88d8e3e2f4519a9}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+path\+\_\+from\+\_\+issuer}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, char \texorpdfstring{$\ast$}{*}fpath, size\+\_\+t pathlen, const char \texorpdfstring{$\ast$}{*}issuer)
+\begin{DoxyCompactList}\small\item\em Get the certificate file path from the certificate issuer name. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a936876e6bf4a73bbc0b948d41aaad4dd}{aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+print}} (const char \texorpdfstring{$\ast$}{*}fpath, size\+\_\+t pathlen)
+\begin{DoxyCompactList}\small\item\em Print the local child certificate to console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_ac9fdaea6921ede9398d57ea4e1032a95}{aern\+\_\+server\+\_\+local\+\_\+certificate\+\_\+store}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert, const char \texorpdfstring{$\ast$}{*}address)
+\begin{DoxyCompactList}\small\item\em Store a child certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_aba7b7d42e39036995153acbed41201e9}{aern\+\_\+server\+\_\+clear\+\_\+config}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Erase and reset the configuration file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_af0b0b47d40c87252c0ca36b5b319dff2}{aern\+\_\+server\+\_\+clear\+\_\+log}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Erase the log file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a07ac45d7126497d967cb0cda7c9e3b33}{aern\+\_\+server\+\_\+erase\+\_\+all}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Erase all state, including log files, and reset configuration. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a7d1a0e41abe8310bcdcfeb55941921e6}{aern\+\_\+server\+\_\+log\+\_\+host}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Enable logging on the server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a409b5e9a90c7625ece7aaf9828af50a6}{aern\+\_\+server\+\_\+log\+\_\+print}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Print the log file to the console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a8b6a18e0a4e4cb4f05800064a396ced1}{aern\+\_\+server\+\_\+log\+\_\+write\+\_\+message}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}} msgtype, const char \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen)
+\begin{DoxyCompactList}\small\item\em Write a message to the log. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a3631ba0aacf33aa7818007452b9f1196}{aern\+\_\+server\+\_\+mfkcol\+\_\+path}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, char \texorpdfstring{$\ast$}{*}fpath, size\+\_\+t pathlen)
+\begin{DoxyCompactList}\small\item\em Get the path to the mfk collection file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a09b789de0895a8dc5d1db5daf1eb23e4}{aern\+\_\+server\+\_\+mfkcol\+\_\+from\+\_\+file}} (qsc\+\_\+collection\+\_\+state \texorpdfstring{$\ast$}{*}mfkcol, const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Convert an encrypted mfk collection file to a collection state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_aa72a5f5b63fcd8cfd4dd8b6b94d88fd1}{aern\+\_\+server\+\_\+mfkcol\+\_\+to\+\_\+file}} (const qsc\+\_\+collection\+\_\+state \texorpdfstring{$\ast$}{*}mfkcol, const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Convert an mfk collection to an encrypted file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a1e7440b8a3ce40de804c168b173ab42f}{aern\+\_\+server\+\_\+print\+\_\+banner}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Print the server banner. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_aa15cbe1c15942a16edb20bc5727609d2}{aern\+\_\+server\+\_\+print\+\_\+error}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}} appmsg, const char \texorpdfstring{$\ast$}{*}message, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Print a network error to the console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a735a79991504e0c84441d0a8c6b1ee3a}{aern\+\_\+server\+\_\+print\+\_\+configuration}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Print the server configuration. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a6502acf736dab3ea1499544da28a6c01}{aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+export}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}dpath)
+\begin{DoxyCompactList}\small\item\em Export the root certificate to a directory. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_adff89671b1f6b65241e033c46a251f5c}{aern\+\_\+server\+\_\+root\+\_\+import\+\_\+dialogue}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Import the root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_af0ff95cea003f6081496b5896cbfd4d1}{aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+generate}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}rcert, uint64\+\_\+t period)
+\begin{DoxyCompactList}\small\item\em Generate a new root certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a75239baeec4dcbec1023999cfbf5dc18}{aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+load}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root, const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}tlist)
+\begin{DoxyCompactList}\small\item\em Load a root certificate using the issuer name. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_ad97e033f7d9d9ac0c71499c032dcc6f9}{aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+print}} (const char \texorpdfstring{$\ast$}{*}fpath, size\+\_\+t pathlen)
+\begin{DoxyCompactList}\small\item\em Print a formatted root certificate to console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a9e594553af5644637b745af0abc40787}{aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+store}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}rcert)
+\begin{DoxyCompactList}\small\item\em Store a root certificate to a file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_ac1bd01d0224c457f9be2a2b612565942}{aern\+\_\+server\+\_\+set\+\_\+command\+\_\+prompt}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Set the command prompt to the current state mode. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_ae787b5387b93a27d856ab2240676c928}{aern\+\_\+server\+\_\+set\+\_\+console\+\_\+timeout}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}snum, size\+\_\+t numlen)
+\begin{DoxyCompactList}\small\item\em Set the number of idle minutes before the user is logged out. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_af642bc226e672d9d87b1ebc0cfb829b4}{aern\+\_\+server\+\_\+set\+\_\+domain\+\_\+name}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}name, size\+\_\+t namelen)
+\begin{DoxyCompactList}\small\item\em Rename the network domain. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a11d293f6cc13d941ff484821f2693c9a}{aern\+\_\+server\+\_\+set\+\_\+host\+\_\+name}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}name, size\+\_\+t namelen)
+\begin{DoxyCompactList}\small\item\em Rename the server host. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_aca4aba991aec26a88d7a61c3b5d8fd5c}{aern\+\_\+server\+\_\+set\+\_\+ip\+\_\+address}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}address, size\+\_\+t addlen)
+\begin{DoxyCompactList}\small\item\em Set the IP address of the server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a554f2b93470682dc02b50248a1d41b65}{aern\+\_\+server\+\_\+set\+\_\+password\+\_\+retries}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}snum, size\+\_\+t numlen)
+\begin{DoxyCompactList}\small\item\em Set the number of failed password retries. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_ad6c82f9d3e12f5396817de8163d87d7e}{aern\+\_\+server\+\_\+erase\+\_\+signature\+\_\+key}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Erase the signature-\/scheme signing key. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_ab5f15a575948d8e75119a9cde0ac8179}{aern\+\_\+server\+\_\+state\+\_\+backup\+\_\+restore}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Restore the state from backup. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a466ddd436706a9b5ffd60e56bf5dc4e4}{aern\+\_\+server\+\_\+state\+\_\+backup\+\_\+save}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Backup the state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_af9f9bc814bec88a8ab1c9519591f9962}{aern\+\_\+server\+\_\+state\+\_\+initialize}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} srvtype)
+\begin{DoxyCompactList}\small\item\em Initialize the internal state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a4fb5d820d0863c778ab3b985e4abee15}{aern\+\_\+server\+\_\+state\+\_\+store}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Write the server state to file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a727f1ad7d8573991a93ac04d9fd14d1e}{aern\+\_\+server\+\_\+state\+\_\+unload}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Unload the server state from memory. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a36cdaa893ab9b641a88f33f514486ccb}{aern\+\_\+server\+\_\+topology\+\_\+adc\+\_\+fetch}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}dcert)
+\begin{DoxyCompactList}\small\item\em Load the ADC certificate from state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_ace5acab978fb710fedfed0d6b5a11c53}{aern\+\_\+server\+\_\+topology\+\_\+load}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Load the topology from an encrypted file to state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_afa7a772afcd46905372e8c0f1ce5b16c}{aern\+\_\+server\+\_\+topology\+\_\+print\+\_\+list}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Print the topological list to the console. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_ad1a1d9689930e098ec95e9ff866be215}{aern\+\_\+server\+\_\+topology\+\_\+purge\+\_\+externals}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Clear the topology list except for the root and local nodes. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a05b39cd24fe4edf30c5dcea609cb3edc}{aern\+\_\+server\+\_\+topology\+\_\+remove\+\_\+certificate}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}issuer)
+\begin{DoxyCompactList}\small\item\em Delete the certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a1f15c56e723f4f807e0902276ea45b5d}{aern\+\_\+server\+\_\+topology\+\_\+remove\+\_\+node}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const char \texorpdfstring{$\ast$}{*}issuer)
+\begin{DoxyCompactList}\small\item\em Remove a node from the topology. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a27e587661a1b71e65fd642965cf09c41}{aern\+\_\+server\+\_\+topology\+\_\+reset}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Delete all nodes and certificates except for the root. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a032deda0702b0844fee0a1139f6a4be3}{aern\+\_\+server\+\_\+topology\+\_\+local\+\_\+fetch}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert)
+\begin{DoxyCompactList}\small\item\em Load the local certificate from state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a4f0ff0fa992af56982ff628413138042}{aern\+\_\+server\+\_\+topology\+\_\+root\+\_\+exists}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Check if the root certificate exists on file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a9b313e27537c3c79592fde3d32de80ac}{aern\+\_\+server\+\_\+topology\+\_\+root\+\_\+fetch}} (const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}rcert)
+\begin{DoxyCompactList}\small\item\em Load the root certificate from state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_a50aab7f826cf9467d49a6c5fcb02a658}{aern\+\_\+server\+\_\+topology\+\_\+to\+\_\+file}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Copy the topology to an encrypted file. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{server_8h_a4cf8d79d4ed3127f684f2bf9b92ed0ca}{aern\+\_\+server\+\_\+user\+\_\+login}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Start the user login dialogue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{server_8h_abb39f1819c7a27834f15e9fee6335853}{aern\+\_\+server\+\_\+user\+\_\+logout}} (\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Log out of the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The common AERN server functions. 
+
+Detailed File Description\+: This header file defines the common functions, macros, enumerations, and data structures used by the AERN server. The functions in this file cover certificate management, logging, topology management, configuration, state backup and restore, and user login functionalities. Every public function, macro, struct, and enumeration is documented in detail below. 
+
+\label{doc-define-members}
+\Hypertarget{server_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{server_8h_afb7942efa7c4fb94ac2296846386f390}\index{server.h@{server.h}!AERN\_SERVER\_APPLICATION\_STATE\_SIZE@{AERN\_SERVER\_APPLICATION\_STATE\_SIZE}}
+\index{AERN\_SERVER\_APPLICATION\_STATE\_SIZE@{AERN\_SERVER\_APPLICATION\_STATE\_SIZE}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_SERVER\_APPLICATION\_STATE\_SIZE}{AERN\_SERVER\_APPLICATION\_STATE\_SIZE}}
+{\footnotesize\ttfamily \label{server_8h_afb7942efa7c4fb94ac2296846386f390} 
+\#define AERN\+\_\+\+SERVER\+\_\+\+APPLICATION\+\_\+\+STATE\+\_\+\+SIZE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ (AERN\_STORAGE\_DOMAINNAME\_MAX\ +\ AERN\_STORAGE\_HOSTNAME\_MAX\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ AERN\_STORAGE\_ADDRESS\_MAX\ +\ AERN\_STORAGE\_PATH\_MAX\ +\ AERN\_STORAGE\_USERNAME\_MAX\ +\ \mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\_CERTIFICATE\_ISSUER\_SIZE}}\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ sizeof(uint16\_t)\ +\ \textcolor{keyword}{sizeof}(uint8\_t)\ +\ \textcolor{keyword}{sizeof}(uint8\_t)\ +\ \textcolor{keyword}{sizeof}(uint16\_t)\ +\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{bool})\ +\ \textcolor{keyword}{sizeof}(bool)\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ AERN\_ASYMMETRIC\_SIGNING\_KEY\_SIZE)}
+
+\end{DoxyCode}
+
+
+Calculates the size of the AERN server application state. 
+
+This macro sums the sizes of various maximum string lengths and fixed?size fields used in the server state structure. 
+
+\label{doc-enum-members}
+\Hypertarget{server_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{server_8h_a01e7c032de46aca798409c0a8c2fb3ae}\index{server.h@{server.h}!aern\_server\_server\_loop\_status@{aern\_server\_server\_loop\_status}}
+\index{aern\_server\_server\_loop\_status@{aern\_server\_server\_loop\_status}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_server\_loop\_status}{aern\_server\_server\_loop\_status}}
+{\footnotesize\ttfamily \label{server_8h_a01e7c032de46aca798409c0a8c2fb3ae} 
+enum \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3ae}{aern\+\_\+server\+\_\+server\+\_\+loop\+\_\+status}}}
+
+
+
+The AERN server loop status. 
+
+This enumeration represents the current state of the server\textquotesingle{}s main loop. \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_server\_loop\_status\_stopped@{aern\_server\_loop\_status\_stopped}!server.h@{server.h}}\index{server.h@{server.h}!aern\_server\_loop\_status\_stopped@{aern\_server\_loop\_status\_stopped}}}\Hypertarget{server_8h_a01e7c032de46aca798409c0a8c2fb3aea465f17d84f3d161878b56c6b356b3a23}\label{server_8h_a01e7c032de46aca798409c0a8c2fb3aea465f17d84f3d161878b56c6b356b3a23} 
+aern\+\_\+server\+\_\+loop\+\_\+status\+\_\+stopped&The server is stopped. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_server\_loop\_status\_started@{aern\_server\_loop\_status\_started}!server.h@{server.h}}\index{server.h@{server.h}!aern\_server\_loop\_status\_started@{aern\_server\_loop\_status\_started}}}\Hypertarget{server_8h_a01e7c032de46aca798409c0a8c2fb3aea72787539a0199a1760cbeb2ce5dd76c3}\label{server_8h_a01e7c032de46aca798409c0a8c2fb3aea72787539a0199a1760cbeb2ce5dd76c3} 
+aern\+\_\+server\+\_\+loop\+\_\+status\+\_\+started&The server is running. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_server\_loop\_status\_paused@{aern\_server\_loop\_status\_paused}!server.h@{server.h}}\index{server.h@{server.h}!aern\_server\_loop\_status\_paused@{aern\_server\_loop\_status\_paused}}}\Hypertarget{server_8h_a01e7c032de46aca798409c0a8c2fb3aeacf47afbd8bfa4a6ecda04878f87883f9}\label{server_8h_a01e7c032de46aca798409c0a8c2fb3aeacf47afbd8bfa4a6ecda04878f87883f9} 
+aern\+\_\+server\+\_\+loop\+\_\+status\+\_\+paused&The server is paused. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{server_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{server_8h_abb3f04065300eb0a2b00ea1644ba3b5a}\index{server.h@{server.h}!aern\_server\_certificate\_directory@{aern\_server\_certificate\_directory}}
+\index{aern\_server\_certificate\_directory@{aern\_server\_certificate\_directory}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_certificate\_directory()}{aern\_server\_certificate\_directory()}}
+{\footnotesize\ttfamily \label{server_8h_abb3f04065300eb0a2b00ea1644ba3b5a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+certificate\+\_\+directory (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{dpath}{, }\item[{size\+\_\+t}]{pathlen}{}\end{DoxyParamCaption})}
+
+
+
+Get the full delimited path to the certificate storage directory. 
+
+This function builds the full directory path where certificates are stored, based on the server\textquotesingle{}s configuration in the application state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em dpath} & The output buffer that receives the certificate storage directory path. \\
+\hline
+{\em pathlen} & The length of the dpath buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a7bee7a5f16e12897def7c06cc9647476}\index{server.h@{server.h}!aern\_server\_certificate\_path@{aern\_server\_certificate\_path}}
+\index{aern\_server\_certificate\_path@{aern\_server\_certificate\_path}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_certificate\_path()}{aern\_server\_certificate\_path()}}
+{\footnotesize\ttfamily \label{server_8h_a7bee7a5f16e12897def7c06cc9647476} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+certificate\+\_\+path (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{size\+\_\+t}]{pathlen}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{issuer}{}\end{DoxyParamCaption})}
+
+
+
+Get the full path to a certificate. 
+
+This function constructs the full file path to a certificate based on the certificate issuer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em fpath} & The output buffer that receives the certificate file path. \\
+\hline
+{\em pathlen} & The length of the fpath buffer. \\
+\hline
+{\em issuer} & \mbox{[}const\mbox{]} The issuer name of the certificate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a1a5b70fb22c850531fdebff00b35b2d9}\index{server.h@{server.h}!aern\_server\_child\_certificate\_export@{aern\_server\_child\_certificate\_export}}
+\index{aern\_server\_child\_certificate\_export@{aern\_server\_child\_certificate\_export}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_export()}{aern\_server\_child\_certificate\_export()}}
+{\footnotesize\ttfamily \label{server_8h_a1a5b70fb22c850531fdebff00b35b2d9} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+export (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{dpath}{}\end{DoxyParamCaption})}
+
+
+
+Export the local certificate to a file. 
+
+This function exports the local child certificate to the specified destination directory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em dpath} & The destination directory path.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is successfully exported. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a9031a86b19de10ca04ec45b5c3171fb1}\index{server.h@{server.h}!aern\_server\_child\_certificate\_from\_issuer@{aern\_server\_child\_certificate\_from\_issuer}}
+\index{aern\_server\_child\_certificate\_from\_issuer@{aern\_server\_child\_certificate\_from\_issuer}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_from\_issuer()}{aern\_server\_child\_certificate\_from\_issuer()}}
+{\footnotesize\ttfamily \label{server_8h_a9031a86b19de10ca04ec45b5c3171fb1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+from\+\_\+issuer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{ccert}{, }\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{issuer}{}\end{DoxyParamCaption})}
+
+
+
+Get the certificate instance from file using the issuer string. 
+
+This function loads a child certificate from file using the issuer string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ccert} & The output child certificate. \\
+\hline
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em issuer} & \mbox{[}const\mbox{]} The certificate issuer string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a3b487902b81e7c4e50b5ca4ebfa6aae8}\index{server.h@{server.h}!aern\_server\_child\_certificate\_from\_serial@{aern\_server\_child\_certificate\_from\_serial}}
+\index{aern\_server\_child\_certificate\_from\_serial@{aern\_server\_child\_certificate\_from\_serial}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_from\_serial()}{aern\_server\_child\_certificate\_from\_serial()}}
+{\footnotesize\ttfamily \label{server_8h_a3b487902b81e7c4e50b5ca4ebfa6aae8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+from\+\_\+serial (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{ccert}{, }\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{serial}{}\end{DoxyParamCaption})}
+
+
+
+Get the certificate instance from file using the serial number. 
+
+This function loads a child certificate from file using its serial number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ccert} & The output child certificate. \\
+\hline
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em serial} & \mbox{[}const\mbox{]} The certificate serial number.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a75b5fb26b3f8b0a32b568b379e6cac18}\index{server.h@{server.h}!aern\_server\_child\_certificate\_generate@{aern\_server\_child\_certificate\_generate}}
+\index{aern\_server\_child\_certificate\_generate@{aern\_server\_child\_certificate\_generate}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_generate()}{aern\_server\_child\_certificate\_generate()}}
+{\footnotesize\ttfamily \label{server_8h_a75b5fb26b3f8b0a32b568b379e6cac18} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{ccert}{, }\item[{uint64\+\_\+t}]{period}{}\end{DoxyParamCaption})}
+
+
+
+Generate a new child certificate. 
+
+This function generates a new child certificate, writes the signature private key to the server state, and populates the child certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. The private key is written to state-\/\texorpdfstring{$>$}{>}sigkey. \\
+\hline
+{\em ccert} & The output child certificate. \\
+\hline
+{\em period} & The number of seconds the certificate is valid. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a6eb77f4db628b47951e5918e97e162d9}\index{server.h@{server.h}!aern\_server\_child\_certificate\_import@{aern\_server\_child\_certificate\_import}}
+\index{aern\_server\_child\_certificate\_import@{aern\_server\_child\_certificate\_import}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_import()}{aern\_server\_child\_certificate\_import()}}
+{\footnotesize\ttfamily \label{server_8h_a6eb77f4db628b47951e5918e97e162d9} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+import (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{lcert}{, }\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{fpath}{}\end{DoxyParamCaption})}
+
+
+
+Import the local certificate signed by the root. 
+
+This function imports the local certificate that has been signed by the root certificate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcert} & The local certificate structure to populate. \\
+\hline
+{\em state} & The server application state. \\
+\hline
+{\em fpath} & The full file path to the certificate file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is successfully imported. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a26fd649492e2d0ddf76b7c431945b6cb}\index{server.h@{server.h}!aern\_server\_child\_certificate\_path@{aern\_server\_child\_certificate\_path}}
+\index{aern\_server\_child\_certificate\_path@{aern\_server\_child\_certificate\_path}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_path()}{aern\_server\_child\_certificate\_path()}}
+{\footnotesize\ttfamily \label{server_8h_a26fd649492e2d0ddf76b7c431945b6cb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+path (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{size\+\_\+t}]{pathlen}{}\end{DoxyParamCaption})}
+
+
+
+Get the full path to the child certificate. 
+
+This function retrieves the full file path of the child certificate based on the server state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em fpath} & The output buffer that receives the certificate file path. \\
+\hline
+{\em pathlen} & The length of the fpath buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a9034f2ee252b3737c88d8e3e2f4519a9}\index{server.h@{server.h}!aern\_server\_child\_certificate\_path\_from\_issuer@{aern\_server\_child\_certificate\_path\_from\_issuer}}
+\index{aern\_server\_child\_certificate\_path\_from\_issuer@{aern\_server\_child\_certificate\_path\_from\_issuer}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_path\_from\_issuer()}{aern\_server\_child\_certificate\_path\_from\_issuer()}}
+{\footnotesize\ttfamily \label{server_8h_a9034f2ee252b3737c88d8e3e2f4519a9} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+path\+\_\+from\+\_\+issuer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{size\+\_\+t}]{pathlen}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{issuer}{}\end{DoxyParamCaption})}
+
+
+
+Get the certificate file path from the certificate issuer name. 
+
+This function constructs the file path to a certificate using the issuer name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em fpath} & The output buffer that receives the file path. \\
+\hline
+{\em pathlen} & The length of the file path buffer. \\
+\hline
+{\em issuer} & The certificate\textquotesingle{}s issuer name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a936876e6bf4a73bbc0b948d41aaad4dd}\index{server.h@{server.h}!aern\_server\_child\_certificate\_print@{aern\_server\_child\_certificate\_print}}
+\index{aern\_server\_child\_certificate\_print@{aern\_server\_child\_certificate\_print}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_child\_certificate\_print()}{aern\_server\_child\_certificate\_print()}}
+{\footnotesize\ttfamily \label{server_8h_a936876e6bf4a73bbc0b948d41aaad4dd} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+child\+\_\+certificate\+\_\+print (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{size\+\_\+t}]{pathlen}{}\end{DoxyParamCaption})}
+
+
+
+Print the local child certificate to console. 
+
+This function prints the local child certificate (read from file) to the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fpath} & The file path to the certificate. \\
+\hline
+{\em pathlen} & The length of the file path buffer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is successfully printed. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_aba7b7d42e39036995153acbed41201e9}\index{server.h@{server.h}!aern\_server\_clear\_config@{aern\_server\_clear\_config}}
+\index{aern\_server\_clear\_config@{aern\_server\_clear\_config}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_clear\_config()}{aern\_server\_clear\_config()}}
+{\footnotesize\ttfamily \label{server_8h_aba7b7d42e39036995153acbed41201e9} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+clear\+\_\+config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Erase and reset the configuration file. 
+
+This function erases the current configuration file and resets it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_af0b0b47d40c87252c0ca36b5b319dff2}\index{server.h@{server.h}!aern\_server\_clear\_log@{aern\_server\_clear\_log}}
+\index{aern\_server\_clear\_log@{aern\_server\_clear\_log}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_clear\_log()}{aern\_server\_clear\_log()}}
+{\footnotesize\ttfamily \label{server_8h_af0b0b47d40c87252c0ca36b5b319dff2} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+clear\+\_\+log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Erase the log file. 
+
+This function erases the server log file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a07ac45d7126497d967cb0cda7c9e3b33}\index{server.h@{server.h}!aern\_server\_erase\_all@{aern\_server\_erase\_all}}
+\index{aern\_server\_erase\_all@{aern\_server\_erase\_all}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_erase\_all()}{aern\_server\_erase\_all()}}
+{\footnotesize\ttfamily \label{server_8h_a07ac45d7126497d967cb0cda7c9e3b33} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+erase\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Erase all state, including log files, and reset configuration. 
+
+This function erases all persistent state and log files, effectively resetting the server.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_ad6c82f9d3e12f5396817de8163d87d7e}\index{server.h@{server.h}!aern\_server\_erase\_signature\_key@{aern\_server\_erase\_signature\_key}}
+\index{aern\_server\_erase\_signature\_key@{aern\_server\_erase\_signature\_key}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_erase\_signature\_key()}{aern\_server\_erase\_signature\_key()}}
+{\footnotesize\ttfamily \label{server_8h_ad6c82f9d3e12f5396817de8163d87d7e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+erase\+\_\+signature\+\_\+key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Erase the signature-\/scheme signing key. 
+
+This function erases the signing key stored in the server state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_ac9fdaea6921ede9398d57ea4e1032a95}\index{server.h@{server.h}!aern\_server\_local\_certificate\_store@{aern\_server\_local\_certificate\_store}}
+\index{aern\_server\_local\_certificate\_store@{aern\_server\_local\_certificate\_store}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_local\_certificate\_store()}{aern\_server\_local\_certificate\_store()}}
+{\footnotesize\ttfamily \label{server_8h_ac9fdaea6921ede9398d57ea4e1032a95} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+local\+\_\+certificate\+\_\+store (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{ccert}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{}\end{DoxyParamCaption})}
+
+
+
+Store a child certificate. 
+
+This function stores the local child certificate to file using the server state information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em ccert} & The child certificate to store. \\
+\hline
+{\em address} & The network address associated with the certificate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a7d1a0e41abe8310bcdcfeb55941921e6}\index{server.h@{server.h}!aern\_server\_log\_host@{aern\_server\_log\_host}}
+\index{aern\_server\_log\_host@{aern\_server\_log\_host}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_log\_host()}{aern\_server\_log\_host()}}
+{\footnotesize\ttfamily \label{server_8h_a7d1a0e41abe8310bcdcfeb55941921e6} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+log\+\_\+host (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Enable logging on the server. 
+
+This function enables host logging for the server.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a409b5e9a90c7625ece7aaf9828af50a6}\index{server.h@{server.h}!aern\_server\_log\_print@{aern\_server\_log\_print}}
+\index{aern\_server\_log\_print@{aern\_server\_log\_print}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_log\_print()}{aern\_server\_log\_print()}}
+{\footnotesize\ttfamily \label{server_8h_a409b5e9a90c7625ece7aaf9828af50a6} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+log\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Print the log file to the console. 
+
+This function outputs the contents of the server log file to the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a8b6a18e0a4e4cb4f05800064a396ced1}\index{server.h@{server.h}!aern\_server\_log\_write\_message@{aern\_server\_log\_write\_message}}
+\index{aern\_server\_log\_write\_message@{aern\_server\_log\_write\_message}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_log\_write\_message()}{aern\_server\_log\_write\_message()}}
+{\footnotesize\ttfamily \label{server_8h_a8b6a18e0a4e4cb4f05800064a396ced1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+log\+\_\+write\+\_\+message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}}}]{msgtype}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{}\end{DoxyParamCaption})}
+
+
+
+Write a message to the log. 
+
+This function writes a log message with an optional predefined message header.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em msgtype} & The predefined message enumerator. \\
+\hline
+{\em message} & \mbox{[}const\mbox{]} The optional text message. \\
+\hline
+{\em msglen} & The length of the text message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the log message was successfully written. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a09b789de0895a8dc5d1db5daf1eb23e4}\index{server.h@{server.h}!aern\_server\_mfkcol\_from\_file@{aern\_server\_mfkcol\_from\_file}}
+\index{aern\_server\_mfkcol\_from\_file@{aern\_server\_mfkcol\_from\_file}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_mfkcol\_from\_file()}{aern\_server\_mfkcol\_from\_file()}}
+{\footnotesize\ttfamily \label{server_8h_a09b789de0895a8dc5d1db5daf1eb23e4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+mfkcol\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{qsc\+\_\+collection\+\_\+state \texorpdfstring{$\ast$}{*}}]{mfkcol}{, }\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Convert an encrypted mfk collection file to a collection state. 
+
+This function reads the encrypted mfk collection from file and converts it into the internal collection state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mfkcol} & The empty collection state that will be populated. \\
+\hline
+{\em state} & \mbox{[}const\mbox{]} The server application state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the mfk collection is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a3631ba0aacf33aa7818007452b9f1196}\index{server.h@{server.h}!aern\_server\_mfkcol\_path@{aern\_server\_mfkcol\_path}}
+\index{aern\_server\_mfkcol\_path@{aern\_server\_mfkcol\_path}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_mfkcol\_path()}{aern\_server\_mfkcol\_path()}}
+{\footnotesize\ttfamily \label{server_8h_a3631ba0aacf33aa7818007452b9f1196} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+mfkcol\+\_\+path (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{size\+\_\+t}]{pathlen}{}\end{DoxyParamCaption})}
+
+
+
+Get the path to the mfk collection file. 
+
+This function constructs the full file path for the master fragmentation key (mfk) collection.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em fpath} & The output buffer that receives the file path. \\
+\hline
+{\em pathlen} & The length of the fpath buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_aa72a5f5b63fcd8cfd4dd8b6b94d88fd1}\index{server.h@{server.h}!aern\_server\_mfkcol\_to\_file@{aern\_server\_mfkcol\_to\_file}}
+\index{aern\_server\_mfkcol\_to\_file@{aern\_server\_mfkcol\_to\_file}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_mfkcol\_to\_file()}{aern\_server\_mfkcol\_to\_file()}}
+{\footnotesize\ttfamily \label{server_8h_aa72a5f5b63fcd8cfd4dd8b6b94d88fd1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+mfkcol\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{const qsc\+\_\+collection\+\_\+state \texorpdfstring{$\ast$}{*}}]{mfkcol}{, }\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Convert an mfk collection to an encrypted file. 
+
+This function writes the current mfk collection state to an encrypted file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mfkcol} & \mbox{[}const\mbox{]} The mfk collection state. \\
+\hline
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a1e7440b8a3ce40de804c168b173ab42f}\index{server.h@{server.h}!aern\_server\_print\_banner@{aern\_server\_print\_banner}}
+\index{aern\_server\_print\_banner@{aern\_server\_print\_banner}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_print\_banner()}{aern\_server\_print\_banner()}}
+{\footnotesize\ttfamily \label{server_8h_a1e7440b8a3ce40de804c168b173ab42f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+print\+\_\+banner (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Print the server banner. 
+
+This function prints the server banner to the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a735a79991504e0c84441d0a8c6b1ee3a}\index{server.h@{server.h}!aern\_server\_print\_configuration@{aern\_server\_print\_configuration}}
+\index{aern\_server\_print\_configuration@{aern\_server\_print\_configuration}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_print\_configuration()}{aern\_server\_print\_configuration()}}
+{\footnotesize\ttfamily \label{server_8h_a735a79991504e0c84441d0a8c6b1ee3a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+print\+\_\+configuration (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Print the server configuration. 
+
+This function prints the current server configuration to the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_aa15cbe1c15942a16edb20bc5727609d2}\index{server.h@{server.h}!aern\_server\_print\_error@{aern\_server\_print\_error}}
+\index{aern\_server\_print\_error@{aern\_server\_print\_error}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_print\_error()}{aern\_server\_print\_error()}}
+{\footnotesize\ttfamily \label{server_8h_aa15cbe1c15942a16edb20bc5727609d2} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+print\+\_\+error (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}}}]{appmsg}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Print a network error to the console. 
+
+This function prints a formatted error message for network errors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em appmsg} & The predefined application message enumerator. \\
+\hline
+{\em message} & The error message text. \\
+\hline
+{\em error} & The protocol error code. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a6502acf736dab3ea1499544da28a6c01}\index{server.h@{server.h}!aern\_server\_root\_certificate\_export@{aern\_server\_root\_certificate\_export}}
+\index{aern\_server\_root\_certificate\_export@{aern\_server\_root\_certificate\_export}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_root\_certificate\_export()}{aern\_server\_root\_certificate\_export()}}
+{\footnotesize\ttfamily \label{server_8h_a6502acf736dab3ea1499544da28a6c01} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+export (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{dpath}{}\end{DoxyParamCaption})}
+
+
+
+Export the root certificate to a directory. 
+
+This function exports the server\textquotesingle{}s root certificate to the specified destination directory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em dpath} & The destination directory path.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the export is successful. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_af0ff95cea003f6081496b5896cbfd4d1}\index{server.h@{server.h}!aern\_server\_root\_certificate\_generate@{aern\_server\_root\_certificate\_generate}}
+\index{aern\_server\_root\_certificate\_generate@{aern\_server\_root\_certificate\_generate}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_root\_certificate\_generate()}{aern\_server\_root\_certificate\_generate()}}
+{\footnotesize\ttfamily \label{server_8h_af0ff95cea003f6081496b5896cbfd4d1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{rcert}{, }\item[{uint64\+\_\+t}]{period}{}\end{DoxyParamCaption})}
+
+
+
+Generate a new root certificate. 
+
+This function generates a new root certificate, writes the signature private key to the server state, and populates the root certificate structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state; the private key is written to state-\/\texorpdfstring{$>$}{>}sigkey. \\
+\hline
+{\em rcert} & The output root certificate. \\
+\hline
+{\em period} & The validity period (in seconds) for the certificate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a75239baeec4dcbec1023999cfbf5dc18}\index{server.h@{server.h}!aern\_server\_root\_certificate\_load@{aern\_server\_root\_certificate\_load}}
+\index{aern\_server\_root\_certificate\_load@{aern\_server\_root\_certificate\_load}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_root\_certificate\_load()}{aern\_server\_root\_certificate\_load()}}
+{\footnotesize\ttfamily \label{server_8h_a75239baeec4dcbec1023999cfbf5dc18} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+load (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{tlist}{}\end{DoxyParamCaption})}
+
+
+
+Load a root certificate using the issuer name. 
+
+This function loads the root certificate from file using the issuer name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em root} & The output root certificate. \\
+\hline
+{\em tlist} & \mbox{[}const\mbox{]} A pointer to the topology list.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the root certificate is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_ad97e033f7d9d9ac0c71499c032dcc6f9}\index{server.h@{server.h}!aern\_server\_root\_certificate\_print@{aern\_server\_root\_certificate\_print}}
+\index{aern\_server\_root\_certificate\_print@{aern\_server\_root\_certificate\_print}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_root\_certificate\_print()}{aern\_server\_root\_certificate\_print()}}
+{\footnotesize\ttfamily \label{server_8h_ad97e033f7d9d9ac0c71499c032dcc6f9} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+print (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fpath}{, }\item[{size\+\_\+t}]{pathlen}{}\end{DoxyParamCaption})}
+
+
+
+Print a formatted root certificate to console. 
+
+This function prints a formatted version of the root certificate to the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fpath} & The file path to the root certificate. \\
+\hline
+{\em pathlen} & The length of the file path buffer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is successfully printed. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a9e594553af5644637b745af0abc40787}\index{server.h@{server.h}!aern\_server\_root\_certificate\_store@{aern\_server\_root\_certificate\_store}}
+\index{aern\_server\_root\_certificate\_store@{aern\_server\_root\_certificate\_store}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_root\_certificate\_store()}{aern\_server\_root\_certificate\_store()}}
+{\footnotesize\ttfamily \label{server_8h_a9e594553af5644637b745af0abc40787} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+root\+\_\+certificate\+\_\+store (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{rcert}{}\end{DoxyParamCaption})}
+
+
+
+Store a root certificate to a file. 
+
+This function stores the root certificate to file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em rcert} & The root certificate to store. \\
+\hline
+{\em address} & The root certificate\textquotesingle{}s address. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_adff89671b1f6b65241e033c46a251f5c}\index{server.h@{server.h}!aern\_server\_root\_import\_dialogue@{aern\_server\_root\_import\_dialogue}}
+\index{aern\_server\_root\_import\_dialogue@{aern\_server\_root\_import\_dialogue}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_root\_import\_dialogue()}{aern\_server\_root\_import\_dialogue()}}
+{\footnotesize\ttfamily \label{server_8h_adff89671b1f6b65241e033c46a251f5c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+root\+\_\+import\+\_\+dialogue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Import the root certificate. 
+
+This function prompts the user to import the root certificate through a dialogue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the root certificate is successfully imported. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_ac1bd01d0224c457f9be2a2b612565942}\index{server.h@{server.h}!aern\_server\_set\_command\_prompt@{aern\_server\_set\_command\_prompt}}
+\index{aern\_server\_set\_command\_prompt@{aern\_server\_set\_command\_prompt}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_set\_command\_prompt()}{aern\_server\_set\_command\_prompt()}}
+{\footnotesize\ttfamily \label{server_8h_ac1bd01d0224c457f9be2a2b612565942} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+set\+\_\+command\+\_\+prompt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Set the command prompt to the current state mode. 
+
+This function sets the command prompt based on the current console mode in the server state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_ae787b5387b93a27d856ab2240676c928}\index{server.h@{server.h}!aern\_server\_set\_console\_timeout@{aern\_server\_set\_console\_timeout}}
+\index{aern\_server\_set\_console\_timeout@{aern\_server\_set\_console\_timeout}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_set\_console\_timeout()}{aern\_server\_set\_console\_timeout()}}
+{\footnotesize\ttfamily \label{server_8h_ae787b5387b93a27d856ab2240676c928} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+set\+\_\+console\+\_\+timeout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{snum}{, }\item[{size\+\_\+t}]{numlen}{}\end{DoxyParamCaption})}
+
+
+
+Set the number of idle minutes before the user is logged out. 
+
+This function configures the console timeout period (in minutes) for automatic user logout.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em snum} & The number string representing the timeout period in minutes. \\
+\hline
+{\em numlen} & The length of the number string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the timeout is successfully set. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_af642bc226e672d9d87b1ebc0cfb829b4}\index{server.h@{server.h}!aern\_server\_set\_domain\_name@{aern\_server\_set\_domain\_name}}
+\index{aern\_server\_set\_domain\_name@{aern\_server\_set\_domain\_name}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_set\_domain\_name()}{aern\_server\_set\_domain\_name()}}
+{\footnotesize\ttfamily \label{server_8h_af642bc226e672d9d87b1ebc0cfb829b4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+set\+\_\+domain\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{size\+\_\+t}]{namelen}{}\end{DoxyParamCaption})}
+
+
+
+Rename the network domain. 
+
+This function renames the network domain in the server configuration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em name} & The new domain name. \\
+\hline
+{\em namelen} & The length of the domain name string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the domain name is successfully changed. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a11d293f6cc13d941ff484821f2693c9a}\index{server.h@{server.h}!aern\_server\_set\_host\_name@{aern\_server\_set\_host\_name}}
+\index{aern\_server\_set\_host\_name@{aern\_server\_set\_host\_name}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_set\_host\_name()}{aern\_server\_set\_host\_name()}}
+{\footnotesize\ttfamily \label{server_8h_a11d293f6cc13d941ff484821f2693c9a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+set\+\_\+host\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{size\+\_\+t}]{namelen}{}\end{DoxyParamCaption})}
+
+
+
+Rename the server host. 
+
+This function renames the server host in the configuration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em name} & The new host name. \\
+\hline
+{\em namelen} & The length of the host name string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the host name is successfully changed. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_aca4aba991aec26a88d7a61c3b5d8fd5c}\index{server.h@{server.h}!aern\_server\_set\_ip\_address@{aern\_server\_set\_ip\_address}}
+\index{aern\_server\_set\_ip\_address@{aern\_server\_set\_ip\_address}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_set\_ip\_address()}{aern\_server\_set\_ip\_address()}}
+{\footnotesize\ttfamily \label{server_8h_aca4aba991aec26a88d7a61c3b5d8fd5c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+set\+\_\+ip\+\_\+address (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{size\+\_\+t}]{addlen}{}\end{DoxyParamCaption})}
+
+
+
+Set the IP address of the server. 
+
+This function sets the server\textquotesingle{}s IP address.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em address} & The IP address string. \\
+\hline
+{\em addlen} & The length of the address string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the IP address is successfully set. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a554f2b93470682dc02b50248a1d41b65}\index{server.h@{server.h}!aern\_server\_set\_password\_retries@{aern\_server\_set\_password\_retries}}
+\index{aern\_server\_set\_password\_retries@{aern\_server\_set\_password\_retries}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_set\_password\_retries()}{aern\_server\_set\_password\_retries()}}
+{\footnotesize\ttfamily \label{server_8h_a554f2b93470682dc02b50248a1d41b65} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+set\+\_\+password\+\_\+retries (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{snum}{, }\item[{size\+\_\+t}]{numlen}{}\end{DoxyParamCaption})}
+
+
+
+Set the number of failed password retries. 
+
+This function sets the maximum number of failed password attempts allowed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em snum} & The number string representing the number of retries. \\
+\hline
+{\em numlen} & The length of the number string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the number of retries is successfully set. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_ab5f15a575948d8e75119a9cde0ac8179}\index{server.h@{server.h}!aern\_server\_state\_backup\_restore@{aern\_server\_state\_backup\_restore}}
+\index{aern\_server\_state\_backup\_restore@{aern\_server\_state\_backup\_restore}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_state\_backup\_restore()}{aern\_server\_state\_backup\_restore()}}
+{\footnotesize\ttfamily \label{server_8h_ab5f15a575948d8e75119a9cde0ac8179} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+state\+\_\+backup\+\_\+restore (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Restore the state from backup. 
+
+This function restores the server state from a previously saved backup.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a466ddd436706a9b5ffd60e56bf5dc4e4}\index{server.h@{server.h}!aern\_server\_state\_backup\_save@{aern\_server\_state\_backup\_save}}
+\index{aern\_server\_state\_backup\_save@{aern\_server\_state\_backup\_save}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_state\_backup\_save()}{aern\_server\_state\_backup\_save()}}
+{\footnotesize\ttfamily \label{server_8h_a466ddd436706a9b5ffd60e56bf5dc4e4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+state\+\_\+backup\+\_\+save (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Backup the state. 
+
+This function saves the current server state to a backup file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_af9f9bc814bec88a8ab1c9519591f9962}\index{server.h@{server.h}!aern\_server\_state\_initialize@{aern\_server\_state\_initialize}}
+\index{aern\_server\_state\_initialize@{aern\_server\_state\_initialize}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_state\_initialize()}{aern\_server\_state\_initialize()}}
+{\footnotesize\ttfamily \label{server_8h_af9f9bc814bec88a8ab1c9519591f9962} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+state\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}]{srvtype}{}\end{DoxyParamCaption})}
+
+
+
+Initialize the internal state. 
+
+This function initializes the AERN server state for a given server type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em srvtype} & The server type designation. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a4fb5d820d0863c778ab3b985e4abee15}\index{server.h@{server.h}!aern\_server\_state\_store@{aern\_server\_state\_store}}
+\index{aern\_server\_state\_store@{aern\_server\_state\_store}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_state\_store()}{aern\_server\_state\_store()}}
+{\footnotesize\ttfamily \label{server_8h_a4fb5d820d0863c778ab3b985e4abee15} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+state\+\_\+store (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Write the server state to file. 
+
+This function writes the current server state to an encrypted file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the state is successfully stored. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a727f1ad7d8573991a93ac04d9fd14d1e}\index{server.h@{server.h}!aern\_server\_state\_unload@{aern\_server\_state\_unload}}
+\index{aern\_server\_state\_unload@{aern\_server\_state\_unload}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_state\_unload()}{aern\_server\_state\_unload()}}
+{\footnotesize\ttfamily \label{server_8h_a727f1ad7d8573991a93ac04d9fd14d1e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+state\+\_\+unload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Unload the server state from memory. 
+
+This function unloads and clears the current server state from memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a36cdaa893ab9b641a88f33f514486ccb}\index{server.h@{server.h}!aern\_server\_topology\_adc\_fetch@{aern\_server\_topology\_adc\_fetch}}
+\index{aern\_server\_topology\_adc\_fetch@{aern\_server\_topology\_adc\_fetch}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_adc\_fetch()}{aern\_server\_topology\_adc\_fetch()}}
+{\footnotesize\ttfamily \label{server_8h_a36cdaa893ab9b641a88f33f514486ccb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+topology\+\_\+adc\+\_\+fetch (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{dcert}{}\end{DoxyParamCaption})}
+
+
+
+Load the ADC certificate from state. 
+
+This function loads the ADC certificate from the server state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em dcert} & The output ADC certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the ADC certificate is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_ace5acab978fb710fedfed0d6b5a11c53}\index{server.h@{server.h}!aern\_server\_topology\_load@{aern\_server\_topology\_load}}
+\index{aern\_server\_topology\_load@{aern\_server\_topology\_load}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_load()}{aern\_server\_topology\_load()}}
+{\footnotesize\ttfamily \label{server_8h_ace5acab978fb710fedfed0d6b5a11c53} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+topology\+\_\+load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Load the topology from an encrypted file to state. 
+
+This function loads the network topology from an encrypted file into the server state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the topology is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a032deda0702b0844fee0a1139f6a4be3}\index{server.h@{server.h}!aern\_server\_topology\_local\_fetch@{aern\_server\_topology\_local\_fetch}}
+\index{aern\_server\_topology\_local\_fetch@{aern\_server\_topology\_local\_fetch}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_local\_fetch()}{aern\_server\_topology\_local\_fetch()}}
+{\footnotesize\ttfamily \label{server_8h_a032deda0702b0844fee0a1139f6a4be3} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+topology\+\_\+local\+\_\+fetch (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{ccert}{}\end{DoxyParamCaption})}
+
+
+
+Load the local certificate from state. 
+
+This function loads the local child certificate from the server state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em ccert} & The output local certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_afa7a772afcd46905372e8c0f1ce5b16c}\index{server.h@{server.h}!aern\_server\_topology\_print\_list@{aern\_server\_topology\_print\_list}}
+\index{aern\_server\_topology\_print\_list@{aern\_server\_topology\_print\_list}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_print\_list()}{aern\_server\_topology\_print\_list()}}
+{\footnotesize\ttfamily \label{server_8h_afa7a772afcd46905372e8c0f1ce5b16c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+topology\+\_\+print\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Print the topological list to the console. 
+
+This function prints the network topology list to the console.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_ad1a1d9689930e098ec95e9ff866be215}\index{server.h@{server.h}!aern\_server\_topology\_purge\_externals@{aern\_server\_topology\_purge\_externals}}
+\index{aern\_server\_topology\_purge\_externals@{aern\_server\_topology\_purge\_externals}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_purge\_externals()}{aern\_server\_topology\_purge\_externals()}}
+{\footnotesize\ttfamily \label{server_8h_ad1a1d9689930e098ec95e9ff866be215} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+topology\+\_\+purge\+\_\+externals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Clear the topology list except for the root and local nodes. 
+
+This function purges the topology list by deleting all nodes except for the root and local nodes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a05b39cd24fe4edf30c5dcea609cb3edc}\index{server.h@{server.h}!aern\_server\_topology\_remove\_certificate@{aern\_server\_topology\_remove\_certificate}}
+\index{aern\_server\_topology\_remove\_certificate@{aern\_server\_topology\_remove\_certificate}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_remove\_certificate()}{aern\_server\_topology\_remove\_certificate()}}
+{\footnotesize\ttfamily \label{server_8h_a05b39cd24fe4edf30c5dcea609cb3edc} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+topology\+\_\+remove\+\_\+certificate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{issuer}{}\end{DoxyParamCaption})}
+
+
+
+Delete the certificate. 
+
+This function deletes a certificate from the topology based on its issuer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em issuer} & The target node\textquotesingle{}s issuer string. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a1f15c56e723f4f807e0902276ea45b5d}\index{server.h@{server.h}!aern\_server\_topology\_remove\_node@{aern\_server\_topology\_remove\_node}}
+\index{aern\_server\_topology\_remove\_node@{aern\_server\_topology\_remove\_node}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_remove\_node()}{aern\_server\_topology\_remove\_node()}}
+{\footnotesize\ttfamily \label{server_8h_a1f15c56e723f4f807e0902276ea45b5d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+topology\+\_\+remove\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{issuer}{}\end{DoxyParamCaption})}
+
+
+
+Remove a node from the topology. 
+
+This function removes a node from the topology list based on its issuer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+{\em issuer} & The target node\textquotesingle{}s issuer string. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a27e587661a1b71e65fd642965cf09c41}\index{server.h@{server.h}!aern\_server\_topology\_reset@{aern\_server\_topology\_reset}}
+\index{aern\_server\_topology\_reset@{aern\_server\_topology\_reset}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_reset()}{aern\_server\_topology\_reset()}}
+{\footnotesize\ttfamily \label{server_8h_a27e587661a1b71e65fd642965cf09c41} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+topology\+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Delete all nodes and certificates except for the root. 
+
+This function resets the topology list by deleting all nodes and certificates except the root.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a4f0ff0fa992af56982ff628413138042}\index{server.h@{server.h}!aern\_server\_topology\_root\_exists@{aern\_server\_topology\_root\_exists}}
+\index{aern\_server\_topology\_root\_exists@{aern\_server\_topology\_root\_exists}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_root\_exists()}{aern\_server\_topology\_root\_exists()}}
+{\footnotesize\ttfamily \label{server_8h_a4f0ff0fa992af56982ff628413138042} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+topology\+\_\+root\+\_\+exists (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Check if the root certificate exists on file. 
+
+This function checks whether the root certificate file exists.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the root certificate exists. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a9b313e27537c3c79592fde3d32de80ac}\index{server.h@{server.h}!aern\_server\_topology\_root\_fetch@{aern\_server\_topology\_root\_fetch}}
+\index{aern\_server\_topology\_root\_fetch@{aern\_server\_topology\_root\_fetch}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_root\_fetch()}{aern\_server\_topology\_root\_fetch()}}
+{\footnotesize\ttfamily \label{server_8h_a9b313e27537c3c79592fde3d32de80ac} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+topology\+\_\+root\+\_\+fetch (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{rcert}{}\end{DoxyParamCaption})}
+
+
+
+Load the root certificate from state. 
+
+This function loads the root certificate from the server state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const\mbox{]} The server application state. \\
+\hline
+{\em rcert} & The output root certificate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the root certificate is successfully loaded. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_a50aab7f826cf9467d49a6c5fcb02a658}\index{server.h@{server.h}!aern\_server\_topology\_to\_file@{aern\_server\_topology\_to\_file}}
+\index{aern\_server\_topology\_to\_file@{aern\_server\_topology\_to\_file}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_topology\_to\_file()}{aern\_server\_topology\_to\_file()}}
+{\footnotesize\ttfamily \label{server_8h_a50aab7f826cf9467d49a6c5fcb02a658} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+topology\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Copy the topology to an encrypted file. 
+
+This function writes the current network topology from the server state to an encrypted file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{server_8h_a4cf8d79d4ed3127f684f2bf9b92ed0ca}\index{server.h@{server.h}!aern\_server\_user\_login@{aern\_server\_user\_login}}
+\index{aern\_server\_user\_login@{aern\_server\_user\_login}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_user\_login()}{aern\_server\_user\_login()}}
+{\footnotesize\ttfamily \label{server_8h_a4cf8d79d4ed3127f684f2bf9b92ed0ca} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+server\+\_\+user\+\_\+login (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Start the user login dialogue. 
+
+This function initiates the user login process and prompts for credentials.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the user logged in successfully. 
+\end{DoxyReturn}
+\Hypertarget{server_8h_abb39f1819c7a27834f15e9fee6335853}\index{server.h@{server.h}!aern\_server\_user\_logout@{aern\_server\_user\_logout}}
+\index{aern\_server\_user\_logout@{aern\_server\_user\_logout}!server.h@{server.h}}
+\doxysubsubsection{\texorpdfstring{aern\_server\_user\_logout()}{aern\_server\_user\_logout()}}
+{\footnotesize\ttfamily \label{server_8h_abb39f1819c7a27834f15e9fee6335853} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+server\+\_\+user\+\_\+logout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Log out of the server. 
+
+This function logs out the current user and resets the session.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The server application state. \\
+\hline
+\end{DoxyParams}
