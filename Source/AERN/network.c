@@ -338,7 +338,7 @@ static void network_derive_fkey(uint8_t* ckey, const uint8_t* mfk, const uint8_t
 	qsc_sha3_finalize(&fks, qsc_keccak_rate_512, ckey);
 }
 
-static void network_derive_mkey(uint8_t* mkey, const uint8_t* mfk, const uint8_t* lhash, const uint8_t* rhash, const uint8_t* token)
+static AERN_FUTURE_RESERVED void network_derive_mkey(uint8_t* mkey, const uint8_t* mfk, const uint8_t* lhash, const uint8_t* rhash, const uint8_t* token)
 {
 	AERN_ASSERT(mkey != NULL);
 	AERN_ASSERT(mfk != NULL);

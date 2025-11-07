@@ -125,6 +125,14 @@ static const char AERN_LOG_FILENAME[] = "\\userlog.mlog";
 #define AERN_STORAGE_USERNAME_MIN 6U
 #define AERN_STORAGE_USERNAME_RETRY 3U
 
+#if defined(_MSC_VER)
+#	define AERN_FUTURE_RESERVED __pragma(warning(suppress:4505))
+#elif defined(__GNUC__) || defined(__clang__)
+#	define AERN_FUTURE_RESERVED __attribute__((unused))
+#else
+#	define AERN_FUTURE_RESERVED
+#endif
+
 /*!
 \def AERN_DLL_API
 * \brief Enables the dll api exports
