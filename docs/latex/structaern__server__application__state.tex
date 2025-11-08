@@ -1,0 +1,261 @@
+\doxysection{aern\+\_\+server\+\_\+application\+\_\+state Struct Reference}
+\hypertarget{structaern__server__application__state}{}\label{structaern__server__application__state}\index{aern\_server\_application\_state@{aern\_server\_application\_state}}
+
+
+The AERN server state.  
+
+
+
+
+{\ttfamily \#include $<$server.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structaern__server__application__state_a702b92ca9cfca03c8e83f843ba52c90e}{cmdprompt}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PROMPT\+\_\+\+MAX\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__server__application__state_aa7b7f41ca1c06627a108bc5c609d30e8}{domain}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+DOMAINNAME\+\_\+\+MAX\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__server__application__state_aefc36a8b0a53ed774d44e40eac4c62b2}{hostname}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+HOSTNAME\+\_\+\+MAX\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__server__application__state_a327495722fee1a0340fdca4b16e35239}{issuer}} \mbox{[}\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}}\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__server__application__state_a575f8b2a243f42e9654120c966774be7}{localip}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+ADDRESS\+\_\+\+MAX\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__server__application__state_a6aeb3219682e8f1427f899cd776ecaf6}{logpath}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PATH\+\_\+\+MAX\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__server__application__state_a3f13117a30f2a22523eea74f1ff1e14e}{username}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+USERNAME\+\_\+\+MAX\mbox{]}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a0903c962684139dbd6ed60c6da5cb2bf}{kchain}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a8b0604a42baa09cb0ae2dcae3c594643}{sigkey}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a204ffd1b83be9cc6500b953953e72e66}{aplpath}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a82f1b66e7564f5d658b612893a758a6b}{banner}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_af6b84696bbb6123de85141d14ade3203}{cfgname}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a5d9b521d8183967bc26b43b52ba5221b}{prikeyname}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a41e0f135f20e79da100b6d30e3f2da0b}{promptdef}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a2f4e66c3acc16470f2d67659516d7753}{pubkeyname}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a30a9f9b7cfc54cd970367494e7246fca}{srvname}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_a91fec70fd72e1abbaed683dce6c8ca7d}{topname}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__server__application__state_aeb524f6d35a613170b835b32fb557660}{wtitle}}
+\item 
+\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \mbox{\hyperlink{structaern__server__application__state_a0f9e944cf20b7479dfcc1a6addb2b1eb}{ads}}
+\item 
+\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \mbox{\hyperlink{structaern__server__application__state_aac9b10e853afeb4e5ec0b3b87d0853d6}{root}}
+\item 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \mbox{\hyperlink{structaern__server__application__state_a5772caa563c5e0a8987c7b5516a85232}{tlist}}
+\item 
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}} \mbox{\hyperlink{structaern__server__application__state_a9dade337f98e9a92b5cf34c5d65d111a}{action}}
+\item 
+\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} \mbox{\hyperlink{structaern__server__application__state_a529d86a31fa4b4cf85751202bef77ec0}{mode}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structaern__server__application__state_a8e0798404bf2cf5dabb84c5ba9a4f236}{port}}
+\item 
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} \mbox{\hyperlink{structaern__server__application__state_a2396bff13a948a094084a2e89ff410a5}{srvtype}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structaern__server__application__state_a7f1ad43d3bf79b40bc39dbb5a6c3a5ae}{timeout}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__server__application__state_a458ee314eb40ab7e0c913a036333cc0d}{retries}}
+\item 
+bool \mbox{\hyperlink{structaern__server__application__state_a946ecd7736a57660616885580a02b2ce}{joined}}
+\item 
+bool \mbox{\hyperlink{structaern__server__application__state_a7d62e0c4b2a565e2d5fd44b45dec49fa}{loghost}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The AERN server state. 
+
+This structure holds all state information used by the AERN server. It includes the command prompt, network domain and host names, certificate issuer, IP address, log path, username, key chain, signing key, file names and paths for various configuration files, certificate structures, topology list, current action, console mode, network port, server type designation, timeout value, number of retries, and flags indicating whether the server has joined a network or is logging host activity. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__server__application__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__server__application__state_a9dade337f98e9a92b5cf34c5d65d111a}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!action@{action}}
+\index{action@{action}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{action}{action}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a9dade337f98e9a92b5cf34c5d65d111a} 
+\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}} action}
+
+The current command action. \Hypertarget{structaern__server__application__state_a0f9e944cf20b7479dfcc1a6addb2b1eb}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!ads@{ads}}
+\index{ads@{ads}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{ads}{ads}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a0f9e944cf20b7479dfcc1a6addb2b1eb} 
+\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} ads}
+
+The ADC (Device-\/\+Level Authority) certificate. \Hypertarget{structaern__server__application__state_a204ffd1b83be9cc6500b953953e72e66}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!aplpath@{aplpath}}
+\index{aplpath@{aplpath}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{aplpath}{aplpath}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a204ffd1b83be9cc6500b953953e72e66} 
+const char\texorpdfstring{$\ast$}{*} aplpath}
+
+The application path. \Hypertarget{structaern__server__application__state_a82f1b66e7564f5d658b612893a758a6b}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!banner@{banner}}
+\index{banner@{banner}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{banner}{banner}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a82f1b66e7564f5d658b612893a758a6b} 
+const char\texorpdfstring{$\ast$}{*} banner}
+
+The application banner text. \Hypertarget{structaern__server__application__state_af6b84696bbb6123de85141d14ade3203}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!cfgname@{cfgname}}
+\index{cfgname@{cfgname}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{cfgname}{cfgname}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_af6b84696bbb6123de85141d14ade3203} 
+const char\texorpdfstring{$\ast$}{*} cfgname}
+
+The configuration file name. \Hypertarget{structaern__server__application__state_a702b92ca9cfca03c8e83f843ba52c90e}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!cmdprompt@{cmdprompt}}
+\index{cmdprompt@{cmdprompt}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{cmdprompt}{cmdprompt}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a702b92ca9cfca03c8e83f843ba52c90e} 
+char cmdprompt\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PROMPT\+\_\+\+MAX\mbox{]}}
+
+The current command prompt string. \Hypertarget{structaern__server__application__state_aa7b7f41ca1c06627a108bc5c609d30e8}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!domain@{domain}}
+\index{domain@{domain}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{domain}{domain}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_aa7b7f41ca1c06627a108bc5c609d30e8} 
+char domain\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+DOMAINNAME\+\_\+\+MAX\mbox{]}}
+
+The network domain name. \Hypertarget{structaern__server__application__state_aefc36a8b0a53ed774d44e40eac4c62b2}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!hostname@{hostname}}
+\index{hostname@{hostname}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{hostname}{hostname}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_aefc36a8b0a53ed774d44e40eac4c62b2} 
+char hostname\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+HOSTNAME\+\_\+\+MAX\mbox{]}}
+
+The server hostname. \Hypertarget{structaern__server__application__state_a327495722fee1a0340fdca4b16e35239}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!issuer@{issuer}}
+\index{issuer@{issuer}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{issuer}{issuer}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a327495722fee1a0340fdca4b16e35239} 
+char issuer\mbox{[}\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}}\mbox{]}}
+
+The certificate issuer string. \Hypertarget{structaern__server__application__state_a946ecd7736a57660616885580a02b2ce}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!joined@{joined}}
+\index{joined@{joined}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{joined}{joined}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a946ecd7736a57660616885580a02b2ce} 
+bool joined}
+
+True if the server has joined the network. \Hypertarget{structaern__server__application__state_a0903c962684139dbd6ed60c6da5cb2bf}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!kchain@{kchain}}
+\index{kchain@{kchain}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{kchain}{kchain}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a0903c962684139dbd6ed60c6da5cb2bf} 
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} kchain}
+
+Pointer to the key chain array. \Hypertarget{structaern__server__application__state_a575f8b2a243f42e9654120c966774be7}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!localip@{localip}}
+\index{localip@{localip}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{localip}{localip}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a575f8b2a243f42e9654120c966774be7} 
+char localip\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+ADDRESS\+\_\+\+MAX\mbox{]}}
+
+The server\textquotesingle{}s local IP address. \Hypertarget{structaern__server__application__state_a7d62e0c4b2a565e2d5fd44b45dec49fa}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!loghost@{loghost}}
+\index{loghost@{loghost}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{loghost}{loghost}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a7d62e0c4b2a565e2d5fd44b45dec49fa} 
+bool loghost}
+
+True if host logging is enabled. \Hypertarget{structaern__server__application__state_a6aeb3219682e8f1427f899cd776ecaf6}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!logpath@{logpath}}
+\index{logpath@{logpath}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{logpath}{logpath}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a6aeb3219682e8f1427f899cd776ecaf6} 
+char logpath\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PATH\+\_\+\+MAX\mbox{]}}
+
+The full path to the log file. \Hypertarget{structaern__server__application__state_a529d86a31fa4b4cf85751202bef77ec0}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!mode@{mode}}
+\index{mode@{mode}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a529d86a31fa4b4cf85751202bef77ec0} 
+\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode}
+
+The current console mode. \Hypertarget{structaern__server__application__state_a8e0798404bf2cf5dabb84c5ba9a4f236}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!port@{port}}
+\index{port@{port}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a8e0798404bf2cf5dabb84c5ba9a4f236} 
+uint16\+\_\+t port}
+
+The network port number. \Hypertarget{structaern__server__application__state_a5d9b521d8183967bc26b43b52ba5221b}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!prikeyname@{prikeyname}}
+\index{prikeyname@{prikeyname}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{prikeyname}{prikeyname}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a5d9b521d8183967bc26b43b52ba5221b} 
+const char\texorpdfstring{$\ast$}{*} prikeyname}
+
+The private key file name. \Hypertarget{structaern__server__application__state_a41e0f135f20e79da100b6d30e3f2da0b}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!promptdef@{promptdef}}
+\index{promptdef@{promptdef}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{promptdef}{promptdef}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a41e0f135f20e79da100b6d30e3f2da0b} 
+const char\texorpdfstring{$\ast$}{*} promptdef}
+
+The default prompt string. \Hypertarget{structaern__server__application__state_a2f4e66c3acc16470f2d67659516d7753}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!pubkeyname@{pubkeyname}}
+\index{pubkeyname@{pubkeyname}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{pubkeyname}{pubkeyname}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a2f4e66c3acc16470f2d67659516d7753} 
+const char\texorpdfstring{$\ast$}{*} pubkeyname}
+
+The public key file name. \Hypertarget{structaern__server__application__state_a458ee314eb40ab7e0c913a036333cc0d}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!retries@{retries}}
+\index{retries@{retries}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{retries}{retries}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a458ee314eb40ab7e0c913a036333cc0d} 
+uint8\+\_\+t retries}
+
+The allowed number of password retries. \Hypertarget{structaern__server__application__state_aac9b10e853afeb4e5ec0b3b87d0853d6}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!root@{root}}
+\index{root@{root}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_aac9b10e853afeb4e5ec0b3b87d0853d6} 
+\mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} root}
+
+The root certificate. \Hypertarget{structaern__server__application__state_a8b0604a42baa09cb0ae2dcae3c594643}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a8b0604a42baa09cb0ae2dcae3c594643} 
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+Pointer to the secret signing key. \Hypertarget{structaern__server__application__state_a30a9f9b7cfc54cd970367494e7246fca}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!srvname@{srvname}}
+\index{srvname@{srvname}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{srvname}{srvname}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a30a9f9b7cfc54cd970367494e7246fca} 
+const char\texorpdfstring{$\ast$}{*} srvname}
+
+The server name. \Hypertarget{structaern__server__application__state_a2396bff13a948a094084a2e89ff410a5}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!srvtype@{srvtype}}
+\index{srvtype@{srvtype}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{srvtype}{srvtype}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a2396bff13a948a094084a2e89ff410a5} 
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} srvtype}
+
+The server type designation. \Hypertarget{structaern__server__application__state_a7f1ad43d3bf79b40bc39dbb5a6c3a5ae}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!timeout@{timeout}}
+\index{timeout@{timeout}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{timeout}{timeout}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a7f1ad43d3bf79b40bc39dbb5a6c3a5ae} 
+uint16\+\_\+t timeout}
+
+The console timeout in minutes. \Hypertarget{structaern__server__application__state_a5772caa563c5e0a8987c7b5516a85232}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!tlist@{tlist}}
+\index{tlist@{tlist}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{tlist}{tlist}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a5772caa563c5e0a8987c7b5516a85232} 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} tlist}
+
+The topology list state. \Hypertarget{structaern__server__application__state_a91fec70fd72e1abbaed683dce6c8ca7d}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!topname@{topname}}
+\index{topname@{topname}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{topname}{topname}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a91fec70fd72e1abbaed683dce6c8ca7d} 
+const char\texorpdfstring{$\ast$}{*} topname}
+
+The topology file name. \Hypertarget{structaern__server__application__state_a3f13117a30f2a22523eea74f1ff1e14e}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!username@{username}}
+\index{username@{username}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{username}{username}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_a3f13117a30f2a22523eea74f1ff1e14e} 
+char username\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+USERNAME\+\_\+\+MAX\mbox{]}}
+
+The username used for login. \Hypertarget{structaern__server__application__state_aeb524f6d35a613170b835b32fb557660}\index{aern\_server\_application\_state@{aern\_server\_application\_state}!wtitle@{wtitle}}
+\index{wtitle@{wtitle}!aern\_server\_application\_state@{aern\_server\_application\_state}}
+\doxysubsubsection{\texorpdfstring{wtitle}{wtitle}}
+{\footnotesize\ttfamily \label{structaern__server__application__state_aeb524f6d35a613170b835b32fb557660} 
+const char\texorpdfstring{$\ast$}{*} wtitle}
+
+The window title. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{server_8h}{server.\+h}}\end{DoxyCompactItemize}

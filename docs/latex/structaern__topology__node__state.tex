@@ -1,0 +1,77 @@
+\doxysection{aern\+\_\+topology\+\_\+node\+\_\+state Struct Reference}
+\hypertarget{structaern__topology__node__state}{}\label{structaern__topology__node__state}\index{aern\_topology\_node\_state@{aern\_topology\_node\_state}}
+
+
+The AERN topology node structure.  
+
+
+
+
+{\ttfamily \#include $<$topology.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structaern__topology__node__state_a3a18d36344a1da93abea412f36aaa7c1}{address}} \mbox{[}\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__topology__node__state_a9a748e742864eaf0f04b6e7d46a0195d}{chash}} \mbox{[}\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__topology__node__state_a65c4b2bf20a2a2d125705570a9b8b582}{serial}} \mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__topology__node__state_a327495722fee1a0340fdca4b16e35239}{issuer}} \mbox{[}\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}}\mbox{]}
+\item 
+\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} \mbox{\hyperlink{structaern__topology__node__state_a44fb0803ee0f4026ae9927fd4386beba}{expiration}}
+\item 
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} \mbox{\hyperlink{structaern__topology__node__state_a73fb917b64a66523ca67f682c095ea03}{designation}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The AERN topology node structure. 
+
+This structure represents a network node in the topology database. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__topology__node__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__topology__node__state_a3a18d36344a1da93abea412f36aaa7c1}\index{aern\_topology\_node\_state@{aern\_topology\_node\_state}!address@{address}}
+\index{address@{address}!aern\_topology\_node\_state@{aern\_topology\_node\_state}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily \label{structaern__topology__node__state_a3a18d36344a1da93abea412f36aaa7c1} 
+char address\mbox{[}\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE}}\mbox{]}}
+
+The device\textquotesingle{}s network address. \Hypertarget{structaern__topology__node__state_a9a748e742864eaf0f04b6e7d46a0195d}\index{aern\_topology\_node\_state@{aern\_topology\_node\_state}!chash@{chash}}
+\index{chash@{chash}!aern\_topology\_node\_state@{aern\_topology\_node\_state}}
+\doxysubsubsection{\texorpdfstring{chash}{chash}}
+{\footnotesize\ttfamily \label{structaern__topology__node__state_a9a748e742864eaf0f04b6e7d46a0195d} 
+uint8\+\_\+t chash\mbox{[}\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}}\mbox{]}}
+
+A hash of the device\textquotesingle{}s certificate. \Hypertarget{structaern__topology__node__state_a73fb917b64a66523ca67f682c095ea03}\index{aern\_topology\_node\_state@{aern\_topology\_node\_state}!designation@{designation}}
+\index{designation@{designation}!aern\_topology\_node\_state@{aern\_topology\_node\_state}}
+\doxysubsubsection{\texorpdfstring{designation}{designation}}
+{\footnotesize\ttfamily \label{structaern__topology__node__state_a73fb917b64a66523ca67f682c095ea03} 
+\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} designation}
+
+The device\textquotesingle{}s topological designation. \Hypertarget{structaern__topology__node__state_a44fb0803ee0f4026ae9927fd4386beba}\index{aern\_topology\_node\_state@{aern\_topology\_node\_state}!expiration@{expiration}}
+\index{expiration@{expiration}!aern\_topology\_node\_state@{aern\_topology\_node\_state}}
+\doxysubsubsection{\texorpdfstring{expiration}{expiration}}
+{\footnotesize\ttfamily \label{structaern__topology__node__state_a44fb0803ee0f4026ae9927fd4386beba} 
+\mbox{\hyperlink{structaern__certificate__expiration}{aern\+\_\+certificate\+\_\+expiration}} expiration}
+
+The certificate expiration times (valid from and to). \Hypertarget{structaern__topology__node__state_a327495722fee1a0340fdca4b16e35239}\index{aern\_topology\_node\_state@{aern\_topology\_node\_state}!issuer@{issuer}}
+\index{issuer@{issuer}!aern\_topology\_node\_state@{aern\_topology\_node\_state}}
+\doxysubsubsection{\texorpdfstring{issuer}{issuer}}
+{\footnotesize\ttfamily \label{structaern__topology__node__state_a327495722fee1a0340fdca4b16e35239} 
+char issuer\mbox{[}\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}}\mbox{]}}
+
+The certificate issuer string. \Hypertarget{structaern__topology__node__state_a65c4b2bf20a2a2d125705570a9b8b582}\index{aern\_topology\_node\_state@{aern\_topology\_node\_state}!serial@{serial}}
+\index{serial@{serial}!aern\_topology\_node\_state@{aern\_topology\_node\_state}}
+\doxysubsubsection{\texorpdfstring{serial}{serial}}
+{\footnotesize\ttfamily \label{structaern__topology__node__state_a65c4b2bf20a2a2d125705570a9b8b582} 
+uint8\+\_\+t serial\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}}
+
+The certificate serial number. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{topology_8h}{topology.\+h}}\end{DoxyCompactItemize}

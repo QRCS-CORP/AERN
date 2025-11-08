@@ -1,0 +1,156 @@
+\doxysection{aerncommon.\+h}
+\hypertarget{aerncommon_8h_source}{}\label{aerncommon_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/aerncommon.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/aerncommon.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ property\ of\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ The\ intellectual\ and\ technical\ concepts\ contained\ within\ this\ implementation\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ are\ proprietary\ to\ QRCS\ and\ its\ authorized\ licensors\ and\ are\ protected\ under\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ applicable\ U.S.\ and\ international\ copyright,\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ STANDAARS:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ algorithms\ such\ as\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ SHA3,\ AES,\ and\ others.\ These\ algorithms\ are\ public\ domain\ or\ standardized\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ by\ organizations\ such\ as\ NIST\ and\ are\ NOT\ the\ property\ of\ QRCS.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ -\/\ However,\ all\ source\ code,\ optimizations,\ and\ implementations\ in\ this\ library\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ are\ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ RESTRICTIONS:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ Redistribution,\ modification,\ or\ unauthorized\ distribution\ of\ this\ software,\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ in\ whole\ or\ in\ part,\ is\ strictly\ prohibited.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ provided\ for\ non-\/commercial,\ educational,\ and\ research\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \ \ purposes\ only.\ Commercial\ use\ in\ any\ form\ is\ expressly\ forbidden.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ Any\ use\ of\ this\ software\ implies\ acceptance\ of\ these\ restrictions.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ "{}as\ is,"{}\ without\ warranty\ of\ any\ kind,\ express\ or\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ implied,\ including\ but\ not\ limited\ to\ warranties\ of\ merchantability\ or\ fitness\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ for\ a\ particular\ purpose.\ QRCS\ disclaims\ all\ liability\ for\ any\ direct,\ indirect,\ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ incidental,\ or\ consequential\ damages\ resulting\ from\ the\ use\ or\ misuse\ of\ this\ software.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ **Quantum\ Resistant\ Cryptographic\ Solutions\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Proprietary\ License\ (QRCS-\/PL)**.\ The\ complete\ license\ terms\ are\ included\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ in\ the\ LICENSE.txt\ file\ distributed\ with\ this\ software.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ AERN\_COMMON\_H}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ AERN\_COMMON\_H}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}qsccommon.h"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <errno.h>}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ <limits.h>}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_DEFAULT\_APP\_PATH[]\ =\ \textcolor{stringliteral}{"{}C:\(\backslash\)\(\backslash\)"{}};}
+\DoxyCodeLine{00060\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_LOG\_FILENAME[]\ =\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)userlog.mlog"{}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ AERN\_CONFIG\_DILITHIUM\_KYBER}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#if\ !defined(AERN\_CONFIG\_DILITHIUM\_KYBER)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_CONFIG\_SPHINCS\_MCELIECE}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#if\ defined(DEBUG)\ ||\ defined(\_DEBUG)\ ||\ defined(\_\_DEBUG\_\_)\ ||\ (defined(\_\_GNUC\_\_)\ \&\&\ !defined(\_\_OPTIMIZE\_\_))}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_COMPILE\_DEBUG\_MODE}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#if\ defined(AERN\_COMPILE\_DEBUG\_MODE)}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//\#\ define\ AERN\_DEBUG\_TESTS\_RUN}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{comment}{/*\ application\ constants\ */}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ AERN\_CRYPTO\_PASSWORD\_HASH\ 32U}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ AERN\_DEFAULT\_AUTH\_RETRIES\ 3U}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ AERN\_DEFAULT\_PORT\ 8022U}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ AERN\_DEFAULT\_SESSION\_TIMEOUT\ 5U}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_ADDRESS\_MIN\ 7U}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_ADDRESS\_MAX\ 65U}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_ASSOCIATION\_HOSTS\_MAX\ 16U}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_CERTIFICATE\_NAME\ 128U}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_DEVICENAME\_MAX\ 16U}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_DEVICENAME\_MIN\ 2U}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_DOMAINNAME\_MAX\ 260U}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_DOMAINNAME\_MIN\ 2U}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_FILEPATH\_MAX\ 256U}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_FILEPATH\_MIN\ 8U}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_HOSTNAME\_MIN\ 2U}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_HOSTNAME\_MAX\ 128U}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_INPUT\_MAX\ 256U}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_MAC\_SIZE\ 32U}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_MAX\_PATH\ 260U}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_MESSAGE\_MAX\ 8192U}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_PASSWORD\_MAX\ 256U}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_PASSWORD\_MIN\ 8U}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_PASSWORD\_RETRY\ 3U}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_PATH\_MAX\ 260U}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_PROMPT\_MAX\ 64U}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_RETRIES\_MIN\ 1U}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_RETRIES\_MAX\ 5U}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_SERVER\_PAUSE\_INTERVAL\ 250U}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_TIMEOUT\_MIN\ 1U}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_TIMEOUT\_MAX\ 60U}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_USERNAME\_MAX\ 128U}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_USERNAME\_MIN\ 6U}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ AERN\_STORAGE\_USERNAME\_RETRY\ 3U}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#if\ defined(\_DLL)}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_DLL\_API}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#if\ defined(AERN\_DLL\_API)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#\ \ \ if\ defined(QSC\_SYSTEM\_COMPILER\_MSC)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ if\ defined(AERN\_DLL\_IMPORT)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ else}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#\ \ \ elif\ defined(QSC\_SYSTEM\_COMPILER\_GCC)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ if\ defined(AERN\_DLL\_IMPORT)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ \_\_attribute\_\_((dllimport))}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ else}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ \_\_attribute\_\_((dllexport))}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ if\ defined(\_\_SUNPRO\_C)}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ if\ !defined(\_\_GNU\_C\_\_)}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ \_\_attribute\_\_\ (visibility(\_\_global))}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ else}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ \_\_attribute\_\_\ \_\_global}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ elif\ defined(\_MSG\_VER)}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ extern\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ else}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ define\ AERN\_EXPORT\_API\ \_\_attribute\_\_\ ((visibility\ ("{}default"{})))}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_EXPORT\_API}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#if\ defined(DEBUG)\ ||\ defined(\_DEBUG)\ ||\ defined(\_\_DEBUG\_\_)\ ||\ (defined(\_\_GNUC\_\_)\ \&\&\ !defined(\_\_OPTIMIZE\_\_))}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_DEBUG\_MODE}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#ifdef\ AERN\_DEBUG\_MODE}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#\ \ define\ AERN\_ASSERT(expr)\ assert(expr)}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#\ \ define\ AERN\_ASSERT(expr)\ ((void)0)}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,59 @@
+\doxysection{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state Struct Reference}
+\hypertarget{structaern__network__remote__signing__request__state}{}\label{structaern__network__remote__signing__request__state}\index{aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}}
+
+
+The certificate remote signing request function state.  
+
+
+
+
+{\ttfamily \#include $<$network.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__remote__signing__request__state_a45481c7c7ae13f13dbed455332f45cda}{address}}
+\item 
+\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__remote__signing__request__state_a88db749ad627d8beed003793ea2c9dcc}{rcert}}
+\item 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__remote__signing__request__state_a113e8f9eb6955551654df290e61b60ff}{root}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__remote__signing__request__state_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The certificate remote signing request function state. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__network__remote__signing__request__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__network__remote__signing__request__state_a45481c7c7ae13f13dbed455332f45cda}\index{aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}!address@{address}}
+\index{address@{address}!aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily \label{structaern__network__remote__signing__request__state_a45481c7c7ae13f13dbed455332f45cda} 
+const char\texorpdfstring{$\ast$}{*} address}
+
+The rds server address \Hypertarget{structaern__network__remote__signing__request__state_a88db749ad627d8beed003793ea2c9dcc}\index{aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}!rcert@{rcert}}
+\index{rcert@{rcert}!aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}}
+\doxysubsubsection{\texorpdfstring{rcert}{rcert}}
+{\footnotesize\ttfamily \label{structaern__network__remote__signing__request__state_a88db749ad627d8beed003793ea2c9dcc} 
+\mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} rcert}
+
+A pointer to the remote certificate \Hypertarget{structaern__network__remote__signing__request__state_a113e8f9eb6955551654df290e61b60ff}\index{aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}!root@{root}}
+\index{root@{root}!aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__network__remote__signing__request__state_a113e8f9eb6955551654df290e61b60ff} 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}}\texorpdfstring{$\ast$}{*} root}
+
+A pointer to the root certificate \Hypertarget{structaern__network__remote__signing__request__state_a5cbd2b117e930d8f469c924a8b27ea21}\index{aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_network\_remote\_signing\_request\_state@{aern\_network\_remote\_signing\_request\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__network__remote__signing__request__state_a5cbd2b117e930d8f469c924a8b27ea21} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+A pointer to the secret signing key 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{network_8h}{network.\+h}}\end{DoxyCompactItemize}

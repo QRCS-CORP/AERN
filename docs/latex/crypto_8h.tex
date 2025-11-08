@@ -1,0 +1,343 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/crypto.h File Reference}
+\hypertarget{crypto_8h}{}\label{crypto_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/crypto.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/crypto.h}}
+
+
+AERN Cryptographic Functions.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{crypto_8h_a05c3c8bda8ff3b3a231a3c82bc648120}\label{crypto_8h_a05c3c8bda8ff3b3a231a3c82bc648120} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+PHASH\+\_\+\+CPU\+\_\+\+COST}~4U
+\begin{DoxyCompactList}\small\item\em The passphrase hash CPU cost in iterations (acceptable range\+: 1-\/100000). \end{DoxyCompactList}\item 
+\Hypertarget{crypto_8h_aa602823c0146ee7cce254c4343acd8f8}\label{crypto_8h_aa602823c0146ee7cce254c4343acd8f8} 
+\#define {\bfseries AERN\+\_\+\+CRYPTO\+\_\+\+PHASH\+\_\+\+MEMORY\+\_\+\+COST}~1U
+\begin{DoxyCompactList}\small\item\em The passphrase hash memory cost in MB (acceptable range\+: 1-\/4096). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{crypto_8h_a3152b7c464420063fddc413b4a178b10}{aern\+\_\+crypto\+\_\+decrypt\+\_\+stream}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}seed, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}input, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Decrypt a stream of bytes. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{crypto_8h_af3142ff59e02da7383b6b9cdff528810}{aern\+\_\+crypto\+\_\+encrypt\+\_\+stream}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}seed, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}input, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Encrypt a stream of bytes. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{crypto_8h_a4cd19ea67e488348261690d87081ed08}{aern\+\_\+crypto\+\_\+generate\+\_\+application\+\_\+keychain}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}seed, size\+\_\+t seedlen, const char \texorpdfstring{$\ast$}{*}password, size\+\_\+t passlen, const char \texorpdfstring{$\ast$}{*}username, size\+\_\+t userlen)
+\begin{DoxyCompactList}\small\item\em Generate a secure application key chain. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{crypto_8h_a60154529425d43db4a557d13087b22b7}{aern\+\_\+crypto\+\_\+generate\+\_\+application\+\_\+salt}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, size\+\_\+t outlen)
+\begin{DoxyCompactList}\small\item\em Generate a user-\/unique application salt from OS sources. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{crypto_8h_ab34773735f679f6b9a9446f67023d25e}{aern\+\_\+crypto\+\_\+generate\+\_\+hash\+\_\+code}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen)
+\begin{DoxyCompactList}\small\item\em Hash a message and write the resulting hash to an output array. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{crypto_8h_a0a422179497193aca8d2105789188014}{aern\+\_\+crypto\+\_\+generate\+\_\+mac\+\_\+code}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, size\+\_\+t outlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}message, size\+\_\+t msglen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}key, size\+\_\+t keylen)
+\begin{DoxyCompactList}\small\item\em Compute a MAC (Message Authentication Code) for a message. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{crypto_8h_a6544835a8777f049e3c260a93cfc722c}{aern\+\_\+crypto\+\_\+hash\+\_\+password}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, size\+\_\+t outlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}username, size\+\_\+t userlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}password, size\+\_\+t passlen)
+\begin{DoxyCompactList}\small\item\em Hash a password and user name. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{crypto_8h_a3eb2d2bf4dd316e4c60ca249543413a4}{aern\+\_\+crypto\+\_\+password\+\_\+minimum\+\_\+check}} (const char \texorpdfstring{$\ast$}{*}password, size\+\_\+t passlen)
+\begin{DoxyCompactList}\small\item\em Check a password for a minimum secure threshold. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{crypto_8h_ace18c88f3b82de2f4eec58361832d8de}{aern\+\_\+crypto\+\_\+password\+\_\+verify}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}username, size\+\_\+t userlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}password, size\+\_\+t passlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}hash, size\+\_\+t hashlen)
+\begin{DoxyCompactList}\small\item\em Verify a password against a stored hash. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{crypto_8h_a6b5c683c53718d6802d76e5ab42a2d36}{aern\+\_\+crypto\+\_\+secure\+\_\+memory\+\_\+allocate}} (size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Allocate a block of secure memory. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{crypto_8h_a6f496708966d3733b0ee94b0e3339814}{aern\+\_\+crypto\+\_\+secure\+\_\+memory\+\_\+deallocate}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}block, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Release an allocated block of secure memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AERN Cryptographic Functions. 
+
+This header defines the cryptographic functions used by the Anonymous Encrypted Relay Network (AERN). The crypto module encapsulates all operations required for secure data processing including\+:
+
+
+\begin{DoxyItemize}
+\item Stream encryption and decryption using a symmetric cipher based on the RCS (Randomized Cipher Stream) algorithm.
+\item Generation of secure key chains by combining a user\textquotesingle{}s password and username with a unique application salt.
+\item Generation of message hashes and message authentication codes (MACs) using SHA3-\/256 and KMAC256.
+\item Password handling including a minimum quality check, secure password hashing, and verification.
+\item Secure memory management functions to allocate and deallocate memory that is immediately cleared to protect sensitive data.
+\end{DoxyItemize}
+
+Two configuration macros are provided to tune the passphrase hashing function\+:
+\begin{DoxyItemize}
+\item \doxylink{crypto_8h_a05c3c8bda8ff3b3a231a3c82bc648120}{AERN\+\_\+\+CRYPTO\+\_\+\+PHASH\+\_\+\+CPU\+\_\+\+COST} sets the CPU cost in iterations.
+\item \doxylink{crypto_8h_aa602823c0146ee7cce254c4343acd8f8}{AERN\+\_\+\+CRYPTO\+\_\+\+PHASH\+\_\+\+MEMORY\+\_\+\+COST} sets the memory cost in megabytes.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+These cryptographic operations build upon underlying primitives provided by the QSC library (e.\+g. SHA3, c\+SHAKE, KMAC, and RCS). Correct operation of these functions is critical to the security of the AERN protocol.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000003}{Test}}]The AERN crypto functions are rigorously tested to ensure that\+:\end{DoxyRefDesc}
+
+
+
+\begin{DoxyItemize}
+\item Data streams are properly encrypted and decrypted.
+\item The application key chain is securely generated from a user\textquotesingle{}s password and username, using a salt derived from OS sources.
+\item Message hashes and MAC codes are computed accurately.
+\item Passwords are validated against a set minimum complexity and correctly verified against stored hashes.
+\item Secure memory is allocated and deallocated without leaving residual data.
+\end{DoxyItemize}
+
+These tests help ensure that the cryptographic foundation of AERN is robust and reliable. 
+
+\label{doc-func-members}
+\Hypertarget{crypto_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{crypto_8h_a3152b7c464420063fddc413b4a178b10}\index{crypto.h@{crypto.h}!aern\_crypto\_decrypt\_stream@{aern\_crypto\_decrypt\_stream}}
+\index{aern\_crypto\_decrypt\_stream@{aern\_crypto\_decrypt\_stream}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_decrypt\_stream()}{aern\_crypto\_decrypt\_stream()}}
+{\footnotesize\ttfamily \label{crypto_8h_a3152b7c464420063fddc413b4a178b10} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+crypto\+\_\+decrypt\+\_\+stream (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{seed}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{input}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Decrypt a stream of bytes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The output array receiving the plain-\/text. \\
+\hline
+{\em seed} & \mbox{[}in, const\mbox{]} The secret seed array used as the decryption key (expected size\+: AERN\+\_\+\+CRYPTO\+\_\+\+SEED\+\_\+\+SIZE). \\
+\hline
+{\em input} & \mbox{[}in, const\mbox{]} The cipher-\/text input. \\
+\hline
+{\em length} & The number of bytes to decrypt.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true on success. 
+\end{DoxyReturn}
+\Hypertarget{crypto_8h_af3142ff59e02da7383b6b9cdff528810}\index{crypto.h@{crypto.h}!aern\_crypto\_encrypt\_stream@{aern\_crypto\_encrypt\_stream}}
+\index{aern\_crypto\_encrypt\_stream@{aern\_crypto\_encrypt\_stream}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_encrypt\_stream()}{aern\_crypto\_encrypt\_stream()}}
+{\footnotesize\ttfamily \label{crypto_8h_af3142ff59e02da7383b6b9cdff528810} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+crypto\+\_\+encrypt\+\_\+stream (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{seed}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{input}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Encrypt a stream of bytes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The output array receiving the cipher-\/text. \\
+\hline
+{\em seed} & \mbox{[}in, const\mbox{]} The secret seed array used as the encryption key (expected size\+: AERN\+\_\+\+CRYPTO\+\_\+\+SEED\+\_\+\+SIZE). \\
+\hline
+{\em input} & \mbox{[}in, const\mbox{]} The plain-\/text input. \\
+\hline
+{\em length} & The number of bytes to encrypt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{crypto_8h_a4cd19ea67e488348261690d87081ed08}\index{crypto.h@{crypto.h}!aern\_crypto\_generate\_application\_keychain@{aern\_crypto\_generate\_application\_keychain}}
+\index{aern\_crypto\_generate\_application\_keychain@{aern\_crypto\_generate\_application\_keychain}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_generate\_application\_keychain()}{aern\_crypto\_generate\_application\_keychain()}}
+{\footnotesize\ttfamily \label{crypto_8h_a4cd19ea67e488348261690d87081ed08} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+crypto\+\_\+generate\+\_\+application\+\_\+keychain (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{seed}{, }\item[{size\+\_\+t}]{seedlen}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{password}{, }\item[{size\+\_\+t}]{passlen}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{username}{, }\item[{size\+\_\+t}]{userlen}{}\end{DoxyParamCaption})}
+
+
+
+Generate a secure application key chain. 
+
+Derives a secure key chain (seed) from the provided password and username combined with an application salt generated from OS-\/specific sources.
+
+
+\begin{DoxyParams}{Parameters}
+{\em seed} & \mbox{[}out\mbox{]} The output secret seed array. \\
+\hline
+{\em seedlen} & The length of the seed array. \\
+\hline
+{\em password} & \mbox{[}in, const\mbox{]} The password. \\
+\hline
+{\em passlen} & The byte length of the password. \\
+\hline
+{\em username} & \mbox{[}in, const\mbox{]} The computer\textquotesingle{}s user name. \\
+\hline
+{\em userlen} & The byte length of the user name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{crypto_8h_a60154529425d43db4a557d13087b22b7}\index{crypto.h@{crypto.h}!aern\_crypto\_generate\_application\_salt@{aern\_crypto\_generate\_application\_salt}}
+\index{aern\_crypto\_generate\_application\_salt@{aern\_crypto\_generate\_application\_salt}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_generate\_application\_salt()}{aern\_crypto\_generate\_application\_salt()}}
+{\footnotesize\ttfamily \label{crypto_8h_a60154529425d43db4a557d13087b22b7} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+crypto\+\_\+generate\+\_\+application\+\_\+salt (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{size\+\_\+t}]{outlen}{}\end{DoxyParamCaption})}
+
+
+
+Generate a user-\/unique application salt from OS sources. 
+
+The salt is generated by collecting system parameters such as the computer name, user name, and MAC address, and then hashing these values using SHAKE256.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The secret seed array to receive the salt. \\
+\hline
+{\em outlen} & The length of the salt array. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{crypto_8h_ab34773735f679f6b9a9446f67023d25e}\index{crypto.h@{crypto.h}!aern\_crypto\_generate\_hash\_code@{aern\_crypto\_generate\_hash\_code}}
+\index{aern\_crypto\_generate\_hash\_code@{aern\_crypto\_generate\_hash\_code}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_generate\_hash\_code()}{aern\_crypto\_generate\_hash\_code()}}
+{\footnotesize\ttfamily \label{crypto_8h_ab34773735f679f6b9a9446f67023d25e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+crypto\+\_\+generate\+\_\+hash\+\_\+code (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{}\end{DoxyParamCaption})}
+
+
+
+Hash a message and write the resulting hash to an output array. 
+
+Computes the SHA3-\/256 hash of the specified message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The output array receiving the hash. \\
+\hline
+{\em message} & \mbox{[}in, const\mbox{]} A pointer to the message array. \\
+\hline
+{\em msglen} & The length of the message. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{crypto_8h_a0a422179497193aca8d2105789188014}\index{crypto.h@{crypto.h}!aern\_crypto\_generate\_mac\_code@{aern\_crypto\_generate\_mac\_code}}
+\index{aern\_crypto\_generate\_mac\_code@{aern\_crypto\_generate\_mac\_code}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_generate\_mac\_code()}{aern\_crypto\_generate\_mac\_code()}}
+{\footnotesize\ttfamily \label{crypto_8h_a0a422179497193aca8d2105789188014} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+crypto\+\_\+generate\+\_\+mac\+\_\+code (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{size\+\_\+t}]{outlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{size\+\_\+t}]{msglen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{key}{, }\item[{size\+\_\+t}]{keylen}{}\end{DoxyParamCaption})}
+
+
+
+Compute a MAC (Message Authentication Code) for a message. 
+
+Uses KMAC256 to compute a MAC from the provided message and key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The output array receiving the MAC. \\
+\hline
+{\em outlen} & The byte length of the output array. \\
+\hline
+{\em message} & \mbox{[}in, const\mbox{]} A pointer to the message array. \\
+\hline
+{\em msglen} & The length of the message. \\
+\hline
+{\em key} & \mbox{[}in, const\mbox{]} A pointer to the key array. \\
+\hline
+{\em keylen} & The length of the key array. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{crypto_8h_a6544835a8777f049e3c260a93cfc722c}\index{crypto.h@{crypto.h}!aern\_crypto\_hash\_password@{aern\_crypto\_hash\_password}}
+\index{aern\_crypto\_hash\_password@{aern\_crypto\_hash\_password}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_hash\_password()}{aern\_crypto\_hash\_password()}}
+{\footnotesize\ttfamily \label{crypto_8h_a6544835a8777f049e3c260a93cfc722c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+crypto\+\_\+hash\+\_\+password (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{size\+\_\+t}]{outlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{username}{, }\item[{size\+\_\+t}]{userlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{password}{, }\item[{size\+\_\+t}]{passlen}{}\end{DoxyParamCaption})}
+
+
+
+Hash a password and user name. 
+
+Combines the username and password with an application salt to compute a secure hash via KMAC256.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}out\mbox{]} The output array receiving the hash. \\
+\hline
+{\em outlen} & The length of the output array. \\
+\hline
+{\em username} & \mbox{[}in, const\mbox{]} The computer\textquotesingle{}s user name. \\
+\hline
+{\em userlen} & The byte length of the user name. \\
+\hline
+{\em password} & \mbox{[}in, const\mbox{]} The password. \\
+\hline
+{\em passlen} & The length of the password. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{crypto_8h_a3eb2d2bf4dd316e4c60ca249543413a4}\index{crypto.h@{crypto.h}!aern\_crypto\_password\_minimum\_check@{aern\_crypto\_password\_minimum\_check}}
+\index{aern\_crypto\_password\_minimum\_check@{aern\_crypto\_password\_minimum\_check}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_password\_minimum\_check()}{aern\_crypto\_password\_minimum\_check()}}
+{\footnotesize\ttfamily \label{crypto_8h_a3eb2d2bf4dd316e4c60ca249543413a4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+crypto\+\_\+password\+\_\+minimum\+\_\+check (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{password}{, }\item[{size\+\_\+t}]{passlen}{}\end{DoxyParamCaption})}
+
+
+
+Check a password for a minimum secure threshold. 
+
+Evaluates the password for minimum requirements (such as inclusion of uppercase, lowercase, numeric, and special characters, and a minimum length).
+
+
+\begin{DoxyParams}{Parameters}
+{\em password} & \mbox{[}in, const\mbox{]} The password array. \\
+\hline
+{\em passlen} & The byte length of the password.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the password meets the minimum requirements. 
+\end{DoxyReturn}
+\Hypertarget{crypto_8h_ace18c88f3b82de2f4eec58361832d8de}\index{crypto.h@{crypto.h}!aern\_crypto\_password\_verify@{aern\_crypto\_password\_verify}}
+\index{aern\_crypto\_password\_verify@{aern\_crypto\_password\_verify}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_password\_verify()}{aern\_crypto\_password\_verify()}}
+{\footnotesize\ttfamily \label{crypto_8h_ace18c88f3b82de2f4eec58361832d8de} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+crypto\+\_\+password\+\_\+verify (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{username}{, }\item[{size\+\_\+t}]{userlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{password}{, }\item[{size\+\_\+t}]{passlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{hash}{, }\item[{size\+\_\+t}]{hashlen}{}\end{DoxyParamCaption})}
+
+
+
+Verify a password against a stored hash. 
+
+Computes the hash of the username and password and compares it with a stored hash.
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \mbox{[}in, const\mbox{]} The computer\textquotesingle{}s user name. \\
+\hline
+{\em userlen} & The byte length of the user name. \\
+\hline
+{\em password} & \mbox{[}in, const\mbox{]} The password. \\
+\hline
+{\em passlen} & The byte length of the password. \\
+\hline
+{\em hash} & The stored hash to compare. \\
+\hline
+{\em hashlen} & The length of the stored hash.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the computed hash matches the stored value. 
+\end{DoxyReturn}
+\Hypertarget{crypto_8h_a6b5c683c53718d6802d76e5ab42a2d36}\index{crypto.h@{crypto.h}!aern\_crypto\_secure\_memory\_allocate@{aern\_crypto\_secure\_memory\_allocate}}
+\index{aern\_crypto\_secure\_memory\_allocate@{aern\_crypto\_secure\_memory\_allocate}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_secure\_memory\_allocate()}{aern\_crypto\_secure\_memory\_allocate()}}
+{\footnotesize\ttfamily \label{crypto_8h_a6b5c683c53718d6802d76e5ab42a2d36} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint8\+\_\+t \texorpdfstring{$\ast$}{*} aern\+\_\+crypto\+\_\+secure\+\_\+memory\+\_\+allocate (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Allocate a block of secure memory. 
+
+Allocates memory using secure allocation routines to prevent sensitive data from being paged or left in memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & The number of bytes to allocate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to the allocated secure memory, or NULL on failure. 
+\end{DoxyReturn}
+\Hypertarget{crypto_8h_a6f496708966d3733b0ee94b0e3339814}\index{crypto.h@{crypto.h}!aern\_crypto\_secure\_memory\_deallocate@{aern\_crypto\_secure\_memory\_deallocate}}
+\index{aern\_crypto\_secure\_memory\_deallocate@{aern\_crypto\_secure\_memory\_deallocate}!crypto.h@{crypto.h}}
+\doxysubsubsection{\texorpdfstring{aern\_crypto\_secure\_memory\_deallocate()}{aern\_crypto\_secure\_memory\_deallocate()}}
+{\footnotesize\ttfamily \label{crypto_8h_a6f496708966d3733b0ee94b0e3339814} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+crypto\+\_\+secure\+\_\+memory\+\_\+deallocate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{block}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Release an allocated block of secure memory. 
+
+Securely erases the memory block and then frees it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & The pointer to the memory block. \\
+\hline
+{\em length} & The length of the memory block. \\
+\hline
+\end{DoxyParams}

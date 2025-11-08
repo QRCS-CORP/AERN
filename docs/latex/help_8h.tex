@@ -1,0 +1,77 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/help.h File Reference}
+\hypertarget{help_8h}{}\label{help_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/help.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/help.h}}
+
+
+AERN Help and Guidance Functions.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}commands.\+h"{}}\newline
+{\ttfamily \#include "{}resources.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{help_8h_a57bb4ff7d14b85013901c0041b1ad8e0}{aern\+\_\+help\+\_\+print\+\_\+context}} (const char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}} command)
+\begin{DoxyCompactList}\small\item\em Print a help string associated with a command action. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{help_8h_a71789921a7ccef3bafc0013c7d18af30}{aern\+\_\+help\+\_\+print\+\_\+mode}} (const char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}} mode, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}} designation)
+\begin{DoxyCompactList}\small\item\em Print a console prompt with help text for the current mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AERN Help and Guidance Functions. 
+
+This header declares functions that provide context-\/sensitive help messages for the AERN console interface. These functions print help strings that explain available command actions and options based on the current console mode (e.\+g., configuration, enable, or user mode) and the device\textquotesingle{}s network designation (e.\+g., APS, Client, ADC, ARS). The help functions make use of pre-\/defined help text strings (stored in the AERN\+\_\+\+APPLICATION\+\_\+\+HELP\+\_\+\+STRINGS array) and output them using the QSC console utilities.
+
+The primary functions provided in this module are\+:
+
+
+\begin{DoxyItemize}
+\item aern\+\_\+help\+\_\+print\+\_\+context()\+: Prints a single help message associated with a specific command action.
+\item aern\+\_\+help\+\_\+print\+\_\+mode()\+: Prints a set of help messages tailored to the current console mode and network designation.
+\end{DoxyItemize}
+
+These functions are essential for providing users with guidance on how to interact with the AERN system. 
+
+\label{doc-func-members}
+\Hypertarget{help_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{help_8h_a57bb4ff7d14b85013901c0041b1ad8e0}\index{help.h@{help.h}!aern\_help\_print\_context@{aern\_help\_print\_context}}
+\index{aern\_help\_print\_context@{aern\_help\_print\_context}!help.h@{help.h}}
+\doxysubsubsection{\texorpdfstring{aern\_help\_print\_context()}{aern\_help\_print\_context()}}
+{\footnotesize\ttfamily \label{help_8h_a57bb4ff7d14b85013901c0041b1ad8e0} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+help\+\_\+print\+\_\+context (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}}}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Print a help string associated with a command action. 
+
+This function prints a context-\/specific help message corresponding to the given command action. The help string is printed using the provided console prompt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & \mbox{[}in\mbox{]} The console prompt string. \\
+\hline
+{\em command} & The command action (from the \doxylink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions} enumeration) for which to display help. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{help_8h_a71789921a7ccef3bafc0013c7d18af30}\index{help.h@{help.h}!aern\_help\_print\_mode@{aern\_help\_print\_mode}}
+\index{aern\_help\_print\_mode@{aern\_help\_print\_mode}!help.h@{help.h}}
+\doxysubsubsection{\texorpdfstring{aern\_help\_print\_mode()}{aern\_help\_print\_mode()}}
+{\footnotesize\ttfamily \label{help_8h_a71789921a7ccef3bafc0013c7d18af30} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+help\+\_\+print\+\_\+mode (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}}}]{mode}{, }\item[{\mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}}}]{designation}{}\end{DoxyParamCaption})}
+
+
+
+Print a console prompt with help text for the current mode. 
+
+This function prints a set of help messages that are appropriate for the current console mode and the server type designation. It guides the user by displaying available commands and their context based on whether the console is in configuration, enable, or user mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & \mbox{[}in\mbox{]} The console prompt string. \\
+\hline
+{\em mode} & The current console mode (from the \doxylink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes} enumeration). \\
+\hline
+{\em designation} & The network designation (from the \doxylink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations} enumeration) for which the help messages should be tailored. \\
+\hline
+\end{DoxyParams}

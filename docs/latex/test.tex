@@ -1,0 +1,23 @@
+\chapter{Test List }
+\hypertarget{test}{}\label{test}\index{Test List@{Test List}}
+
+\begin{DoxyRefList}
+\item[File \doxylink{aern_8h}{aern.h} ]\hfill \\
+\label{test__test000001}%
+\Hypertarget{test__test000001}%
+ Although this header does not directly implement test routines, it underpins multiple test modules that validate\+:
+\begin{DoxyItemize}
+\item The correct mapping of AERN high-\/level function calls to the underlying QSC library routines.
+\item The consistency and accuracy of defined constants (e.\+g., key sizes, certificate sizes, network parameters).
+\item The proper serialization/deserialization of packet headers and full packets (via aern\+\_\+packet\+\_\+header\+\_\+serialize and aern\+\_\+stream\+\_\+to\+\_\+packet).
+\item The correct conversion of error codes to descriptive strings (using aern\+\_\+network\+\_\+error\+\_\+to\+\_\+string and aern\+\_\+protocol\+\_\+error\+\_\+to\+\_\+string).
+\end{DoxyItemize}
+\item[File \doxylink{certificate_8h}{certificate.h} ]\hfill \\
+\label{test__test000002}%
+\Hypertarget{test__test000002}%
+ When the AERN\+\_\+\+DEBUG\+\_\+\+TESTS\+\_\+\+RUN macro is defined, the function aern\+\_\+certificate\+\_\+functions\+\_\+test() executes a series of self-\/tests that verify\+: 
+\item[File \doxylink{crypto_8h}{crypto.h} ]\hfill \\
+\label{test__test000003}%
+\Hypertarget{test__test000003}%
+ The AERN crypto functions are rigorously tested to ensure that\+:
+\end{DoxyRefList}

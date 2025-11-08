@@ -1,0 +1,270 @@
+\doxysection{resources.\+h}
+\hypertarget{resources_8h_source}{}\label{resources_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/resources.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/resources.h}}
+\mbox{\hyperlink{resources_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AERN\_RESOURCES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AERN\_RESOURCES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_MESSAGE\_STRING\_DEPTH\ 167U}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_MESSAGE\_STRING\_SIZE\ 128U}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_COMMAND\_STRING\_DEPTH\ 10U}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_COMMAND\_STRING\_SIZE\ 64U}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_CONSOLE\_MODE\_STRING\_DEPTH\ 14U}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_CONSOLE\_MODE\_STRING\_SIZE\ 23U}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_HELP\_STRING\_DEPTH\ 48U}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ AERN\_APPLICATION\_HELP\_STRING\_SIZE\ 128U}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_APPLICATION\_MESSAGE\_STRINGS[AERN\_APPLICATION\_MESSAGE\_STRING\_DEPTH][AERN\_APPLICATION\_MESSAGE\_STRING\_SIZE]\ =}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{stringliteral}{"{}The\ command\ was\ not\ recognized."{}},}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{stringliteral}{"{}The\ system\ will\ be\ erased,\ including\ configuration\ and\ log\ files,\ do\ you\ want\ to\ proceed\ Y\ |\ N"{}},}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{stringliteral}{"{}The\ user\ configuration\ will\ be\ erased,\ do\ you\ want\ to\ proceed\ Y\ |\ N"{}},}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{stringliteral}{"{}The\ log\ files\ will\ be\ erased,\ do\ you\ want\ to\ proceed\ Y\ |\ N"{}},}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{stringliteral}{"{}The\ user\ is\ not\ authorized.\ Press\ any\ key\ to\ terminate\ the\ application."{}},}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{stringliteral}{"{}Login\ has\ exceeded\ maximum\ retries.\ Press\ any\ key\ to\ terminate\ the\ application."{}},}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{stringliteral}{"{}The\ quit\ command\ has\ been\ entered.\ Press\ any\ key\ to\ terminate\ the\ application."{}},}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{stringliteral}{"{}Activity\ logging\ has\ been\ disabled."{}},}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{stringliteral}{"{}Activity\ logging\ has\ been\ enabled."{}},}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{stringliteral}{"{}User\ authentication\ has\ failed.\ Press\ any\ key\ to\ terminate\ the\ application."{}},}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{stringliteral}{"{}The\ operation\ was\ aborted\ by\ the\ user."{}},}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{stringliteral}{"{}System\ reset\ :\ The\ application\ log\ and\ configuration\ have\ been\ erased."{}},}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{stringliteral}{"{}System\ reset\ :\ The\ application\ log\ and\ configuration\ have\ been\ erased."{}},}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{stringliteral}{"{}The\ log\ file\ has\ been\ erased."{}},}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{stringliteral}{"{}The\ retry\ setting\ is\ invaid;\ valid\ retry\ range\ is\ between\ one\ and\ five[1-\/5]\ login\ attempts."{}},}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{stringliteral}{"{}The\ timeout\ setting\ is\ invalid;\ valid\ timeout\ setting\ is\ between\ one\ and\ sixty[1-\/60]\ minutes."{}},}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{stringliteral}{"{}The\ domain\ name\ setting\ is\ invalid;\ valid\ domain\ name\ length\ is\ between\ two\ and\ thirty[2-\/32]\ characters."{}},}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{stringliteral}{"{}The\ hostname\ setting\ is\ invalid;\ valid\ hostname\ length\ is\ between\ two\ and\ thirty[2-\/32]\ characters."{}},}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{stringliteral}{"{}Printing\ configuration\ details\ :\ "{}},}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{stringliteral}{"{}Printing\ connection\ details\ :\ "{}},}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{stringliteral}{"{}\ minutes"{}},}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{stringliteral}{"{}The\ log\ file\ is\ empty."{}},}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{stringliteral}{"{}Running\ for\ the\ first\ time;\ please\ set\ the\ applications\ device\ name,\ username\ and\ password."{}},}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{stringliteral}{"{}Please\ choose\ a\ user\ name,\ minimum\ 6\ characters,\ to\ a\ maximum\ 128\ characters."{}},}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{stringliteral}{"{}Password\ must\ be\ 8-\/128\ characters\ long[a-\/z,\ A-\/Z],\ at\ least\ 1\ number,\ and\ 1\ symbol[0-\/9][!\#\$\ \&\ '()*+,\_./]."{}},}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{stringliteral}{"{}The\ user\ name\ and\ password\ have\ been\ set."{}},}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{stringliteral}{"{}Please\ enter\ the\ user\ name\ :\ "{}},}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{stringliteral}{"{}The\ user\ name\ entered\ is\ not\ recognized."{}},}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{stringliteral}{"{}Please\ enter\ the\ password\ :\ "{}},}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{stringliteral}{"{}The\ password\ entered\ is\ invalid."{}},}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{stringliteral}{"{}Please\ enter\ the\ device\ name,\ minimum\ 2\ characters,\ to\ a\ maximum\ of\ 16\ characters"{}},}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{stringliteral}{"{}The\ device\ name\ has\ been\ set."{}},}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{stringliteral}{"{}The\ device\ name\ is\ invalid."{}},}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{stringliteral}{"{}Enter\ the\ IPv4\ or\ IPv6\ address\ of\ the\ host\ name."{}},}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{stringliteral}{"{}No\ public\ key\ is\ associated\ with\ that\ address.Enter\ the\ encoded\ public\ key."{}},}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{stringliteral}{"{}Connecting\ to\ the\ server..."{}},}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{stringliteral}{"{}Connection\ attempt\ failed!\ The\ server\ is\ unreachable."{}},}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{stringliteral}{"{}The\ host\ has\ entered\ server\ mode.\ Type\ quit\ to\ exit\ server\ mode."{}},}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{stringliteral}{"{}The\ listener\ failed\ to\ initialize.\ The\ host\ could\ not\ enter\ the\ listening\ state."{}},}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{stringliteral}{"{}The\ listener\ has\ initialized\ :\ The\ server\ is\ now\ in\ the\ listening\ state."{}},}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{stringliteral}{"{}Generating\ the\ public/private\ signature\ key-\/pair."{}},}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ could\ not\ be\ generated."{}},}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{stringliteral}{"{}The\ public\ key\ was\ saved\ to:\ "{}},}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{stringliteral}{"{}The\ signature\ key-\/pair\ already\ exists,\ do\ you\ want\ to\ overwite\ it\ ?\ Y\ |\ N"{}},}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{stringliteral}{"{}The\ operation\ was\ cancelled\ by\ the\ user."{}},}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{stringliteral}{"{}Enter\ the\ path\ to\ the\ remote\ hosts\ public\ key."{}},}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ path,\ could\ not\ find\ the\ hosts\ public\ key."{}},}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{stringliteral}{"{}Client\ disconnected\ from\ the\ remote\ host\ successfully."{}},}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{stringliteral}{"{}Connection\ attempt\ failed!\ Could\ not\ connect\ to\ the\ remote\ server."{}},}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{stringliteral}{"{}The\ IP\ address\ format\ was\ invalid!\ Enter\ a\ valid\ address\ format,\ ex.n.n.n.n"{}},}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{stringliteral}{"{}Warning!\ The\ local\ certificate\ exists,\ do\ you\ want\ to\ overwite\ it\ ?\ Y\ |\ N"{}},}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{stringliteral}{"{}Cannot\ delete\ an\ active\ certificate;\ revoke\ the\ certificate\ before\ deleting\ the\ file."{}},}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{stringliteral}{"{}The\ console\ timeout\ period\ has\ expired,\ set\ to\ user\ mode."{}},}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{stringliteral}{"{}Enter\ the\ full\ path\ to\ the\ ARS\ root\ certificate."{}},}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{stringliteral}{"{}The\ root\ certificate\ has\ been\ stored\ successfully."{}},}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{stringliteral}{"{}Could\ not\ find\ the\ certificate,\ or\ the\ file\ is\ invalid,\ please\ enter\ the\ path\ again."{}},}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{stringliteral}{"{}The\ root\ certificate\ has\ been\ copied\ successfully."{}},}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{stringliteral}{"{}The\ root\ certificate\ could\ not\ be\ copied,\ check\ the\ path\ and\ permissions."{}},}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ signing\ failed.\ File\ permissions,\ the\ certificate\ is\ invalid,\ or\ has\ incompatible\ parameters."{}},}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ was\ signed\ successfully."{}},}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{stringliteral}{"{}The\ command\ input\ was\ invalid,\ operation\ failed."{}},}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{stringliteral}{"{}The\ network\ join\ request\ has\ failed,\ check\ the\ address."{}},}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{stringliteral}{"{}The\ network\ join\ request\ has\ succeeded."{}},}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{stringliteral}{"{}The\ node\ is\ joined\ to\ an\ existing\ network,\ rejoin\ the\ ads\ ?\ Y\ |\ N"{}},}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ announce\ operation\ has\ failed,\ check\ the\ path."{}},}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ has\ been\ announced\ to\ the\ network."{}},}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{stringliteral}{"{}The\ topology\ convergence\ has\ been\ processed\ by\ the\ network."{}},}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{stringliteral}{"{}The\ topology\ update\ has\ failed,\ memory\ or\ signing\ failure."{}},}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{stringliteral}{"{}The\ network\ time\ is\ invalid\ or\ has\ substantial\ delay."{}},}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{stringliteral}{"{}The\ root,\ ads,\ or\ aps\ certificate\ could\ not\ be\ found."{}},}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{stringliteral}{"{}The\ signature\ could\ not\ be\ generated\ for\ a\ message."{}},}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{stringliteral}{"{}The\ network\ resign\ has\ failed,\ check\ the\ address."{}},}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{stringliteral}{"{}This\ node\ has\ resigned\ from\ the\ network."{}},}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ revocation\ has\ failed,\ check\ the\ path."{}},}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ revocation\ has\ been\ broadcast\ to\ the\ network."{}},}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{stringliteral}{"{}The\ address\ is\ not\ routable,\ or\ not\ properly\ formed."{}},}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ ip\ address\ has\ been\ changed,\ restart\ the\ server\ for\ changes\ to\ take\ effect."{}},}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{stringliteral}{"{}Do\ you\ want\ to\ change\ the\ ip\ address\ ?\ Y\ |\ N"{}},}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{stringliteral}{"{}The\ auto-\/detected\ ip\ address\ is\ :\ "{}},}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{stringliteral}{"{}Enter\ a\ routable\ IPv4\ or\ IPv6\ address."{}},}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ service\ could\ not\ be\ started,\ check\ for\ a\ valid\ signed\ certificate\ and\ network\ membership."{}},}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ service\ was\ started\ successfully."{}},}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ service\ has\ been\ stopped,\ use\ the\ command\ 'service\ start'\ to\ run."{}},}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ service\ has\ been\ paused,\ use\ the\ command\ 'service\ resume'\ to\ restart."{}},}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ service\ could\ not\ be\ resumed,\ use\ the\ command\ 'service\ start'\ to\ run."{}},}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ service\ has\ resumed\ successfully."{}},}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ certificate\ already\ exists,\ do\ you\ want\ to\ replace\ it\ ?\ Y\ |\ N"{}},}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{stringliteral}{"{}Changing\ the\ server\ name\ or\ the\ domain\ name\ requires\ recreating\ the\ certificate,\ do\ you\ want\ to\ proceed\ ?\ Y\ |\ N"{}},}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ certificate\ could\ not\ be\ updated,\ check\ the\ path\ and\ root\ signature"{}},}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ certificate\ was\ updated\ successfully"{}},}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ certificate\ could\ not\ be\ exported,\ check\ the\ path"{}},}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ certificate\ was\ exported\ successfully"{}},}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{stringliteral}{"{}Do\ you\ want\ to\ change\ the\ servers\ domain\ name\ ?\ Y\ |\ N"{}},}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{stringliteral}{"{}The\ current\ domain\ name\ string\ :\ "{}},}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ could\ not\ update\ the\ domain\ name."{}},}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{stringliteral}{"{}The\ domain\ name\ has\ been\ updated\ successfully."{}},}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{stringliteral}{"{}The\ days\ entered\ exceeds\ the\ root\ expiration\ period;\ days\ reduced\ to:\ "{}},}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ must\ be\ signed\ by\ the\ ARS\ server\ before\ joining\ the\ network."{}},}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{stringliteral}{"{}The\ command\ is\ not\ supported\ on\ this\ server\ or\ version."{}},}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{stringliteral}{"{}The\ network\ address\ is\ invalid\ or\ not\ set."{}},}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{stringliteral}{"{}Received\ a\ network\ error\ from\ remote\ host\ :\ "{}},}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{stringliteral}{"{}A\ network\ error\ occured\ with\ remote\ host\ :\ "{}},}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{stringliteral}{"{}The\ query\ name\ format\ is\ invalid,\ use\ the\ remote\ device\ name,\ ex.\ MAS1"{}},}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{stringliteral}{"{}The\ device\ is\ offline\ or\ unknown\ to\ the\ ADC"{}},}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{stringliteral}{"{}The\ device\ is\ online\ and\ available\ for\ connection"{}},}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ was\ not\ found\ or\ is\ not\ signed."{}},}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{stringliteral}{"{}Provide\ the\ full\ path\ to\ the\ signed\ ADC\ certificate."{}},}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{stringliteral}{"{}Provide\ the\ IP\ address\ of\ the\ ADC\ server."{}},}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{stringliteral}{"{}The\ ADC\ IP\ address\ format\ is\ invalid."{}},}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{stringliteral}{"{}Restore\ the\ configuration\ files\ from\ the\ last\ backup?"{}},}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{stringliteral}{"{}The\ configuration\ files\ have\ been\ backed\ up."{}},}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{stringliteral}{"{}The\ proxy\ service\ could\ not\ sign\ the\ certificate."{}},}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{stringliteral}{"{}The\ certificate\ was\ signed\ by\ the\ proxy\ service."{}},}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ address\ has\ been\ changed\ by\ the\ administrator\ "{}},}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ domain\ name\ was\ changed\ to\ "{}},}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ host\ name\ was\ changed\ to\ "{}},}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Local\ user\ logged\ in:\ "{}},}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Log\ file\ created:\ "{}},}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Logging\ has\ been\ disabled\ on\ "{}},}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Logging\ has\ been\ enabled\ on\ "{}},}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{stringliteral}{"{}AERN\ version\ 1.0.0.0c,\ created\ May\ 2025."{}},}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ login\ retries\ setting\ was\ changed\ to\ "{}},}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ session\ timeout\ was\ changed\ to\ "{}},}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Added\ user\ configuration:\ "{}},}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ state\ has\ been\ restored\ "{}},}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ state\ has\ been\ backed\ up\ "{}},}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ service\ was\ paused\ "{}},}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ service\ was\ resumed\ "{}},}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ service\ was\ started\ "{}},}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ service\ was\ stopped\ "{}},}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ network\ mfk\ exchange\ has\ failed\ "{}},}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ network\ mfk\ exchange\ has\ succeeded\ "{}},}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ server\ generated\ a\ replacement\ certificate:\ "{}},}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ certificate\ generation\ has\ failed.\ "{}},}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ certificate\ generation\ has\ succeeded:\ "{}},}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ certificate\ announcement\ has\ succeeded\ "{}},}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ certificate\ revocation\ has\ failed\ "{}},}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ converce\ call\ has\ returned\ a\ failure\ "{}},}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ remote\ host\ has\ converged\ and\ updated\ its\ certificate\ "{}},}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ topological\ update\ request\ failed\ or\ was\ denied\ "{}},}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ topological\ update\ request\ was\ sent\ "{}},}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Memory\ allocation\ failure,\ connection\ aborted\ to\ host\ "{}},}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Connection\ terminated\ by\ remote\ host\ "{}},}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ configuration\ was\ erased\ by\ user:\ "{}},}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ network\ session\ has\ timed\ out\ "{}},}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ network\ ads\ join\ request\ was\ denied\ "{}},}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ network\ ads\ join\ request\ has\ succeeded\ "{}},}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ key\ fragment\ exchange\ has\ failed\ "{}},}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ key\ fragment\ exchange\ has\ succeeded\ "{}},}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ host\ resignation\ from\ the\ network\ failed\ "{}},}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ host\ has\ resigned\ from\ the\ network\ "{}},}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ remote\ device\ sent\ an\ invalid\ or\ unknown\ request\ "{}},}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ remote\ device\ responded\ with\ an\ error\ code\ "{}},}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Remote\ connection\ failed\ at\ "{}},}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ Connected\ to\ remote\ host:\ "{}},}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ node\ query\ failed\ "{}},}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ device\ answered\ a\ node\ query\ successfully\ "{}},}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ node\ was\ not\ found\ in\ the\ topological\ database\ "{}},}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ certificate\ announcement\ has\ failed\ "{}},}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ remote\ certificate\ could\ not\ be\ signed\ "{}},}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ remote\ certificate\ was\ signed\ successfully\ "{}},}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ remote\ host\ resignation\ from\ the\ network\ failed\ "{}},}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ The\ remote\ host\ has\ resigned\ from\ the\ network\ "{}},}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{stringliteral}{"{}Do\ you\ want\ to\ revoke\ this\ device\ and\ remove\ it\ from\ the\ database?"{}},}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{stringliteral}{"{}Provide\ the\ IP\ address\ of\ the\ ARS\ server."{}},}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{stringliteral}{"{}The\ ARS\ IP\ address\ format\ is\ invalid."{}},}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{stringliteral}{"{}The\ server\ service\ must\ be\ started\ before\ issuing\ this\ command."{}}}
+\DoxyCodeLine{00187\ \};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_APPLICATION\_HELP\_STRINGS[AERN\_APPLICATION\_HELP\_STRING\_DEPTH][AERN\_APPLICATION\_HELP\_STRING\_SIZE]\ =}
+\DoxyCodeLine{00190\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{stringliteral}{"{}unknown\ command"{}},}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{/*\ configuration\ commands\ */}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{stringliteral}{"{}address[ip-\/address]\ -\/Assign\ the\ server's\ network\ interface\ address;\ requires\ a\ restart."{}},}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{stringliteral}{"{}certificate\ -\/enter\ the\ certificate\ command\ interface"{}},}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{stringliteral}{"{}clear\ all\ -\/requires\ auth\ challenge,\ deletes\ everything"{}},}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{stringliteral}{"{}clear\ config\ -\/requires\ auth\ challenge,\ deletes\ public\ key\ cache"{}},}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{stringliteral}{"{}clear\ log\ -\/requires\ auth\ challenge,\ clears\ the\ logs"{}},}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{stringliteral}{"{}exit\ -\/exits\ to\ enable\ mode"{}},}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{stringliteral}{"{}help\ -\/config\ mode\ command\ help"{}},}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{stringliteral}{"{}log\ -\/\ [enable\ |\ disable]\ log\ command\ and\ connection\ activity"{}},}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{stringliteral}{"{}name\ domain[domain-\/name]\ -\/fully\ qualified\ domain\ -\/name"{}},}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{stringliteral}{"{}name\ host[host-\/name]"{}},}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{stringliteral}{"{}retries[count]\ -\/authentication\ retries,\ default\ is\ 2"{}},}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{stringliteral}{"{}server\ -\/enter\ server\ configuration\ mode"{}},}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{stringliteral}{"{}timeout[seconds]\ -\/session\ default\ 120"{}},}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{/*\ enable\ commands\ */}}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{stringliteral}{"{}clear\ -\/clear\ the\ screen"{}},}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{stringliteral}{"{}config\ -\/enter\ configuration\ mode"{}},}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{stringliteral}{"{}exit\ -\/exits\ to\ user\ mode"{}},}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{stringliteral}{"{}help\ -\/enable\ mode\ command\ help"{}},}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{stringliteral}{"{}quit\ -\/closes\ the\ application"{}},}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{stringliteral}{"{}show\ config\ -\/show\ configuration"{}},}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{stringliteral}{"{}show\ log\ -\/show\ the\ user\ activity\ log"{}},}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{/*\ user\ commands\ */}}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{stringliteral}{"{}enable\ -\/triggers\ authentication\ challenge"{}},}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{stringliteral}{"{}help\ -\/user\ mode\ command\ help"{}},}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{stringliteral}{"{}quit\ -\/closes\ the\ application"{}},}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{/*\ config-\/certificate\ commands\ */}}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{stringliteral}{"{}exit\ -\/exits\ to\ config\ mode"{}},}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{stringliteral}{"{}export[certificate-\/directory]\ -\/exports\ the\ local\ certificate\ to\ a\ file"{}},}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{stringliteral}{"{}generate[period-\/days]\ -\/generate\ the\ public\ certificate"{}},}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{stringliteral}{"{}help\ -\/certificate\ mode\ command\ help"{}},}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{stringliteral}{"{}import[certificate-\/path]\ -\/imports\ a\ certificate\ from\ a\ file"{}},}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{stringliteral}{"{}print\ -\/print\ a\ certificate"{}},}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{/*\ config-\/server\ commands\ */}}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{stringliteral}{"{}backup\ -\/save\ a\ backup\ of\ the\ aps\ state"{}},}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{stringliteral}{"{}connect\ [canonical-\/name]\ -\/connects\ to\ an\ application\ server\ or\ client"{}},}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{stringliteral}{"{}exit\ -\/exits\ to\ config\ mode"{}},}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{stringliteral}{"{}help\ -\/server\ mode\ command\ help"{}},}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{stringliteral}{"{}list\ -\/display\ the\ topological\ database"{}},}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{stringliteral}{"{}register\ [ip-\/address]\ -\/register\ aps\ with\ the\ ADC"{}},}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{stringliteral}{"{}resign\ [ip-\/address]\ -\/resign\ from\ the\ ADC"{}},}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{stringliteral}{"{}restore\ -\/restore\ the\ device\ state\ from\ backup"{}},}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{stringliteral}{"{}service\ -\/[start|stop|pause|resume]\ the\ server\ service"{}},}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{comment}{/*\ client\ config-\/connect\ commands\ */}}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{stringliteral}{"{}query\ [canonical-\/name]\ -\/Request\ node\ information\ for\ a\ device\ from\ the\ ADC"{}},}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{stringliteral}{"{}help\ -\/connect\ mode\ command\ help"{}},}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{stringliteral}{"{}quit\ -\/quits\ the\ remote\ server\ connection"{}},}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{comment}{/*\ ads\ config-\/certificate\ commands\ */}}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{stringliteral}{"{}revoke\ [certificate-\/path]\ -\/revoke\ the\ local\ device\ certificate"{}},}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{comment}{/*\ ads\ config-\/server\ commands\ */}}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{stringliteral}{"{}announce\ [certificate-\/path,\ ip-\/address]\ -\/announce\ an\ aps\ to\ servers\ in\ the\ network"{}},}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{stringliteral}{"{}converge\ -\/announce\ a\ topology\ update\ to\ the\ network"{}},}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{stringliteral}{"{}revoke\ [certificate-\/path]\ -\/revoke\ an\ aps's\ credentials\ by\ announcing\ it\ to\ the\ network"{}},}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{stringliteral}{"{}sproxy\ [certificate-\/path]\ -\/send\ a\ remote\ certificate\ signing\ request\ to\ the\ ARS\ server"{}},}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{comment}{/*\ rds\ config-\/certificate\ commands\ */}}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{stringliteral}{"{}sign\ [certificate-\/path]\ -\/sign\ a\ child\ certificate"{}}}
+\DoxyCodeLine{00248\ \};}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_APPLICATION\_MODE\_STRINGS[AERN\_APPLICATION\_CONSOLE\_MODE\_STRING\_DEPTH][AERN\_APPLICATION\_CONSOLE\_MODE\_STRING\_SIZE]\ =}
+\DoxyCodeLine{00251\ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{stringliteral}{"{}AERN"{}},}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{stringliteral}{"{}>\ "{}},}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{stringliteral}{"{}\#\ "{}},}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{stringliteral}{"{}(config)\#\ "{}},}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{stringliteral}{"{}(config-\/certificate)\#\ "{}},}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{stringliteral}{"{}(config-\/server)\#\ "{}},}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{stringliteral}{"{}(login-\/message)>\ "{}},}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{stringliteral}{"{}(login-\/password)>\ "{}},}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{stringliteral}{"{}(login-\/username)>\ "{}},}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{stringliteral}{"{}(login-\/devicename)>\ "{}},}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{stringliteral}{"{}(login-\/address)>\ "{}},}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{stringliteral}{"{}(login-\/domain)>\ "{}},}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{stringliteral}{"{}(login-\/rootpath)>\ "{}},}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{stringliteral}{"{}(server-\/connected)\#\ "{}}}
+\DoxyCodeLine{00266\ \};}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

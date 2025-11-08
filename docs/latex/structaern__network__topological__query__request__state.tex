@@ -1,0 +1,75 @@
+\doxysection{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state Struct Reference}
+\hypertarget{structaern__network__topological__query__request__state}{}\label{structaern__network__topological__query__request__state}\index{aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}}
+
+
+The topological query request function state.  
+
+
+
+
+{\ttfamily \#include $<$network.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__topological__query__request__state_a937b8452335d2a17d656ac79219f0796}{dcert}}
+\item 
+\mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__topological__query__request__state_a02066ec1d25bf9d2b1e973ed32f13d41}{dnode}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__topological__query__request__state_a9d089c22f34513efca2d3f8a3828201e}{issuer}}
+\item 
+\mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__topological__query__request__state_a6794054a7698bb9c47cd8b30fadefd99}{rnode}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__topological__query__request__state_a5f98d395e1fb1b3eb83b21e618d8ede2}{serial}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__topological__query__request__state_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The topological query request function state. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__network__topological__query__request__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__network__topological__query__request__state_a937b8452335d2a17d656ac79219f0796}\index{aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}!dcert@{dcert}}
+\index{dcert@{dcert}!aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}}
+\doxysubsubsection{\texorpdfstring{dcert}{dcert}}
+{\footnotesize\ttfamily \label{structaern__network__topological__query__request__state_a937b8452335d2a17d656ac79219f0796} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} dcert}
+
+A pointer to the ads certificate \Hypertarget{structaern__network__topological__query__request__state_a02066ec1d25bf9d2b1e973ed32f13d41}\index{aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}!dnode@{dnode}}
+\index{dnode@{dnode}!aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}}
+\doxysubsubsection{\texorpdfstring{dnode}{dnode}}
+{\footnotesize\ttfamily \label{structaern__network__topological__query__request__state_a02066ec1d25bf9d2b1e973ed32f13d41} 
+\mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}}\texorpdfstring{$\ast$}{*} dnode}
+
+A pointer to the ads node node structure \Hypertarget{structaern__network__topological__query__request__state_a9d089c22f34513efca2d3f8a3828201e}\index{aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}!issuer@{issuer}}
+\index{issuer@{issuer}!aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}}
+\doxysubsubsection{\texorpdfstring{issuer}{issuer}}
+{\footnotesize\ttfamily \label{structaern__network__topological__query__request__state_a9d089c22f34513efca2d3f8a3828201e} 
+const char\texorpdfstring{$\ast$}{*} issuer}
+
+A pointer to the query issuer string \Hypertarget{structaern__network__topological__query__request__state_a6794054a7698bb9c47cd8b30fadefd99}\index{aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}!rnode@{rnode}}
+\index{rnode@{rnode}!aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}}
+\doxysubsubsection{\texorpdfstring{rnode}{rnode}}
+{\footnotesize\ttfamily \label{structaern__network__topological__query__request__state_a6794054a7698bb9c47cd8b30fadefd99} 
+\mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}}\texorpdfstring{$\ast$}{*} rnode}
+
+A pointer to the return remote node structure \Hypertarget{structaern__network__topological__query__request__state_a5f98d395e1fb1b3eb83b21e618d8ede2}\index{aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}!serial@{serial}}
+\index{serial@{serial}!aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}}
+\doxysubsubsection{\texorpdfstring{serial}{serial}}
+{\footnotesize\ttfamily \label{structaern__network__topological__query__request__state_a5f98d395e1fb1b3eb83b21e618d8ede2} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} serial}
+
+A pointer to the local serial number \Hypertarget{structaern__network__topological__query__request__state_a5cbd2b117e930d8f469c924a8b27ea21}\index{aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_network\_topological\_query\_request\_state@{aern\_network\_topological\_query\_request\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__network__topological__query__request__state_a5cbd2b117e930d8f469c924a8b27ea21} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+A pointer to the secret signing key 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{network_8h}{network.\+h}}\end{DoxyCompactItemize}

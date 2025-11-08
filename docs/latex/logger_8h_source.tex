@@ -1,0 +1,93 @@
+\doxysection{logger.\+h}
+\hypertarget{logger_8h_source}{}\label{logger_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/logger.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/logger.h}}
+\mbox{\hyperlink{logger_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ property\ of\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ The\ intellectual\ and\ technical\ concepts\ contained\ within\ this\ implementation\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ are\ proprietary\ to\ QRCS\ and\ its\ authorized\ licensors\ and\ are\ protected\ under\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ applicable\ U.S.\ and\ international\ copyright,\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ STANDAARS:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ algorithms\ such\ as\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ SHA3,\ AES,\ and\ others.\ These\ algorithms\ are\ public\ domain\ or\ standardized\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ by\ organizations\ such\ as\ NIST\ and\ are\ NOT\ the\ property\ of\ QRCS.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ -\/\ However,\ all\ source\ code,\ optimizations,\ and\ implementations\ in\ this\ library\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ are\ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ RESTRICTIONS:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ Redistribution,\ modification,\ or\ unauthorized\ distribution\ of\ this\ software,\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ in\ whole\ or\ in\ part,\ is\ strictly\ prohibited.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ provided\ for\ non-\/commercial,\ educational,\ and\ research\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \ \ purposes\ only.\ Commercial\ use\ in\ any\ form\ is\ expressly\ forbidden.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ Any\ use\ of\ this\ software\ implies\ acceptance\ of\ these\ restrictions.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ "{}as\ is,"{}\ without\ warranty\ of\ any\ kind,\ express\ or\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ implied,\ including\ but\ not\ limited\ to\ warranties\ of\ merchantability\ or\ fitness\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ for\ a\ particular\ purpose.\ QRCS\ disclaims\ all\ liability\ for\ any\ direct,\ indirect,\ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ incidental,\ or\ consequential\ damages\ resulting\ from\ the\ use\ or\ misuse\ of\ this\ software.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ **Quantum\ Resistant\ Cryptographic\ Solutions\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Proprietary\ License\ (QRCS-\/PL)**.\ The\ complete\ license\ terms\ are\ included\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ in\ the\ LICENSE.txt\ file\ distributed\ with\ this\ software.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ AERN\_LOG\_H}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ AERN\_LOG\_H}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}aerncommon.h"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{commands_8h}{commands.h}}"{}}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ AERN\_LOGGING\_MESSAGE\_MAX\ 256U}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ AERN\_LOG\_STRING\_DEPTH\ 69U}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ AERN\_LOG\_STRING\_SIZE\ 64U}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_LOGGER\_PATH[]\ =\ \textcolor{stringliteral}{"{}AERN"{}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_LOGGER\_FILE[]\ =\ \textcolor{stringliteral}{"{}aern.log"{}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ AERN\_LOGGER\_HEAD[]\ =\ \textcolor{stringliteral}{"{}AERN\ Version\ 1.0"{}};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00113\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{logger_8h_aeb9e66aa0504cc0a0a7bd826a895ec39}{logger\_default\_path}}(\textcolor{keywordtype}{char}*\ path,\ \textcolor{keywordtype}{size\_t}\ pathlen);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00124\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{logger_8h_afbc56d7d1e774167333226eb624af607}{aern\_logger\_dispose}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00135\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{logger_8h_ac1bf3707ac08d332b7209f591360ce28}{aern\_logger\_erase\_all}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00144\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{logger_8h_a319619256f1c68127e1f4dc043679d8b}{aern\_logger\_exists}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path);}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00153\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{logger_8h_adddc33d35faa13af02fbb0aa7ca67077}{aern\_logger\_initialize}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00164\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{logger_8h_a2ea345a7209ea6264bb7f168c4f269af}{aern\_logger\_get\_size}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00173\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{logger_8h_a6281ddc6771369a52741d103041a401d}{aern\_logger\_reset}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00186\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{logger_8h_a03675865480447f6287d0e44fbd2a25c}{aern\_logger\_write\_message}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ line,\ \textcolor{keywordtype}{size\_t}\ linelen);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00201\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{logger_8h_a648f1e6492999ea01f21ac549a533207}{aern\_logger\_write\_decorated\_message}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path,\ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\_application\_messages}}\ msgtype,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message,\ \textcolor{keywordtype}{size\_t}\ msglen);}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00214\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{logger_8h_af72cf3f5bdee27e63cd41ddf8537a610}{aern\_logger\_write\_time\_stamped\_message}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message,\ \textcolor{keywordtype}{size\_t}\ msglen);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00229\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{logger_8h_a3a561ff63fb7c3788410539aee8caf3c}{aern\_logger\_write\_decorated\_time\_stamped\_message}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path,\ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\_application\_messages}}\ msgtype,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message,\ \textcolor{keywordtype}{size\_t}\ msglen);}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00240\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{logger_8h_a0884d52fa990f1d4a68300421721c683}{aern\_logger\_read\_all}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path,\ \textcolor{keywordtype}{char}*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen);}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00252\ AERN\_EXPORT\_API\ int64\_t\ \mbox{\hyperlink{logger_8h_a7e705ff7a509a6b8ee09c83a90c357ac}{aern\_logger\_read\_line}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path,\ \textcolor{keywordtype}{char}*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \textcolor{keywordtype}{size\_t}\ linenum);}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00264\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{logger_8h_ad2536de746950fcd3b0e9ac289ec2c55}{aern\_logger\_time\_stamp}}(\textcolor{keywordtype}{char}*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen);}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

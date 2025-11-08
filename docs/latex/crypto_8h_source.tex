@@ -1,0 +1,79 @@
+\doxysection{crypto.\+h}
+\hypertarget{crypto_8h_source}{}\label{crypto_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/crypto.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/crypto.h}}
+\mbox{\hyperlink{crypto_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ property\ of\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ The\ intellectual\ and\ technical\ concepts\ contained\ within\ this\ implementation\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ are\ proprietary\ to\ QRCS\ and\ its\ authorized\ licensors\ and\ are\ protected\ under\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ applicable\ U.S.\ and\ international\ copyright,\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ STANDAARS:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ algorithms\ such\ as\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ SHA3,\ AES,\ and\ others.\ These\ algorithms\ are\ public\ domain\ or\ standardized\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ by\ organizations\ such\ as\ NIST\ and\ are\ NOT\ the\ property\ of\ QRCS.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ -\/\ However,\ all\ source\ code,\ optimizations,\ and\ implementations\ in\ this\ library\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ are\ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ RESTRICTIONS:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ Redistribution,\ modification,\ or\ unauthorized\ distribution\ of\ this\ software,\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ in\ whole\ or\ in\ part,\ is\ strictly\ prohibited.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ provided\ for\ non-\/commercial,\ educational,\ and\ research\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \ \ purposes\ only.\ Commercial\ use\ in\ any\ form\ is\ expressly\ forbidden.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ Any\ use\ of\ this\ software\ implies\ acceptance\ of\ these\ restrictions.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ "{}as\ is,"{}\ without\ warranty\ of\ any\ kind,\ express\ or\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ implied,\ including\ but\ not\ limited\ to\ warranties\ of\ merchantability\ or\ fitness\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ for\ a\ particular\ purpose.\ QRCS\ disclaims\ all\ liability\ for\ any\ direct,\ indirect,\ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ incidental,\ or\ consequential\ damages\ resulting\ from\ the\ use\ or\ misuse\ of\ this\ software.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ **Quantum\ Resistant\ Cryptographic\ Solutions\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Proprietary\ License\ (QRCS-\/PL)**.\ The\ complete\ license\ terms\ are\ included\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ in\ the\ LICENSE.txt\ file\ distributed\ with\ this\ software.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ AERN\_CRYPTO\_H}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ AERN\_CRYPTO\_H}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}aerncommon.h"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aern_8h}{aern.h}}"{}}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ AERN\_CRYPTO\_PHASH\_CPU\_COST\ 4U}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ AERN\_CRYPTO\_PHASH\_MEMORY\_COST\ 1U}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00102\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{crypto_8h_a3152b7c464420063fddc413b4a178b10}{aern\_crypto\_decrypt\_stream}}(uint8\_t*\ output,\ \textcolor{keyword}{const}\ uint8\_t*\ seed,\ \textcolor{keyword}{const}\ uint8\_t*\ input,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00112\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crypto_8h_af3142ff59e02da7383b6b9cdff528810}{aern\_crypto\_encrypt\_stream}}(uint8\_t*\ output,\ \textcolor{keyword}{const}\ uint8\_t*\ seed,\ \textcolor{keyword}{const}\ uint8\_t*\ input,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00127\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crypto_8h_a4cd19ea67e488348261690d87081ed08}{aern\_crypto\_generate\_application\_keychain}}(uint8\_t*\ seed,\ \textcolor{keywordtype}{size\_t}\ seedlen,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ password,\ \textcolor{keywordtype}{size\_t}\ passlen,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ username,\ \textcolor{keywordtype}{size\_t}\ userlen);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00138\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crypto_8h_a60154529425d43db4a557d13087b22b7}{aern\_crypto\_generate\_application\_salt}}(uint8\_t*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00149\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crypto_8h_ab34773735f679f6b9a9446f67023d25e}{aern\_crypto\_generate\_hash\_code}}(uint8\_t*\ output,\ \textcolor{keyword}{const}\ uint8\_t*\ message,\ \textcolor{keywordtype}{size\_t}\ msglen);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00163\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crypto_8h_a0a422179497193aca8d2105789188014}{aern\_crypto\_generate\_mac\_code}}(uint8\_t*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \textcolor{keyword}{const}\ uint8\_t*\ message,\ \textcolor{keywordtype}{size\_t}\ msglen,\ \textcolor{keyword}{const}\ uint8\_t*\ key,\ \textcolor{keywordtype}{size\_t}\ keylen);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00177\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crypto_8h_a6544835a8777f049e3c260a93cfc722c}{aern\_crypto\_hash\_password}}(uint8\_t*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \textcolor{keyword}{const}\ uint8\_t*\ username,\ \textcolor{keywordtype}{size\_t}\ userlen,\ \textcolor{keyword}{const}\ uint8\_t*\ password,\ \textcolor{keywordtype}{size\_t}\ passlen);}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00190\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{crypto_8h_a3eb2d2bf4dd316e4c60ca249543413a4}{aern\_crypto\_password\_minimum\_check}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ password,\ \textcolor{keywordtype}{size\_t}\ passlen);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00206\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{crypto_8h_ace18c88f3b82de2f4eec58361832d8de}{aern\_crypto\_password\_verify}}(\textcolor{keyword}{const}\ uint8\_t*\ username,\ \textcolor{keywordtype}{size\_t}\ userlen,\ \textcolor{keyword}{const}\ uint8\_t*\ password,\ \textcolor{keywordtype}{size\_t}\ passlen,\ \textcolor{keyword}{const}\ uint8\_t*\ hash,\ \textcolor{keywordtype}{size\_t}\ hashlen);}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00217\ AERN\_EXPORT\_API\ uint8\_t*\ \mbox{\hyperlink{crypto_8h_a6b5c683c53718d6802d76e5ab42a2d36}{aern\_crypto\_secure\_memory\_allocate}}(\textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00227\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crypto_8h_a6f496708966d3733b0ee94b0e3339814}{aern\_crypto\_secure\_memory\_deallocate}}(uint8\_t*\ block,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

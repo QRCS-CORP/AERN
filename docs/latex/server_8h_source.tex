@@ -1,0 +1,229 @@
+\doxysection{server.\+h}
+\hypertarget{server_8h_source}{}\label{server_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/server.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/server.h}}
+\mbox{\hyperlink{server_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ property\ of\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ The\ intellectual\ and\ technical\ concepts\ contained\ within\ this\ implementation\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ are\ proprietary\ to\ QRCS\ and\ its\ authorized\ licensors\ and\ are\ protected\ under\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ applicable\ U.S.\ and\ international\ copyright,\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ STANDAARS:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ algorithms\ such\ as\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ SHA3,\ AES,\ and\ others.\ These\ algorithms\ are\ public\ domain\ or\ standardized\ }}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ by\ organizations\ such\ as\ NIST\ and\ are\ NOT\ the\ property\ of\ QRCS.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ -\/\ However,\ all\ source\ code,\ optimizations,\ and\ implementations\ in\ this\ library\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ are\ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ RESTRICTIONS:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ Redistribution,\ modification,\ or\ unauthorized\ distribution\ of\ this\ software,\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ in\ whole\ or\ in\ part,\ is\ strictly\ prohibited.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ provided\ for\ non-\/commercial,\ educational,\ and\ research\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \ \ purposes\ only.\ Commercial\ use\ in\ any\ form\ is\ expressly\ forbidden.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ Any\ use\ of\ this\ software\ implies\ acceptance\ of\ these\ restrictions.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ "{}as\ is,"{}\ without\ warranty\ of\ any\ kind,\ express\ or\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ implied,\ including\ but\ not\ limited\ to\ warranties\ of\ merchantability\ or\ fitness\ }}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ for\ a\ particular\ purpose.\ QRCS\ disclaims\ all\ liability\ for\ any\ direct,\ indirect,\ }}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ incidental,\ or\ consequential\ damages\ resulting\ from\ the\ use\ or\ misuse\ of\ this\ software.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ **Quantum\ Resistant\ Cryptographic\ Solutions\ }}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Proprietary\ License\ (QRCS-\/PL)**.\ The\ complete\ license\ terms\ are\ included\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ in\ the\ LICENSE.txt\ file\ distributed\ with\ this\ software.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ AERN\_SERVER\_H}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ AERN\_SERVER\_H}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}aerncommon.h"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{certificate_8h}{certificate.h}}"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{commands_8h}{commands.h}}"{}}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{logger_8h}{logger.h}}"{}}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aern_8h}{aern.h}}"{}}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{topology_8h}{topology.h}}"{}}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}collection.h"{}}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ MACRO\ DEFINITIONS}}
+\DoxyCodeLine{00064\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ AERN\_SERVER\_MINIMUM\_COMMAND\_LENGTH\ 4U}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ AERN\_SERVER\_APPLICATION\_STATE\_SIZE\ (AERN\_STORAGE\_DOMAINNAME\_MAX\ +\ AERN\_STORAGE\_HOSTNAME\_MAX\ +\ \(\backslash\)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ AERN\_STORAGE\_ADDRESS\_MAX\ +\ AERN\_STORAGE\_PATH\_MAX\ +\ AERN\_STORAGE\_USERNAME\_MAX\ +\ AERN\_CERTIFICATE\_ISSUER\_SIZE\ +\ \(\backslash\)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ sizeof(uint16\_t)\ +\ sizeof(uint8\_t)\ +\ sizeof(uint8\_t)\ +\ sizeof(uint16\_t)\ +\ sizeof(bool)\ +\ sizeof(bool)\ +\ \(\backslash\)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ AERN\_ASYMMETRIC\_SIGNING\_KEY\_SIZE)}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ ENUMERATIONS}}
+\DoxyCodeLine{00086\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00094\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3ae}{aern\_server\_server\_loop\_status}}}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3aea465f17d84f3d161878b56c6b356b3a23}{aern\_server\_loop\_status\_stopped}}\ =\ 0x00U,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3aea72787539a0199a1760cbeb2ce5dd76c3}{aern\_server\_loop\_status\_started}}\ =\ 0x01U,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3aeacf47afbd8bfa4a6ecda04878f87883f9}{aern\_server\_loop\_status\_paused}}\ \ =\ 0x02U,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \}\ \mbox{\hyperlink{server_8h_a01e7c032de46aca798409c0a8c2fb3ae}{aern\_server\_server\_loop\_status}};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ DATA\ STRUCTURES}}
+\DoxyCodeLine{00103\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00115\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}}
+\DoxyCodeLine{00116\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__server__application__state_a702b92ca9cfca03c8e83f843ba52c90e}{cmdprompt}}[AERN\_STORAGE\_PROMPT\_MAX];\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__server__application__state_aa7b7f41ca1c06627a108bc5c609d30e8}{domain}}[AERN\_STORAGE\_DOMAINNAME\_MAX];\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__server__application__state_aefc36a8b0a53ed774d44e40eac4c62b2}{hostname}}[AERN\_STORAGE\_HOSTNAME\_MAX];\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__server__application__state_a327495722fee1a0340fdca4b16e35239}{issuer}}[\mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\_CERTIFICATE\_ISSUER\_SIZE}}];\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__server__application__state_a575f8b2a243f42e9654120c966774be7}{localip}}[AERN\_STORAGE\_ADDRESS\_MAX];\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__server__application__state_a6aeb3219682e8f1427f899cd776ecaf6}{logpath}}[AERN\_STORAGE\_PATH\_MAX];\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structaern__server__application__state_a3f13117a30f2a22523eea74f1ff1e14e}{username}}[AERN\_STORAGE\_USERNAME\_MAX];\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structaern__server__application__state_a0903c962684139dbd6ed60c6da5cb2bf}{kchain}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structaern__server__application__state_a8b0604a42baa09cb0ae2dcae3c594643}{sigkey}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_a204ffd1b83be9cc6500b953953e72e66}{aplpath}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_a82f1b66e7564f5d658b612893a758a6b}{banner}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_af6b84696bbb6123de85141d14ade3203}{cfgname}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_a5d9b521d8183967bc26b43b52ba5221b}{prikeyname}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_a41e0f135f20e79da100b6d30e3f2da0b}{promptdef}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_a2f4e66c3acc16470f2d67659516d7753}{pubkeyname}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_a30a9f9b7cfc54cd970367494e7246fca}{srvname}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_a91fec70fd72e1abbaed683dce6c8ca7d}{topname}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__server__application__state_aeb524f6d35a613170b835b32fb557660}{wtitle}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}\ \mbox{\hyperlink{structaern__server__application__state_a0f9e944cf20b7479dfcc1a6addb2b1eb}{ads}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{structaern__root__certificate}{aern\_root\_certificate}}\ \mbox{\hyperlink{structaern__server__application__state_aac9b10e853afeb4e5ec0b3b87d0853d6}{root}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}\ \mbox{\hyperlink{structaern__server__application__state_a5772caa563c5e0a8987c7b5516a85232}{tlist}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\_command\_actions}}\ \mbox{\hyperlink{structaern__server__application__state_a9dade337f98e9a92b5cf34c5d65d111a}{action}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\_console\_modes}}\ \mbox{\hyperlink{structaern__server__application__state_a529d86a31fa4b4cf85751202bef77ec0}{mode}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structaern__server__application__state_a8e0798404bf2cf5dabb84c5ba9a4f236}{port}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\_network\_designations}}\ \mbox{\hyperlink{structaern__server__application__state_a2396bff13a948a094084a2e89ff410a5}{srvtype}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structaern__server__application__state_a7f1ad43d3bf79b40bc39dbb5a6c3a5ae}{timeout}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__server__application__state_a458ee314eb40ab7e0c913a036333cc0d}{retries}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__server__application__state_a946ecd7736a57660616885580a02b2ce}{joined}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__server__application__state_a7d62e0c4b2a565e2d5fd44b45dec49fa}{loghost}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ FUNCTION\ PROTOTYPES}}
+\DoxyCodeLine{00150\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00162\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_abb3f04065300eb0a2b00ea1644ba3b5a}{aern\_server\_certificate\_directory}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keywordtype}{char}*\ dpath,\ \textcolor{keywordtype}{size\_t}\ pathlen);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00174\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a7bee7a5f16e12897def7c06cc9647476}{aern\_server\_certificate\_path}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keywordtype}{char}*\ fpath,\ \textcolor{keywordtype}{size\_t}\ pathlen,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00186\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a1a5b70fb22c850531fdebff00b35b2d9}{aern\_server\_child\_certificate\_export}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dpath);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00199\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a9031a86b19de10ca04ec45b5c3171fb1}{aern\_server\_child\_certificate\_from\_issuer}}(\mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00212\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a3b487902b81e7c4e50b5ca4ebfa6aae8}{aern\_server\_child\_certificate\_from\_serial}}(\mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ uint8\_t*\ serial);}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00224\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a75b5fb26b3f8b0a32b568b379e6cac18}{aern\_server\_child\_certificate\_generate}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert,\ uint64\_t\ period);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00237\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a6eb77f4db628b47951e5918e97e162d9}{aern\_server\_child\_certificate\_import}}(\mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ lcert,\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fpath);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00248\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a26fd649492e2d0ddf76b7c431945b6cb}{aern\_server\_child\_certificate\_path}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keywordtype}{char}*\ fpath,\ \textcolor{keywordtype}{size\_t}\ pathlen);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00260\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a9034f2ee252b3737c88d8e3e2f4519a9}{aern\_server\_child\_certificate\_path\_from\_issuer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keywordtype}{char}*\ fpath,\ \textcolor{keywordtype}{size\_t}\ pathlen,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00272\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a936876e6bf4a73bbc0b948d41aaad4dd}{aern\_server\_child\_certificate\_print}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fpath,\ \textcolor{keywordtype}{size\_t}\ pathlen);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00283\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_ac9fdaea6921ede9398d57ea4e1032a95}{aern\_server\_local\_certificate\_store}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ address);}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00292\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_aba7b7d42e39036995153acbed41201e9}{aern\_server\_clear\_config}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00301\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_af0b0b47d40c87252c0ca36b5b319dff2}{aern\_server\_clear\_log}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00310\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a07ac45d7126497d967cb0cda7c9e3b33}{aern\_server\_erase\_all}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00319\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a7d1a0e41abe8310bcdcfeb55941921e6}{aern\_server\_log\_host}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00328\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a409b5e9a90c7625ece7aaf9828af50a6}{aern\_server\_log\_print}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00342\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a8b6a18e0a4e4cb4f05800064a396ced1}{aern\_server\_log\_write\_message}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\_application\_messages}}\ msgtype,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message,\ \textcolor{keywordtype}{size\_t}\ msglen);}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00353\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a3631ba0aacf33aa7818007452b9f1196}{aern\_server\_mfkcol\_path}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keywordtype}{char}*\ fpath,\ \textcolor{keywordtype}{size\_t}\ pathlen);}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00365\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a09b789de0895a8dc5d1db5daf1eb23e4}{aern\_server\_mfkcol\_from\_file}}(qsc\_collection\_state*\ mfkcol,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00375\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_aa72a5f5b63fcd8cfd4dd8b6b94d88fd1}{aern\_server\_mfkcol\_to\_file}}(\textcolor{keyword}{const}\ qsc\_collection\_state*\ mfkcol,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00384\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a1e7440b8a3ce40de804c168b173ab42f}{aern\_server\_print\_banner}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00396\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_aa15cbe1c15942a16edb20bc5727609d2}{aern\_server\_print\_error}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\_application\_messages}}\ appmsg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message,\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ error);}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00405\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a735a79991504e0c84441d0a8c6b1ee3a}{aern\_server\_print\_configuration}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00417\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a6502acf736dab3ea1499544da28a6c01}{aern\_server\_root\_certificate\_export}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dpath);}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00428\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_adff89671b1f6b65241e033c46a251f5c}{aern\_server\_root\_import\_dialogue}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00429\ }
+\DoxyCodeLine{00440\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_af0ff95cea003f6081496b5896cbfd4d1}{aern\_server\_root\_certificate\_generate}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{structaern__root__certificate}{aern\_root\_certificate}}*\ rcert,\ uint64\_t\ period);}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00453\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a75239baeec4dcbec1023999cfbf5dc18}{aern\_server\_root\_certificate\_load}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{structaern__root__certificate}{aern\_root\_certificate}}*\ root,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ tlist);}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00465\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_ad97e033f7d9d9ac0c71499c032dcc6f9}{aern\_server\_root\_certificate\_print}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fpath,\ \textcolor{keywordtype}{size\_t}\ pathlen);}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00476\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a9e594553af5644637b745af0abc40787}{aern\_server\_root\_certificate\_store}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__root__certificate}{aern\_root\_certificate}}*\ rcert);}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00485\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_ac1bd01d0224c457f9be2a2b612565942}{aern\_server\_set\_command\_prompt}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00498\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_ae787b5387b93a27d856ab2240676c928}{aern\_server\_set\_console\_timeout}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ snum,\ \textcolor{keywordtype}{size\_t}\ numlen);}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00511\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_af642bc226e672d9d87b1ebc0cfb829b4}{aern\_server\_set\_domain\_name}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keywordtype}{size\_t}\ namelen);}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00524\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a11d293f6cc13d941ff484821f2693c9a}{aern\_server\_set\_host\_name}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keywordtype}{size\_t}\ namelen);}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00537\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_aca4aba991aec26a88d7a61c3b5d8fd5c}{aern\_server\_set\_ip\_address}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ address,\ \textcolor{keywordtype}{size\_t}\ addlen);}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00550\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a554f2b93470682dc02b50248a1d41b65}{aern\_server\_set\_password\_retries}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ snum,\ \textcolor{keywordtype}{size\_t}\ numlen);}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00559\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_ad6c82f9d3e12f5396817de8163d87d7e}{aern\_server\_erase\_signature\_key}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00568\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_ab5f15a575948d8e75119a9cde0ac8179}{aern\_server\_state\_backup\_restore}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00577\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a466ddd436706a9b5ffd60e56bf5dc4e4}{aern\_server\_state\_backup\_save}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00578\ }
+\DoxyCodeLine{00587\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_af9f9bc814bec88a8ab1c9519591f9962}{aern\_server\_state\_initialize}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\_network\_designations}}\ srvtype);}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00598\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a4fb5d820d0863c778ab3b985e4abee15}{aern\_server\_state\_store}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00607\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a727f1ad7d8573991a93ac04d9fd14d1e}{aern\_server\_state\_unload}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00619\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a36cdaa893ab9b641a88f33f514486ccb}{aern\_server\_topology\_adc\_fetch}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ dcert);}
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00630\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_ace5acab978fb710fedfed0d6b5a11c53}{aern\_server\_topology\_load}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00631\ }
+\DoxyCodeLine{00639\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_afa7a772afcd46905372e8c0f1ce5b16c}{aern\_server\_topology\_print\_list}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00640\ }
+\DoxyCodeLine{00648\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_ad1a1d9689930e098ec95e9ff866be215}{aern\_server\_topology\_purge\_externals}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00649\ }
+\DoxyCodeLine{00658\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a05b39cd24fe4edf30c5dcea609cb3edc}{aern\_server\_topology\_remove\_certificate}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00659\ }
+\DoxyCodeLine{00668\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a1f15c56e723f4f807e0902276ea45b5d}{aern\_server\_topology\_remove\_node}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ issuer);}
+\DoxyCodeLine{00669\ }
+\DoxyCodeLine{00677\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a27e587661a1b71e65fd642965cf09c41}{aern\_server\_topology\_reset}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00689\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a032deda0702b0844fee0a1139f6a4be3}{aern\_server\_topology\_local\_fetch}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{structaern__child__certificate}{aern\_child\_certificate}}*\ ccert);}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00700\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a4f0ff0fa992af56982ff628413138042}{aern\_server\_topology\_root\_exists}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00701\ }
+\DoxyCodeLine{00712\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a9b313e27537c3c79592fde3d32de80ac}{aern\_server\_topology\_root\_fetch}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state,\ \mbox{\hyperlink{structaern__root__certificate}{aern\_root\_certificate}}*\ rcert);}
+\DoxyCodeLine{00713\ }
+\DoxyCodeLine{00721\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_a50aab7f826cf9467d49a6c5fcb02a658}{aern\_server\_topology\_to\_file}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00722\ }
+\DoxyCodeLine{00732\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{server_8h_a4cf8d79d4ed3127f684f2bf9b92ed0ca}{aern\_server\_user\_login}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00741\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{server_8h_abb39f1819c7a27834f15e9fee6335853}{aern\_server\_user\_logout}}(\mbox{\hyperlink{structaern__server__application__state}{aern\_server\_application\_state}}*\ state);}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
