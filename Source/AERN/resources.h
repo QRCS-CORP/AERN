@@ -137,7 +137,7 @@ static const char AERN_APPLICATION_MESSAGE_STRINGS[AERN_APPLICATION_MESSAGE_STRI
 	" - Log file created: ",
 	" - Logging has been disabled on ",
 	" - Logging has been enabled on ",
-	"AERN version 1.0.0.0c, created May 2025.",
+	"AERN version 1.0.0.0a, created March 2025.",
 	" - The login retries setting was changed to ",
 	" - The session timeout was changed to ",
 	" - Added user configuration: ",
