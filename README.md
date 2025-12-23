@@ -19,8 +19,8 @@
 
 [AERN Help Documentation](https://qrcs-corp.github.io/AERN/)  
 [AERN Protocol Specification](https://qrcs-corp.github.io/AERN/pdf/aern_specification.pdf)  
-[AERN Summary Document](https://qrcs-corp.github.io/AERN/pdf/aern_summary.pdf)
-[AERN Formal Analysis](https://qrcs-corp.github.io/AERN/pdf/aern_formal.pdf)
+[AERN Summary Document](https://qrcs-corp.github.io/AERN/pdf/aern_summary.pdf)  
+[AERN Formal Analysis](https://qrcs-corp.github.io/AERN/pdf/aern_formal.pdf)  
 
 
 > This repository provides the official C-language reference implementation of the AERN protocol, developed by QRCS - Quantum Resistant Cryptographic Solutions. This repository is being developed, the complete codebase is expected in 2026.
