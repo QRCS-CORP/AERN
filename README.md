@@ -20,6 +20,7 @@
 [AERN Help Documentation](https://qrcs-corp.github.io/AERN/)  
 [AERN Protocol Specification](https://qrcs-corp.github.io/AERN/pdf/aern_specification.pdf)  
 [AERN Summary Document](https://qrcs-corp.github.io/AERN/pdf/aern_summary.pdf)
+[AERN Formal Analysis](https://qrcs-corp.github.io/AERN/pdf/aern_formal.pdf)
 
 
 > This repository provides the official C-language reference implementation of the AERN protocol, developed by QRCS - Quantum Resistant Cryptographic Solutions. This repository is being developed, the complete codebase is expected in 2026.
@@ -71,14 +72,13 @@ AERN uses the QSC cryptographic library: [The QSC Library](https://github.com/QR
 
 ## License
 
-ACQUISITION INQUIRIES:
-QRCS is currently seeking a corporate acquirer for this technology.
-Parties interested in exclusive licensing or acquisition should contact:
-john.underhill@protonmail.com  
+INVESTMENT INQUIRIES:
+QRCS is currently seeking a corporate investor for this technology.
+Parties interested in licensing or investment should connect to us at: contact@qrcscorp.ca  
+Visit https://www.qrcscorp.ca for a full inventory of our products and services.  
 
 PATENT NOTICE:
-One or more patent applications (provisional and/or non-provisional) covering aspects of this software have been filed with the United States Patent and 
-Trademark Office (USPTO). Unauthorized use may result in patent infringement liability.  
+One or more patent applications (provisional and/or non-provisional) covering aspects of this software have been filed with the United States Patent and Trademark Office (USPTO). Unauthorized use may result in patent infringement liability.  
 
 QRCS-PL private License. See license file for details.  
 Software is copyrighted and AERN is patent pending.
