@@ -1,37 +1,104 @@
 \chapter{Authenticated Encrypted Relay Network (AERN) }
 \hypertarget{index}{}\label{index}\index{Authenticated Encrypted Relay Network (AERN)@{Authenticated Encrypted Relay Network (AERN)}}
 \hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro_sec}
-AERN is an authenticated, encrypted proxy-\/chaining protocol that forms a fully meshed “cloud” of proxy servers to provide secure, anonymous communications. Proxies perform asymmetric key exchange to derive shared secrets, then operate bi-\/directional symmetric tunnels for data forwarding. Clients enter the mesh by selecting an entry node at random from a controller-\/provided list and establishing an encrypted tunnel to it. Routes are built as randomized proxy circuits, enabling strong metadata resistance. ~\newline
-(See\+: Introduction and network overview.)\hypertarget{index_arch_sec}{}\doxysection{\texorpdfstring{Architecture and Roles}{Architecture and Roles}}\label{index_arch_sec}
+The Authenticated Encrypted Relay Network (AERN) is a certificate-\/anchored, post-\/quantum relay protocol for controlled anonymity and authenticated private transport domains. AERN is designed for managed infrastructures in which relay nodes are admitted by certificate, topology membership is administered by a domain controller, and data-\/plane packets traverse pre-\/established symmetric tunnels between authenticated proxy servers. The protocol is intended to provide authenticated participation, encrypted relay metadata, fixed-\/size packet transport, strict replay rejection, bounded traffic shaping, and a backend-\/neutral transport boundary.
+
+AERN is not a public volunteer relay system. It is a controlled-\/domain relay fabric that can be deployed as a private anonymous VPN substrate, institutional relay network, sovereign communications fabric, or regulated post-\/quantum transport domain. Its anonymity properties are conditional on the controlled deployment model, honest topology distribution, and the absence of simultaneous compromise or precise observation of the relevant ingress and egress correlation points.\hypertarget{index_role_sec}{}\doxysection{\texorpdfstring{Protocol Entities}{Protocol Entities}}\label{index_role_sec}
 \hypertarget{index_ars_sec}{}\doxysubsection{\texorpdfstring{AERN Root Security (ARS)}{AERN Root Security (ARS)}}\label{index_ars_sec}
-Trust anchor that signs device certificates used for authentication across the mesh.\hypertarget{index_adc_sec}{}\doxysubsection{\texorpdfstring{AERN Domain Controller (ADC)}{AERN Domain Controller (ADC)}}\label{index_adc_sec}
-Manages device registration, certificate validation, topology distribution, and revocation; returns the authenticated proxy list to clients.\hypertarget{index_aps_sec}{}\doxysubsection{\texorpdfstring{AERN Proxy Server (APS)}{AERN Proxy Server (APS)}}\label{index_aps_sec}
-Authenticated server participating in a full-\/mesh; maintains per-\/peer tunnels, forwards encrypted traffic, and can serve as entry, intermediate, or exit node.\hypertarget{index_acd_sec}{}\doxysubsection{\texorpdfstring{AERN Client Device (ACD)}{AERN Client Device (ACD)}}\label{index_acd_sec}
-Authenticated endpoint that registers to obtain the proxy list, selects an entry node, performs key exchange, and transmits via the proxy mesh.\hypertarget{index_proto_sec}{}\doxysection{\texorpdfstring{Protocol Overview}{Protocol Overview}}\label{index_proto_sec}
-\hypertarget{index_join_sec}{}\doxysubsection{\texorpdfstring{Registration and Entry}{Registration and Entry}}\label{index_join_sec}
-Clients register with the ADC, which verifies certificates and returns a signed, hashed proxy list. The client chooses an entry proxy at random and performs an asymmetric key exchange to derive a shared secret. The shared secret is expanded (SHAKE) into RCS keys/nonces for a duplex symmetric tunnel.\hypertarget{index_routing_sec}{}\doxysubsection{\texorpdfstring{Route Maps and Forwarding}{Route Maps and Forwarding}}\label{index_routing_sec}
-For each message flow, the entry node composes a route map\+: a randomized sequence of proxy “hints” (16-\/bit indices into the shared topology list). The map and packet are encrypted; at each hop the next destination is looked up and the payload (including header fields) is re-\/encrypted and forwarded. Entry/exit nodes remain fixed for the session; intermediate hops are varied.\hypertarget{index_pkt_sec}{}\doxysubsection{\texorpdfstring{Framing and Header}{Framing and Header}}\label{index_pkt_sec}
-AERN uses a fixed 1500-\/byte MTU frame. The inter-\/proxy packet format (54-\/byte header + payload) includes\+: message/flag type, sequence number, fragment sequence, encrypted route map, and UTC timestamp used for anti-\/replay. Larger messages are fragmented and reassembled at exit/client as required.\hypertarget{index_crypto_sec}{}\doxysection{\texorpdfstring{Cryptographic Primitives}{Cryptographic Primitives}}\label{index_crypto_sec}
-Asymmetric\+: Kyber/\+ML-\/\+KEM and Mc\+Eliece for KEM; Dilithium or SPHINCS+ for signatures. ~\newline
-Symmetric\+: RCS AEAD stream cipher for tunnels. ~\newline
-Hash/\+KDF/\+MAC\+: SHA3-\/512, SHAKE, and KMAC for hashing, expansion, and authentication. Asymmetric operations are limited to registration and session setup; the data plane is symmetric for efficiency.\hypertarget{index_filesec_sec}{}\doxysection{\texorpdfstring{Files and Modules}{Files and Modules}}\label{index_filesec_sec}
+The ARS is the root trust anchor for an AERN domain. It generates and stores the root signing key, creates the root certificate, and signs child certificates. The ARS signing key is retained only by the ARS. A deployment may isolate the ARS and expose only a restricted remote-\/signing path through the ADC. ARS compromise affects future identity trust, but does not by itself reveal completed tunnel keys after exchange material and active symmetric state have been erased.\hypertarget{index_adc_sec}{}\doxysubsection{\texorpdfstring{AERN Domain Controller (ADC)}{AERN Domain Controller (ADC)}}\label{index_adc_sec}
+The ADC is the certified administrative authority for the domain. It validates root-\/signed device certificates, manages registration and revocation, maintains the versioned topology list, signs topology and control messages, distributes APS topology state to clients and proxies, and coordinates convergence and administrative updates. ADC compromise affects topology integrity, revocation, availability, and route-\/set bias.\hypertarget{index_aps_sec}{}\doxysubsection{\texorpdfstring{AERN Proxy Server (APS)}{AERN Proxy Server (APS)}}\label{index_aps_sec}
+APS nodes are authenticated relay servers. A synchronized APS maintains local topology state, certificate caches, peer tunnel state, relay-\/session state, fragment reassembly state, pending queues, optional ingress-\/delay queues, dummy-\/traffic accounting, and backend callback context. APS nodes may act as ingress, forwarding relay, egress, or return-\/path terminal for a relay session.\hypertarget{index_acd_sec}{}\doxysubsection{\texorpdfstring{AERN Client Device (ACD)}{AERN Client Device (ACD)}}\label{index_acd_sec}
+A client registers or joins through the ADC, receives an authenticated APS topology, selects an entry APS, and establishes an encrypted tunnel to that entry node. Client traffic is serialized and treated as opaque backend data by the relay core.\hypertarget{index_init_sec}{}\doxysection{\texorpdfstring{Network Initialization}{Network Initialization}}\label{index_init_sec}
+A conforming AERN domain is initialized in the following order\+:
+
+
+\begin{DoxyEnumerate}
+\item Initialize the ARS, generate the ARS signing key pair, create the root certificate, and verify the serialized root-\/certificate self-\/hash.~\newline
+
+\item Initialize the ADC, generate the ADC signing key pair and child certificate, have the ARS sign the ADC certificate, and initialize ADC topology, certificate-\/cache, and administrative state.~\newline
+
+\item Initialize APS nodes. Each APS generates its signing key pair and certificate, obtains a root signature directly or through the remote-\/signing path, registers with the ADC, obtains ADC-\/authenticated topology, exchanges certificates with peers, and establishes APS-\/to-\/\+APS symmetric tunnel state.~\newline
+
+\item Initialize clients. Each client obtains a signed certificate, registers or joins through the ADC, receives the current APS topology, selects an entry APS, and establishes a client-\/to-\/entry tunnel.
+\end{DoxyEnumerate}
+
+Once APS nodes have synchronized topology, cached peer certificates, and established directional tunnel state with their peers, the AERN relay fabric is ready to carry serialized backend traffic.\hypertarget{index_relay_sec}{}\doxysection{\texorpdfstring{Relay Packet Model}{Relay Packet Model}}\label{index_relay_sec}
+AERN relay transport uses fixed-\/size 1500-\/byte wire packets. The active relay packet is composed of a visible authenticated outer tunnel header and an authenticated encrypted ciphertext region. The outer header is adjacent-\/peer metadata only; it carries the packet flag, ciphertext length, sequence number, UTC creation timestamp, and reserved alignment byte. The header is serialized and authenticated as associated data by the tunnel cipher.
+
+The encrypted relay plaintext contains the relay-\/layer state\+:
+
 
 \begin{DoxyItemize}
-\item \doxylink{aern_8h}{aern.\+h} \+: Public API, constants, enums, and structures.
-\item aern\+\_\+client.\+h \+: Client initialization and tunnel establishment.
-\item aern\+\_\+proxy.\+h \+: Proxy synchronization, per-\/peer tunnels, forwarding.
-\item aern\+\_\+ctrl.\+h \+: Domain controller functions (registration, topology).
-\item aern\+\_\+crypto.\+h \+: KEM, signatures, KDF/\+MAC wrappers (QSC primitives).
-\item aern\+\_\+net.\+h \+: Packet structure, route-\/map handling, fragmentation.
-\end{DoxyItemize}\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{index_usage_sec}
-1) Deploy ARS (root) and ADC (domain controller); provision certificates. ~\newline
-2) Start proxies; synchronize topology and derive per-\/peer symmetric tunnels. ~\newline
-3) Register clients through ADC; obtain the signed proxy list. ~\newline
-4) Client selects entry node at random, performs KEX, and sends traffic via randomized multi-\/hop route maps.
+\item a two-\/byte used-\/length prefix;
+\item a sixteen-\/byte consumed-\/path route array;
+\item a thirty-\/two-\/byte relay payload header;
+\item a relay body and padding.
+\end{DoxyItemize}
+
+Route hints, session identifiers, packet identifiers, fragment metadata, payload type, reserved relay byte, return flag, and backend payload bytes are all inside the encrypted relay plaintext. They are not transmitted as clear relay metadata.\hypertarget{index_route_sec}{}\doxysection{\texorpdfstring{Route Maps and Forwarding}{Route Maps and Forwarding}}\label{index_route_sec}
+AERN uses compact route hints rather than clear addresses in relay packets. Each route hint is a one-\/byte, one-\/based ordinal into the synchronized APS topology list. The value zero is reserved as an empty or consumed route value. This encoding limits a single active route-\/addressable domain to 255 APS ordinals. Larger deployments require topology partitioning, route-\/domain sharding, or a future extended-\/hint profile.
+
+The serialized route map is a sixteen-\/byte consumed-\/path array. The first byte identifies the route origin. The remaining bytes contain ordered future-\/hop hints. A forwarding APS authenticates and decrypts the tunnel packet, parses the encrypted route path, resolves the first nonzero future-\/hop hint, clears that consumed entry, reserializes the route path, and forwards the packet under the tunnel shared with the next APS. If no future-\/hop entry remains, the packet is terminal for the current traversal direction.\hypertarget{index_session_sec}{}\doxysection{\texorpdfstring{Relay Sessions and Backend Boundary}{Relay Sessions and Backend Boundary}}\label{index_session_sec}
+AERN uses explicit ingress-\/to-\/egress relay sessions. On the first outbound serialized payload for a destination, the ingress APS creates a pending session entry and sends a session-\/open payload to the selected egress APS. Non-\/dummy data is held in a pending queue until a valid session-\/open acknowledgement is accepted for the same session identifier and egress context. The egress creates an active session only after accepting the authenticated session-\/open payload.
+
+Backend transport is deliberately outside the cryptographic relay core. The relay core authenticates, decrypts, validates route and session state, reassembles fragments when required, classifies direction, and invokes the configured egress or ingress callback. The callback may bind to a TUN or TAP interface, raw socket path, userspace network stack, application adapter, or test backend. Backend implementations shall not expose relay metadata through logs or external interfaces.\hypertarget{index_frag_sec}{}\doxysection{\texorpdfstring{Fragmentation and Reassembly}{Fragmentation and Reassembly}}\label{index_frag_sec}
+Fragmentation is performed at the encrypted relay payload layer. Fragment metadata is carried in the encrypted relay payload header and is accepted only after the enclosing tunnel packet has authenticated and decrypted. Reassembly is bound to the session identifier, packet identifier, direction flag, payload type, reserved byte, fragment count, fragment sequence, and reconstructed length. Incomplete or inconsistent fragment sets are discarded and must not invoke backend delivery.\hypertarget{index_dummy_sec}{}\doxysection{\texorpdfstring{Dummy Traffic and Ingress Delay}{Dummy Traffic and Ingress Delay}}\label{index_dummy_sec}
+AERN supports bounded dummy relay traffic and optional randomized ingress delay. Dummy packets use ordinary fixed-\/size relay packets, tunnel authentication, route processing, and terminal discard. They do not invoke backend callbacks. Dummy generation is controlled by local utilization policy with floor, ceiling, interval, accounting-\/window, and per-\/window emission limits. Ingress delay adds bounded local timing uncertainty before outbound packets enter the APS mesh. These mechanisms mitigate sparse-\/flow timing and traffic-\/volume observation but do not provide mixnet-\/grade anonymity against a fully global timing adversary.\hypertarget{index_crypto_sec}{}\doxysection{\texorpdfstring{Cryptographic Components}{Cryptographic Components}}\label{index_crypto_sec}
+AERN uses post-\/quantum asymmetric primitives for certificate authentication and tunnel establishment, and symmetric authenticated encryption for the data plane. Supported configurations include ML-\/\+KEM/\+Kyber or Mc\+Eliece for key encapsulation and ML-\/\+DSA/\+Dilithium or SPHINCS+ for signatures. SHA3, SHAKE, and KMAC are used for hashing, derivation, and authentication support. RCS is used as the authenticated symmetric tunnel cipher in the current AERN profile.
+
+Tunnel receive authentication is transactional. On packet authentication failure, the receive-\/side RCS authentication state is restored, the receive sequence is not advanced, the plaintext buffer is cleared, and the authentication failure counter is incremented. Repeated authentication failures reach the configured channel-\/down threshold.\hypertarget{index_admin_sec}{}\doxysection{\texorpdfstring{Administrative Message Families}{Administrative Message Families}}\label{index_admin_sec}
+AERN defines signed administrative and control-\/message families for announce, convergence, topology update, incremental certificate retrieval, fragment-\/key exchange, MFK/\+MEK exchange, registration, register update, remote signing, resignation, revocation, join, topological query, and topological status. Each accepted control message is bound to certificate state, role authorization, freshness, sequence policy where applicable, and the relevant topology or certificate constraints.\hypertarget{index_file_sec}{}\doxysection{\texorpdfstring{Primary Modules}{Primary Modules}}\label{index_file_sec}
+
+\begin{DoxyItemize}
+\item \doxylink{aern_8h}{aern.\+h}\+: public constants, enumerations, structures, and core API types.~\newline
+
+\item \doxylink{admin_8h}{admin.\+h}\+: administrative utility and command support.~\newline
+
+\item \doxylink{ars_8h}{ars.\+h}\+: root trust-\/anchor initialization and certificate-\/signing support.~\newline
+
+\item \doxylink{adc_8h}{adc.\+h}\+: domain-\/controller state, registration, topology, and control logic.~\newline
+
+\item \doxylink{aps_8h}{aps.\+h}\+: proxy-\/server state, synchronization, and peer tunnel support.~\newline
+
+\item \doxylink{client_8h}{client.\+h}\+: client registration, join, and entry-\/tunnel support.~\newline
+
+\item \doxylink{certificate_8h}{certificate.\+h}\+: root and child certificate encoding, decoding, signing, and validation.~\newline
+
+\item \doxylink{network_8h}{network.\+h}\+: administrative/control-\/message serialization and processing.~\newline
+
+\item \doxylink{topology_8h}{topology.\+h}\+: topology-\/node and topology-\/list management.~\newline
+
+\item \doxylink{mek_8h}{mek.\+h}\+: tunnel key exchange, key derivation, and rekey policy support.~\newline
+
+\item \doxylink{route_8h}{route.\+h}\+: relay packet construction, forwarding, route handling, and backend delivery.~\newline
+
+\item \doxylink{relaysession_8h_source}{relaysession.\+h}\+: relay session cache and session lifecycle state.~\newline
+
+\item \doxylink{relayqueue_8h}{relayqueue.\+h}\+: pending and delay queue support.~\newline
+
+\item fragment.\+h\+: relay fragmentation and reassembly support.~\newline
+
+\item backend.\+h\+: backend callback interface for egress and ingress delivery.
+\end{DoxyItemize}\hypertarget{index_validation_sec}{}\doxysection{\texorpdfstring{Validation Status}{Validation Status}}\label{index_validation_sec}
+The current virtual-\/network validation campaign builds and runs under GCC and Clang, exercises ARS, ADC, APS, client, control-\/message, tunnel, relay-\/session, fragmentation, dummy-\/traffic, ingress-\/delay, backend, replay, timestamp, sequence, and 4-\/APS encrypted multi-\/hop profiles, and completes the Address Sanitizer profile. Extended sanitizer review of QSC Kyber-\/derived modular arithmetic is tracked separately from AERN functional validation.\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Operational Outline}{Operational Outline}}\label{index_usage_sec}
+
+\begin{DoxyEnumerate}
+\item Generate and protect the ARS root signing key and root certificate.~\newline
+
+\item Generate the ADC certificate and have the ARS sign it.~\newline
+
+\item Start the ADC and initialize versioned topology and certificate-\/cache state.~\newline
+
+\item Generate and sign APS certificates, register APS nodes, synchronize topology, exchange peer certificates, and establish APS-\/to-\/\+APS tunnels.~\newline
+
+\item Register or join clients through the ADC and establish the client-\/to-\/entry tunnel.~\newline
+
+\item Configure egress and ingress backend callbacks and begin fixed-\/size relay packet transport.
+\end{DoxyEnumerate}
 
 \begin{DoxyAuthor}{Author}
 QRCS Corporation 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
-2025-\/11-\/06 
+2026-\/05-\/21 
 \end{DoxyDate}

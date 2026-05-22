@@ -1,0 +1,41 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERNTest/e2e\+\_\+test.h File Reference}
+\hypertarget{e2e__test_8h}{}\label{e2e__test_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/e2e\_test.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/e2e\_test.h}}
+
+
+Deterministic end-\/to-\/end substrate tests for AERNTest.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{e2e__test_8h_aabcac28cf75c85ac858f50d0b78e8ac7}{aerntest\+\_\+e2e\+\_\+run}} (void)
+\begin{DoxyCompactList}\small\item\em Run the deterministic end-\/to-\/end substrate tests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Deterministic end-\/to-\/end substrate tests for AERNTest. 
+
+This header declares the deterministic end-\/to-\/end test group used by the AERNTest harness. The tests verify local relay, session, callback, return-\/path, dummy-\/traffic, and fragment-\/reassembly boundaries that can be exercised without launching interactive ARS, ADC, APS, or ACD console processes.
+
+\begin{DoxyNote}{Note}
+Live socket and multi-\/process orchestration remain outside this local deterministic test group. 
+\end{DoxyNote}
+
+
+\label{doc-func-members}
+\Hypertarget{e2e__test_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{e2e__test_8h_aabcac28cf75c85ac858f50d0b78e8ac7}\index{e2e\_test.h@{e2e\_test.h}!aerntest\_e2e\_run@{aerntest\_e2e\_run}}
+\index{aerntest\_e2e\_run@{aerntest\_e2e\_run}!e2e\_test.h@{e2e\_test.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_e2e\_run()}{aerntest\_e2e\_run()}}
+{\footnotesize\ttfamily \label{e2e__test_8h_aabcac28cf75c85ac858f50d0b78e8ac7} 
+bool aerntest\+\_\+e2e\+\_\+run (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Run the deterministic end-\/to-\/end substrate tests. 
+
+\begin{DoxyReturn}{Returns}
+Returns true when every deterministic end-\/to-\/end substrate test passes. 
+\end{DoxyReturn}

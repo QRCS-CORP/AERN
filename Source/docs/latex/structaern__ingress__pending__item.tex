@@ -1,0 +1,91 @@
+\doxysection{aern\+\_\+ingress\+\_\+pending\+\_\+item Struct Reference}
+\hypertarget{structaern__ingress__pending__item}{}\label{structaern__ingress__pending__item}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+
+
+Relay packet queued while an ingress session waits for egress acknowledgement or delay expiry.  
+
+
+
+
+{\ttfamily \#include $<$relayqueue.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__ingress__pending__item_a021141e4ed340d853a361edbafdc68a8}{packet}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__ingress__pending__item_ab92fda684790a92924ba209e515d2dcd}{packetlen}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__ingress__pending__item_ad721fc6ca6a3d6ba3bc506576622aab0}{capacity}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__ingress__pending__item_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__ingress__pending__item_a2c92b3e49ad501b221931705540efcaa}{packetid}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__ingress__pending__item_a3ed4f0ed85a6a2660a41f62157f52b6d}{expiry}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__ingress__pending__item_a68a77f136b0fcf8314fedaca3ca36cbf}{delayuntil}}
+\item 
+bool \mbox{\hyperlink{structaern__ingress__pending__item_a03c996f9fcf0e10baeb3e700be0c409a}{active}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Relay packet queued while an ingress session waits for egress acknowledgement or delay expiry. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__ingress__pending__item_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__ingress__pending__item_a03c996f9fcf0e10baeb3e700be0c409a}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!active@{active}}
+\index{active@{active}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_a03c996f9fcf0e10baeb3e700be0c409a} 
+bool active}
+
+True when the item owns packet storage \Hypertarget{structaern__ingress__pending__item_ad721fc6ca6a3d6ba3bc506576622aab0}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!capacity@{capacity}}
+\index{capacity@{capacity}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_ad721fc6ca6a3d6ba3bc506576622aab0} 
+size\+\_\+t capacity}
+
+Allocated packet capacity in bytes \Hypertarget{structaern__ingress__pending__item_a68a77f136b0fcf8314fedaca3ca36cbf}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!delayuntil@{delayuntil}}
+\index{delayuntil@{delayuntil}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{delayuntil}{delayuntil}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_a68a77f136b0fcf8314fedaca3ca36cbf} 
+uint64\+\_\+t delayuntil}
+
+UTC release time in milliseconds, or zero \Hypertarget{structaern__ingress__pending__item_a3ed4f0ed85a6a2660a41f62157f52b6d}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!expiry@{expiry}}
+\index{expiry@{expiry}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{expiry}{expiry}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_a3ed4f0ed85a6a2660a41f62157f52b6d} 
+uint64\+\_\+t expiry}
+
+UTC expiry time in seconds \Hypertarget{structaern__ingress__pending__item_a021141e4ed340d853a361edbafdc68a8}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!packet@{packet}}
+\index{packet@{packet}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{packet}{packet}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_a021141e4ed340d853a361edbafdc68a8} 
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} packet}
+
+Heap-\/backed relay packet bytes \Hypertarget{structaern__ingress__pending__item_a2c92b3e49ad501b221931705540efcaa}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!packetid@{packetid}}
+\index{packetid@{packetid}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{packetid}{packetid}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_a2c92b3e49ad501b221931705540efcaa} 
+uint64\+\_\+t packetid}
+
+Packet identifier \Hypertarget{structaern__ingress__pending__item_ab92fda684790a92924ba209e515d2dcd}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!packetlen@{packetlen}}
+\index{packetlen@{packetlen}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{packetlen}{packetlen}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_ab92fda684790a92924ba209e515d2dcd} 
+size\+\_\+t packetlen}
+
+Number of valid packet bytes \Hypertarget{structaern__ingress__pending__item_a9dc02beaf3ba3a8f741bf83d4619dbab}\index{aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}!sessionid@{sessionid}}
+\index{sessionid@{sessionid}!aern\_ingress\_pending\_item@{aern\_ingress\_pending\_item}}
+\doxysubsubsection{\texorpdfstring{sessionid}{sessionid}}
+{\footnotesize\ttfamily \label{structaern__ingress__pending__item_a9dc02beaf3ba3a8f741bf83d4619dbab} 
+uint64\+\_\+t sessionid}
+
+Logical session identifier 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{relayqueue_8h}{relayqueue.\+h}}\end{DoxyCompactItemize}

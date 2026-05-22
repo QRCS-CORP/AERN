@@ -1,0 +1,75 @@
+\doxysection{aern\+\_\+mek\+\_\+request\+\_\+state Struct Reference}
+\hypertarget{structaern__mek__request__state}{}\label{structaern__mek__request__state}\index{aern\_mek\_request\_state@{aern\_mek\_request\_state}}
+
+
+State for the MEK exchange requestor (P\+\_\+L / client).  
+
+
+
+
+{\ttfamily \#include $<$mek.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__mek__request__state_a74df07aa1669bf94640440544efbd71c}{remote\+\_\+address}}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__mek__request__state_ac264d0a53843400fd4cd8375d718455f}{lcert}}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__mek__request__state_af0cd86e587a9f3d5e389dbc6f48cd3a4}{rcert}}
+\item 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__mek__request__state_a113e8f9eb6955551654df290e61b60ff}{root}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__mek__request__state_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}
+\item 
+\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__mek__request__state_a7a6e08795dae731416bc1d66d45f95eb}{cns\+\_\+out}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State for the MEK exchange requestor (P\+\_\+L / client). 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__mek__request__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__mek__request__state_a7a6e08795dae731416bc1d66d45f95eb}\index{aern\_mek\_request\_state@{aern\_mek\_request\_state}!cns\_out@{cns\_out}}
+\index{cns\_out@{cns\_out}!aern\_mek\_request\_state@{aern\_mek\_request\_state}}
+\doxysubsubsection{\texorpdfstring{cns\_out}{cns\_out}}
+{\footnotesize\ttfamily \label{structaern__mek__request__state_a7a6e08795dae731416bc1d66d45f95eb} 
+\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}}\texorpdfstring{$\ast$}{*} cns\+\_\+out}
+
+Output\+: initialised cipher state \Hypertarget{structaern__mek__request__state_ac264d0a53843400fd4cd8375d718455f}\index{aern\_mek\_request\_state@{aern\_mek\_request\_state}!lcert@{lcert}}
+\index{lcert@{lcert}!aern\_mek\_request\_state@{aern\_mek\_request\_state}}
+\doxysubsubsection{\texorpdfstring{lcert}{lcert}}
+{\footnotesize\ttfamily \label{structaern__mek__request__state_ac264d0a53843400fd4cd8375d718455f} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} lcert}
+
+Local certificate \Hypertarget{structaern__mek__request__state_af0cd86e587a9f3d5e389dbc6f48cd3a4}\index{aern\_mek\_request\_state@{aern\_mek\_request\_state}!rcert@{rcert}}
+\index{rcert@{rcert}!aern\_mek\_request\_state@{aern\_mek\_request\_state}}
+\doxysubsubsection{\texorpdfstring{rcert}{rcert}}
+{\footnotesize\ttfamily \label{structaern__mek__request__state_af0cd86e587a9f3d5e389dbc6f48cd3a4} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} rcert}
+
+Remote peer certificate \Hypertarget{structaern__mek__request__state_a74df07aa1669bf94640440544efbd71c}\index{aern\_mek\_request\_state@{aern\_mek\_request\_state}!remote\_address@{remote\_address}}
+\index{remote\_address@{remote\_address}!aern\_mek\_request\_state@{aern\_mek\_request\_state}}
+\doxysubsubsection{\texorpdfstring{remote\_address}{remote\_address}}
+{\footnotesize\ttfamily \label{structaern__mek__request__state_a74df07aa1669bf94640440544efbd71c} 
+const char\texorpdfstring{$\ast$}{*} remote\+\_\+address}
+
+Remote peer IP string \Hypertarget{structaern__mek__request__state_a113e8f9eb6955551654df290e61b60ff}\index{aern\_mek\_request\_state@{aern\_mek\_request\_state}!root@{root}}
+\index{root@{root}!aern\_mek\_request\_state@{aern\_mek\_request\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__mek__request__state_a113e8f9eb6955551654df290e61b60ff} 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}}\texorpdfstring{$\ast$}{*} root}
+
+Root certificate \Hypertarget{structaern__mek__request__state_a5cbd2b117e930d8f469c924a8b27ea21}\index{aern\_mek\_request\_state@{aern\_mek\_request\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_mek\_request\_state@{aern\_mek\_request\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__mek__request__state_a5cbd2b117e930d8f469c924a8b27ea21} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+Local ML-\/\+DSA signing key 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{mek_8h}{mek.\+h}}\end{DoxyCompactItemize}

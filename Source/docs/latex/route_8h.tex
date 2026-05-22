@@ -1,0 +1,1691 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/route.h File Reference}
+\hypertarget{route_8h}{}\label{route_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/route.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/route.h}}
+
+
+Phase-\/4\+: Route engine and packet forwarding.  
+
+
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+{\ttfamily \#include "{}mek.\+h"{}}\newline
+{\ttfamily \#include "{}topology.\+h"{}}\newline
+{\ttfamily \#include "{}relayqueue.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em Parsed route-\/map (in-\/memory representation). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em State passed to aern\+\_\+packet\+\_\+forward. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__exit__state}{aern\+\_\+exit\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em State held at the exit node per active circuit. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relay__packet}{aern\+\_\+relay\+\_\+packet}}
+\begin{DoxyCompactList}\small\item\em A pre-\/padded, fixed-\/1500-\/byte relay packet ready for transmission. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}}
+\begin{DoxyCompactList}\small\item\em Encrypted relay payload header. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relay__session__open}{aern\+\_\+relay\+\_\+session\+\_\+open}}
+\begin{DoxyCompactList}\small\item\em Encrypted ingress-\/to-\/egress session-\/open message. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relay__session__open__ack}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack}}
+\begin{DoxyCompactList}\small\item\em Encrypted egress-\/to-\/ingress session-\/open acknowledgement. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}}
+\begin{DoxyCompactList}\small\item\em Metadata stored in the fixed relay session table for an ingress or egress relay session. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry}}
+\begin{DoxyCompactList}\small\item\em Metadata stored in the dynamic fragment cache for a fragmented relay packet. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relaysession__table}{aern\+\_\+relaysession\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em Fixed relay-\/session metadata table. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__fragment__part__state}{aern\+\_\+fragment\+\_\+part\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Heap-\/backed fragment part stored inside a dynamic fragment set. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}}
+\begin{DoxyCompactList}\small\item\em Dynamic fragment set for one fragmented relay packet. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__fragment__table}{aern\+\_\+fragment\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em Dynamic fragment-\/set cache. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Relay session, fragment, and ingress queue cache state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{route_8h_a814d2eba3c290eebfb1e058c90f4c804}\label{route_8h_a814d2eba3c290eebfb1e058c90f4c804} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+CACHE\+\_\+\+KEY\+\_\+\+SIZE}~16U
+\begin{DoxyCompactList}\small\item\em The byte length of the deterministic relay cache lookup key. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a646683ae36ba30a548c331f009332a12}\label{route_8h_a646683ae36ba30a548c331f009332a12} 
+\#define {\bfseries AERN\+\_\+\+ROUTE\+\_\+\+MIN\+\_\+\+HOPS}~3U
+\begin{DoxyCompactList}\small\item\em The minimum number of APS nodes in a complete relay route. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a5b45d24287524f5218a29f1ed6605463}\label{route_8h_a5b45d24287524f5218a29f1ed6605463} 
+\#define {\bfseries AERN\+\_\+\+ROUTE\+\_\+\+MINIMUM\+\_\+\+HOPS}~\mbox{\hyperlink{route_8h_a646683ae36ba30a548c331f009332a12}{AERN\+\_\+\+ROUTE\+\_\+\+MIN\+\_\+\+HOPS}}
+\begin{DoxyCompactList}\small\item\em Compatibility macro for the minimum complete relay route length. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a559d75b751ff84c40640995ba75466da}\label{route_8h_a559d75b751ff84c40640995ba75466da} 
+\#define {\bfseries AERN\+\_\+\+ROUTE\+\_\+\+MAX\+\_\+\+HOPS}~16U
+\begin{DoxyCompactList}\small\item\em The maximum number of APS nodes in a complete relay route. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a13330f5c528e651b8860e34bbb99a948}\label{route_8h_a13330f5c528e651b8860e34bbb99a948} 
+\#define {\bfseries AERN\+\_\+\+ROUTE\+\_\+\+MAXIMUM\+\_\+\+HOPS}~\mbox{\hyperlink{route_8h_a559d75b751ff84c40640995ba75466da}{AERN\+\_\+\+ROUTE\+\_\+\+MAX\+\_\+\+HOPS}}
+\begin{DoxyCompactList}\small\item\em Compatibility macro for the maximum complete relay route length. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a218d4397f5be239917b0466fe3cdd8eb}\label{route_8h_a218d4397f5be239917b0466fe3cdd8eb} 
+\#define {\bfseries AERN\+\_\+\+INGRESS\+\_\+\+PENDING\+\_\+\+QUEUE\+\_\+\+DEPTH}~64U
+\begin{DoxyCompactList}\small\item\em The maximum number of relay packets queued while a session-\/open acknowledgement is pending. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_af2944c1f82b7976eb0ade8435c732ea9}\label{route_8h_af2944c1f82b7976eb0ade8435c732ea9} 
+\#define {\bfseries AERN\+\_\+\+INGRESS\+\_\+\+DELAY\+\_\+\+QUEUE\+\_\+\+DEPTH}~64U
+\begin{DoxyCompactList}\small\item\em The maximum number of relay packets held in the optional ingress randomized-\/delay queue. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a6f097be6ab118b069992b43d36c61c1c}\label{route_8h_a6f097be6ab118b069992b43d36c61c1c} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+CONTEXT\+\_\+\+INGRESS}~0x01U
+\begin{DoxyCompactList}\small\item\em Session-\/cache key context for ingress-\/side sessions. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a24a1de48051084c08ab3a6fe848be873}\label{route_8h_a24a1de48051084c08ab3a6fe848be873} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+CONTEXT\+\_\+\+EGRESS}~0x02U
+\begin{DoxyCompactList}\small\item\em Session-\/cache key context for egress-\/side sessions. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a5a9c8885e0a3b8155af8e3046f14f14f}\label{route_8h_a5a9c8885e0a3b8155af8e3046f14f14f} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+TIMEOUT\+\_\+\+SECONDS}~300U
+\begin{DoxyCompactList}\small\item\em Default relay session cache lifetime in seconds. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_aeb9ec2e281f404505a3c1a56aa72e441}\label{route_8h_aeb9ec2e281f404505a3c1a56aa72e441} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+FRAGMENT\+\_\+\+TIMEOUT\+\_\+\+SECONDS}~30U
+\begin{DoxyCompactList}\small\item\em Default fragment reassembly cache lifetime in seconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{route_8h_ab5a3ac869d5b6a53240460cea9557ddb}{AERN\+\_\+\+ROUTE\+\_\+\+PATH\+\_\+\+SIZE}}~16U
+\item 
+\Hypertarget{route_8h_a59a387d16071fe90ff6050cde31dba31}\label{route_8h_a59a387d16071fe90ff6050cde31dba31} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+MTU}~\mbox{\hyperlink{aern_8h_a62ec2bd43ca41cfabd59ebe58ef0a64f}{AERN\+\_\+\+NETWORK\+\_\+\+CONNECTION\+\_\+\+MTU}}  /\texorpdfstring{$\ast$}{*} 1500 \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{route_8h_afcd3bbbd1e17ff2c31393c026c5408b7}\label{route_8h_afcd3bbbd1e17ff2c31393c026c5408b7} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+HEADER\+\_\+\+SIZE}~\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}}      /\texorpdfstring{$\ast$}{*} 22   \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{route_8h_aa1609a7e1a824b1c1497d3bb61fed68d}\label{route_8h_aa1609a7e1a824b1c1497d3bb61fed68d} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+CIPHERTEXT\+\_\+\+SIZE}~(AERN\+\_\+\+RELAY\+\_\+\+MTU -\/ AERN\+\_\+\+RELAY\+\_\+\+HEADER\+\_\+\+SIZE)  /\texorpdfstring{$\ast$}{*} 1478 \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{route_8h_a1876a58dc86b72cbd78c3a90de2d6e8a}\label{route_8h_a1876a58dc86b72cbd78c3a90de2d6e8a} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+MAC\+\_\+\+SIZE}~\mbox{\hyperlink{aern_8h_ab6b6fc3236b3e30ea5323137d0ee065f}{AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+MAC\+\_\+\+SIZE}}  /\texorpdfstring{$\ast$}{*} 32  \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{route_8h_aafd6400ec7c66bd5454d312b266f4c80}\label{route_8h_aafd6400ec7c66bd5454d312b266f4c80} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE}~(AERN\+\_\+\+RELAY\+\_\+\+CIPHERTEXT\+\_\+\+SIZE -\/ AERN\+\_\+\+RELAY\+\_\+\+MAC\+\_\+\+SIZE) /\texorpdfstring{$\ast$}{*} 1446 \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{route_8h_a78724831d0e5596ad6aee61293259c0d}{AERN\+\_\+\+ROUTEMAP\+\_\+\+SIZE}}~\mbox{\hyperlink{route_8h_ab5a3ac869d5b6a53240460cea9557ddb}{AERN\+\_\+\+ROUTE\+\_\+\+PATH\+\_\+\+SIZE}}
+\item 
+\#define \mbox{\hyperlink{route_8h_aca190288a150cd9b3934c70a6490a626}{AERN\+\_\+\+LEN\+\_\+\+PREFIX\+\_\+\+SIZE}}~2U
+\item 
+\Hypertarget{route_8h_a10246800451e7d61689f802282e2dfe2}\label{route_8h_a10246800451e7d61689f802282e2dfe2} 
+\#define {\bfseries AERN\+\_\+\+MAX\+\_\+\+USER\+\_\+\+PAYLOAD}~(AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE -\/ \mbox{\hyperlink{route_8h_aca190288a150cd9b3934c70a6490a626}{AERN\+\_\+\+LEN\+\_\+\+PREFIX\+\_\+\+SIZE}} -\/ \mbox{\hyperlink{route_8h_a78724831d0e5596ad6aee61293259c0d}{AERN\+\_\+\+ROUTEMAP\+\_\+\+SIZE}})
+\item 
+\Hypertarget{route_8h_a1f970e66b3135b60fa5e59395fb56804}\label{route_8h_a1f970e66b3135b60fa5e59395fb56804} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+FLAG\+\_\+\+RETURN}~0x0001U
+\begin{DoxyCompactList}\small\item\em Relay payload flag indicating destination-\/to-\/client return traffic. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_aa081d53e85d05ebfc653071a87a9fe7c}\label{route_8h_aa081d53e85d05ebfc653071a87a9fe7c} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+FLAG\+\_\+\+OUTBOUND}~0x0000U
+\begin{DoxyCompactList}\small\item\em Relay payload flag value for client-\/to-\/destination traffic. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a9370a06cf695a1799fc82ee431acabf5}\label{route_8h_a9370a06cf695a1799fc82ee431acabf5} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+DATA\+\_\+\+PAYLOAD\+\_\+\+SIZE}~(AERN\+\_\+\+MAX\+\_\+\+USER\+\_\+\+PAYLOAD -\/ \mbox{\hyperlink{aern_8h_ad1a713180018b9d35ee65371a351ecdf}{AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em Maximum opaque serialized packet bytes carried after the encrypted relay payload header. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_a92af9fe0e649273579d4ae6942d681fd}\label{route_8h_a92af9fe0e649273579d4ae6942d681fd} 
+\#define {\bfseries AERN\+\_\+\+FRAG\+\_\+\+CHUNK\+\_\+\+SIZE}~\mbox{\hyperlink{route_8h_a9370a06cf695a1799fc82ee431acabf5}{AERN\+\_\+\+RELAY\+\_\+\+DATA\+\_\+\+PAYLOAD\+\_\+\+SIZE}}
+\begin{DoxyCompactList}\small\item\em Maximum application bytes carried by one relay payload fragment. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{route_8h_a68876fec05fa2d9a14a677101535e5b2}{AERN\+\_\+\+EXIT\+\_\+\+TIMEOUT\+\_\+\+MS}}~10000U
+\item 
+\#define \mbox{\hyperlink{route_8h_a9944f172392490cc71fd98cccae652f3}{AERN\+\_\+\+MAX\+\_\+\+FRAGMENTS}}~4096U
+\item 
+\Hypertarget{route_8h_a30dec42229e95d0e0771cfa2878ce26b}\label{route_8h_a30dec42229e95d0e0771cfa2878ce26b} 
+\#define {\bfseries AERN\+\_\+\+FRAGMENT\+\_\+\+CACHE\+\_\+\+MEMORY\+\_\+\+MAX}~(16ULL \texorpdfstring{$\ast$}{*} 1024ULL \texorpdfstring{$\ast$}{*} 1024ULL)
+\begin{DoxyCompactList}\small\item\em The default maximum number of bytes available to a fragment table for cached fragment data. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_afaf1861f03f92adbdbadc0063e95a9da}\label{route_8h_afaf1861f03f92adbdbadc0063e95a9da} 
+\#define {\bfseries AERN\+\_\+\+MAX\+\_\+\+RELAY\+\_\+\+PACKET\+\_\+\+SIZE}~AERN\+\_\+\+RELAY\+\_\+\+MTU  /\texorpdfstring{$\ast$}{*} 1500 bytes \texorpdfstring{$\ast$}{*}/
+\begin{DoxyCompactList}\small\item\em Size of a single relay wire packet. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_aa91fe101cf58c377e48092978dd0236b}\label{route_8h_aa91fe101cf58c377e48092978dd0236b} 
+\#define {\bfseries AERN\+\_\+\+RELAYSESSION\+\_\+\+TABLE\+\_\+\+DEPTH}~64U
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{route_8h_a33e000ff41d875f2c547fcff6809044e}\label{route_8h_a33e000ff41d875f2c547fcff6809044e} 
+typedef enum \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497}{aern\+\_\+relay\+\_\+payload\+\_\+type}} {\bfseries aern\+\_\+relay\+\_\+payload\+\_\+type}
+\item 
+\Hypertarget{route_8h_ac137dc9343730c1c99056d845844110b}\label{route_8h_ac137dc9343730c1c99056d845844110b} 
+typedef enum \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}} {\bfseries aern\+\_\+relay\+\_\+fragment\+\_\+direction}
+\item 
+\Hypertarget{route_8h_a744a17de234a9841c3486e946b8029bf}\label{route_8h_a744a17de234a9841c3486e946b8029bf} 
+typedef enum \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4b}{aern\+\_\+relay\+\_\+session\+\_\+status}} {\bfseries aern\+\_\+relay\+\_\+session\+\_\+status}
+\item 
+\Hypertarget{route_8h_a9583f4a6c77a2c8ec6dc2fa009b0c042}\label{route_8h_a9583f4a6c77a2c8ec6dc2fa009b0c042} 
+typedef enum \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05}{aern\+\_\+exit\+\_\+transport\+\_\+status}} {\bfseries aern\+\_\+exit\+\_\+transport\+\_\+status}
+\item 
+typedef \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{route_8h_addbecda638042f13b537db37881afa6a}{aern\+\_\+exit\+\_\+transport\+\_\+send\+\_\+callback}}) (const struct \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const struct \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen, void \texorpdfstring{$\ast$}{*}context)
+\begin{DoxyCompactList}\small\item\em Backend callback used to transmit authenticated serialized packets from an egress APS. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f}{aern\+\_\+ingress\+\_\+transport\+\_\+send\+\_\+callback}}) (const struct \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const struct \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen, void \texorpdfstring{$\ast$}{*}context)
+\begin{DoxyCompactList}\small\item\em Backend callback used to deliver authenticated return packets at an ingress APS. \end{DoxyCompactList}\item 
+\Hypertarget{route_8h_aa6fa7868050b6f57f8c47d468335814e}\label{route_8h_aa6fa7868050b6f57f8c47d468335814e} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+route\+\_\+map {\bfseries aern\+\_\+route\+\_\+map}
+\item 
+typedef struct aern\+\_\+relay\+\_\+cache\+\_\+state \mbox{\hyperlink{route_8h_a9dfd034a1dc94bbca8796d92478a4016}{aern\+\_\+relay\+\_\+cache\+\_\+state}}
+\item 
+\Hypertarget{route_8h_a7093b6a6500a885120d1b66011d30e49}\label{route_8h_a7093b6a6500a885120d1b66011d30e49} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+forward\+\_\+state {\bfseries aern\+\_\+forward\+\_\+state}
+\item 
+\Hypertarget{route_8h_a5f516ccef1c2c1f929c2167bde56f645}\label{route_8h_a5f516ccef1c2c1f929c2167bde56f645} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+exit\+\_\+state {\bfseries aern\+\_\+exit\+\_\+state}
+\item 
+\Hypertarget{route_8h_aa98b4ea73aa4f9cdcb343442829f6c4b}\label{route_8h_aa98b4ea73aa4f9cdcb343442829f6c4b} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+relay\+\_\+packet {\bfseries aern\+\_\+relay\+\_\+packet}
+\item 
+\Hypertarget{route_8h_a27de4d8076325d76f745da6d86fc6e52}\label{route_8h_a27de4d8076325d76f745da6d86fc6e52} 
+typedef struct aern\+\_\+relay\+\_\+payload\+\_\+header {\bfseries aern\+\_\+relay\+\_\+payload\+\_\+header}
+\item 
+\Hypertarget{route_8h_a78f6103454706bc3514cba9563353e5a}\label{route_8h_a78f6103454706bc3514cba9563353e5a} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+relay\+\_\+session\+\_\+open {\bfseries aern\+\_\+relay\+\_\+session\+\_\+open}
+\item 
+\Hypertarget{route_8h_a39ae6b92aa291b126c7622fa1e9186d0}\label{route_8h_a39ae6b92aa291b126c7622fa1e9186d0} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack {\bfseries aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack}
+\item 
+\Hypertarget{route_8h_ab7314d512ae071bc68c002ad7687bb02}\label{route_8h_ab7314d512ae071bc68c002ad7687bb02} 
+typedef struct aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry {\bfseries aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}
+\item 
+\Hypertarget{route_8h_a18d164da96b141fdde6fe604cc4668fc}\label{route_8h_a18d164da96b141fdde6fe604cc4668fc} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry {\bfseries aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry}
+\item 
+\Hypertarget{route_8h_a720de3db4ad1e3888f3557a82c6ace05}\label{route_8h_a720de3db4ad1e3888f3557a82c6ace05} 
+typedef struct aern\+\_\+relaysession\+\_\+table {\bfseries aern\+\_\+relaysession\+\_\+table}
+\item 
+\Hypertarget{route_8h_a9d3f40bafc2708f443a3c045b6f4d6b5}\label{route_8h_a9d3f40bafc2708f443a3c045b6f4d6b5} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+fragment\+\_\+part\+\_\+state {\bfseries aern\+\_\+fragment\+\_\+part\+\_\+state}
+\item 
+\Hypertarget{route_8h_a80eebdcc0f6da11e7f83527729f32fb3}\label{route_8h_a80eebdcc0f6da11e7f83527729f32fb3} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+fragment\+\_\+cache {\bfseries aern\+\_\+fragment\+\_\+cache}
+\item 
+\Hypertarget{route_8h_a86b467b845b8685222828dacdd4d5d45}\label{route_8h_a86b467b845b8685222828dacdd4d5d45} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+fragment\+\_\+table {\bfseries aern\+\_\+fragment\+\_\+table}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497}{aern\+\_\+relay\+\_\+payload\+\_\+type}} \{ \newline
+\mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497af486ce6abf9acd81c65565ce83274627}{aern\+\_\+relay\+\_\+payload\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a669625a3fe9c613b47a7ee4d3673fbe4}{aern\+\_\+relay\+\_\+payload\+\_\+session\+\_\+open}} = 0x01U
+, \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a0f89d4527342ca1d99fc098b438526e7}{aern\+\_\+relay\+\_\+payload\+\_\+session\+\_\+open\+\_\+ack}} = 0x02U
+, \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a91be382faae5a058e1ab374b99b2e929}{aern\+\_\+relay\+\_\+payload\+\_\+session\+\_\+close}} = 0x03U
+, \newline
+\mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497aa88bdb903911af8f59275ec92ae83d70}{aern\+\_\+relay\+\_\+payload\+\_\+data}} = 0x04U
+, \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a5e6786c61ef57383c1b70e69d8c018af}{aern\+\_\+relay\+\_\+payload\+\_\+dummy}} = 0x05U
+, \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497ae38faa757665048df8cb6114174dae91}{aern\+\_\+relay\+\_\+payload\+\_\+error}} = 0x\+FFU
+ \}
+\begin{DoxyCompactList}\small\item\em Encrypted relay payload message types. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}} \{ \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251a92965343da5b9e7a5d354415740781ef}{aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251a2db3f1c483bda7daad14a04d4fbf37bd}{aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+outbound}} = 0x01U
+, \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251a18435f272484144d11280daf0a62a48a}{aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+inbound}} = 0x02U
+, \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251abea2627f18151d87be654cfe584f3e50}{aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+return}} = 0x02U
+ \}
+\begin{DoxyCompactList}\small\item\em Fragment-\/cache traffic direction. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4b}{aern\+\_\+relay\+\_\+session\+\_\+status}} \{ \newline
+\mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4baa3cae5057d8fb17dfb48bb01f31a5eba}{aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba05a30217c026ed820bef48886586d4a8}{aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+pending}} = 0x01U
+, \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba3efbf6590f0180004406e6f3cc3f4d11}{aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+active}} = 0x02U
+, \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba1d7efc2f7bc36606f281cb30ce40fe39}{aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+closing}} = 0x03U
+, \newline
+\mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba35ae102874103086ec64b036a0999039}{aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+expired}} = 0x04U
+, \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba809abe73a7112527a605e68def6fe33a}{aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+failed}} = 0x05U
+ \}
+\begin{DoxyCompactList}\small\item\em Relay session cache state values. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05}{aern\+\_\+exit\+\_\+transport\+\_\+status}} \{ \newline
+\mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05ab1033df679c0903243f51451716f8141}{aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05a151ed0da094c7c4bab58ff983d163855}{aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+pending}} = 0x01U
+, \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05af21e0342036b9404697fc4889fdfb0fd}{aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+active}} = 0x02U
+, \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aa4e315cb799e5f1ae6ad7b0bd89a3718}{aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+unimplemented}} = 0x03U
+, \newline
+\mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aed29e326b8b066a468bcf5af550e8f9c}{aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+failed}} = 0x04U
+ \}
+\begin{DoxyCompactList}\small\item\em Backend-\/neutral egress transport state values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_ae98f12a8d95a505f506d3361aa2df650}{aern\+\_\+route\+\_\+generate}} (\mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}rm, uint8\+\_\+t apscount, uint8\+\_\+t originhint, uint8\+\_\+t targethint)
+\begin{DoxyCompactList}\small\item\em Generate a random source-\/routed path through the topology. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a35e3807bd7460879095c27695945763e}{aern\+\_\+route\+\_\+map\+\_\+serialize}} (uint8\+\_\+t dst\mbox{[}\mbox{\hyperlink{route_8h_a78724831d0e5596ad6aee61293259c0d}{AERN\+\_\+\+ROUTEMAP\+\_\+\+SIZE}}\mbox{]}, const \mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}rm)
+\begin{DoxyCompactList}\small\item\em Serialise a route map into the 33-\/byte wire representation. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a92c6bc13a91811c279b9e55e351f736c}{aern\+\_\+route\+\_\+map\+\_\+deserialize}} (\mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}rm, const uint8\+\_\+t src\mbox{[}\mbox{\hyperlink{route_8h_a78724831d0e5596ad6aee61293259c0d}{AERN\+\_\+\+ROUTEMAP\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Deserialise a 33-\/byte wire representation into a route map. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a3a7216c963bf4a4e1d2b540668f82ff0}{aern\+\_\+relay\+\_\+forward\+\_\+state\+\_\+is\+\_\+valid}} (const \mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd, bool requirecache)
+\begin{DoxyCompactList}\small\item\em Validate the minimum runtime prerequisites for relay forwarding. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_a786dc539143f5c78f75450e0749c4654}{aern\+\_\+packet\+\_\+forward}} (\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd, uint8\+\_\+t wire\mbox{[}AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}, const char \texorpdfstring{$\ast$}{*}srcip)
+\begin{DoxyCompactList}\small\item\em Process one per-\/hop relay packet. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_a61c7fa44ee5c08286df9a0d02e0c6571}{aern\+\_\+entry\+\_\+packet\+\_\+forward}} (\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd, uint8\+\_\+t wire\mbox{[}AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}, const char \texorpdfstring{$\ast$}{*}srcip)
+\begin{DoxyCompactList}\small\item\em Process a client-\/origin relay packet at the entry APS. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a4068b9c267d98c77b4a88f89a2c7fa35}{aern\+\_\+relay\+\_\+payload\+\_\+header\+\_\+serialize}} (uint8\+\_\+t output\mbox{[}\mbox{\hyperlink{aern_8h_ad1a713180018b9d35ee65371a351ecdf}{AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE}}\mbox{]}, const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header)
+\begin{DoxyCompactList}\small\item\em Serialize an encrypted relay payload header. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_af97756201a77f9e53aa7df613366981d}{aern\+\_\+relay\+\_\+payload\+\_\+header\+\_\+deserialize}} (\mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t input\mbox{[}\mbox{\hyperlink{aern_8h_ad1a713180018b9d35ee65371a351ecdf}{AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Deserialize an encrypted relay payload header. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a67472a093a70962ffbb3460393a8abdc}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+serialize}} (uint8\+\_\+t output\mbox{[}\mbox{\hyperlink{aern_8h_a8fb26b7fa45e2eb7fa570e500f01d043}{AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE}}\mbox{]}, const \mbox{\hyperlink{structaern__relay__session__open}{aern\+\_\+relay\+\_\+session\+\_\+open}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Serialize a session-\/open payload. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a3ed2cef6f5afd547f1e3d7bf1fca5d94}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+deserialize}} (\mbox{\hyperlink{structaern__relay__session__open}{aern\+\_\+relay\+\_\+session\+\_\+open}} \texorpdfstring{$\ast$}{*}state, const uint8\+\_\+t input\mbox{[}\mbox{\hyperlink{aern_8h_a8fb26b7fa45e2eb7fa570e500f01d043}{AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Deserialize a session-\/open payload. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a4856cf21399218c9483e1ed84a6644b1}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack\+\_\+serialize}} (uint8\+\_\+t output\mbox{[}\mbox{\hyperlink{aern_8h_ab98e0c3aaae38eae8f478262a37c9487}{AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE}}\mbox{]}, const \mbox{\hyperlink{structaern__relay__session__open__ack}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Serialize a session-\/open acknowledgement payload. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a1821e2bd37ee55d240bf210cb6768e5c}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack\+\_\+deserialize}} (\mbox{\hyperlink{structaern__relay__session__open__ack}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack}} \texorpdfstring{$\ast$}{*}state, const uint8\+\_\+t input\mbox{[}\mbox{\hyperlink{aern_8h_ab98e0c3aaae38eae8f478262a37c9487}{AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Deserialize a session-\/open acknowledgement payload. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_af2257d09bca45344a200951d0e374ff8}{aern\+\_\+relay\+\_\+fragment\+\_\+key\+\_\+create}} (uint8\+\_\+t key\mbox{[}\mbox{\hyperlink{route_8h_a814d2eba3c290eebfb1e058c90f4c804}{AERN\+\_\+\+RELAY\+\_\+\+CACHE\+\_\+\+KEY\+\_\+\+SIZE}}\mbox{]}, uint64\+\_\+t sessionid, uint64\+\_\+t packetid, uint8\+\_\+t direction)
+\begin{DoxyCompactList}\small\item\em Build a deterministic relay cache key for a relay fragment set. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a410457f7cef9c99b4bd4b3e89db47495}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+add}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, const \mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry}} \texorpdfstring{$\ast$}{*}entry)
+\begin{DoxyCompactList}\small\item\em Add or replace fragment-\/set metadata in the relay cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a688a28c2bfce98a30f05a6c998e72032}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+find}} (const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, \mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry}} \texorpdfstring{$\ast$}{*}entry, uint64\+\_\+t sessionid, uint64\+\_\+t packetid, uint8\+\_\+t direction)
+\begin{DoxyCompactList}\small\item\em Find fragment-\/set metadata in the relay cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a6f115b9f6a67951105ab80cce9d3a449}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+remove}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, uint64\+\_\+t sessionid, uint64\+\_\+t packetid, uint8\+\_\+t direction)
+\begin{DoxyCompactList}\small\item\em Remove fragment-\/set metadata from the relay cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a56a2c106bd1d8f0f1ea3a9cd1d0a205a}{aern\+\_\+relay\+\_\+cache\+\_\+dispose}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache)
+\begin{DoxyCompactList}\small\item\em Dispose all relay cache containers and dynamic allocations. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a463f84a6d799706555b16afde4c544da}{aern\+\_\+relay\+\_\+cache\+\_\+initialize}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache)
+\begin{DoxyCompactList}\small\item\em Initialize all relay cache containers. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a178788360266d210be1a31aa1d1ebcb7}{aern\+\_\+relay\+\_\+cache\+\_\+cleanup}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache)
+\begin{DoxyCompactList}\small\item\em Expire stale relay sessions, fragment caches, pending packets, and delay-\/queue entries. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a1b6d66c30c45c0991bf7c700d4893162}{aern\+\_\+relay\+\_\+delay\+\_\+pop}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Pop a delayed ingress packet from the relay delay queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_ae515ab4dc3a16faf8015f473979310d3}{aern\+\_\+relay\+\_\+delay\+\_\+push}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, const \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Push a packet into the optional randomized ingress delay queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_a4cf8981ba1a26cc367cf91de95a23436}{aern\+\_\+ingress\+\_\+delay\+\_\+flush}} (\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd)
+\begin{DoxyCompactList}\small\item\em Flush due packets from the randomized ingress delay queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a47e85df73ff7c6b79a1c035d61307330}{aern\+\_\+relay\+\_\+pending\+\_\+pop}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Pop an ingress packet waiting for session-\/open acknowledgement. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a135cde8cb00572741eb53900083da023}{aern\+\_\+relay\+\_\+pending\+\_\+push}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, const \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Push an ingress packet while waiting for session-\/open acknowledgement. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t \mbox{\hyperlink{route_8h_a0777dfd378a0503ec363f0c2cea21a09}{aern\+\_\+relay\+\_\+pending\+\_\+remove\+\_\+session}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, uint64\+\_\+t sessionid)
+\begin{DoxyCompactList}\small\item\em Remove all pending and delayed ingress packets for a session. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a3d6a331845d4d28cb6667d4453bcf21f}{aern\+\_\+relay\+\_\+session\+\_\+key\+\_\+create}} (uint8\+\_\+t key\mbox{[}\mbox{\hyperlink{route_8h_a814d2eba3c290eebfb1e058c90f4c804}{AERN\+\_\+\+RELAY\+\_\+\+CACHE\+\_\+\+KEY\+\_\+\+SIZE}}\mbox{]}, uint64\+\_\+t sessionid, uint8\+\_\+t context)
+\begin{DoxyCompactList}\small\item\em Build a deterministic relay cache key for a relay session. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_afac374f40649ed0069b711d785de8a06}{aern\+\_\+relay\+\_\+session\+\_\+add}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}entry)
+\begin{DoxyCompactList}\small\item\em Add or replace relay session metadata in the relay cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_aac64b4c6d59c072b8e6464bb617695b3}{aern\+\_\+relay\+\_\+session\+\_\+exists}} (const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, uint64\+\_\+t sessionid, uint8\+\_\+t context)
+\begin{DoxyCompactList}\small\item\em Test whether a relay session exists in the cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a877369b6a4bc172f32feb253bec636fd}{aern\+\_\+relay\+\_\+session\+\_\+find}} (const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}entry, uint64\+\_\+t sessionid, uint8\+\_\+t context)
+\begin{DoxyCompactList}\small\item\em Find relay session metadata in the relay cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_aad8e6ec4989cf24dd84dd7c098508650}{aern\+\_\+relay\+\_\+session\+\_\+remove}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, uint64\+\_\+t sessionid, uint8\+\_\+t context)
+\begin{DoxyCompactList}\small\item\em Remove relay session metadata from the relay cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a653db477b019bce371afd84a015c0b06}{aern\+\_\+relay\+\_\+traffic\+\_\+observe}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, size\+\_\+t pktlen, bool inbound)
+\begin{DoxyCompactList}\small\item\em Record observed relay traffic volume in the relay cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t \mbox{\hyperlink{route_8h_a780bdf601059974c6928fa87587ef135}{aern\+\_\+relay\+\_\+traffic\+\_\+utilization}} (const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache)
+\begin{DoxyCompactList}\small\item\em Estimate relay utilization for the current local traffic window. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_a06c91147795d548dab1987c5cb3e0d34}{aern\+\_\+dummy\+\_\+traffic\+\_\+generate}} (\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd, uint32\+\_\+t utilization)
+\begin{DoxyCompactList}\small\item\em Generate one APS dummy relay packet when policy allows. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a064e03e0e395ab82b6b4d6849349ddda}{aern\+\_\+exit\+\_\+transport\+\_\+set\+\_\+callback}} (\mbox{\hyperlink{route_8h_addbecda638042f13b537db37881afa6a}{aern\+\_\+exit\+\_\+transport\+\_\+send\+\_\+callback}} callback, void \texorpdfstring{$\ast$}{*}context)
+\begin{DoxyCompactList}\small\item\em Register the backend callback used for egress destination delivery. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a920a2b10517c3aaf1f76b00ab4c699d4}{aern\+\_\+ingress\+\_\+transport\+\_\+set\+\_\+callback}} (\mbox{\hyperlink{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f}{aern\+\_\+ingress\+\_\+transport\+\_\+send\+\_\+callback}} callback, void \texorpdfstring{$\ast$}{*}context)
+\begin{DoxyCompactList}\small\item\em Register the backend callback used for ingress-\/side return delivery. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_a98a21b57e8fad5e1695a1c9c66f2c651}{aern\+\_\+exit\+\_\+transport\+\_\+send\+\_\+serialized\+\_\+packet}} (const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen)
+\begin{DoxyCompactList}\small\item\em Send an authenticated serialized packet through the egress transport abstraction. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_ae91775ccdc8ccc8230144137831188c2}{aern\+\_\+exit\+\_\+transport\+\_\+return\+\_\+serialized\+\_\+packet}} (\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd, const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen)
+\begin{DoxyCompactList}\small\item\em Submit a serialized destination response to the AERN return path. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_a7d5be98d6d0662cfebe148ef35c1d1c5}{aern\+\_\+ingress\+\_\+transport\+\_\+send\+\_\+serialized\+\_\+packet}} (const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen)
+\begin{DoxyCompactList}\small\item\em Send an authenticated return packet through the ingress client-\/transport abstraction. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{route_8h_a412c61f4eb5b3a5ba5b5b9b473cd3f61}{aern\+\_\+return\+\_\+packet\+\_\+send}} (\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd, \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen)
+\begin{DoxyCompactList}\small\item\em Build and send destination-\/to-\/client return relay packets. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_ab1cd28be7ccd1006387eab15f4ba41cb}{aern\+\_\+fragment\+\_\+cache\+\_\+initialize}} (\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}cache)
+\begin{DoxyCompactList}\small\item\em Initialise a fragment cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a4991a2e4e482b0ae65facd49f890248f}{aern\+\_\+fragment\+\_\+cache\+\_\+add}} (\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}cache, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t dlen, uint32\+\_\+t seq)
+\begin{DoxyCompactList}\small\item\em Add a fragment packet to the reassembly cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a6477b13a6e18dd913392e2d2ce9c996e}{aern\+\_\+fragment\+\_\+cache\+\_\+add\+\_\+fragment}} (\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}cache, const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t dlen, uint8\+\_\+t direction, bool \texorpdfstring{$\ast$}{*}complete)
+\begin{DoxyCompactList}\small\item\em Add an out-\/of-\/order fragment with an explicit fragment count. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a71590999d25bd2c559959634610d9715}{aern\+\_\+fragment\+\_\+cache\+\_\+set\+\_\+key}} (\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}cache, uint64\+\_\+t sessionid, uint64\+\_\+t packetid, uint8\+\_\+t direction, uint64\+\_\+t expiry)
+\begin{DoxyCompactList}\small\item\em Set the session key fields for a fragment cache entry. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a1917b6b175dee5d9e91d73cd2ccd148a}{aern\+\_\+fragment\+\_\+cache\+\_\+assemble}} (const \mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}cache, uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, size\+\_\+t \texorpdfstring{$\ast$}{*}outlen)
+\begin{DoxyCompactList}\small\item\em Assemble all received fragments into a contiguous buffer. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_acc35b66611f4dc15cb58fef012bf4e1f}{aern\+\_\+fragment\+\_\+cache\+\_\+clear}} (\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}cache)
+\begin{DoxyCompactList}\small\item\em Zero and reset the fragment cache. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_a82cc8bc5fabfc062ea2aab25fc1dfed5}{aern\+\_\+relay\+\_\+fragment\+\_\+cache\+\_\+add}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, const \mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}entry)
+\begin{DoxyCompactList}\small\item\em Add or replace a complete fragment reassembly cache entry. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{route_8h_ad9c292f7ba306aa8e94ee4ac8876c4b5}{aern\+\_\+relay\+\_\+fragment\+\_\+cache\+\_\+find}} (const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, \mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}entry, uint64\+\_\+t sessionid, uint64\+\_\+t packetid, uint8\+\_\+t direction)
+\begin{DoxyCompactList}\small\item\em Find a complete fragment reassembly cache entry. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_abff9961ac0e001013699df0b6e2bc392}{aern\+\_\+relay\+\_\+fragment\+\_\+cache\+\_\+remove}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, uint64\+\_\+t sessionid, uint64\+\_\+t packetid, uint8\+\_\+t direction)
+\begin{DoxyCompactList}\small\item\em Remove a complete fragment reassembly cache entry. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{route_8h_a745909abbc0791700618e96a734c83f5}{aern\+\_\+packet\+\_\+pad}} (uint8\+\_\+t plaintext\mbox{[}AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE\mbox{]}, uint16\+\_\+t textlen)
+\begin{DoxyCompactList}\small\item\em Pad a plaintext buffer to AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE bytes. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint16\+\_\+t \mbox{\hyperlink{route_8h_a78177615922890187457ddb63b34c6ec}{aern\+\_\+packet\+\_\+unpad}} (const uint8\+\_\+t plaintext\mbox{[}AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE\mbox{]})
+\begin{DoxyCompactList}\small\item\em Recover the actual payload length from a padded plaintext buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Phase-\/4\+: Route engine and packet forwarding. 
+
+Spec\+: AERN-\/2025 Rev. 1a 5–6, Phase-\/4 tasks 4a–4i. 
+
+\label{doc-define-members}
+\Hypertarget{route_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{route_8h_a68876fec05fa2d9a14a677101535e5b2}\index{route.h@{route.h}!AERN\_EXIT\_TIMEOUT\_MS@{AERN\_EXIT\_TIMEOUT\_MS}}
+\index{AERN\_EXIT\_TIMEOUT\_MS@{AERN\_EXIT\_TIMEOUT\_MS}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_EXIT\_TIMEOUT\_MS}{AERN\_EXIT\_TIMEOUT\_MS}}
+{\footnotesize\ttfamily \label{route_8h_a68876fec05fa2d9a14a677101535e5b2} 
+\#define AERN\+\_\+\+EXIT\+\_\+\+TIMEOUT\+\_\+\+MS~10000U}
+
+Exit-\/node response timeout (ms) \Hypertarget{route_8h_aca190288a150cd9b3934c70a6490a626}\index{route.h@{route.h}!AERN\_LEN\_PREFIX\_SIZE@{AERN\_LEN\_PREFIX\_SIZE}}
+\index{AERN\_LEN\_PREFIX\_SIZE@{AERN\_LEN\_PREFIX\_SIZE}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_LEN\_PREFIX\_SIZE}{AERN\_LEN\_PREFIX\_SIZE}}
+{\footnotesize\ttfamily \label{route_8h_aca190288a150cd9b3934c70a6490a626} 
+\#define AERN\+\_\+\+LEN\+\_\+\+PREFIX\+\_\+\+SIZE~2U}
+
+uint16\+\_\+t actual\+\_\+len prefix \Hypertarget{route_8h_a9944f172392490cc71fd98cccae652f3}\index{route.h@{route.h}!AERN\_MAX\_FRAGMENTS@{AERN\_MAX\_FRAGMENTS}}
+\index{AERN\_MAX\_FRAGMENTS@{AERN\_MAX\_FRAGMENTS}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_MAX\_FRAGMENTS}{AERN\_MAX\_FRAGMENTS}}
+{\footnotesize\ttfamily \label{route_8h_a9944f172392490cc71fd98cccae652f3} 
+\#define AERN\+\_\+\+MAX\+\_\+\+FRAGMENTS~4096U}
+
+Max fragments per dynamic reassembly cache \Hypertarget{route_8h_ab5a3ac869d5b6a53240460cea9557ddb}\index{route.h@{route.h}!AERN\_ROUTE\_PATH\_SIZE@{AERN\_ROUTE\_PATH\_SIZE}}
+\index{AERN\_ROUTE\_PATH\_SIZE@{AERN\_ROUTE\_PATH\_SIZE}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_ROUTE\_PATH\_SIZE}{AERN\_ROUTE\_PATH\_SIZE}}
+{\footnotesize\ttfamily \label{route_8h_ab5a3ac869d5b6a53240460cea9557ddb} 
+\#define AERN\+\_\+\+ROUTE\+\_\+\+PATH\+\_\+\+SIZE~16U}
+
+Serialized consumed-\/next-\/hop route path size \Hypertarget{route_8h_a78724831d0e5596ad6aee61293259c0d}\index{route.h@{route.h}!AERN\_ROUTEMAP\_SIZE@{AERN\_ROUTEMAP\_SIZE}}
+\index{AERN\_ROUTEMAP\_SIZE@{AERN\_ROUTEMAP\_SIZE}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_ROUTEMAP\_SIZE}{AERN\_ROUTEMAP\_SIZE}}
+{\footnotesize\ttfamily \label{route_8h_a78724831d0e5596ad6aee61293259c0d} 
+\#define AERN\+\_\+\+ROUTEMAP\+\_\+\+SIZE~\mbox{\hyperlink{route_8h_ab5a3ac869d5b6a53240460cea9557ddb}{AERN\+\_\+\+ROUTE\+\_\+\+PATH\+\_\+\+SIZE}}}
+
+Route-\/map bytes in encrypted payload 
+
+\label{doc-typedef-members}
+\Hypertarget{route_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{route_8h_addbecda638042f13b537db37881afa6a}\index{route.h@{route.h}!aern\_exit\_transport\_send\_callback@{aern\_exit\_transport\_send\_callback}}
+\index{aern\_exit\_transport\_send\_callback@{aern\_exit\_transport\_send\_callback}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_exit\_transport\_send\_callback}{aern\_exit\_transport\_send\_callback}}
+{\footnotesize\ttfamily \label{route_8h_addbecda638042f13b537db37881afa6a} 
+typedef \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}(\texorpdfstring{$\ast$}{*} aern\+\_\+exit\+\_\+transport\+\_\+send\+\_\+callback) (const struct \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const struct \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen, void \texorpdfstring{$\ast$}{*}context)}
+
+
+
+Backend callback used to transmit authenticated serialized packets from an egress APS. 
+
+The callback is invoked only after the relay packet has been authenticated, associated with an active egress session, and reassembled when fragmented. Implementations may bind this callback to a TUN/\+TAP device, raw socket, packet-\/filter backend, userspace transport stack, or application transport. Destination responses are submitted back to AERN with \doxylink{route_8h_ae91775ccdc8ccc8230144137831188c2}{aern\+\_\+exit\+\_\+transport\+\_\+return\+\_\+serialized\+\_\+packet()}; no direct socket path is used inside the relay layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & \mbox{[}in\mbox{]} Backend-\/validated egress session metadata. \\
+\hline
+{\em header} & \mbox{[}in\mbox{]} Authenticated relay payload header. \\
+\hline
+{\em packet} & \mbox{[}in\mbox{]} Opaque serialized packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}in\mbox{]} Number of serialized packet bytes. \\
+\hline
+{\em context} & \mbox{[}in\mbox{]} Opaque backend context supplied during registration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none only when the backend accepts delivery. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f}\index{route.h@{route.h}!aern\_ingress\_transport\_send\_callback@{aern\_ingress\_transport\_send\_callback}}
+\index{aern\_ingress\_transport\_send\_callback@{aern\_ingress\_transport\_send\_callback}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ingress\_transport\_send\_callback}{aern\_ingress\_transport\_send\_callback}}
+{\footnotesize\ttfamily \label{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f} 
+typedef \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}(\texorpdfstring{$\ast$}{*} aern\+\_\+ingress\+\_\+transport\+\_\+send\+\_\+callback) (const struct \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}session, const struct \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen, void \texorpdfstring{$\ast$}{*}context)}
+
+
+
+Backend callback used to deliver authenticated return packets at an ingress APS. 
+
+The callback is invoked only after return traffic has been authenticated, associated with an active ingress session, and reassembled when fragmented. A later platform backend can use this callback to forward the serialized packet through the client tunnel, a local tunnel adapter, a packet injector, or an application callback.
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & \mbox{[}in\mbox{]} Backend-\/validated ingress session metadata. \\
+\hline
+{\em header} & \mbox{[}in\mbox{]} Authenticated return relay payload header. \\
+\hline
+{\em packet} & \mbox{[}in\mbox{]} Opaque serialized packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}in\mbox{]} Number of serialized packet bytes. \\
+\hline
+{\em context} & \mbox{[}in\mbox{]} Opaque backend context supplied during registration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none only when the backend accepts delivery. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a9dfd034a1dc94bbca8796d92478a4016}\index{route.h@{route.h}!aern\_relay\_cache\_state@{aern\_relay\_cache\_state}}
+\index{aern\_relay\_cache\_state@{aern\_relay\_cache\_state}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_cache\_state}{aern\_relay\_cache\_state}}
+{\footnotesize\ttfamily \label{route_8h_a9dfd034a1dc94bbca8796d92478a4016} 
+typedef struct aern\+\_\+relay\+\_\+cache\+\_\+state aern\+\_\+relay\+\_\+cache\+\_\+state}
+
+Brief Forward declaration for the relay cache state. 
+
+\label{doc-enum-members}
+\Hypertarget{route_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{route_8h_adf894dfed9ffa1fa2b2fafde45773e05}\index{route.h@{route.h}!aern\_exit\_transport\_status@{aern\_exit\_transport\_status}}
+\index{aern\_exit\_transport\_status@{aern\_exit\_transport\_status}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_exit\_transport\_status}{aern\_exit\_transport\_status}}
+{\footnotesize\ttfamily \label{route_8h_adf894dfed9ffa1fa2b2fafde45773e05} 
+enum \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05}{aern\+\_\+exit\+\_\+transport\+\_\+status}}}
+
+
+
+Backend-\/neutral egress transport state values. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_exit\_transport\_status\_none@{aern\_exit\_transport\_status\_none}!route.h@{route.h}}\index{route.h@{route.h}!aern\_exit\_transport\_status\_none@{aern\_exit\_transport\_status\_none}}}\Hypertarget{route_8h_adf894dfed9ffa1fa2b2fafde45773e05ab1033df679c0903243f51451716f8141}\label{route_8h_adf894dfed9ffa1fa2b2fafde45773e05ab1033df679c0903243f51451716f8141} 
+aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+none&No transport state is assigned \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_exit\_transport\_status\_pending@{aern\_exit\_transport\_status\_pending}!route.h@{route.h}}\index{route.h@{route.h}!aern\_exit\_transport\_status\_pending@{aern\_exit\_transport\_status\_pending}}}\Hypertarget{route_8h_adf894dfed9ffa1fa2b2fafde45773e05a151ed0da094c7c4bab58ff983d163855}\label{route_8h_adf894dfed9ffa1fa2b2fafde45773e05a151ed0da094c7c4bab58ff983d163855} 
+aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+pending&Transport state is being established \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_exit\_transport\_status\_active@{aern\_exit\_transport\_status\_active}!route.h@{route.h}}\index{route.h@{route.h}!aern\_exit\_transport\_status\_active@{aern\_exit\_transport\_status\_active}}}\Hypertarget{route_8h_adf894dfed9ffa1fa2b2fafde45773e05af21e0342036b9404697fc4889fdfb0fd}\label{route_8h_adf894dfed9ffa1fa2b2fafde45773e05af21e0342036b9404697fc4889fdfb0fd} 
+aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+active&Transport state is active \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_exit\_transport\_status\_unimplemented@{aern\_exit\_transport\_status\_unimplemented}!route.h@{route.h}}\index{route.h@{route.h}!aern\_exit\_transport\_status\_unimplemented@{aern\_exit\_transport\_status\_unimplemented}}}\Hypertarget{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aa4e315cb799e5f1ae6ad7b0bd89a3718}\label{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aa4e315cb799e5f1ae6ad7b0bd89a3718} 
+aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+unimplemented&No platform transport backend is attached \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_exit\_transport\_status\_failed@{aern\_exit\_transport\_status\_failed}!route.h@{route.h}}\index{route.h@{route.h}!aern\_exit\_transport\_status\_failed@{aern\_exit\_transport\_status\_failed}}}\Hypertarget{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aed29e326b8b066a468bcf5af550e8f9c}\label{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aed29e326b8b066a468bcf5af550e8f9c} 
+aern\+\_\+exit\+\_\+transport\+\_\+status\+\_\+failed&Transport state failed \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{route_8h_a19d441ac278626cc2aa2e07d8732e251}\index{route.h@{route.h}!aern\_relay\_fragment\_direction@{aern\_relay\_fragment\_direction}}
+\index{aern\_relay\_fragment\_direction@{aern\_relay\_fragment\_direction}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_direction}{aern\_relay\_fragment\_direction}}
+{\footnotesize\ttfamily \label{route_8h_a19d441ac278626cc2aa2e07d8732e251} 
+enum \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}}}
+
+
+
+Fragment-\/cache traffic direction. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_fragment\_direction\_none@{aern\_relay\_fragment\_direction\_none}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_fragment\_direction\_none@{aern\_relay\_fragment\_direction\_none}}}\Hypertarget{route_8h_a19d441ac278626cc2aa2e07d8732e251a92965343da5b9e7a5d354415740781ef}\label{route_8h_a19d441ac278626cc2aa2e07d8732e251a92965343da5b9e7a5d354415740781ef} 
+aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+none&Direction is unspecified \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_fragment\_direction\_outbound@{aern\_relay\_fragment\_direction\_outbound}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_fragment\_direction\_outbound@{aern\_relay\_fragment\_direction\_outbound}}}\Hypertarget{route_8h_a19d441ac278626cc2aa2e07d8732e251a2db3f1c483bda7daad14a04d4fbf37bd}\label{route_8h_a19d441ac278626cc2aa2e07d8732e251a2db3f1c483bda7daad14a04d4fbf37bd} 
+aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+outbound&Client-\/to-\/destination direction \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_fragment\_direction\_inbound@{aern\_relay\_fragment\_direction\_inbound}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_fragment\_direction\_inbound@{aern\_relay\_fragment\_direction\_inbound}}}\Hypertarget{route_8h_a19d441ac278626cc2aa2e07d8732e251a18435f272484144d11280daf0a62a48a}\label{route_8h_a19d441ac278626cc2aa2e07d8732e251a18435f272484144d11280daf0a62a48a} 
+aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+inbound&Destination-\/to-\/client direction \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_fragment\_direction\_return@{aern\_relay\_fragment\_direction\_return}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_fragment\_direction\_return@{aern\_relay\_fragment\_direction\_return}}}\Hypertarget{route_8h_a19d441ac278626cc2aa2e07d8732e251abea2627f18151d87be654cfe584f3e50}\label{route_8h_a19d441ac278626cc2aa2e07d8732e251abea2627f18151d87be654cfe584f3e50} 
+aern\+\_\+relay\+\_\+fragment\+\_\+direction\+\_\+return&Compatibility alias for return direction \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497}\index{route.h@{route.h}!aern\_relay\_payload\_type@{aern\_relay\_payload\_type}}
+\index{aern\_relay\_payload\_type@{aern\_relay\_payload\_type}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_payload\_type}{aern\_relay\_payload\_type}}
+{\footnotesize\ttfamily \label{route_8h_ab1da56870dcba690673096c3fac51497} 
+enum \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497}{aern\+\_\+relay\+\_\+payload\+\_\+type}}}
+
+
+
+Encrypted relay payload message types. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_payload\_none@{aern\_relay\_payload\_none}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_payload\_none@{aern\_relay\_payload\_none}}}\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497af486ce6abf9acd81c65565ce83274627}\label{route_8h_ab1da56870dcba690673096c3fac51497af486ce6abf9acd81c65565ce83274627} 
+aern\+\_\+relay\+\_\+payload\+\_\+none&No relay payload type was specified \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_payload\_session\_open@{aern\_relay\_payload\_session\_open}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_payload\_session\_open@{aern\_relay\_payload\_session\_open}}}\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497a669625a3fe9c613b47a7ee4d3673fbe4}\label{route_8h_ab1da56870dcba690673096c3fac51497a669625a3fe9c613b47a7ee4d3673fbe4} 
+aern\+\_\+relay\+\_\+payload\+\_\+session\+\_\+open&Ingress-\/to-\/egress session establishment \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_payload\_session\_open\_ack@{aern\_relay\_payload\_session\_open\_ack}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_payload\_session\_open\_ack@{aern\_relay\_payload\_session\_open\_ack}}}\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497a0f89d4527342ca1d99fc098b438526e7}\label{route_8h_ab1da56870dcba690673096c3fac51497a0f89d4527342ca1d99fc098b438526e7} 
+aern\+\_\+relay\+\_\+payload\+\_\+session\+\_\+open\+\_\+ack&Egress-\/to-\/ingress session acknowledgement \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_payload\_session\_close@{aern\_relay\_payload\_session\_close}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_payload\_session\_close@{aern\_relay\_payload\_session\_close}}}\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497a91be382faae5a058e1ab374b99b2e929}\label{route_8h_ab1da56870dcba690673096c3fac51497a91be382faae5a058e1ab374b99b2e929} 
+aern\+\_\+relay\+\_\+payload\+\_\+session\+\_\+close&Session close notification \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_payload\_data@{aern\_relay\_payload\_data}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_payload\_data@{aern\_relay\_payload\_data}}}\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497aa88bdb903911af8f59275ec92ae83d70}\label{route_8h_ab1da56870dcba690673096c3fac51497aa88bdb903911af8f59275ec92ae83d70} 
+aern\+\_\+relay\+\_\+payload\+\_\+data&Opaque serialized packet payload \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_payload\_dummy@{aern\_relay\_payload\_dummy}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_payload\_dummy@{aern\_relay\_payload\_dummy}}}\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497a5e6786c61ef57383c1b70e69d8c018af}\label{route_8h_ab1da56870dcba690673096c3fac51497a5e6786c61ef57383c1b70e69d8c018af} 
+aern\+\_\+relay\+\_\+payload\+\_\+dummy&Dummy relay packet payload \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_payload\_error@{aern\_relay\_payload\_error}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_payload\_error@{aern\_relay\_payload\_error}}}\Hypertarget{route_8h_ab1da56870dcba690673096c3fac51497ae38faa757665048df8cb6114174dae91}\label{route_8h_ab1da56870dcba690673096c3fac51497ae38faa757665048df8cb6114174dae91} 
+aern\+\_\+relay\+\_\+payload\+\_\+error&Relay error payload \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{route_8h_a359783740763976b98639ebc8cc69d4b}\index{route.h@{route.h}!aern\_relay\_session\_status@{aern\_relay\_session\_status}}
+\index{aern\_relay\_session\_status@{aern\_relay\_session\_status}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_status}{aern\_relay\_session\_status}}
+{\footnotesize\ttfamily \label{route_8h_a359783740763976b98639ebc8cc69d4b} 
+enum \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4b}{aern\+\_\+relay\+\_\+session\+\_\+status}}}
+
+
+
+Relay session cache state values. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_session\_status\_none@{aern\_relay\_session\_status\_none}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_session\_status\_none@{aern\_relay\_session\_status\_none}}}\Hypertarget{route_8h_a359783740763976b98639ebc8cc69d4baa3cae5057d8fb17dfb48bb01f31a5eba}\label{route_8h_a359783740763976b98639ebc8cc69d4baa3cae5057d8fb17dfb48bb01f31a5eba} 
+aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+none&Session entry is unused \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_session\_status\_pending@{aern\_relay\_session\_status\_pending}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_session\_status\_pending@{aern\_relay\_session\_status\_pending}}}\Hypertarget{route_8h_a359783740763976b98639ebc8cc69d4ba05a30217c026ed820bef48886586d4a8}\label{route_8h_a359783740763976b98639ebc8cc69d4ba05a30217c026ed820bef48886586d4a8} 
+aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+pending&Session-\/open has been sent but not acknowledged \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_session\_status\_active@{aern\_relay\_session\_status\_active}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_session\_status\_active@{aern\_relay\_session\_status\_active}}}\Hypertarget{route_8h_a359783740763976b98639ebc8cc69d4ba3efbf6590f0180004406e6f3cc3f4d11}\label{route_8h_a359783740763976b98639ebc8cc69d4ba3efbf6590f0180004406e6f3cc3f4d11} 
+aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+active&Session-\/open acknowledgement has been received \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_session\_status\_closing@{aern\_relay\_session\_status\_closing}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_session\_status\_closing@{aern\_relay\_session\_status\_closing}}}\Hypertarget{route_8h_a359783740763976b98639ebc8cc69d4ba1d7efc2f7bc36606f281cb30ce40fe39}\label{route_8h_a359783740763976b98639ebc8cc69d4ba1d7efc2f7bc36606f281cb30ce40fe39} 
+aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+closing&Session close has been requested \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_session\_status\_expired@{aern\_relay\_session\_status\_expired}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_session\_status\_expired@{aern\_relay\_session\_status\_expired}}}\Hypertarget{route_8h_a359783740763976b98639ebc8cc69d4ba35ae102874103086ec64b036a0999039}\label{route_8h_a359783740763976b98639ebc8cc69d4ba35ae102874103086ec64b036a0999039} 
+aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+expired&Session entry has expired \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_relay\_session\_status\_failed@{aern\_relay\_session\_status\_failed}!route.h@{route.h}}\index{route.h@{route.h}!aern\_relay\_session\_status\_failed@{aern\_relay\_session\_status\_failed}}}\Hypertarget{route_8h_a359783740763976b98639ebc8cc69d4ba809abe73a7112527a605e68def6fe33a}\label{route_8h_a359783740763976b98639ebc8cc69d4ba809abe73a7112527a605e68def6fe33a} 
+aern\+\_\+relay\+\_\+session\+\_\+status\+\_\+failed&Session transport or relay processing failed \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{route_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{route_8h_a06c91147795d548dab1987c5cb3e0d34}\index{route.h@{route.h}!aern\_dummy\_traffic\_generate@{aern\_dummy\_traffic\_generate}}
+\index{aern\_dummy\_traffic\_generate@{aern\_dummy\_traffic\_generate}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_dummy\_traffic\_generate()}{aern\_dummy\_traffic\_generate()}}
+{\footnotesize\ttfamily \label{route_8h_a06c91147795d548dab1987c5cb3e0d34} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+dummy\+\_\+traffic\+\_\+generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{, }\item[{uint32\+\_\+t}]{utilization}{}\end{DoxyParamCaption})}
+
+
+
+Generate one APS dummy relay packet when policy allows. 
+
+The dummy packet is a normal fixed-\/size authenticated relay packet. It is routed through the APS mesh with a randomized route map, contains an encrypted relay payload header with payload type aern\+\_\+relay\+\_\+payload\+\_\+dummy, and carries random encrypted payload bytes. Intermediate APS nodes forward the packet identically to ordinary traffic. The terminal APS discards the dummy payload without creating session state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forwarding state containing APS topology, relay cache, and synchronized APS tunnel table. \\
+\hline
+{\em utilization} & \mbox{[}uint32\+\_\+t\mbox{]} Approximate current utilization percentage.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none when the policy check completed. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a61c7fa44ee5c08286df9a0d02e0c6571}\index{route.h@{route.h}!aern\_entry\_packet\_forward@{aern\_entry\_packet\_forward}}
+\index{aern\_entry\_packet\_forward@{aern\_entry\_packet\_forward}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_entry\_packet\_forward()}{aern\_entry\_packet\_forward()}}
+{\footnotesize\ttfamily \label{route_8h_a61c7fa44ee5c08286df9a0d02e0c6571} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+entry\+\_\+packet\+\_\+forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{, }\item[{uint8\+\_\+t}]{wire}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}, }\item[{const char \texorpdfstring{$\ast$}{*}}]{srcip}{}\end{DoxyParamCaption})}
+
+
+
+Process a client-\/origin relay packet at the entry APS. 
+
+The packet is decrypted using the synchronized client-\/to-\/entry APS tunnel, a fresh route map is generated by the entry APS, the first hop is consumed, and the packet is re-\/encrypted to the selected APS peer tunnel. The client does not create the APS route map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forward state. \\
+\hline
+{\em wire} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Raw 1500-\/byte wire buffer. \\
+\hline
+{\em srcip} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Source client IP string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_ae91775ccdc8ccc8230144137831188c2}\index{route.h@{route.h}!aern\_exit\_transport\_return\_serialized\_packet@{aern\_exit\_transport\_return\_serialized\_packet}}
+\index{aern\_exit\_transport\_return\_serialized\_packet@{aern\_exit\_transport\_return\_serialized\_packet}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_exit\_transport\_return\_serialized\_packet()}{aern\_exit\_transport\_return\_serialized\_packet()}}
+{\footnotesize\ttfamily \label{route_8h_ae91775ccdc8ccc8230144137831188c2} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+exit\+\_\+transport\+\_\+return\+\_\+serialized\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{, }\item[{const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{session}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{size\+\_\+t}]{pktlen}{}\end{DoxyParamCaption})}
+
+
+
+Submit a serialized destination response to the AERN return path. 
+
+This helper is the backend-\/neutral response boundary for egress transport implementations. A platform backend calls this function after it receives a opaque serialized response from the destination. The function validates the active egress session, copies the immutable callback session metadata, and delegates to \doxylink{route_8h_a412c61f4eb5b3a5ba5b5b9b473cd3f61}{aern\+\_\+return\+\_\+packet\+\_\+send()} so response traffic is fragmented, encrypted, and routed back to the ingress APS.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forwarding state for the egress APS. \\
+\hline
+{\em session} & \mbox{[}const aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Active egress session metadata received by the backend callback. \\
+\hline
+{\em packet} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Opaque serialized response packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}size\+\_\+t\mbox{]} Number of serialized packet bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on successful return relay submission. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a98a21b57e8fad5e1695a1c9c66f2c651}\index{route.h@{route.h}!aern\_exit\_transport\_send\_serialized\_packet@{aern\_exit\_transport\_send\_serialized\_packet}}
+\index{aern\_exit\_transport\_send\_serialized\_packet@{aern\_exit\_transport\_send\_serialized\_packet}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_exit\_transport\_send\_serialized\_packet()}{aern\_exit\_transport\_send\_serialized\_packet()}}
+{\footnotesize\ttfamily \label{route_8h_a98a21b57e8fad5e1695a1c9c66f2c651} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+exit\+\_\+transport\+\_\+send\+\_\+serialized\+\_\+packet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{session}{, }\item[{const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}}]{header}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{size\+\_\+t}]{pktlen}{}\end{DoxyParamCaption})}
+
+
+
+Send an authenticated serialized packet through the egress transport abstraction. 
+
+This function is the backend-\/neutral boundary between AERN relay processing and the platform-\/specific destination transport. It validates the established egress session metadata and opaque serialized packet length, then returns a controlled status. Until a platform backend is attached, the function returns a non-\/success status without pretending that destination delivery occurred.
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & \mbox{[}const aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Established egress session metadata. \\
+\hline
+{\em header} & \mbox{[}const aern\+\_\+relay\+\_\+payload\+\_\+header\texorpdfstring{$\ast$}{*}\mbox{]} Authenticated relay payload header. \\
+\hline
+{\em packet} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Opaque serialized packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}size\+\_\+t\mbox{]} Number of serialized packet bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none only when a backend reports delivery. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a064e03e0e395ab82b6b4d6849349ddda}\index{route.h@{route.h}!aern\_exit\_transport\_set\_callback@{aern\_exit\_transport\_set\_callback}}
+\index{aern\_exit\_transport\_set\_callback@{aern\_exit\_transport\_set\_callback}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_exit\_transport\_set\_callback()}{aern\_exit\_transport\_set\_callback()}}
+{\footnotesize\ttfamily \label{route_8h_a064e03e0e395ab82b6b4d6849349ddda} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+exit\+\_\+transport\+\_\+set\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{route_8h_addbecda638042f13b537db37881afa6a}{aern\+\_\+exit\+\_\+transport\+\_\+send\+\_\+callback}}}]{callback}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Register the backend callback used for egress destination delivery. 
+
+Passing a NULL callback disables backend delivery and causes authenticated egress packets to return a controlled non-\/success status. The callback is not invoked until all relay authentication and session validation checks have succeeded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & \mbox{[}\doxylink{route_8h_addbecda638042f13b537db37881afa6a}{aern\+\_\+exit\+\_\+transport\+\_\+send\+\_\+callback}\mbox{]} Backend transmit callback, or NULL to disable. \\
+\hline
+{\em context} & \mbox{[}void\texorpdfstring{$\ast$}{*}\mbox{]} Opaque backend context passed to the callback. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a4991a2e4e482b0ae65facd49f890248f}\index{route.h@{route.h}!aern\_fragment\_cache\_add@{aern\_fragment\_cache\_add}}
+\index{aern\_fragment\_cache\_add@{aern\_fragment\_cache\_add}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_fragment\_cache\_add()}{aern\_fragment\_cache\_add()}}
+{\footnotesize\ttfamily \label{route_8h_a4991a2e4e482b0ae65facd49f890248f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+fragment\+\_\+cache\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t}]{dlen}{, }\item[{uint32\+\_\+t}]{seq}{}\end{DoxyParamCaption})}
+
+
+
+Add a fragment packet to the reassembly cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Fragment cache. \\
+\hline
+{\em data} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Fragment payload (user bytes only, no route header). \\
+\hline
+{\em dlen} & \mbox{[}size\+\_\+t\mbox{]} Length of data. \\
+\hline
+{\em seq} & \mbox{[}uint32\+\_\+t\mbox{]} Fragment sequence (1-\/indexed; UINT32\+\_\+\+MAX = last for legacy callers).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the message is now complete (all fragments received).
+\end{DoxyReturn}
+Add a fragment packet to the reassembly cache.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} The fragment cache state that receives the fragment. \\
+\hline
+{\em data} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The fragment data buffer to add. \\
+\hline
+{\em dlen} & \mbox{[}size\+\_\+t\mbox{]} The number of bytes in the fragment data buffer. \\
+\hline
+{\em seq} & \mbox{[}uint32\+\_\+t\mbox{]} The fragment sequence number.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}bool\mbox{]} Returns true if the fragment was accepted by the cache; otherwise, false. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a6477b13a6e18dd913392e2d2ce9c996e}\index{route.h@{route.h}!aern\_fragment\_cache\_add\_fragment@{aern\_fragment\_cache\_add\_fragment}}
+\index{aern\_fragment\_cache\_add\_fragment@{aern\_fragment\_cache\_add\_fragment}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_fragment\_cache\_add\_fragment()}{aern\_fragment\_cache\_add\_fragment()}}
+{\footnotesize\ttfamily \label{route_8h_a6477b13a6e18dd913392e2d2ce9c996e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+fragment\+\_\+cache\+\_\+add\+\_\+fragment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}}]{header}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t}]{dlen}{, }\item[{uint8\+\_\+t}]{direction}{, }\item[{bool \texorpdfstring{$\ast$}{*}}]{complete}{}\end{DoxyParamCaption})}
+
+
+
+Add an out-\/of-\/order fragment with an explicit fragment count. 
+
+This helper is the preferred relay-\/fragment API for AERN session-\/aware payloads. Fragments are cached by sequence number and the cache is marked complete only when all fragments from one through {\ttfamily fragcount} are present. Non-\/final fragments in a multi-\/fragment packet must be exactly AERN\+\_\+\+FRAG\+\_\+\+CHUNK\+\_\+\+SIZE bytes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Fragment cache. \\
+\hline
+{\em data} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Fragment payload bytes. \\
+\hline
+{\em dlen} & \mbox{[}size\+\_\+t\mbox{]} Fragment payload length. \\
+\hline
+{\em fragseq} & \mbox{[}uint32\+\_\+t\mbox{]} Fragment sequence. Zero means unfragmented. \\
+\hline
+{\em fragcount} & \mbox{[}uint32\+\_\+t\mbox{]} Total fragment count. Zero means unfragmented.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true when the full packet has been received.
+\end{DoxyReturn}
+Add an out-\/of-\/order fragment with an explicit fragment count.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} The fragment cache state that receives the fragment. \\
+\hline
+{\em header} & \mbox{[}const aern\+\_\+relay\+\_\+payload\+\_\+header\texorpdfstring{$\ast$}{*}\mbox{]} The relay payload header associated with the fragment. \\
+\hline
+{\em data} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The fragment data buffer to add. \\
+\hline
+{\em dlen} & \mbox{[}size\+\_\+t\mbox{]} The number of bytes in the fragment data buffer. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} The relay direction associated with the fragment set. \\
+\hline
+{\em complete} & \mbox{[}bool\texorpdfstring{$\ast$}{*}\mbox{]} The output flag set to true when the fragment set is complete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}bool\mbox{]} Returns true if the fragment was accepted by the cache; otherwise, false. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a1917b6b175dee5d9e91d73cd2ccd148a}\index{route.h@{route.h}!aern\_fragment\_cache\_assemble@{aern\_fragment\_cache\_assemble}}
+\index{aern\_fragment\_cache\_assemble@{aern\_fragment\_cache\_assemble}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_fragment\_cache\_assemble()}{aern\_fragment\_cache\_assemble()}}
+{\footnotesize\ttfamily \label{route_8h_a1917b6b175dee5d9e91d73cd2ccd148a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+fragment\+\_\+cache\+\_\+assemble (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{outlen}{}\end{DoxyParamCaption})}
+
+
+
+Assemble all received fragments into a contiguous buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}const aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Fragment cache (must have complete == true). \\
+\hline
+{\em output} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Output buffer (must be \texorpdfstring{$>$}{>}= cache-\/\texorpdfstring{$>$}{>}total\+\_\+bytes). \\
+\hline
+{\em outlen} & \mbox{[}size\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Receives the assembled length.\\
+\hline
+\end{DoxyParams}
+Assemble all received fragments into a contiguous buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}const aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} The completed fragment cache to assemble. \\
+\hline
+{\em out} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The output buffer that receives the assembled message. \\
+\hline
+{\em outlen} & \mbox{[}size\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The input buffer capacity and output assembled message length. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_acc35b66611f4dc15cb58fef012bf4e1f}\index{route.h@{route.h}!aern\_fragment\_cache\_clear@{aern\_fragment\_cache\_clear}}
+\index{aern\_fragment\_cache\_clear@{aern\_fragment\_cache\_clear}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_fragment\_cache\_clear()}{aern\_fragment\_cache\_clear()}}
+{\footnotesize\ttfamily \label{route_8h_acc35b66611f4dc15cb58fef012bf4e1f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+fragment\+\_\+cache\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{cache}{}\end{DoxyParamCaption})}
+
+
+
+Zero and reset the fragment cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Cache to clear.\\
+\hline
+\end{DoxyParams}
+Zero and reset the fragment cache.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} The fragment cache state to clear. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_ab1cd28be7ccd1006387eab15f4ba41cb}\index{route.h@{route.h}!aern\_fragment\_cache\_initialize@{aern\_fragment\_cache\_initialize}}
+\index{aern\_fragment\_cache\_initialize@{aern\_fragment\_cache\_initialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_fragment\_cache\_initialize()}{aern\_fragment\_cache\_initialize()}}
+{\footnotesize\ttfamily \label{route_8h_ab1cd28be7ccd1006387eab15f4ba41cb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+fragment\+\_\+cache\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{cache}{}\end{DoxyParamCaption})}
+
+
+
+Initialise a fragment cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Cache to initialise.\\
+\hline
+\end{DoxyParams}
+Initialise a fragment cache.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} The fragment cache state to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a71590999d25bd2c559959634610d9715}\index{route.h@{route.h}!aern\_fragment\_cache\_set\_key@{aern\_fragment\_cache\_set\_key}}
+\index{aern\_fragment\_cache\_set\_key@{aern\_fragment\_cache\_set\_key}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_fragment\_cache\_set\_key()}{aern\_fragment\_cache\_set\_key()}}
+{\footnotesize\ttfamily \label{route_8h_a71590999d25bd2c559959634610d9715} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+fragment\+\_\+cache\+\_\+set\+\_\+key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint64\+\_\+t}]{packetid}{, }\item[{uint8\+\_\+t}]{direction}{, }\item[{uint64\+\_\+t}]{expiry}{}\end{DoxyParamCaption})}
+
+
+
+Set the session key fields for a fragment cache entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Fragment cache. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Session identifier. \\
+\hline
+{\em packetid} & \mbox{[}uint64\+\_\+t\mbox{]} Packet identifier. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} Fragment direction. \\
+\hline
+{\em expiry} & \mbox{[}uint64\+\_\+t\mbox{]} UTC expiration time in seconds.\\
+\hline
+\end{DoxyParams}
+Set the session key fields for a fragment cache entry.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} The fragment cache state to update. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} The relay session identifier associated with the fragment set. \\
+\hline
+{\em packetid} & \mbox{[}uint64\+\_\+t\mbox{]} The relay packet identifier associated with the fragment set. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} The relay direction associated with the fragment set. \\
+\hline
+{\em expiry} & \mbox{[}uint64\+\_\+t\mbox{]} The expiration time for the fragment cache entry. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a4cf8981ba1a26cc367cf91de95a23436}\index{route.h@{route.h}!aern\_ingress\_delay\_flush@{aern\_ingress\_delay\_flush}}
+\index{aern\_ingress\_delay\_flush@{aern\_ingress\_delay\_flush}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ingress\_delay\_flush()}{aern\_ingress\_delay\_flush()}}
+{\footnotesize\ttfamily \label{route_8h_a4cf8981ba1a26cc367cf91de95a23436} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+ingress\+\_\+delay\+\_\+flush (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{}\end{DoxyParamCaption})}
+
+
+
+Flush due packets from the randomized ingress delay queue. 
+
+This function releases packets whose delay timer has expired. Packets that are not due remain queued. Expired packets are discarded. This queue is used only for established ingress sessions; session-\/open and session-\/open-\/ack messages are not delayed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forwarding state containing the relay cache and APS mesh.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none when the flush completed. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a7d5be98d6d0662cfebe148ef35c1d1c5}\index{route.h@{route.h}!aern\_ingress\_transport\_send\_serialized\_packet@{aern\_ingress\_transport\_send\_serialized\_packet}}
+\index{aern\_ingress\_transport\_send\_serialized\_packet@{aern\_ingress\_transport\_send\_serialized\_packet}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ingress\_transport\_send\_serialized\_packet()}{aern\_ingress\_transport\_send\_serialized\_packet()}}
+{\footnotesize\ttfamily \label{route_8h_a7d5be98d6d0662cfebe148ef35c1d1c5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+ingress\+\_\+transport\+\_\+send\+\_\+serialized\+\_\+packet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{session}{, }\item[{const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}}]{header}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{size\+\_\+t}]{pktlen}{}\end{DoxyParamCaption})}
+
+
+
+Send an authenticated return packet through the ingress client-\/transport abstraction. 
+
+This function is the backend-\/neutral boundary between AERN ingress relay processing and the local client delivery backend. It is called only after a return relay payload has reached the ingress APS, the relay packet has been authenticated, and the ingress session cache entry has been validated. Until a platform client-\/delivery backend is attached, the function returns a controlled non-\/success status without pretending delivery occurred.
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & \mbox{[}const aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Established ingress session metadata. \\
+\hline
+{\em header} & \mbox{[}const aern\+\_\+relay\+\_\+payload\+\_\+header\texorpdfstring{$\ast$}{*}\mbox{]} Authenticated relay payload header. \\
+\hline
+{\em packet} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Opaque serialized packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}size\+\_\+t\mbox{]} Number of serialized packet bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none only when a backend reports delivery. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a920a2b10517c3aaf1f76b00ab4c699d4}\index{route.h@{route.h}!aern\_ingress\_transport\_set\_callback@{aern\_ingress\_transport\_set\_callback}}
+\index{aern\_ingress\_transport\_set\_callback@{aern\_ingress\_transport\_set\_callback}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ingress\_transport\_set\_callback()}{aern\_ingress\_transport\_set\_callback()}}
+{\footnotesize\ttfamily \label{route_8h_a920a2b10517c3aaf1f76b00ab4c699d4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+ingress\+\_\+transport\+\_\+set\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f}{aern\+\_\+ingress\+\_\+transport\+\_\+send\+\_\+callback}}}]{callback}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Register the backend callback used for ingress-\/side return delivery. 
+
+Passing a NULL callback disables ingress delivery and causes authenticated return packets to return a controlled non-\/success status. The callback is not invoked until all relay authentication and ingress-\/session validation checks have succeeded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & \mbox{[}\doxylink{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f}{aern\+\_\+ingress\+\_\+transport\+\_\+send\+\_\+callback}\mbox{]} Backend return-\/delivery callback, or NULL to disable. \\
+\hline
+{\em context} & \mbox{[}void\texorpdfstring{$\ast$}{*}\mbox{]} Opaque backend context passed to the callback. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a786dc539143f5c78f75450e0749c4654}\index{route.h@{route.h}!aern\_packet\_forward@{aern\_packet\_forward}}
+\index{aern\_packet\_forward@{aern\_packet\_forward}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_forward()}{aern\_packet\_forward()}}
+{\footnotesize\ttfamily \label{route_8h_a786dc539143f5c78f75450e0749c4654} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+packet\+\_\+forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{, }\item[{uint8\+\_\+t}]{wire}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}, }\item[{const char \texorpdfstring{$\ast$}{*}}]{srcip}{}\end{DoxyParamCaption})}
+
+
+
+Process one per-\/hop relay packet. 
+
+Relay authentication failure discards the packet without advancing the receive sequence number or parsing the encrypted route map. A single failed relay packet does not invalidate the peer tunnel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forward state. \\
+\hline
+{\em wire} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Raw 1500-\/byte wire buffer (decrypted in place). \\
+\hline
+{\em srcip} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Source peer IP string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a745909abbc0791700618e96a734c83f5}\index{route.h@{route.h}!aern\_packet\_pad@{aern\_packet\_pad}}
+\index{aern\_packet\_pad@{aern\_packet\_pad}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_pad()}{aern\_packet\_pad()}}
+{\footnotesize\ttfamily \label{route_8h_a745909abbc0791700618e96a734c83f5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+packet\+\_\+pad (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{plaintext}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE\mbox{]}, }\item[{uint16\+\_\+t}]{textlen}{}\end{DoxyParamCaption})}
+
+
+
+Pad a plaintext buffer to AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE bytes. 
+
+Writes a 2-\/byte LE actual\+\_\+len prefix at position 0, then fills bytes (2 + actual\+\_\+len)..(AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE -\/ 1) with CSPRNG bytes. The routemap at bytes \mbox{[}2..34\mbox{]} is written by the caller before this call (or after — the padding does not touch the routemap region unless actual\+\_\+len extends into it, which it does not by construction).
+
+
+\begin{DoxyParams}{Parameters}
+{\em plaintext} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Buffer of AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE bytes. \\
+\hline
+{\em textlen} & \mbox{[}uint16\+\_\+t\mbox{]} Real content length (0..AERN\+\_\+\+MAX\+\_\+\+USER\+\_\+\+PAYLOAD). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a78177615922890187457ddb63b34c6ec}\index{route.h@{route.h}!aern\_packet\_unpad@{aern\_packet\_unpad}}
+\index{aern\_packet\_unpad@{aern\_packet\_unpad}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_packet\_unpad()}{aern\_packet\_unpad()}}
+{\footnotesize\ttfamily \label{route_8h_a78177615922890187457ddb63b34c6ec} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint16\+\_\+t aern\+\_\+packet\+\_\+unpad (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{plaintext}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Recover the actual payload length from a padded plaintext buffer. 
+
+Reads the 2-\/byte LE prefix written by aern\+\_\+packet\+\_\+pad.
+
+
+\begin{DoxyParams}{Parameters}
+{\em plaintext} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Buffer of AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual content length, or 0 if the value is out of range. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a178788360266d210be1a31aa1d1ebcb7}\index{route.h@{route.h}!aern\_relay\_cache\_cleanup@{aern\_relay\_cache\_cleanup}}
+\index{aern\_relay\_cache\_cleanup@{aern\_relay\_cache\_cleanup}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_cache\_cleanup()}{aern\_relay\_cache\_cleanup()}}
+{\footnotesize\ttfamily \label{route_8h_a178788360266d210be1a31aa1d1ebcb7} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+cache\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{}\end{DoxyParamCaption})}
+
+
+
+Expire stale relay sessions, fragment caches, pending packets, and delay-\/queue entries. 
+
+This helper is the common lifecycle cleanup function for APS and client relay caches. It removes expired pending session-\/open packets, stale ingress delay entries, inactive relay sessions, and incomplete fragment reassembly state whose timeout has elapsed. It also resets local relay traffic counters when the configured accounting window has elapsed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state to clean. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a56a2c106bd1d8f0f1ea3a9cd1d0a205a}\index{route.h@{route.h}!aern\_relay\_cache\_dispose@{aern\_relay\_cache\_dispose}}
+\index{aern\_relay\_cache\_dispose@{aern\_relay\_cache\_dispose}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_cache\_dispose()}{aern\_relay\_cache\_dispose()}}
+{\footnotesize\ttfamily \label{route_8h_a56a2c106bd1d8f0f1ea3a9cd1d0a205a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+cache\+\_\+dispose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{}\end{DoxyParamCaption})}
+
+
+
+Dispose all relay cache containers and dynamic allocations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state to dispose. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a463f84a6d799706555b16afde4c544da}\index{route.h@{route.h}!aern\_relay\_cache\_initialize@{aern\_relay\_cache\_initialize}}
+\index{aern\_relay\_cache\_initialize@{aern\_relay\_cache\_initialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_cache\_initialize()}{aern\_relay\_cache\_initialize()}}
+{\footnotesize\ttfamily \label{route_8h_a463f84a6d799706555b16afde4c544da} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+cache\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{}\end{DoxyParamCaption})}
+
+
+
+Initialize all relay cache containers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state to initialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a1b6d66c30c45c0991bf7c700d4893162}\index{route.h@{route.h}!aern\_relay\_delay\_pop@{aern\_relay\_delay\_pop}}
+\index{aern\_relay\_delay\_pop@{aern\_relay\_delay\_pop}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_delay\_pop()}{aern\_relay\_delay\_pop()}}
+{\footnotesize\ttfamily \label{route_8h_a1b6d66c30c45c0991bf7c700d4893162} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+delay\+\_\+pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{\mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Pop a delayed ingress packet from the relay delay queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em item} & \mbox{[}aern\+\_\+ingress\+\_\+pending\+\_\+item\texorpdfstring{$\ast$}{*}\mbox{]} Queue item receiving the packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if a packet was popped. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_ae515ab4dc3a16faf8015f473979310d3}\index{route.h@{route.h}!aern\_relay\_delay\_push@{aern\_relay\_delay\_push}}
+\index{aern\_relay\_delay\_push@{aern\_relay\_delay\_push}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_delay\_push()}{aern\_relay\_delay\_push()}}
+{\footnotesize\ttfamily \label{route_8h_ae515ab4dc3a16faf8015f473979310d3} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+delay\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{const \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Push a packet into the optional randomized ingress delay queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em item} & \mbox{[}const aern\+\_\+ingress\+\_\+pending\+\_\+item\texorpdfstring{$\ast$}{*}\mbox{]} Queue item to enqueue.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the item was queued. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a3a7216c963bf4a4e1d2b540668f82ff0}\index{route.h@{route.h}!aern\_relay\_forward\_state\_is\_valid@{aern\_relay\_forward\_state\_is\_valid}}
+\index{aern\_relay\_forward\_state\_is\_valid@{aern\_relay\_forward\_state\_is\_valid}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_forward\_state\_is\_valid()}{aern\_relay\_forward\_state\_is\_valid()}}
+{\footnotesize\ttfamily \label{route_8h_a3a7216c963bf4a4e1d2b540668f82ff0} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+forward\+\_\+state\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{, }\item[{bool}]{requirecache}{}\end{DoxyParamCaption})}
+
+
+
+Validate the minimum runtime prerequisites for relay forwarding. 
+
+This function checks that the forward state contains a cipher table, topology reference, valid APS topology count, and a valid local APS hint. When requirecache is true, the relay cache must also be present and initialized. The function performs no network action and does not mutate state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}const aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forward state to validate. \\
+\hline
+{\em requirecache} & \mbox{[}bool\mbox{]} Require an initialized relay cache when true.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true when the forward state is usable. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a82cc8bc5fabfc062ea2aab25fc1dfed5}\index{route.h@{route.h}!aern\_relay\_fragment\_cache\_add@{aern\_relay\_fragment\_cache\_add}}
+\index{aern\_relay\_fragment\_cache\_add@{aern\_relay\_fragment\_cache\_add}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_cache\_add()}{aern\_relay\_fragment\_cache\_add()}}
+{\footnotesize\ttfamily \label{route_8h_a82cc8bc5fabfc062ea2aab25fc1dfed5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+fragment\+\_\+cache\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{const \mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})}
+
+
+
+Add or replace a complete fragment reassembly cache entry. 
+
+The entry is keyed using the same Option-\/2 key layout as the fragment-\/set metadata\+: sessionid, low 56 bits of packetid, and direction. This helper stores the full out-\/of-\/order reassembly state, including received flags and fragment payload bytes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em entry} & \mbox{[}const aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Fragment cache entry to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the entry is present after the operation. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_ad9c292f7ba306aa8e94ee4ac8876c4b5}\index{route.h@{route.h}!aern\_relay\_fragment\_cache\_find@{aern\_relay\_fragment\_cache\_find}}
+\index{aern\_relay\_fragment\_cache\_find@{aern\_relay\_fragment\_cache\_find}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_cache\_find()}{aern\_relay\_fragment\_cache\_find()}}
+{\footnotesize\ttfamily \label{route_8h_ad9c292f7ba306aa8e94ee4ac8876c4b5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+fragment\+\_\+cache\+\_\+find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{\mbox{\hyperlink{structaern__fragment__cache}{aern\+\_\+fragment\+\_\+cache}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint64\+\_\+t}]{packetid}{, }\item[{uint8\+\_\+t}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Find a complete fragment reassembly cache entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}const aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em entry} & \mbox{[}aern\+\_\+fragment\+\_\+cache\texorpdfstring{$\ast$}{*}\mbox{]} Fragment cache entry receiving the result. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em packetid} & \mbox{[}uint64\+\_\+t\mbox{]} Packet identifier. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} One of \doxylink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the entry was found. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_abff9961ac0e001013699df0b6e2bc392}\index{route.h@{route.h}!aern\_relay\_fragment\_cache\_remove@{aern\_relay\_fragment\_cache\_remove}}
+\index{aern\_relay\_fragment\_cache\_remove@{aern\_relay\_fragment\_cache\_remove}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_cache\_remove()}{aern\_relay\_fragment\_cache\_remove()}}
+{\footnotesize\ttfamily \label{route_8h_abff9961ac0e001013699df0b6e2bc392} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+fragment\+\_\+cache\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint64\+\_\+t}]{packetid}{, }\item[{uint8\+\_\+t}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Remove a complete fragment reassembly cache entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em packetid} & \mbox{[}uint64\+\_\+t\mbox{]} Packet identifier. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} One of \doxylink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_af2257d09bca45344a200951d0e374ff8}\index{route.h@{route.h}!aern\_relay\_fragment\_key\_create@{aern\_relay\_fragment\_key\_create}}
+\index{aern\_relay\_fragment\_key\_create@{aern\_relay\_fragment\_key\_create}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_key\_create()}{aern\_relay\_fragment\_key\_create()}}
+{\footnotesize\ttfamily \label{route_8h_af2257d09bca45344a200951d0e374ff8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+fragment\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{key}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+CACHE\+\_\+\+KEY\+\_\+\+SIZE\mbox{]}, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint64\+\_\+t}]{packetid}{, }\item[{uint8\+\_\+t}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Build a deterministic relay cache key for a relay fragment set. 
+
+The key uses the selected Option-\/2 layout\+: bytes 0..7 contain sessionid, bytes 8..14 contain the low 56 bits of packetid, and byte 15 contains the direction value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+CACHE\+\_\+\+KEY\+\_\+\+SIZE-\/byte key buffer. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em packetid} & \mbox{[}uint64\+\_\+t\mbox{]} Packet identifier. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} One of \doxylink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a410457f7cef9c99b4bd4b3e89db47495}\index{route.h@{route.h}!aern\_relay\_fragment\_set\_add@{aern\_relay\_fragment\_set\_add}}
+\index{aern\_relay\_fragment\_set\_add@{aern\_relay\_fragment\_set\_add}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_set\_add()}{aern\_relay\_fragment\_set\_add()}}
+{\footnotesize\ttfamily \label{route_8h_a410457f7cef9c99b4bd4b3e89db47495} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{const \mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})}
+
+
+
+Add or replace fragment-\/set metadata in the relay cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em entry} & \mbox{[}const aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Fragment-\/set metadata to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the entry is present after the operation. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a688a28c2bfce98a30f05a6c998e72032}\index{route.h@{route.h}!aern\_relay\_fragment\_set\_find@{aern\_relay\_fragment\_set\_find}}
+\index{aern\_relay\_fragment\_set\_find@{aern\_relay\_fragment\_set\_find}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_set\_find()}{aern\_relay\_fragment\_set\_find()}}
+{\footnotesize\ttfamily \label{route_8h_a688a28c2bfce98a30f05a6c998e72032} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{\mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint64\+\_\+t}]{packetid}{, }\item[{uint8\+\_\+t}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Find fragment-\/set metadata in the relay cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}const aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em entry} & \mbox{[}aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Fragment-\/set metadata receiving the result. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em packetid} & \mbox{[}uint64\+\_\+t\mbox{]} Packet identifier. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} One of \doxylink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the entry was found. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a6f115b9f6a67951105ab80cce9d3a449}\index{route.h@{route.h}!aern\_relay\_fragment\_set\_remove@{aern\_relay\_fragment\_set\_remove}}
+\index{aern\_relay\_fragment\_set\_remove@{aern\_relay\_fragment\_set\_remove}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_fragment\_set\_remove()}{aern\_relay\_fragment\_set\_remove()}}
+{\footnotesize\ttfamily \label{route_8h_a6f115b9f6a67951105ab80cce9d3a449} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint64\+\_\+t}]{packetid}{, }\item[{uint8\+\_\+t}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Remove fragment-\/set metadata from the relay cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em packetid} & \mbox{[}uint64\+\_\+t\mbox{]} Packet identifier. \\
+\hline
+{\em direction} & \mbox{[}uint8\+\_\+t\mbox{]} One of \doxylink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_af97756201a77f9e53aa7df613366981d}\index{route.h@{route.h}!aern\_relay\_payload\_header\_deserialize@{aern\_relay\_payload\_header\_deserialize}}
+\index{aern\_relay\_payload\_header\_deserialize@{aern\_relay\_payload\_header\_deserialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_payload\_header\_deserialize()}{aern\_relay\_payload\_header\_deserialize()}}
+{\footnotesize\ttfamily \label{route_8h_af97756201a77f9e53aa7df613366981d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+payload\+\_\+header\+\_\+deserialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}}]{header}{, }\item[{const uint8\+\_\+t}]{input}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Deserialize an encrypted relay payload header. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & \mbox{[}aern\+\_\+relay\+\_\+payload\+\_\+header\texorpdfstring{$\ast$}{*}\mbox{]} Header receiving the decoded fields. \\
+\hline
+{\em input} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE-\/byte input buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a4068b9c267d98c77b4a88f89a2c7fa35}\index{route.h@{route.h}!aern\_relay\_payload\_header\_serialize@{aern\_relay\_payload\_header\_serialize}}
+\index{aern\_relay\_payload\_header\_serialize@{aern\_relay\_payload\_header\_serialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_payload\_header\_serialize()}{aern\_relay\_payload\_header\_serialize()}}
+{\footnotesize\ttfamily \label{route_8h_a4068b9c267d98c77b4a88f89a2c7fa35} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+payload\+\_\+header\+\_\+serialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{output}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE\mbox{]}, }\item[{const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}}]{header}{}\end{DoxyParamCaption})}
+
+
+
+Serialize an encrypted relay payload header. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE-\/byte output buffer. \\
+\hline
+{\em header} & \mbox{[}const aern\+\_\+relay\+\_\+payload\+\_\+header\texorpdfstring{$\ast$}{*}\mbox{]} Header to serialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a47e85df73ff7c6b79a1c035d61307330}\index{route.h@{route.h}!aern\_relay\_pending\_pop@{aern\_relay\_pending\_pop}}
+\index{aern\_relay\_pending\_pop@{aern\_relay\_pending\_pop}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_pending\_pop()}{aern\_relay\_pending\_pop()}}
+{\footnotesize\ttfamily \label{route_8h_a47e85df73ff7c6b79a1c035d61307330} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+pending\+\_\+pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{\mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Pop an ingress packet waiting for session-\/open acknowledgement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em item} & \mbox{[}aern\+\_\+ingress\+\_\+pending\+\_\+item\texorpdfstring{$\ast$}{*}\mbox{]} Queue item receiving the packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if a packet was popped. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a135cde8cb00572741eb53900083da023}\index{route.h@{route.h}!aern\_relay\_pending\_push@{aern\_relay\_pending\_push}}
+\index{aern\_relay\_pending\_push@{aern\_relay\_pending\_push}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_pending\_push()}{aern\_relay\_pending\_push()}}
+{\footnotesize\ttfamily \label{route_8h_a135cde8cb00572741eb53900083da023} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+pending\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{const \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Push an ingress packet while waiting for session-\/open acknowledgement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em item} & \mbox{[}const aern\+\_\+ingress\+\_\+pending\+\_\+item\texorpdfstring{$\ast$}{*}\mbox{]} Queue item to enqueue.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the item was queued. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a0777dfd378a0503ec363f0c2cea21a09}\index{route.h@{route.h}!aern\_relay\_pending\_remove\_session@{aern\_relay\_pending\_remove\_session}}
+\index{aern\_relay\_pending\_remove\_session@{aern\_relay\_pending\_remove\_session}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_pending\_remove\_session()}{aern\_relay\_pending\_remove\_session()}}
+{\footnotesize\ttfamily \label{route_8h_a0777dfd378a0503ec363f0c2cea21a09} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t aern\+\_\+relay\+\_\+pending\+\_\+remove\+\_\+session (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint64\+\_\+t}]{sessionid}{}\end{DoxyParamCaption})}
+
+
+
+Remove all pending and delayed ingress packets for a session. 
+
+This function is used when a session-\/open acknowledgement fails or when a pending ingress session is explicitly closed. It removes queued plaintext relay packets for the specified session from both the session-\/open pending queue and the randomized delay queue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier to purge.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the number of queued packets removed. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_afac374f40649ed0069b711d785de8a06}\index{route.h@{route.h}!aern\_relay\_session\_add@{aern\_relay\_session\_add}}
+\index{aern\_relay\_session\_add@{aern\_relay\_session\_add}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_add()}{aern\_relay\_session\_add()}}
+{\footnotesize\ttfamily \label{route_8h_afac374f40649ed0069b711d785de8a06} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+session\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{const \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{entry}{}\end{DoxyParamCaption})}
+
+
+
+Add or replace relay session metadata in the relay cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em entry} & \mbox{[}const aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Session metadata to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the entry is present after the operation. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_aac64b4c6d59c072b8e6464bb617695b3}\index{route.h@{route.h}!aern\_relay\_session\_exists@{aern\_relay\_session\_exists}}
+\index{aern\_relay\_session\_exists@{aern\_relay\_session\_exists}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_exists()}{aern\_relay\_session\_exists()}}
+{\footnotesize\ttfamily \label{route_8h_aac64b4c6d59c072b8e6464bb617695b3} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+session\+\_\+exists (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint8\+\_\+t}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Test whether a relay session exists in the cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}const aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em context} & \mbox{[}uint8\+\_\+t\mbox{]} Session context value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the entry exists. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a877369b6a4bc172f32feb253bec636fd}\index{route.h@{route.h}!aern\_relay\_session\_find@{aern\_relay\_session\_find}}
+\index{aern\_relay\_session\_find@{aern\_relay\_session\_find}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_find()}{aern\_relay\_session\_find()}}
+{\footnotesize\ttfamily \label{route_8h_a877369b6a4bc172f32feb253bec636fd} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relay\+\_\+session\+\_\+find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{\mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint8\+\_\+t}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Find relay session metadata in the relay cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}const aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em entry} & \mbox{[}aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Session metadata receiving the result. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em context} & \mbox{[}uint8\+\_\+t\mbox{]} Session context value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the entry was found. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a3d6a331845d4d28cb6667d4453bcf21f}\index{route.h@{route.h}!aern\_relay\_session\_key\_create@{aern\_relay\_session\_key\_create}}
+\index{aern\_relay\_session\_key\_create@{aern\_relay\_session\_key\_create}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_key\_create()}{aern\_relay\_session\_key\_create()}}
+{\footnotesize\ttfamily \label{route_8h_a3d6a331845d4d28cb6667d4453bcf21f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+session\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{key}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+CACHE\+\_\+\+KEY\+\_\+\+SIZE\mbox{]}, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint8\+\_\+t}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Build a deterministic relay cache key for a relay session. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+CACHE\+\_\+\+KEY\+\_\+\+SIZE-\/byte key buffer. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em context} & \mbox{[}uint8\+\_\+t\mbox{]} Session context value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a1821e2bd37ee55d240bf210cb6768e5c}\index{route.h@{route.h}!aern\_relay\_session\_open\_ack\_deserialize@{aern\_relay\_session\_open\_ack\_deserialize}}
+\index{aern\_relay\_session\_open\_ack\_deserialize@{aern\_relay\_session\_open\_ack\_deserialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_open\_ack\_deserialize()}{aern\_relay\_session\_open\_ack\_deserialize()}}
+{\footnotesize\ttfamily \label{route_8h_a1821e2bd37ee55d240bf210cb6768e5c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack\+\_\+deserialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__session__open__ack}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const uint8\+\_\+t}]{input}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Deserialize a session-\/open acknowledgement payload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack\texorpdfstring{$\ast$}{*}\mbox{]} Session-\/open acknowledgement structure receiving decoded fields. \\
+\hline
+{\em input} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE-\/byte input buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a4856cf21399218c9483e1ed84a6644b1}\index{route.h@{route.h}!aern\_relay\_session\_open\_ack\_serialize@{aern\_relay\_session\_open\_ack\_serialize}}
+\index{aern\_relay\_session\_open\_ack\_serialize@{aern\_relay\_session\_open\_ack\_serialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_open\_ack\_serialize()}{aern\_relay\_session\_open\_ack\_serialize()}}
+{\footnotesize\ttfamily \label{route_8h_a4856cf21399218c9483e1ed84a6644b1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack\+\_\+serialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{output}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE\mbox{]}, }\item[{const \mbox{\hyperlink{structaern__relay__session__open__ack}{aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Serialize a session-\/open acknowledgement payload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE-\/byte output buffer. \\
+\hline
+{\em state} & \mbox{[}const aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+ack\texorpdfstring{$\ast$}{*}\mbox{]} Session-\/open acknowledgement structure to serialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a3ed2cef6f5afd547f1e3d7bf1fca5d94}\index{route.h@{route.h}!aern\_relay\_session\_open\_deserialize@{aern\_relay\_session\_open\_deserialize}}
+\index{aern\_relay\_session\_open\_deserialize@{aern\_relay\_session\_open\_deserialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_open\_deserialize()}{aern\_relay\_session\_open\_deserialize()}}
+{\footnotesize\ttfamily \label{route_8h_a3ed2cef6f5afd547f1e3d7bf1fca5d94} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+deserialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__session__open}{aern\+\_\+relay\+\_\+session\+\_\+open}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const uint8\+\_\+t}]{input}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Deserialize a session-\/open payload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+relay\+\_\+session\+\_\+open\texorpdfstring{$\ast$}{*}\mbox{]} Session-\/open structure receiving decoded fields. \\
+\hline
+{\em input} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE-\/byte input buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a67472a093a70962ffbb3460393a8abdc}\index{route.h@{route.h}!aern\_relay\_session\_open\_serialize@{aern\_relay\_session\_open\_serialize}}
+\index{aern\_relay\_session\_open\_serialize@{aern\_relay\_session\_open\_serialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_open\_serialize()}{aern\_relay\_session\_open\_serialize()}}
+{\footnotesize\ttfamily \label{route_8h_a67472a093a70962ffbb3460393a8abdc} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+session\+\_\+open\+\_\+serialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{output}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE\mbox{]}, }\item[{const \mbox{\hyperlink{structaern__relay__session__open}{aern\+\_\+relay\+\_\+session\+\_\+open}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Serialize a session-\/open payload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE-\/byte output buffer. \\
+\hline
+{\em state} & \mbox{[}const aern\+\_\+relay\+\_\+session\+\_\+open\texorpdfstring{$\ast$}{*}\mbox{]} Session-\/open structure to serialize. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_aad8e6ec4989cf24dd84dd7c098508650}\index{route.h@{route.h}!aern\_relay\_session\_remove@{aern\_relay\_session\_remove}}
+\index{aern\_relay\_session\_remove@{aern\_relay\_session\_remove}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_session\_remove()}{aern\_relay\_session\_remove()}}
+{\footnotesize\ttfamily \label{route_8h_aad8e6ec4989cf24dd84dd7c098508650} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+session\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint8\+\_\+t}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Remove relay session metadata from the relay cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} Relay session identifier. \\
+\hline
+{\em context} & \mbox{[}uint8\+\_\+t\mbox{]} Session context value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a653db477b019bce371afd84a015c0b06}\index{route.h@{route.h}!aern\_relay\_traffic\_observe@{aern\_relay\_traffic\_observe}}
+\index{aern\_relay\_traffic\_observe@{aern\_relay\_traffic\_observe}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_traffic\_observe()}{aern\_relay\_traffic\_observe()}}
+{\footnotesize\ttfamily \label{route_8h_a653db477b019bce371afd84a015c0b06} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relay\+\_\+traffic\+\_\+observe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{size\+\_\+t}]{pktlen}{, }\item[{bool}]{inbound}{}\end{DoxyParamCaption})}
+
+
+
+Record observed relay traffic volume in the relay cache. 
+
+This helper records approximate per-\/\+APS relay traffic volume for the dummy traffic policy. It does not log addresses, payloads, sessions, or packet contents. The values are only local counters used to decide whether dummy traffic may be generated by the APS.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state. \\
+\hline
+{\em pktlen} & \mbox{[}size\+\_\+t\mbox{]} Number of relay bytes observed. \\
+\hline
+{\em inbound} & \mbox{[}bool\mbox{]} True for received bytes, false for transmitted bytes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a780bdf601059974c6928fa87587ef135}\index{route.h@{route.h}!aern\_relay\_traffic\_utilization@{aern\_relay\_traffic\_utilization}}
+\index{aern\_relay\_traffic\_utilization@{aern\_relay\_traffic\_utilization}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relay\_traffic\_utilization()}{aern\_relay\_traffic\_utilization()}}
+{\footnotesize\ttfamily \label{route_8h_a780bdf601059974c6928fa87587ef135} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t aern\+\_\+relay\+\_\+traffic\+\_\+utilization (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{}\end{DoxyParamCaption})}
+
+
+
+Estimate relay utilization for the current local traffic window. 
+
+The returned value is a local percentage derived from the relay byte counters and AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+WINDOW\+\_\+\+TARGET\+\_\+\+BYTES. It is used only by APS dummy traffic policy and does not expose packet contents, addresses, sessions, or route metadata.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \mbox{[}const aern\+\_\+relay\+\_\+cache\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Relay cache state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a utilization value in the inclusive range 0..100. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_a412c61f4eb5b3a5ba5b5b9b473cd3f61}\index{route.h@{route.h}!aern\_return\_packet\_send@{aern\_return\_packet\_send}}
+\index{aern\_return\_packet\_send@{aern\_return\_packet\_send}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_return\_packet\_send()}{aern\_return\_packet\_send()}}
+{\footnotesize\ttfamily \label{route_8h_a412c61f4eb5b3a5ba5b5b9b473cd3f61} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+return\+\_\+packet\+\_\+send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{, }\item[{\mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry}} \texorpdfstring{$\ast$}{*}}]{session}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{size\+\_\+t}]{pktlen}{}\end{DoxyParamCaption})}
+
+
+
+Build and send destination-\/to-\/client return relay packets. 
+
+This helper is the return-\/path substrate used by a future destination transport backend. The egress APS supplies the active egress session and a opaque serialized response packet. The helper wraps the response in the encrypted relay payload format, fragments it when required, marks the payload as return traffic, and routes it back toward the ingress APS using a fresh randomized route terminating at the ingress route hint.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forwarding state. \\
+\hline
+{\em session} & \mbox{[}aern\+\_\+relay\+\_\+session\+\_\+cache\+\_\+entry\texorpdfstring{$\ast$}{*}\mbox{]} Active egress session metadata. The helper updates return counters and activity. \\
+\hline
+{\em packet} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Opaque serialized response packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}size\+\_\+t\mbox{]} Number of serialized packet bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on successful relay submission. 
+\end{DoxyReturn}
+\Hypertarget{route_8h_ae98f12a8d95a505f506d3361aa2df650}\index{route.h@{route.h}!aern\_route\_generate@{aern\_route\_generate}}
+\index{aern\_route\_generate@{aern\_route\_generate}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_route\_generate()}{aern\_route\_generate()}}
+{\footnotesize\ttfamily \label{route_8h_ae98f12a8d95a505f506d3361aa2df650} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+route\+\_\+generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}}]{rm}{, }\item[{uint8\+\_\+t}]{apscount}{, }\item[{uint8\+\_\+t}]{originhint}{, }\item[{uint8\+\_\+t}]{targethint}{}\end{DoxyParamCaption})}
+
+
+
+Generate a random source-\/routed path through the topology. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rm} & \mbox{[}aern\+\_\+route\+\_\+map\texorpdfstring{$\ast$}{*}\mbox{]} Output route map. \\
+\hline
+{\em topocount} & \mbox{[}uint16\+\_\+t\mbox{]} Number of APS nodes in the topology. \\
+\hline
+{\em ownindex} & \mbox{[}uint16\+\_\+t\mbox{]} Caller\textquotesingle{}s zero-\/based APS topology ordinal.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Spec reference\+: AERN-\/2025 Rev. 1a 4a. 
+\end{DoxyNote}
+\Hypertarget{route_8h_a92c6bc13a91811c279b9e55e351f736c}\index{route.h@{route.h}!aern\_route\_map\_deserialize@{aern\_route\_map\_deserialize}}
+\index{aern\_route\_map\_deserialize@{aern\_route\_map\_deserialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_route\_map\_deserialize()}{aern\_route\_map\_deserialize()}}
+{\footnotesize\ttfamily \label{route_8h_a92c6bc13a91811c279b9e55e351f736c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+route\+\_\+map\+\_\+deserialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}}]{rm}{, }\item[{const uint8\+\_\+t}]{src}{\mbox{[}\+AERN\+\_\+\+ROUTEMAP\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Deserialise a 33-\/byte wire representation into a route map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rm} & \mbox{[}aern\+\_\+route\+\_\+map\texorpdfstring{$\ast$}{*}\mbox{]} Output route map. \\
+\hline
+{\em src} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} 16-\/byte input buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{route_8h_a35e3807bd7460879095c27695945763e}\index{route.h@{route.h}!aern\_route\_map\_serialize@{aern\_route\_map\_serialize}}
+\index{aern\_route\_map\_serialize@{aern\_route\_map\_serialize}!route.h@{route.h}}
+\doxysubsubsection{\texorpdfstring{aern\_route\_map\_serialize()}{aern\_route\_map\_serialize()}}
+{\footnotesize\ttfamily \label{route_8h_a35e3807bd7460879095c27695945763e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+route\+\_\+map\+\_\+serialize (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{dst}{\mbox{[}\+AERN\+\_\+\+ROUTEMAP\+\_\+\+SIZE\mbox{]}, }\item[{const \mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}}]{rm}{}\end{DoxyParamCaption})}
+
+
+
+Serialise a route map into the 33-\/byte wire representation. 
+
+Layout\+: path\mbox{[}0..15\mbox{]} = 16 one-\/byte route hints. Route hints are serialized as one-\/based APS topology ordinals. Zero is reserved.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} 16-\/byte output buffer. \\
+\hline
+{\em rm} & \mbox{[}aern\+\_\+route\+\_\+map\texorpdfstring{$\ast$}{*}\mbox{]} Route map to serialise. \\
+\hline
+\end{DoxyParams}

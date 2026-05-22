@@ -1,7 +1,7 @@
 var structaern__server__application__state =
 [
     [ "action", "structaern__server__application__state.html#a9dade337f98e9a92b5cf34c5d65d111a", null ],
-    [ "ads", "structaern__server__application__state.html#a0f9e944cf20b7479dfcc1a6addb2b1eb", null ],
+    [ "adc", "structaern__server__application__state.html#a320b75080dca06fce721c6d4bc1d0847", null ],
     [ "aplpath", "structaern__server__application__state.html#a204ffd1b83be9cc6500b953953e72e66", null ],
     [ "banner", "structaern__server__application__state.html#a82f1b66e7564f5d658b612893a758a6b", null ],
     [ "cfgname", "structaern__server__application__state.html#af6b84696bbb6123de85141d14ade3203", null ],

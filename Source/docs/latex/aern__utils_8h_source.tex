@@ -1,0 +1,94 @@
+\doxysection{aern\+\_\+utils.\+h}
+\hypertarget{aern__utils_8h_source}{}\label{aern__utils_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/aern\_utils.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/aern\_utils.h}}
+\mbox{\hyperlink{aern__utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025-\/2026\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ property\ of}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).\ The\ intellectual}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ and\ technical\ concepts\ contained\ herein\ are\ proprietary\ to\ QRCS\ and\ are}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ protected\ under\ applicable\ Canadian,\ U.S.,\ and\ international\ copyright,}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ ALGORITHMS\ AND\ IMPLEMENTATIONS:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ primitives\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ algorithms\ that\ are\ standardized\ or\ in\ the\ public\ domain,\ such\ as\ AES}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ \ and\ SHA-\/3,\ which\ are\ not\ proprietary\ to\ QRCS.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ -\/\ This\ software\ also\ includes\ cryptographic\ primitives,\ constructions,\ and}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ algorithms\ designed\ by\ QRCS,\ including\ but\ not\ limited\ to\ RCS,\ SCB,\ CSX,\ QMAC,\ and}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ related\ components,\ which\ are\ proprietary\ to\ QRCS.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ All\ source\ code,\ implementations,\ protocol\ compositions,\ optimizations,}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ parameter\ selections,\ and\ engineering\ work\ contained\ in\ this\ software\ are}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ \ \ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ LICENSE\ AND\ USE\ RESTRICTIONS:}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ licensed\ under\ the\ Quantum\ Resistant\ Cryptographic\ Solutions}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ \ \ Public\ Research\ and\ Evaluation\ License\ (QRCS-\/PREL),\ 2025-\/2026.}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ -\/\ Permission\ is\ granted\ solely\ for\ non-\/commercial\ evaluation,\ academic\ research,}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ \ \ cryptographic\ analysis,\ interoperability\ testing,\ and\ feasibility\ assessment.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ -\/\ Commercial\ use,\ production\ deployment,\ commercial\ redistribution,\ or}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ \ \ integration\ into\ products\ or\ services\ is\ strictly\ prohibited\ without\ a}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ \ \ separate\ written\ license\ agreement\ executed\ with\ QRCS.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ EXPERIMENTAL\ CRYPTOGRAPHY\ NOTICE:}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Portions\ of\ this\ software\ may\ include\ experimental,\ novel,\ or\ evolving}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ cryptographic\ designs.\ Use\ of\ this\ software\ is\ entirely\ at\ the\ user's\ risk.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ THIS\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ WARRANTIES\ OF\ MERCHANTABILITY,\ FITNESS}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *\ FOR\ A\ PARTICULAR\ PURPOSE,\ SECURITY,\ OR\ NON-\/INFRINGEMENT.\ QRCS\ DISCLAIMS\ ALL}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ *\ LIABILITY\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ OR\ CONSEQUENTIAL\ DAMAGES}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ *\ ARISING\ FROM\ THE\ USE\ OR\ MISUSE\ OF\ THIS\ SOFTWARE.}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ Quantum\ Resistant\ Cryptographic\ Solutions}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ *\ Public\ Research\ and\ Evaluation\ License\ (QRCS-\/PREL),\ 2025-\/2026.\ The\ complete\ license\ terms}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ *\ are\ provided\ in\ the\ accompanying\ LICENSE\ file\ or\ at\ https://www.qrcscorp.ca.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifndef\ AERN\_UTILS\_H}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ AERN\_UTILS\_H}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}aerncommon.h"{}}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{typedef}\ bool\ (*\mbox{\hyperlink{aern__utils_8h_ac489e0a826680d044867ca74789d1fb1}{aerntest\_function}})(void);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaerntest__case}{aerntest\_case}}}
+\DoxyCodeLine{00086\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaerntest__case_a8f8f80d37794cde9472343e4487ba3eb}{name}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{aern__utils_8h_ac489e0a826680d044867ca74789d1fb1}{aerntest\_function}}\ \mbox{\hyperlink{structaerntest__case_a2a1b13185f91d661c7f1b3a476010bb3}{test}};\ \ \ \ }
+\DoxyCodeLine{00089\ \}\ \mbox{\hyperlink{structaerntest__case}{aerntest\_case}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{aern__utils_8h_af7266599b8a3d881f6926ac0d7fa2756}{aerntest\_get\_char}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{aern__utils_8h_a497db4da58aad78c76510ca7a65a7cc4}{aerntest\_get\_wait}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{aern__utils_8h_ab5575d3ecbcd200274eca5c656cf4ea9}{aerntest\_hex\_to\_bin}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ hexstr,\ uint8\_t*\ output,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00121\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{aern__utils_8h_a83ae8103c7e214010e8d5c3b88711489}{aerntest\_print\_hex}}(\textcolor{keyword}{const}\ uint8\_t*\ input,\ \textcolor{keywordtype}{size\_t}\ inputlen,\ \textcolor{keywordtype}{size\_t}\ linelen);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{aern__utils_8h_a376b5823b4d8baea32ab9358afa9a55f}{aerntest\_print\_safe}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ input);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{aern__utils_8h_a154b517968f8649a65ca120db7a6a287}{aerntest\_print\_line}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ input);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00142\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{aern__utils_8h_ad33b65b560b071f7091ae77943488af8}{aerntest\_print\_ulong}}(uint64\_t\ digit);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{aern__utils_8h_a48c3660e2011f621ce4efa7eaa6ebce8}{aerntest\_print\_double}}(\textcolor{keywordtype}{double}\ digit);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00158\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{aern__utils_8h_af970862129526166b756063d5702e76a}{aerntest\_test\_confirm}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00166\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{aern__utils_8h_a3e0233fbc403b0b91e757f8ffe851aaa}{aerntest\_print\_result}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keywordtype}{bool}\ passed);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00175\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{aern__utils_8h_a662db27bc1fea9333cb2b1ec60167dee}{aerntest\_run\_case}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaerntest__case}{aerntest\_case}}*\ tcase);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

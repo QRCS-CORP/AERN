@@ -1,0 +1,155 @@
+\doxysection{aern\+\_\+fragment\+\_\+cache Struct Reference}
+\hypertarget{structaern__fragment__cache}{}\label{structaern__fragment__cache}\index{aern\_fragment\_cache@{aern\_fragment\_cache}}
+
+
+Dynamic fragment set for one fragmented relay packet.  
+
+
+
+
+{\ttfamily \#include $<$route.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structaern__fragment__part__state}{aern\+\_\+fragment\+\_\+part\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__fragment__cache_a3092870f743af6bb759e2f8be629a709}{parts}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a8049ad116b3b3a45d0a8cb4632390042}{partscap}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a44f6c734c0aa9cad16cdbb25ca6aa471}{total\+\_\+bytes}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_aa89adb3c6015355e0bfca6943577765c}{declared\+\_\+length}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a2c92b3e49ad501b221931705540efcaa}{packetid}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a2091748c311f02f85177b1af486a7ef9}{created}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a3ed4f0ed85a6a2660a41f62157f52b6d}{expiry}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a44cddaae74345006625e2f57cf8a7341}{total\+\_\+frags}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a04bf0bc6e99cc7c47c67222e0a24a837}{received\+\_\+count}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_a1e87af3c18a2fd36c61faf89949bdc3f}{flags}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_aa9d5050f415306aba05e44ea68f95bff}{payloadtype}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_acb7bc06bed6f6408d719334fc41698c7}{reserved}}
+\item 
+bool \mbox{\hyperlink{structaern__fragment__cache_a411c54937038cd4dc3ce75552c0f5086}{metaset}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__fragment__cache_ac6116d5235e13e059e591879c46d7174}{direction}}
+\item 
+bool \mbox{\hyperlink{structaern__fragment__cache_af6b1fef28954e41d75acf35f76bc8d39}{complete}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dynamic fragment set for one fragmented relay packet. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__fragment__cache_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__fragment__cache_af6b1fef28954e41d75acf35f76bc8d39}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!complete@{complete}}
+\index{complete@{complete}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{complete}{complete}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_af6b1fef28954e41d75acf35f76bc8d39} 
+bool complete}
+
+True when all expected fragments are present \Hypertarget{structaern__fragment__cache_a2091748c311f02f85177b1af486a7ef9}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!created@{created}}
+\index{created@{created}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{created}{created}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a2091748c311f02f85177b1af486a7ef9} 
+uint64\+\_\+t created}
+
+UTC creation time in seconds \Hypertarget{structaern__fragment__cache_aa89adb3c6015355e0bfca6943577765c}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!declared\_length@{declared\_length}}
+\index{declared\_length@{declared\_length}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{declared\_length}{declared\_length}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_aa89adb3c6015355e0bfca6943577765c} 
+size\+\_\+t declared\+\_\+length}
+
+Declared reassembled message length \Hypertarget{structaern__fragment__cache_ac6116d5235e13e059e591879c46d7174}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!direction@{direction}}
+\index{direction@{direction}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_ac6116d5235e13e059e591879c46d7174} 
+uint8\+\_\+t direction}
+
+One of \doxylink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction} \Hypertarget{structaern__fragment__cache_a3ed4f0ed85a6a2660a41f62157f52b6d}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!expiry@{expiry}}
+\index{expiry@{expiry}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{expiry}{expiry}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a3ed4f0ed85a6a2660a41f62157f52b6d} 
+uint64\+\_\+t expiry}
+
+UTC expiration time in seconds \Hypertarget{structaern__fragment__cache_a1e87af3c18a2fd36c61faf89949bdc3f}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!flags@{flags}}
+\index{flags@{flags}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a1e87af3c18a2fd36c61faf89949bdc3f} 
+uint16\+\_\+t flags}
+
+Bound relay payload flags \Hypertarget{structaern__fragment__cache_a411c54937038cd4dc3ce75552c0f5086}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!metaset@{metaset}}
+\index{metaset@{metaset}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{metaset}{metaset}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a411c54937038cd4dc3ce75552c0f5086} 
+bool metaset}
+
+True when metadata has been bound \Hypertarget{structaern__fragment__cache_a2c92b3e49ad501b221931705540efcaa}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!packetid@{packetid}}
+\index{packetid@{packetid}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{packetid}{packetid}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a2c92b3e49ad501b221931705540efcaa} 
+uint64\+\_\+t packetid}
+
+Packet identifier for this fragment set \Hypertarget{structaern__fragment__cache_a3092870f743af6bb759e2f8be629a709}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!parts@{parts}}
+\index{parts@{parts}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{parts}{parts}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a3092870f743af6bb759e2f8be629a709} 
+\mbox{\hyperlink{structaern__fragment__part__state}{aern\+\_\+fragment\+\_\+part\+\_\+state}}\texorpdfstring{$\ast$}{*} parts}
+
+Heap-\/backed part array \Hypertarget{structaern__fragment__cache_a8049ad116b3b3a45d0a8cb4632390042}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!partscap@{partscap}}
+\index{partscap@{partscap}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{partscap}{partscap}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a8049ad116b3b3a45d0a8cb4632390042} 
+size\+\_\+t partscap}
+
+Allocated number of part entries \Hypertarget{structaern__fragment__cache_aa9d5050f415306aba05e44ea68f95bff}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!payloadtype@{payloadtype}}
+\index{payloadtype@{payloadtype}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{payloadtype}{payloadtype}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_aa9d5050f415306aba05e44ea68f95bff} 
+uint8\+\_\+t payloadtype}
+
+Bound relay payload type \Hypertarget{structaern__fragment__cache_a04bf0bc6e99cc7c47c67222e0a24a837}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!received\_count@{received\_count}}
+\index{received\_count@{received\_count}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{received\_count}{received\_count}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a04bf0bc6e99cc7c47c67222e0a24a837} 
+uint32\+\_\+t received\+\_\+count}
+
+Number of distinct fragments received \Hypertarget{structaern__fragment__cache_acb7bc06bed6f6408d719334fc41698c7}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!reserved@{reserved}}
+\index{reserved@{reserved}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{reserved}{reserved}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_acb7bc06bed6f6408d719334fc41698c7} 
+uint8\+\_\+t reserved}
+
+Bound reserved header byte \Hypertarget{structaern__fragment__cache_a9dc02beaf3ba3a8f741bf83d4619dbab}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!sessionid@{sessionid}}
+\index{sessionid@{sessionid}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{sessionid}{sessionid}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a9dc02beaf3ba3a8f741bf83d4619dbab} 
+uint64\+\_\+t sessionid}
+
+Session identifier for this fragment set \Hypertarget{structaern__fragment__cache_a44f6c734c0aa9cad16cdbb25ca6aa471}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!total\_bytes@{total\_bytes}}
+\index{total\_bytes@{total\_bytes}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{total\_bytes}{total\_bytes}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a44f6c734c0aa9cad16cdbb25ca6aa471} 
+size\+\_\+t total\+\_\+bytes}
+
+Running byte count of received fragments \Hypertarget{structaern__fragment__cache_a44cddaae74345006625e2f57cf8a7341}\index{aern\_fragment\_cache@{aern\_fragment\_cache}!total\_frags@{total\_frags}}
+\index{total\_frags@{total\_frags}!aern\_fragment\_cache@{aern\_fragment\_cache}}
+\doxysubsubsection{\texorpdfstring{total\_frags}{total\_frags}}
+{\footnotesize\ttfamily \label{structaern__fragment__cache_a44cddaae74345006625e2f57cf8a7341} 
+uint32\+\_\+t total\+\_\+frags}
+
+Expected fragment count; zero if unknown 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{route_8h}{route.\+h}}\end{DoxyCompactItemize}

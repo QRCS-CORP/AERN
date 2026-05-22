@@ -1,0 +1,461 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/mek.h File Reference}
+\hypertarget{mek_8h}{}\label{mek_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/mek.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/mek.h}}
+
+
+Master Encryption Key (MEK) derivation, APS cipher-\/table management, and proxy mesh orchestration.  
+
+
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+{\ttfamily \#include "{}async.\+h"{}}\newline
+{\ttfamily \#include "{}server.\+h"{}}\newline
+{\ttfamily \#include "{}topology.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__mek__request__state}{aern\+\_\+mek\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em State for the MEK exchange requestor (P\+\_\+L / client). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__mek__response__state}{aern\+\_\+mek\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em State for the MEK exchange responder (P\+\_\+R / APS entry-\/node). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__cipher__table__slot}{aern\+\_\+cipher\+\_\+table\+\_\+slot}}
+\begin{DoxyCompactList}\small\item\em One slot in the cipher table. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em Fixed-\/capacity, mutex-\/protected cipher-\/state table. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__aps__state}{aern\+\_\+aps\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em APS runtime state for mesh operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mek_8h_a162e9d8a5a2baadb33aa820b5282d1b9}\label{mek_8h_a162e9d8a5a2baadb33aa820b5282d1b9} 
+\#define {\bfseries AERN\+\_\+\+MEK\+\_\+\+KDF\+\_\+\+OUTPUT\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a8710089399fff14591d8a6e1fc180e45}{AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+KEY\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a20a2c2ffac25d56800118e7b1984eede}{AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+NONCE\+\_\+\+SIZE}})
+\item 
+\Hypertarget{mek_8h_abbf94893f18286f04af9fd76aab15c09}\label{mek_8h_abbf94893f18286f04af9fd76aab15c09} 
+\#define {\bfseries AERN\+\_\+\+MEK\+\_\+\+REKEY\+\_\+\+PACKET\+\_\+\+THRESHOLD}~1200\+ULL
+\item 
+\Hypertarget{mek_8h_a721a6bae841c0e64a6a0e5ca93b3615f}\label{mek_8h_a721a6bae841c0e64a6a0e5ca93b3615f} 
+\#define {\bfseries AERN\+\_\+\+MEK\+\_\+\+REKEY\+\_\+\+SOFT\+\_\+\+THRESHOLD}~1000\+ULL
+\item 
+\Hypertarget{mek_8h_adf2877c5f14098ef398cbcee6b81fc7f}\label{mek_8h_adf2877c5f14098ef398cbcee6b81fc7f} 
+\#define {\bfseries AERN\+\_\+\+MEK\+\_\+\+REKEY\+\_\+\+GRACE\+\_\+\+THRESHOLD}~128ULL
+\item 
+\Hypertarget{mek_8h_ab6e33e2ad1c42c63f3bc2a2c387fad59}\label{mek_8h_ab6e33e2ad1c42c63f3bc2a2c387fad59} 
+\#define {\bfseries AERN\+\_\+\+MAX\+\_\+\+PEERS}~256U
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mek_8h_a0b2d45e81891c7dbf17ae47026248dd8}\label{mek_8h_a0b2d45e81891c7dbf17ae47026248dd8} 
+typedef enum \mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5}{aern\+\_\+mesh\+\_\+peer\+\_\+status}} {\bfseries aern\+\_\+mesh\+\_\+peer\+\_\+status}
+\item 
+\Hypertarget{mek_8h_a93a6d2c5886fc9fa202cee7b99431881}\label{mek_8h_a93a6d2c5886fc9fa202cee7b99431881} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+mek\+\_\+request\+\_\+state {\bfseries aern\+\_\+mek\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{mek_8h_a477452d85db1c22ff20a9ba619d27e82}\label{mek_8h_a477452d85db1c22ff20a9ba619d27e82} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+mek\+\_\+response\+\_\+state {\bfseries aern\+\_\+mek\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{mek_8h_a67f6ce2dd9418647380f26365e60254a}\label{mek_8h_a67f6ce2dd9418647380f26365e60254a} 
+typedef struct aern\+\_\+cipher\+\_\+table\+\_\+slot {\bfseries aern\+\_\+cipher\+\_\+table\+\_\+slot}
+\item 
+\Hypertarget{mek_8h_a20ab3ab1e05d50978b0a8f707ae527b5}\label{mek_8h_a20ab3ab1e05d50978b0a8f707ae527b5} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+cipher\+\_\+table {\bfseries aern\+\_\+cipher\+\_\+table}
+\item 
+\Hypertarget{mek_8h_a3b01525073bfff36b15d43bc411c7852}\label{mek_8h_a3b01525073bfff36b15d43bc411c7852} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+aps\+\_\+state {\bfseries aern\+\_\+aps\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5}{aern\+\_\+mesh\+\_\+peer\+\_\+status}} \{ \newline
+\mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a0a70e2fc94de89a80ed6c7740f2f9eef}{aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+none}} = 0x00U
+, \mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a93d41940c7d290a5cb7ed198d0929005}{aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+synchronizing}} = 0x01U
+, \mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a3a1a46b9dd2848ed4687781296a9016c}{aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+synchronized}} = 0x02U
+, \mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5af23945a3bc86c76c1517e0853da2ec37}{aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+failed}} = 0x03U
+, \newline
+\mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a25092425420ac6851ca735d59ea018e7}{aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+expired}} = 0x04U
+ \}
+\begin{DoxyCompactList}\small\item\em APS mesh synchronization status for a cached peer tunnel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{mek_8h_ab9aecbab87478638b1c3916678f191bb}{aern\+\_\+mek\+\_\+exchange\+\_\+request}} (\mbox{\hyperlink{structaern__mek__request__state}{aern\+\_\+mek\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em MEK exchange -\/ requestor side (P\+\_\+L initiates). \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{mek_8h_a1eed62fea8767b3734292991a386aa07}{aern\+\_\+mek\+\_\+exchange\+\_\+response}} (\mbox{\hyperlink{structaern__mek__response__state}{aern\+\_\+mek\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em MEK exchange -\/ responder side (P\+\_\+R / APS entry-\/node). \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{mek_8h_a84a9320a38b353e80ace3a2e5868a54f}{aern\+\_\+cipher\+\_\+table\+\_\+initialize}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Initialise a cipher table (zero all slots, count = 0). \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{mek_8h_abd48d386ab75f393d380ce0d0fec70fe}{aern\+\_\+cipher\+\_\+table\+\_\+add}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}address, const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns)
+\begin{DoxyCompactList}\small\item\em Add or replace a connection state, keyed by remote IP address. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{mek_8h_a84d5effec64a94b434bf71bbca04586e}{aern\+\_\+cipher\+\_\+table\+\_\+add\+\_\+peer}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}address, const uint8\+\_\+t serial\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}, const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns, \mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5}{aern\+\_\+mesh\+\_\+peer\+\_\+status}} status)
+\begin{DoxyCompactList}\small\item\em Add or replace a peer connection state with serial and status metadata. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mek_8h_af555f10f05b498ac283ef20283010478}{aern\+\_\+cipher\+\_\+table\+\_\+get\+\_\+by\+\_\+ip}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}address)
+\begin{DoxyCompactList}\small\item\em Look up a connection state by remote IP address. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mek_8h_ac561b0c5f6bf8ad9ea2103f404620220}{aern\+\_\+cipher\+\_\+table\+\_\+get\+\_\+by\+\_\+serial}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table, const uint8\+\_\+t serial\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Look up a connection state by remote certificate serial number. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mek_8h_ae6c4c6d178a8b6c9cbc5f00dc057ba8e}{aern\+\_\+cipher\+\_\+table\+\_\+get\+\_\+by\+\_\+instance}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table, uint32\+\_\+t instance)
+\begin{DoxyCompactList}\small\item\em Look up a connection state by instance number. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{mek_8h_a499fbe8fd3382ad2f67a10d475bc5b86}{aern\+\_\+cipher\+\_\+table\+\_\+remove}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table, const char \texorpdfstring{$\ast$}{*}address)
+\begin{DoxyCompactList}\small\item\em Remove a connection state by remote IP address. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{mek_8h_a3fc86216b9f970a55dc2552f9edeed5d}{aern\+\_\+cipher\+\_\+table\+\_\+dispose}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Zero all cipher states and mark all slots unused. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{mek_8h_aab20b25db265a56e11942ee6fed4d177}{aern\+\_\+mek\+\_\+rekey\+\_\+required}} (const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns)
+\begin{DoxyCompactList}\small\item\em Test whether a connection state has reached the MEK soft rekey threshold. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{mek_8h_a64281da72f26f56cdf4fdff0ca33c283}{aern\+\_\+mek\+\_\+rekey\+\_\+limit\+\_\+exceeded}} (const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns)
+\begin{DoxyCompactList}\small\item\em Test whether a connection state has reached the MEK hard packet limit. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{mek_8h_a01beaf1082c67a21629f19751aba8345}{aern\+\_\+cipher\+\_\+table\+\_\+mark\+\_\+rekey\+\_\+pending}} (\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}table, const uint8\+\_\+t serial\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}, bool pending)
+\begin{DoxyCompactList}\small\item\em Mark a peer slot as having a pending MEK rekey operation. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{mek_8h_a066b92970626ab30afc0dae26a1eb80d}{aern\+\_\+aps\+\_\+mesh\+\_\+synchronize}} (\mbox{\hyperlink{structaern__aps__state}{aern\+\_\+aps\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Establish MEK tunnels to all peer APS nodes (spec task 3d). \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{mek_8h_a123d6102fb96e729a0fb787167881b6a}{aern\+\_\+aps\+\_\+is\+\_\+synchronized}} (const \mbox{\hyperlink{structaern__aps__state}{aern\+\_\+aps\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Check whether this APS has MEK tunnels to all active peers (task 3e). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Master Encryption Key (MEK) derivation, APS cipher-\/table management, and proxy mesh orchestration. 
+
+The wire exchange is performed by the canonical MFK exchange functions in network.\+c. This module converts the resulting shared secret into directional RCS send and receive states, stores peer tunnel state, and tracks the MEK rekey threshold for APS-\/to-\/\+APS tunnels. 
+
+\label{doc-enum-members}
+\Hypertarget{mek_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{mek_8h_a4fe44523a008326b0fa971fa2a635ba5}\index{mek.h@{mek.h}!aern\_mesh\_peer\_status@{aern\_mesh\_peer\_status}}
+\index{aern\_mesh\_peer\_status@{aern\_mesh\_peer\_status}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_mesh\_peer\_status}{aern\_mesh\_peer\_status}}
+{\footnotesize\ttfamily \label{mek_8h_a4fe44523a008326b0fa971fa2a635ba5} 
+enum \mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5}{aern\+\_\+mesh\+\_\+peer\+\_\+status}}}
+
+
+
+APS mesh synchronization status for a cached peer tunnel. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_mesh\_peer\_status\_none@{aern\_mesh\_peer\_status\_none}!mek.h@{mek.h}}\index{mek.h@{mek.h}!aern\_mesh\_peer\_status\_none@{aern\_mesh\_peer\_status\_none}}}\Hypertarget{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a0a70e2fc94de89a80ed6c7740f2f9eef}\label{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a0a70e2fc94de89a80ed6c7740f2f9eef} 
+aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+none&No peer synchronization state has been assigned \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_mesh\_peer\_status\_synchronizing@{aern\_mesh\_peer\_status\_synchronizing}!mek.h@{mek.h}}\index{mek.h@{mek.h}!aern\_mesh\_peer\_status\_synchronizing@{aern\_mesh\_peer\_status\_synchronizing}}}\Hypertarget{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a93d41940c7d290a5cb7ed198d0929005}\label{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a93d41940c7d290a5cb7ed198d0929005} 
+aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+synchronizing&The peer tunnel is in the process of synchronizing \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_mesh\_peer\_status\_synchronized@{aern\_mesh\_peer\_status\_synchronized}!mek.h@{mek.h}}\index{mek.h@{mek.h}!aern\_mesh\_peer\_status\_synchronized@{aern\_mesh\_peer\_status\_synchronized}}}\Hypertarget{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a3a1a46b9dd2848ed4687781296a9016c}\label{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a3a1a46b9dd2848ed4687781296a9016c} 
+aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+synchronized&The peer tunnel has completed synchronization and is ready for use \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_mesh\_peer\_status\_failed@{aern\_mesh\_peer\_status\_failed}!mek.h@{mek.h}}\index{mek.h@{mek.h}!aern\_mesh\_peer\_status\_failed@{aern\_mesh\_peer\_status\_failed}}}\Hypertarget{mek_8h_a4fe44523a008326b0fa971fa2a635ba5af23945a3bc86c76c1517e0853da2ec37}\label{mek_8h_a4fe44523a008326b0fa971fa2a635ba5af23945a3bc86c76c1517e0853da2ec37} 
+aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+failed&The peer tunnel has failed and must not be used for relay traffic \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_mesh\_peer\_status\_expired@{aern\_mesh\_peer\_status\_expired}!mek.h@{mek.h}}\index{mek.h@{mek.h}!aern\_mesh\_peer\_status\_expired@{aern\_mesh\_peer\_status\_expired}}}\Hypertarget{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a25092425420ac6851ca735d59ea018e7}\label{mek_8h_a4fe44523a008326b0fa971fa2a635ba5a25092425420ac6851ca735d59ea018e7} 
+aern\+\_\+mesh\+\_\+peer\+\_\+status\+\_\+expired&The peer tunnel has expired and requires renewal before use \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{mek_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{mek_8h_a123d6102fb96e729a0fb787167881b6a}\index{mek.h@{mek.h}!aern\_aps\_is\_synchronized@{aern\_aps\_is\_synchronized}}
+\index{aern\_aps\_is\_synchronized@{aern\_aps\_is\_synchronized}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_aps\_is\_synchronized()}{aern\_aps\_is\_synchronized()}}
+{\footnotesize\ttfamily \label{mek_8h_a123d6102fb96e729a0fb787167881b6a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+aps\+\_\+is\+\_\+synchronized (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__aps__state}{aern\+\_\+aps\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Check whether this APS has MEK tunnels to all active peers (task 3e). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}const aern\+\_\+aps\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} APS runtime state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if fully synchronized. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_a066b92970626ab30afc0dae26a1eb80d}\index{mek.h@{mek.h}!aern\_aps\_mesh\_synchronize@{aern\_aps\_mesh\_synchronize}}
+\index{aern\_aps\_mesh\_synchronize@{aern\_aps\_mesh\_synchronize}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_aps\_mesh\_synchronize()}{aern\_aps\_mesh\_synchronize()}}
+{\footnotesize\ttfamily \label{mek_8h_a066b92970626ab30afc0dae26a1eb80d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+aps\+\_\+mesh\+\_\+synchronize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__aps__state}{aern\+\_\+aps\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Establish MEK tunnels to all peer APS nodes (spec task 3d). 
+
+For each APS node in the topology (excluding self)\+: a. If already in cipher table\+: skip. b. Load the peer APS certificate from the local certificate cache. c. Verify the peer certificate against the root and ADC topology node. d. Call \doxylink{mek_8h_ab9aecbab87478638b1c3916678f191bb}{aern\+\_\+mek\+\_\+exchange\+\_\+request()} to establish a tunnel. e. On success\+: add connection state to the cipher table. f. On failure\+: mark the peer unsynchronised and continue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+aps\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} APS runtime state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of successfully established tunnels, or aern\+\_\+protocol\+\_\+error\+\_\+channel\+\_\+down (cast to size\+\_\+t) if count \texorpdfstring{$<$}{<} 1. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_abd48d386ab75f393d380ce0d0fec70fe}\index{mek.h@{mek.h}!aern\_cipher\_table\_add@{aern\_cipher\_table\_add}}
+\index{aern\_cipher\_table\_add@{aern\_cipher\_table\_add}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_add()}{aern\_cipher\_table\_add()}}
+{\footnotesize\ttfamily \label{mek_8h_abd48d386ab75f393d380ce0d0fec70fe} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+cipher\+\_\+table\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{}\end{DoxyParamCaption})}
+
+
+
+Add or replace a connection state, keyed by remote IP address. 
+
+If a matching address already exists, the old cipher/socket state is disposed before the new state is copied into the slot. This permits safe tunnel refresh and deterministic handling of duplicate or concurrent APS MEK exchanges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Remote peer IP string. \\
+\hline
+{\em cns} & \mbox{[}const aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The cipher state to copy into the slot.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_a84d5effec64a94b434bf71bbca04586e}\index{mek.h@{mek.h}!aern\_cipher\_table\_add\_peer@{aern\_cipher\_table\_add\_peer}}
+\index{aern\_cipher\_table\_add\_peer@{aern\_cipher\_table\_add\_peer}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_add\_peer()}{aern\_cipher\_table\_add\_peer()}}
+{\footnotesize\ttfamily \label{mek_8h_a84d5effec64a94b434bf71bbca04586e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+cipher\+\_\+table\+\_\+add\+\_\+peer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{const uint8\+\_\+t}]{serial}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE\mbox{]}, }\item[{const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{, }\item[{\mbox{\hyperlink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5}{aern\+\_\+mesh\+\_\+peer\+\_\+status}}}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Add or replace a peer connection state with serial and status metadata. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Remote peer IP string. \\
+\hline
+{\em serial} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Remote peer certificate serial number. \\
+\hline
+{\em cns} & \mbox{[}const aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The cipher state to copy into the slot. \\
+\hline
+{\em status} & \mbox{[}\doxylink{mek_8h_a4fe44523a008326b0fa971fa2a635ba5}{aern\+\_\+mesh\+\_\+peer\+\_\+status}\mbox{]} The synchronization status to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_a3fc86216b9f970a55dc2552f9edeed5d}\index{mek.h@{mek.h}!aern\_cipher\_table\_dispose@{aern\_cipher\_table\_dispose}}
+\index{aern\_cipher\_table\_dispose@{aern\_cipher\_table\_dispose}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_dispose()}{aern\_cipher\_table\_dispose()}}
+{\footnotesize\ttfamily \label{mek_8h_a3fc86216b9f970a55dc2552f9edeed5d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+cipher\+\_\+table\+\_\+dispose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Zero all cipher states and mark all slots unused. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mek_8h_ae6c4c6d178a8b6c9cbc5f00dc057ba8e}\index{mek.h@{mek.h}!aern\_cipher\_table\_get\_by\_instance@{aern\_cipher\_table\_get\_by\_instance}}
+\index{aern\_cipher\_table\_get\_by\_instance@{aern\_cipher\_table\_get\_by\_instance}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_get\_by\_instance()}{aern\_cipher\_table\_get\_by\_instance()}}
+{\footnotesize\ttfamily \label{mek_8h_ae6c4c6d178a8b6c9cbc5f00dc057ba8e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} aern\+\_\+cipher\+\_\+table\+\_\+get\+\_\+by\+\_\+instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{uint32\+\_\+t}]{instance}{}\end{DoxyParamCaption})}
+
+
+
+Look up a connection state by instance number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+{\em instance} & \mbox{[}uint32\+\_\+t\mbox{]} The instance counter value to match.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the matching slot\textquotesingle{}s connection state, or NULL if not found. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_af555f10f05b498ac283ef20283010478}\index{mek.h@{mek.h}!aern\_cipher\_table\_get\_by\_ip@{aern\_cipher\_table\_get\_by\_ip}}
+\index{aern\_cipher\_table\_get\_by\_ip@{aern\_cipher\_table\_get\_by\_ip}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_get\_by\_ip()}{aern\_cipher\_table\_get\_by\_ip()}}
+{\footnotesize\ttfamily \label{mek_8h_af555f10f05b498ac283ef20283010478} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} aern\+\_\+cipher\+\_\+table\+\_\+get\+\_\+by\+\_\+ip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{}\end{DoxyParamCaption})}
+
+
+
+Look up a connection state by remote IP address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Remote peer IP string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the slot\textquotesingle{}s connection state, or NULL if not found. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_ac561b0c5f6bf8ad9ea2103f404620220}\index{mek.h@{mek.h}!aern\_cipher\_table\_get\_by\_serial@{aern\_cipher\_table\_get\_by\_serial}}
+\index{aern\_cipher\_table\_get\_by\_serial@{aern\_cipher\_table\_get\_by\_serial}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_get\_by\_serial()}{aern\_cipher\_table\_get\_by\_serial()}}
+{\footnotesize\ttfamily \label{mek_8h_ac561b0c5f6bf8ad9ea2103f404620220} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} aern\+\_\+cipher\+\_\+table\+\_\+get\+\_\+by\+\_\+serial (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const uint8\+\_\+t}]{serial}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Look up a connection state by remote certificate serial number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+{\em serial} & \mbox{[}const uint8\+\_\+t\+:\mbox{]} Remote peer certificate serial number.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the slot\textquotesingle{}s connection state, or NULL if not found. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_a84a9320a38b353e80ace3a2e5868a54f}\index{mek.h@{mek.h}!aern\_cipher\_table\_initialize@{aern\_cipher\_table\_initialize}}
+\index{aern\_cipher\_table\_initialize@{aern\_cipher\_table\_initialize}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_initialize()}{aern\_cipher\_table\_initialize()}}
+{\footnotesize\ttfamily \label{mek_8h_a84a9320a38b353e80ace3a2e5868a54f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+cipher\+\_\+table\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Initialise a cipher table (zero all slots, count = 0). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The table to initialise. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mek_8h_a01beaf1082c67a21629f19751aba8345}\index{mek.h@{mek.h}!aern\_cipher\_table\_mark\_rekey\_pending@{aern\_cipher\_table\_mark\_rekey\_pending}}
+\index{aern\_cipher\_table\_mark\_rekey\_pending@{aern\_cipher\_table\_mark\_rekey\_pending}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_mark\_rekey\_pending()}{aern\_cipher\_table\_mark\_rekey\_pending()}}
+{\footnotesize\ttfamily \label{mek_8h_a01beaf1082c67a21629f19751aba8345} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+cipher\+\_\+table\+\_\+mark\+\_\+rekey\+\_\+pending (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const uint8\+\_\+t}]{serial}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE\mbox{]}, }\item[{bool}]{pending}{}\end{DoxyParamCaption})}
+
+
+
+Mark a peer slot as having a pending MEK rekey operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+{\em serial} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The peer certificate serial number. \\
+\hline
+{\em pending} & \mbox{[}bool\mbox{]} The pending state to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none if the peer is updated. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_a499fbe8fd3382ad2f67a10d475bc5b86}\index{mek.h@{mek.h}!aern\_cipher\_table\_remove@{aern\_cipher\_table\_remove}}
+\index{aern\_cipher\_table\_remove@{aern\_cipher\_table\_remove}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_cipher\_table\_remove()}{aern\_cipher\_table\_remove()}}
+{\footnotesize\ttfamily \label{mek_8h_a499fbe8fd3382ad2f67a10d475bc5b86} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+cipher\+\_\+table\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{}\end{DoxyParamCaption})}
+
+
+
+Remove a connection state by remote IP address. 
+
+Securely zeroes the slot before releasing it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} The cipher table. \\
+\hline
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Remote peer IP string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none if removed; aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+not\+\_\+found if not present. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_ab9aecbab87478638b1c3916678f191bb}\index{mek.h@{mek.h}!aern\_mek\_exchange\_request@{aern\_mek\_exchange\_request}}
+\index{aern\_mek\_exchange\_request@{aern\_mek\_exchange\_request}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_mek\_exchange\_request()}{aern\_mek\_exchange\_request()}}
+{\footnotesize\ttfamily \label{mek_8h_ab9aecbab87478638b1c3916678f191bb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+mek\+\_\+exchange\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__mek__request__state}{aern\+\_\+mek\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+MEK exchange -\/ requestor side (P\+\_\+L initiates). 
+
+Calls the canonical network.\+c MFK exchange to obtain the shared secret, then derives directional RCS TX and RX states for the APS tunnel. MEK is the tunnel use of the exchanged secret; MFK exchange remains the wire protocol.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+mek\+\_\+request\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} MEK requestor state; cns\+\_\+out is populated on success.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Spec reference\+: AERN-\/2025 Rev. 1a 3a/3b. 
+\end{DoxyNote}
+\Hypertarget{mek_8h_a1eed62fea8767b3734292991a386aa07}\index{mek.h@{mek.h}!aern\_mek\_exchange\_response@{aern\_mek\_exchange\_response}}
+\index{aern\_mek\_exchange\_response@{aern\_mek\_exchange\_response}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_mek\_exchange\_response()}{aern\_mek\_exchange\_response()}}
+{\footnotesize\ttfamily \label{mek_8h_a1eed62fea8767b3734292991a386aa07} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+mek\+\_\+exchange\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__mek__response__state}{aern\+\_\+mek\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+MEK exchange -\/ responder side (P\+\_\+R / APS entry-\/node). 
+
+Called when a packet with flag aern\+\_\+network\+\_\+flag\+\_\+mfk\+\_\+request arrives. The response path delegates the wire exchange to network.\+c and then derives the responder-\/side directional RCS states.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+mek\+\_\+response\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} MEK responder state; cns\+\_\+out populated on success. \\
+\hline
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} The incoming MEK-\/request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Spec reference\+: AERN-\/2025 Rev. 1a 3a/3b. 
+\end{DoxyNote}
+\Hypertarget{mek_8h_a64281da72f26f56cdf4fdff0ca33c283}\index{mek.h@{mek.h}!aern\_mek\_rekey\_limit\_exceeded@{aern\_mek\_rekey\_limit\_exceeded}}
+\index{aern\_mek\_rekey\_limit\_exceeded@{aern\_mek\_rekey\_limit\_exceeded}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_mek\_rekey\_limit\_exceeded()}{aern\_mek\_rekey\_limit\_exceeded()}}
+{\footnotesize\ttfamily \label{mek_8h_a64281da72f26f56cdf4fdff0ca33c283} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+mek\+\_\+rekey\+\_\+limit\+\_\+exceeded (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{}\end{DoxyParamCaption})}
+
+
+
+Test whether a connection state has reached the MEK hard packet limit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cns} & \mbox{[}const aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The connection state to inspect.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true when transmit or receive use has reached the hard threshold. 
+\end{DoxyReturn}
+\Hypertarget{mek_8h_aab20b25db265a56e11942ee6fed4d177}\index{mek.h@{mek.h}!aern\_mek\_rekey\_required@{aern\_mek\_rekey\_required}}
+\index{aern\_mek\_rekey\_required@{aern\_mek\_rekey\_required}!mek.h@{mek.h}}
+\doxysubsubsection{\texorpdfstring{aern\_mek\_rekey\_required()}{aern\_mek\_rekey\_required()}}
+{\footnotesize\ttfamily \label{mek_8h_aab20b25db265a56e11942ee6fed4d177} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+mek\+\_\+rekey\+\_\+required (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{}\end{DoxyParamCaption})}
+
+
+
+Test whether a connection state has reached the MEK soft rekey threshold. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cns} & \mbox{[}const aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The connection state to inspect.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true when transmit or receive use has reached the soft threshold. 
+\end{DoxyReturn}

@@ -81,12 +81,14 @@ bool aern_crypto_decrypt_stream(uint8_t* output, const uint8_t* seed, const uint
 	{
 		aern_cipher_state ctx = { 0 };
 
-		const aern_cipher_keyparams kp = {
+		const aern_cipher_keyparams kp = 
+		{
 			.key = seed,
 			.keylen = AERN_CRYPTO_SYMMETRIC_KEY_SIZE,
 			.nonce = (uint8_t*)seed + AERN_CRYPTO_SYMMETRIC_KEY_SIZE,
 			.info = NULL,
-			.infolen = 0 };
+			.infolen = 0 
+		};
 
 		aern_cipher_initialize(&ctx, &kp, false);
 		res = aern_cipher_transform(&ctx, output, input, length);
@@ -107,12 +109,14 @@ void aern_crypto_encrypt_stream(uint8_t* output, const uint8_t* seed, const uint
 
 	if (output != NULL && seed != NULL && input != NULL && length != 0U)
 	{
-		const aern_cipher_keyparams kp = {
-		.key = seed,
-		.keylen = AERN_CRYPTO_SYMMETRIC_KEY_SIZE,
-		.nonce = (uint8_t*)seed + AERN_CRYPTO_SYMMETRIC_KEY_SIZE,
-		.info = NULL,
-		.infolen = 0U };
+		const aern_cipher_keyparams kp = 
+		{
+			.key = seed,
+			.keylen = AERN_CRYPTO_SYMMETRIC_KEY_SIZE,
+			.nonce = (uint8_t*)seed + AERN_CRYPTO_SYMMETRIC_KEY_SIZE,
+			.info = NULL,
+			.infolen = 0U 
+		};
 
 		aern_cipher_initialize(&ctx, &kp, true);
 		aern_cipher_transform(&ctx, output, input, length);

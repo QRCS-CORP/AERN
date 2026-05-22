@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -66,6 +66,8 @@ $(function(){initNavTree('structaern__topology__list__state.html','',''); });
 Data Fields</h2></td></tr>
 <tr class="memitem:a03d916c2e96cc40000b839efa9252f24" id="r_a03d916c2e96cc40000b839efa9252f24"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03d916c2e96cc40000b839efa9252f24">topology</a></td></tr>
 <tr class="memitem:a86988a65e0d3ece7990c032c159786d6" id="r_a86988a65e0d3ece7990c032c159786d6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86988a65e0d3ece7990c032c159786d6">count</a></td></tr>
+<tr class="memitem:aa38fd391d6e9522074df6743fcd3d323" id="r_aa38fd391d6e9522074df6743fcd3d323"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa38fd391d6e9522074df6743fcd3d323">version</a></td></tr>
+<tr class="memitem:a8ccf556dfad550f89d48e7df09a4a250" id="r_a8ccf556dfad550f89d48e7df09a4a250"><td class="memItemLeft" align="right" valign="top">qsc_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ccf556dfad550f89d48e7df09a4a250">gmtx</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The AERN topology list structure. </p>
@@ -86,6 +88,21 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="a8ccf556dfad550f89d48e7df09a4a250" name="a8ccf556dfad550f89d48e7df09a4a250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ccf556dfad550f89d48e7df09a4a250">&#9670;&#160;</a></span>gmtx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">qsc_mutex gmtx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The global thread mutex. </p>
+
+</div>
+</div>
 <a id="a03d916c2e96cc40000b839efa9252f24" name="a03d916c2e96cc40000b839efa9252f24"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03d916c2e96cc40000b839efa9252f24">&#9670;&#160;</a></span>topology</h2>
 
@@ -98,6 +115,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Pointer to the serialized topology array. </p>
+
+</div>
+</div>
+<a id="aa38fd391d6e9522074df6743fcd3d323" name="aa38fd391d6e9522074df6743fcd3d323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa38fd391d6e9522074df6743fcd3d323">&#9670;&#160;</a></span>version</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t version</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The monotonic topology version; zero means uninitialized or disposed. </p>
 
 </div>
 </div>

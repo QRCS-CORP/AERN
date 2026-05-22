@@ -29,22 +29,22 @@
 #define SERVER_KEYCHAIN_TOPOLOGY_INDEX 2U
 #define SERVER_KEYCHAIN_MFKCOL_INDEX 3U
 
-static const char ADS_APPLICATION_BANNER[] = "ADC v1.0 \n"
-"QRCS Corp. 2025, All rights reserved. \n"
-"A quantum safe Domain List APS server. \n"
+static const char ADC_APPLICATION_BANNER[] = "ADC v1.0 \n"
+"QRCS Corp. 2026, All rights reserved. \n"
+"A quantum safe AERN Domain Controller server. \n"
 "Type Help for command mode options. \n"
 "One command per line, press enter to run.";
-static const char ADS_APPLICATION_NAME[] = "ADC";
-static const char ADS_APPLICATION_PATH[] = "\\ADC";
-static const char ADS_FILENAME_CONFIG[] = "\\userconfig.adscfg";
-static const char ADS_PUBKEY_NAME[] = "ads_public_key.dcpkey";
-static const char ADS_PRIKEY_NAME[] = "ads_secret_key.dcskey";
-static const char ADS_PROMPT_DEFAULT[] = "ADC> ";
-static const char ADS_TOPOLOGY_NAME[] = "\\ads_topology";
-static const char ADS_WINDOW_TITLE[] = "Domain List APS v1.0a";
+static const char ADC_APPLICATION_NAME[] = "ADC";
+static const char ADC_APPLICATION_PATH[] = "\\ADC";
+static const char ADC_FILENAME_CONFIG[] = "\\userconfig.adccfg";
+static const char ADC_PUBKEY_NAME[] = "adc_public_key.dcpkey";
+static const char ADC_PRIKEY_NAME[] = "adc_secret_key.dcskey";
+static const char ADC_PROMPT_DEFAULT[] = "ADC> ";
+static const char ADC_TOPOLOGY_NAME[] = "\\adc_topology";
+static const char ADC_WINDOW_TITLE[] = "AERN Domain Controller v1.0a";
 
 static const char APS_APPLICATION_BANNER[] = "APS v1.0 \n"
-"QRCS Corp. 2025, All rights reserved. \n"
+"QRCS Corp. 2026, All rights reserved. \n"
 "A quantum safe APS list server. \n"
 "Type Help for command mode options. \n"
 "One command per line, press enter to run.";
@@ -58,7 +58,7 @@ static const char APS_PROMPT_DEFAULT[] = "APS> ";
 static const char APS_WINDOW_TITLE[] = "APS v1.0a";
 
 static const char ARS_APPLICATION_BANNER[] = "ARS v1.0 \n"
-"QRCS Corp. 2025, All rights reserved. \n"
+"QRCS Corp. 2026, All rights reserved. \n"
 "A quantum safe Root Domain Security server. \n"
 "Type Help for command mode options. \n"
 "One command per line, press enter to run.";
@@ -72,7 +72,7 @@ static const char ARS_TOPOLOGY_NAME[] = "\\ars_topology";
 static const char ARS_WINDOW_TITLE[] = "AERN Root Domain Security Server v1.0a";
 
 static const char CLIENT_APPLICATION_BANNER[] = "Client v1.0 \n"
-"QRCS Corp. 2025, All rights reserved. \n"
+"QRCS Corp. 2026, All rights reserved. \n"
 "A quantum safe AERN Network Client. \n"
 "Type Help for command mode options. \n"
 "One command per line, press enter to run.";
@@ -86,7 +86,7 @@ static const char CLIENT_TOPOLOGY_NAME[] = "\\client_topology";
 static const char CLIENT_WINDOW_TITLE[] = "Client v1.0a";
 
 static const char IDG_APPLICATION_BANNER[] = "IDG v1.0 \n"
-"QRCS Corp. 2025, All rights reserved. \n"
+"QRCS Corp. 2026, All rights reserved. \n"
 "A quantum safe Inter-Domain Gateway server. \n"
 "Type Help for command mode options. \n"
 "One command per line, press enter to run.";
@@ -121,7 +121,11 @@ static void server_storage_directory(const aern_server_application_state* state,
 
 	if (state != NULL && dpath != NULL && pathlen >= AERN_MINIMUM_PATH_LENGTH)
 	{
+#if defined(QSC_SYSTEM_OS_WINDOWS)
+		qsc_folderutils_get_directory(qsc_folderutils_directories_user_app_data, dpath);
+#else
 		qsc_folderutils_get_directory(qsc_folderutils_directories_user_documents, dpath);
+#endif
 
 		if (qsc_folderutils_directory_exists(dpath) == true)
 		{
@@ -421,7 +425,7 @@ static void server_state_deserialize(aern_server_application_state* state, const
 		qsc_memutils_clear(state->hostname, sizeof(state->hostname));
 		qsc_memutils_clear(state->localip, sizeof(state->localip));
 		qsc_memutils_clear(state->logpath, sizeof(state->logpath));
-		qsc_memutils_clear(&state->tlist, sizeof(state->tlist));
+		aern_topology_list_initialize(&state->tlist);
 		qsc_memutils_clear(state->username, sizeof(state->username));
 
 		qsc_memutils_copy(state->domain, input, sizeof(state->domain));
@@ -599,7 +603,7 @@ static void server_unload_key_chain(aern_server_application_state* state)
 	if (state != NULL && state->kchain != NULL)
 	{
 		const size_t klen = (SERVER_KEYCHAIN_DEPTH * SERVER_KEYCHAIN_WIDTH);
-		qsc_memutils_clear(state->kchain, klen);
+		qsc_memutils_secure_erase(state->kchain, klen);
 	}
 }
 
@@ -610,8 +614,10 @@ static void server_unload_signature_key(aern_server_application_state* state)
 	if (state != NULL && state->kchain != NULL)
 	{
 		const size_t klen = (SERVER_KEYCHAIN_DEPTH * SERVER_KEYCHAIN_WIDTH) + AERN_ASYMMETRIC_SIGNING_KEY_SIZE;
-		qsc_memutils_clear(state->kchain, klen);
+		qsc_memutils_secure_erase(state->kchain, klen);
 		qsc_memutils_alloc_free(state->kchain);
+		state->kchain = NULL;
+		state->sigkey = NULL;
 	}
 }
 
@@ -1344,31 +1350,43 @@ bool aern_server_root_import_dialogue(aern_server_application_state* state)
 	return res;
 }
 
-void aern_server_root_certificate_generate(aern_server_application_state* state, aern_root_certificate* rcert, uint64_t period)
+bool aern_server_root_certificate_generate(aern_server_application_state* state, aern_root_certificate* rcert, uint64_t period)
 {
 	AERN_ASSERT(state != NULL);
 	AERN_ASSERT(rcert != NULL);
 	AERN_ASSERT(period != 0U);
 
-	if (state != NULL && rcert != NULL && period != 0U)
+	bool res;
+
+	res = false;
+
+	if (state != NULL && rcert != NULL && period != 0U && period <= AERN_CERTIFICATE_MAXIMUM_PERIOD)
 	{
 		aern_certificate_expiration exp = { 0 };
 		aern_signature_keypair akp = { 0 };
 
 		/* generate the key-pair*/
-		aern_certificate_signature_generate_keypair(&akp);
-		exp.from = qsc_timestamp_epochtime_seconds();
-		exp.to = exp.from + period;
+		if (aern_certificate_signature_generate_keypair(&akp) == true)
+		{
+			exp.from = qsc_timestamp_epochtime_seconds();
+			exp.to = exp.from + period;
 
-		/* Note: ex. mydomain_ars1.rcert */
-		server_root_certificate_issuer(state);
+			/* Note: ex. mydomain_ars1.rcert */
+			server_root_certificate_issuer(state);
 
-		/* create the certificate */
-		aern_certificate_root_create(rcert, akp.pubkey, &exp, state->issuer);
+			/* create the certificate */
+			aern_certificate_root_create(rcert, akp.pubkey, &exp, state->issuer);
 
-		/* write the private key to state */
-		qsc_memutils_copy(state->sigkey, akp.prikey, sizeof(akp.prikey));
+			/* write the private key to state */
+			qsc_memutils_copy(state->sigkey, akp.prikey, sizeof(akp.prikey));
+
+			/* erase the temporary key set */
+			qsc_memutils_secure_erase(&akp, sizeof(aern_signature_keypair));
+			res = true;
+		}
 	}
+
+	return res;
 }
 
 bool aern_server_root_certificate_load(const aern_server_application_state* state, aern_root_certificate* root, const aern_topology_list_state* tlist)
@@ -1394,19 +1412,17 @@ bool aern_server_root_certificate_load(const aern_server_application_state* stat
 			if (qsc_fileutils_exists(fpath) &&
 				qsc_stringutils_string_contains(fpath, AERN_CERTIFICATE_ROOT_EXTENSION) == true)
 			{
-				if (aern_certificate_root_is_valid(root) == true)
+				if (aern_certificate_root_file_to_struct(fpath, root) == true &&
+					aern_certificate_root_is_valid(root) == true)
 				{
-					if (aern_certificate_root_file_to_struct(fpath, root) == true)
+					uint8_t chash[AERN_CRYPTO_SYMMETRIC_HASH_SIZE];
+
+					aern_certificate_root_hash(chash, root);
+					res = qsc_memutils_are_equal(chash, rnode.chash, sizeof(chash));
+
+					if (res == false)
 					{
-						uint8_t chash[AERN_CRYPTO_SYMMETRIC_HASH_SIZE];
-
-						aern_certificate_root_hash(chash, root);
-						res = qsc_memutils_are_equal(chash, rnode.chash, sizeof(chash));
-
-						if (res == false)
-						{
-							qsc_memutils_clear(root, sizeof(aern_root_certificate));
-						}
+						qsc_memutils_secure_erase(root, sizeof(aern_root_certificate));
 					}
 				}
 			}
@@ -1481,7 +1497,7 @@ void aern_server_root_certificate_store(aern_server_application_state* state, co
 
 		if (res == true)
 		{
-			if (state->srvtype == aern_network_designation_ads)
+			if (state->srvtype == aern_network_designation_adc)
 			{
 				res = false;
 
@@ -1813,7 +1829,7 @@ void aern_server_erase_signature_key(aern_server_application_state* state)
 
 	if (state != NULL && state->kchain != NULL)
 	{
-		qsc_memutils_clear(state->kchain + (SERVER_KEYCHAIN_DEPTH * SERVER_KEYCHAIN_WIDTH), AERN_ASYMMETRIC_SIGNING_KEY_SIZE);
+		qsc_memutils_secure_erase(state->kchain + (SERVER_KEYCHAIN_DEPTH * SERVER_KEYCHAIN_WIDTH), AERN_ASYMMETRIC_SIGNING_KEY_SIZE);
 	}
 }
 
@@ -1934,7 +1950,7 @@ void aern_server_state_initialize(aern_server_application_state* state, aern_net
 		qsc_memutils_clear(state->localip, sizeof(state->localip));
 		qsc_memutils_clear(state->logpath, sizeof(state->logpath));
 		qsc_memutils_clear(state->issuer, sizeof(state->issuer));
-		qsc_memutils_clear(&state->tlist, sizeof(state->tlist));
+		aern_topology_list_initialize(&state->tlist);
 		qsc_memutils_clear(state->username, sizeof(state->username));
 
 		if (srvtype == aern_network_designation_aps)
@@ -1963,17 +1979,17 @@ void aern_server_state_initialize(aern_server_application_state* state, aern_net
 			state->wtitle = CLIENT_WINDOW_TITLE;
 			state->port = AERN_APPLICATION_CLIENT_PORT;
 		}
-		else if (srvtype == aern_network_designation_ads)
+		else if (srvtype == aern_network_designation_adc)
 		{
-			state->aplpath = ADS_APPLICATION_PATH;
-			state->banner = ADS_APPLICATION_BANNER;
-			state->cfgname = ADS_FILENAME_CONFIG;
-			state->srvname = ADS_APPLICATION_NAME;
-			state->prikeyname = ADS_PRIKEY_NAME;
-			state->promptdef = ADS_PROMPT_DEFAULT;
-			state->pubkeyname = ADS_PUBKEY_NAME;
-			state->topname = ADS_TOPOLOGY_NAME;
-			state->wtitle = ADS_WINDOW_TITLE;
+			state->aplpath = ADC_APPLICATION_PATH;
+			state->banner = ADC_APPLICATION_BANNER;
+			state->cfgname = ADC_FILENAME_CONFIG;
+			state->srvname = ADC_APPLICATION_NAME;
+			state->prikeyname = ADC_PRIKEY_NAME;
+			state->promptdef = ADC_PROMPT_DEFAULT;
+			state->pubkeyname = ADC_PUBKEY_NAME;
+			state->topname = ADC_TOPOLOGY_NAME;
+			state->wtitle = ADC_WINDOW_TITLE;
 			state->port = AERN_APPLICATION_ADC_PORT;
 		}
 		else if (srvtype == aern_network_designation_idg)
@@ -2682,7 +2698,7 @@ bool aern_server_user_login(aern_server_application_state* state)
 						}
 						else
 						{
-							qsc_memutils_clear(state->kchain, SERVER_KEYCHAIN_DEPTH * SERVER_KEYCHAIN_WIDTH);
+							qsc_memutils_secure_erase(state->kchain, SERVER_KEYCHAIN_DEPTH * SERVER_KEYCHAIN_WIDTH);
 							aern_menu_print_predefined_message(aern_application_challenge_password_failure, aern_console_mode_login_message, state->hostname);
 						}
 					}
@@ -2705,7 +2721,7 @@ void aern_server_user_logout(aern_server_application_state* state)
 	if (state != NULL)
 	{
 		server_unload_key_chain(state);
-		qsc_memutils_clear(state->username, AERN_STORAGE_USERNAME_MAX);
+		qsc_memutils_secure_erase(state->username, AERN_STORAGE_USERNAME_MAX);
 		state->mode = aern_console_mode_user;
 	}
 }

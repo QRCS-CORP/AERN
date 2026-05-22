@@ -1,0 +1,51 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERNTest/replay\+\_\+test.h File Reference}
+\hypertarget{replay__test_8h}{}\label{replay__test_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/replay\_test.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/replay\_test.h}}
+
+
+Replay-\/window and packet-\/time validation tests for AERNTest.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{replay__test_8h_acac6635bb7c529770d5843e12fdcdd8e}{aerntest\+\_\+replay\+\_\+run}} (void)
+\begin{DoxyCompactList}\small\item\em Run the replay-\/window and packet-\/time validation test group. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{replay__test_8h_a638c79305581d70097845411790f6c4d}{aerntest\+\_\+replay\+\_\+policy\+\_\+test}} (void)
+\begin{DoxyCompactList}\small\item\em Test the AERN replay acceptance policy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Replay-\/window and packet-\/time validation tests for AERNTest. 
+
+This header declares the replay-\/policy test group used to validate AERN replay protection, sequence-\/window behavior, and packet-\/time boundary handling. 
+
+\label{doc-func-members}
+\Hypertarget{replay__test_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{replay__test_8h_a638c79305581d70097845411790f6c4d}\index{replay\_test.h@{replay\_test.h}!aerntest\_replay\_policy\_test@{aerntest\_replay\_policy\_test}}
+\index{aerntest\_replay\_policy\_test@{aerntest\_replay\_policy\_test}!replay\_test.h@{replay\_test.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_replay\_policy\_test()}{aerntest\_replay\_policy\_test()}}
+{\footnotesize\ttfamily \label{replay__test_8h_a638c79305581d70097845411790f6c4d} 
+bool aerntest\+\_\+replay\+\_\+policy\+\_\+test (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Test the AERN replay acceptance policy. 
+
+\begin{DoxyReturn}{Returns}
+Returns true when the replay policy behaves as expected. 
+\end{DoxyReturn}
+\Hypertarget{replay__test_8h_acac6635bb7c529770d5843e12fdcdd8e}\index{replay\_test.h@{replay\_test.h}!aerntest\_replay\_run@{aerntest\_replay\_run}}
+\index{aerntest\_replay\_run@{aerntest\_replay\_run}!replay\_test.h@{replay\_test.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_replay\_run()}{aerntest\_replay\_run()}}
+{\footnotesize\ttfamily \label{replay__test_8h_acac6635bb7c529770d5843e12fdcdd8e} 
+bool aerntest\+\_\+replay\+\_\+run (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Run the replay-\/window and packet-\/time validation test group. 
+
+\begin{DoxyReturn}{Returns}
+Returns true when every replay test succeeds. 
+\end{DoxyReturn}

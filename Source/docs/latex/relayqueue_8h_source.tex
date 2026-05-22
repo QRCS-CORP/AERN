@@ -1,0 +1,57 @@
+\doxysection{relayqueue.\+h}
+\hypertarget{relayqueue_8h_source}{}\label{relayqueue_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/relayqueue.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/relayqueue.h}}
+\mbox{\hyperlink{relayqueue_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAYQUEUE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AERN\_RELAYQUEUE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aern_8h}{aern.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structaern__ingress__pending__item_a021141e4ed340d853a361edbafdc68a8}{packet}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__ingress__pending__item_ab92fda684790a92924ba209e515d2dcd}{packetlen}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__ingress__pending__item_ad721fc6ca6a3d6ba3bc506576622aab0}{capacity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__ingress__pending__item_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__ingress__pending__item_a2c92b3e49ad501b221931705540efcaa}{packetid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__ingress__pending__item_a3ed4f0ed85a6a2660a41f62157f52b6d}{expiry}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__ingress__pending__item_a68a77f136b0fcf8314fedaca3ca36cbf}{delayuntil}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__ingress__pending__item_a03c996f9fcf0e10baeb3e700be0c409a}{active}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \}\ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ \mbox{\hyperlink{structaern__relayqueue__state_abc2b430ba6dfef77fffdbbf1f21898e4}{items}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__relayqueue__state_a820c167ceaaa9759b0ca2695d22db55c}{depth}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__relayqueue__state_a75844ce74940ef333d11ae090e07c9af}{head}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__relayqueue__state_ad71c3da585299fa719501f5149814fd7}{tail}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__relayqueue__state_a76d971a3c552bc58ba9f0d5fceae9806}{count}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__relayqueue__state_aedeffc7d23da25d52b9a50045189fe2b}{initialized}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ \}\ \mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00067\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{relayqueue_8h_ab5f7f9826891efbb517b35cb57d268ec}{aern\_relayqueue\_item\_dispose}}(\mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ item);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00079\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{relayqueue_8h_a82b0cb807b7b0021d418d9c1e2e20c75}{aern\_relayqueue\_initialize}}(\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue,\ \textcolor{keywordtype}{size\_t}\ depth);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00090\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{relayqueue_8h_a1a0a7588e157fe4fd5a0ff00081bf008}{aern\_relayqueue\_dispose}}(\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00101\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{relayqueue_8h_ab21f5d5b3829fd0dc767bb2ddb1e0d47}{aern\_relayqueue\_clear}}(\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00118\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{relayqueue_8h_af7db7006b7ff314a9a64e44d9035509d}{aern\_relayqueue\_push}}(\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ item);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00134\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{relayqueue_8h_adf7242b282644b2aac184eaca5eb4f1c}{aern\_relayqueue\_pop}}(\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue,\ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ item);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00151\ AERN\_EXPORT\_API\ uint32\_t\ \mbox{\hyperlink{relayqueue_8h_af13e0a8283528c652edb48265c346e0d}{aern\_relayqueue\_remove\_session}}(\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue,\ uint64\_t\ sessionid,\ uint64\_t\ tnow);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00165\ AERN\_EXPORT\_API\ uint32\_t\ \mbox{\hyperlink{relayqueue_8h_ab59b89dc9b44bfb646af96660be3f03b}{aern\_relayqueue\_cleanup\_expired}}(\mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue,\ uint64\_t\ tnow);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00174\ AERN\_EXPORT\_API\ uint32\_t\ \mbox{\hyperlink{relayqueue_8h_adfe4406256c7ff28c19c4cd8823261b4}{aern\_relayqueue\_count}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00183\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{relayqueue_8h_af4fe810d33faa3d436950126349438e2}{aern\_relayqueue\_is\_empty}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00192\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{relayqueue_8h_a66e500e78da944c4c416a98ce01f6753}{aern\_relayqueue\_is\_full}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}*\ queue);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

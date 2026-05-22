@@ -94,13 +94,6 @@ static const char AERN_LOG_FILENAME[] = "\\userlog.mlog";
 #	define AERN_COMPILE_DEBUG_MODE
 #endif
 
-/*!
-\def AERN_DEBUG_TESTS_RUN
-* \brief run the internal function tests
-*/
-#if defined(AERN_COMPILE_DEBUG_MODE)
-//#	define AERN_DEBUG_TESTS_RUN
-#endif
 
 /* application constants */
 #define AERN_CRYPTO_PASSWORD_HASH 32U
@@ -192,7 +185,9 @@ static const char AERN_LOG_FILENAME[] = "\\userlog.mlog";
    * \def AERN_DEBUG_MODE
    * \brief Defined when the build is in debug mode.
    */
-#	define AERN_DEBUG_MODE
+#	if !defined(AERN_DEBUG_MODE)
+#		define AERN_DEBUG_MODE
+#	endif
 #endif
 
 #ifdef AERN_DEBUG_MODE

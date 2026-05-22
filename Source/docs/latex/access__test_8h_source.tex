@@ -1,0 +1,186 @@
+\doxysection{access\+\_\+test.\+h}
+\hypertarget{access__test_8h_source}{}\label{access__test_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/access\_test.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/access\_test.h}}
+\mbox{\hyperlink{access__test_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025-\/2026\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ property\ of}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).\ The\ intellectual}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ and\ technical\ concepts\ contained\ herein\ are\ proprietary\ to\ QRCS\ and\ are}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ protected\ under\ applicable\ Canadian,\ U.S.,\ and\ international\ copyright,}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ ALGORITHMS\ AND\ IMPLEMENTATIONS:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ primitives\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ algorithms\ that\ are\ standardized\ or\ in\ the\ public\ domain,\ such\ as\ AES}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ \ and\ SHA-\/3,\ which\ are\ not\ proprietary\ to\ QRCS.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ -\/\ This\ software\ also\ includes\ cryptographic\ primitives,\ constructions,\ and}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ algorithms\ designed\ by\ QRCS,\ including\ but\ not\ limited\ to\ RCS,\ SCB,\ CSX,\ QMAC,\ and}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ related\ components,\ which\ are\ proprietary\ to\ QRCS.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ All\ source\ code,\ implementations,\ protocol\ compositions,\ optimizations,}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ parameter\ selections,\ and\ engineering\ work\ contained\ in\ this\ software\ are}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ \ \ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ LICENSE\ AND\ USE\ RESTRICTIONS:}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ licensed\ under\ the\ Quantum\ Resistant\ Cryptographic\ Solutions}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ \ \ Public\ Research\ and\ Evaluation\ License\ (QRCS-\/PREL),\ 2025-\/2026.}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ -\/\ Permission\ is\ granted\ solely\ for\ non-\/commercial\ evaluation,\ academic\ research,}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ \ \ cryptographic\ analysis,\ interoperability\ testing,\ and\ feasibility\ assessment.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ -\/\ Commercial\ use,\ production\ deployment,\ commercial\ redistribution,\ or}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ \ \ integration\ into\ products\ or\ services\ is\ strictly\ prohibited\ without\ a}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ \ \ separate\ written\ license\ agreement\ executed\ with\ QRCS.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ EXPERIMENTAL\ CRYPTOGRAPHY\ NOTICE:}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Portions\ of\ this\ software\ may\ include\ experimental,\ novel,\ or\ evolving}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ cryptographic\ designs.\ Use\ of\ this\ software\ is\ entirely\ at\ the\ user's\ risk.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ THIS\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ WARRANTIES\ OF\ MERCHANTABILITY,\ FITNESS}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *\ FOR\ A\ PARTICULAR\ PURPOSE,\ SECURITY,\ OR\ NON-\/INFRINGEMENT.\ QRCS\ DISCLAIMS\ ALL}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ *\ LIABILITY\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ OR\ CONSEQUENTIAL\ DAMAGES}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ *\ ARISING\ FROM\ THE\ USE\ OR\ MISUSE\ OF\ THIS\ SOFTWARE.}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ Quantum\ Resistant\ Cryptographic\ Solutions}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ *\ Public\ Research\ and\ Evaluation\ License\ (QRCS-\/PREL),\ 2025-\/2026.\ The\ complete\ license\ terms}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ *\ are\ provided\ in\ the\ accompanying\ LICENSE\ file\ or\ at\ https://www.qrcscorp.ca.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifndef\ AERN\_TEST\_ACCESS\_H}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ AERN\_TEST\_ACCESS\_H}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}aerncommon.h"{}}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{network_8h}{network.h}}"{}}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{route_8h}{route.h}}"{}}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mek_8h}{mek.h}}"{}}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ NETWORK\_ANNOUNCE\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_NETWORK\_TOPOLOGY\_NODE\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ NETWORK\_ANNOUNCE\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_ANNOUNCE\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ NETWORK\_CONVERGE\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_NETWORK\_TOPOLOGY\_NODE\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ NETWORK\_CONVERGE\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_CONVERGE\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ NETWORK\_CONVERGE\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_NETWORK\_TOPOLOGY\_NODE\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ NETWORK\_CONVERGE\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_CONVERGE\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ NETWORK\_FRAGMENT\_FKEY\_REQUEST\_MESSAGE\_SIZE\ (AERN\_CERTIFICATE\_SERIAL\_SIZE\ +\ AERN\_CRYPTO\_SYMMETRIC\_TOKEN\_SIZE)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ NETWORK\_FRAGMENT\_FKEY\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_FRAGMENT\_FKEY\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ NETWORK\_FRAGMENT\_FKEY\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_CRYPTO\_SYMMETRIC\_KEY\_SIZE\ +\ AERN\_CRYPTO\_SYMMETRIC\_HASH\_SIZE)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ NETWORK\_FRAGMENT\_FKEY\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_FRAGMENT\_FKEY\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ NETWORK\_INCREMENTAL\_UPDATE\_REQUEST\_MESSAGE\_SIZE\ (AERN\_CERTIFICATE\_SERIAL\_SIZE)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ NETWORK\_INCREMENTAL\_UPDATE\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_INCREMENTAL\_UPDATE\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ NETWORK\_INCREMENTAL\_UPDATE\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ NETWORK\_INCREMENTAL\_UPDATE\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_INCREMENTAL\_UPDATE\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_JOIN\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_JOIN\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_UPDATE\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_UPDATE\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_JOIN\_UPDATE\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_UPDATE\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ NETWORK\_JOIN\_UPDATE\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_JOIN\_UPDATE\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ NETWORK\_MFK\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ NETWORK\_MFK\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_MFK\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ NETWORK\_MFK\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_ASYMMETRIC\_PUBLIC\_KEY\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ NETWORK\_MFK\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_MFK\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ NETWORK\_MFK\_ESTABLISH\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_ASYMMETRIC\_CIPHERTEXT\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ NETWORK\_MFK\_ESTABLISH\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_MFK\_ESTABLISH\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ NETWORK\_REMOTE\_SIGNING\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ NETWORK\_REMOTE\_SIGNING\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_REMOTE\_SIGNING\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ NETWORK\_REMOTE\_SIGNING\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_CHILD\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ NETWORK\_REMOTE\_SIGNING\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_REMOTE\_SIGNING\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_QUERY\_SIZE\ (AERN\_CERTIFICATE\_SERIAL\_SIZE\ +\ AERN\_CERTIFICATE\_ISSUER\_SIZE)}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_QUERY\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ NETWORK\_TOPOLOGY\_QUERY\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_QUERY\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_TOPOLOGY\_QUERY\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_QUERY\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_NETWORK\_TOPOLOGY\_NODE\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_QUERY\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_TOPOLOGY\_QUERY\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_STATUS\_REQUEST\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_SERIAL\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_STATUS\_REQUEST\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_TOPOLOGY\_STATUS\_REQUEST\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_STATUS\_RESPONSE\_MESSAGE\_SIZE\ (AERN\_PACKET\_SUBHEADER\_SIZE\ +\ AERN\_CERTIFICATE\_SERIAL\_SIZE\ +\ AERN\_CERTIFICATE\_SIGNED\_HASH\_SIZE)}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ NETWORK\_TOPOLOGY\_STATUS\_RESPONSE\_PACKET\_SIZE\ (AERN\_PACKET\_HEADER\_SIZE\ +\ NETWORK\_TOPOLOGY\_STATUS\_RESPONSE\_MESSAGE\_SIZE)}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{access__test_8h_a543256030c3b2cc3c870db776f5ab7df}{route\_dummy\_traffic\_allowed}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ uint32\_t\ utilization,\ uint64\_t\ nowms);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00146\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{access__test_8h_a87a7f2315501ec6daef6c73e292feb59}{network\_derive\_fkey}}(uint8\_t*\ ckey,\ \textcolor{keyword}{const}\ uint8\_t*\ mfk,\ \textcolor{keyword}{const}\ uint8\_t*\ lhash,\ \textcolor{keyword}{const}\ uint8\_t*\ rhash,\ \textcolor{keyword}{const}\ uint8\_t*\ token);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00157\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{access__test_8h_ab0c954cd01395c3884b754dc2dbcaf3d}{network\_mac\_message}}(uint8\_t*\ mtag,\ \textcolor{keyword}{const}\ uint8\_t*\ ckey,\ \textcolor{keyword}{const}\ uint8\_t*\ ctxt,\ \textcolor{keywordtype}{size\_t}\ ctxlen,\ \textcolor{keyword}{const}\ uint8\_t*\ adata);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00167\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a138c006389a5f204cc6b5f0e8f297e1d}{network\_announce\_broadcast\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__announce__request__state}{aern\_network\_announce\_request\_state}}*\ state);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00178\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_aadf0fff36f2c8f873f0a7572c7eb0308}{network\_converge\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__converge__request__state}{aern\_network\_converge\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ uint8\_t*\ snode);}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00188\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a69f19928969bf32bc057ff32c50b14f4}{network\_converge\_response\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__converge__request__state}{aern\_network\_converge\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00198\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_adc06b9c01314eb2bbbba60846240f741}{network\_converge\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__converge__response__state}{aern\_network\_converge\_response\_state}}*\ state);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00208\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a165974fb93a59262aca716bf5537080e}{network\_converge\_request\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__converge__response__state}{aern\_network\_converge\_response\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00216\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{access__test_8h_aebffe7b270d109eede6a055bae3a84db}{network\_fkey\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \mbox{\hyperlink{structaern__network__fkey__request__state}{aern\_network\_fkey\_request\_state}}*\ state);}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00226\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_afcbf7a3bb2034eb7d78bb7f711706100}{network\_fkey\_response\_verify}}(\mbox{\hyperlink{structaern__network__fkey__request__state}{aern\_network\_fkey\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00237\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a5aebaa6e1f9bcb8b6a76c388ce22fb6a}{network\_fkey\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin,\ \mbox{\hyperlink{structaern__network__fkey__response__state}{aern\_network\_fkey\_response\_state}}*\ state);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00245\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{access__test_8h_a8232301fb15d0874a604834d1b6176df}{network\_incremental\_update\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\_network\_incremental\_update\_request\_state}}*\ state);}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00255\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_aaba8f108d3259864879ae44d1291b08c}{network\_incremental\_update\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\_network\_incremental\_update\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00266\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a2230400cce3023e22069f77e6f20af4d}{network\_incremental\_update\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__incremental__update__response__state}{aern\_network\_incremental\_update\_response\_state}}*\ state);}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00276\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a687f992928d5db83b197c97b3c1fa837}{network\_mfk\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__mfk__request__state}{aern\_network\_mfk\_request\_state}}*\ state);}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00287\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a7ba97954f0547687a1e7402805cdf8db}{network\_mfk\_establish\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin,\ \mbox{\hyperlink{structaern__network__mfk__request__state}{aern\_network\_mfk\_request\_state}}*\ state);}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00298\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_aae6453b1c10483b161bc98f23484cca8}{network\_mfk\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin,\ \mbox{\hyperlink{structaern__network__mfk__response__state}{aern\_network\_mfk\_response\_state}}*\ state);}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00308\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a4bdaafd66299b7a630fb49d18eb20d05}{network\_mfk\_verify\_packet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin,\ \mbox{\hyperlink{structaern__network__mfk__response__state}{aern\_network\_mfk\_response\_state}}*\ state);}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00318\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a4d6210610b80e19aa36156b4502f5c5f}{network\_register\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__register__request__state}{aern\_network\_register\_request\_state}}*\ state);}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00328\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_aa944bd547659741253d5a5c47107f116}{network\_register\_verify}}(\mbox{\hyperlink{structaern__network__register__request__state}{aern\_network\_register\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00339\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a78a656bb3e530874f5eff1022ad668f5}{network\_register\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \mbox{\hyperlink{structaern__network__register__response__state}{aern\_network\_register\_response\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00349\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a36d5ff7cba357e50beab2c742e8cfc97}{network\_register\_update\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__register__update__request__state}{aern\_network\_register\_update\_request\_state}}*\ state);}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00359\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a0a17c75257d1dd45958ba83fc7af5269}{network\_register\_update\_verify}}(\mbox{\hyperlink{structaern__network__register__update__request__state}{aern\_network\_register\_update\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00371\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a7993900c9e29f8941184a626c61cb99a}{network\_register\_update\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \mbox{\hyperlink{structaern__network__register__update__response__state}{aern\_network\_register\_update\_response\_state}}*\ state,\ uint8\_t*\ buffer,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00381\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a9fbd2ac6b2a9654e0c4c623f8a39b237}{network\_remote\_signing\_request\_packet}}(\mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\_network\_remote\_signing\_request\_state}}*\ state,\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout);}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00391\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_ad4f8e02a5eea56ec44a9db59b276ab38}{network\_remote\_signing\_request\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\_network\_remote\_signing\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00401\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a545c2e9caf33f8dbbf78b6323885dd57}{network\_remote\_signing\_response\_packet}}(\mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\_network\_remote\_signing\_response\_state}}*\ state,\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout);}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00411\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a8cbc61c5f52198a4c1b63e44f9032731}{network\_remote\_signing\_response\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\_network\_remote\_signing\_response\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00421\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a4b377bfae2cc6937143a41b532a910d8}{network\_topological\_query\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\_network\_topological\_query\_request\_state}}*\ state);}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00432\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a3de1550f8b8b16f49e97593e9ed8a6ad}{network\_topological\_query\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\_network\_topological\_query\_response\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00442\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_ac845b6d95c4a6c40c39f29eb498d0fc5}{network\_topological\_query\_request\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\_network\_topological\_query\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00453\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a979aa34c6abb50cdd7a180800c9a3ded}{network\_topological\_query\_response\_verify}}(uint8\_t*\ query,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\_network\_topological\_query\_response\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00463\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a2d399fc61acce36e9d963b823b4f65bf}{network\_topological\_status\_request\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\_network\_topological\_status\_request\_state}}*\ state);}
+\DoxyCodeLine{00464\ }
+\DoxyCodeLine{00473\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a951db740924935174bdf4285dbd1b377}{aern\_network\_topological\_status\_request\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\_network\_topological\_status\_request\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00483\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_ae2867355054033b8cadf2adc8209d71e}{network\_topological\_status\_response\_packet}}(\mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetout,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\_network\_topological\_status\_response\_state}}*\ state);}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00493\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{access__test_8h_a9a365736024c2df602071d694a040a5f}{network\_topological\_status\_response\_verify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\_network\_topological\_status\_response\_state}}*\ state,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__network__packet}{aern\_network\_packet}}*\ packetin);}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00505\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{access__test_8h_a700e39f86db523e88a03aac3a5b4d507}{mek\_derive\_and\_init\_ciphers}}(\mbox{\hyperlink{structaern__connection__state}{aern\_connection\_state}}*\ cns,\ uint8\_t\ secret[\mbox{\hyperlink{aern_8h_ae973c0fec90018921f0eff6a381dbba9}{AERN\_CRYPTO\_SYMMETRIC\_SECRET\_SIZE}}],}
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ initiator[\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}],\ \textcolor{keyword}{const}\ uint8\_t\ responder[\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\_CERTIFICATE\_SERIAL\_SIZE}}],\ \textcolor{keywordtype}{bool}\ initiatorrole);}
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00508\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

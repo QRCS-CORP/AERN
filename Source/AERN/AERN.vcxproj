@@ -171,34 +171,49 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="adc.h" />
+    <ClInclude Include="admin.h" />
+    <ClInclude Include="aps.h" />
     <ClInclude Include="certificate.h" />
+    <ClInclude Include="client.h" />
     <ClInclude Include="commands.h" />
     <ClInclude Include="aerncommon.h" />
     <ClInclude Include="crypto.h" />
     <ClInclude Include="doxymain.h" />
     <ClInclude Include="help.h" />
+    <ClInclude Include="lifecycle.h" />
     <ClInclude Include="logger.h" />
+    <ClInclude Include="mek.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="aern.h" />
     <ClInclude Include="network.h" />
     <ClInclude Include="ars.h" />
     <ClInclude Include="resources.h" />
+    <ClInclude Include="fragment.h" />
+    <ClInclude Include="relayqueue.h" />
+    <ClInclude Include="relaysession.h" />
+    <ClInclude Include="route.h" />
     <ClInclude Include="server.h" />
     <ClInclude Include="topology.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Notes.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="adc.c" />
+    <ClCompile Include="admin.c" />
+    <ClCompile Include="aps.c" />
     <ClCompile Include="certificate.c" />
+    <ClCompile Include="client.c" />
     <ClCompile Include="crypto.c" />
     <ClCompile Include="help.c" />
+    <ClCompile Include="lifecycle.c" />
     <ClCompile Include="logger.c" />
+    <ClCompile Include="mek.c" />
     <ClCompile Include="menu.c" />
     <ClCompile Include="aern.c" />
     <ClCompile Include="network.c" />
     <ClCompile Include="ars.c" />
+    <ClCompile Include="fragment.c" />
+    <ClCompile Include="relayqueue.c" />
+    <ClCompile Include="relaysession.c" />
+    <ClCompile Include="route.c" />
     <ClCompile Include="server.c" />
     <ClCompile Include="topology.c" />
   </ItemGroup>

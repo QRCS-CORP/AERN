@@ -146,13 +146,13 @@ typedef enum aern_application_messages
 	aern_application_invalid_input = 0x3CU,						/*!< The command input was invalid, operation failed. */
 	aern_application_register_failure = 0x3DU,					/*!< The network join request has failed, check the address. */
 	aern_application_register_success = 0x3EU,					/*!< The network join request has succeeded. */
-	aern_application_register_existing = 0x3FU,					/*!< The node is joined to an existing network, rejoin the ads? Y|N */
+	aern_application_register_existing = 0x3FU,					/*!< The node is joined to an existing network, rejoin the ADC? Y|N */
 	aern_application_announce_failure = 0x40U,					/*!< The certificate has been announced to the network. */
 	aern_application_announce_success = 0x41U,					/*!< The certificate announce operation has failed, check the path. */
 	aern_application_converge_failure = 0x42U,					/*!< The topology update has failed, memory or signing failure. */
 	aern_application_converge_success = 0x43U,					/*!< The topology update has been announced to the network. */
 	aern_application_message_time_invalid = 0x44U,				/*!< The network time is invalid or has substantial delay. */
-	aern_application_certificate_not_found = 0x45U,				/*!< The root, ads, or aps certificate could not be found. */
+	aern_application_certificate_not_found = 0x45U,				/*!< The root, ADC, or APS certificate could not be found. */
 	aern_application_signature_failure = 0x46U,					/*!< The signature could not be generated for a message. */
 	aern_application_network_resign_failure = 0x47U,			/*!< The network resign has failed, check the address. */
 	aern_application_network_resign_success = 0x48U,			/*!< This node has resigned from the network. */
@@ -228,8 +228,8 @@ typedef enum aern_application_messages
 	aern_application_log_connection_terminated = 0x8EU,			/*!< Connection terminated by remote host */
 	aern_application_log_configuration_erased = 0x8FU,			/*!< The configuration was erased by user: */
 	aern_application_log_receive_failure = 0x90U,				/*!< The network session has timed out */
-	aern_application_log_register_failure = 0x91U,				/*!< The network ads join request was denied */
-	aern_application_log_register_success = 0x92U,				/*!< The network ads join request has succeeded */
+	aern_application_log_register_failure = 0x91U,				/*!< The network ADC join request was denied */
+	aern_application_log_register_success = 0x92U,				/*!< The network ADC join request has succeeded */
 	aern_application_log_fragment_exchange_failure = 0x93U,		/*!< The key fragment exchange has failed */
 	aern_application_log_fragment_exchange_success = 0x94U,		/*!< The key fragment exchange has succeeded */
 	aern_application_log_local_resign_failure = 0x95U,			/*!< The host resignation from the network failed */
@@ -313,10 +313,10 @@ typedef enum aern_command_actions
 	aern_command_action_client_connect_help = 0x28U,			/*!< help -command help for connect mode */
 	aern_command_action_client_connect_quit = 0x29U,			/*!< quit -quits the remote server connection */
 
-	/* ads config-certificate commands */
+	/* ADC config-certificate commands */
 	aern_command_action_adc_certificate_revoke = 0x2AU,			/*!< revoke [certificate path] -revoke the local device certificate */
 
-	/* ads config-server commands */
+	/* ADC config-server commands */
 	aern_command_action_adc_server_announce = 0x2BU,			/*!< announce [certificate-path, ip-address] -announce an aps to servers in the network */
 	aern_command_action_adc_server_converge = 0x2CU,			/*!< converge -announce a topology update to the network */
 	aern_command_action_adc_server_revoke = 0x2DU,				/*!< revoke [certificate path] -revoke an aps's credentials by announcing it to the network */

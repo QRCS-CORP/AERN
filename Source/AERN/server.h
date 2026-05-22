@@ -71,10 +71,6 @@
  * function, macro, struct, and enumeration is documented in detail below.
  */
 
-/*---------------------------------------------------------------------------
-  MACRO DEFINITIONS
----------------------------------------------------------------------------*/
-
 /**
  * \def AERN_SERVER_MINIMUM_COMMAND_LENGTH
  * \brief The minimum valid length for a server command.
@@ -93,10 +89,6 @@
     sizeof(uint16_t) + sizeof(uint8_t) + sizeof(uint8_t) + sizeof(uint16_t) + sizeof(bool) + sizeof(bool) + \
     AERN_ASYMMETRIC_SIGNING_KEY_SIZE)
 
-/*---------------------------------------------------------------------------
-  ENUMERATIONS
----------------------------------------------------------------------------*/
-
 /*!
  * \enum aern_server_server_loop_status
  * \brief The AERN server loop status.
@@ -109,10 +101,6 @@ AERN_EXPORT_API typedef enum aern_server_server_loop_status
     aern_server_loop_status_started = 0x01U,        /*!< The server is running. */
     aern_server_loop_status_paused  = 0x02U,        /*!< The server is paused. */
 } aern_server_server_loop_status;
-
-/*---------------------------------------------------------------------------
-  DATA STRUCTURES
----------------------------------------------------------------------------*/
 
 /*!
  * \struct aern_server_application_state
@@ -129,7 +117,7 @@ AERN_EXPORT_API typedef struct aern_server_application_state
     char cmdprompt[AERN_STORAGE_PROMPT_MAX];          /*!< The current command prompt string. */
     char domain[AERN_STORAGE_DOMAINNAME_MAX];         /*!< The network domain name. */
     char hostname[AERN_STORAGE_HOSTNAME_MAX];         /*!< The server hostname. */
-    char issuer[AERN_CERTIFICATE_ISSUER_SIZE];         /*!< The certificate issuer string. */
+    char issuer[AERN_CERTIFICATE_ISSUER_SIZE];        /*!< The certificate issuer string. */
     char localip[AERN_STORAGE_ADDRESS_MAX];           /*!< The server's local IP address. */
     char logpath[AERN_STORAGE_PATH_MAX];              /*!< The full path to the log file. */
     char username[AERN_STORAGE_USERNAME_MAX];         /*!< The username used for login. */
@@ -144,22 +132,18 @@ AERN_EXPORT_API typedef struct aern_server_application_state
     const char* srvname;                              /*!< The server name. */
     const char* topname;                              /*!< The topology file name. */
     const char* wtitle;                               /*!< The window title. */
-    aern_child_certificate ads;                       /*!< The ADC (Device-Level Authority) certificate. */
+    aern_child_certificate adc;                       /*!< The ADC (AERN Domain Controller) certificate. */
     aern_root_certificate root;                       /*!< The root certificate. */
     aern_topology_list_state tlist;                   /*!< The topology list state. */
     aern_command_actions action;                      /*!< The current command action. */
     aern_console_modes mode;                          /*!< The current console mode. */
     uint16_t port;                                    /*!< The network port number. */
-    aern_network_designations srvtype;               /*!< The server type designation. */
+    aern_network_designations srvtype;                /*!< The server type designation. */
     uint16_t timeout;                                 /*!< The console timeout in minutes. */
     uint8_t retries;                                  /*!< The allowed number of password retries. */
     bool joined;                                      /*!< True if the server has joined the network. */
     bool loghost;                                     /*!< True if host logging is enabled. */
 } aern_server_application_state;
-
-/*---------------------------------------------------------------------------
-  FUNCTION PROTOTYPES
----------------------------------------------------------------------------*/
 
 /**
  * \brief Get the full delimited path to the certificate storage directory.
@@ -167,9 +151,9 @@ AERN_EXPORT_API typedef struct aern_server_application_state
  * This function builds the full directory path where certificates are stored, based on the server's
  * configuration in the application state.
  *
- * \param state [const] The server application state.
- * \param dpath The output buffer that receives the certificate storage directory path.
- * \param pathlen The length of the dpath buffer.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param dpath: [char*] The output buffer that receives the certificate storage directory path.
+ * \param pathlen: [size_t] The length of the dpath buffer.
  */
 AERN_EXPORT_API void aern_server_certificate_directory(const aern_server_application_state* state, char* dpath, size_t pathlen);
 
@@ -178,10 +162,10 @@ AERN_EXPORT_API void aern_server_certificate_directory(const aern_server_applica
  *
  * This function constructs the full file path to a certificate based on the certificate issuer.
  *
- * \param state [const] The server application state.
- * \param fpath The output buffer that receives the certificate file path.
- * \param pathlen The length of the fpath buffer.
- * \param issuer [const] The issuer name of the certificate.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param fpath: [char*] The output buffer that receives the certificate file path.
+ * \param pathlen: [size_t] The length of the fpath buffer.
+ * \param issuer: [const char*] The issuer name of the certificate.
  */
 AERN_EXPORT_API void aern_server_certificate_path(const aern_server_application_state* state, char* fpath, size_t pathlen, const char* issuer);
 
@@ -190,8 +174,8 @@ AERN_EXPORT_API void aern_server_certificate_path(const aern_server_application_
  *
  * This function exports the local child certificate to the specified destination directory.
  *
- * \param state [const] The server application state.
- * \param dpath The destination directory path.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param dpath: [const char*] The destination directory path.
  *
  * \return Returns true if the certificate is successfully exported.
  */
@@ -202,9 +186,9 @@ AERN_EXPORT_API bool aern_server_child_certificate_export(const aern_server_appl
  *
  * This function loads a child certificate from file using the issuer string.
  *
- * \param ccert The output child certificate.
- * \param state [const] The server application state.
- * \param issuer [const] The certificate issuer string.
+ * \param ccert: [aern_child_certificate*] The output child certificate.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param issuer: [const char*] The certificate issuer string.
  *
  * \return Returns true if the certificate is successfully loaded.
  */
@@ -215,9 +199,9 @@ AERN_EXPORT_API bool aern_server_child_certificate_from_issuer(aern_child_certif
  *
  * This function loads a child certificate from file using its serial number.
  *
- * \param ccert The output child certificate.
- * \param state [const] The server application state.
- * \param serial [const] The certificate serial number.
+ * \param ccert: [aern_child_certificate*] The output child certificate.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param serial: [const uint8_t*] The certificate serial number.
  *
  * \return Returns true if the certificate is successfully loaded.
  */
@@ -229,9 +213,9 @@ AERN_EXPORT_API bool aern_server_child_certificate_from_serial(aern_child_certif
  * This function generates a new child certificate, writes the signature private key to the server state,
  * and populates the child certificate structure.
  *
- * \param state The server application state. The private key is written to state->sigkey.
- * \param ccert The output child certificate.
- * \param period The number of seconds the certificate is valid.
+ * \param state: [aern_server_application_state*] The server application state. The private key is written to state->sigkey.
+ * \param ccert: [aern_child_certificate*] The output child certificate.
+ * \param period: [uint64_t] The number of seconds the certificate is valid.
  */
 AERN_EXPORT_API void aern_server_child_certificate_generate(aern_server_application_state* state, aern_child_certificate* ccert, uint64_t period);
 
@@ -240,9 +224,9 @@ AERN_EXPORT_API void aern_server_child_certificate_generate(aern_server_applicat
  *
  * This function imports the local certificate that has been signed by the root certificate.
  *
- * \param lcert The local certificate structure to populate.
- * \param state The server application state.
- * \param fpath The full file path to the certificate file.
+ * \param lcert: [aern_child_certificate*] The local certificate structure to populate.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param fpath: [const char*] The full file path to the certificate file.
  *
  * \return Returns true if the certificate is successfully imported.
  */
@@ -253,9 +237,9 @@ AERN_EXPORT_API bool aern_server_child_certificate_import(aern_child_certificate
  *
  * This function retrieves the full file path of the child certificate based on the server state.
  *
- * \param state [const] The server application state.
- * \param fpath The output buffer that receives the certificate file path.
- * \param pathlen The length of the fpath buffer.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param fpath: [char*] The output buffer that receives the certificate file path.
+ * \param pathlen: [size_t] The length of the fpath buffer.
  */
 AERN_EXPORT_API void aern_server_child_certificate_path(const aern_server_application_state* state, char* fpath, size_t pathlen);
 
@@ -264,10 +248,10 @@ AERN_EXPORT_API void aern_server_child_certificate_path(const aern_server_applic
  *
  * This function constructs the file path to a certificate using the issuer name.
  *
- * \param state [const] The server application state.
- * \param fpath The output buffer that receives the file path.
- * \param pathlen The length of the file path buffer.
- * \param issuer The certificate's issuer name.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param fpath: [char*] The output buffer that receives the file path.
+ * \param pathlen: [size_t] The length of the file path buffer.
+ * \param issuer: [const char*] The certificate's issuer name.
  */
 AERN_EXPORT_API void aern_server_child_certificate_path_from_issuer(const aern_server_application_state* state, char* fpath, size_t pathlen, const char* issuer);
 
@@ -276,8 +260,8 @@ AERN_EXPORT_API void aern_server_child_certificate_path_from_issuer(const aern_s
  *
  * This function prints the local child certificate (read from file) to the console.
  *
- * \param fpath The file path to the certificate.
- * \param pathlen The length of the file path buffer.
+ * \param fpath: [const char*] The file path to the certificate.
+ * \param pathlen [size_t] The length of the file path buffer.
  *
  * \return Returns true if the certificate is successfully printed.
  */
@@ -288,9 +272,9 @@ AERN_EXPORT_API bool aern_server_child_certificate_print(const char* fpath, size
  *
  * This function stores the local child certificate to file using the server state information.
  *
- * \param state The server application state.
- * \param ccert The child certificate to store.
- * \param address The network address associated with the certificate.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param ccert: [const aern_child_certificate*] The child certificate to store.
+ * \param address: [const char*] The network address associated with the certificate.
  */
 AERN_EXPORT_API void aern_server_local_certificate_store(aern_server_application_state* state, const aern_child_certificate* ccert, const char* address);
 
@@ -299,7 +283,7 @@ AERN_EXPORT_API void aern_server_local_certificate_store(aern_server_application
  *
  * This function erases the current configuration file and resets it.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_clear_config(aern_server_application_state* state);
 
@@ -308,7 +292,7 @@ AERN_EXPORT_API void aern_server_clear_config(aern_server_application_state* sta
  *
  * This function erases the server log file.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_clear_log(aern_server_application_state* state);
 
@@ -317,7 +301,7 @@ AERN_EXPORT_API void aern_server_clear_log(aern_server_application_state* state)
  *
  * This function erases all persistent state and log files, effectively resetting the server.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_erase_all(aern_server_application_state* state);
 
@@ -326,7 +310,7 @@ AERN_EXPORT_API void aern_server_erase_all(aern_server_application_state* state)
  *
  * This function enables host logging for the server.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_log_host(aern_server_application_state* state);
 
@@ -335,7 +319,7 @@ AERN_EXPORT_API void aern_server_log_host(aern_server_application_state* state);
  *
  * This function outputs the contents of the server log file to the console.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_log_print(aern_server_application_state* state);
 
@@ -344,10 +328,10 @@ AERN_EXPORT_API void aern_server_log_print(aern_server_application_state* state)
  *
  * This function writes a log message with an optional predefined message header.
  *
- * \param state The server application state.
- * \param msgtype The predefined message enumerator.
- * \param message [const] The optional text message.
- * \param msglen The length of the text message.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param msgtype: [aern_application_messages] The predefined message enumerator.
+ * \param message: [const char*] The optional text message.
+ * \param msglen: [size_t] The length of the text message.
  * 
  * \return Returns true if the log message was successfully written.
  */
@@ -358,9 +342,9 @@ AERN_EXPORT_API bool aern_server_log_write_message(aern_server_application_state
  *
  * This function constructs the full file path for the master fragmentation key (mfk) collection.
  *
- * \param state [const] The server application state.
- * \param fpath The output buffer that receives the file path.
- * \param pathlen The length of the fpath buffer.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param fpath: [char*] The output buffer that receives the file path.
+ * \param pathlen: [size_t] The length of the fpath buffer.
  */
 AERN_EXPORT_API void aern_server_mfkcol_path(const aern_server_application_state* state, char* fpath, size_t pathlen);
 
@@ -369,8 +353,8 @@ AERN_EXPORT_API void aern_server_mfkcol_path(const aern_server_application_state
  *
  * This function reads the encrypted mfk collection from file and converts it into the internal collection state.
  *
- * \param mfkcol The empty collection state that will be populated.
- * \param state [const] The server application state.
+ * \param mfkcol: [qsc_collection_state*] The empty collection state that will be populated.
+ * \param state: [const aern_server_application_state*] The server application state.
  *
  * \return Returns true if the mfk collection is successfully loaded.
  */
@@ -381,8 +365,8 @@ AERN_EXPORT_API bool aern_server_mfkcol_from_file(qsc_collection_state* mfkcol, 
  *
  * This function writes the current mfk collection state to an encrypted file.
  *
- * \param mfkcol [const] The mfk collection state.
- * \param state [const] The server application state.
+ * \param mfkcol: [const qsc_collection_state*] The mfk collection state.
+ * \param state: [const aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_mfkcol_to_file(const qsc_collection_state* mfkcol, const aern_server_application_state* state);
 
@@ -391,7 +375,7 @@ AERN_EXPORT_API void aern_server_mfkcol_to_file(const qsc_collection_state* mfkc
  *
  * This function prints the server banner to the console.
  *
- * \param state [const] The server application state.
+ * \param state: [const aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_print_banner(const aern_server_application_state* state);
 
@@ -400,10 +384,10 @@ AERN_EXPORT_API void aern_server_print_banner(const aern_server_application_stat
  *
  * This function prints a formatted error message for network errors.
  *
- * \param state [const] The server application state.
- * \param appmsg The predefined application message enumerator.
- * \param message The error message text.
- * \param error The protocol error code.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param appmsg: [aern_application_messages] The predefined application message enumerator.
+ * \param message: [const char*] The error message text.
+ * \param error: [aern_protocol_errors] The protocol error code.
  */
 AERN_EXPORT_API void aern_server_print_error(const aern_server_application_state* state, aern_application_messages appmsg, const char* message, aern_protocol_errors error);
 
@@ -412,7 +396,7 @@ AERN_EXPORT_API void aern_server_print_error(const aern_server_application_state
  *
  * This function prints the current server configuration to the console.
  *
- * \param state [const] The server application state.
+ * \param state: [const aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_print_configuration(const aern_server_application_state* state);
 
@@ -421,8 +405,8 @@ AERN_EXPORT_API void aern_server_print_configuration(const aern_server_applicati
  *
  * This function exports the server's root certificate to the specified destination directory.
  *
- * \param state [const] The server application state.
- * \param dpath The destination directory path.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param dpath: [const char*] The destination directory path.
  *
  * \return Returns true if the export is successful.
  */
@@ -433,7 +417,7 @@ AERN_EXPORT_API bool aern_server_root_certificate_export(const aern_server_appli
  *
  * This function prompts the user to import the root certificate through a dialogue.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  *
  * \return Returns true if the root certificate is successfully imported.
  */
@@ -445,20 +429,22 @@ AERN_EXPORT_API bool aern_server_root_import_dialogue(aern_server_application_st
  * This function generates a new root certificate, writes the signature private key to the server state,
  * and populates the root certificate structure.
  *
- * \param state The server application state; the private key is written to state->sigkey.
- * \param rcert The output root certificate.
- * \param period The validity period (in seconds) for the certificate.
+ * \param state: [aern_server_application_state*] The server application state; the private key is written to state->sigkey.
+ * \param rcert: [aern_root_certificate*] The output root certificate.
+ * \param period: [uint64_t] The validity period (in seconds) for the certificate.
+ *
+ * \return Returns true if the root certificate is successfully created.
  */
-AERN_EXPORT_API void aern_server_root_certificate_generate(aern_server_application_state* state, aern_root_certificate* rcert, uint64_t period);
+AERN_EXPORT_API bool aern_server_root_certificate_generate(aern_server_application_state* state, aern_root_certificate* rcert, uint64_t period);
 
 /**
  * \brief Load a root certificate using the issuer name.
  *
  * This function loads the root certificate from file using the issuer name.
  *
- * \param state [const] The server application state.
- * \param root The output root certificate.
- * \param tlist [const] A pointer to the topology list.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param root: [aern_root_certificate*] The output root certificate.
+ * \param tlist: [const aern_topology_list_state*] A pointer to the topology list.
  *
  * \return Returns true if the root certificate is successfully loaded.
  */
@@ -469,8 +455,8 @@ AERN_EXPORT_API bool aern_server_root_certificate_load(const aern_server_applica
  *
  * This function prints a formatted version of the root certificate to the console.
  *
- * \param fpath The file path to the root certificate.
- * \param pathlen The length of the file path buffer.
+ * \param fpath: [const char*] The file path to the root certificate.
+ * \param pathlen: [size_t] The length of the file path buffer.
  *
  * \return Returns true if the certificate is successfully printed.
  */
@@ -481,9 +467,8 @@ AERN_EXPORT_API bool aern_server_root_certificate_print(const char* fpath, size_
  *
  * This function stores the root certificate to file.
  *
- * \param state The server application state.
- * \param rcert The root certificate to store.
- * \param address The root certificate's address.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param rcert: [const aern_root_certificate*] The root certificate to store.
  */
 AERN_EXPORT_API void aern_server_root_certificate_store(aern_server_application_state* state, const aern_root_certificate* rcert);
 
@@ -492,7 +477,7 @@ AERN_EXPORT_API void aern_server_root_certificate_store(aern_server_application_
  *
  * This function sets the command prompt based on the current console mode in the server state.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_set_command_prompt(aern_server_application_state* state);
 
@@ -501,9 +486,9 @@ AERN_EXPORT_API void aern_server_set_command_prompt(aern_server_application_stat
  *
  * This function configures the console timeout period (in minutes) for automatic user logout.
  *
- * \param state The server application state.
- * \param snum The number string representing the timeout period in minutes.
- * \param numlen The length of the number string.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param snum: [const char*] The number string representing the timeout period in minutes.
+ * \param numlen: [size_t] The length of the number string.
  *
  * \return Returns true if the timeout is successfully set.
  */
@@ -514,9 +499,9 @@ AERN_EXPORT_API bool aern_server_set_console_timeout(aern_server_application_sta
  *
  * This function renames the network domain in the server configuration.
  *
- * \param state The server application state.
- * \param name The new domain name.
- * \param namelen The length of the domain name string.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param name: [const char*] The new domain name.
+ * \param namelen: [size_t] The length of the domain name string.
  *
  * \return Returns true if the domain name is successfully changed.
  */
@@ -527,9 +512,9 @@ AERN_EXPORT_API bool aern_server_set_domain_name(aern_server_application_state* 
  *
  * This function renames the server host in the configuration.
  *
- * \param state The server application state.
- * \param name The new host name.
- * \param namelen The length of the host name string.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param name: [const char*] The new host name.
+ * \param namelen: [size_t] The length of the host name string.
  *
  * \return Returns true if the host name is successfully changed.
  */
@@ -540,9 +525,9 @@ AERN_EXPORT_API bool aern_server_set_host_name(aern_server_application_state* st
  *
  * This function sets the server's IP address.
  *
- * \param state The server application state.
- * \param address The IP address string.
- * \param addlen The length of the address string.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param address: [const char*] The IP address string.
+ * \param addlen: [size_t] The length of the address string.
  *
  * \return Returns true if the IP address is successfully set.
  */
@@ -553,9 +538,9 @@ AERN_EXPORT_API bool aern_server_set_ip_address(aern_server_application_state* s
  *
  * This function sets the maximum number of failed password attempts allowed.
  *
- * \param state The server application state.
- * \param snum The number string representing the number of retries.
- * \param numlen The length of the number string.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param snum: [const char*] The number string representing the number of retries.
+ * \param numlen: [size_t] The length of the number string.
  *
  * \return Returns true if the number of retries is successfully set.
  */
@@ -566,7 +551,7 @@ AERN_EXPORT_API bool aern_server_set_password_retries(aern_server_application_st
  *
  * This function erases the signing key stored in the server state.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_erase_signature_key(aern_server_application_state* state);
 
@@ -575,7 +560,7 @@ AERN_EXPORT_API void aern_server_erase_signature_key(aern_server_application_sta
  *
  * This function restores the server state from a previously saved backup.
  *
- * \param state The server application state.
+ * \param state: [const aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_state_backup_restore(const aern_server_application_state* state);
 
@@ -584,7 +569,7 @@ AERN_EXPORT_API void aern_server_state_backup_restore(const aern_server_applicat
  *
  * This function saves the current server state to a backup file.
  *
- * \param state The server application state.
+ * \param state: [const aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_state_backup_save(const aern_server_application_state* state);
 
@@ -593,8 +578,8 @@ AERN_EXPORT_API void aern_server_state_backup_save(const aern_server_application
  *
  * This function initializes the AERN server state for a given server type.
  *
- * \param state The server application state.
- * \param srvtype The server type designation.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param srvtype: [aern_network_designations] The server type designation.
  */
 AERN_EXPORT_API void aern_server_state_initialize(aern_server_application_state* state, aern_network_designations srvtype);
 
@@ -603,7 +588,7 @@ AERN_EXPORT_API void aern_server_state_initialize(aern_server_application_state*
  *
  * This function writes the current server state to an encrypted file.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  *
  * \return Returns true if the state is successfully stored.
  */
@@ -614,7 +599,7 @@ AERN_EXPORT_API bool aern_server_state_store(aern_server_application_state* stat
  *
  * This function unloads and clears the current server state from memory.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_state_unload(aern_server_application_state* state);
 
@@ -623,8 +608,8 @@ AERN_EXPORT_API void aern_server_state_unload(aern_server_application_state* sta
  *
  * This function loads the ADC certificate from the server state.
  *
- * \param state [const] The server application state.
- * \param dcert The output ADC certificate.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param dcert: [aern_child_certificate*] The output ADC certificate.
  *
  * \return Returns true if the ADC certificate is successfully loaded.
  */
@@ -635,7 +620,7 @@ AERN_EXPORT_API bool aern_server_topology_adc_fetch(const aern_server_applicatio
  *
  * This function loads the network topology from an encrypted file into the server state.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  *
  * \return Returns true if the topology is successfully loaded.
  */
@@ -646,7 +631,7 @@ AERN_EXPORT_API bool aern_server_topology_load(aern_server_application_state* st
  *
  * This function prints the network topology list to the console.
  *
- * \param state [const] The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_topology_print_list(aern_server_application_state* state);
 
@@ -655,7 +640,7 @@ AERN_EXPORT_API void aern_server_topology_print_list(aern_server_application_sta
  *
  * This function purges the topology list by deleting all nodes except for the root and local nodes.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_topology_purge_externals(aern_server_application_state* state);
 
@@ -664,8 +649,8 @@ AERN_EXPORT_API void aern_server_topology_purge_externals(aern_server_applicatio
  *
  * This function deletes a certificate from the topology based on its issuer.
  *
- * \param state The server application state.
- * \param issuer The target node's issuer string.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param issuer: [const char*] The target node's issuer string.
  */
 AERN_EXPORT_API void aern_server_topology_remove_certificate(aern_server_application_state* state, const char* issuer);
 
@@ -674,8 +659,8 @@ AERN_EXPORT_API void aern_server_topology_remove_certificate(aern_server_applica
  *
  * This function removes a node from the topology list based on its issuer.
  *
- * \param state The server application state.
- * \param issuer The target node's issuer string.
+ * \param state: [aern_server_application_state*] The server application state.
+ * \param issuer: [const char*] The target node's issuer string.
  */
 AERN_EXPORT_API void aern_server_topology_remove_node(aern_server_application_state* state, const char* issuer);
 
@@ -684,7 +669,7 @@ AERN_EXPORT_API void aern_server_topology_remove_node(aern_server_application_st
  *
  * This function resets the topology list by deleting all nodes and certificates except the root.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_topology_reset(aern_server_application_state* state);
 
@@ -693,8 +678,8 @@ AERN_EXPORT_API void aern_server_topology_reset(aern_server_application_state* s
  *
  * This function loads the local child certificate from the server state.
  *
- * \param state [const] The server application state.
- * \param ccert The output local certificate.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param ccert: [aern_child_certificate*] The output local certificate.
  *
  * \return Returns true if the certificate is successfully loaded.
  */
@@ -705,7 +690,7 @@ AERN_EXPORT_API bool aern_server_topology_local_fetch(const aern_server_applicat
  *
  * This function checks whether the root certificate file exists.
  *
- * \param state [const] The server application state.
+ * \param state: [const aern_server_application_state*] The server application state.
  *
  * \return Returns true if the root certificate exists.
  */
@@ -716,8 +701,8 @@ AERN_EXPORT_API bool aern_server_topology_root_exists(const aern_server_applicat
  *
  * This function loads the root certificate from the server state.
  *
- * \param state [const] The server application state.
- * \param rcert The output root certificate.
+ * \param state: [const aern_server_application_state*] The server application state.
+ * \param rcert: [aern_root_certificate*] The output root certificate.
  *
  * \return Returns true if the root certificate is successfully loaded.
  */
@@ -728,7 +713,7 @@ AERN_EXPORT_API bool aern_server_topology_root_fetch(const aern_server_applicati
  *
  * This function writes the current network topology from the server state to an encrypted file.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_topology_to_file(aern_server_application_state* state);
 
@@ -737,7 +722,7 @@ AERN_EXPORT_API void aern_server_topology_to_file(aern_server_application_state*
  *
  * This function initiates the user login process and prompts for credentials.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  *
  * \return Returns true if the user logged in successfully.
  */
@@ -748,7 +733,7 @@ AERN_EXPORT_API bool aern_server_user_login(aern_server_application_state* state
  *
  * This function logs out the current user and resets the session.
  *
- * \param state The server application state.
+ * \param state: [aern_server_application_state*] The server application state.
  */
 AERN_EXPORT_API void aern_server_user_logout(aern_server_application_state* state);
 

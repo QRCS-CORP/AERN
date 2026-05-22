@@ -1,0 +1,65 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/aps.h File Reference}
+\hypertarget{aps_8h}{}\label{aps_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/aps.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/aps.h}}
+
+
+AERN Anonymous Proxy Server (APS).  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aps_8h_a013b8245bd73428f88a355159dab4647}{aern\+\_\+aps\+\_\+pause\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Pause the APS server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API int32\+\_\+t \mbox{\hyperlink{aps_8h_acb45bbe8dc807990bb225ddf1bb50b58}{aern\+\_\+aps\+\_\+start\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Start the APS server. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aps_8h_aa14878a57854043710ed53d4e7e7aa73}{aern\+\_\+aps\+\_\+stop\+\_\+server}} (void)
+\begin{DoxyCompactList}\small\item\em Stop the APS server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AERN Anonymous Proxy Server (APS). 
+
+The APS is the workhorse of the AERN network. Each APS holds a child certificate signed by the domain\textquotesingle{}s ARS and registered with the ADC. APS nodes relay encrypted client traffic, participate in topology convergence, exchange master fragment keys with peers, and forward registration requests from clients to the ADC.
+
+Public API\+: aern\+\_\+aps\+\_\+pause\+\_\+server\+: temporarily suspend processing aern\+\_\+aps\+\_\+start\+\_\+server\+: initialise and start the APS aern\+\_\+aps\+\_\+stop\+\_\+server\+: terminate and release resources 
+
+\label{doc-func-members}
+\Hypertarget{aps_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{aps_8h_a013b8245bd73428f88a355159dab4647}\index{aps.h@{aps.h}!aern\_aps\_pause\_server@{aern\_aps\_pause\_server}}
+\index{aern\_aps\_pause\_server@{aern\_aps\_pause\_server}!aps.h@{aps.h}}
+\doxysubsubsection{\texorpdfstring{aern\_aps\_pause\_server()}{aern\_aps\_pause\_server()}}
+{\footnotesize\ttfamily \label{aps_8h_a013b8245bd73428f88a355159dab4647} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+aps\+\_\+pause\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Pause the APS server. 
+
+Temporarily suspends the APS server\textquotesingle{}s processing of incoming connections and the command loop. \Hypertarget{aps_8h_acb45bbe8dc807990bb225ddf1bb50b58}\index{aps.h@{aps.h}!aern\_aps\_start\_server@{aern\_aps\_start\_server}}
+\index{aern\_aps\_start\_server@{aern\_aps\_start\_server}!aps.h@{aps.h}}
+\doxysubsubsection{\texorpdfstring{aern\_aps\_start\_server()}{aern\_aps\_start\_server()}}
+{\footnotesize\ttfamily \label{aps_8h_acb45bbe8dc807990bb225ddf1bb50b58} 
+AERN\+\_\+\+EXPORT\+\_\+\+API int32\+\_\+t aern\+\_\+aps\+\_\+start\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Start the APS server. 
+
+Initialises the server state, loads or imports the APS child certificate (requesting ARS signing if necessary), registers with the ADC, and begins the command/receive loop.
+
+\begin{DoxyReturn}{Returns}
+Returns 0 on success; a non-\/zero error code on failure. 
+\end{DoxyReturn}
+\Hypertarget{aps_8h_aa14878a57854043710ed53d4e7e7aa73}\index{aps.h@{aps.h}!aern\_aps\_stop\_server@{aern\_aps\_stop\_server}}
+\index{aern\_aps\_stop\_server@{aern\_aps\_stop\_server}!aps.h@{aps.h}}
+\doxysubsubsection{\texorpdfstring{aern\_aps\_stop\_server()}{aern\_aps\_stop\_server()}}
+{\footnotesize\ttfamily \label{aps_8h_aa14878a57854043710ed53d4e7e7aa73} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+aps\+\_\+stop\+\_\+server (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Stop the APS server. 
+
+Sends a resignation request to the ADC, closes all sockets, and releases all allocated resources. 

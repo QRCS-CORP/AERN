@@ -94,7 +94,7 @@ This function deletes the log file at the specified path.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path.\\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -114,7 +114,7 @@ This function clears the contents of the log file without deleting the file itse
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path.\\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -132,7 +132,7 @@ Check if the log file exists.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path.\\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -152,7 +152,7 @@ This function returns the size (in characters) of the log file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path.\\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -172,7 +172,7 @@ This function creates or resets the log file at the specified path if it does no
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{logger_8h_a0884d52fa990f1d4a68300421721c683}\index{logger.h@{logger.h}!aern\_logger\_read\_all@{aern\_logger\_read\_all}}
@@ -187,11 +187,11 @@ Read the entire log into a character array.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The full path to the log file. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The full path to the log file. \\
 \hline
-{\em output} & \mbox{[}out\mbox{]} The output string receiving the log contents. \\
+{\em output} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output string receiving the log contents. \\
 \hline
-{\em outlen} & The length of the output array.\\
+{\em outlen} & \mbox{[}size\+\_\+t\mbox{]} The length of the output array.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -209,13 +209,13 @@ Read a single line from the log file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The full path to the log file. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The full path to the log file. \\
 \hline
-{\em output} & \mbox{[}out\mbox{]} The output string receiving the line. \\
+{\em output} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output string receiving the line. \\
 \hline
-{\em outlen} & The length of the output string. \\
+{\em outlen} & \mbox{[}size\+\_\+t\mbox{]} The length of the output string. \\
 \hline
-{\em linenum} & The 0-\/based line number to read.\\
+{\em linenum} & \mbox{[}size\+\_\+t\mbox{]} The 0-\/based line number to read.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -235,7 +235,7 @@ Erases the log file (or creates a new empty log file if it does not exist).
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{logger_8h_ad2536de746950fcd3b0e9ac289ec2c55}\index{logger.h@{logger.h}!aern\_logger\_time\_stamp@{aern\_logger\_time\_stamp}}
@@ -252,9 +252,9 @@ This function retrieves the current date and time in a formatted string.
 
 
 \begin{DoxyParams}{Parameters}
-{\em output} & \mbox{[}out\mbox{]} The output string receiving the timestamp. \\
+{\em output} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output string receiving the timestamp. \\
 \hline
-{\em outlen} & The length of the output array.\\
+{\em outlen} & \mbox{[}size\+\_\+t\mbox{]} The length of the output array.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -274,13 +274,13 @@ This function prepends a predefined message (based on the provided message type)
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path. \\
 \hline
-{\em msgtype} & The predefined message type (from \doxylink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}). \\
+{\em msgtype} & \mbox{[}\doxylink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}\mbox{]} The predefined message type (from \doxylink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}). \\
 \hline
-{\em message} & \mbox{[}in, const\mbox{]} The message to write. \\
+{\em message} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The message to write. \\
 \hline
-{\em msglen} & The length of the message.\\
+{\em msglen} & \mbox{[}size\+\_\+t\mbox{]} The length of the message.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -300,13 +300,13 @@ This function first obtains a current timestamp, then prepends a predefined mess
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The full log file path. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The full log file path. \\
 \hline
-{\em msgtype} & The predefined message type. \\
+{\em msgtype} & \mbox{[}\doxylink{commands_8h_a7ca4a182ee1fe9fc43629ff3d1a20731}{aern\+\_\+application\+\_\+messages}\mbox{]} The predefined message type. \\
 \hline
-{\em message} & \mbox{[}in, const\mbox{]} The message to write. \\
+{\em message} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The message to write. \\
 \hline
-{\em msglen} & The length of the message.\\
+{\em msglen} & \mbox{[}size\+\_\+t\mbox{]} The length of the message.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -326,11 +326,11 @@ This function appends a terminated line (with a newline) to the log file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path. \\
 \hline
-{\em line} & \mbox{[}in, const\mbox{]} The null-\/terminated string to write. \\
+{\em line} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The null-\/terminated string to write. \\
 \hline
-{\em linelen} & The length of the line.\\
+{\em linelen} & \mbox{[}size\+\_\+t\mbox{]} The length of the line.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -350,11 +350,11 @@ This function writes a log entry that begins with a current timestamp.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}in\mbox{]} The log file path. \\
+{\em path} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The log file path. \\
 \hline
-{\em message} & \mbox{[}in, const\mbox{]} The message to log. \\
+{\em message} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The message to log. \\
 \hline
-{\em msglen} & The length of the message.\\
+{\em msglen} & \mbox{[}size\+\_\+t\mbox{]} The length of the message.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -374,8 +374,8 @@ This function retrieves the default log file path by obtaining the user\textquot
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & \mbox{[}out\mbox{]} The output buffer that will receive the full log file path. \\
+{\em path} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output buffer that will receive the full log file path. \\
 \hline
-{\em pathlen} & The length of the output buffer. \\
+{\em pathlen} & \mbox{[}size\+\_\+t\mbox{]} The length of the output buffer. \\
 \hline
 \end{DoxyParams}

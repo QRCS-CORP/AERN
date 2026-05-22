@@ -1,0 +1,83 @@
+\doxysection{aern\+\_\+error\+\_\+context Struct Reference}
+\hypertarget{structaern__error__context}{}\label{structaern__error__context}\index{aern\_error\_context@{aern\_error\_context}}
+
+
+Context for error dispatch and logging.  
+
+
+
+
+{\ttfamily \#include $<$lifecycle.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const qsc\+\_\+socket \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__error__context_a5a54676e53cc1837094dad7fa95a09bf}{csock}}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__error__context_ac264d0a53843400fd4cd8375d718455f}{lcert}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__error__context_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}
+\item 
+const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__error__context_a38f094f8303f5f309d6cfcef82706480}{appstate}}
+\item 
+\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__error__context_a84b0484d2709e3fbeca4ada078538460}{cns}}
+\item 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__error__context_acab78afff273f2d0a6492c288331cf57}{ctable}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__error__context_abfb70f35a0b484b6edbe89f982298484}{peer\+\_\+addr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Context for error dispatch and logging. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__error__context_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__error__context_a38f094f8303f5f309d6cfcef82706480}\index{aern\_error\_context@{aern\_error\_context}!appstate@{appstate}}
+\index{appstate@{appstate}!aern\_error\_context@{aern\_error\_context}}
+\doxysubsubsection{\texorpdfstring{appstate}{appstate}}
+{\footnotesize\ttfamily \label{structaern__error__context_a38f094f8303f5f309d6cfcef82706480} 
+const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}}\texorpdfstring{$\ast$}{*} appstate}
+
+App state for ADC log \Hypertarget{structaern__error__context_a84b0484d2709e3fbeca4ada078538460}\index{aern\_error\_context@{aern\_error\_context}!cns@{cns}}
+\index{cns@{cns}!aern\_error\_context@{aern\_error\_context}}
+\doxysubsubsection{\texorpdfstring{cns}{cns}}
+{\footnotesize\ttfamily \label{structaern__error__context_a84b0484d2709e3fbeca4ada078538460} 
+\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}}\texorpdfstring{$\ast$}{*} cns}
+
+Cipher state (may be NULL) \Hypertarget{structaern__error__context_a5a54676e53cc1837094dad7fa95a09bf}\index{aern\_error\_context@{aern\_error\_context}!csock@{csock}}
+\index{csock@{csock}!aern\_error\_context@{aern\_error\_context}}
+\doxysubsubsection{\texorpdfstring{csock}{csock}}
+{\footnotesize\ttfamily \label{structaern__error__context_a5a54676e53cc1837094dad7fa95a09bf} 
+const qsc\+\_\+socket\texorpdfstring{$\ast$}{*} csock}
+
+Socket for error packet send \Hypertarget{structaern__error__context_acab78afff273f2d0a6492c288331cf57}\index{aern\_error\_context@{aern\_error\_context}!ctable@{ctable}}
+\index{ctable@{ctable}!aern\_error\_context@{aern\_error\_context}}
+\doxysubsubsection{\texorpdfstring{ctable}{ctable}}
+{\footnotesize\ttfamily \label{structaern__error__context_acab78afff273f2d0a6492c288331cf57} 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}}\texorpdfstring{$\ast$}{*} ctable}
+
+Cipher table (may be NULL) \Hypertarget{structaern__error__context_ac264d0a53843400fd4cd8375d718455f}\index{aern\_error\_context@{aern\_error\_context}!lcert@{lcert}}
+\index{lcert@{lcert}!aern\_error\_context@{aern\_error\_context}}
+\doxysubsubsection{\texorpdfstring{lcert}{lcert}}
+{\footnotesize\ttfamily \label{structaern__error__context_ac264d0a53843400fd4cd8375d718455f} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} lcert}
+
+Local certificate (for log sig) \Hypertarget{structaern__error__context_abfb70f35a0b484b6edbe89f982298484}\index{aern\_error\_context@{aern\_error\_context}!peer\_addr@{peer\_addr}}
+\index{peer\_addr@{peer\_addr}!aern\_error\_context@{aern\_error\_context}}
+\doxysubsubsection{\texorpdfstring{peer\_addr}{peer\_addr}}
+{\footnotesize\ttfamily \label{structaern__error__context_abfb70f35a0b484b6edbe89f982298484} 
+const char\texorpdfstring{$\ast$}{*} peer\+\_\+addr}
+
+Peer IP string (may be NULL) \Hypertarget{structaern__error__context_a5cbd2b117e930d8f469c924a8b27ea21}\index{aern\_error\_context@{aern\_error\_context}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_error\_context@{aern\_error\_context}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__error__context_a5cbd2b117e930d8f469c924a8b27ea21} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+Local signing key 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{lifecycle_8h}{lifecycle.\+h}}\end{DoxyCompactItemize}

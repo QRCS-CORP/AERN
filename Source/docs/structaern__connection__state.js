@@ -1,5 +1,6 @@
 var structaern__connection__state =
 [
+    [ "authfail", "structaern__connection__state.html#a9cb11d5e6e4056e242af81c5a970ae83", null ],
     [ "exflag", "structaern__connection__state.html#ab377880fb1d13048afc00a87d35368ed", null ],
     [ "instance", "structaern__connection__state.html#a9ed36c4f5392e9f1819ec7c9eb9aff80", null ],
     [ "rxcpr", "structaern__connection__state.html#ab9c79848036c04cdcb486fd21b18fe79", null ],

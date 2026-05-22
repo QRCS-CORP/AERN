@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -112,16 +112,7 @@ Functions</h2></td></tr>
 <li><a class="el" href="#a05c3c8bda8ff3b3a231a3c82bc648120">AERN_CRYPTO_PHASH_CPU_COST</a> sets the CPU cost in iterations.</li>
 <li><a class="el" href="#aa602823c0146ee7cce254c4343acd8f8">AERN_CRYPTO_PHASH_MEMORY_COST</a> sets the memory cost in megabytes.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>These cryptographic operations build upon underlying primitives provided by the QSC library (e.g. SHA3, cSHAKE, KMAC, and RCS). Correct operation of these functions is critical to the security of the AERN protocol.</dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000003">Test</a></b></dt><dd>The AERN crypto functions are rigorously tested to ensure that:</dd></dl>
-<ul>
-<li>Data streams are properly encrypted and decrypted.</li>
-<li>The application key chain is securely generated from a user's password and username, using a salt derived from OS sources.</li>
-<li>Message hashes and MAC codes are computed accurately.</li>
-<li>Passwords are validated against a set minimum complexity and correctly verified against stored hashes.</li>
-<li>Secure memory is allocated and deallocated without leaving residual data.</li>
-</ul>
-<p>These tests help ensure that the cryptographic foundation of AERN is robust and reliable. </p>
+<dl class="section note"><dt>Note</dt><dd>These cryptographic operations build upon underlying primitives provided by the QSC library (e.g. SHA3, cSHAKE, KMAC, and RCS). Correct operation of these functions is critical to the security of the AERN protocol. </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a3152b7c464420063fddc413b4a178b10" name="a3152b7c464420063fddc413b4a178b10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3152b7c464420063fddc413b4a178b10">&#9670;&#160;</a></span>aern_crypto_decrypt_stream()</h2>
@@ -155,10 +146,10 @@ Functions</h2></td></tr>
 <p>Decrypt a stream of bytes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output array receiving the plain-text. </td></tr>
-    <tr><td class="paramname">seed</td><td>[in, const] The secret seed array used as the decryption key (expected size: AERN_CRYPTO_SEED_SIZE). </td></tr>
-    <tr><td class="paramname">input</td><td>[in, const] The cipher-text input. </td></tr>
-    <tr><td class="paramname">length</td><td>The number of bytes to decrypt.</td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output array receiving the plain-text. </td></tr>
+    <tr><td class="paramname">seed</td><td>[const uint8_t*] The secret seed array used as the decryption key (expected size: AERN_CRYPTO_SEED_SIZE). </td></tr>
+    <tr><td class="paramname">input</td><td>[const uint8_t*] The cipher-text input. </td></tr>
+    <tr><td class="paramname">length</td><td>[size_t] The number of bytes to decrypt.</td></tr>
   </table>
   </dd>
 </dl>
@@ -198,10 +189,10 @@ Functions</h2></td></tr>
 <p>Encrypt a stream of bytes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output array receiving the cipher-text. </td></tr>
-    <tr><td class="paramname">seed</td><td>[in, const] The secret seed array used as the encryption key (expected size: AERN_CRYPTO_SEED_SIZE). </td></tr>
-    <tr><td class="paramname">input</td><td>[in, const] The plain-text input. </td></tr>
-    <tr><td class="paramname">length</td><td>The number of bytes to encrypt. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output array receiving the cipher-text. </td></tr>
+    <tr><td class="paramname">seed</td><td>[const uint8_t*] The secret seed array used as the encryption key (expected size: AERN_CRYPTO_SEED_SIZE). </td></tr>
+    <tr><td class="paramname">input</td><td>[const uint8_t*] The plain-text input. </td></tr>
+    <tr><td class="paramname">length</td><td>[size_t] The number of bytes to encrypt. </td></tr>
   </table>
   </dd>
 </dl>
@@ -251,12 +242,12 @@ Functions</h2></td></tr>
 <p>Derives a secure key chain (seed) from the provided password and username combined with an application salt generated from OS-specific sources.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">seed</td><td>[out] The output secret seed array. </td></tr>
-    <tr><td class="paramname">seedlen</td><td>The length of the seed array. </td></tr>
-    <tr><td class="paramname">password</td><td>[in, const] The password. </td></tr>
-    <tr><td class="paramname">passlen</td><td>The byte length of the password. </td></tr>
-    <tr><td class="paramname">username</td><td>[in, const] The computer's user name. </td></tr>
-    <tr><td class="paramname">userlen</td><td>The byte length of the user name. </td></tr>
+    <tr><td class="paramname">seed</td><td>[uint8_t*] The output secret seed array. </td></tr>
+    <tr><td class="paramname">seedlen</td><td>[size_t] The length of the seed array. </td></tr>
+    <tr><td class="paramname">password</td><td>[const char*] The password. </td></tr>
+    <tr><td class="paramname">passlen</td><td>[size_t] The byte length of the password. </td></tr>
+    <tr><td class="paramname">username</td><td>[const char*] The computer's user name. </td></tr>
+    <tr><td class="paramname">userlen</td><td>[size_t] The byte length of the user name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -286,8 +277,8 @@ Functions</h2></td></tr>
 <p>The salt is generated by collecting system parameters such as the computer name, user name, and MAC address, and then hashing these values using SHAKE256.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The secret seed array to receive the salt. </td></tr>
-    <tr><td class="paramname">outlen</td><td>The length of the salt array. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The secret seed array to receive the salt. </td></tr>
+    <tr><td class="paramname">outlen</td><td>[size_t] The length of the salt array. </td></tr>
   </table>
   </dd>
 </dl>
@@ -322,9 +313,9 @@ Functions</h2></td></tr>
 <p>Computes the SHA3-256 hash of the specified message.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output array receiving the hash. </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] A pointer to the message array. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output array receiving the hash. </td></tr>
+    <tr><td class="paramname">message</td><td>[const uint8_t*] A pointer to the message array. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message. </td></tr>
   </table>
   </dd>
 </dl>
@@ -374,12 +365,12 @@ Functions</h2></td></tr>
 <p>Uses KMAC256 to compute a MAC from the provided message and key.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output array receiving the MAC. </td></tr>
-    <tr><td class="paramname">outlen</td><td>The byte length of the output array. </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] A pointer to the message array. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message. </td></tr>
-    <tr><td class="paramname">key</td><td>[in, const] A pointer to the key array. </td></tr>
-    <tr><td class="paramname">keylen</td><td>The length of the key array. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output array receiving the MAC. </td></tr>
+    <tr><td class="paramname">outlen</td><td>[size_t] The byte length of the output array. </td></tr>
+    <tr><td class="paramname">message</td><td>[const uint8_t*] A pointer to the message array. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message. </td></tr>
+    <tr><td class="paramname">key</td><td>[const uint8_t*] A pointer to the key array. </td></tr>
+    <tr><td class="paramname">keylen</td><td>[size_t] The length of the key array. </td></tr>
   </table>
   </dd>
 </dl>
@@ -429,12 +420,12 @@ Functions</h2></td></tr>
 <p>Combines the username and password with an application salt to compute a secure hash via KMAC256.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output array receiving the hash. </td></tr>
-    <tr><td class="paramname">outlen</td><td>The length of the output array. </td></tr>
-    <tr><td class="paramname">username</td><td>[in, const] The computer's user name. </td></tr>
-    <tr><td class="paramname">userlen</td><td>The byte length of the user name. </td></tr>
-    <tr><td class="paramname">password</td><td>[in, const] The password. </td></tr>
-    <tr><td class="paramname">passlen</td><td>The length of the password. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output array receiving the hash. </td></tr>
+    <tr><td class="paramname">outlen</td><td>[size_t] The length of the output array. </td></tr>
+    <tr><td class="paramname">username</td><td>[const uint8_t*] The computer's user name. </td></tr>
+    <tr><td class="paramname">userlen</td><td>[size_t] The byte length of the user name. </td></tr>
+    <tr><td class="paramname">password</td><td>[const uint8_t*] The password. </td></tr>
+    <tr><td class="paramname">passlen</td><td>[size_t] The length of the password. </td></tr>
   </table>
   </dd>
 </dl>
@@ -464,8 +455,8 @@ Functions</h2></td></tr>
 <p>Evaluates the password for minimum requirements (such as inclusion of uppercase, lowercase, numeric, and special characters, and a minimum length).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">password</td><td>[in, const] The password array. </td></tr>
-    <tr><td class="paramname">passlen</td><td>The byte length of the password.</td></tr>
+    <tr><td class="paramname">password</td><td>[const char*] The password array. </td></tr>
+    <tr><td class="paramname">passlen</td><td>[size_t] The byte length of the password.</td></tr>
   </table>
   </dd>
 </dl>
@@ -516,12 +507,12 @@ Functions</h2></td></tr>
 <p>Computes the hash of the username and password and compares it with a stored hash.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">username</td><td>[in, const] The computer's user name. </td></tr>
-    <tr><td class="paramname">userlen</td><td>The byte length of the user name. </td></tr>
-    <tr><td class="paramname">password</td><td>[in, const] The password. </td></tr>
-    <tr><td class="paramname">passlen</td><td>The byte length of the password. </td></tr>
-    <tr><td class="paramname">hash</td><td>The stored hash to compare. </td></tr>
-    <tr><td class="paramname">hashlen</td><td>The length of the stored hash.</td></tr>
+    <tr><td class="paramname">username</td><td>[const uint8_t*] The computer's user name. </td></tr>
+    <tr><td class="paramname">userlen</td><td>[size_t] The byte length of the user name. </td></tr>
+    <tr><td class="paramname">password</td><td>[const uint8_t*] The password. </td></tr>
+    <tr><td class="paramname">passlen</td><td>[size_t] The byte length of the password. </td></tr>
+    <tr><td class="paramname">hash</td><td>[const uint8_t*] The stored hash to compare. </td></tr>
+    <tr><td class="paramname">hashlen</td><td>[size_t] The length of the stored hash.</td></tr>
   </table>
   </dd>
 </dl>
@@ -548,7 +539,7 @@ Functions</h2></td></tr>
 <p>Allocates memory using secure allocation routines to prevent sensitive data from being paged or left in memory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">length</td><td>The number of bytes to allocate.</td></tr>
+    <tr><td class="paramname">length</td><td>[size_t] The number of bytes to allocate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -579,8 +570,8 @@ Functions</h2></td></tr>
 <p>Securely erases the memory block and then frees it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">block</td><td>The pointer to the memory block. </td></tr>
-    <tr><td class="paramname">length</td><td>The length of the memory block. </td></tr>
+    <tr><td class="paramname">block</td><td>[uint8_t*] The pointer to the memory block. </td></tr>
+    <tr><td class="paramname">length</td><td>[size_t] The length of the memory block. </td></tr>
   </table>
   </dd>
 </dl>

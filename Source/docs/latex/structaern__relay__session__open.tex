@@ -1,0 +1,83 @@
+\doxysection{aern\+\_\+relay\+\_\+session\+\_\+open Struct Reference}
+\hypertarget{structaern__relay__session__open}{}\label{structaern__relay__session__open}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+
+
+Encrypted ingress-\/to-\/egress session-\/open message.  
+
+
+
+
+{\ttfamily \#include $<$route.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__relay__session__open_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__session__open_ab541020db4257816085dd86694a6e96c}{destination}} \mbox{[}\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__session__open_a82e33a14adaa454786dc66ab3c6a0c0e}{ingresshint}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__session__open_a34d60401aa75bee93ce78bff96e6e861}{egresshint}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structaern__relay__session__open_a8e0798404bf2cf5dabb84c5ba9a4f236}{port}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__session__open_acb7bc06bed6f6408d719334fc41698c7}{reserved}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__session__open_aa2585d779da0ab21273a8d92de9a0ebe}{flags}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encrypted ingress-\/to-\/egress session-\/open message. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__relay__session__open_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__relay__session__open_ab541020db4257816085dd86694a6e96c}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}!destination@{destination}}
+\index{destination@{destination}!aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+\doxysubsubsection{\texorpdfstring{destination}{destination}}
+{\footnotesize\ttfamily \label{structaern__relay__session__open_ab541020db4257816085dd86694a6e96c} 
+uint8\+\_\+t destination\mbox{[}\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE}}\mbox{]}}
+
+Destination IP address bytes \Hypertarget{structaern__relay__session__open_a34d60401aa75bee93ce78bff96e6e861}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}!egresshint@{egresshint}}
+\index{egresshint@{egresshint}!aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+\doxysubsubsection{\texorpdfstring{egresshint}{egresshint}}
+{\footnotesize\ttfamily \label{structaern__relay__session__open_a34d60401aa75bee93ce78bff96e6e861} 
+uint8\+\_\+t egresshint}
+
+One-\/based egress APS route hint \Hypertarget{structaern__relay__session__open_aa2585d779da0ab21273a8d92de9a0ebe}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}!flags@{flags}}
+\index{flags@{flags}!aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \label{structaern__relay__session__open_aa2585d779da0ab21273a8d92de9a0ebe} 
+uint8\+\_\+t flags}
+
+Session-\/open flags \Hypertarget{structaern__relay__session__open_a82e33a14adaa454786dc66ab3c6a0c0e}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}!ingresshint@{ingresshint}}
+\index{ingresshint@{ingresshint}!aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+\doxysubsubsection{\texorpdfstring{ingresshint}{ingresshint}}
+{\footnotesize\ttfamily \label{structaern__relay__session__open_a82e33a14adaa454786dc66ab3c6a0c0e} 
+uint8\+\_\+t ingresshint}
+
+One-\/based ingress APS route hint \Hypertarget{structaern__relay__session__open_a8e0798404bf2cf5dabb84c5ba9a4f236}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}!port@{port}}
+\index{port@{port}!aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+\doxysubsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily \label{structaern__relay__session__open_a8e0798404bf2cf5dabb84c5ba9a4f236} 
+uint16\+\_\+t port}
+
+Destination port \Hypertarget{structaern__relay__session__open_acb7bc06bed6f6408d719334fc41698c7}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}!reserved@{reserved}}
+\index{reserved@{reserved}!aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+\doxysubsubsection{\texorpdfstring{reserved}{reserved}}
+{\footnotesize\ttfamily \label{structaern__relay__session__open_acb7bc06bed6f6408d719334fc41698c7} 
+uint8\+\_\+t reserved}
+
+Reserved; set to zero \Hypertarget{structaern__relay__session__open_a9dc02beaf3ba3a8f741bf83d4619dbab}\index{aern\_relay\_session\_open@{aern\_relay\_session\_open}!sessionid@{sessionid}}
+\index{sessionid@{sessionid}!aern\_relay\_session\_open@{aern\_relay\_session\_open}}
+\doxysubsubsection{\texorpdfstring{sessionid}{sessionid}}
+{\footnotesize\ttfamily \label{structaern__relay__session__open_a9dc02beaf3ba3a8f741bf83d4619dbab} 
+uint64\+\_\+t sessionid}
+
+Session identifier chosen by ingress 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{route_8h}{route.\+h}}\end{DoxyCompactItemize}

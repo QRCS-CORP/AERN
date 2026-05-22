@@ -1,4 +1,5 @@
 #include "certificate.h"
+#include "topology.h"
 #include "crypto.h"
 #include "acp.h"
 #include "encoding.h"
@@ -7,9 +8,6 @@
 #include "sha3.h"
 #include "stringutils.h"
 #include "timestamp.h"
-#if defined(AERN_DEBUG_TESTS_RUN)
-#include "consoleutils.h"
-#endif
 
 aern_configuration_sets aern_certificate_algorithm_decode(const char* name)
 {
@@ -21,59 +19,59 @@ aern_configuration_sets aern_certificate_algorithm_decode(const char* name)
 
 	if (name != NULL)
 	{
-		if (qsc_stringutils_compare_strings("dilithium-s1_kyber-s1_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		if (qsc_stringutils_string_contains(name, "dilithium-s1_kyber-s1_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_dilithium1_kyber1_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("dilithium-s3_kyber-s3_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "dilithium-s3_kyber-s3_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_dilithium3_kyber3_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("dilithium-s5_kyber-s5_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "dilithium-s5_kyber-s5_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_dilithium5_kyber5_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("dilithium-s5_kyber-s6_rcs-512_sha3-512", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "dilithium-s5_kyber-s6_rcs-512_sha3-512"))
 		{
 			cset = aern_configuration_set_dilithium5_kyber6_rcs512_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-1f_mceliece-s1_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-1f_mceliece-s1_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus1f_mceliece1_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-1s_mceliece-s1_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-1s_mceliece-s1_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus1s_mceliece1_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-3f_mceliece-s3_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-3f_mceliece-s3_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus3f_mceliece3_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-3s_mceliece-s3_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-3s_mceliece-s3_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus3s_mceliece3_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-5f_mceliece-s5_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-5f_mceliece-s5_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus5f_mceliece5_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-5s_mceliece-s5_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-5s_mceliece-s5_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus5s_mceliece5_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-5f_mceliece-s6_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-5f_mceliece-s6_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus5f_mceliece6_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-5s_mceliece-s6_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-5s_mceliece-s6_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus5s_mceliece6_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-5f_mceliece-s7_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-5f_mceliece-s7_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus5f_mceliece7_rcs256_shake256;
 		}
-		else if (qsc_stringutils_compare_strings("sphincs-5s_mceliece-s7_rcs-256_sha3-256", name, AERN_PROTOCOL_SET_SIZE))
+		else if (qsc_stringutils_string_contains(name, "sphincs-5s_mceliece-s7_rcs-256_sha3-256"))
 		{
 			cset = aern_configuration_set_sphincsplus5s_mceliece7_rcs256_shake256;
 		}
@@ -248,14 +246,15 @@ bool aern_certificate_child_decode(aern_child_certificate* child, const char enc
 		size_t slen;
 
 		penc = enck;
-		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_HEADER) + qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_SERIAL_PREFIX) + 1U;
-		qsc_intutils_hex_to_bin(penc, child->serial, AERN_CERTIFICATE_SERIAL_SIZE * 2U);
-		penc += (AERN_CERTIFICATE_SERIAL_SIZE * 2U);
-
-		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_ISSUER_PREFIX) + 1U;
+		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_HEADER) + 1U;
+		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_ISSUER_PREFIX);
 		slen = qsc_stringutils_find_string(penc, "\n");
 		qsc_memutils_copy(child->issuer, penc, slen);
 		penc += slen;
+
+		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_SERIAL_PREFIX) + 1U;
+		qsc_intutils_hex_to_bin(penc, child->serial, AERN_CERTIFICATE_SERIAL_SIZE);
+		penc += (AERN_CERTIFICATE_SERIAL_SIZE * 2U);
 
 		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_VALID_FROM_PREFIX) + 1U;
 		slen = QSC_TIMESTAMP_STRING_SIZE;
@@ -269,7 +268,7 @@ bool aern_certificate_child_decode(aern_child_certificate* child, const char enc
 		child->expiration.to = qsc_timestamp_datetime_to_seconds(dtm);
 		penc += slen;
 
-		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_ALGORITHM_PREFIX) + 1U;
+		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_ALGORITHM_PREFIX);
 		slen = qsc_stringutils_find_string(penc, "\n");
 		child->algorithm = aern_certificate_algorithm_decode(penc);
 		penc += slen;
@@ -293,20 +292,22 @@ bool aern_certificate_child_decode(aern_child_certificate* child, const char enc
 		penc += slen;
 		++penc;
 
-		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_ADDRESS_PREFIX);
-		slen = qsc_stringutils_find_string(penc, "\n");
-		penc += slen;
-		++penc;
+		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_ROOT_SERIAL_PREFIX);
+		qsc_intutils_hex_to_bin(penc, child->rootser, AERN_CERTIFICATE_SERIAL_SIZE);
+		penc += (AERN_CERTIFICATE_SERIAL_SIZE * 2U);
 
+		size_t enclen = qsc_encoding_base64_encoded_size(sizeof(child->csig));
 		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_ROOT_HASH_PREFIX) + 1U;
 		slen = sizeof(tmpsg);
 		qsc_stringutils_remove_line_breaks(tmpsg, sizeof(tmpsg), penc, slen);
-		res = qsc_encoding_base64_decode(child->csig, AERN_CERTIFICATE_SIGNED_HASH_SIZE, tmpsg, AERN_SIGNATURE_ENCODING_SIZE);
+		res = qsc_encoding_base64_decode(child->csig, AERN_CERTIFICATE_SIGNED_HASH_SIZE, tmpsg, enclen);
 		penc += slen;
 
-		slen = qsc_stringutils_find_string(penc, "\n");
-		qsc_stringutils_remove_line_breaks(tmpvk, sizeof(tmpvk), penc, AERN_CHILD_CERTIFICATE_STRING_SIZE);
-		res = qsc_encoding_base64_decode(child->verkey, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE, tmpvk, AERN_VERIFICATION_KEY_ENCODING_SIZE);
+		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_SIGNATURE_KEY_PREFIX) + 1U;
+		enclen = qsc_encoding_base64_encoded_size(sizeof(child->verkey));
+
+		size_t declen = qsc_stringutils_remove_line_breaks(tmpvk, sizeof(tmpvk), penc, AERN_CHILD_CERTIFICATE_STRING_SIZE);
+		res = qsc_encoding_base64_decode(child->verkey, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE, tmpvk, declen);
 	}
 
 	return res;
@@ -354,7 +355,7 @@ size_t aern_certificate_child_encode(char enck[AERN_CHILD_CERTIFICATE_STRING_SIZ
 	if (enck != NULL && child != NULL)
 	{
 		char dtm[QSC_TIMESTAMP_STRING_SIZE] = { 0 };
-		char hexid[AERN_CERTIFICATE_SERIAL_SIZE * 2U] = { 0 };
+		char hexid[(AERN_CERTIFICATE_SERIAL_SIZE * 2U) + 1U] = { 0 };
 		char tmpvk[AERN_VERIFICATION_KEY_ENCODING_SIZE] = { 0 };
 		char tmpsg[AERN_SIGNATURE_ENCODING_SIZE] = { 0 };
 
@@ -378,7 +379,7 @@ size_t aern_certificate_child_encode(char enck[AERN_CHILD_CERTIFICATE_STRING_SIZ
 		spos += slen;
 		qsc_intutils_bin_to_hex(child->serial, hexid, AERN_CERTIFICATE_SERIAL_SIZE);
 		qsc_stringutils_to_uppercase(hexid);
-		slen = sizeof(hexid);
+		slen = AERN_CERTIFICATE_SERIAL_SIZE * 2U;
 		qsc_memutils_copy((enck + spos), hexid, slen);
 		spos += slen;
 		enck[spos] = '\n';
@@ -442,7 +443,7 @@ size_t aern_certificate_child_encode(char enck[AERN_CHILD_CERTIFICATE_STRING_SIZ
 		spos += slen;
 		qsc_intutils_bin_to_hex(child->rootser, hexid, AERN_CERTIFICATE_SERIAL_SIZE);
 		qsc_stringutils_to_uppercase(hexid);
-		slen = sizeof(hexid);
+		slen = AERN_CERTIFICATE_SERIAL_SIZE * 2U;
 		qsc_memutils_copy((enck + spos), hexid, slen);
 		spos += slen;
 		enck[spos] = '\n';
@@ -454,9 +455,9 @@ size_t aern_certificate_child_encode(char enck[AERN_CHILD_CERTIFICATE_STRING_SIZ
 		enck[spos] = '\n';
 		++spos;
 
-		//size_t enclen = qsc_encoding_base64_encoded_size(sizeof(child->csig));
+		size_t enclen = qsc_encoding_base64_encoded_size(sizeof(child->csig));
 		slen = AERN_CERTIFICATE_SIGNED_HASH_SIZE;
-		qsc_encoding_base64_encode(tmpsg, AERN_SIGNATURE_ENCODING_SIZE, child->csig, slen);
+		qsc_encoding_base64_encode(tmpsg, enclen, child->csig, slen);
 		spos += qsc_stringutils_add_line_breaks((enck + spos), AERN_CHILD_CERTIFICATE_STRING_SIZE - spos, AERN_CERTIFICATE_LINE_LENGTH, tmpsg, sizeof(tmpsg));
 		enck[spos] = '\n';
 		++spos;
@@ -468,8 +469,8 @@ size_t aern_certificate_child_encode(char enck[AERN_CHILD_CERTIFICATE_STRING_SIZ
 		++spos;
 
 		slen = AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE;
-		//size_t enclen = qsc_encoding_base64_encoded_size(slen);
-		qsc_encoding_base64_encode(tmpvk, AERN_VERIFICATION_KEY_ENCODING_SIZE, child->verkey, slen);
+		enclen = qsc_encoding_base64_encoded_size(sizeof(child->verkey));
+		qsc_encoding_base64_encode(tmpvk, enclen, child->verkey, slen);
 		spos += qsc_stringutils_add_line_breaks((enck + spos), AERN_ROOT_CERTIFICATE_STRING_SIZE - spos, AERN_CERTIFICATE_LINE_LENGTH, tmpvk, sizeof(tmpvk));
 
 		slen = qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_FOOTER);
@@ -488,7 +489,7 @@ void aern_certificate_child_erase(aern_child_certificate* child)
 
 	if (child != NULL)
 	{
-		qsc_memutils_clear(child->csig, AERN_ASYMMETRIC_SIGNATURE_SIZE);
+		qsc_memutils_clear(child->csig, AERN_CERTIFICATE_SIGNED_HASH_SIZE);
 		qsc_memutils_clear(child->verkey, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE);
 		qsc_memutils_clear(child->issuer, AERN_CERTIFICATE_ISSUER_SIZE);
 		qsc_memutils_clear(child->serial, AERN_CERTIFICATE_SERIAL_SIZE);
@@ -566,6 +567,7 @@ bool aern_certificate_child_is_valid(const aern_child_certificate* child)
 	{
 		if (child->algorithm == AERN_CONFIGURATION_SET &&
 			child->designation != aern_network_designation_none &&
+			child->designation != aern_network_designation_revoked &&
 			child->version == AERN_ACTIVE_VERSION &&
 			qsc_memutils_zeroed(child->csig, AERN_CERTIFICATE_SIGNED_HASH_SIZE) == false &&
 			qsc_memutils_zeroed(child->rootser, AERN_CERTIFICATE_SERIAL_SIZE) == false &&
@@ -605,6 +607,17 @@ bool aern_certificate_child_message_verify(uint8_t* message, size_t* msglen, con
 	}
 
 	return res;
+}
+
+void aern_certificate_child_revoke(aern_child_certificate* child)
+{
+	AERN_ASSERT(child != NULL);
+
+	child->designation = aern_network_designation_revoked;
+	qsc_memutils_clear(child->rootser, AERN_CERTIFICATE_SERIAL_SIZE);
+	qsc_memutils_clear(child->csig, AERN_CERTIFICATE_SIGNED_HASH_SIZE);
+	child->expiration.from = 0U;
+	child->expiration.to = 0U;
 }
 
 void aern_certificate_child_serialize(uint8_t* output, const aern_child_certificate* child)
@@ -711,9 +724,9 @@ aern_network_designations aern_certificate_designation_decode(const char* sdsg)
 		{
 			dsg = aern_network_designation_client;
 		}
-		else if (qsc_stringutils_find_string(sdsg, AERN_NETWORK_DESIGNATION_IDG) != QSC_STRINGUTILS_TOKEN_NOT_FOUND)
+		else if (qsc_stringutils_find_string(sdsg, AERN_NETWORK_DESIGNATION_ADC) != QSC_STRINGUTILS_TOKEN_NOT_FOUND)
 		{
-			dsg = aern_network_designation_idg;
+			dsg = aern_network_designation_adc;
 		}
 		else if (qsc_stringutils_find_string(sdsg, AERN_NETWORK_DESIGNATION_REMOTE) != QSC_STRINGUTILS_TOKEN_NOT_FOUND)
 		{
@@ -750,13 +763,9 @@ size_t aern_certificate_designation_encode(char* sdsg, aern_network_designations
 		{
 			qsc_stringutils_copy_string(sdsg, AERN_NETWORK_DESIGNATION_SIZE, AERN_NETWORK_DESIGNATION_CLIENT);
 		}
-		else if (designation == aern_network_designation_ads)
+		else if (designation == aern_network_designation_adc)
 		{
-			qsc_stringutils_copy_string(sdsg, AERN_NETWORK_DESIGNATION_SIZE, AERN_NETWORK_DESIGNATION_ADS);
-		}
-		else if (designation == aern_network_designation_idg)
-		{
-			qsc_stringutils_copy_string(sdsg, AERN_NETWORK_DESIGNATION_SIZE, AERN_NETWORK_DESIGNATION_IDG);
+			qsc_stringutils_copy_string(sdsg, AERN_NETWORK_DESIGNATION_SIZE, AERN_NETWORK_DESIGNATION_ADC);
 		}
 		else if (designation == aern_network_designation_remote)
 		{
@@ -877,6 +886,7 @@ void aern_certificate_root_create(aern_root_certificate* root, const uint8_t* pu
 
 	if (root != NULL && pubkey != NULL && expiration != NULL && issuer != NULL)
 	{
+		qsc_memutils_clear(root, sizeof(aern_root_certificate));
 		root->algorithm = (uint8_t)AERN_CONFIGURATION_SET;
 		root->version = AERN_ACTIVE_VERSION;
 		qsc_stringutils_copy_string(root->issuer, AERN_CERTIFICATE_ISSUER_SIZE, issuer);
@@ -899,38 +909,57 @@ bool aern_certificate_root_decode(aern_root_certificate* root, const char* enck)
 
 	if (root != NULL && enck != NULL)
 	{
-		char tmpvk[AERN_VERIFICATION_KEY_ENCODING_SIZE] = { 0 };
+		char tmpvk[AERN_VERIFICATION_KEY_ENCODING_SIZE + 1U] = { 0 };
 		char dtm[QSC_TIMESTAMP_STRING_SIZE] = { 0 };
+		char tmpalg[AERN_PROTOCOL_SET_SIZE] = { 0 };
 
 		penc = enck;
-		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_HEADER) + qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_SERIAL_PREFIX) + 1U;
-		slen = AERN_CERTIFICATE_SERIAL_SIZE;
 
-		qsc_intutils_hex_to_bin(penc, root->serial, AERN_CERTIFICATE_SERIAL_SIZE * 2U);
-		penc += (AERN_CERTIFICATE_SERIAL_SIZE * 2U);
+		/* header */
+		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_HEADER) + 1U;
 
-		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_ISSUER_PREFIX) + 1U;
+		/* issuer */
+		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_ISSUER_PREFIX);
 		slen = qsc_stringutils_find_string(penc, "\n");
 		qsc_memutils_copy(root->issuer, penc, slen);
 		penc += slen;
 
+		/* serial */
+		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_SERIAL_PREFIX) + 1U;
+		slen = AERN_CERTIFICATE_SERIAL_SIZE * 2U;
+		qsc_intutils_hex_to_bin(penc, root->serial, slen);
+		penc += slen;
+
+		/* valid from */
 		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_VALID_FROM_PREFIX) + 1U;
-		slen = QSC_TIMESTAMP_STRING_SIZE;
+		slen = QSC_TIMESTAMP_STRING_SIZE - 1U;
+		qsc_memutils_clear(dtm, sizeof(dtm));
 		qsc_memutils_copy(dtm, penc, slen);
 		root->expiration.from = qsc_timestamp_datetime_to_seconds(dtm);
 		penc += slen;
 
-		penc += qsc_stringutils_string_size(AERN_CHILD_CERTIFICATE_EXPIRATION_TO_PREFIX) - 1U;
-		slen = QSC_TIMESTAMP_STRING_SIZE;
+		/* valid to */
+		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_EXPIRATION_TO_PREFIX);
+		slen = QSC_TIMESTAMP_STRING_SIZE - 1U;
+		qsc_memutils_clear(dtm, sizeof(dtm));
 		qsc_memutils_copy(dtm, penc, slen);
 		root->expiration.to = qsc_timestamp_datetime_to_seconds(dtm);
 		penc += slen;
 
+		/* algorithm */
 		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_ALGORITHM_PREFIX) + 1U;
 		slen = qsc_stringutils_find_string(penc, "\n");
-		root->algorithm = aern_certificate_algorithm_decode(penc);
+
+		if (slen < sizeof(tmpalg))
+		{
+			qsc_memutils_clear(tmpalg, sizeof(tmpalg));
+			qsc_memutils_copy(tmpalg, penc, slen);
+			root->algorithm = aern_certificate_algorithm_decode(tmpalg);
+		}
+
 		penc += slen;
 
+		/* version */
 		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_VERSION_PREFIX) + 1U;
 		slen = qsc_stringutils_find_string(penc, "\n");
 
@@ -942,10 +971,20 @@ bool aern_certificate_root_decode(aern_root_certificate* root, const char* enck)
 		{
 			root->version = aern_version_set_none;
 		}
+
 		penc += slen;
 
+		/* public key */
 		penc += qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_PUBLICKEY_PREFIX) + 1U;
-		qsc_stringutils_remove_line_breaks(tmpvk, sizeof(tmpvk), penc, AERN_ROOT_CERTIFICATE_STRING_SIZE);
+
+		if (*penc == '\n')
+		{
+			++penc;
+		}
+
+		slen = qsc_stringutils_find_string(penc, AERN_ROOT_CERTIFICATE_FOOTER);
+		qsc_stringutils_remove_line_breaks(tmpvk, sizeof(tmpvk), penc, slen);
+
 		res = qsc_encoding_base64_decode(root->verkey, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE, tmpvk, AERN_VERIFICATION_KEY_ENCODING_SIZE);
 	}
 
@@ -961,17 +1000,21 @@ void aern_certificate_root_deserialize(aern_root_certificate* root, const uint8_
 
 	if (root != NULL && input != NULL)
 	{
-		qsc_memutils_copy(root->verkey, input, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE);
-		pos = AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE;
+		uint8_t chash[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
+
+		qsc_memutils_copy(chash, input, AERN_CERTIFICATE_HASH_SIZE);
+		pos = AERN_CERTIFICATE_HASH_SIZE;
+		qsc_memutils_copy(root->verkey, input + pos, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE);
+		pos += AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE;
 		qsc_memutils_copy(root->issuer, input + pos, AERN_CERTIFICATE_ISSUER_SIZE);
 		pos += AERN_CERTIFICATE_ISSUER_SIZE;
 		qsc_memutils_copy(root->serial, input + pos, AERN_CERTIFICATE_SERIAL_SIZE);
 		pos += AERN_CERTIFICATE_SERIAL_SIZE;
 		qsc_memutils_copy(&root->expiration, input + pos, AERN_CERTIFICATE_EXPIRATION_SIZE);
 		pos += AERN_CERTIFICATE_EXPIRATION_SIZE;
-		qsc_memutils_copy(&root->algorithm, input + pos, sizeof(uint8_t));
-		pos += sizeof(uint8_t);
-		qsc_memutils_copy(&root->version, input + pos, sizeof(uint8_t));
+		qsc_memutils_copy(&root->algorithm, input + pos, AERN_CERTIFICATE_ALGORITHM_SIZE);
+		pos += AERN_CERTIFICATE_ALGORITHM_SIZE;
+		qsc_memutils_copy(&root->version, input + pos, AERN_CERTIFICATE_VERSION_SIZE);
 	}
 }
 
@@ -988,7 +1031,7 @@ size_t aern_certificate_root_encode(char* enck, const aern_root_certificate* roo
 	if (enck != NULL && root != NULL)
 	{
 		char dtm[QSC_TIMESTAMP_STRING_SIZE] = { 0 };
-		char hexid[AERN_CERTIFICATE_SERIAL_SIZE * 2U] = { 0 };
+		char hexid[(AERN_CERTIFICATE_SERIAL_SIZE * 2U) + 1U] = { 0 };
 		char tmpvk[AERN_VERIFICATION_KEY_ENCODING_SIZE] = { 0 };
 
 		slen = qsc_stringutils_string_size(AERN_ROOT_CERTIFICATE_HEADER);
@@ -1011,7 +1054,7 @@ size_t aern_certificate_root_encode(char* enck, const aern_root_certificate* roo
 		spos += slen;
 		qsc_intutils_bin_to_hex(root->serial, hexid, AERN_CERTIFICATE_SERIAL_SIZE);
 		qsc_stringutils_to_uppercase(hexid);
-		slen = sizeof(hexid);
+		slen = AERN_CERTIFICATE_SERIAL_SIZE * 2U;
 		qsc_memutils_copy((enck + spos), hexid, slen);
 		spos += slen;
 		enck[spos] = '\n';
@@ -1104,7 +1147,20 @@ bool aern_certificate_root_file_to_struct(const char* fpath, aern_root_certifica
 			if (qsc_fileutils_copy_file_to_stream(fpath, (char*)sroot, AERN_CERTIFICATE_ROOT_SIZE) == AERN_CERTIFICATE_ROOT_SIZE)
 			{
 				aern_certificate_root_deserialize(root, sroot);
-				res = aern_certificate_root_is_valid(root);
+
+				/* structural validity: correct algorithm, version, non-zero fields, within expiry */
+				if (aern_certificate_root_is_valid(root) == true)
+				{
+					uint8_t computed[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
+					aern_certificate_root_hash(computed, root);
+					res = qsc_memutils_are_equal(computed, sroot, AERN_CERTIFICATE_HASH_SIZE);
+
+					if (res == false)
+					{
+						/* hash mismatch, certificate file may be corrupt or tampered */
+						qsc_memutils_clear(root, sizeof(aern_root_certificate));
+					}
+				}
 			}
 		}
 	}
@@ -1178,17 +1234,21 @@ void aern_certificate_root_serialize(uint8_t* output, const aern_root_certificat
 
 	if (output != NULL && root != NULL)
 	{
-		qsc_memutils_copy(output, root->verkey, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE);
-		pos = AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE;
+		uint8_t chash[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
+		aern_certificate_root_hash(chash, root);
+		qsc_memutils_copy(output, chash, AERN_CERTIFICATE_HASH_SIZE);
+		pos = AERN_CERTIFICATE_HASH_SIZE;
+		qsc_memutils_copy(output + pos, root->verkey, AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE);
+		pos += AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE;
 		qsc_memutils_copy(output + pos, root->issuer, AERN_CERTIFICATE_ISSUER_SIZE);
 		pos += AERN_CERTIFICATE_ISSUER_SIZE;
 		qsc_memutils_copy(output + pos, root->serial, AERN_CERTIFICATE_SERIAL_SIZE);
 		pos += AERN_CERTIFICATE_SERIAL_SIZE;
 		qsc_memutils_copy(output + pos, &root->expiration, AERN_CERTIFICATE_EXPIRATION_SIZE);
 		pos += AERN_CERTIFICATE_EXPIRATION_SIZE;
-		qsc_memutils_copy(output + pos, &root->algorithm, sizeof(uint8_t));
-		pos += sizeof(uint8_t);
-		qsc_memutils_copy(output + pos, &root->version, sizeof(uint8_t));
+		qsc_memutils_copy(output + pos, &root->algorithm, AERN_CERTIFICATE_ALGORITHM_SIZE);
+		pos += AERN_CERTIFICATE_ALGORITHM_SIZE;
+		qsc_memutils_copy(output + pos, &root->version, AERN_CERTIFICATE_VERSION_SIZE);
 	}
 }
 
@@ -1205,6 +1265,11 @@ size_t aern_certificate_root_sign(aern_child_certificate* child, const aern_root
 	if (child != NULL && root != NULL && rsigkey != NULL)
 	{
 		uint8_t hash[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
+
+		if (child->expiration.to > root->expiration.to)
+		{
+			child->expiration.to = root->expiration.to;
+		}
 
 		qsc_memutils_copy(child->rootser, root->serial, AERN_CERTIFICATE_SERIAL_SIZE);
 		aern_certificate_child_hash(hash, child);
@@ -1227,17 +1292,22 @@ bool aern_certificate_root_signature_verify(const aern_child_certificate* child,
 
 	if (child != NULL && root != NULL)
 	{
-		uint8_t msg[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
-
-		res = aern_signature_verify(msg, &mlen, child->csig, AERN_CERTIFICATE_SIGNED_HASH_SIZE, root->verkey);
+		res = qsc_memutils_are_equal(child->rootser, root->serial, AERN_CERTIFICATE_SERIAL_SIZE);
 
 		if (res == true)
 		{
-			uint8_t hash[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
+			uint8_t msg[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
 
-			aern_certificate_child_hash(hash, child);
+			res = aern_signature_verify(msg, &mlen, child->csig, AERN_CERTIFICATE_SIGNED_HASH_SIZE, root->verkey);
 
-			res = qsc_memutils_are_equal(msg, hash, AERN_CERTIFICATE_HASH_SIZE);
+			if (res == true)
+			{
+				uint8_t hash[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
+
+				aern_certificate_child_hash(hash, child);
+
+				res = qsc_memutils_are_equal(msg, hash, AERN_CERTIFICATE_HASH_SIZE);
+			}
 		}
 	}
 
@@ -1264,14 +1334,20 @@ bool aern_certificate_root_struct_to_file(const char* fpath, const aern_root_cer
 	return res;
 }
 
-void aern_certificate_signature_generate_keypair(aern_signature_keypair* keypair)
+bool aern_certificate_signature_generate_keypair(aern_signature_keypair* keypair)
 {
 	AERN_ASSERT(keypair != NULL);
 
+	bool res;
+
+	res = false;
+
 	if (keypair != NULL)
 	{
-		aern_signature_generate_keypair(keypair->pubkey, keypair->prikey, qsc_acp_generate);
+		res = aern_signature_generate_keypair(keypair->pubkey, keypair->prikey, qsc_acp_generate);
 	}
+
+	return res;
 }
 
 size_t aern_certificate_signature_sign_message(uint8_t* signature, const uint8_t* message, size_t msglen, const uint8_t* prikey)
@@ -1322,136 +1398,3 @@ bool aern_certificate_signature_verify_message(const uint8_t* message, size_t ms
 
 	return res;
 }
-
-/** \cond */
-
-#if defined(AERN_DEBUG_TESTS_RUN)
-static void get_encoded_sizes()
-{
-	aern_signature_keypair ckp = { 0 };
-	aern_child_certificate child = { 0 };
-	aern_signature_keypair skp = { 0 };
-	aern_root_certificate root = { 0 };
-	aern_certificate_expiration exp = { 0 };
-	char cenc[AERN_CHILD_CERTIFICATE_STRING_SIZE] = { 0 };
-	char renc[AERN_ROOT_CERTIFICATE_STRING_SIZE] = { 0 };
-	char rname[AERN_CERTIFICATE_ISSUER_SIZE] = "ARS-1";
-	char name[AERN_PROTOCOL_SET_SIZE] = { 0 };
-	size_t len;
-
-	aern_certificate_signature_generate_keypair(&skp);
-	aern_certificate_expiration_set_days(&exp, 0, 30);
-	aern_certificate_root_create(&root, (const uint8_t*)skp.pubkey, &exp, rname);
-
-	aern_certificate_signature_generate_keypair(&ckp);
-	aern_certificate_expiration_set_days(&exp, 0, 100);
-	aern_certificate_child_create(&child, (const uint8_t*)ckp.pubkey, &exp, "APS 1", aern_network_designation_aps);
-	aern_certificate_root_sign(&child, &root, skp.prikey);
-
-	qsc_consoleutils_print_safe("parameters: ");
-	qsc_consoleutils_print_line(AERN_CONFIG_STRING);
-
-	len = qsc_encoding_base64_encoded_size(sizeof(skp.pubkey));
-	qsc_consoleutils_print_safe("pk: ");
-	qsc_consoleutils_print_uint((uint32_t)len);
-	qsc_consoleutils_print_line("");
-
-	len = qsc_encoding_base64_encoded_size(sizeof(child.csig));
-	qsc_consoleutils_print_safe("sig: ");
-	qsc_consoleutils_print_uint((uint32_t)len);
-	qsc_consoleutils_print_line("");
-
-	len = aern_certificate_child_encode(cenc, &child);
-	qsc_consoleutils_print_safe("child: ");
-	qsc_consoleutils_print_uint((uint32_t)len);
-	qsc_consoleutils_print_line("");
-
-	len = aern_certificate_root_encode(renc, &root);
-	qsc_consoleutils_print_safe("root: ");
-	qsc_consoleutils_print_uint((uint32_t)len);
-	qsc_consoleutils_print_line("");
-}
-
-static void certificate_child_print(const aern_child_certificate* child)
-{
-	AERN_ASSERT(child != NULL);
-
-	char cenc[AERN_CHILD_CERTIFICATE_STRING_SIZE] = { 0 };
-
-	aern_certificate_child_encode(cenc, child);
-	qsc_consoleutils_print_line(cenc);
-	qsc_consoleutils_print_line("");
-}
-
-static void certificate_root_print(const aern_root_certificate* root)
-{
-	AERN_ASSERT(root != NULL);
-
-	char cenc[AERN_ROOT_CERTIFICATE_STRING_SIZE] = { 0 };
-
-	aern_certificate_root_encode(cenc, root);
-	qsc_consoleutils_print_line(cenc);
-	qsc_consoleutils_print_line("");
-}
-
-bool aern_certificate_functions_test()
-{
-	aern_signature_keypair skp = { 0 };
-	aern_root_certificate root = { 0 };
-	aern_certificate_expiration exp = { 0 };
-	bool res;
-
-	qsc_consoleutils_print_line("Printing encoded sizes of certificate fields");
-	get_encoded_sizes();
-
-	aern_certificate_signature_generate_keypair(&skp);
-	aern_certificate_expiration_set_days(&exp, 0, 30);
-	aern_certificate_root_create(&root, skp.pubkey, &exp, "ARS-1");
-	res = aern_certificate_root_is_valid(&root);
-
-	certificate_root_print(&root);
-
-	if (res == true)
-	{
-		aern_root_certificate rcpy = { 0 };
-		uint8_t srt[AERN_CERTIFICATE_ROOT_SIZE] = { 0U };
-		
-		aern_certificate_root_serialize(srt, &root);
-		aern_certificate_root_deserialize(&rcpy, srt);
-		res = aern_certificate_root_compare(&root, &rcpy);
-
-		if (res == true)
-		{
-			aern_signature_keypair ckp = { 0 };
-			aern_child_certificate child = { 0 };
-			aern_child_certificate ccpy = { 0 };
-
-			aern_certificate_signature_generate_keypair(&ckp);
-			aern_certificate_expiration_set_days(&exp, 0, 100U);
-			aern_certificate_child_create(&child, ckp.pubkey, &exp, "APS 1", aern_network_designation_aps);
-			aern_certificate_root_sign(&child, &root, skp.prikey);
-			certificate_child_print(&child);
-			res = aern_certificate_child_is_valid(&child);
-
-			if (res == true)
-			{
-				res = aern_certificate_root_signature_verify(&child, &root);
-
-				if (res == true)
-				{
-					uint8_t sct[AERN_CERTIFICATE_CHILD_SIZE] = { 0U };
-
-					aern_certificate_child_serialize(sct, &child);
-					aern_certificate_child_deserialize(&ccpy, sct);
-					res = aern_certificate_child_are_equal(&child, &ccpy);
-				}
-			}
-		}
-	}
-
-	return res;
-}
-
-#endif
-
-/** \endcond */

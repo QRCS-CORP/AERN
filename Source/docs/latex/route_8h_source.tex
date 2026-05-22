@@ -1,0 +1,471 @@
+\doxysection{route.\+h}
+\hypertarget{route_8h_source}{}\label{route_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/route.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/route.h}}
+\mbox{\hyperlink{route_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ 2025-\/2026\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ NOTICE:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ This\ software\ and\ all\ accompanying\ materials\ are\ the\ exclusive\ property\ of}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ Quantum\ Resistant\ Cryptographic\ Solutions\ Corporation\ (QRCS).\ The\ intellectual}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ and\ technical\ concepts\ contained\ herein\ are\ proprietary\ to\ QRCS\ and\ are}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ protected\ under\ applicable\ Canadian,\ U.S.,\ and\ international\ copyright,}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ patent,\ and\ trade\ secret\ laws.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ CRYPTOGRAPHIC\ ALGORITHMS\ AND\ IMPLEMENTATIONS:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ -\/\ This\ software\ includes\ implementations\ of\ cryptographic\ primitives\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ algorithms\ that\ are\ standardized\ or\ in\ the\ public\ domain,\ such\ as\ AES}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ \ and\ SHA-\/3,\ which\ are\ not\ proprietary\ to\ QRCS.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ -\/\ This\ software\ also\ includes\ cryptographic\ primitives,\ constructions,\ and}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ algorithms\ designed\ by\ QRCS,\ including\ but\ not\ limited\ to\ RCS,\ SCB,\ CSX,\ QMAC,\ and}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ related\ components,\ which\ are\ proprietary\ to\ QRCS.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ -\/\ All\ source\ code,\ implementations,\ protocol\ compositions,\ optimizations,}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ parameter\ selections,\ and\ engineering\ work\ contained\ in\ this\ software\ are}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ \ \ original\ works\ of\ QRCS\ and\ are\ protected\ under\ this\ license.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ LICENSE\ AND\ USE\ RESTRICTIONS:}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ -\/\ This\ software\ is\ licensed\ under\ the\ Quantum\ Resistant\ Cryptographic\ Solutions}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ \ \ Public\ Research\ and\ Evaluation\ License\ (QRCS-\/PREL),\ 2025-\/2026.}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ -\/\ Permission\ is\ granted\ solely\ for\ non-\/commercial\ evaluation,\ academic\ research,}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ \ \ cryptographic\ analysis,\ interoperability\ testing,\ and\ feasibility\ assessment.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ -\/\ Commercial\ use,\ production\ deployment,\ commercial\ redistribution,\ or}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ \ \ integration\ into\ products\ or\ services\ is\ strictly\ prohibited\ without\ a}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ \ \ separate\ written\ license\ agreement\ executed\ with\ QRCS.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ -\/\ Licensing\ and\ authorized\ distribution\ are\ solely\ at\ the\ discretion\ of\ QRCS.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ EXPERIMENTAL\ CRYPTOGRAPHY\ NOTICE:}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Portions\ of\ this\ software\ may\ include\ experimental,\ novel,\ or\ evolving}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ cryptographic\ designs.\ Use\ of\ this\ software\ is\ entirely\ at\ the\ user's\ risk.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ DISCLAIMER:}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ THIS\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ WARRANTIES\ OF\ MERCHANTABILITY,\ FITNESS}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *\ FOR\ A\ PARTICULAR\ PURPOSE,\ SECURITY,\ OR\ NON-\/INFRINGEMENT.\ QRCS\ DISCLAIMS\ ALL}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ *\ LIABILITY\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ OR\ CONSEQUENTIAL\ DAMAGES}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ *\ ARISING\ FROM\ THE\ USE\ OR\ MISUSE\ OF\ THIS\ SOFTWARE.}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *\ FULL\ LICENSE:}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ *\ This\ software\ is\ subject\ to\ the\ Quantum\ Resistant\ Cryptographic\ Solutions}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ *\ Public\ Research\ and\ Evaluation\ License\ (QRCS-\/PREL),\ 2025-\/2026.\ The\ complete\ license\ terms}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ *\ are\ provided\ in\ the\ accompanying\ LICENSE\ file\ or\ at\ https://www.qrcscorp.ca.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ *\ Written\ by:\ John\ G.\ Underhill}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ *\ Contact:\ contact@qrcscorp.ca}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifndef\ AERN\_ROUTE\_H}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ AERN\_ROUTE\_H}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aern_8h}{aern.h}}"{}}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mek_8h}{mek.h}}"{}}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{topology_8h}{topology.h}}"{}}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{relayqueue_8h}{relayqueue.h}}"{}}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_CACHE\_KEY\_SIZE}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_CACHE\_KEY\_SIZE\ 16U}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#ifndef\ AERN\_ROUTE\_MIN\_HOPS}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#\ \ define\ AERN\_ROUTE\_MIN\_HOPS\ 3U}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#ifndef\ AERN\_ROUTE\_MINIMUM\_HOPS}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#\ \ define\ AERN\_ROUTE\_MINIMUM\_HOPS\ AERN\_ROUTE\_MIN\_HOPS}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#ifndef\ AERN\_ROUTE\_MAX\_HOPS}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#\ \ define\ AERN\_ROUTE\_MAX\_HOPS\ 16U}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#ifndef\ AERN\_ROUTE\_MAXIMUM\_HOPS}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#\ \ define\ AERN\_ROUTE\_MAXIMUM\_HOPS\ \ \ \ AERN\_ROUTE\_MAX\_HOPS}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#ifndef\ AERN\_INGRESS\_PENDING\_QUEUE\_DEPTH}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#\ \ define\ AERN\_INGRESS\_PENDING\_QUEUE\_DEPTH\ 64U}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#ifndef\ AERN\_INGRESS\_DELAY\_QUEUE\_DEPTH}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#\ \ define\ AERN\_INGRESS\_DELAY\_QUEUE\_DEPTH\ 64U}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_SESSION\_CONTEXT\_INGRESS}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_SESSION\_CONTEXT\_INGRESS\ 0x01U}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_SESSION\_CONTEXT\_EGRESS}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_SESSION\_CONTEXT\_EGRESS\ 0x02U}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_SESSION\_TIMEOUT\_SECONDS}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_SESSION\_TIMEOUT\_SECONDS\ 300U}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_FRAGMENT\_TIMEOUT\_SECONDS}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_FRAGMENT\_TIMEOUT\_SECONDS\ 30U}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ AERN\_ROUTE\_PATH\_SIZE\ 16U\ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ AERN\_RELAY\_MTU\ AERN\_NETWORK\_CONNECTION\_MTU\ \ }\textcolor{comment}{/*\ 1500\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#define\ AERN\_RELAY\_HEADER\_SIZE\ AERN\_PACKET\_HEADER\_SIZE\ \ \ \ \ \ }\textcolor{comment}{/*\ 22\ \ \ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ AERN\_RELAY\_CIPHERTEXT\_SIZE\ (AERN\_RELAY\_MTU\ -\/\ AERN\_RELAY\_HEADER\_SIZE)\ \ }\textcolor{comment}{/*\ 1478\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ AERN\_RELAY\_MAC\_SIZE\ AERN\_CRYPTO\_SYMMETRIC\_MAC\_SIZE\ \ }\textcolor{comment}{/*\ 32\ \ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ AERN\_RELAY\_PLAINTEXT\_SIZE\ (AERN\_RELAY\_CIPHERTEXT\_SIZE\ -\/\ AERN\_RELAY\_MAC\_SIZE)\ }\textcolor{comment}{/*\ 1446\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ AERN\_ROUTEMAP\_SIZE\ AERN\_ROUTE\_PATH\_SIZE\ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ AERN\_LEN\_PREFIX\_SIZE\ 2U\ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ AERN\_MAX\_USER\_PAYLOAD\ (AERN\_RELAY\_PLAINTEXT\_SIZE\ -\/\ AERN\_LEN\_PREFIX\_SIZE\ -\/\ AERN\_ROUTEMAP\_SIZE)}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ =\ 1446\ -\/\ 2\ -\/\ 16\ =\ 1428\ bytes\ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_PAYLOAD\_FLAG\_RETURN}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_PAYLOAD\_FLAG\_RETURN\ 0x0001U}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_PAYLOAD\_FLAG\_OUTBOUND}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_PAYLOAD\_FLAG\_OUTBOUND\ 0x0000U}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAY\_DATA\_PAYLOAD\_SIZE}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAY\_DATA\_PAYLOAD\_SIZE\ (AERN\_MAX\_USER\_PAYLOAD\ -\/\ AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE)}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#ifndef\ AERN\_FRAG\_CHUNK\_SIZE}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#\ \ define\ AERN\_FRAG\_CHUNK\_SIZE\ AERN\_RELAY\_DATA\_PAYLOAD\_SIZE}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#ifndef\ AERN\_EXIT\_TIMEOUT\_MS}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#\ \ define\ AERN\_EXIT\_TIMEOUT\_MS\ 10000U\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#ifndef\ AERN\_MAX\_FRAGMENTS}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#\ \ define\ AERN\_MAX\_FRAGMENTS\ 4096U\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#ifndef\ AERN\_FRAGMENT\_CACHE\_MEMORY\_MAX}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#\ \ define\ AERN\_FRAGMENT\_CACHE\_MEMORY\_MAX\ (16ULL\ *\ 1024ULL\ *\ 1024ULL)}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ AERN\_MAX\_RELAY\_PACKET\_SIZE\ AERN\_RELAY\_MTU\ \ }\textcolor{comment}{/*\ 1500\ bytes\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00220\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497}{aern\_relay\_payload\_type}}}
+\DoxyCodeLine{00221\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497af486ce6abf9acd81c65565ce83274627}{aern\_relay\_payload\_none}}\ =\ 0x00U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00223\ \ \ \ \ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a669625a3fe9c613b47a7ee4d3673fbe4}{aern\_relay\_payload\_session\_open}}\ =\ 0x01U,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a0f89d4527342ca1d99fc098b438526e7}{aern\_relay\_payload\_session\_open\_ack}}\ =\ 0x02U,\ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a91be382faae5a058e1ab374b99b2e929}{aern\_relay\_payload\_session\_close}}\ =\ 0x03U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497aa88bdb903911af8f59275ec92ae83d70}{aern\_relay\_payload\_data}}\ =\ 0x04U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497a5e6786c61ef57383c1b70e69d8c018af}{aern\_relay\_payload\_dummy}}\ =\ 0x05U,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497ae38faa757665048df8cb6114174dae91}{aern\_relay\_payload\_error}}\ =\ 0xFFU\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \}\ \mbox{\hyperlink{route_8h_ab1da56870dcba690673096c3fac51497}{aern\_relay\_payload\_type}};}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00235\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\_relay\_fragment\_direction}}}
+\DoxyCodeLine{00236\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251a92965343da5b9e7a5d354415740781ef}{aern\_relay\_fragment\_direction\_none}}\ =\ 0x00U,\ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251a2db3f1c483bda7daad14a04d4fbf37bd}{aern\_relay\_fragment\_direction\_outbound}}\ =\ 0x01U,\ }
+\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251a18435f272484144d11280daf0a62a48a}{aern\_relay\_fragment\_direction\_inbound}}\ =\ 0x02U,\ \ }
+\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251abea2627f18151d87be654cfe584f3e50}{aern\_relay\_fragment\_direction\_return}}\ =\ 0x02U\ \ \ \ }
+\DoxyCodeLine{00241\ \}\ \mbox{\hyperlink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\_relay\_fragment\_direction}};}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00247\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4b}{aern\_relay\_session\_status}}}
+\DoxyCodeLine{00248\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4baa3cae5057d8fb17dfb48bb01f31a5eba}{aern\_relay\_session\_status\_none}}\ =\ 0x00U,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba05a30217c026ed820bef48886586d4a8}{aern\_relay\_session\_status\_pending}}\ =\ 0x01U,\ \ \ \ \ \ }
+\DoxyCodeLine{00251\ \ \ \ \ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba3efbf6590f0180004406e6f3cc3f4d11}{aern\_relay\_session\_status\_active}}\ =\ 0x02U,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00252\ \ \ \ \ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba1d7efc2f7bc36606f281cb30ce40fe39}{aern\_relay\_session\_status\_closing}}\ =\ 0x03U,\ \ \ \ \ \ }
+\DoxyCodeLine{00253\ \ \ \ \ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba35ae102874103086ec64b036a0999039}{aern\_relay\_session\_status\_expired}}\ =\ 0x04U,\ \ \ \ \ \ }
+\DoxyCodeLine{00254\ \ \ \ \ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4ba809abe73a7112527a605e68def6fe33a}{aern\_relay\_session\_status\_failed}}\ =\ 0x05U\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00255\ \}\ \mbox{\hyperlink{route_8h_a359783740763976b98639ebc8cc69d4b}{aern\_relay\_session\_status}};}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00261\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05}{aern\_exit\_transport\_status}}}
+\DoxyCodeLine{00262\ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05ab1033df679c0903243f51451716f8141}{aern\_exit\_transport\_status\_none}}\ =\ 0x00U,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00264\ \ \ \ \ \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05a151ed0da094c7c4bab58ff983d163855}{aern\_exit\_transport\_status\_pending}}\ =\ 0x01U,\ \ \ \ \ }
+\DoxyCodeLine{00265\ \ \ \ \ \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05af21e0342036b9404697fc4889fdfb0fd}{aern\_exit\_transport\_status\_active}}\ =\ 0x02U,\ \ \ \ \ \ }
+\DoxyCodeLine{00266\ \ \ \ \ \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aa4e315cb799e5f1ae6ad7b0bd89a3718}{aern\_exit\_transport\_status\_unimplemented}}\ =\ 0x03U,\ }
+\DoxyCodeLine{00267\ \ \ \ \ \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05aed29e326b8b066a468bcf5af550e8f9c}{aern\_exit\_transport\_status\_failed}}\ =\ 0x04U\ \ \ \ \ \ \ }
+\DoxyCodeLine{00268\ \}\ \mbox{\hyperlink{route_8h_adf894dfed9ffa1fa2b2fafde45773e05}{aern\_exit\_transport\_status}};}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}};}
+\DoxyCodeLine{00271\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}};}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00293\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}(*\mbox{\hyperlink{route_8h_addbecda638042f13b537db37881afa6a}{aern\_exit\_transport\_send\_callback}})(\textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ session,}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ packet,\ \textcolor{keywordtype}{size\_t}\ pktlen,\ \textcolor{keywordtype}{void}*\ context);}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00314\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}(*\mbox{\hyperlink{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f}{aern\_ingress\_transport\_send\_callback}})(\textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ session,}
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ packet,\ \textcolor{keywordtype}{size\_t}\ pktlen,\ \textcolor{keywordtype}{void}*\ context);}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00321\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__route__map}{aern\_route\_map}}}
+\DoxyCodeLine{00322\ \{}
+\DoxyCodeLine{00323\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__route__map_af119984d4509bde9a968dc9e1e1c43b7}{path}}[\mbox{\hyperlink{route_8h_ab5a3ac869d5b6a53240460cea9557ddb}{AERN\_ROUTE\_PATH\_SIZE}}];\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00324\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__route__map_afc7ddec70276d80fcbac467a353356db}{hopcount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00325\ \}\ \mbox{\hyperlink{structaern__route__map}{aern\_route\_map}};}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00330\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}\ \mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}};}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00336\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}}
+\DoxyCodeLine{00337\ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{structaern__cipher__table}{aern\_cipher\_table}}*\ \mbox{\hyperlink{structaern__forward__state_a96c03683256b34c9740fb81eed5cdf49}{conn\_table}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00339\ \ \ \ \ \mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ \mbox{\hyperlink{structaern__forward__state_a36bef4937cf391c307f3e96dac9caa00}{relay\_cache}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ \mbox{\hyperlink{structaern__forward__state_a4d541aa6fec485fe70bb3fa73c333aad}{topology}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00341\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__forward__state_a2431f6dce89f60445fcb01071192370d}{apscount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00342\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__forward__state_a6558e20e2127c3e7d957958f420e2806}{ownhint}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structaern__forward__state_a1209ffa3b1b3c630a49b7499d1aa8632}{own\_address}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00344\ \}\ \mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}};}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00350\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__exit__state}{aern\_exit\_state}}}
+\DoxyCodeLine{00351\ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \mbox{\hyperlink{structaern__route__map}{aern\_route\_map}}\ \mbox{\hyperlink{structaern__exit__state_a8ac9f670be160ba2cadcd2c2b6a974a3}{return\_route}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00353\ \ \ \ \ \mbox{\hyperlink{structaern__cipher__table}{aern\_cipher\_table}}*\ \mbox{\hyperlink{structaern__exit__state_a96c03683256b34c9740fb81eed5cdf49}{conn\_table}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00354\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__topology__list__state}{aern\_topology\_list\_state}}*\ \mbox{\hyperlink{structaern__exit__state_a4d541aa6fec485fe70bb3fa73c333aad}{topology}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00355\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__exit__state_a2431f6dce89f60445fcb01071192370d}{apscount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00356\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__exit__state_a6558e20e2127c3e7d957958f420e2806}{ownhint}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00357\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__exit__state_abfb895c417dd9db179a8311c0c1f12e7}{entryhint}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00358\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__exit__state_a946f27f64a6c7500925f6d10c0b007aa}{session\_id}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00359\ \}\ \mbox{\hyperlink{structaern__exit__state}{aern\_exit\_state}};}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00365\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__packet}{aern\_relay\_packet}}}
+\DoxyCodeLine{00366\ \{}
+\DoxyCodeLine{00367\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__packet_a609ed667da15eb798998f349471beb7f}{wire}}[AERN\_RELAY\_MTU];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00368\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__packet_a7bdb6636b876390054040ffa406dc454}{fragseq}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00369\ \}\ \mbox{\hyperlink{structaern__relay__packet}{aern\_relay\_packet}};}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00381\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}}
+\DoxyCodeLine{00382\ \{}
+\DoxyCodeLine{00383\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__payload__header_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00384\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__payload__header_a2c92b3e49ad501b221931705540efcaa}{packetid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00385\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__payload__header_a7bdb6636b876390054040ffa406dc454}{fragseq}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00386\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__payload__header_a07e8d8dd263d685cc61e75d59a23b235}{fragcount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00387\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__payload__header_a907c53abb8da7fb88a7681171ffb51cd}{msglen}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00388\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__payload__header_aa9d5050f415306aba05e44ea68f95bff}{payloadtype}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00389\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__payload__header_acb7bc06bed6f6408d719334fc41698c7}{reserved}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00390\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structaern__relay__payload__header_a1e87af3c18a2fd36c61faf89949bdc3f}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00391\ \}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}};}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00397\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__session__open}{aern\_relay\_session\_open}}}
+\DoxyCodeLine{00398\ \{}
+\DoxyCodeLine{00399\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__open_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00400\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__open_ab541020db4257816085dd86694a6e96c}{destination}}[\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\_CERTIFICATE\_ADDRESS\_SIZE}}];\ }
+\DoxyCodeLine{00401\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__open_a82e33a14adaa454786dc66ab3c6a0c0e}{ingresshint}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00402\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__open_a34d60401aa75bee93ce78bff96e6e861}{egresshint}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00403\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structaern__relay__session__open_a8e0798404bf2cf5dabb84c5ba9a4f236}{port}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00404\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__open_acb7bc06bed6f6408d719334fc41698c7}{reserved}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00405\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__open_aa2585d779da0ab21273a8d92de9a0ebe}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00406\ \}\ \mbox{\hyperlink{structaern__relay__session__open}{aern\_relay\_session\_open}};}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00412\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__session__open__ack}{aern\_relay\_session\_open\_ack}}}
+\DoxyCodeLine{00413\ \{}
+\DoxyCodeLine{00414\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__open__ack_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00415\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__open__ack_ade818037fd6c985038ff29656089758d}{status}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00416\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__open__ack_aa2585d779da0ab21273a8d92de9a0ebe}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00417\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structaern__relay__session__open__ack_a5a6ed8c04a3db86066924b1a1bf4dad3}{reserved}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00418\ \}\ \mbox{\hyperlink{structaern__relay__session__open__ack}{aern\_relay\_session\_open\_ack}};}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00424\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}}
+\DoxyCodeLine{00425\ \{}
+\DoxyCodeLine{00426\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00427\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a2091748c311f02f85177b1af486a7ef9}{created}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00428\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a52c5dcf92a1962faba84a6ae66a0efda}{activity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00429\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a3ed4f0ed85a6a2660a41f62157f52b6d}{expiry}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00430\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a82e33a14adaa454786dc66ab3c6a0c0e}{ingresshint}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00431\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a34d60401aa75bee93ce78bff96e6e861}{egresshint}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00432\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_ae5e684d7a4095c269e52a479b2733b1d}{txcount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00433\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_aa02deae389b49e5f1d72a9af57f1b4b3}{rxcount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00434\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a14b9feeda24973c7455a058c4bec581f}{txfail}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00435\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a62a96b7005aee906686109136fb3658e}{rxfail}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00436\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a8e0798404bf2cf5dabb84c5ba9a4f236}{port}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00437\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_ab541020db4257816085dd86694a6e96c}{destination}}[\mbox{\hyperlink{aern_8h_a447144cb8944c8553cfd9fcc7ac73eb9}{AERN\_CERTIFICATE\_ADDRESS\_SIZE}}];\ }
+\DoxyCodeLine{00438\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_ade818037fd6c985038ff29656089758d}{status}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00439\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_af3db2773a8619d9a7c7729880f808113}{context}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00440\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_aa2585d779da0ab21273a8d92de9a0ebe}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00441\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_a85090737c86f6cfbb2466a743f0ad480}{transport}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00442\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__session__cache__entry_aa942d7f81089032650350e6f1fed837e}{reserved}}[4U];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00443\ \}\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}};}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00449\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\_relay\_fragment\_set\_entry}}}
+\DoxyCodeLine{00450\ \{}
+\DoxyCodeLine{00451\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00452\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a2c92b3e49ad501b221931705540efcaa}{packetid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00453\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a2091748c311f02f85177b1af486a7ef9}{created}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00454\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a3ed4f0ed85a6a2660a41f62157f52b6d}{expiry}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00455\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a07e8d8dd263d685cc61e75d59a23b235}{fragcount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00456\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a38599af807f9cfc71aea3924a9c3b241}{received}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00457\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a6a14eb378bd49c15be452c017115ad63}{totalsize}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00458\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_ac6116d5235e13e059e591879c46d7174}{direction}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00459\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_af12a9ce90147980103978a8875021a93}{complete}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00460\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__relay__fragment__set__entry_a9dbe8f2aeb53f7e0308c217cab9a6ffb}{reserved}}[2U];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00461\ \}\ \mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\_relay\_fragment\_set\_entry}};}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAYSESSION\_TABLE\_DEPTH}}
+\DoxyCodeLine{00464\ \textcolor{preprocessor}{\#\ \ define\ AERN\_RELAYSESSION\_TABLE\_DEPTH\ 64U}}
+\DoxyCodeLine{00465\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00471\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}}
+\DoxyCodeLine{00472\ \{}
+\DoxyCodeLine{00473\ \ \ \ \ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}\ entries[AERN\_RELAYSESSION\_TABLE\_DEPTH];}
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keywordtype}{bool}\ active[AERN\_RELAYSESSION\_TABLE\_DEPTH];}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized;}
+\DoxyCodeLine{00476\ \}\ \mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}};}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00482\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__fragment__part__state}{aern\_fragment\_part\_state}}}
+\DoxyCodeLine{00483\ \{}
+\DoxyCodeLine{00484\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structaern__fragment__part__state_abe222f6d3581e7920dcad5306cc906a8}{data}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00485\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__part__state_a3d12e161726566d24a1d0cf6c6b416bb}{datalen}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00486\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__part__state_ad721fc6ca6a3d6ba3bc506576622aab0}{capacity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__fragment__part__state_a6dbe87354d47906dcbb42c7ba634b102}{received}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00488\ \}\ \mbox{\hyperlink{structaern__fragment__part__state}{aern\_fragment\_part\_state}};}
+\DoxyCodeLine{00489\ }
+\DoxyCodeLine{00494\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}}
+\DoxyCodeLine{00495\ \{}
+\DoxyCodeLine{00496\ \ \ \ \ \mbox{\hyperlink{structaern__fragment__part__state}{aern\_fragment\_part\_state}}*\ \mbox{\hyperlink{structaern__fragment__cache_a3092870f743af6bb759e2f8be629a709}{parts}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__cache_a8049ad116b3b3a45d0a8cb4632390042}{partscap}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00498\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__cache_a44f6c734c0aa9cad16cdbb25ca6aa471}{total\_bytes}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__cache_aa89adb3c6015355e0bfca6943577765c}{declared\_length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00500\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__fragment__cache_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00501\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__fragment__cache_a2c92b3e49ad501b221931705540efcaa}{packetid}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00502\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__fragment__cache_a2091748c311f02f85177b1af486a7ef9}{created}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00503\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__fragment__cache_a3ed4f0ed85a6a2660a41f62157f52b6d}{expiry}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00504\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__fragment__cache_a44cddaae74345006625e2f57cf8a7341}{total\_frags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00505\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__fragment__cache_a04bf0bc6e99cc7c47c67222e0a24a837}{received\_count}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00506\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structaern__fragment__cache_a1e87af3c18a2fd36c61faf89949bdc3f}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00507\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__fragment__cache_aa9d5050f415306aba05e44ea68f95bff}{payloadtype}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00508\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__fragment__cache_acb7bc06bed6f6408d719334fc41698c7}{reserved}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__fragment__cache_a411c54937038cd4dc3ce75552c0f5086}{metaset}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00510\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structaern__fragment__cache_ac6116d5235e13e059e591879c46d7174}{direction}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__fragment__cache_af6b1fef28954e41d75acf35f76bc8d39}{complete}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00512\ \}\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}};}
+\DoxyCodeLine{00513\ }
+\DoxyCodeLine{00518\ AERN\_EXPORT\_API\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}}
+\DoxyCodeLine{00519\ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ \mbox{\hyperlink{structaern__fragment__table_a06ba643ecec1c3f720716a94b6e29867}{sets}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__table_a24ec31bcb9d9d646d201c75572f5b0a3}{setscap}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__table_a30eff9648c960114042129279d3f528e}{setscount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00523\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__table_a6f3184d244b21af06d3d51971036166b}{memoryused}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaern__fragment__table_a5a2f627487af3e40f8a3a97e10395fe6}{memorymax}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__fragment__table_aedeffc7d23da25d52b9a50045189fe2b}{initialized}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00526\ \}\ \mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}};}
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00532\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}}
+\DoxyCodeLine{00533\ \{}
+\DoxyCodeLine{00534\ \ \ \ \ \mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}\ \mbox{\hyperlink{structaern__relay__cache__state_adf7b4b1d8f1805bee318fd6aba842b93}{sessions}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00535\ \ \ \ \ \mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}\ \mbox{\hyperlink{structaern__relay__cache__state_a34be12d012ef53d80eb68c923b99ae25}{fragments}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00536\ \ \ \ \ \mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}\ \mbox{\hyperlink{structaern__relay__cache__state_a249c37c6eb63205d0b44fdd1a31c2777}{pendingqueue}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00537\ \ \ \ \ \mbox{\hyperlink{structaern__relayqueue__state}{aern\_relayqueue\_state}}\ \mbox{\hyperlink{structaern__relay__cache__state_a8891a9d9fab860ae7ec2547db5b165ac}{delayqueue}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00538\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a68188ea43d42a9651af1fdbd5c3a7b17}{relaytxbytes}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00539\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a25f13597fd9721d82e778f5eb81049fb}{relayrxbytes}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00540\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a6edfbf278ad40731bdb20c79af78389a}{windowstartms}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00541\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a1c279e95a1d6b9f7202a4f24f8ee6cf1}{lastdummyms}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00542\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_ab3d044ecd172f5d785efbffaa5bc505d}{nextdummyms}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00543\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a905a4a9d951e15e9abf2d4595d109257}{dummywindowms}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00544\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a27355b9457eae9792a79dd33dce62aad}{dummysent}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00545\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a62aa2ae0bcfd9cb42684f2f0240e47ba}{dummydropped}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00546\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_ad38a1fd8011a66b7ed3611c371ff92b0}{pendingreleased}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00547\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a484ab7afdbaa09547f769811d66f4a94}{pendingdropped}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00548\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structaern__relay__cache__state_afe0e9ef31a80cbff1f45f9839c2ff20f}{pendingoverflow}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00549\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structaern__relay__cache__state_a0edb3ab068407f1fe24e75ad49c36549}{dummywindowcount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__relay__cache__state_ace7c9ededbbcd863dd67c19f5760e6d2}{dummysuppressed}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structaern__relay__cache__state_aedeffc7d23da25d52b9a50045189fe2b}{initialized}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00552\ \};}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00564\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_ae98f12a8d95a505f506d3361aa2df650}{aern\_route\_generate}}(\mbox{\hyperlink{structaern__route__map}{aern\_route\_map}}*\ rm,\ uint8\_t\ apscount,\ uint8\_t\ originhint,\ uint8\_t\ targethint);}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00575\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a35e3807bd7460879095c27695945763e}{aern\_route\_map\_serialize}}(uint8\_t\ dst[\mbox{\hyperlink{route_8h_a78724831d0e5596ad6aee61293259c0d}{AERN\_ROUTEMAP\_SIZE}}],\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__route__map}{aern\_route\_map}}*\ rm);}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00583\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a92c6bc13a91811c279b9e55e351f736c}{aern\_route\_map\_deserialize}}(\mbox{\hyperlink{structaern__route__map}{aern\_route\_map}}*\ rm,\ \textcolor{keyword}{const}\ uint8\_t\ src[\mbox{\hyperlink{route_8h_a78724831d0e5596ad6aee61293259c0d}{AERN\_ROUTEMAP\_SIZE}}]);}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00599\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a3a7216c963bf4a4e1d2b540668f82ff0}{aern\_relay\_forward\_state\_is\_valid}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}*\ fwd,\ \textcolor{keywordtype}{bool}\ requirecache);}
+\DoxyCodeLine{00600\ }
+\DoxyCodeLine{00614\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_a786dc539143f5c78f75450e0749c4654}{aern\_packet\_forward}}(\mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}*\ fwd,\ uint8\_t\ wire[AERN\_RELAY\_MTU],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ srcip);}
+\DoxyCodeLine{00615\ }
+\DoxyCodeLine{00630\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_a61c7fa44ee5c08286df9a0d02e0c6571}{aern\_entry\_packet\_forward}}(\mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}*\ fwd,\ uint8\_t\ wire[AERN\_RELAY\_MTU],\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ srcip);}
+\DoxyCodeLine{00631\ }
+\DoxyCodeLine{00638\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a4068b9c267d98c77b4a88f89a2c7fa35}{aern\_relay\_payload\_header\_serialize}}(uint8\_t\ output[\mbox{\hyperlink{aern_8h_ad1a713180018b9d35ee65371a351ecdf}{AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE}}],\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header);}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00646\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_af97756201a77f9e53aa7df613366981d}{aern\_relay\_payload\_header\_deserialize}}(\mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t\ input[\mbox{\hyperlink{aern_8h_ad1a713180018b9d35ee65371a351ecdf}{AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE}}]);}
+\DoxyCodeLine{00647\ }
+\DoxyCodeLine{00654\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a67472a093a70962ffbb3460393a8abdc}{aern\_relay\_session\_open\_serialize}}(uint8\_t\ output[\mbox{\hyperlink{aern_8h_a8fb26b7fa45e2eb7fa570e500f01d043}{AERN\_RELAY\_SESSION\_OPEN\_SIZE}}],\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__open}{aern\_relay\_session\_open}}*\ state);}
+\DoxyCodeLine{00655\ }
+\DoxyCodeLine{00662\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a3ed2cef6f5afd547f1e3d7bf1fca5d94}{aern\_relay\_session\_open\_deserialize}}(\mbox{\hyperlink{structaern__relay__session__open}{aern\_relay\_session\_open}}*\ state,\ \textcolor{keyword}{const}\ uint8\_t\ input[\mbox{\hyperlink{aern_8h_a8fb26b7fa45e2eb7fa570e500f01d043}{AERN\_RELAY\_SESSION\_OPEN\_SIZE}}]);}
+\DoxyCodeLine{00663\ }
+\DoxyCodeLine{00670\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a4856cf21399218c9483e1ed84a6644b1}{aern\_relay\_session\_open\_ack\_serialize}}(uint8\_t\ output[\mbox{\hyperlink{aern_8h_ab98e0c3aaae38eae8f478262a37c9487}{AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE}}],\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__open__ack}{aern\_relay\_session\_open\_ack}}*\ state);}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00678\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a1821e2bd37ee55d240bf210cb6768e5c}{aern\_relay\_session\_open\_ack\_deserialize}}(\mbox{\hyperlink{structaern__relay__session__open__ack}{aern\_relay\_session\_open\_ack}}*\ state,\ \textcolor{keyword}{const}\ uint8\_t\ input[\mbox{\hyperlink{aern_8h_ab98e0c3aaae38eae8f478262a37c9487}{AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE}}]);}
+\DoxyCodeLine{00679\ }
+\DoxyCodeLine{00692\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_af2257d09bca45344a200951d0e374ff8}{aern\_relay\_fragment\_key\_create}}(uint8\_t\ key[\mbox{\hyperlink{route_8h_a814d2eba3c290eebfb1e058c90f4c804}{AERN\_RELAY\_CACHE\_KEY\_SIZE}}],\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{00693\ }
+\DoxyCodeLine{00702\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a410457f7cef9c99b4bd4b3e89db47495}{aern\_relay\_fragment\_set\_add}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\_relay\_fragment\_set\_entry}}*\ entry);}
+\DoxyCodeLine{00703\ }
+\DoxyCodeLine{00715\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a688a28c2bfce98a30f05a6c998e72032}{aern\_relay\_fragment\_set\_find}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \mbox{\hyperlink{structaern__relay__fragment__set__entry}{aern\_relay\_fragment\_set\_entry}}*\ entry,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{00716\ }
+\DoxyCodeLine{00725\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a6f115b9f6a67951105ab80cce9d3a449}{aern\_relay\_fragment\_set\_remove}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{00726\ }
+\DoxyCodeLine{00732\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a56a2c106bd1d8f0f1ea3a9cd1d0a205a}{aern\_relay\_cache\_dispose}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache);}
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00739\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a463f84a6d799706555b16afde4c544da}{aern\_relay\_cache\_initialize}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache);}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00752\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a178788360266d210be1a31aa1d1ebcb7}{aern\_relay\_cache\_cleanup}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache);}
+\DoxyCodeLine{00753\ }
+\DoxyCodeLine{00762\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a1b6d66c30c45c0991bf7c700d4893162}{aern\_relay\_delay\_pop}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ item);}
+\DoxyCodeLine{00763\ }
+\DoxyCodeLine{00772\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_ae515ab4dc3a16faf8015f473979310d3}{aern\_relay\_delay\_push}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ item);}
+\DoxyCodeLine{00773\ }
+\DoxyCodeLine{00786\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_a4cf8981ba1a26cc367cf91de95a23436}{aern\_ingress\_delay\_flush}}(\mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}*\ fwd);}
+\DoxyCodeLine{00787\ }
+\DoxyCodeLine{00796\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a47e85df73ff7c6b79a1c035d61307330}{aern\_relay\_pending\_pop}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ item);}
+\DoxyCodeLine{00797\ }
+\DoxyCodeLine{00806\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a135cde8cb00572741eb53900083da023}{aern\_relay\_pending\_push}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__ingress__pending__item}{aern\_ingress\_pending\_item}}*\ item);}
+\DoxyCodeLine{00807\ }
+\DoxyCodeLine{00821\ AERN\_EXPORT\_API\ uint32\_t\ \mbox{\hyperlink{route_8h_a0777dfd378a0503ec363f0c2cea21a09}{aern\_relay\_pending\_remove\_session}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ uint64\_t\ sessionid);}
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00830\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a3d6a331845d4d28cb6667d4453bcf21f}{aern\_relay\_session\_key\_create}}(uint8\_t\ key[\mbox{\hyperlink{route_8h_a814d2eba3c290eebfb1e058c90f4c804}{AERN\_RELAY\_CACHE\_KEY\_SIZE}}],\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00831\ }
+\DoxyCodeLine{00840\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_afac374f40649ed0069b711d785de8a06}{aern\_relay\_session\_add}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ entry);}
+\DoxyCodeLine{00841\ }
+\DoxyCodeLine{00851\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_aac64b4c6d59c072b8e6464bb617695b3}{aern\_relay\_session\_exists}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00852\ }
+\DoxyCodeLine{00863\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a877369b6a4bc172f32feb253bec636fd}{aern\_relay\_session\_find}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ entry,\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00864\ }
+\DoxyCodeLine{00872\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_aad8e6ec4989cf24dd84dd7c098508650}{aern\_relay\_session\_remove}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00873\ }
+\DoxyCodeLine{00886\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a653db477b019bce371afd84a015c0b06}{aern\_relay\_traffic\_observe}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \textcolor{keywordtype}{size\_t}\ pktlen,\ \textcolor{keywordtype}{bool}\ inbound);}
+\DoxyCodeLine{00887\ }
+\DoxyCodeLine{00900\ AERN\_EXPORT\_API\ uint32\_t\ \mbox{\hyperlink{route_8h_a780bdf601059974c6928fa87587ef135}{aern\_relay\_traffic\_utilization}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache);}
+\DoxyCodeLine{00901\ }
+\DoxyCodeLine{00917\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_a06c91147795d548dab1987c5cb3e0d34}{aern\_dummy\_traffic\_generate}}(\mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}*\ fwd,\ uint32\_t\ utilization);}
+\DoxyCodeLine{00918\ }
+\DoxyCodeLine{00930\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a064e03e0e395ab82b6b4d6849349ddda}{aern\_exit\_transport\_set\_callback}}(\mbox{\hyperlink{route_8h_addbecda638042f13b537db37881afa6a}{aern\_exit\_transport\_send\_callback}}\ callback,\ \textcolor{keywordtype}{void}*\ context);}
+\DoxyCodeLine{00931\ }
+\DoxyCodeLine{00943\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a920a2b10517c3aaf1f76b00ab4c699d4}{aern\_ingress\_transport\_set\_callback}}(\mbox{\hyperlink{route_8h_a5280f83a0d9701a1b2bfc5914cb88f1f}{aern\_ingress\_transport\_send\_callback}}\ callback,\ \textcolor{keywordtype}{void}*\ context);}
+\DoxyCodeLine{00944\ }
+\DoxyCodeLine{00961\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_a98a21b57e8fad5e1695a1c9c66f2c651}{aern\_exit\_transport\_send\_serialized\_packet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ session,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ packet,\ \textcolor{keywordtype}{size\_t}\ pktlen);}
+\DoxyCodeLine{00962\ }
+\DoxyCodeLine{00980\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_ae91775ccdc8ccc8230144137831188c2}{aern\_exit\_transport\_return\_serialized\_packet}}(\mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}*\ fwd,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ session,\ \textcolor{keyword}{const}\ uint8\_t*\ packet,\ \textcolor{keywordtype}{size\_t}\ pktlen);}
+\DoxyCodeLine{00981\ }
+\DoxyCodeLine{00999\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_a7d5be98d6d0662cfebe148ef35c1d1c5}{aern\_ingress\_transport\_send\_serialized\_packet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ session,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ packet,\ \textcolor{keywordtype}{size\_t}\ pktlen);}
+\DoxyCodeLine{01000\ }
+\DoxyCodeLine{01018\ AERN\_EXPORT\_API\ \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\_protocol\_errors}}\ \mbox{\hyperlink{route_8h_a412c61f4eb5b3a5ba5b5b9b473cd3f61}{aern\_return\_packet\_send}}(\mbox{\hyperlink{structaern__forward__state}{aern\_forward\_state}}*\ fwd,\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ session,\ \textcolor{keyword}{const}\ uint8\_t*\ packet,\ \textcolor{keywordtype}{size\_t}\ pktlen);}
+\DoxyCodeLine{01019\ }
+\DoxyCodeLine{01025\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_ab1cd28be7ccd1006387eab15f4ba41cb}{aern\_fragment\_cache\_initialize}}(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache);}
+\DoxyCodeLine{01026\ }
+\DoxyCodeLine{01037\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a4991a2e4e482b0ae65facd49f890248f}{aern\_fragment\_cache\_add}}(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ \textcolor{keyword}{const}\ uint8\_t*\ data,\ \textcolor{keywordtype}{size\_t}\ dlen,\ uint32\_t\ seq);}
+\DoxyCodeLine{01038\ }
+\DoxyCodeLine{01054\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a6477b13a6e18dd913392e2d2ce9c996e}{aern\_fragment\_cache\_add\_fragment}}(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ data,\ \textcolor{keywordtype}{size\_t}\ dlen,\ uint8\_t\ direction,\ \textcolor{keywordtype}{bool}*\ complete);}
+\DoxyCodeLine{01055\ }
+\DoxyCodeLine{01065\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a71590999d25bd2c559959634610d9715}{aern\_fragment\_cache\_set\_key}}(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction,\ uint64\_t\ expiry);}
+\DoxyCodeLine{01066\ }
+\DoxyCodeLine{01074\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a1917b6b175dee5d9e91d73cd2ccd148a}{aern\_fragment\_cache\_assemble}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ uint8\_t*\ output,\ \textcolor{keywordtype}{size\_t}*\ outlen);}
+\DoxyCodeLine{01075\ }
+\DoxyCodeLine{01081\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_acc35b66611f4dc15cb58fef012bf4e1f}{aern\_fragment\_cache\_clear}}(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache);}
+\DoxyCodeLine{01082\ }
+\DoxyCodeLine{01096\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_a82cc8bc5fabfc062ea2aab25fc1dfed5}{aern\_relay\_fragment\_cache\_add}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ entry);}
+\DoxyCodeLine{01097\ }
+\DoxyCodeLine{01109\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{route_8h_ad9c292f7ba306aa8e94ee4ac8876c4b5}{aern\_relay\_fragment\_cache\_find}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ entry,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{01110\ }
+\DoxyCodeLine{01119\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_abff9961ac0e001013699df0b6e2bc392}{aern\_relay\_fragment\_cache\_remove}}(\mbox{\hyperlink{structaern__relay__cache__state}{aern\_relay\_cache\_state}}*\ cache,\ \ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{01120\ }
+\DoxyCodeLine{01133\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{route_8h_a745909abbc0791700618e96a734c83f5}{aern\_packet\_pad}}(uint8\_t\ plaintext[AERN\_RELAY\_PLAINTEXT\_SIZE],\ uint16\_t\ textlen);}
+\DoxyCodeLine{01134\ }
+\DoxyCodeLine{01144\ AERN\_EXPORT\_API\ uint16\_t\ \mbox{\hyperlink{route_8h_a78177615922890187457ddb63b34c6ec}{aern\_packet\_unpad}}(\textcolor{keyword}{const}\ uint8\_t\ plaintext[AERN\_RELAY\_PLAINTEXT\_SIZE]);}
+\DoxyCodeLine{01145\ }
+\DoxyCodeLine{01146\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

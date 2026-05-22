@@ -1,0 +1,66 @@
+\doxysection{aern\+\_\+log\+\_\+state Struct Reference}
+\hypertarget{structaern__log__state}{}\label{structaern__log__state}\index{aern\_log\_state@{aern\_log\_state}}
+
+
+State for the ADC encrypted log.  
+
+
+
+
+{\ttfamily \#include $<$admin.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structaern__log__state_aea2f6422860eb01a42796adb9ff67d34}{log\+\_\+path}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PATH\+\_\+\+MAX\mbox{]}
+\item 
+char \mbox{\hyperlink{structaern__log__state_a1c80aef9c08cab2424b97ee6da7ec19d}{salt\+\_\+path}} \mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PATH\+\_\+\+MAX\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__log__state_a9949956b2160a102d836a6078447f9a4}{seed}} \mbox{[}\mbox{\hyperlink{aern_8h_a1ef3a3ed2b26810620b436b91c3c67e2}{AERN\+\_\+\+LOG\+\_\+\+SEED\+\_\+\+SIZE}}\mbox{]}
+\item 
+bool \mbox{\hyperlink{structaern__log__state_a8c7e45250b1eb6821dd59fb2a9a016d7}{open}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State for the ADC encrypted log. 
+
+The log file is encrypted at rest with RCS using a 64-\/byte seed derived from the admin password\+: seed = SHAKE-\/256(password \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} salt)\mbox{[}0..63\mbox{]}
+
+The salt (AERN\+\_\+\+LOG\+\_\+\+SALT\+\_\+\+SIZE = 32 bytes) is stored as a plaintext file alongside the log. The key is never stored; it is re-\/derived on every aern\+\_\+log\+\_\+open() call.
+
+Each log entry is fixed-\/width (AERN\+\_\+\+LOG\+\_\+\+ENTRY\+\_\+\+SIZE bytes) in plaintext, formatted as\+: \texorpdfstring{$<$}{<}ISO-\/8601 UTC timestamp 32B\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}device\+\_\+name 32B\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}hex\+\_\+error 10B\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}error\+\_\+str 64B\texorpdfstring{$>$}{>}~\newline
+ No client IP addresses, session IDs, or traffic metadata are written. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__log__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__log__state_aea2f6422860eb01a42796adb9ff67d34}\index{aern\_log\_state@{aern\_log\_state}!log\_path@{log\_path}}
+\index{log\_path@{log\_path}!aern\_log\_state@{aern\_log\_state}}
+\doxysubsubsection{\texorpdfstring{log\_path}{log\_path}}
+{\footnotesize\ttfamily \label{structaern__log__state_aea2f6422860eb01a42796adb9ff67d34} 
+char log\+\_\+path\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PATH\+\_\+\+MAX\mbox{]}}
+
+Full path to the encrypted log file \Hypertarget{structaern__log__state_a8c7e45250b1eb6821dd59fb2a9a016d7}\index{aern\_log\_state@{aern\_log\_state}!open@{open}}
+\index{open@{open}!aern\_log\_state@{aern\_log\_state}}
+\doxysubsubsection{\texorpdfstring{open}{open}}
+{\footnotesize\ttfamily \label{structaern__log__state_a8c7e45250b1eb6821dd59fb2a9a016d7} 
+bool open}
+
+True when log is ready for writes \Hypertarget{structaern__log__state_a1c80aef9c08cab2424b97ee6da7ec19d}\index{aern\_log\_state@{aern\_log\_state}!salt\_path@{salt\_path}}
+\index{salt\_path@{salt\_path}!aern\_log\_state@{aern\_log\_state}}
+\doxysubsubsection{\texorpdfstring{salt\_path}{salt\_path}}
+{\footnotesize\ttfamily \label{structaern__log__state_a1c80aef9c08cab2424b97ee6da7ec19d} 
+char salt\+\_\+path\mbox{[}AERN\+\_\+\+STORAGE\+\_\+\+PATH\+\_\+\+MAX\mbox{]}}
+
+Full path to the plaintext salt file \Hypertarget{structaern__log__state_a9949956b2160a102d836a6078447f9a4}\index{aern\_log\_state@{aern\_log\_state}!seed@{seed}}
+\index{seed@{seed}!aern\_log\_state@{aern\_log\_state}}
+\doxysubsubsection{\texorpdfstring{seed}{seed}}
+{\footnotesize\ttfamily \label{structaern__log__state_a9949956b2160a102d836a6078447f9a4} 
+uint8\+\_\+t seed\mbox{[}\mbox{\hyperlink{aern_8h_a1ef3a3ed2b26810620b436b91c3c67e2}{AERN\+\_\+\+LOG\+\_\+\+SEED\+\_\+\+SIZE}}\mbox{]}}
+
+Derived encryption seed (zeroed on close) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{admin_8h}{admin.\+h}}\end{DoxyCompactItemize}

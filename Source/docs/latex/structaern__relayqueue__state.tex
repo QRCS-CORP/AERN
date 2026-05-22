@@ -1,0 +1,75 @@
+\doxysection{aern\+\_\+relayqueue\+\_\+state Struct Reference}
+\hypertarget{structaern__relayqueue__state}{}\label{structaern__relayqueue__state}\index{aern\_relayqueue\_state@{aern\_relayqueue\_state}}
+
+
+Fixed-\/slot relay queue with heap-\/backed packet storage.  
+
+
+
+
+{\ttfamily \#include $<$relayqueue.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__relayqueue__state_abc2b430ba6dfef77fffdbbf1f21898e4}{items}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__relayqueue__state_a820c167ceaaa9759b0ca2695d22db55c}{depth}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__relayqueue__state_a75844ce74940ef333d11ae090e07c9af}{head}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__relayqueue__state_ad71c3da585299fa719501f5149814fd7}{tail}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structaern__relayqueue__state_a76d971a3c552bc58ba9f0d5fceae9806}{count}}
+\item 
+bool \mbox{\hyperlink{structaern__relayqueue__state_aedeffc7d23da25d52b9a50045189fe2b}{initialized}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fixed-\/slot relay queue with heap-\/backed packet storage. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__relayqueue__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__relayqueue__state_a76d971a3c552bc58ba9f0d5fceae9806}\index{aern\_relayqueue\_state@{aern\_relayqueue\_state}!count@{count}}
+\index{count@{count}!aern\_relayqueue\_state@{aern\_relayqueue\_state}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily \label{structaern__relayqueue__state_a76d971a3c552bc58ba9f0d5fceae9806} 
+size\+\_\+t count}
+
+Number of active queue items \Hypertarget{structaern__relayqueue__state_a820c167ceaaa9759b0ca2695d22db55c}\index{aern\_relayqueue\_state@{aern\_relayqueue\_state}!depth@{depth}}
+\index{depth@{depth}!aern\_relayqueue\_state@{aern\_relayqueue\_state}}
+\doxysubsubsection{\texorpdfstring{depth}{depth}}
+{\footnotesize\ttfamily \label{structaern__relayqueue__state_a820c167ceaaa9759b0ca2695d22db55c} 
+size\+\_\+t depth}
+
+Maximum number of queue slots \Hypertarget{structaern__relayqueue__state_a75844ce74940ef333d11ae090e07c9af}\index{aern\_relayqueue\_state@{aern\_relayqueue\_state}!head@{head}}
+\index{head@{head}!aern\_relayqueue\_state@{aern\_relayqueue\_state}}
+\doxysubsubsection{\texorpdfstring{head}{head}}
+{\footnotesize\ttfamily \label{structaern__relayqueue__state_a75844ce74940ef333d11ae090e07c9af} 
+size\+\_\+t head}
+
+Index of the next item to pop \Hypertarget{structaern__relayqueue__state_aedeffc7d23da25d52b9a50045189fe2b}\index{aern\_relayqueue\_state@{aern\_relayqueue\_state}!initialized@{initialized}}
+\index{initialized@{initialized}!aern\_relayqueue\_state@{aern\_relayqueue\_state}}
+\doxysubsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily \label{structaern__relayqueue__state_aedeffc7d23da25d52b9a50045189fe2b} 
+bool initialized}
+
+True when the queue owns the item array \Hypertarget{structaern__relayqueue__state_abc2b430ba6dfef77fffdbbf1f21898e4}\index{aern\_relayqueue\_state@{aern\_relayqueue\_state}!items@{items}}
+\index{items@{items}!aern\_relayqueue\_state@{aern\_relayqueue\_state}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily \label{structaern__relayqueue__state_abc2b430ba6dfef77fffdbbf1f21898e4} 
+\mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}}\texorpdfstring{$\ast$}{*} items}
+
+Heap-\/backed queue item slots \Hypertarget{structaern__relayqueue__state_ad71c3da585299fa719501f5149814fd7}\index{aern\_relayqueue\_state@{aern\_relayqueue\_state}!tail@{tail}}
+\index{tail@{tail}!aern\_relayqueue\_state@{aern\_relayqueue\_state}}
+\doxysubsubsection{\texorpdfstring{tail}{tail}}
+{\footnotesize\ttfamily \label{structaern__relayqueue__state_ad71c3da585299fa719501f5149814fd7} 
+size\+\_\+t tail}
+
+Index of the next item to push 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{relayqueue_8h}{relayqueue.\+h}}\end{DoxyCompactItemize}

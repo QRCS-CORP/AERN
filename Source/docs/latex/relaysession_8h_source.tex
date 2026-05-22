@@ -1,0 +1,34 @@
+\doxysection{relaysession.\+h}
+\hypertarget{relaysession_8h_source}{}\label{relaysession_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/relaysession.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/relaysession.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AERN\_RELAYSESSION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AERN\_RELAYSESSION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{route_8h}{route.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00015\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_relaysession\_initialize(\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00025\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_relaysession\_dispose(\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00035\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_relaysession\_clear(\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00049\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_relaysession\_add(\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ entry);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00063\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_relaysession\_exists(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table,\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00079\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_relaysession\_find(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table,\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ entry,\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00094\ AERN\_EXPORT\_API\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__session__cache__entry}{aern\_relay\_session\_cache\_entry}}*\ aern\_relaysession\_find\_const(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table,\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00107\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_relaysession\_remove(\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table,\ uint64\_t\ sessionid,\ uint8\_t\ context);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00121\ AERN\_EXPORT\_API\ uint32\_t\ aern\_relaysession\_remove\_session(\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table,\ uint64\_t\ sessionid);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00135\ AERN\_EXPORT\_API\ uint32\_t\ aern\_relaysession\_cleanup\_expired(\mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table,\ uint64\_t\ now);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00147\ AERN\_EXPORT\_API\ uint32\_t\ aern\_relaysession\_count(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relaysession__table}{aern\_relaysession\_table}}*\ table);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

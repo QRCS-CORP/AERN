@@ -75,8 +75,7 @@
  * - \ref aern_help_print_mode(): Prints a set of help messages tailored to the current console mode
  *   and network designation.
  *
- * These functions are essential for providing users with guidance on how to interact with the AERN
- * system.
+ * These functions are essential for providing users with guidance on how to interact with the AERN system.
  */
 
 /**
@@ -85,8 +84,8 @@
  * This function prints a context-specific help message corresponding to the given command action.
  * The help string is printed using the provided console prompt.
  *
- * \param prompt [in] The console prompt string.
- * \param command The command action (from the aern_command_actions enumeration) for which to display help.
+ * \param prompt: [const char*] The console prompt string.
+ * \param command: [aern_command_actions] The command action (from the aern_command_actions enumeration) for which to display help.
  */
 AERN_EXPORT_API void aern_help_print_context(const char* prompt, aern_command_actions command);
 
@@ -97,10 +96,9 @@ AERN_EXPORT_API void aern_help_print_context(const char* prompt, aern_command_ac
  * the server type designation. It guides the user by displaying available commands and their context
  * based on whether the console is in configuration, enable, or user mode.
  *
- * \param prompt [in] The console prompt string.
- * \param mode The current console mode (from the aern_console_modes enumeration).
- * \param designation The network designation (from the aern_network_designations enumeration) for which
- * the help messages should be tailored.
+ * \param prompt: [const char*] The console prompt string.
+ * \param mode: [aern_console_modes] The current console mode (from the aern_console_modes enumeration).
+ * \param designation: [aern_network_designations] The network designation (from the aern_network_designations enumeration) for which the help messages should be tailored.
  */
 AERN_EXPORT_API void aern_help_print_mode(const char* prompt, aern_console_modes mode, aern_network_designations designation);
 

@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -93,6 +93,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:aec4ca63a4148b0ce39816d54501df985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test a child certificate for a valid format and expiration.  <br /></td></tr>
 <tr class="memitem:ade0a08cce83a1fe69b18dd0bc4c12f4a" id="r_ade0a08cce83a1fe69b18dd0bc4c12f4a"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade0a08cce83a1fe69b18dd0bc4c12f4a">aern_certificate_child_message_verify</a> (uint8_t *message, size_t *msglen, const uint8_t *signature, size_t siglen, const <a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *child)</td></tr>
 <tr class="memdesc:ade0a08cce83a1fe69b18dd0bc4c12f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify a message signature using a child certificate.  <br /></td></tr>
+<tr class="memitem:a17ed72de8cf1eef68bd6f2ee027b42e3" id="r_a17ed72de8cf1eef68bd6f2ee027b42e3"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17ed72de8cf1eef68bd6f2ee027b42e3">aern_certificate_child_revoke</a> (<a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *child)</td></tr>
+<tr class="memdesc:a17ed72de8cf1eef68bd6f2ee027b42e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Revoke a child certificate.  <br /></td></tr>
 <tr class="memitem:ac72818eca22be9110bd5e50aa58c889d" id="r_ac72818eca22be9110bd5e50aa58c889d"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac72818eca22be9110bd5e50aa58c889d">aern_certificate_child_serialize</a> (uint8_t *output, const <a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *child)</td></tr>
 <tr class="memdesc:ac72818eca22be9110bd5e50aa58c889d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a child certificate into a contiguous byte array.  <br /></td></tr>
 <tr class="memitem:a5b1017abbba37e44186ef02a6da6dc7a" id="r_a5b1017abbba37e44186ef02a6da6dc7a"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b1017abbba37e44186ef02a6da6dc7a">aern_certificate_signature_hash_verify</a> (const uint8_t *signature, size_t siglen, const uint8_t *message, size_t msglen, const <a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *lcert)</td></tr>
@@ -137,8 +139,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:a423b59c4e8b7b5f6d4cbd797430adcbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a root certificate structure to a file.  <br /></td></tr>
 <tr class="memitem:a6299f05fc42d7136cf60824f22cad782" id="r_a6299f05fc42d7136cf60824f22cad782"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6299f05fc42d7136cf60824f22cad782">aern_certificate_root_is_valid</a> (const <a class="el" href="structaern__root__certificate.html">aern_root_certificate</a> *root)</td></tr>
 <tr class="memdesc:a6299f05fc42d7136cf60824f22cad782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate a root certificate.  <br /></td></tr>
-<tr class="memitem:a94552dd32d8a368951482ab9100de510" id="r_a94552dd32d8a368951482ab9100de510"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94552dd32d8a368951482ab9100de510">aern_certificate_signature_generate_keypair</a> (<a class="el" href="structaern__signature__keypair.html">aern_signature_keypair</a> *keypair)</td></tr>
-<tr class="memdesc:a94552dd32d8a368951482ab9100de510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate and encode an asymmetric signature scheme keypair.  <br /></td></tr>
+<tr class="memitem:a4460c848d4167ba21ef6d2e27194c437" id="r_a4460c848d4167ba21ef6d2e27194c437"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4460c848d4167ba21ef6d2e27194c437">aern_certificate_signature_generate_keypair</a> (<a class="el" href="structaern__signature__keypair.html">aern_signature_keypair</a> *keypair)</td></tr>
+<tr class="memdesc:a4460c848d4167ba21ef6d2e27194c437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate and encode an asymmetric signature scheme keypair.  <br /></td></tr>
 <tr class="memitem:a7dc8dd7fe1430dffeea483608dc22f38" id="r_a7dc8dd7fe1430dffeea483608dc22f38"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dc8dd7fe1430dffeea483608dc22f38">aern_certificate_signature_sign_message</a> (uint8_t *signature, const uint8_t *message, size_t msglen, const uint8_t *prikey)</td></tr>
 <tr class="memdesc:a7dc8dd7fe1430dffeea483608dc22f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sign a message using the asymmetric signature scheme.  <br /></td></tr>
 <tr class="memitem:ac4f715ab52aac1516b83b2b8ff40fec1" id="r_ac4f715ab52aac1516b83b2b8ff40fec1"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4f715ab52aac1516b83b2b8ff40fec1">aern_certificate_signature_verify_message</a> (const uint8_t *message, size_t msglen, const uint8_t *signature, size_t siglen, const uint8_t *pubkey)</td></tr>
@@ -156,15 +158,7 @@ Functions</h2></td></tr>
 </ul>
 <p>The functions provided in this module allow conversion between protocol-set strings and their enumerated representations, as well as conversion of network-designation values between string and enumerated forms. They also perform cryptographic operations such as hashing and digital signing, using the underlying QSC cryptographic primitives.</p>
 <dl class="section note"><dt>Note</dt><dd>The certificate functions depend on the QSC library for routines including SHA3 (Keccak), base64 encoding/decoding, file I/O, and memory utilities. The active AERN configuration (protocol-set) is used to automatically populate certificate fields.</dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000002">Test</a></b></dt><dd>When the AERN_DEBUG_TESTS_RUN macro is defined, the function aern_certificate_functions_test() executes a series of self-tests that verify:</dd></dl>
-<ul>
-<li><b>Algorithm Conversion:</b> That protocol-set strings are correctly decoded into enumerated values (and vice versa) via <a class="el" href="#a9e85e5038b4c8b238a05ca1256a72ecd" title="Decode the string algorithm-set number to the enumerated representation.">aern_certificate_algorithm_decode()</a> and <a class="el" href="#a11442c8f75a442ce126f09b3824f67ae" title="Encode the protocol-set enumerator into its string form.">aern_certificate_algorithm_encode()</a>.</li>
-<li><b>Child Certificate Operations:</b> The creation (<a class="el" href="#ac42dc0871ca5133a5b90b44c451ef067" title="Create a child certificate.">aern_certificate_child_create()</a>), signing (<a class="el" href="#aece512c156c16091b6cc13d317aab882" title="Sign a child certificate with the root certificate.">aern_certificate_root_sign()</a>), encoding (<a class="el" href="#ad5bcbade3b641c203aeeb99dae26754a" title="Encode a public child certificate into a human-readable string.">aern_certificate_child_encode()</a>), serialization/deserialization (<a class="el" href="#ac72818eca22be9110bd5e50aa58c889d" title="Serialize a child certificate into a contiguous byte array.">aern_certificate_child_serialize()</a>/aern_certificate_child_deserialize()), and validity testing (<a class="el" href="#aec4ca63a4148b0ce39816d54501df985" title="Test a child certificate for a valid format and expiration.">aern_certificate_child_is_valid()</a>) of child certificates.</li>
-<li><b>Root Certificate Operations:</b> The creation (<a class="el" href="#a79771ed4c17ac7f0cf78b8e795de68fb" title="Create a root certificate.">aern_certificate_root_create()</a>), encoding (<a class="el" href="#a817eb4043c1ac8465ff0b2c9da200476" title="Encode a public root certificate into a human-readable string.">aern_certificate_root_encode()</a>), serialization/deserialization (<a class="el" href="#a945f58c8838c2f6dbab6891e0da06dea" title="Serialize a root certificate into a contiguous byte array.">aern_certificate_root_serialize()</a>/aern_certificate_root_deserialize()), and verification (<a class="el" href="#a6f19af38d69925d8719ac91e6952a915" title="Verify a child certificate against a root certificate.">aern_certificate_root_signature_verify()</a>) of root certificates.</li>
-<li><b>Equality and Copy:</b> That child certificates can be compared (<a class="el" href="#acfff407b34200fbefbd4d8e7961402a2" title="Compare two child certificates for equivalence.">aern_certificate_child_are_equal()</a>) and copied (<a class="el" href="#aa369c6ee805f6cae63e4288995e40280" title="Copy a child certificate structure.">aern_certificate_child_copy()</a>) correctly.</li>
-<li><b>Expiration and Signature Functions:</b> That certificate expiration is properly set and verified, and that messages can be hashed and signed/verified (<a class="el" href="#a3013d651ade561d11c9026765f9aaadf" title="Hash a message and sign the hash.">aern_certificate_message_hash_sign()</a> and <a class="el" href="#ac4f715ab52aac1516b83b2b8ff40fec1" title="Verify a message signature using the asymmetric signature scheme.">aern_certificate_signature_verify_message()</a>).</li>
-</ul>
-<p>These tests help ensure that the certificate operations function as expected in real-world use. </p>
+<p>Module tests are implemented in the AERNTest project. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a9e85e5038b4c8b238a05ca1256a72ecd" name="a9e85e5038b4c8b238a05ca1256a72ecd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9e85e5038b4c8b238a05ca1256a72ecd">&#9670;&#160;</a></span>aern_certificate_algorithm_decode()</h2>
@@ -184,7 +178,7 @@ Functions</h2></td></tr>
 <p>Decode the string algorithm-set number to the enumerated representation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>[in, const] The protocol-set string (for example, "dilithium-s1_kyber-s1_rcs-256_sha3-256").</td></tr>
+    <tr><td class="paramname">name</td><td>[const char*] The protocol-set string (for example, "dilithium-s1_kyber-s1_rcs-256_sha3-256").</td></tr>
   </table>
   </dd>
 </dl>
@@ -210,7 +204,7 @@ Functions</h2></td></tr>
 <p>Test if the specified protocol-set is enabled on this system. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">conf</td><td>The protocol-set enumerator to test.</td></tr>
+    <tr><td class="paramname">conf</td><td>[<a class="el" href="aern_8h.html#a6249420c8c2d55814707fff2f6caaef9" title="The AERN algorithm configuration sets.">aern_configuration_sets</a>] The protocol-set enumerator to test.</td></tr>
   </table>
   </dd>
 </dl>
@@ -240,8 +234,8 @@ Functions</h2></td></tr>
 <p>Encode the protocol-set enumerator into its string form. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>[out] The output buffer that will receive the protocol-set string. </td></tr>
-    <tr><td class="paramname">conf</td><td>The protocol-set enumerator to encode. </td></tr>
+    <tr><td class="paramname">name</td><td>[char*] The output buffer that will receive the protocol-set string. </td></tr>
+    <tr><td class="paramname">conf</td><td>[<a class="el" href="aern_8h.html#a6249420c8c2d55814707fff2f6caaef9" title="The AERN algorithm configuration sets.">aern_configuration_sets</a>] The protocol-set enumerator to encode. </td></tr>
   </table>
   </dd>
 </dl>
@@ -271,8 +265,8 @@ Functions</h2></td></tr>
 <p>This function compares all the significant fields of two child certificate structures (including algorithm, version, designation, expiration, issuer, serial, signature, and public key).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>[in, const] The first certificate. </td></tr>
-    <tr><td class="paramname">b</td><td>[in, const] The second certificate.</td></tr>
+    <tr><td class="paramname">a</td><td>[const aern_child_certificate*] The first certificate. </td></tr>
+    <tr><td class="paramname">b</td><td>[const aern_child_certificate*] The second certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -303,8 +297,8 @@ Functions</h2></td></tr>
 <p>This function performs a deep copy of the child certificate from the <code class="param">input</code> structure to the <code class="param">output</code> structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The destination child certificate. </td></tr>
-    <tr><td class="paramname">input</td><td>[in, const] The source child certificate. </td></tr>
+    <tr><td class="paramname">output</td><td>[aern_child_certificate*] The destination child certificate. </td></tr>
+    <tr><td class="paramname">input</td><td>[const aern_child_certificate*] The source child certificate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -349,11 +343,11 @@ Functions</h2></td></tr>
 <p>This function initializes and populates a child certificate structure with the provided public key, expiration information, issuer string, and designation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>[out] A pointer to the empty child certificate to populate. </td></tr>
-    <tr><td class="paramname">pubkey</td><td>[in] A pointer to the public signature key. </td></tr>
-    <tr><td class="paramname">expiration</td><td>[in, const] The certificate expiration time structure. </td></tr>
-    <tr><td class="paramname">issuer</td><td>[in, const] The certificate issuer string. </td></tr>
-    <tr><td class="paramname">designation</td><td>The certificate designation type (e.g. aps, client, etc.). </td></tr>
+    <tr><td class="paramname">child</td><td>[aern_child_certificate*] A pointer to the empty child certificate to populate. </td></tr>
+    <tr><td class="paramname">pubkey</td><td>[const uint8_t*] A pointer to the public signature key. </td></tr>
+    <tr><td class="paramname">expiration</td><td>[const aern_certificate_expiration*] The certificate expiration time structure. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The certificate issuer string. </td></tr>
+    <tr><td class="paramname">designation</td><td>[<a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a>] The certificate designation type (e.g. aps, client, etc.). </td></tr>
   </table>
   </dd>
 </dl>
@@ -383,8 +377,8 @@ Functions</h2></td></tr>
 <p>This function decodes an encoded child certificate string (with a fixed maximum size) into its corresponding certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>[out] The pointer to the child certificate structure to populate. </td></tr>
-    <tr><td class="paramname">enck</td><td>[in] The encoded certificate string.</td></tr>
+    <tr><td class="paramname">child</td><td>[aern_child_certificate*] The pointer to the child certificate structure to populate. </td></tr>
+    <tr><td class="paramname">enck</td><td>[const char*] The encoded certificate string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -415,8 +409,8 @@ Functions</h2></td></tr>
 <p>This function converts a serialized child certificate (stored as a byte stream) into a certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>[out] The pointer to the child certificate structure to populate. </td></tr>
-    <tr><td class="paramname">input</td><td>[in, const] The input byte array containing the serialized certificate. </td></tr>
+    <tr><td class="paramname">child</td><td>[aern_child_certificate*] The pointer to the child certificate structure to populate. </td></tr>
+    <tr><td class="paramname">input</td><td>[const uint8_t*] The input byte array containing the serialized certificate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -446,8 +440,8 @@ Functions</h2></td></tr>
 <p>This function encodes the given child certificate into a formatted string representation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">enck</td><td>[out] The output buffer that will receive the encoded certificate string. </td></tr>
-    <tr><td class="paramname">child</td><td>[in, const] The child certificate to encode.</td></tr>
+    <tr><td class="paramname">enck</td><td>[char*] The output buffer that will receive the encoded certificate string. </td></tr>
+    <tr><td class="paramname">child</td><td>[const aern_child_certificate*] The child certificate to encode.</td></tr>
   </table>
   </dd>
 </dl>
@@ -474,7 +468,7 @@ Functions</h2></td></tr>
 <p>This function securely erases all fields of a child certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>[in,out] A pointer to the child certificate to erase. </td></tr>
+    <tr><td class="paramname">child</td><td>[aern_child_certificate*] A pointer to the child certificate to erase. </td></tr>
   </table>
   </dd>
 </dl>
@@ -504,8 +498,8 @@ Functions</h2></td></tr>
 <p>This function reads a file containing a serialized child certificate, deserializes it, and populates the provided certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fpath</td><td>[in, const] The file path from which to load the certificate. </td></tr>
-    <tr><td class="paramname">child</td><td>[out] A pointer to the child certificate structure.</td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The file path from which to load the certificate. </td></tr>
+    <tr><td class="paramname">child</td><td>[aern_child_certificate*] A pointer to the child certificate structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -536,8 +530,8 @@ Functions</h2></td></tr>
 <p>The hash is computed over key fields such as algorithm, designation, version, expiration, issuer, serial, and public verification key.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output hash array (size: AERN_CERTIFICATE_HASH_SIZE). </td></tr>
-    <tr><td class="paramname">child</td><td>[in, const] A pointer to the child certificate. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output hash array (size: AERN_CERTIFICATE_HASH_SIZE). </td></tr>
+    <tr><td class="paramname">child</td><td>[const aern_child_certificate*] A pointer to the child certificate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -563,7 +557,7 @@ Functions</h2></td></tr>
 <p>This function checks that the certificate fields (including algorithm, designation, version, signature, serial, and public key) are nonzero and that the current time is within the expiration period.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>[in, const] A pointer to the child certificate.</td></tr>
+    <tr><td class="paramname">child</td><td>[const aern_child_certificate*] A pointer to the child certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -609,15 +603,41 @@ Functions</h2></td></tr>
 <p>This function uses the public verification key from the child certificate to verify that a given signature correctly authenticates a message.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>[out] The output buffer for the recovered message (if applicable). </td></tr>
-    <tr><td class="paramname">msglen</td><td>[in,out] A pointer to the length of the recovered message. </td></tr>
-    <tr><td class="paramname">signature</td><td>[in, const] A pointer to the signature. </td></tr>
-    <tr><td class="paramname">siglen</td><td>The length of the signature. </td></tr>
-    <tr><td class="paramname">child</td><td>[in, const] A pointer to the child certificate.</td></tr>
+    <tr><td class="paramname">message</td><td>[uint8_t*] The output buffer for the recovered message (if applicable). </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t*] A pointer to the length of the recovered message. </td></tr>
+    <tr><td class="paramname">signature</td><td>[const uint8_t*] A pointer to the signature. </td></tr>
+    <tr><td class="paramname">siglen</td><td>[size_t] The length of the signature. </td></tr>
+    <tr><td class="paramname">child</td><td>[const aern_child_certificate*] A pointer to the child certificate.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns true if the message signature is verified. </dd></dl>
+
+</div>
+</div>
+<a id="a17ed72de8cf1eef68bd6f2ee027b42e3" name="a17ed72de8cf1eef68bd6f2ee027b42e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17ed72de8cf1eef68bd6f2ee027b42e3">&#9670;&#160;</a></span>aern_certificate_child_revoke()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API void aern_certificate_child_revoke </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *</td>          <td class="paramname"><span class="paramname"><em>child</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Revoke a child certificate. </p>
+<p>This function sets the child to revoked status, erases the root serial number, the signed certificate hash, and sets expiration times to zero.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">child</td><td>[aern_child_certificate*] A pointer to the child certificate. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -643,8 +663,8 @@ Functions</h2></td></tr>
 <p>Serialize a child certificate into a contiguous byte array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] A pointer to the array receiving the serialized certificate (size: AERN_CERTIFICATE_CHILD_SIZE). </td></tr>
-    <tr><td class="paramname">child</td><td>[in, const] The child certificate to serialize. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] A pointer to the array receiving the serialized certificate (size: AERN_CERTIFICATE_CHILD_SIZE). </td></tr>
+    <tr><td class="paramname">child</td><td>[const aern_child_certificate*] The child certificate to serialize. </td></tr>
   </table>
   </dd>
 </dl>
@@ -673,8 +693,8 @@ Functions</h2></td></tr>
 <p>Write a child certificate structure to a file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fpath</td><td>[in, const] The file path where the certificate will be stored. </td></tr>
-    <tr><td class="paramname">child</td><td>[in, const] A pointer to the child certificate structure.</td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The file path where the certificate will be stored. </td></tr>
+    <tr><td class="paramname">child</td><td>[const aern_child_certificate*] A pointer to the child certificate structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -700,7 +720,7 @@ Functions</h2></td></tr>
 <p>Decode the network-designation string to its enumerated representation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sdsg</td><td>[in, const] The network-designation string.</td></tr>
+    <tr><td class="paramname">sdsg</td><td>[const char*] The network-designation string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -730,8 +750,8 @@ Functions</h2></td></tr>
 <p>Encode the network-designation enumerator into a string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sdsg</td><td>[out] The output buffer that will receive the encoded network-designation string. </td></tr>
-    <tr><td class="paramname">designation</td><td>The certificate designation type.</td></tr>
+    <tr><td class="paramname">sdsg</td><td>[char*] The output buffer that will receive the encoded network-designation string. </td></tr>
+    <tr><td class="paramname">designation</td><td>[<a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a>] The certificate designation type.</td></tr>
   </table>
   </dd>
 </dl>
@@ -767,9 +787,9 @@ Functions</h2></td></tr>
 <p>This function sets the <code class="param">from</code> and <code class="param">to</code> fields of the expiration structure using day intervals.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">expiration</td><td>[in,out] A pointer to the expiration structure. </td></tr>
-    <tr><td class="paramname">start</td><td>The number of days until the certificate becomes valid. </td></tr>
-    <tr><td class="paramname">duration</td><td>The number of days the certificate remains valid. </td></tr>
+    <tr><td class="paramname">expiration</td><td>[aern_certificate_expiration*] A pointer to the expiration structure. </td></tr>
+    <tr><td class="paramname">start</td><td>[uint16_t] The number of days until the certificate becomes valid. </td></tr>
+    <tr><td class="paramname">duration</td><td>[uint16_t] The number of days the certificate remains valid. </td></tr>
   </table>
   </dd>
 </dl>
@@ -803,9 +823,9 @@ Functions</h2></td></tr>
 <p>Set the expiration seconds on a certificate expiration structure. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">expiration</td><td>[in,out] A pointer to the expiration structure. </td></tr>
-    <tr><td class="paramname">start</td><td>The number of seconds to delay before the certificate becomes valid. </td></tr>
-    <tr><td class="paramname">period</td><td>The number of seconds the certificate remains valid. </td></tr>
+    <tr><td class="paramname">expiration</td><td>[aern_certificate_expiration*] A pointer to the expiration structure. </td></tr>
+    <tr><td class="paramname">start</td><td>[uint64_t] The number of seconds to delay before the certificate becomes valid. </td></tr>
+    <tr><td class="paramname">period</td><td>[uint64_t] The number of seconds the certificate remains valid. </td></tr>
   </table>
   </dd>
 </dl>
@@ -830,7 +850,7 @@ Functions</h2></td></tr>
 <p>Verify the expiration time against the current UTC time. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">expiration</td><td>[in, const] A pointer to the expiration time structure.</td></tr>
+    <tr><td class="paramname">expiration</td><td>[const aern_certificate_expiration*] A pointer to the expiration time structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -871,10 +891,10 @@ Functions</h2></td></tr>
 <p>This function computes the SHA3-256 hash of the provided message and then signs that hash using the given private signature key.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">signature</td><td>[out] The array receiving the signature (size: AERN_ASYMMETRIC_SIGNATURE_SIZE). </td></tr>
-    <tr><td class="paramname">sigkey</td><td>[in, const] The private signature key. </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] The message to sign. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message.</td></tr>
+    <tr><td class="paramname">signature</td><td>[uint8_t*] The array receiving the signature (size: AERN_ASYMMETRIC_SIGNATURE_SIZE). </td></tr>
+    <tr><td class="paramname">sigkey</td><td>[const uint8_t*] The private signature key. </td></tr>
+    <tr><td class="paramname">message</td><td>[const uint8_t*] The message to sign. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message.</td></tr>
   </table>
   </dd>
 </dl>
@@ -905,8 +925,8 @@ Functions</h2></td></tr>
 <p>This function compares the key fields of two root certificates to determine if they are equal.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>[in, const] The first root certificate. </td></tr>
-    <tr><td class="paramname">b</td><td>[in, const] The second root certificate.</td></tr>
+    <tr><td class="paramname">a</td><td>[const aern_root_certificate*] The first root certificate. </td></tr>
+    <tr><td class="paramname">b</td><td>[const aern_root_certificate*] The second root certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -947,10 +967,10 @@ Functions</h2></td></tr>
 <p>This function creates a root certificate by populating its fields with the provided public key, expiration structure, and issuer name. The generated certificate serves as the trust anchor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">root</td><td>[out] A pointer to the empty root certificate to populate. </td></tr>
-    <tr><td class="paramname">pubkey</td><td>[in] A pointer to the public signature key. </td></tr>
-    <tr><td class="paramname">expiration</td><td>[in, const] The certificate expiration time structure. </td></tr>
-    <tr><td class="paramname">issuer</td><td>[in, const] The issuer name string. </td></tr>
+    <tr><td class="paramname">root</td><td>[aern_root_certificate*] A pointer to the empty root certificate to populate. </td></tr>
+    <tr><td class="paramname">pubkey</td><td>[const uint8_t*] A pointer to the public signature key. </td></tr>
+    <tr><td class="paramname">expiration</td><td>[const aern_certificate_expiration*] The certificate expiration time structure. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The issuer name string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -980,8 +1000,8 @@ Functions</h2></td></tr>
 <p>This function decodes an encoded root certificate string into its corresponding root certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">root</td><td>[out] The pointer to the root certificate structure to populate. </td></tr>
-    <tr><td class="paramname">enck</td><td>[in, const] The encoded certificate string.</td></tr>
+    <tr><td class="paramname">root</td><td>[aern_root_certificate*] The pointer to the root certificate structure to populate. </td></tr>
+    <tr><td class="paramname">enck</td><td>[const char*] The encoded certificate string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1011,8 +1031,8 @@ Functions</h2></td></tr>
 <p>Deserialize a root certificate from a byte array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">root</td><td>[out] A pointer to the root certificate structure to populate. </td></tr>
-    <tr><td class="paramname">input</td><td>[in, const] A pointer to the input byte array (size: AERN_CERTIFICATE_ROOT_SIZE). </td></tr>
+    <tr><td class="paramname">root</td><td>[aern_root_certificate*] A pointer to the root certificate structure to populate. </td></tr>
+    <tr><td class="paramname">input</td><td>[const uint8_t*] A pointer to the input byte array (size: AERN_CERTIFICATE_ROOT_SIZE). </td></tr>
   </table>
   </dd>
 </dl>
@@ -1042,8 +1062,8 @@ Functions</h2></td></tr>
 <p>This function encodes the given root certificate into a formatted string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">enck</td><td>[out] The output buffer that will receive the encoded certificate string. </td></tr>
-    <tr><td class="paramname">root</td><td>[in, const] The root certificate to encode.</td></tr>
+    <tr><td class="paramname">enck</td><td>[char*] The output buffer that will receive the encoded certificate string. </td></tr>
+    <tr><td class="paramname">root</td><td>[const aern_root_certificate*] The root certificate to encode.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1070,7 +1090,7 @@ Functions</h2></td></tr>
 <p>This function securely erases all fields of a root certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">root</td><td>[in,out] A pointer to the root certificate to erase. </td></tr>
+    <tr><td class="paramname">root</td><td>[aern_root_certificate*] A pointer to the root certificate to erase. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1099,8 +1119,8 @@ Functions</h2></td></tr>
 <p>Copy a serialized root certificate from a file into a root certificate structure. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fpath</td><td>[in, const] The file path from which to read the certificate. </td></tr>
-    <tr><td class="paramname">root</td><td>[out] A pointer to the root certificate structure to populate.</td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The file path from which to read the certificate. </td></tr>
+    <tr><td class="paramname">root</td><td>[aern_root_certificate*] A pointer to the root certificate structure to populate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1131,8 +1151,8 @@ Functions</h2></td></tr>
 <p>The hash is computed over key fields such as algorithm, version, expiration times, issuer, serial, and public key.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output hash array. </td></tr>
-    <tr><td class="paramname">root</td><td>[in, const] A pointer to the root certificate. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output hash array. </td></tr>
+    <tr><td class="paramname">root</td><td>[const aern_root_certificate*] A pointer to the root certificate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1158,7 +1178,7 @@ Functions</h2></td></tr>
 <p>This function checks that the root certificate fields are nonzero and that the current time is within its expiration period.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">root</td><td>[in, const] A pointer to the root certificate.</td></tr>
+    <tr><td class="paramname">root</td><td>[const aern_root_certificate*] A pointer to the root certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1188,8 +1208,8 @@ Functions</h2></td></tr>
 <p>Serialize a root certificate into a contiguous byte array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] A pointer to the array receiving the serialized certificate (size: AERN_CERTIFICATE_ROOT_SIZE). </td></tr>
-    <tr><td class="paramname">root</td><td>[in, const] The root certificate to serialize. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] A pointer to the array receiving the serialized certificate (size: AERN_CERTIFICATE_ROOT_SIZE). </td></tr>
+    <tr><td class="paramname">root</td><td>[const aern_root_certificate*] The root certificate to serialize. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1224,9 +1244,9 @@ Functions</h2></td></tr>
 <p>This function hashes the child certificate, copies the root certificate serial number into the child, and then produces a digital signature over the child certificate hash using the provided root signing key.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>[in,out] A pointer to the child certificate to sign. </td></tr>
-    <tr><td class="paramname">root</td><td>[in, const] A pointer to the root certificate. </td></tr>
-    <tr><td class="paramname">rsigkey</td><td>[in, const] A pointer to the root private signing key.</td></tr>
+    <tr><td class="paramname">child</td><td>[aern_child_certificate*] A pointer to the child certificate to sign. </td></tr>
+    <tr><td class="paramname">root</td><td>[const aern_root_certificate*] A pointer to the root certificate. </td></tr>
+    <tr><td class="paramname">rsigkey</td><td>[const uint8_t*] A pointer to the root private signing key.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1257,8 +1277,8 @@ Functions</h2></td></tr>
 <p>This function verifies that the digital signature on the child certificate (stored in its signed hash) was produced by the given root certificate.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>[in, const] A pointer to the child certificate. </td></tr>
-    <tr><td class="paramname">root</td><td>[in, const] A pointer to the root certificate.</td></tr>
+    <tr><td class="paramname">child</td><td>[const aern_child_certificate*] A pointer to the child certificate. </td></tr>
+    <tr><td class="paramname">root</td><td>[const aern_root_certificate*] A pointer to the root certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1288,8 +1308,8 @@ Functions</h2></td></tr>
 <p>Write a root certificate structure to a file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fpath</td><td>[in, const] The file path where the certificate will be written. </td></tr>
-    <tr><td class="paramname">root</td><td>[in, const] A pointer to the root certificate structure.</td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The file path where the certificate will be written. </td></tr>
+    <tr><td class="paramname">root</td><td>[const aern_root_certificate*] A pointer to the root certificate structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1297,14 +1317,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a94552dd32d8a368951482ab9100de510" name="a94552dd32d8a368951482ab9100de510"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94552dd32d8a368951482ab9100de510">&#9670;&#160;</a></span>aern_certificate_signature_generate_keypair()</h2>
+<a id="a4460c848d4167ba21ef6d2e27194c437" name="a4460c848d4167ba21ef6d2e27194c437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4460c848d4167ba21ef6d2e27194c437">&#9670;&#160;</a></span>aern_certificate_signature_generate_keypair()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">AERN_EXPORT_API void aern_certificate_signature_generate_keypair </td>
+          <td class="memname">AERN_EXPORT_API bool aern_certificate_signature_generate_keypair </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structaern__signature__keypair.html">aern_signature_keypair</a> *</td>          <td class="paramname"><span class="paramname"><em>keypair</em></span></td><td>)</td>
           <td></td>
@@ -1316,10 +1336,11 @@ Functions</h2></td></tr>
 <p>This function generates a new keypair for the AERN asymmetric signature scheme and populates the provided keypair container.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">keypair</td><td>[out] A pointer to the keypair container. </td></tr>
+    <tr><td class="paramname">keypair</td><td>[aern_signature_keypair*] A pointer to the keypair container.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the root certificate is valid. </dd></dl>
 
 </div>
 </div>
@@ -1361,11 +1382,11 @@ Functions</h2></td></tr>
 <p>This function first verifies the signature using the child certificate's public key and then compares the resulting hash to an independently computed hash of the message.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">signature</td><td>[in, const] A pointer to the signed hash. </td></tr>
-    <tr><td class="paramname">siglen</td><td>The length of the signed hash. </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] A pointer to the message. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message. </td></tr>
-    <tr><td class="paramname">lcert</td><td>[in, const] A pointer to the child certificate used for verification.</td></tr>
+    <tr><td class="paramname">signature</td><td>[const uint8_t*] A pointer to the signed hash. </td></tr>
+    <tr><td class="paramname">siglen</td><td>[size_t] The length of the signed hash. </td></tr>
+    <tr><td class="paramname">message</td><td>[const uint8_t*] A pointer to the message. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message. </td></tr>
+    <tr><td class="paramname">lcert</td><td>[const aern_child_certificate*] A pointer to the child certificate used for verification.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1405,10 +1426,10 @@ Functions</h2></td></tr>
 <p>Sign a message using the asymmetric signature scheme. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">signature</td><td>[out] The array that will receive the signature (size: AERN_ASYMMETRIC_SIGNATURE_SIZE). </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] The message to sign. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message. </td></tr>
-    <tr><td class="paramname">prikey</td><td>[in] The private signature key.</td></tr>
+    <tr><td class="paramname">signature</td><td>[uint8_t*] The array that will receive the signature (size: AERN_ASYMMETRIC_SIGNATURE_SIZE). </td></tr>
+    <tr><td class="paramname">message</td><td>[const uint8_t*] The message to sign. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message. </td></tr>
+    <tr><td class="paramname">prikey</td><td>[const uint8_t*] The private signature key.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1453,11 +1474,11 @@ Functions</h2></td></tr>
 <p>Verify a message signature using the asymmetric signature scheme. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>[in, const] The original message. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message. </td></tr>
-    <tr><td class="paramname">signature</td><td>[in, const] The signature to verify. </td></tr>
-    <tr><td class="paramname">siglen</td><td>The length of the signature. </td></tr>
-    <tr><td class="paramname">pubkey</td><td>[in] The public signature verification key.</td></tr>
+    <tr><td class="paramname">message</td><td>[const uint8_t*] The original message. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message. </td></tr>
+    <tr><td class="paramname">signature</td><td>[const uint8_t*] The signature to verify. </td></tr>
+    <tr><td class="paramname">siglen</td><td>[size_t] The length of the signature. </td></tr>
+    <tr><td class="paramname">pubkey</td><td>[const uint8_t*] The public signature verification key.</td></tr>
   </table>
   </dd>
 </dl>

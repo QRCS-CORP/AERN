@@ -1,0 +1,248 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERNTest/aern\+\_\+utils.h File Reference}
+\hypertarget{aern__utils_8h}{}\label{aern__utils_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/aern\_utils.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/aern\_utils.h}}
+
+
+Common test harness utilities for AERNTest.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaerntest__case}{aerntest\+\_\+case}}
+\begin{DoxyCompactList}\small\item\em A named AERNTest case descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef bool(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{aern__utils_8h_ac489e0a826680d044867ca74789d1fb1}{aerntest\+\_\+function}}) (void)
+\begin{DoxyCompactList}\small\item\em The AERNTest case callback type. \end{DoxyCompactList}\item 
+\Hypertarget{aern__utils_8h_acccd8b0eee4210c55a5049b59c9fb84f}\label{aern__utils_8h_acccd8b0eee4210c55a5049b59c9fb84f} 
+typedef struct aerntest\+\_\+case {\bfseries aerntest\+\_\+case}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{aern__utils_8h_af7266599b8a3d881f6926ac0d7fa2756}{aerntest\+\_\+get\+\_\+char}} (void)
+\begin{DoxyCompactList}\small\item\em Read one character from the console. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{aern__utils_8h_a497db4da58aad78c76510ca7a65a7cc4}{aerntest\+\_\+get\+\_\+wait}} (void)
+\begin{DoxyCompactList}\small\item\em Wait for and read one character from the console. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{aern__utils_8h_ab5575d3ecbcd200274eca5c656cf4ea9}{aerntest\+\_\+hex\+\_\+to\+\_\+bin}} (const char \texorpdfstring{$\ast$}{*}hexstr, uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Convert a hexadecimal string to a binary array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{aern__utils_8h_a83ae8103c7e214010e8d5c3b88711489}{aerntest\+\_\+print\+\_\+hex}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}input, size\+\_\+t inputlen, size\+\_\+t linelen)
+\begin{DoxyCompactList}\small\item\em Print a binary array as hexadecimal text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{aern__utils_8h_a376b5823b4d8baea32ab9358afa9a55f}{aerntest\+\_\+print\+\_\+safe}} (const char \texorpdfstring{$\ast$}{*}input)
+\begin{DoxyCompactList}\small\item\em Print a null-\/terminated string without appending a newline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{aern__utils_8h_a154b517968f8649a65ca120db7a6a287}{aerntest\+\_\+print\+\_\+line}} (const char \texorpdfstring{$\ast$}{*}input)
+\begin{DoxyCompactList}\small\item\em Print a null-\/terminated string followed by a newline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{aern__utils_8h_ad33b65b560b071f7091ae77943488af8}{aerntest\+\_\+print\+\_\+ulong}} (uint64\+\_\+t digit)
+\begin{DoxyCompactList}\small\item\em Print an unsigned 64-\/bit integer value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{aern__utils_8h_a48c3660e2011f621ce4efa7eaa6ebce8}{aerntest\+\_\+print\+\_\+double}} (double digit)
+\begin{DoxyCompactList}\small\item\em Print a double-\/precision floating-\/point value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{aern__utils_8h_af970862129526166b756063d5702e76a}{aerntest\+\_\+test\+\_\+confirm}} (const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Request interactive confirmation from the test operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{aern__utils_8h_a3e0233fbc403b0b91e757f8ffe851aaa}{aerntest\+\_\+print\+\_\+result}} (const char \texorpdfstring{$\ast$}{*}name, bool passed)
+\begin{DoxyCompactList}\small\item\em Print the result of a named test case. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{aern__utils_8h_a662db27bc1fea9333cb2b1ec60167dee}{aerntest\+\_\+run\+\_\+case}} (const \mbox{\hyperlink{structaerntest__case}{aerntest\+\_\+case}} \texorpdfstring{$\ast$}{*}tcase)
+\begin{DoxyCompactList}\small\item\em Run a single named test case through the common dispatcher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Common test harness utilities for AERNTest. 
+
+This header defines the shared output, conversion, and case-\/dispatch helpers used by the AERN deterministic test harness. The declarations are test-\/only utilities and are not part of the AERN protocol API. 
+
+\label{doc-typedef-members}
+\Hypertarget{aern__utils_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{aern__utils_8h_ac489e0a826680d044867ca74789d1fb1}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_function@{aerntest\_function}}
+\index{aerntest\_function@{aerntest\_function}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_function}{aerntest\_function}}
+{\footnotesize\ttfamily \label{aern__utils_8h_ac489e0a826680d044867ca74789d1fb1} 
+typedef bool(\texorpdfstring{$\ast$}{*} aerntest\+\_\+function) (void)}
+
+
+
+The AERNTest case callback type. 
+
+A test callback returns {\ttfamily true} when the case succeeds and {\ttfamily false} when the case fails. 
+
+\label{doc-func-members}
+\Hypertarget{aern__utils_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{aern__utils_8h_af7266599b8a3d881f6926ac0d7fa2756}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_get\_char@{aerntest\_get\_char}}
+\index{aerntest\_get\_char@{aerntest\_get\_char}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_get\_char()}{aerntest\_get\_char()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_af7266599b8a3d881f6926ac0d7fa2756} 
+char aerntest\+\_\+get\+\_\+char (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Read one character from the console. 
+
+\begin{DoxyReturn}{Returns}
+Returns the character read from standard input. 
+\end{DoxyReturn}
+\Hypertarget{aern__utils_8h_a497db4da58aad78c76510ca7a65a7cc4}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_get\_wait@{aerntest\_get\_wait}}
+\index{aerntest\_get\_wait@{aerntest\_get\_wait}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_get\_wait()}{aerntest\_get\_wait()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_a497db4da58aad78c76510ca7a65a7cc4} 
+char aerntest\+\_\+get\+\_\+wait (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Wait for and read one character from the console. 
+
+\begin{DoxyReturn}{Returns}
+Returns the character read from standard input. 
+\end{DoxyReturn}
+\Hypertarget{aern__utils_8h_ab5575d3ecbcd200274eca5c656cf4ea9}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_hex\_to\_bin@{aerntest\_hex\_to\_bin}}
+\index{aerntest\_hex\_to\_bin@{aerntest\_hex\_to\_bin}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_hex\_to\_bin()}{aerntest\_hex\_to\_bin()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_ab5575d3ecbcd200274eca5c656cf4ea9} 
+void aerntest\+\_\+hex\+\_\+to\+\_\+bin (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{hexstr}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Convert a hexadecimal string to a binary array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hexstr} & A pointer to the null-\/terminated hexadecimal string. \\
+\hline
+{\em output} & A pointer to the output binary array. \\
+\hline
+{\em length} & The number of bytes to write to the output array. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern__utils_8h_a48c3660e2011f621ce4efa7eaa6ebce8}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_print\_double@{aerntest\_print\_double}}
+\index{aerntest\_print\_double@{aerntest\_print\_double}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_print\_double()}{aerntest\_print\_double()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_a48c3660e2011f621ce4efa7eaa6ebce8} 
+void aerntest\+\_\+print\+\_\+double (\begin{DoxyParamCaption}\item[{double}]{digit}{}\end{DoxyParamCaption})}
+
+
+
+Print a double-\/precision floating-\/point value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em digit} & The floating-\/point value to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern__utils_8h_a83ae8103c7e214010e8d5c3b88711489}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_print\_hex@{aerntest\_print\_hex}}
+\index{aerntest\_print\_hex@{aerntest\_print\_hex}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_print\_hex()}{aerntest\_print\_hex()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_a83ae8103c7e214010e8d5c3b88711489} 
+void aerntest\+\_\+print\+\_\+hex (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{input}{, }\item[{size\+\_\+t}]{inputlen}{, }\item[{size\+\_\+t}]{linelen}{}\end{DoxyParamCaption})}
+
+
+
+Print a binary array as hexadecimal text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A pointer to the input byte array. \\
+\hline
+{\em inputlen} & The number of bytes in the input array. \\
+\hline
+{\em linelen} & The maximum number of bytes printed per output line. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern__utils_8h_a154b517968f8649a65ca120db7a6a287}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_print\_line@{aerntest\_print\_line}}
+\index{aerntest\_print\_line@{aerntest\_print\_line}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_print\_line()}{aerntest\_print\_line()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_a154b517968f8649a65ca120db7a6a287} 
+void aerntest\+\_\+print\+\_\+line (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Print a null-\/terminated string followed by a newline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A pointer to the null-\/terminated string to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern__utils_8h_a3e0233fbc403b0b91e757f8ffe851aaa}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_print\_result@{aerntest\_print\_result}}
+\index{aerntest\_print\_result@{aerntest\_print\_result}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_print\_result()}{aerntest\_print\_result()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_a3e0233fbc403b0b91e757f8ffe851aaa} 
+void aerntest\+\_\+print\+\_\+result (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{bool}]{passed}{}\end{DoxyParamCaption})}
+
+
+
+Print the result of a named test case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & A pointer to the printable test case name. \\
+\hline
+{\em passed} & The test result flag. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern__utils_8h_a376b5823b4d8baea32ab9358afa9a55f}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_print\_safe@{aerntest\_print\_safe}}
+\index{aerntest\_print\_safe@{aerntest\_print\_safe}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_print\_safe()}{aerntest\_print\_safe()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_a376b5823b4d8baea32ab9358afa9a55f} 
+void aerntest\+\_\+print\+\_\+safe (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Print a null-\/terminated string without appending a newline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A pointer to the null-\/terminated string to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern__utils_8h_ad33b65b560b071f7091ae77943488af8}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_print\_ulong@{aerntest\_print\_ulong}}
+\index{aerntest\_print\_ulong@{aerntest\_print\_ulong}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_print\_ulong()}{aerntest\_print\_ulong()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_ad33b65b560b071f7091ae77943488af8} 
+void aerntest\+\_\+print\+\_\+ulong (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{digit}{}\end{DoxyParamCaption})}
+
+
+
+Print an unsigned 64-\/bit integer value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em digit} & The integer value to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{aern__utils_8h_a662db27bc1fea9333cb2b1ec60167dee}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_run\_case@{aerntest\_run\_case}}
+\index{aerntest\_run\_case@{aerntest\_run\_case}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_run\_case()}{aerntest\_run\_case()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_a662db27bc1fea9333cb2b1ec60167dee} 
+bool aerntest\+\_\+run\+\_\+case (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaerntest__case}{aerntest\+\_\+case}} \texorpdfstring{$\ast$}{*}}]{tcase}{}\end{DoxyParamCaption})}
+
+
+
+Run a single named test case through the common dispatcher. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tcase} & A pointer to the test case descriptor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true when the test case succeeds. 
+\end{DoxyReturn}
+\Hypertarget{aern__utils_8h_af970862129526166b756063d5702e76a}\index{aern\_utils.h@{aern\_utils.h}!aerntest\_test\_confirm@{aerntest\_test\_confirm}}
+\index{aerntest\_test\_confirm@{aerntest\_test\_confirm}!aern\_utils.h@{aern\_utils.h}}
+\doxysubsubsection{\texorpdfstring{aerntest\_test\_confirm()}{aerntest\_test\_confirm()}}
+{\footnotesize\ttfamily \label{aern__utils_8h_af970862129526166b756063d5702e76a} 
+bool aerntest\+\_\+test\+\_\+confirm (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Request interactive confirmation from the test operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & A pointer to the confirmation message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true when the operator confirms the prompt. 
+\end{DoxyReturn}

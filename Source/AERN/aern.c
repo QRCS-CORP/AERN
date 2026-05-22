@@ -45,55 +45,96 @@ aern_protocol_errors aern_decrypt_packet(aern_connection_state* pcns, uint8_t* m
 	AERN_ASSERT(message != NULL);
 	AERN_ASSERT(msglen != NULL);
 
+	qsc_keccak_state ktmp = { 0U };
+	uint8_t hdr[AERN_PACKET_HEADER_SIZE] = { 0U };
+	uint64_t ctrtmp;
+	uint64_t nextseq;
+	size_t mlen;
 	aern_protocol_errors merr;
+
+	merr = aern_protocol_error_invalid_request;
+	nextseq = 0U;
+	mlen = 0U;
 
 	if (pcns != NULL && message != NULL && msglen != NULL && packetin != NULL)
 	{
 		*msglen = 0U;
-		pcns->rxseq += 1U;
 
-		if (aern_packet_time_valid(packetin) == true)
+		if (pcns->rxseq != UINT64_MAX)
 		{
-			if (packetin->sequence == pcns->rxseq)
+			nextseq = pcns->rxseq + 1U;
+
+			if (packetin->msglen > AERN_CRYPTO_SYMMETRIC_MAC_SIZE)
 			{
-				if (pcns->exflag == aern_network_flag_tunnel_session_established)
+				if (aern_packet_time_valid(packetin) == true)
 				{
-					uint8_t hdr[AERN_PACKET_HEADER_SIZE] = { 0U };
-
-					/* serialize the header and add it to the ciphers associated data */
-					aern_packet_header_serialize(packetin, hdr);
-					aern_cipher_set_associated(&pcns->rxcpr, hdr, AERN_PACKET_HEADER_SIZE);
-					*msglen = packetin->msglen - AERN_CRYPTO_SYMMETRIC_MAC_SIZE;
-
-					/* authenticate then decrypt the data */
-					if (aern_cipher_transform(&pcns->rxcpr, message, packetin->pmessage, *msglen) == true)
+					if (packetin->sequence == nextseq)
 					{
-						merr = aern_protocol_error_none;
+						if (pcns->exflag == aern_network_flag_tunnel_session_established)
+						{
+							mlen = packetin->msglen - AERN_CRYPTO_SYMMETRIC_MAC_SIZE;
+							ctrtmp = pcns->rxcpr.counter;
+							qsc_memutils_copy(&ktmp, &pcns->rxcpr.kstate, sizeof(qsc_keccak_state));
+
+							aern_packet_header_serialize(packetin, hdr);
+							aern_cipher_set_associated(&pcns->rxcpr, hdr, AERN_PACKET_HEADER_SIZE);
+
+							if (aern_cipher_transform(&pcns->rxcpr, message, packetin->pmessage, mlen) == true)
+							{
+								pcns->rxseq = nextseq;
+								pcns->authfail = 0U;
+								*msglen = mlen;
+								merr = aern_protocol_error_none;
+							}
+							else
+							{
+								pcns->rxcpr.counter = ctrtmp;
+								qsc_memutils_copy(&pcns->rxcpr.kstate, &ktmp, sizeof(qsc_keccak_state));
+
+								if (pcns->authfail < UINT32_MAX)
+								{
+									++pcns->authfail;
+								}
+
+								qsc_memutils_clear(message, mlen);
+
+								if (pcns->authfail >= AERN_RELAY_AUTH_FAILURE_LIMIT)
+								{
+									merr = aern_protocol_error_channel_down;
+								}
+								else
+								{
+									merr = aern_protocol_error_authentication_failure;
+								}
+
+							}
+
+							qsc_memutils_secure_erase(&ktmp, sizeof(qsc_keccak_state));
+						}
+						else
+						{
+							merr = aern_protocol_error_packet_header_invalid;
+						}
 					}
 					else
 					{
-						*msglen = 0U;
-						merr = aern_protocol_error_authentication_failure;
+						merr = aern_protocol_error_packet_unsequenced;
 					}
 				}
 				else
 				{
-					merr = aern_protocol_error_packet_header_invalid;
+					merr = aern_protocol_error_message_time_invalid;
 				}
 			}
 			else
 			{
-				merr = aern_protocol_error_packet_unsequenced;
+				merr = aern_protocol_error_packet_header_invalid;
 			}
 		}
 		else
 		{
-			merr = aern_protocol_error_message_time_invalid;
+			merr = aern_protocol_error_channel_down;
 		}
-	}
-	else
-	{
-		merr = aern_protocol_error_invalid_request;
 	}
 
 	return merr;
@@ -105,14 +146,16 @@ aern_protocol_errors aern_encrypt_packet(aern_connection_state* pcns, aern_netwo
 	AERN_ASSERT(message != NULL);
 	AERN_ASSERT(packetout != NULL);
 
+	uint8_t hdr[AERN_PACKET_HEADER_SIZE] = { 0U };
 	aern_protocol_errors merr;
+
+	merr = aern_protocol_error_invalid_request;
 
 	if (pcns != NULL && message != NULL && packetout != NULL)
 	{
-		if (pcns->exflag == aern_network_flag_tunnel_session_established && msglen != 0U)
+		if (pcns->exflag == aern_network_flag_tunnel_session_established && msglen != 0U &&
+			pcns->txseq != UINT64_MAX)
 		{
-			uint8_t hdr[AERN_PACKET_HEADER_SIZE] = { 0U };
-
 			/* assemble the encryption packet */
 			pcns->txseq += 1U;
 			packetout->flag = aern_network_flag_tunnel_encrypted_message;
@@ -132,10 +175,6 @@ aern_protocol_errors aern_encrypt_packet(aern_connection_state* pcns, aern_netwo
 		{
 			merr = aern_protocol_error_channel_down;
 		}
-	}
-	else
-	{
-		merr = aern_protocol_error_invalid_request;
 	}
 
 	return merr;
@@ -206,6 +245,7 @@ void aern_packet_header_deserialize(const uint8_t* header, aern_network_packet* 
 		packet->sequence = qsc_intutils_le8to64(header + pos);
 		pos += sizeof(uint64_t);
 		packet->utctime = qsc_intutils_le8to64(header + pos);
+		pos += sizeof(uint64_t);
 	}
 }
 
@@ -225,7 +265,56 @@ void aern_packet_header_serialize(const aern_network_packet* packet, uint8_t* he
 		qsc_intutils_le64to8(header + pos, packet->sequence);
 		pos += sizeof(uint64_t);
 		qsc_intutils_le64to8(header + pos, packet->utctime);
+		pos += sizeof(uint64_t);
+		header[pos] = 0U;
 	}
+}
+
+aern_network_errors aern_header_validate(const aern_network_packet* packetin, aern_network_flags pktflag, uint64_t sequence, uint32_t msglen)
+{
+	AERN_ASSERT(packetin != NULL);
+	AERN_ASSERT(packetin->pmessage != NULL);
+
+	aern_network_errors merr;
+
+	if (packetin != NULL && packetin->pmessage != NULL)
+	{
+		if (aern_packet_time_valid(packetin) == true)
+		{
+			if (packetin->msglen == msglen || msglen == 0U)
+			{
+				if (packetin->sequence == sequence)
+				{
+					if (packetin->flag == pktflag)
+					{
+						merr = aern_network_error_none;
+					}
+					else
+					{
+						merr = aern_network_error_invalid_request;
+					}
+				}
+				else
+				{
+					merr = aern_network_error_packet_unsequenced;
+				}
+			}
+			else
+			{
+				merr = aern_network_error_receive_failure;
+			}
+		}
+		else
+		{
+			merr = aern_network_error_time_invalid;
+		}
+	}
+	else
+	{
+		merr = aern_network_error_invalid_input;
+	}
+
+	return merr;
 }
 
 void aern_packet_set_utc_time(aern_network_packet* packet)
@@ -235,11 +324,20 @@ void aern_packet_set_utc_time(aern_network_packet* packet)
 
 bool aern_packet_time_valid(const aern_network_packet* packet)
 {
+	uint64_t delta;
 	uint64_t ltime;
+	bool res;
 
-	ltime = qsc_timestamp_datetime_utc();
+	res = false;
 
-	return (ltime >= packet->utctime - AERN_PACKET_TIME_THRESHOLD && ltime <= packet->utctime + AERN_PACKET_TIME_THRESHOLD);
+	if (packet != NULL)
+	{
+		ltime = qsc_timestamp_datetime_utc();
+		delta = (ltime >= packet->utctime) ? (ltime - packet->utctime) : (packet->utctime - ltime);
+		res = (delta <= AERN_PACKET_TIME_THRESHOLD);
+	}
+
+	return res;
 }
 
 size_t aern_packet_to_stream(const aern_network_packet* packet, uint8_t* pstream)
@@ -263,6 +361,8 @@ size_t aern_packet_to_stream(const aern_network_packet* packet, uint8_t* pstream
 		pos += sizeof(uint64_t);
 		qsc_intutils_le64to8(pstream + pos, packet->utctime);
 		pos += sizeof(uint64_t);
+		pstream[pos] = 0U;
+		pos += sizeof(uint8_t);
 
 		if (packet->msglen <= AERN_MESSAGE_MAX_SIZE)
 		{
@@ -291,6 +391,7 @@ void aern_stream_to_packet(const uint8_t* pstream, aern_network_packet* packet)
 		pos += sizeof(uint64_t);
 		packet->utctime = qsc_intutils_le8to64(pstream + pos);
 		pos += sizeof(uint64_t);
+		pos += sizeof(uint8_t);
 
 		if (packet->msglen <= AERN_MESSAGE_MAX_SIZE)
 		{
@@ -310,7 +411,9 @@ void aern_connection_state_dispose(aern_connection_state* pcns)
 		qsc_memutils_clear((uint8_t*)&pcns->target, sizeof(qsc_socket));
 		pcns->rxseq = 0U;
 		pcns->txseq = 0U;
+		pcns->authfail = 0U;
 		pcns->instance = 0U;
 		pcns->exflag = aern_network_flag_none;
 	}
 }
+

@@ -1,0 +1,107 @@
+\doxysection{aern\+\_\+relay\+\_\+fragment\+\_\+set\+\_\+entry Struct Reference}
+\hypertarget{structaern__relay__fragment__set__entry}{}\label{structaern__relay__fragment__set__entry}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+
+
+Metadata stored in the dynamic fragment cache for a fragmented relay packet.  
+
+
+
+
+{\ttfamily \#include $<$route.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a2c92b3e49ad501b221931705540efcaa}{packetid}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a2091748c311f02f85177b1af486a7ef9}{created}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a3ed4f0ed85a6a2660a41f62157f52b6d}{expiry}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a07e8d8dd263d685cc61e75d59a23b235}{fragcount}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a38599af807f9cfc71aea3924a9c3b241}{received}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a6a14eb378bd49c15be452c017115ad63}{totalsize}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_ac6116d5235e13e059e591879c46d7174}{direction}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_af12a9ce90147980103978a8875021a93}{complete}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__fragment__set__entry_a9dbe8f2aeb53f7e0308c217cab9a6ffb}{reserved}} \mbox{[}2U\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Metadata stored in the dynamic fragment cache for a fragmented relay packet. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__relay__fragment__set__entry_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__relay__fragment__set__entry_af12a9ce90147980103978a8875021a93}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!complete@{complete}}
+\index{complete@{complete}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{complete}{complete}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_af12a9ce90147980103978a8875021a93} 
+uint8\+\_\+t complete}
+
+Non-\/zero when all fragments have arrived \Hypertarget{structaern__relay__fragment__set__entry_a2091748c311f02f85177b1af486a7ef9}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!created@{created}}
+\index{created@{created}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{created}{created}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a2091748c311f02f85177b1af486a7ef9} 
+uint64\+\_\+t created}
+
+UTC creation time in seconds \Hypertarget{structaern__relay__fragment__set__entry_ac6116d5235e13e059e591879c46d7174}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!direction@{direction}}
+\index{direction@{direction}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_ac6116d5235e13e059e591879c46d7174} 
+uint8\+\_\+t direction}
+
+One of \doxylink{route_8h_a19d441ac278626cc2aa2e07d8732e251}{aern\+\_\+relay\+\_\+fragment\+\_\+direction} \Hypertarget{structaern__relay__fragment__set__entry_a3ed4f0ed85a6a2660a41f62157f52b6d}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!expiry@{expiry}}
+\index{expiry@{expiry}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{expiry}{expiry}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a3ed4f0ed85a6a2660a41f62157f52b6d} 
+uint64\+\_\+t expiry}
+
+UTC expiry time in seconds \Hypertarget{structaern__relay__fragment__set__entry_a07e8d8dd263d685cc61e75d59a23b235}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!fragcount@{fragcount}}
+\index{fragcount@{fragcount}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{fragcount}{fragcount}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a07e8d8dd263d685cc61e75d59a23b235} 
+uint32\+\_\+t fragcount}
+
+Expected fragment count \Hypertarget{structaern__relay__fragment__set__entry_a2c92b3e49ad501b221931705540efcaa}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!packetid@{packetid}}
+\index{packetid@{packetid}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{packetid}{packetid}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a2c92b3e49ad501b221931705540efcaa} 
+uint64\+\_\+t packetid}
+
+Fragmented packet identifier \Hypertarget{structaern__relay__fragment__set__entry_a38599af807f9cfc71aea3924a9c3b241}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!received@{received}}
+\index{received@{received}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{received}{received}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a38599af807f9cfc71aea3924a9c3b241} 
+uint32\+\_\+t received}
+
+Number of fragments received \Hypertarget{structaern__relay__fragment__set__entry_a9dbe8f2aeb53f7e0308c217cab9a6ffb}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!reserved@{reserved}}
+\index{reserved@{reserved}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{reserved}{reserved}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a9dbe8f2aeb53f7e0308c217cab9a6ffb} 
+uint8\+\_\+t reserved\mbox{[}2U\mbox{]}}
+
+Reserved; set to zero \Hypertarget{structaern__relay__fragment__set__entry_a9dc02beaf3ba3a8f741bf83d4619dbab}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!sessionid@{sessionid}}
+\index{sessionid@{sessionid}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{sessionid}{sessionid}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a9dc02beaf3ba3a8f741bf83d4619dbab} 
+uint64\+\_\+t sessionid}
+
+Logical session identifier \Hypertarget{structaern__relay__fragment__set__entry_a6a14eb378bd49c15be452c017115ad63}\index{aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}!totalsize@{totalsize}}
+\index{totalsize@{totalsize}!aern\_relay\_fragment\_set\_entry@{aern\_relay\_fragment\_set\_entry}}
+\doxysubsubsection{\texorpdfstring{totalsize}{totalsize}}
+{\footnotesize\ttfamily \label{structaern__relay__fragment__set__entry_a6a14eb378bd49c15be452c017115ad63} 
+uint32\+\_\+t totalsize}
+
+Total reassembled payload size 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{route_8h}{route.\+h}}\end{DoxyCompactItemize}

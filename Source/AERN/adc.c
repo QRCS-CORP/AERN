@@ -19,19 +19,116 @@
 #include "timerex.h"
 #include "timestamp.h"
 
-/** \cond */
 typedef struct adc_receive_state
 {
 	qsc_socket csock;
 } adc_receive_state;
-/** \endcond */
 
 static aern_server_application_state m_adc_application_state = { 0 };
 static aern_server_server_loop_status m_adc_command_loop_status;
 static aern_server_server_loop_status m_adc_server_loop_status;
+static qsc_socket m_adc_listener_socket = { 0 };
 static uint64_t m_adc_idle_timer;
 
-/* ads network functions */
+
+/* ADC network functions */
+
+static void adc_server_listener_close(void)
+{
+	qsc_socket_close_socket(&m_adc_listener_socket);
+	qsc_memutils_clear(&m_adc_listener_socket, sizeof(qsc_socket));
+}
+
+static bool adc_socket_address_matches_node(const qsc_socket* csock, const aern_topology_node_state* node)
+{
+	AERN_ASSERT(csock != NULL);
+	AERN_ASSERT(node != NULL);
+
+	bool res;
+
+	res = false;
+
+	if (csock != NULL && node != NULL)
+	{
+		res = qsc_memutils_are_equal((const uint8_t*)csock->address, (const uint8_t*)node->address, AERN_CERTIFICATE_ADDRESS_SIZE);
+	}
+
+	return res;
+}
+
+static bool adc_certificate_designation_allowed(aern_network_designations designation)
+{
+	bool res;
+
+	res = false;
+
+	if (designation == aern_network_designation_aps ||
+		designation == aern_network_designation_client)
+	{
+		res = true;
+	}
+
+	return res;
+}
+
+static void adc_topology_version_update(void)
+{
+	(void)aern_topology_increment_version(&m_adc_application_state.tlist);
+}
+
+static aern_protocol_errors adc_signed_certificate_verify(const aern_child_certificate* child)
+{
+	AERN_ASSERT(child != NULL);
+
+	aern_protocol_errors merr;
+
+	merr = aern_protocol_error_invalid_request;
+
+	if (child != NULL)
+	{
+		if (adc_certificate_designation_allowed(child->designation) == true)
+		{
+			merr = aern_network_certificate_verify(child, &m_adc_application_state.root);
+		}
+	}
+
+	return merr;
+}
+
+static aern_protocol_errors adc_node_certificate_validate(const qsc_socket* csock, const aern_topology_node_state* node, const aern_child_certificate* child)
+{
+	AERN_ASSERT(csock != NULL);
+	AERN_ASSERT(node != NULL);
+	AERN_ASSERT(child != NULL);
+
+	uint8_t hash[AERN_CERTIFICATE_HASH_SIZE] = { 0U };
+	aern_protocol_errors merr;
+
+	merr = aern_protocol_error_invalid_request;
+
+	if (csock != NULL && node != NULL && child != NULL)
+	{
+		merr = adc_signed_certificate_verify(child);
+
+		if (merr == aern_protocol_error_none)
+		{
+			aern_certificate_child_hash(hash, child);
+
+			if (qsc_memutils_are_equal(hash, node->chash, AERN_CERTIFICATE_HASH_SIZE) == false ||
+				qsc_memutils_are_equal(child->serial, node->serial, AERN_CERTIFICATE_SERIAL_SIZE) == false ||
+				qsc_memutils_are_equal((const uint8_t*)child->issuer, (const uint8_t*)node->issuer, AERN_CERTIFICATE_ISSUER_SIZE) == false ||
+				child->designation != node->designation ||
+				adc_socket_address_matches_node(csock, node) == false)
+			{
+				merr = aern_protocol_error_authentication_failure;
+			}
+		}
+	}
+
+	qsc_memutils_clear(hash, sizeof(hash));
+
+	return merr;
+}
 
 static bool adc_certificate_generate(const char* cmsg)
 {
@@ -63,7 +160,7 @@ static bool adc_certificate_generate(const char* cmsg)
 			res = aern_server_root_import_dialogue(&m_adc_application_state);
 		}
 
-		if (res == true && (period >= AERN_CERTIFICATE_MINIMUM_PERIOD || period <= AERN_CERTIFICATE_MAXIMUM_PERIOD))
+		if (res == true && (period >= AERN_CERTIFICATE_MINIMUM_PERIOD && period <= AERN_CERTIFICATE_MAXIMUM_PERIOD))
 		{
 			char sadd[AERN_CERTIFICATE_ADDRESS_SIZE] = { 0 };
 
@@ -92,9 +189,9 @@ static bool adc_certificate_generate(const char* cmsg)
 				{
 					nlen = qsc_stringutils_string_size(fpath);
 					/* create the certificate and copy the signing key to state */
-					aern_server_child_certificate_generate(&m_adc_application_state, &m_adc_application_state.ads, period);
+					aern_server_child_certificate_generate(&m_adc_application_state, &m_adc_application_state.adc, period);
 					/* write the certificate to file */
-					aern_server_local_certificate_store(&m_adc_application_state, &m_adc_application_state.ads, sadd);
+					aern_server_local_certificate_store(&m_adc_application_state, &m_adc_application_state.adc, sadd);
 					/* store the state */
 					res = aern_server_state_store(&m_adc_application_state);
 					/* log the key overwrite */
@@ -108,8 +205,8 @@ static bool adc_certificate_generate(const char* cmsg)
 			}
 			else
 			{
-				aern_server_child_certificate_generate(&m_adc_application_state, &m_adc_application_state.ads, period);
-				aern_server_local_certificate_store(&m_adc_application_state, &m_adc_application_state.ads, sadd);
+				aern_server_child_certificate_generate(&m_adc_application_state, &m_adc_application_state.adc, period);
+				aern_server_local_certificate_store(&m_adc_application_state, &m_adc_application_state.adc, sadd);
 				res = aern_server_state_store(&m_adc_application_state);
 			}
 		}
@@ -174,10 +271,12 @@ static aern_protocol_errors adc_announce_broadcast(const char* fpath, const char
 						aern_server_topology_to_file(&m_adc_application_state);
 
 						qsc_async_mutex_unlock_ex(mtx);
+						adc_topology_version_update();
 
 						if (aern_topology_node_find_issuer(&m_adc_application_state.tlist, &rnode, rcert.issuer) == true)
 						{
-							aern_network_announce_request_state ars = {
+							aern_network_announce_request_state ars = 
+							{
 								.list = &m_adc_application_state.tlist,
 								.rnode = &rnode,
 								.sigkey = m_adc_application_state.sigkey
@@ -258,6 +357,30 @@ static void adc_converge_reset(aern_topology_list_state* list)
 }
 #endif
 
+static bool adc_server_ready(void)
+{
+	bool res;
+
+	res = false;
+
+	if (m_adc_application_state.kchain != NULL &&
+		m_adc_application_state.sigkey != NULL &&
+		qsc_memutils_zeroed(m_adc_application_state.sigkey, AERN_ASYMMETRIC_SIGNING_KEY_SIZE) == false)
+	{
+		if (aern_certificate_root_is_valid(&m_adc_application_state.root) == true &&
+			aern_topology_node_verify_root(&m_adc_application_state.tlist, &m_adc_application_state.root) == true &&
+			aern_certificate_child_is_valid(&m_adc_application_state.adc) == true &&
+			m_adc_application_state.adc.designation == aern_network_designation_adc &&
+			aern_certificate_root_signature_verify(&m_adc_application_state.adc, &m_adc_application_state.root) == true &&
+			aern_topology_node_verify_issuer(&m_adc_application_state.tlist, &m_adc_application_state.adc, m_adc_application_state.issuer) == true)
+		{
+			res = true;
+		}
+	}
+
+	return res;
+}
+
 static void adc_converge_broadcast(void)
 {
 	aern_topology_list_state clst = { 0 };
@@ -275,14 +398,14 @@ static void adc_converge_broadcast(void)
 		{
 			if (aern_topology_list_item(&m_adc_application_state.tlist, &rnode, i) == true)
 			{
-				if (rnode.designation == aern_network_designation_aps ||
-					rnode.designation == aern_network_designation_idg)
+				if (rnode.designation == aern_network_designation_aps)
 				{
 					aern_child_certificate rcert = { 0 };
 
 					if (aern_server_child_certificate_from_issuer(&rcert, &m_adc_application_state, rnode.issuer) == true)
 					{
-						aern_network_converge_request_state crs = {
+						aern_network_converge_request_state crs = 
+						{
 							.rcert = &rcert,
 							.rnode = &rnode,
 							.sigkey = m_adc_application_state.sigkey
@@ -306,8 +429,7 @@ static void adc_converge_broadcast(void)
 
 			aern_topology_list_item(&m_adc_application_state.tlist, &rnode, i);
 
-			if (rnode.designation == aern_network_designation_aps ||
-				rnode.designation == aern_network_designation_idg)
+			if (rnode.designation == aern_network_designation_aps)
 			{
 				if (aern_topology_node_find(&clst, &fnode, rnode.serial) == false)
 				{
@@ -318,7 +440,8 @@ static void adc_converge_broadcast(void)
 
 					if (aern_menu_print_predefined_message_confirm(aern_application_log_converge_node_remove_challenge, m_adc_application_state.mode, m_adc_application_state.hostname) == true)
 					{
-						aern_network_revoke_request_state rrs = {
+						aern_network_revoke_request_state rrs = 
+						{
 							.designation = rnode.designation,
 							.list = &m_adc_application_state.tlist,
 							.rnode = &rnode,
@@ -337,6 +460,8 @@ static void adc_converge_broadcast(void)
 							aern_server_topology_to_file(&m_adc_application_state);
 
 							qsc_async_mutex_unlock_ex(mtx);
+							adc_topology_version_update();
+							adc_topology_version_update();
 						}
 					}
 				}
@@ -352,32 +477,145 @@ static aern_protocol_errors adc_incremental_update_response(const qsc_socket* cs
 	AERN_ASSERT(csock != NULL);
 	AERN_ASSERT(packetin != NULL);
 
+	aern_child_certificate rcert = { 0 };
 	aern_topology_node_state rnode = { 0 };
 	aern_protocol_errors merr;
 
-	if (aern_topology_node_find(&m_adc_application_state.tlist, &rnode, packetin->pmessage) == true)
+	merr = aern_protocol_error_invalid_request;
+
+	if (csock != NULL && packetin != NULL && packetin->pmessage != NULL)
 	{
-		aern_child_certificate rcert = { 0 };
-
-		if (aern_server_child_certificate_from_issuer(&rcert, &m_adc_application_state, rnode.issuer) == true)
+		if (packetin->flag == aern_network_flag_incremental_update_request &&
+			packetin->msglen == AERN_CERTIFICATE_SERIAL_SIZE &&
+			aern_packet_time_valid(packetin) == true)
 		{
-			aern_network_incremental_update_response_state urs = { 
-				.csock = csock, 
-				.rcert = &rcert, 
-				.sigkey = m_adc_application_state.sigkey
-			};
+			if (aern_topology_node_find(&m_adc_application_state.tlist, &rnode, packetin->pmessage) == true)
+			{
+				if (aern_server_child_certificate_from_issuer(&rcert, &m_adc_application_state, rnode.issuer) == true)
+				{
+					merr = adc_signed_certificate_verify(&rcert);
 
-			/* create and send the incremental update */
-			merr = aern_network_incremental_update_response(&urs, packetin);
+					if (merr == aern_protocol_error_none)
+					{
+						aern_network_incremental_update_response_state urs = 
+						{
+							.csock = csock,
+							.rcert = &rcert,
+							.sigkey = m_adc_application_state.sigkey
+						};
+
+						/* create and send the incremental update */
+						merr = aern_network_incremental_update_response(&urs, packetin);
+					}
+				}
+				else
+				{
+					merr = aern_protocol_error_certificate_not_found;
+				}
+			}
+			else
+			{
+				merr = aern_protocol_error_node_not_found;
+			}
+		}
+	}
+
+	if (merr != aern_protocol_error_none)
+	{
+		aern_network_send_error(csock, merr);
+	}
+
+	return merr;
+}
+
+static aern_protocol_errors adc_register_packet_validate(aern_child_certificate* child, const aern_network_packet* packetin, aern_network_flags flag)
+{
+	AERN_ASSERT(child != NULL);
+	AERN_ASSERT(packetin != NULL);
+
+	aern_protocol_errors merr;
+
+	merr = aern_protocol_error_invalid_request;
+
+	if (child != NULL && packetin != NULL && packetin->pmessage != NULL)
+	{
+		if (packetin->flag == flag && packetin->msglen == (AERN_PACKET_SUBHEADER_SIZE + AERN_CERTIFICATE_CHILD_SIZE + AERN_CERTIFICATE_SIGNED_HASH_SIZE))
+		{
+			if (aern_packet_time_valid(packetin) == true)
+			{
+				aern_certificate_child_deserialize(child, packetin->pmessage + AERN_PACKET_SUBHEADER_SIZE);
+				merr = adc_signed_certificate_verify(child);
+			}
+			else
+			{
+				merr = aern_protocol_error_message_time_invalid;
+			}
+		}
+	}
+
+	return merr;
+}
+
+static aern_protocol_errors adc_certificate_store_remote(const aern_child_certificate* child)
+{
+	AERN_ASSERT(child != NULL);
+
+	char fpath[AERN_STORAGE_PATH_MAX] = { 0 };
+	aern_protocol_errors merr;
+
+	merr = aern_protocol_error_invalid_request;
+
+	if (child != NULL)
+	{
+		aern_server_child_certificate_path_from_issuer(&m_adc_application_state, fpath, sizeof(fpath), child->issuer);
+
+		if (qsc_fileutils_exists(fpath) == true)
+		{
+			qsc_fileutils_delete(fpath);
+		}
+
+		if (aern_certificate_child_struct_to_file(fpath, child) == true)
+		{
+			merr = aern_protocol_error_none;
 		}
 		else
 		{
-			merr = aern_protocol_error_certificate_not_found;
+			merr = aern_protocol_error_file_not_written;
 		}
 	}
-	else
+
+	return merr;
+}
+
+static aern_protocol_errors adc_topology_register_remote(const aern_child_certificate* child, const char* address)
+{
+	AERN_ASSERT(child != NULL);
+	AERN_ASSERT(address != NULL);
+
+	qsc_mutex mtx;
+	aern_protocol_errors merr;
+
+	merr = adc_signed_certificate_verify(child);
+
+	if (merr == aern_protocol_error_none)
 	{
-		merr = aern_protocol_error_node_not_found;
+		merr = adc_certificate_store_remote(child);
+	}
+
+	if (merr == aern_protocol_error_none)
+	{
+		mtx = qsc_async_mutex_lock_ex();
+
+		if (aern_topology_node_exists(&m_adc_application_state.tlist, child->serial) == true)
+		{
+			aern_topology_node_remove(&m_adc_application_state.tlist, child->serial);
+		}
+
+		aern_topology_child_register(&m_adc_application_state.tlist, child, address);
+		aern_server_topology_to_file(&m_adc_application_state);
+
+		qsc_async_mutex_unlock_ex(mtx);
+		adc_topology_version_update();
 	}
 
 	return merr;
@@ -389,57 +627,40 @@ static aern_protocol_errors adc_register_response(const qsc_socket* csock, const
 	AERN_ASSERT(packetin != NULL);
 
 	aern_child_certificate rcert = { 0 };
-	qsc_mutex mtx;
 	aern_protocol_errors merr;
 
 	merr = aern_protocol_error_invalid_request;
 
-	aern_network_register_response_state jrs = {
-		.csock = csock,
-		.lcert = &m_adc_application_state.ads, 
-		.rcert = &rcert,
-		.root = &m_adc_application_state.root, 
-		.sigkey = m_adc_application_state.sigkey
-	};
+	if (adc_server_ready() == true)
+	{
+		merr = adc_register_packet_validate(&rcert, packetin, aern_network_flag_register_request);
 
-	/* create and send the join response */
-	merr = aern_network_register_response(&jrs, packetin);
+		if (merr == aern_protocol_error_none)
+		{
+			aern_network_register_response_state jrs = 
+			{
+				.csock = csock,
+				.lcert = &m_adc_application_state.adc,
+				.rcert = &rcert,
+				.root = &m_adc_application_state.root,
+				.sigkey = m_adc_application_state.sigkey
+			};
+
+			/* create and send the join response */
+			merr = aern_network_register_response(&jrs, packetin);
+		}
+	}
 
 	if (merr == aern_protocol_error_none)
 	{
-		char rpath[AERN_STORAGE_PATH_MAX] = { 0 };
-		
-		if (aern_topology_node_exists(&m_adc_application_state.tlist, rcert.serial) == true)
-		{
-			aern_topology_node_remove(&m_adc_application_state.tlist, rcert.serial);
-		}
-
-		mtx = qsc_async_mutex_lock_ex();
-
-		/* register the remote device in the topology */
-		aern_topology_child_register(&m_adc_application_state.tlist, &rcert, csock->address);
-		aern_server_topology_to_file(&m_adc_application_state);
-
-		qsc_async_mutex_unlock_ex(mtx);
-
-		/* get the certificate path and overwrite existing */
-		aern_server_child_certificate_path_from_issuer(&m_adc_application_state, rpath, sizeof(rpath), rcert.issuer);
-
-		if (qsc_fileutils_exists(rpath) == true)
-		{
-			qsc_fileutils_delete(rpath);
-		}
-
-		/* save the certificate to file */
-		if (aern_certificate_child_struct_to_file(rpath, &rcert) == false)
-		{
-			merr = aern_protocol_error_file_not_written;
-		}
+		merr = adc_topology_register_remote(&rcert, csock->address);
 	}
 	else
 	{
-		merr = aern_protocol_error_node_not_found;
+		aern_network_send_error(csock, merr);
 	}
+
+	qsc_memutils_clear(&rcert, sizeof(rcert));
 
 	return merr;
 }
@@ -450,48 +671,44 @@ static aern_protocol_errors adc_register_update_response(const qsc_socket* csock
 	AERN_ASSERT(packetin != NULL);
 
 	aern_child_certificate rcert = { 0 };
-	qsc_mutex mtx;
 	aern_protocol_errors merr;
+	bool serr;
 
 	merr = aern_protocol_error_invalid_request;
+	serr = true;
 
-	aern_network_register_update_response_state rst = {
-		.csock = csock,
-		.lcert = &m_adc_application_state.ads,
-		.list = &m_adc_application_state.tlist,
-		.rcert = &rcert,
-		.root = &m_adc_application_state.root, 
-		.sigkey = m_adc_application_state.sigkey
-	};
-
-	/* create and send the join-update response */
-	merr = aern_network_register_update_response(&rst, packetin);
-
-	if (merr == aern_protocol_error_none)
+	if (adc_server_ready() == true)
 	{
-		char rpath[AERN_STORAGE_PATH_MAX] = { 0 };
+		merr = adc_register_packet_validate(&rcert, packetin, aern_network_flag_register_update_request);
 
-		mtx = qsc_async_mutex_lock_ex();
-
-		/* register the remote certificate in the topology */
-		aern_topology_child_register(&m_adc_application_state.tlist, &rcert, csock->address);
-		aern_server_topology_to_file(&m_adc_application_state);
-
-		qsc_async_mutex_unlock_ex(mtx);
-
-		/* get the remote certificate path */
-		aern_server_child_certificate_path_from_issuer(&m_adc_application_state, rpath, sizeof(rpath), rcert.issuer);
-
-		/* save the certificate to file */
-		if (aern_certificate_child_struct_to_file(rpath, &rcert) == false)
+		if (merr == aern_protocol_error_none)
 		{
-			merr = aern_protocol_error_file_not_written;
+			merr = adc_topology_register_remote(&rcert, csock->address);
+		}
+
+		if (merr == aern_protocol_error_none)
+		{
+			aern_network_register_update_v2_response_state rst = 
+			{
+				.csock = csock,
+				.lcert = &m_adc_application_state.adc,
+				.rcert = &rcert,
+				.root = &m_adc_application_state.root,
+				.sigkey = m_adc_application_state.sigkey,
+				.vtopo = &m_adc_application_state.tlist
+			};
+
+			serr = false;
+			merr = aern_network_register_update_v2_response(&rst, packetin);
 		}
 	}
-	else
+
+	if (merr != aern_protocol_error_none && serr == true)
 	{
-		merr = aern_protocol_error_node_not_found;
+		aern_network_send_error(csock, merr);
 	}
+
+	qsc_memutils_clear(&rcert, sizeof(rcert));
 
 	return merr;
 }
@@ -500,20 +717,21 @@ static bool adc_remote_certificate_verify(aern_child_certificate* child)
 {
 	AERN_ASSERT(child != NULL);
 
+	uint64_t nsec;
 	bool res;
 
 	res = false;
+	nsec = 0U;
 
 	if (child != NULL)
 	{
 		if (child->algorithm == AERN_CONFIGURATION_SET &&
-			child->designation != aern_network_designation_none &&
+			adc_certificate_designation_allowed(child->designation) == true &&
 			child->version == AERN_ACTIVE_VERSION &&
 			qsc_memutils_zeroed(child->serial, sizeof(child->serial)) == false &&
-			qsc_memutils_zeroed(child->verkey, sizeof(child->verkey)) == false)
+			qsc_memutils_zeroed(child->verkey, sizeof(child->verkey)) == false &&
+			child->expiration.from <= child->expiration.to)
 		{
-			uint64_t nsec;
-
 			nsec = qsc_timestamp_datetime_utc();
 
 			if (nsec >= child->expiration.from && nsec <= child->expiration.to)
@@ -532,8 +750,11 @@ static aern_protocol_errors adc_remote_signing_request(const char* fpath)
 	
 	aern_topology_node_state root = { 0 };
 	aern_protocol_errors merr;
+
+	merr = aern_protocol_error_invalid_request;
 	
-	if (aern_topology_node_find_root(&m_adc_application_state.tlist, &root) == true)
+	if (adc_server_ready() == true &&
+		aern_topology_node_find_root(&m_adc_application_state.tlist, &root) == true)
 	{
 		if (qsc_fileutils_exists(fpath) == true)
 		{
@@ -543,7 +764,8 @@ static aern_protocol_errors adc_remote_signing_request(const char* fpath)
 			{
 				if (adc_remote_certificate_verify(&rcert) == true)
 				{
-					aern_network_remote_signing_request_state rsr = {
+					aern_network_remote_signing_request_state rsr = 
+					{
 						.address = root.address,
 						.rcert = &rcert,
 						.root = &m_adc_application_state.root,
@@ -551,6 +773,11 @@ static aern_protocol_errors adc_remote_signing_request(const char* fpath)
 					};
 
 					merr = aern_network_remote_signing_request(&rsr);
+
+					if (merr == aern_protocol_error_none)
+					{
+						merr = adc_signed_certificate_verify(&rcert);
+					}
 
 					if (merr == aern_protocol_error_none)
 					{
@@ -562,7 +789,7 @@ static aern_protocol_errors adc_remote_signing_request(const char* fpath)
 				}
 				else
 				{
-					merr = aern_protocol_error_root_signature_invalid;
+					merr = aern_protocol_error_invalid_request;
 				}
 			}
 			else
@@ -588,9 +815,9 @@ static void adc_resign_command(void)
 	/* reset topology, certificates, and signing key */
 	aern_server_topology_reset(&m_adc_application_state);
 	aern_server_erase_signature_key(&m_adc_application_state);
-	aern_server_topology_remove_certificate(&m_adc_application_state, m_adc_application_state.ads.issuer);
+	aern_server_topology_remove_certificate(&m_adc_application_state, m_adc_application_state.adc.issuer);
 	aern_server_topology_remove_certificate(&m_adc_application_state, m_adc_application_state.root.issuer);
-	qsc_memutils_clear(&m_adc_application_state.ads, sizeof(aern_child_certificate));
+	qsc_memutils_clear(&m_adc_application_state.adc, sizeof(aern_child_certificate));
 	qsc_memutils_clear(&m_adc_application_state.root, sizeof(aern_root_certificate));
 }
 
@@ -599,56 +826,70 @@ static aern_protocol_errors adc_resign_response(const qsc_socket* csock, const a
 	AERN_ASSERT(csock != NULL);
 	AERN_ASSERT(packetin != NULL);
 
+	aern_child_certificate rcert = { 0 };
 	aern_topology_node_state rnode = { 0 };
 	qsc_mutex mtx;
 	const uint8_t* rser;
 	aern_protocol_errors merr;
 
-	(void)csock;
-	rser = packetin->pmessage + AERN_PACKET_SUBHEADER_SIZE;
+	merr = aern_protocol_error_invalid_request;
+	rser = NULL;
 
-	if (aern_topology_node_find(&m_adc_application_state.tlist, &rnode, rser) == true)
+	if (csock != NULL && packetin != NULL && packetin->pmessage != NULL)
 	{
-		aern_child_certificate rcert = { 0 };
-
-		if (aern_server_child_certificate_from_issuer(&rcert, &m_adc_application_state, rnode.issuer) == true)
+		if (packetin->flag == aern_network_flag_network_resign_request &&
+			packetin->msglen == (AERN_PACKET_SUBHEADER_SIZE + AERN_CERTIFICATE_SERIAL_SIZE + AERN_CERTIFICATE_SIGNED_HASH_SIZE) &&
+			aern_packet_time_valid(packetin) == true)
 		{
-			if (aern_certificate_child_is_valid(&rcert) == true)
+			rser = packetin->pmessage + AERN_PACKET_SUBHEADER_SIZE;
+
+			if (aern_topology_node_find(&m_adc_application_state.tlist, &rnode, rser) == true)
 			{
-				aern_network_resign_response_state rrs = {
-					.list = &m_adc_application_state.tlist,
-					.rcert = &rcert,
-					.rnode = &rnode,
-					.sigkey = m_adc_application_state.sigkey
-				};
-
-				/* process the resign update */
-				merr = aern_network_resign_response(&rrs, packetin);
-
-				if (merr == aern_protocol_error_none)
+				if (aern_server_child_certificate_from_issuer(&rcert, &m_adc_application_state, rnode.issuer) == true)
 				{
-					mtx = qsc_async_mutex_lock_ex();
+					merr = adc_node_certificate_validate(csock, &rnode, &rcert);
 
-					aern_server_topology_remove_certificate(&m_adc_application_state, rnode.issuer);
-					aern_server_topology_remove_node(&m_adc_application_state, rnode.issuer);
-					aern_server_topology_to_file(&m_adc_application_state);
+					if (merr == aern_protocol_error_none)
+					{
+						aern_network_resign_response_state rrs = 
+						{
+							.list = &m_adc_application_state.tlist,
+							.rcert = &rcert,
+							.rnode = &rnode,
+							.sigkey = m_adc_application_state.sigkey
+						};
 
-					qsc_async_mutex_unlock_ex(mtx);
+						/* process the resign update */
+						merr = aern_network_resign_response(&rrs, packetin);
+					}
+
+					if (merr == aern_protocol_error_none)
+					{
+						mtx = qsc_async_mutex_lock_ex();
+
+						aern_server_topology_remove_certificate(&m_adc_application_state, rnode.issuer);
+						aern_server_topology_remove_node(&m_adc_application_state, rnode.issuer);
+						aern_server_topology_to_file(&m_adc_application_state);
+
+						qsc_async_mutex_unlock_ex(mtx);
+						adc_topology_version_update();
+					}
+				}
+				else
+				{
+					merr = aern_protocol_error_certificate_not_found;
 				}
 			}
 			else
 			{
-				merr = aern_protocol_error_decoding_failure;
+				merr = aern_protocol_error_node_not_found;
 			}
 		}
-		else
-		{
-			merr = aern_protocol_error_certificate_not_found;
-		}
 	}
-	else
+
+	if (merr != aern_protocol_error_none)
 	{
-		merr = aern_protocol_error_node_not_found;
+		aern_network_send_error(csock, merr);
 	}
 
 	return merr;
@@ -674,10 +915,21 @@ static aern_protocol_errors adc_revoke_broadcast(const char* cmsg)
 			{
 				aern_topology_node_state rnode = { 0 };
 
+				merr = adc_signed_certificate_verify(&rcert);
+
 				/* find the node in the topological list */
-				if (aern_topology_node_find(&m_adc_application_state.tlist, &rnode, rcert.serial) == true)
+				if (merr == aern_protocol_error_none)
 				{
-					aern_network_revoke_request_state rrs = {
+					if (aern_topology_node_find(&m_adc_application_state.tlist, &rnode, rcert.serial) == false)
+					{
+						merr = aern_protocol_error_node_not_found;
+					}
+				}
+
+				if (merr == aern_protocol_error_none)
+				{
+					aern_network_revoke_request_state rrs = 
+					{
 						.designation = rcert.designation,
 						.list = &m_adc_application_state.tlist,
 						.rnode = &rnode,
@@ -696,11 +948,8 @@ static aern_protocol_errors adc_revoke_broadcast(const char* cmsg)
 						aern_server_topology_to_file(&m_adc_application_state);
 
 						qsc_async_mutex_unlock_ex(mtx);
+						adc_topology_version_update();
 					}
-				}
-				else
-				{
-					merr = aern_protocol_error_node_not_found;
 				}
 			}
 			else
@@ -729,11 +978,12 @@ static aern_protocol_errors adc_topological_status_request(const aern_topology_n
 	aern_child_certificate rcert = { 0 };
 	aern_protocol_errors merr;
 
-	if (aern_topology_node_find(&m_adc_application_state.tlist, &lnode, m_adc_application_state.ads.serial) == true)
+	if (aern_topology_node_find(&m_adc_application_state.tlist, &lnode, m_adc_application_state.adc.serial) == true)
 	{
 		if (aern_server_child_certificate_from_issuer(&rcert, &m_adc_application_state, rnode->issuer) == true)
 		{
-			const aern_network_topological_status_request_state tsr = {
+			const aern_network_topological_status_request_state tsr = 
+			{
 				.lnode = &lnode,
 				.rcert = &rcert,
 				.rnode = rnode,
@@ -761,39 +1011,60 @@ static aern_protocol_errors adc_topological_query_response(const qsc_socket* cso
 	AERN_ASSERT(csock != NULL);
 	AERN_ASSERT(packetin != NULL);
 
+	aern_child_certificate ccert = { 0 };
 	aern_topology_node_state cnode = { 0 };
 	aern_topology_node_state rnode = { 0 };
 	const uint8_t* cser;
 	const char* riss;
 	aern_protocol_errors merr;
 
-	cser = packetin->pmessage + AERN_PACKET_SUBHEADER_SIZE;
-	riss = (const char*)packetin->pmessage + AERN_PACKET_SUBHEADER_SIZE + AERN_CERTIFICATE_SERIAL_SIZE;
+	merr = aern_protocol_error_invalid_request;
+	cser = NULL;
+	riss = NULL;
 
-	if (aern_topology_node_find_issuer(&m_adc_application_state.tlist, &rnode, riss) == true)
+	if (csock != NULL && packetin != NULL && packetin->pmessage != NULL)
 	{
-		merr = adc_topological_status_request(&rnode);
-
-		if (merr == aern_protocol_error_none)
+		if (packetin->flag == aern_network_flag_topology_query_request &&
+			packetin->msglen == (AERN_PACKET_SUBHEADER_SIZE + AERN_CERTIFICATE_SERIAL_SIZE + AERN_CERTIFICATE_ISSUER_SIZE + AERN_CERTIFICATE_SIGNED_HASH_SIZE) &&
+			aern_packet_time_valid(packetin) == true)
 		{
+			cser = packetin->pmessage + AERN_PACKET_SUBHEADER_SIZE;
+			riss = (const char*)packetin->pmessage + AERN_PACKET_SUBHEADER_SIZE + AERN_CERTIFICATE_SERIAL_SIZE;
+
 			if (aern_topology_node_find(&m_adc_application_state.tlist, &cnode, cser) == true)
 			{
-				aern_child_certificate ccert = { 0 };
-
 				if (aern_server_child_certificate_from_issuer(&ccert, &m_adc_application_state, cnode.issuer) == true)
 				{
-					aern_network_topological_query_response_state tqr = {
-						.csock = csock,
-						.ccert = &ccert,
-						.rnode = &rnode,
-						.sigkey = m_adc_application_state.sigkey
-					};
+					merr = adc_node_certificate_validate(csock, &cnode, &ccert);
 
-					merr = aern_network_topological_query_response(&tqr, packetin);
+					if (merr == aern_protocol_error_none)
+					{
+						if (aern_topology_node_find_issuer(&m_adc_application_state.tlist, &rnode, riss) == true)
+						{
+							merr = adc_topological_status_request(&rnode);
+						}
+						else
+						{
+							merr = aern_protocol_error_node_not_found;
+						}
+					}
+
+					if (merr == aern_protocol_error_none)
+					{
+						aern_network_topological_query_response_state tqr = 
+						{
+							.csock = csock,
+							.ccert = &ccert,
+							.rnode = &rnode,
+							.sigkey = m_adc_application_state.sigkey
+						};
+
+						merr = aern_network_topological_query_response(&tqr, packetin);
+					}
 				}
 				else
 				{
-					merr = aern_protocol_error_invalid_request;
+					merr = aern_protocol_error_certificate_not_found;
 				}
 			}
 			else
@@ -801,15 +1072,11 @@ static aern_protocol_errors adc_topological_query_response(const qsc_socket* cso
 				merr = aern_protocol_error_node_not_found;
 			}
 		}
-		else
-		{
-			/* if status request fails or is refused send the error */
-			aern_network_send_error(csock, merr);
-		}
 	}
-	else
+
+	if (merr != aern_protocol_error_none)
 	{
-		merr = aern_protocol_error_node_not_found;
+		aern_network_send_error(csock, merr);
 	}
 
 	return merr;
@@ -901,7 +1168,7 @@ static void adc_receive_loop(void* ras)
 						}
 						else if (pkt.flag == aern_network_flag_register_request)
 						{
-							/* sent to the ads requesting to join the network */
+							/* sent to the ADC requesting to join the network */
 							merr = adc_register_response(&pras->csock, &pkt);
 
 							if (merr == aern_protocol_error_none)
@@ -922,7 +1189,7 @@ static void adc_receive_loop(void* ras)
 						}
 						else if (pkt.flag == aern_network_flag_register_update_request)
 						{
-							/* sent to the ads from a MAS requesting to register on the network */
+							/* sent to the ADC from a MAS requesting to register on the network */
 							merr = adc_register_update_response(&pras->csock, &pkt);
 
 							if (merr == aern_protocol_error_none)
@@ -943,7 +1210,7 @@ static void adc_receive_loop(void* ras)
 						}
 						else if (pkt.flag == aern_network_flag_network_resign_request)
 						{
-							/* sent to the ads from a server or aps requesting a network resignation */
+							/* sent to the ADC from a server or aps requesting a network resignation */
 							
 							merr = adc_resign_response(&pras->csock, &pkt);
 
@@ -965,7 +1232,7 @@ static void adc_receive_loop(void* ras)
 						}
 						else if (pkt.flag == aern_network_flag_topology_query_request)
 						{
-							/* sent to the ads from a server or aps querying for a node */
+							/* sent to the ADC from a server or aps querying for a node */
 							
 							merr = adc_topological_query_response(&pras->csock, &pkt);
 
@@ -1041,7 +1308,6 @@ static void adc_receive_loop(void* ras)
 
 static void adc_ipv6_server_start(void)
 {
-	qsc_socket lsock = { 0 };
 	qsc_ipinfo_ipv6_address addt = { 0 };
 	qsc_socket_exceptions serr;
 
@@ -1049,29 +1315,36 @@ static void adc_ipv6_server_start(void)
 
 	if (qsc_ipinfo_ipv6_address_is_valid(&addt) == true)
 	{
-		qsc_socket_server_initialize(&lsock);
-		serr = qsc_socket_create(&lsock, qsc_socket_address_family_ipv6, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
+		adc_server_listener_close();
+		qsc_socket_server_initialize(&m_adc_listener_socket);
+		serr = qsc_socket_create(&m_adc_listener_socket, qsc_socket_address_family_ipv6, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
 
 		if (serr == qsc_socket_exception_success)
 		{
-			serr = qsc_socket_bind_ipv6(&lsock, &addt, AERN_APPLICATION_ADC_PORT);
+			serr = qsc_socket_bind_ipv6(&m_adc_listener_socket, &addt, AERN_APPLICATION_ADC_PORT);
 
 			if (serr == qsc_socket_exception_success)
 			{
-				serr = qsc_socket_listen(&lsock, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
+				serr = qsc_socket_listen(&m_adc_listener_socket, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
 
 				if (serr == qsc_socket_exception_success)
 				{
-					while (true)
+					while (m_adc_server_loop_status != aern_server_loop_status_stopped)
 					{
 						adc_receive_state* ras;
+
+						if (m_adc_server_loop_status == aern_server_loop_status_paused)
+						{
+							qsc_async_thread_sleep(AERN_STORAGE_SERVER_PAUSE_INTERVAL);
+							continue;
+						}
 
 						ras = (adc_receive_state*)qsc_memutils_malloc(sizeof(adc_receive_state));
 
 						if (ras != NULL)
 						{
 							qsc_memutils_clear(&ras->csock, sizeof(qsc_socket));
-							serr = qsc_socket_accept(&lsock, &ras->csock);
+							serr = qsc_socket_accept(&m_adc_listener_socket, &ras->csock);
 
 							if (serr == qsc_socket_exception_success)
 							{
@@ -1082,7 +1355,7 @@ static void adc_ipv6_server_start(void)
 							{
 								/* free the resources if connect fails */
 								qsc_memutils_alloc_free(ras);
-								aern_server_log_write_message(&m_adc_application_state, aern_application_log_allocation_failure, (const char*)lsock.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
+								aern_server_log_write_message(&m_adc_application_state, aern_application_log_allocation_failure, (const char*)m_adc_listener_socket.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
 							}
 						}
 						else
@@ -1101,7 +1374,6 @@ static void adc_ipv6_server_start(void)
 
 static void adc_ipv4_server_start(void)
 {
-	qsc_socket lsock = { 0 };
 	qsc_ipinfo_ipv4_address addt = { 0 };
 	qsc_socket_exceptions serr;
 
@@ -1109,29 +1381,36 @@ static void adc_ipv4_server_start(void)
 
 	if (qsc_ipinfo_ipv4_address_is_valid(&addt) == true)
 	{
-		qsc_socket_server_initialize(&lsock);
-		serr = qsc_socket_create(&lsock, qsc_socket_address_family_ipv4, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
+		adc_server_listener_close();
+		qsc_socket_server_initialize(&m_adc_listener_socket);
+		serr = qsc_socket_create(&m_adc_listener_socket, qsc_socket_address_family_ipv4, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
 
 		if (serr == qsc_socket_exception_success)
 		{
-			serr = qsc_socket_bind_ipv4(&lsock, &addt, AERN_APPLICATION_ADC_PORT);
+			serr = qsc_socket_bind_ipv4(&m_adc_listener_socket, &addt, AERN_APPLICATION_ADC_PORT);
 
 			if (serr == qsc_socket_exception_success)
 			{
-				serr = qsc_socket_listen(&lsock, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
+				serr = qsc_socket_listen(&m_adc_listener_socket, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
 
 				if (serr == qsc_socket_exception_success)
 				{
-					while (true)
+					while (m_adc_server_loop_status != aern_server_loop_status_stopped)
 					{
 						adc_receive_state* ras;
+
+						if (m_adc_server_loop_status == aern_server_loop_status_paused)
+						{
+							qsc_async_thread_sleep(AERN_STORAGE_SERVER_PAUSE_INTERVAL);
+							continue;
+						}
 
 						ras = (adc_receive_state*)qsc_memutils_malloc(sizeof(adc_receive_state));
 
 						if (ras != NULL)
 						{
 							qsc_memutils_clear(&ras->csock, sizeof(qsc_socket));
-							serr = qsc_socket_accept(&lsock, &ras->csock);
+							serr = qsc_socket_accept(&m_adc_listener_socket, &ras->csock);
 
 							if (serr == qsc_socket_exception_success)
 							{
@@ -1141,13 +1420,13 @@ static void adc_ipv4_server_start(void)
 							{
 								/* free the resources if connect fails */
 								qsc_memutils_alloc_free(ras);
-								aern_server_log_write_message(&m_adc_application_state, aern_application_log_allocation_failure, (const char*)lsock.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
+								aern_server_log_write_message(&m_adc_application_state, aern_application_log_allocation_failure, (const char*)m_adc_listener_socket.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
 							}
 						}
 						else
 						{
 							/* exit on memory allocation failure */
-							aern_server_log_write_message(&m_adc_application_state, aern_application_log_allocation_failure, (const char*)lsock.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
+							aern_server_log_write_message(&m_adc_application_state, aern_application_log_allocation_failure, (const char*)m_adc_listener_socket.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
 						}
 					};
 				}
@@ -1161,9 +1440,10 @@ static void adc_ipv4_server_start(void)
 static void adc_server_dispose(void)
 {
 	m_adc_command_loop_status = aern_server_loop_status_stopped;
+	adc_server_listener_close();
 	aern_server_state_unload(&m_adc_application_state);
-	aern_server_state_initialize(&m_adc_application_state, aern_network_designation_ads);
-	qsc_memutils_clear(&m_adc_application_state.ads, sizeof(aern_child_certificate));
+	aern_server_state_initialize(&m_adc_application_state, aern_network_designation_adc);
+	qsc_memutils_clear(&m_adc_application_state.adc, sizeof(aern_child_certificate));
 	m_adc_command_loop_status = aern_server_loop_status_stopped;
 	m_adc_server_loop_status = aern_server_loop_status_stopped;
 	m_adc_idle_timer = 0U;
@@ -1178,7 +1458,10 @@ static bool adc_server_load_root(void)
 	/* load the root certificate */
 	if (aern_server_topology_root_fetch(&m_adc_application_state, &m_adc_application_state.root) == true)
 	{
-		res = aern_topology_node_verify_root(&m_adc_application_state.tlist, &m_adc_application_state.root);
+		if (aern_certificate_root_is_valid(&m_adc_application_state.root) == true)
+		{
+			res = aern_topology_node_verify_root(&m_adc_application_state.tlist, &m_adc_application_state.root);
+		}
 	}
 
 	return res;
@@ -1190,14 +1473,15 @@ static bool adc_server_load_local(void)
 
 	res = false;
 
-	/* load the local aps certificate */
-	if (aern_server_topology_local_fetch(&m_adc_application_state, &m_adc_application_state.ads) == true)
+	/* load the local ADC certificate */
+	if (aern_server_topology_local_fetch(&m_adc_application_state, &m_adc_application_state.adc) == true)
 	{
-		/* verify the aps certificate */
-		if (aern_certificate_child_is_valid(&m_adc_application_state.ads) == true &&
-			aern_certificate_root_signature_verify(&m_adc_application_state.ads, &m_adc_application_state.root) == true)
+		/* verify the ADC certificate */
+		if (aern_certificate_child_is_valid(&m_adc_application_state.adc) == true &&
+			m_adc_application_state.adc.designation == aern_network_designation_adc &&
+			aern_certificate_root_signature_verify(&m_adc_application_state.adc, &m_adc_application_state.root) == true)
 		{
-			res = aern_topology_node_verify_issuer(&m_adc_application_state.tlist, &m_adc_application_state.ads, m_adc_application_state.issuer);
+			res = aern_topology_node_verify_issuer(&m_adc_application_state.tlist, &m_adc_application_state.adc, m_adc_application_state.issuer);
 		}
 	}
 
@@ -1206,17 +1490,28 @@ static bool adc_server_load_local(void)
 
 static bool adc_server_start(void)
 {
-#if defined(AERN_NETWORK_PROTOCOL_IPV6)
-	/* start the main receive loop on a new thread */
-	if (qsc_async_thread_create_noargs(&adc_ipv6_server_start))
-#else
-	if (qsc_async_thread_create_noargs(&adc_ipv4_server_start))
-#endif
+	bool res;
+
+	res = false;
+
+	if (adc_server_ready() == true)
 	{
 		m_adc_server_loop_status = aern_server_loop_status_started;
+
+#if defined(AERN_NETWORK_PROTOCOL_IPV6)
+		/* start the main receive loop on a new thread */
+		res = qsc_async_thread_create_noargs(&adc_ipv6_server_start);
+#else
+		res = qsc_async_thread_create_noargs(&adc_ipv4_server_start);
+#endif
+
+		if (res == false)
+		{
+			m_adc_server_loop_status = aern_server_loop_status_stopped;
+		}
 	}
 
-	return (m_adc_server_loop_status == aern_server_loop_status_started);
+	return res;
 }
 
 static bool adc_certificate_export(const char* cmsg)
@@ -1242,17 +1537,27 @@ static bool adc_certificate_import(const char* cmsg)
 		m_adc_server_loop_status = aern_server_loop_status_paused;
 	}
 
-	res = aern_server_child_certificate_import(&m_adc_application_state.ads, &m_adc_application_state, cmsg);
+	res = aern_server_child_certificate_import(&m_adc_application_state.adc, &m_adc_application_state, cmsg);
 
 	if (res == true)
 	{
 		mtx = qsc_async_mutex_lock_ex();
 
-		res = aern_certificate_child_file_to_struct(cmsg, &m_adc_application_state.ads);
+		res = aern_certificate_child_file_to_struct(cmsg, &m_adc_application_state.adc);
 
-		/* register the node and save the database */
-		aern_topology_child_register(&m_adc_application_state.tlist, &m_adc_application_state.ads, m_adc_application_state.localip);
-		aern_server_topology_to_file(&m_adc_application_state);
+		if (res == true &&
+			m_adc_application_state.adc.designation == aern_network_designation_adc &&
+			aern_network_certificate_verify(&m_adc_application_state.adc, &m_adc_application_state.root) == aern_protocol_error_none)
+		{
+			/* register the node and save the database */
+			aern_topology_child_register(&m_adc_application_state.tlist, &m_adc_application_state.adc, m_adc_application_state.localip);
+			aern_server_topology_to_file(&m_adc_application_state);
+			adc_topology_version_update();
+		}
+		else
+		{
+			res = false;
+		}
 
 		qsc_async_mutex_unlock_ex(mtx);
 
@@ -2001,6 +2306,7 @@ static void adc_command_execute(const char* command)
 				if (m_adc_server_loop_status == aern_server_loop_status_started)
 				{
 					m_adc_server_loop_status = aern_server_loop_status_stopped;
+					adc_server_listener_close();
 					aern_menu_print_predefined_message(aern_application_server_service_stopped, m_adc_application_state.mode, m_adc_application_state.hostname);
 					aern_server_log_write_message(&m_adc_application_state, aern_application_log_service_stopped, m_adc_application_state.hostname, slen);
 				}
@@ -2046,7 +2352,7 @@ static void adc_command_execute(const char* command)
 				merr = adc_remote_signing_request(cmsg);
 
 				slen = qsc_stringutils_string_size(cmsg);
-				if (res == true)
+				if (merr == aern_protocol_error_none)
 				{
 					aern_menu_print_predefined_message(aern_application_certificate_remote_sign_success, m_adc_application_state.mode, m_adc_application_state.hostname);
 					aern_server_log_write_message(&m_adc_application_state, aern_application_log_remote_signing_success, cmsg, slen);
@@ -2124,9 +2430,16 @@ static void adc_command_execute(const char* command)
 		if (aern_server_user_login(&m_adc_application_state) == true)
 		{
 			/* load certificates */
-			if (adc_server_load_root() == true)
+			res = adc_server_load_root();
+
+			if (res == true)
 			{
-				adc_server_load_local();
+				res = adc_server_load_local();
+			}
+
+			if (res == false)
+			{
+				aern_menu_print_predefined_message(aern_application_server_service_start_failure, m_adc_application_state.mode, m_adc_application_state.hostname);
 			}
 		}
 		else
@@ -2295,7 +2608,7 @@ static void adc_command_loop(char* command)
 	}
 }
 
-/* ads functions */
+/* ADC functions */
 
 void aern_adc_pause_server(void)
 {
@@ -2309,7 +2622,7 @@ int32_t aern_adc_start_server(void)
 	int32_t ret;
 
 	/* initialize the server */
-	aern_server_state_initialize(&m_adc_application_state, aern_network_designation_ads);
+	aern_server_state_initialize(&m_adc_application_state, aern_network_designation_adc);
 
 	/* set the window parameters */
 	qsc_consoleutils_set_virtual_terminal();

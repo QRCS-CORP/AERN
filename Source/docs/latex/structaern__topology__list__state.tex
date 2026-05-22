@@ -15,6 +15,10 @@ The AERN topology list structure.
 uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__topology__list__state_a03d916c2e96cc40000b839efa9252f24}{topology}}
 \item 
 uint32\+\_\+t \mbox{\hyperlink{structaern__topology__list__state_a86988a65e0d3ece7990c032c159786d6}{count}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__topology__list__state_aa38fd391d6e9522074df6743fcd3d323}{version}}
+\item 
+qsc\+\_\+mutex \mbox{\hyperlink{structaern__topology__list__state_a8ccf556dfad550f89d48e7df09a4a250}{gmtx}}
 \end{DoxyCompactItemize}
 
 
@@ -32,13 +36,25 @@ This structure represents the complete list of network nodes in the topology.
 {\footnotesize\ttfamily \label{structaern__topology__list__state_a86988a65e0d3ece7990c032c159786d6} 
 uint32\+\_\+t count}
 
-The number of active nodes in the topology. \Hypertarget{structaern__topology__list__state_a03d916c2e96cc40000b839efa9252f24}\index{aern\_topology\_list\_state@{aern\_topology\_list\_state}!topology@{topology}}
+The number of active nodes in the topology. \Hypertarget{structaern__topology__list__state_a8ccf556dfad550f89d48e7df09a4a250}\index{aern\_topology\_list\_state@{aern\_topology\_list\_state}!gmtx@{gmtx}}
+\index{gmtx@{gmtx}!aern\_topology\_list\_state@{aern\_topology\_list\_state}}
+\doxysubsubsection{\texorpdfstring{gmtx}{gmtx}}
+{\footnotesize\ttfamily \label{structaern__topology__list__state_a8ccf556dfad550f89d48e7df09a4a250} 
+qsc\+\_\+mutex gmtx}
+
+The global thread mutex. \Hypertarget{structaern__topology__list__state_a03d916c2e96cc40000b839efa9252f24}\index{aern\_topology\_list\_state@{aern\_topology\_list\_state}!topology@{topology}}
 \index{topology@{topology}!aern\_topology\_list\_state@{aern\_topology\_list\_state}}
 \doxysubsubsection{\texorpdfstring{topology}{topology}}
 {\footnotesize\ttfamily \label{structaern__topology__list__state_a03d916c2e96cc40000b839efa9252f24} 
 uint8\+\_\+t\texorpdfstring{$\ast$}{*} topology}
 
-Pointer to the serialized topology array. 
+Pointer to the serialized topology array. \Hypertarget{structaern__topology__list__state_aa38fd391d6e9522074df6743fcd3d323}\index{aern\_topology\_list\_state@{aern\_topology\_list\_state}!version@{version}}
+\index{version@{version}!aern\_topology\_list\_state@{aern\_topology\_list\_state}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{structaern__topology__list__state_aa38fd391d6e9522074df6743fcd3d323} 
+uint64\+\_\+t version}
+
+The monotonic topology version; zero means uninitialized or disposed. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

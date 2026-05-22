@@ -1,0 +1,221 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+Saved/topology2.h File Reference}
+\hypertarget{topology2_8h}{}\label{topology2_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/Saved/topology2.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/Saved/topology2.h}}
+
+
+Phase-\/2 topology extensions\+: deterministic hash, monotonic versioning, and named add/update/remove wrappers.  
+
+
+{\ttfamily \#include "{}topology.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Wraps a topology list with a monotonically increasing version counter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{topology2_8h_a260f3275103972434e2f65f4adfc02bf}\label{topology2_8h_a260f3275103972434e2f65f4adfc02bf} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+topology\+\_\+versioned\+\_\+state {\bfseries aern\+\_\+topology\+\_\+versioned\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology2_8h_ab19607d70e67355161c05d40127ed24a}{aern\+\_\+topology\+\_\+versioned\+\_\+initialize}} (\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}vtopo)
+\begin{DoxyCompactList}\small\item\em Initialise a versioned topology state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology2_8h_a1eec1f6aa41f41422e8ee355784ab151}{aern\+\_\+topology\+\_\+versioned\+\_\+dispose}} (\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}vtopo)
+\begin{DoxyCompactList}\small\item\em Dispose of a versioned topology state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint64\+\_\+t \mbox{\hyperlink{topology2_8h_a8a1d167b59105263024b251f93d3eceb}{aern\+\_\+topology\+\_\+increment\+\_\+version}} (\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}vtopo)
+\begin{DoxyCompactList}\small\item\em Atomically increment the topology version and return the new value. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{topology2_8h_a0f888e71e7e8bc22a7a8a5d4d222cbcf}{aern\+\_\+topology\+\_\+version\+\_\+verify}} (const \mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}vtopo, uint64\+\_\+t incoming\+\_\+ver)
+\begin{DoxyCompactList}\small\item\em Verify that an incoming version is strictly greater than the current. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology2_8h_abecf3853792dd34b291edb7b3fc7a92f}{aern\+\_\+topology\+\_\+add}} (\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}vtopo, const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Add a node to the topology. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{topology2_8h_a39ebea8f25e87d1eb5dcad0b2b903f8a}{aern\+\_\+topology\+\_\+update}} (\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}vtopo, const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Update an existing node in the topology. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology2_8h_a8f8ada0e0017c96afbe7ee3532066cc6}{aern\+\_\+topology\+\_\+remove}} (\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}vtopo, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}serial)
+\begin{DoxyCompactList}\small\item\em Remove a node from the topology by its serial number. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology2_8h_ac1abf2bd37fcad1a25566d81d80e1996}{aern\+\_\+topology\+\_\+hash}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, uint8\+\_\+t hash\+\_\+out\mbox{[}\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Compute the canonical 32-\/byte SHAKE-\/256 hash of the topology list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Phase-\/2 topology extensions\+: deterministic hash, monotonic versioning, and named add/update/remove wrappers. 
+
+Spec references\+: AERN-\/2025 Rev. 1a §5–6, Phase-\/2 tasks 2e–2f.
+
+This header adds three categories of new functionality to the base topology\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Canonical hash}} (2e)\+: {\ttfamily \doxylink{topology2_8h_ac1abf2bd37fcad1a25566d81d80e1996}{aern\+\_\+topology\+\_\+hash()}} serialises the topology list in serial-\/number order, then computes SHAKE-\/256 over the result, yielding a 32-\/byte digest that is identical across all nodes with the same logical topology.
+\item {\bfseries{Monotonic version}} (2f)\+: a {\ttfamily uint64\+\_\+t version} field is embedded in {\ttfamily \doxylink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}}, which wraps {\ttfamily \doxylink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}}. Any incoming update MUST carry a strictly greater version; otherwise it is rejected with {\ttfamily aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request}. {\ttfamily \doxylink{topology2_8h_a8a1d167b59105263024b251f93d3eceb}{aern\+\_\+topology\+\_\+increment\+\_\+version()}} atomically increments and returns the new version.
+\item {\bfseries{Named wrappers}} (2e)\+: {\ttfamily aern\+\_\+topology\+\_\+add}, {\ttfamily aern\+\_\+topology\+\_\+update}, and {\ttfamily aern\+\_\+topology\+\_\+remove} provide semantically clear entry points that map to the correct underlying list operations. 
+\end{DoxyEnumerate}
+
+\label{doc-func-members}
+\Hypertarget{topology2_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{topology2_8h_abecf3853792dd34b291edb7b3fc7a92f}\index{topology2.h@{topology2.h}!aern\_topology\_add@{aern\_topology\_add}}
+\index{aern\_topology\_add@{aern\_topology\_add}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_add()}{aern\_topology\_add()}}
+{\footnotesize\ttfamily \label{topology2_8h_abecf3853792dd34b291edb7b3fc7a92f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{vtopo}{, }\item[{const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Add a node to the topology. 
+
+If a node with the same issuer already exists it is replaced (idempotent add / overwrite semantics, identical to the existing child\+\_\+register path). Increments the version after the operation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vtopo} & \mbox{[}in,out\mbox{]} The versioned topology to modify. \\
+\hline
+{\em node} & \mbox{[}in\mbox{]} The node to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{topology2_8h_ac1abf2bd37fcad1a25566d81d80e1996}\index{topology2.h@{topology2.h}!aern\_topology\_hash@{aern\_topology\_hash}}
+\index{aern\_topology\_hash@{aern\_topology\_hash}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_hash()}{aern\_topology\_hash()}}
+{\footnotesize\ttfamily \label{topology2_8h_ac1abf2bd37fcad1a25566d81d80e1996} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+hash (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{uint8\+\_\+t}]{hash\+\_\+out}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Compute the canonical 32-\/byte SHAKE-\/256 hash of the topology list. 
+
+Nodes are serialised in ascending order of their 16-\/byte serial numbers (lexicographic comparison) so that all peers with the same logical topology produce an identical hash regardless of insertion order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}in\mbox{]} The topology list to hash (read-\/only). \\
+\hline
+{\em hash\+\_\+out} & \mbox{[}out\mbox{]} Output buffer; exactly AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE (32) bytes.\\
+\hline
+\end{DoxyParams}
+Compute the canonical 32-\/byte SHAKE-\/256 hash of the topology list.
+
+This function copies the serialized topology, sorts the copy by certificate serial number, and computes a SHAKE-\/256 digest over the canonical serialized form.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
+\hline
+{\em hash} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The output hash buffer; must be AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE bytes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{topology2_8h_a8a1d167b59105263024b251f93d3eceb}\index{topology2.h@{topology2.h}!aern\_topology\_increment\_version@{aern\_topology\_increment\_version}}
+\index{aern\_topology\_increment\_version@{aern\_topology\_increment\_version}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_increment\_version()}{aern\_topology\_increment\_version()}}
+{\footnotesize\ttfamily \label{topology2_8h_a8a1d167b59105263024b251f93d3eceb} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint64\+\_\+t aern\+\_\+topology\+\_\+increment\+\_\+version (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{vtopo}{}\end{DoxyParamCaption})}
+
+
+
+Atomically increment the topology version and return the new value. 
+
+Must be called whenever the topology is structurally modified.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vtopo} & \mbox{[}in,out\mbox{]} Pointer to the versioned topology. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new (post-\/increment) version number. 
+\end{DoxyReturn}
+\Hypertarget{topology2_8h_a8f8ada0e0017c96afbe7ee3532066cc6}\index{topology2.h@{topology2.h}!aern\_topology\_remove@{aern\_topology\_remove}}
+\index{aern\_topology\_remove@{aern\_topology\_remove}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_remove()}{aern\_topology\_remove()}}
+{\footnotesize\ttfamily \label{topology2_8h_a8f8ada0e0017c96afbe7ee3532066cc6} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{vtopo}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{serial}{}\end{DoxyParamCaption})}
+
+
+
+Remove a node from the topology by its serial number. 
+
+No-\/op if the serial is not found. Increments the version when a node is actually removed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vtopo} & \mbox{[}in,out\mbox{]} The versioned topology to modify. \\
+\hline
+{\em serial} & \mbox{[}in\mbox{]} The AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE-\/byte serial to remove. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{topology2_8h_a39ebea8f25e87d1eb5dcad0b2b903f8a}\index{topology2.h@{topology2.h}!aern\_topology\_update@{aern\_topology\_update}}
+\index{aern\_topology\_update@{aern\_topology\_update}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_update()}{aern\_topology\_update()}}
+{\footnotesize\ttfamily \label{topology2_8h_a39ebea8f25e87d1eb5dcad0b2b903f8a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+topology\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{vtopo}{, }\item[{const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Update an existing node in the topology. 
+
+Finds the node by serial number, removes the old entry, then inserts the new state. Returns aern\+\_\+protocol\+\_\+error\+\_\+node\+\_\+not\+\_\+found if no matching serial exists. Increments the version on success.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vtopo} & \mbox{[}in,out\mbox{]} The versioned topology to modify. \\
+\hline
+{\em node} & \mbox{[}in\mbox{]} Replacement node state (serial must match an existing entry). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{topology2_8h_a0f888e71e7e8bc22a7a8a5d4d222cbcf}\index{topology2.h@{topology2.h}!aern\_topology\_version\_verify@{aern\_topology\_version\_verify}}
+\index{aern\_topology\_version\_verify@{aern\_topology\_version\_verify}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_version\_verify()}{aern\_topology\_version\_verify()}}
+{\footnotesize\ttfamily \label{topology2_8h_a0f888e71e7e8bc22a7a8a5d4d222cbcf} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+topology\+\_\+version\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{vtopo}{, }\item[{uint64\+\_\+t}]{incoming\+\_\+ver}{}\end{DoxyParamCaption})}
+
+
+
+Verify that an incoming version is strictly greater than the current. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vtopo} & \mbox{[}in\mbox{]} The local versioned topology. \\
+\hline
+{\em incoming\+\_\+ver} & The version number carried by the incoming update. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none if incoming\+\_\+ver \texorpdfstring{$>$}{>} vtopo-\/\texorpdfstring{$>$}{>}version; aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request otherwise. 
+\end{DoxyReturn}
+\Hypertarget{topology2_8h_a1eec1f6aa41f41422e8ee355784ab151}\index{topology2.h@{topology2.h}!aern\_topology\_versioned\_dispose@{aern\_topology\_versioned\_dispose}}
+\index{aern\_topology\_versioned\_dispose@{aern\_topology\_versioned\_dispose}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_versioned\_dispose()}{aern\_topology\_versioned\_dispose()}}
+{\footnotesize\ttfamily \label{topology2_8h_a1eec1f6aa41f41422e8ee355784ab151} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+versioned\+\_\+dispose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{vtopo}{}\end{DoxyParamCaption})}
+
+
+
+Dispose of a versioned topology state. 
+
+Zeroes and frees the embedded list; zeroes the version counter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vtopo} & \mbox{[}in,out\mbox{]} Pointer to the versioned topology to dispose. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{topology2_8h_ab19607d70e67355161c05d40127ed24a}\index{topology2.h@{topology2.h}!aern\_topology\_versioned\_initialize@{aern\_topology\_versioned\_initialize}}
+\index{aern\_topology\_versioned\_initialize@{aern\_topology\_versioned\_initialize}!topology2.h@{topology2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_versioned\_initialize()}{aern\_topology\_versioned\_initialize()}}
+{\footnotesize\ttfamily \label{topology2_8h_ab19607d70e67355161c05d40127ed24a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+versioned\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{vtopo}{}\end{DoxyParamCaption})}
+
+
+
+Initialise a versioned topology state. 
+
+Sets the embedded list to empty and sets version = 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vtopo} & \mbox{[}out\mbox{]} Pointer to the versioned topology to initialise. \\
+\hline
+\end{DoxyParams}

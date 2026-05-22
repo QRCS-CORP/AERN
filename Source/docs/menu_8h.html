@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -113,8 +113,8 @@ Functions</h2></td></tr>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// Proceed with backup...</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aaern_8h_html_a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780"><div class="ttname"><a href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780">aern_protocol_error_invalid_request</a></div><div class="ttdeci">@ aern_protocol_error_invalid_request</div><div class="ttdef"><b>Definition</b> aern.h:1263</div></div>
-<div class="ttc" id="acommands_8h_html_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d"><div class="ttname"><a href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d">aern_console_mode_config</a></div><div class="ttdeci">@ aern_console_mode_config</div><div class="ttdef"><b>Definition</b> commands.h:335</div></div>
+<div class="ttc" id="aaern_8h_html_a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780"><div class="ttname"><a href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724a8c491c2a689fe64951c2a39f79f51780">aern_protocol_error_invalid_request</a></div><div class="ttdeci">@ aern_protocol_error_invalid_request</div><div class="ttdef"><b>Definition</b> aern.h:1550</div></div>
+<div class="ttc" id="acommands_8h_html_a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d"><div class="ttname"><a href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdbac2f59e6b0196d24ee6e8ce2853cb934d">aern_console_mode_config</a></div><div class="ttdeci">@ aern_console_mode_config</div><div class="ttdef"><b>Definition</b> commands.h:347</div></div>
 <div class="ttc" id="amenu_8h_html_a07621deb5291e8bf1eb38bafadfd6a81"><div class="ttname"><a href="#a07621deb5291e8bf1eb38bafadfd6a81">aern_menu_print_error</a></div><div class="ttdeci">AERN_EXPORT_API void aern_menu_print_error(aern_protocol_errors error, aern_console_modes mode, const char *host)</div><div class="ttdoc">Print an error message to the console.</div><div class="ttdef"><b>Definition</b> menu.c:14</div></div>
 <div class="ttc" id="amenu_8h_html_a46058809e627feabcb004ce2f666e0c1"><div class="ttname"><a href="#a46058809e627feabcb004ce2f666e0c1">aern_menu_print_predefined_message_confirm</a></div><div class="ttdeci">AERN_EXPORT_API bool aern_menu_print_predefined_message_confirm(aern_application_messages msgnum, aern_console_modes mode, const char *host)</div><div class="ttdoc">Print a predefined message to the console and wait for confirmation.</div><div class="ttdef"><b>Definition</b> menu.c:115</div></div>
 <div class="ttc" id="amenu_8h_html_ae66fb3583f778660608276d881247085"><div class="ttname"><a href="#ae66fb3583f778660608276d881247085">aern_menu_get_prompt</a></div><div class="ttdeci">AERN_EXPORT_API const char * aern_menu_get_prompt(aern_console_modes mode)</div><div class="ttdoc">Returns the console prompt string.</div><div class="ttdef"><b>Definition</b> menu.c:9</div></div>
@@ -138,7 +138,7 @@ Functions</h2></td></tr>
 <p>This function returns the appropriate prompt string based on the specified console mode. The prompt is selected from an internal array of mode strings.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode.</td></tr>
   </table>
   </dd>
 </dl>
@@ -174,9 +174,9 @@ Functions</h2></td></tr>
 <p>This function converts a protocol error code into a descriptive string and prints it to the console. It prints the prompt first (based on the mode and host) and then the error message.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">error</td><td>The protocol error enumerator. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">error</td><td>[<a class="el" href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724" title="The AERN protocol error values.">aern_protocol_errors</a>] The protocol error enumerator. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -211,9 +211,9 @@ Functions</h2></td></tr>
 <p>This function prints the given message string to the console. It first prints the prompt (using the current mode and host) and then the message on a new line.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message string to print. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message string to print. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -248,9 +248,9 @@ Functions</h2></td></tr>
 <p>This function prints a message and then waits for the user to input a single character. If the user enters 'y' or 'Y', the function returns true.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message string. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message string. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name.</td></tr>
   </table>
   </dd>
 </dl>
@@ -286,9 +286,9 @@ Functions</h2></td></tr>
 <p>This function prints a message that is predefined in the AERN application. The message is chosen based on the msgnum parameter.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msgnum</td><td>The predefined message enumerator. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">msgnum</td><td>[<a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>] The predefined message enumerator. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -323,9 +323,9 @@ Functions</h2></td></tr>
 <p>This function prints a predefined message and then waits for the user to provide confirmation. A response of 'y' or 'Y' returns true.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msgnum</td><td>The predefined message enumerator. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">msgnum</td><td>[<a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>] The predefined message enumerator. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name.</td></tr>
   </table>
   </dd>
 </dl>
@@ -361,9 +361,9 @@ Functions</h2></td></tr>
 <p>This function prints a predefined message (as defined in the AERN application messages) without a newline at the end.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msgnum</td><td>The predefined message enumerator. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">msgnum</td><td>[<a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>] The predefined message enumerator. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -393,8 +393,8 @@ Functions</h2></td></tr>
 <p>This function prints the application prompt string to the console using the current console mode and host name.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -449,9 +449,9 @@ Functions</h2></td></tr>
 <p>This function prints a prompt followed by a message string. The message is printed without appending a newline character.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message string to print. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode. </td></tr>
-    <tr><td class="paramname">host</td><td>The host name. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message string to print. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode. </td></tr>
+    <tr><td class="paramname">host</td><td>[const char*] The host name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -477,7 +477,7 @@ Functions</h2></td></tr>
 <p>This function prints the specified text string using a safe console print, without appending a newline.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message string to print. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message string to print. </td></tr>
   </table>
   </dd>
 </dl>
@@ -503,7 +503,7 @@ Functions</h2></td></tr>
 <p>This function prints the specified text string and then appends a newline.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>The message string to print. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message string to print. </td></tr>
   </table>
   </dd>
 </dl>

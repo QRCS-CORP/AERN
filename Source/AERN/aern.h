@@ -113,8 +113,6 @@
  * These tests collectively ensure the robustness, consistency, and security of the AERN protocol configuration.
  */
 
-/* --- Function Mapping Macros --- */
-
 /*!
 * \def AERN_USE_RCS_ENCRYPTION
 * \brief If the RCS encryption option is chosen SKDP uses the more modern RCS stream cipher with KMAC/QMAC authentication.
@@ -282,113 +280,139 @@
 #	define AERN_ASYMMETRIC_VERIFICATION_KEY_SIZE (QSC_DILITHIUM_PUBLICKEY_SIZE)
 
 #	if defined(QSC_DILITHIUM_S1P44) && defined(QSC_KYBER_S1K2P512)
+
 /*!
  * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
  * \brief The encoded certificate string length
  */
 #		define AERN_CHILD_CERTIFICATE_STRING_SIZE 5612U
+
 /*!
  * \def AERN_PARAMATERS_DILITHIUM_KYBER_D1K1
  * \brief The Dilithium D1K1 parameter set
  */
 #		define AERN_PARAMATERS_DILITHIUM_KYBER_D1K1
+
 /*!
  * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
  * \brief The root certificate encoded string size
  */
 #		define AERN_ROOT_CERTIFICATE_STRING_SIZE 2188U
+
 /*!
  * \def AERN_SIGNATURE_ENCODING_SIZE
  * \brief The encoded signature size
  */
 #		define AERN_SIGNATURE_ENCODING_SIZE 3312U
+
 /*!
  * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
  * \brief The verification key size
  */
 #		define AERN_VERIFICATION_KEY_ENCODING_SIZE 1752U
+
 #	elif defined(QSC_DILITHIUM_S3P65) && defined(QSC_KYBER_S3K3P768)
+
 /*!
  * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
  * \brief The encoded certificate string length
  */
 #		define AERN_CHILD_CERTIFICATE_STRING_SIZE 7648U
+
 /*!
  * \def AERN_PARAMATERS_DILITHIUM_KYBER_D3K3
  * \brief The Dilithium D1K1 parameter set
  */
 #		define AERN_PARAMATERS_DILITHIUM_KYBER_D3K3
+
 /*!
  * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
  * \brief The root certificate encoded string size
  */
 #		define AERN_ROOT_CERTIFICATE_STRING_SIZE 3053U
+
 /*!
  * \def AERN_SIGNATURE_ENCODING_SIZE
  * \brief The encoded signature size
  */
-#		define AERN_SIGNATURE_ENCODING_SIZE 4476U
+#		define AERN_SIGNATURE_ENCODING_SIZE 4456U
+
 /*!
  * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
  * \brief The verification key size
  */
 #		define AERN_VERIFICATION_KEY_ENCODING_SIZE 2604
+
 #	elif defined(QSC_DILITHIUM_S5P87) && defined(QSC_KYBER_S5K4P1024)
+
 /*!
  * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
  * \brief The encoded certificate string length
  */
 #		define AERN_CHILD_CERTIFICATE_STRING_SIZE 10311U
+
 /*!
  * \def AERN_PARAMATERS_DILITHIUM_KYBER_D5K5
  * \brief The Dilithium D1K1 parameter set
  */
 #		define AERN_PARAMATERS_DILITHIUM_KYBER_D5K5
+
 /*!
  * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
  * \brief The root certificate encoded string size
  */
 #		define AERN_ROOT_CERTIFICATE_STRING_SIZE 3919U
+
 /*!
  * \def AERN_SIGNATURE_ENCODING_SIZE
  * \brief The encoded signature size
  */
 #		define AERN_SIGNATURE_ENCODING_SIZE 6212U
+
 /*!
  * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
  * \brief The verification key size
  */
 #		define AERN_VERIFICATION_KEY_ENCODING_SIZE 3456U
+
 #	elif defined(QSC_DILITHIUM_S5P87) && defined(QSC_KYBER_S6K5P1280)
+
 /*!
  * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
  * \brief The encoded certificate string length
  */
 #		define AERN_CHILD_CERTIFICATE_STRING_SIZE 10311U
+
 /*!
  * \def AERN_PARAMATERS_DILITHIUM_KYBER_D5K6
  * \brief The Dilithium D1K1 parameter set
  */
 #		define AERN_PARAMATERS_DILITHIUM_KYBER_D5K6
+
 /*!
  * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
  * \brief The root certificate encoded string size
  */
 #		define AERN_ROOT_CERTIFICATE_STRING_SIZE 3919U
+
 /*!
  * \def AERN_SIGNATURE_ENCODING_SIZE
  * \brief The encoded signature size
  */
 #		define AERN_SIGNATURE_ENCODING_SIZE 6172U
+
 /*!
  * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
  * \brief The verification key size
  */
 #		define AERN_VERIFICATION_KEY_ENCODING_SIZE 3456U
+
 #	else
+
 		/* The library signature scheme and asymmetric cipher parameter sets 
 		must be synchronized to a common security level; s1, s3, s5, s5+ */
 #		error the library parameter sets are mismatched!
+
 #	endif
 
 #elif defined(AERN_CONFIG_SPHINCS_MCELIECE)
@@ -436,214 +460,260 @@
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 23737U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SF1M1
 			 * \brief The McEliece SF1M1 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSF_MCELIECE_SF1M1
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 455U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 22828U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 44U
+
 #		elif defined(QSC_SPHINCSPLUS_S1S128SHAKERS)
+
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 11237U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SS1M1
 			 * \brief The McEliece SS1M1 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSS_MCELIECE_SS1M1
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 455U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 10520U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 44U
+
 #		endif
 #	elif defined(QSC_MCELIECE_S3N4608T96)
 #		if defined(QSC_SPHINCSPLUS_S3S192SHAKERF)
+
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 48912U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SF3M3
 			 * \brief The McEliece SF3M3 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSF_MCELIECE_SF3M3
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 476U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 47596U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 64U
+
 #		elif defined(QSC_SPHINCSPLUS_S3S192SHAKERS)
+
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 22588U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SS3M3
 			 * \brief The McEliece SS3M3 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSS_MCELIECE_SS3M3
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 476U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 21676U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 64U
+
 #		endif
 #	elif defined(QSC_MCELIECE_S5N6688T128)
 #		if defined(QSC_SPHINCSPLUS_S5S256SHAKERF)
+
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 68158U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SF5M5
 			 * \brief The McEliece SF5M5 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSF_MCELIECE_SF5M5
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 501U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 66520U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 88U
+
 #		elif defined(QSC_SPHINCSPLUS_S5S256SHAKERS)
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 40987U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SS5M5
 			 * \brief The McEliece SS5M5 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSS_MCELIECE_SS5M5
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 501U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 39768U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 88U
+
 #		endif
 #	elif defined(QSC_MCELIECE_S6N6960T119)
 #		if defined(QSC_SPHINCSPLUS_S5S256SHAKERF)
+
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 68157U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SF5M6
 			 * \brief The McEliece SF5M6 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSF_MCELIECE_SF5M6
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 501U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 66520U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 88U
+
 #		elif defined(QSC_SPHINCSPLUS_S5S256SHAKERS)
+
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 40987U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SS5M6
 			 * \brief The McEliece SS5M6 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSS_MCELIECE_SS5M6
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 501U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 39768U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 88U
+
 #		endif
 #	elif defined(QSC_MCELIECE_S7N8192T128)
 #		if defined(QSC_SPHINCSPLUS_S5S256SHAKERF)
@@ -652,52 +722,63 @@
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 68157U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SF5M7
 			 * \brief The McEliece SF5M7 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSF_MCELIECE_SF5M7
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 501U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 66520U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 88U
+
 #		elif defined(QSC_SPHINCSPLUS_S5S256SHAKERS)
+
 			/*!
 			 * \def AERN_CHILD_CERTIFICATE_STRING_SIZE
 			 * \brief The encoded certificate string length
 			 */
 #			define AERN_CHILD_CERTIFICATE_STRING_SIZE 40987U
+
 			/*!
 			 * \def AERN_PARAMATERS_MCELIECE_SS5M7
 			 * \brief The McEliece SS5M7 parameter set
 			 */
 #			define AERN_PARAMATERS_SPHINCSS_MCELIECE_SS5M7
+
 			/*!
 			 * \def AERN_ROOT_CERTIFICATE_STRING_SIZE
 			 * \brief The root certificate encoded string size
 			 */
 #			define AERN_ROOT_CERTIFICATE_STRING_SIZE 501U
+
 			/*!
 			 * \def AERN_SIGNATURE_ENCODING_SIZE
 			 * \brief The encoded signature size
 			 */
 #			define AERN_SIGNATURE_ENCODING_SIZE 39768U
+
 			/*!
 			 * \def AERN_VERIFICATION_KEY_ENCODING_SIZE
 			 * \brief The verification key size
 			 */
 #			define AERN_VERIFICATION_KEY_ENCODING_SIZE 88U
+
 #		else
 #			error Invalid parameter sets, check the QSC library settings 
 #		endif
@@ -796,7 +877,7 @@
 
 /*!
  * \def AERN_CERTIFICATE_DEFAULT_PERIOD
- * \brief The default certificate validity period in milliseconds.
+ * \brief The default certificate validity period in seconds.
  */
 #define AERN_CERTIFICATE_DEFAULT_PERIOD ((uint64_t)365U * 24U * 60U * 60U)
 
@@ -823,7 +904,7 @@
  * \brief The maximum certificate issuer string length.
  * The last character must be a string terminator.
  */
-#define AERN_CERTIFICATE_ISSUER_SIZE 256U
+#define AERN_CERTIFICATE_ISSUER_SIZE 128U
 
 /*!
  * \def AERN_CERTIFICATE_LINE_LENGTH
@@ -833,13 +914,13 @@
 
 /*!
  * \def AERN_CERTIFICATE_MAXIMUM_PERIOD
- * \brief The maximum certificate validity period in milliseconds.
+ * \brief The maximum certificate validity period in seconds.
  */
 #define AERN_CERTIFICATE_MAXIMUM_PERIOD (AERN_CERTIFICATE_DEFAULT_PERIOD * 2U)
 
 /*!
  * \def AERN_CERTIFICATE_MINIMUM_PERIOD
- * \brief The minimum certificate validity period in milliseconds.
+ * \brief The minimum certificate validity period in seconds.
  */
 #define AERN_CERTIFICATE_MINIMUM_PERIOD ((uint64_t)1U * 24U * 60U * 60U)
 
@@ -999,7 +1080,7 @@
 
 /*!
  * \def AERN_ADC_UPDATE_WAIT_TIME
- * \brief The interval in milliseconds between topology full updates.
+ * \brief The interval in seconds between topology full updates.
  *
  * Note: Default is 7 days.
  */
@@ -1018,6 +1099,52 @@
 #define AERN_ERROR_STRING_WIDTH 128U
 
 /*!
+ * \def AERN_JITTER_MAX_MS
+ * \brief Maximum jitter added to each packet send (milliseconds). 
+ */
+#ifndef AERN_JITTER_MAX_MS
+#  define AERN_JITTER_MAX_MS 50U
+#endif
+
+/*!
+ * \def AERN_BACKGROUND_INTERVAL_MS
+* \brief Interval between background cover-traffic packets (milliseconds). 
+*/
+#ifndef AERN_BACKGROUND_INTERVAL_MS
+#  define AERN_BACKGROUND_INTERVAL_MS 1000U
+#endif
+
+/*!
+ * \def AERN_LOG_DEVICE_NAME_SIZE
+ * \brief Maximum length of a log device-name field (bytes, null-terminated). 
+ */
+#define AERN_LOG_DEVICE_NAME_SIZE 32U
+
+/*!
+ * \def AERN_LOG_DEVICE_NAME_SIZE
+ * \brief Fixed-width size of one log entry on disk (before encryption). 
+ */
+#define AERN_LOG_ENTRY_SIZE (32U + 1U + 32U + 1U + 10U + 1U + 64U + 1U)
+
+/*!
+ * \def AERN_LOG_ERROR_STRING_SIZE
+ * \brief Maximum length of a log error-string field (bytes, null-terminated). 
+ */
+#define AERN_LOG_ERROR_STRING_SIZE 64U
+
+ /*!
+ * \def AERN_LOG_SALT_SIZE
+ * \brief Size of the random log salt stored alongside the encrypted log. 
+ */
+#define AERN_LOG_SALT_SIZE 32U
+
+ /*! 
+ * \def AERN_LOG_SEED_SIZE
+ * \brief Size of the password-derived log encryption seed (key + nonce). 
+ */
+#define AERN_LOG_SEED_SIZE 64U
+
+/*!
  * \def AERN_MESSAGE_MAX_SIZE
  * \brief The maximum message size (max signature + max certificate sizes).
  */
@@ -1025,7 +1152,7 @@
 
 /*!
  * \def AERN_MFK_EXPIRATION_PERIOD
- * \brief The MFK validity period in milliseconds.
+ * \brief The MFK validity period in seconds.
  */
 #define AERN_MFK_EXPIRATION_PERIOD ((uint64_t)60U * 24U * 60U * 60U)
 
@@ -1083,6 +1210,146 @@
  * \brief The AERN packet header size.
  */
 #define AERN_PACKET_HEADER_SIZE 22U
+
+/*!
+ * \def AERN_RELAY_AUTH_FAILURE_LIMIT
+ * \brief The number of relay authentication failures tolerated for a peer tunnel.
+ *
+ * This value is a policy threshold used by relay processing to count repeated
+ * authentication failures on an established APS tunnel. A single failed relay
+ * packet is discarded and SHALL NOT by itself invalidate the tunnel.
+ */
+#define AERN_RELAY_AUTH_FAILURE_LIMIT 8U
+
+/*!
+ * \def AERN_RELAY_REPLAY_WINDOW_SIZE
+ * \brief The per-hop relay replay acceptance window size.
+ *
+ * AERN currently uses ordered APS-to-APS tunnel transport. Each encrypted tunnel
+ * packet MUST carry exactly the next expected sequence number. A value of zero
+ * records that no out-of-order replay window is active for per-hop tunnel
+ * packets. Relay payload fragments remain independently reorderable at the
+ * session-fragment cache layer after successful tunnel authentication.
+ */
+#define AERN_RELAY_REPLAY_WINDOW_SIZE 0U
+
+/*!
+ * \def AERN_RELAY_STRICT_SEQUENCING
+ * \brief Enables strict next-sequence replay protection for ordered peer tunnels.
+ */
+#define AERN_RELAY_STRICT_SEQUENCING 1U
+
+
+/*!
+ * \def AERN_RELAY_PAYLOAD_HEADER_SIZE
+ * Brief The byte size of the encrypted relay payload header.
+ *
+ * The relay payload header is serialized inside the encrypted relay body after
+ * the length prefix and encrypted route map. It identifies the logical session,
+ * packet, fragment ordering, payload type, reserved relay byte, and control
+ * flags. The active relay payload header does not carry a protocol field;
+ * backend protocol interpretation is performed at the backend transport boundary.
+ */
+#define AERN_RELAY_PAYLOAD_HEADER_SIZE 32U
+
+/*!
+ * \def AERN_RELAY_SESSION_OPEN_SIZE
+ * Brief The byte size of an encrypted relay session-open payload.
+ */
+#define AERN_RELAY_SESSION_OPEN_SIZE 36U
+
+/*!
+ * \def AERN_RELAY_SESSION_OPEN_ACK_SIZE
+ * Brief The byte size of an encrypted relay session-open acknowledgement payload.
+ */
+#define AERN_RELAY_SESSION_OPEN_ACK_SIZE 12U
+
+/*!
+ * \def AERN_INGRESS_DELAY_ENABLED
+ * Brief Enables optional ingress-side randomized data-packet delay.
+ */
+#define AERN_INGRESS_DELAY_ENABLED 1U
+
+/*!
+ * \def AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS
+ * Brief The minimum randomized ingress packet delay in milliseconds.
+ */
+#define AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS 0U
+
+/*!
+ * \def AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS
+ * Brief The maximum randomized ingress packet delay in milliseconds.
+ */
+#define AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS 25U
+
+/*!
+ * \def AERN_DUMMY_TRAFFIC_ENABLED
+ * Brief Enables APS dummy relay traffic generation.
+ */
+#define AERN_DUMMY_TRAFFIC_ENABLED 1U
+
+/*!
+ * \def AERN_DUMMY_TRAFFIC_BANDWIDTH_FLOOR_PERCENT
+ * Brief The traffic-utilization floor below which dummy traffic may be generated.
+ */
+#define AERN_DUMMY_TRAFFIC_BANDWIDTH_FLOOR_PERCENT 10U
+
+/*!
+ * \def AERN_DUMMY_TRAFFIC_BANDWIDTH_CEILING_PERCENT
+ * Brief The traffic-utilization ceiling above which dummy traffic is suppressed.
+ */
+#define AERN_DUMMY_TRAFFIC_BANDWIDTH_CEILING_PERCENT 25U
+
+/*!
+ * \def AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS
+ * Brief The minimum interval between dummy packet generation attempts.
+ */
+#define AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS 50U
+
+/*!
+ * \def AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS
+ * Brief The maximum interval between dummy packet generation attempts.
+ */
+#define AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS 250U
+
+/*!
+ * \def AERN_DUMMY_TRAFFIC_WINDOW_TARGET_BYTES
+ * Brief The local traffic-window byte target used to estimate utilization.
+ *
+ * The APS dummy-traffic policy estimates utilization by comparing local relay
+ * transmit and receive byte counters against this per-window target. The value
+ * is local policy only and is not transmitted or logged.
+ */
+#define AERN_DUMMY_TRAFFIC_WINDOW_TARGET_BYTES (AERN_RELAY_MTU * 128U)
+
+/*!
+ * \def AERN_DUMMY_TRAFFIC_MAXIMUM_PER_WINDOW
+ * Brief The maximum number of dummy packets an APS may emit per accounting window.
+ */
+#define AERN_DUMMY_TRAFFIC_MAXIMUM_PER_WINDOW 8U
+
+/*!
+ * \def AERN_RELAY_FRAGMENT_CACHE_TIMEOUT_MILLISECONDS
+ * Brief The default timeout for incomplete relay fragment cache entries.
+ */
+#define AERN_RELAY_FRAGMENT_CACHE_TIMEOUT_MILLISECONDS 30000U
+
+/*!
+ * \def AERN_RELAY_SESSION_OPEN_TIMEOUT_MILLISECONDS
+ * Brief The default timeout for ingress packets queued before session-open acknowledgement.
+ */
+#define AERN_RELAY_SESSION_OPEN_TIMEOUT_MILLISECONDS 10000U
+
+/*!
+ * \def AERN_RELAY_TRAFFIC_WINDOW_MILLISECONDS
+ * \brief The local relay traffic accounting window in milliseconds.
+ *
+ * This value controls how often local relay byte counters used by traffic
+ * shaping and dummy-packet policy are reset. The counters are local to the APS
+ * process and do not expose or retain packet contents, addresses, or session
+ * metadata.
+ */
+#define AERN_RELAY_TRAFFIC_WINDOW_MILLISECONDS 1000U
 
 /*!
  * \def AERN_PACKET_SUBHEADER_SIZE
@@ -1154,7 +1421,7 @@ AERN_EXPORT_API typedef enum aern_network_designations
 	aern_network_designation_none = 0x00U,							/*!< No designation was selected */
 	aern_network_designation_aps = 0x01U,							/*!< The device is an APS */
 	aern_network_designation_client = 0x02U,						/*!< The device is a client */
-	aern_network_designation_ads = 0x03U,							/*!< The device is the ADC */
+	aern_network_designation_adc = 0x03U,							/*!< The device is the ADC */
 	aern_network_designation_remote = 0x04U,						/*!< The device is a remote aps */
 	aern_network_designation_ars = 0x05U,							/*!< The device is an ARS security server */
 	aern_network_designation_revoked = 0x06U,						/*!< The device has been revoked */
@@ -1196,23 +1463,30 @@ AERN_EXPORT_API typedef enum aern_network_errors
 	aern_network_error_unknown_protocol = 0x28U,					/*!< The protocol version is unknown */
 	aern_network_error_unsequenced = 0x29U,							/*!< The packet was received out of sequence */
 	aern_network_error_verify_failure = 0x2AU,						/*!< The expected data could not be verified */
+	aern_network_error_time_invalid = 0x2BU,						/*!< The packet utc time has expired */
 } aern_network_errors;
 
 /*!
  * \enum aern_network_flags
- * \brief The AERN network flags.
+ * \brief The AERN network control and tunnel packet flags.
+ *
+ * The values in this enumeration define the expanded AERN control-plane
+ * message namespace used for registration, topology management, remote
+ * certificate signing, status exchange, and tunnel control.  The ARS root
+ * server accepts only the remote-signing request and system-error flags;
+ * relay packet processing is handled by the APS/ACD tunnel layer.
  */
 AERN_EXPORT_API typedef enum aern_network_flags
 {
 	aern_network_flag_none = 0x00U,									/*!< No flag was selected */
 	aern_network_flag_connection_terminate_request = 0x01U,			/*!< The packet contains a connection termination message  */
 	aern_network_flag_error_condition = 0x02U,						/*!< The connection experienced an error message*/
-	aern_network_flag_fragment_collection_request = 0x03U,			/*!< The packet contains a server fragment collection request message */
-	aern_network_flag_fragment_collection_response = 0x04U,			/*!< The packet contains an aps fragment collection response message */
-	aern_network_flag_fragment_request = 0x05U,						/*!< The packet contains a server fragment key request message */
-	aern_network_flag_fragment_response = 0x06U,					/*!< The packet contains an aps fragment key response message */
-	aern_network_flag_fragment_query_request = 0x07U,				/*!< The packet contains a server fragment key request message */
-	aern_network_flag_fragment_query_response = 0x08U,				/*!< The packet contains an aps fragment key response message */
+	aern_network_flag_fragment_collection_request = 0x03U,			/*!< Reserved obsolete fragment collection request flag */
+	aern_network_flag_fragment_collection_response = 0x04U,			/*!< Reserved obsolete fragment collection response flag */
+	aern_network_flag_fragment_request = 0x05U,						/*!< Reserved legacy fragment request flag */
+	aern_network_flag_fragment_response = 0x06U,					/*!< Reserved legacy fragment response flag */
+	aern_network_flag_fragment_query_request = 0x07U,				/*!< Reserved obsolete fragment query request flag */
+	aern_network_flag_fragment_query_response = 0x08U,				/*!< Reserved obsolete fragment query response flag */
 	aern_network_flag_incremental_update_request = 0x09U,			/*!< The packet contains an incremental update request message */
 	aern_network_flag_incremental_update_response = 0x0AU,			/*!< The packet contains an incremental update response message */
 	aern_network_flag_register_request = 0x0BU,						/*!< The packet contains a join request message */
@@ -1394,11 +1668,12 @@ AERN_EXPORT_API typedef struct aern_idg_certificate
 AERN_EXPORT_API typedef struct aern_connection_state
 {
 	qsc_socket target;												/*!< The target socket structure */
-	aern_cipher_state rxcpr;											/*!< The receive channel cipher state */
-	aern_cipher_state txcpr;											/*!< The transmit channel cipher state */
+	aern_cipher_state rxcpr;										/*!< The receive channel cipher state */
+	aern_cipher_state txcpr;										/*!< The transmit channel cipher state */
 	uint64_t rxseq;													/*!< The receive channel's packet sequence number */
 	uint64_t txseq;													/*!< The transmit channel's packet sequence number */
 	uint32_t instance;												/*!< The connection's instance count */
+	uint32_t authfail;												/*!< The relay authentication failure counter */
 	aern_network_flags exflag;										/*!< The network stage flag */
 } aern_connection_state;
 
@@ -1527,7 +1802,7 @@ static const char AERN_CHILD_CERTIFICATE_DEFAULT_NAME[AERN_CHILD_CERTIFICATE_DEF
 static const char AERN_NETWORK_DESIGNATION_NONE[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_none";
 static const char AERN_NETWORK_DESIGNATION_APS[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_aps";
 static const char AERN_NETWORK_DESIGNATION_CLIENT[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_client";
-static const char AERN_NETWORK_DESIGNATION_ADS[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_ads";
+static const char AERN_NETWORK_DESIGNATION_ADC[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_adc";
 static const char AERN_NETWORK_DESIGNATION_IDG[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_idg";
 static const char AERN_NETWORK_DESIGNATION_REMOTE[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_remote";
 static const char AERN_NETWORK_DESIGNATION_ROOT[AERN_NETWORK_DESIGNATION_SIZE] = "aern_network_designation_ars";
@@ -1648,7 +1923,7 @@ static const char AERN_CERTIFICATE_TOPOLOGY_PATH[] = "\\Topology";
 
 /** \endcond */
 
-#define AERN_NETWORK_ERROR_STRING_DEPTH 28U
+#define AERN_NETWORK_ERROR_STRING_DEPTH 29U
 #define AERN_NETWORK_ERROR_STRING_SIZE 128U
 
 /** \cond */
@@ -1682,7 +1957,8 @@ static const char AERN_NETWORK_ERROR_STRINGS[AERN_NETWORK_ERROR_STRING_DEPTH][AE
 	"The transmitter failed at the network layer",
 	"The protocol version is unknown",
 	"The packet was received out of sequence",
-	"The expected data could not be verified"
+	"The expected data could not be verified",
+	"The packet utc time has expired"
 };
 
 #define AERN_PROTOCOL_ERROR_STRING_DEPTH 44U
@@ -1743,19 +2019,19 @@ static const char AERN_PROTOCOL_ERROR_STRINGS[AERN_PROTOCOL_ERROR_STRING_DEPTH][
 /**
  * \brief Close the network connection between hosts.
  *
- * \param rsock A pointer to the socket structure representing the connection.
- * \param err The network error code to report.
- * \param notify If true, notify the remote host that the connection is closing.
+ * \param rsock: [qsc_socket*] A pointer to the socket structure representing the connection.
+ * \param err: [aern_network_errors] The network error code to report.
+ * \param notify: [bool] If true, notify the remote host that the connection is closing.
  */
 AERN_EXPORT_API void aern_connection_close(qsc_socket* rsock, aern_network_errors err, bool notify);
 
 /**
  * \brief Decrypt a message and copy it to the output buffer.
  *
- * \param cns A pointer to the connection state structure.
- * \param message The output array for the decrypted message.
- * \param msglen A pointer to a variable that will receive the length of the decrypted message.
- * \param packetin [const] A pointer to the input packet structure.
+ * \param cns: [aern_connection_state*] A pointer to the connection state structure.
+ * \param message: [uint8_t*] The output array for the decrypted message.
+ * \param msglen: [const aern_network_packet*] A pointer to a variable that will receive the length of the decrypted message.
+ * \param packetin: [const aern_network_packet*] A pointer to the input packet structure.
  *
  * \return Returns the network error state.
  */
@@ -1764,10 +2040,10 @@ AERN_EXPORT_API aern_protocol_errors aern_decrypt_packet(aern_connection_state* 
 /**
  * \brief Encrypt a message and build an output packet.
  *
- * \param cns A pointer to the connection state structure.
- * \param packetout A pointer to the output packet structure.
- * \param message [const] The input message array.
- * \param msglen The length of the input message.
+ * \param cns: [aern_connection_state*] A pointer to the connection state structure.
+ * \param packetout: [aern_network_packet*] A pointer to the output packet structure.
+ * \param message: [const uint8_t*] The input message array.
+ * \param msglen: [size_t] The length of the input message.
  *
  * \return Returns the network error state.
  */
@@ -1776,14 +2052,14 @@ AERN_EXPORT_API aern_protocol_errors aern_encrypt_packet(aern_connection_state* 
 /**
  * \brief Dispose of the tunnel connection state.
  *
- * \param cns A pointer to the connection state structure to dispose.
+ * \param cns: [aern_connection_state*] A pointer to the connection state structure to dispose.
  */
 AERN_EXPORT_API void aern_connection_state_dispose(aern_connection_state* cns);
 
 /**
  * \brief Return a pointer to a string description of a network error code.
  *
- * \param error The network error code.
+ * \param error: [aern_network_errors] The network error code.
  *
  * \return Returns a pointer to an error string or NULL if the code is unrecognized.
  */
@@ -1792,7 +2068,7 @@ AERN_EXPORT_API const char* aern_network_error_to_string(aern_network_errors err
 /**
  * \brief Return a pointer to a string description of a protocol error code.
  *
- * \param error The protocol error code.
+ * \param error: [aern_network_errors] The protocol error code.
  *
  * \return Returns a pointer to an error string or NULL if the code is unrecognized.
  */
@@ -1801,45 +2077,57 @@ AERN_EXPORT_API const char* aern_protocol_error_to_string(aern_protocol_errors e
 /**
  * \brief Clear the state of a network packet.
  *
- * \param packet A pointer to the packet structure to clear.
+ * \param packet: [aern_network_packet*] A pointer to the packet structure to clear.
  */
 AERN_EXPORT_API void aern_packet_clear(aern_network_packet* packet);
 
 /**
  * \brief Populate a packet structure with an error message.
  *
- * \param packet A pointer to the packet structure.
- * \param error The protocol error code to embed in the packet.
+ * \param packet: [aern_network_packet*] A pointer to the packet structure.
+ * \param error: [aern_protocol_errors] The protocol error code to embed in the packet.
  */
 AERN_EXPORT_API void aern_packet_error_message(aern_network_packet* packet, aern_protocol_errors error);
 
 /**
  * \brief Deserialize a byte array into a packet header.
  *
- * \param header [const] The header byte array to deserialize.
- * \param packet A pointer to the packet structure that will be populated.
+ * \param header: [const uint8_t*] The header byte array to deserialize.
+ * \param packet: [aern_network_packet*] A pointer to the packet structure that will be populated.
  */
 AERN_EXPORT_API void aern_packet_header_deserialize(const uint8_t* header, aern_network_packet* packet);
 
 /**
  * \brief Serialize a packet header into a byte array.
  *
- * \param packet [const] A pointer to the packet structure to serialize.
- * \param header The byte array that will receive the serialized header.
+ * \param packet: [const aern_network_packet*] A pointer to the packet structure to serialize.
+ * \param header: [uint8_t*] The byte array that will receive the serialized header.
  */
 AERN_EXPORT_API void aern_packet_header_serialize(const aern_network_packet* packet, uint8_t* header);
+
+/*!
+* \brief Validate a packet header and timestamp
+*
+* \param packetin: A pointer to the input packet structure
+* \param pktflag: The packet flag
+* \param sequence: The packet sequence number
+* \param msglen: The length of the message array, or zero if dynamic
+*
+* \return: Returns the function error state
+*/
+AERN_EXPORT_API aern_network_errors aern_header_validate(const aern_network_packet* packetin, aern_network_flags pktflag, uint64_t sequence, uint32_t msglen);
 
 /**
  * \brief Set the local UTC time in the packet header.
  *
- * \param packet A pointer to the network packet.
+ * \param packet: [aern_network_packet*] A pointer to the network packet.
  */
 AERN_EXPORT_API void aern_packet_set_utc_time(aern_network_packet* packet);
 
 /**
  * \brief Check if the packet's UTC time is within the valid time threshold.
  *
- * \param packet [const] A pointer to the network packet.
+ * \param packet: [const aern_network_packet*] A pointer to the network packet.
  *
  * \return Returns true if the packet was received within the valid time threshold.
  */
@@ -1848,8 +2136,8 @@ AERN_EXPORT_API bool aern_packet_time_valid(const aern_network_packet* packet);
 /**
  * \brief Serialize a network packet to a byte stream.
  *
- * \param packet [const] A pointer to the packet.
- * \param pstream A pointer to the output byte stream.
+ * \param packet [const aern_network_packet*] A pointer to the packet.
+ * \param pstream: [uint8_t*] A pointer to the output byte stream.
  *
  * \return Returns the size of the serialized byte stream.
  */
@@ -1858,8 +2146,8 @@ AERN_EXPORT_API size_t aern_packet_to_stream(const aern_network_packet* packet, 
 /**
  * \brief Deserialize a byte stream into a network packet.
  *
- * \param pstream [const] The byte stream containing the packet data.
- * \param packet A pointer to the packet structure to populate.
+ * \param pstream [const uint8_t*] The byte stream containing the packet data.
+ * \param packet: [aern_network_packet*] A pointer to the packet structure to populate.
  */
 AERN_EXPORT_API void aern_stream_to_packet(const uint8_t* pstream, aern_network_packet* packet);
 

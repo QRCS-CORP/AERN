@@ -1,0 +1,93 @@
+\doxysection{aern\+\_\+relay\+\_\+payload\+\_\+header Struct Reference}
+\hypertarget{structaern__relay__payload__header}{}\label{structaern__relay__payload__header}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+
+
+Encrypted relay payload header.  
+
+
+
+
+{\ttfamily \#include $<$route.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_a9dc02beaf3ba3a8f741bf83d4619dbab}{sessionid}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_a2c92b3e49ad501b221931705540efcaa}{packetid}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_a7bdb6636b876390054040ffa406dc454}{fragseq}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_a07e8d8dd263d685cc61e75d59a23b235}{fragcount}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_a907c53abb8da7fb88a7681171ffb51cd}{msglen}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_aa9d5050f415306aba05e44ea68f95bff}{payloadtype}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_acb7bc06bed6f6408d719334fc41698c7}{reserved}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structaern__relay__payload__header_a1e87af3c18a2fd36c61faf89949bdc3f}{flags}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encrypted relay payload header. 
+
+This header is serialized inside the encrypted relay payload. Intermediate APS nodes cannot read it unless they are processing the packet as the current decrypting hop. The terminal egress uses this header to associate opaque serialized packets and fragments with a previously established session cache entry. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__relay__payload__header_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__relay__payload__header_a1e87af3c18a2fd36c61faf89949bdc3f}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!flags@{flags}}
+\index{flags@{flags}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_a1e87af3c18a2fd36c61faf89949bdc3f} 
+uint16\+\_\+t flags}
+
+Payload-\/specific flags \Hypertarget{structaern__relay__payload__header_a07e8d8dd263d685cc61e75d59a23b235}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!fragcount@{fragcount}}
+\index{fragcount@{fragcount}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{fragcount}{fragcount}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_a07e8d8dd263d685cc61e75d59a23b235} 
+uint32\+\_\+t fragcount}
+
+Total fragment count\+: zero means unfragmented \Hypertarget{structaern__relay__payload__header_a7bdb6636b876390054040ffa406dc454}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!fragseq@{fragseq}}
+\index{fragseq@{fragseq}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{fragseq}{fragseq}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_a7bdb6636b876390054040ffa406dc454} 
+uint32\+\_\+t fragseq}
+
+Fragment sequence\+: zero means unfragmented \Hypertarget{structaern__relay__payload__header_a907c53abb8da7fb88a7681171ffb51cd}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!msglen@{msglen}}
+\index{msglen@{msglen}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{msglen}{msglen}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_a907c53abb8da7fb88a7681171ffb51cd} 
+uint32\+\_\+t msglen}
+
+Valid payload bytes following this header \Hypertarget{structaern__relay__payload__header_a2c92b3e49ad501b221931705540efcaa}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!packetid@{packetid}}
+\index{packetid@{packetid}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{packetid}{packetid}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_a2c92b3e49ad501b221931705540efcaa} 
+uint64\+\_\+t packetid}
+
+Serialized packet identifier within the session \Hypertarget{structaern__relay__payload__header_aa9d5050f415306aba05e44ea68f95bff}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!payloadtype@{payloadtype}}
+\index{payloadtype@{payloadtype}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{payloadtype}{payloadtype}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_aa9d5050f415306aba05e44ea68f95bff} 
+uint8\+\_\+t payloadtype}
+
+One of \doxylink{route_8h_ab1da56870dcba690673096c3fac51497}{aern\+\_\+relay\+\_\+payload\+\_\+type} \Hypertarget{structaern__relay__payload__header_acb7bc06bed6f6408d719334fc41698c7}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!reserved@{reserved}}
+\index{reserved@{reserved}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{reserved}{reserved}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_acb7bc06bed6f6408d719334fc41698c7} 
+uint8\+\_\+t reserved}
+
+Reserved; set to zero \Hypertarget{structaern__relay__payload__header_a9dc02beaf3ba3a8f741bf83d4619dbab}\index{aern\_relay\_payload\_header@{aern\_relay\_payload\_header}!sessionid@{sessionid}}
+\index{sessionid@{sessionid}!aern\_relay\_payload\_header@{aern\_relay\_payload\_header}}
+\doxysubsubsection{\texorpdfstring{sessionid}{sessionid}}
+{\footnotesize\ttfamily \label{structaern__relay__payload__header_a9dc02beaf3ba3a8f741bf83d4619dbab} 
+uint64\+\_\+t sessionid}
+
+Logical ingress-\/to-\/egress session identifier 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{route_8h}{route.\+h}}\end{DoxyCompactItemize}

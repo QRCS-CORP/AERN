@@ -1,0 +1,53 @@
+\doxysection{aern\+\_\+cipher\+\_\+table Struct Reference}
+\hypertarget{structaern__cipher__table}{}\label{structaern__cipher__table}\index{aern\_cipher\_table@{aern\_cipher\_table}}
+
+
+Fixed-\/capacity, mutex-\/protected cipher-\/state table.  
+
+
+
+
+{\ttfamily \#include $<$mek.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structaern__cipher__table__slot}{aern\+\_\+cipher\+\_\+table\+\_\+slot}} \mbox{\hyperlink{structaern__cipher__table_a4fc8d8b7d8738870886ff524c04b97db}{slots}} \mbox{[}AERN\+\_\+\+MAX\+\_\+\+PEERS\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__cipher__table_a86988a65e0d3ece7990c032c159786d6}{count}}
+\item 
+qsc\+\_\+mutex \mbox{\hyperlink{structaern__cipher__table_a8ccf556dfad550f89d48e7df09a4a250}{gmtx}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fixed-\/capacity, mutex-\/protected cipher-\/state table. 
+
+Pre-\/allocated static array of AERN\+\_\+\+MAX\+\_\+\+PEERS slots. No dynamic allocation; all state is inline. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__cipher__table_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__cipher__table_a86988a65e0d3ece7990c032c159786d6}\index{aern\_cipher\_table@{aern\_cipher\_table}!count@{count}}
+\index{count@{count}!aern\_cipher\_table@{aern\_cipher\_table}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily \label{structaern__cipher__table_a86988a65e0d3ece7990c032c159786d6} 
+uint32\+\_\+t count}
+
+Number of used slots \Hypertarget{structaern__cipher__table_a8ccf556dfad550f89d48e7df09a4a250}\index{aern\_cipher\_table@{aern\_cipher\_table}!gmtx@{gmtx}}
+\index{gmtx@{gmtx}!aern\_cipher\_table@{aern\_cipher\_table}}
+\doxysubsubsection{\texorpdfstring{gmtx}{gmtx}}
+{\footnotesize\ttfamily \label{structaern__cipher__table_a8ccf556dfad550f89d48e7df09a4a250} 
+qsc\+\_\+mutex gmtx}
+
+The global table mutex \Hypertarget{structaern__cipher__table_a4fc8d8b7d8738870886ff524c04b97db}\index{aern\_cipher\_table@{aern\_cipher\_table}!slots@{slots}}
+\index{slots@{slots}!aern\_cipher\_table@{aern\_cipher\_table}}
+\doxysubsubsection{\texorpdfstring{slots}{slots}}
+{\footnotesize\ttfamily \label{structaern__cipher__table_a4fc8d8b7d8738870886ff524c04b97db} 
+\mbox{\hyperlink{structaern__cipher__table__slot}{aern\+\_\+cipher\+\_\+table\+\_\+slot}} slots\mbox{[}AERN\+\_\+\+MAX\+\_\+\+PEERS\mbox{]}}
+
+Cipher-\/state slots 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{mek_8h}{mek.\+h}}\end{DoxyCompactItemize}

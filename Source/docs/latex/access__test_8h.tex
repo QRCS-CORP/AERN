@@ -1,0 +1,996 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERNTest/access\+\_\+test.h File Reference}
+\hypertarget{access__test_8h}{}\label{access__test_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/access\_test.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERNTest/access\_test.h}}
+
+
+Private AERN implementation declarations used by AERNTest.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}network.\+h"{}}\newline
+{\ttfamily \#include "{}route.\+h"{}}\newline
+{\ttfamily \#include "{}mek.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{Indent}\textbf{ Private network packet-\/size constants}\par
+{\em The following constants are test mirrors of the internal network packet layout sizes used to validate packet construction, serialization, and malformed-\/input rejection paths. }\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{access__test_8h_afbe1f193e49208f1926e9fcd85a6e385}\label{access__test_8h_afbe1f193e49208f1926e9fcd85a6e385} 
+\#define {\bfseries NETWORK\+\_\+\+ANNOUNCE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{topology_8h_a7e4028217871f12591a915691849a5cc}{AERN\+\_\+\+NETWORK\+\_\+\+TOPOLOGY\+\_\+\+NODE\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a134885dcd795f820997f177f748e25a7}\label{access__test_8h_a134885dcd795f820997f177f748e25a7} 
+\#define {\bfseries NETWORK\+\_\+\+ANNOUNCE\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+ANNOUNCE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a63c3066f98ce0f95efcd02e944b5b455}\label{access__test_8h_a63c3066f98ce0f95efcd02e944b5b455} 
+\#define {\bfseries NETWORK\+\_\+\+CONVERGE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{topology_8h_a7e4028217871f12591a915691849a5cc}{AERN\+\_\+\+NETWORK\+\_\+\+TOPOLOGY\+\_\+\+NODE\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_ab665adfabe9751a8d13abf6234820fe4}\label{access__test_8h_ab665adfabe9751a8d13abf6234820fe4} 
+\#define {\bfseries NETWORK\+\_\+\+CONVERGE\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+CONVERGE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a24a81abd9b5b38236e1d1255c13f32e7}\label{access__test_8h_a24a81abd9b5b38236e1d1255c13f32e7} 
+\#define {\bfseries NETWORK\+\_\+\+CONVERGE\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{topology_8h_a7e4028217871f12591a915691849a5cc}{AERN\+\_\+\+NETWORK\+\_\+\+TOPOLOGY\+\_\+\+NODE\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_abd1b046cfdee992cfc1761749a003a90}\label{access__test_8h_abd1b046cfdee992cfc1761749a003a90} 
+\#define {\bfseries NETWORK\+\_\+\+CONVERGE\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+CONVERGE\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a1efc552b0631cb2c3e37e35dc7d9f367}\label{access__test_8h_a1efc552b0631cb2c3e37e35dc7d9f367} 
+\#define {\bfseries NETWORK\+\_\+\+FRAGMENT\+\_\+\+FKEY\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a5bf580db8a53a23bdcd0e6c8cf0a29c4}{AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+TOKEN\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a1cef0f2b115e83b920225350c4bde7d2}\label{access__test_8h_a1cef0f2b115e83b920225350c4bde7d2} 
+\#define {\bfseries NETWORK\+\_\+\+FRAGMENT\+\_\+\+FKEY\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+FRAGMENT\+\_\+\+FKEY\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a6c9e8ea383bb6e85af2cf6729b207221}\label{access__test_8h_a6c9e8ea383bb6e85af2cf6729b207221} 
+\#define {\bfseries NETWORK\+\_\+\+FRAGMENT\+\_\+\+FKEY\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a8710089399fff14591d8a6e1fc180e45}{AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+KEY\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4e29ba7fa10c7fe099652aad92c8c02c}{AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a5998a9ed977991fc407451a10f22c0f1}\label{access__test_8h_a5998a9ed977991fc407451a10f22c0f1} 
+\#define {\bfseries NETWORK\+\_\+\+FRAGMENT\+\_\+\+FKEY\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+FRAGMENT\+\_\+\+FKEY\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_aa52a6cf215c49499da9485d29aa72653}\label{access__test_8h_aa52a6cf215c49499da9485d29aa72653} 
+\#define {\bfseries NETWORK\+\_\+\+INCREMENTAL\+\_\+\+UPDATE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_ac54f3b9ce6d774e33af31be0d2cc4bb6}\label{access__test_8h_ac54f3b9ce6d774e33af31be0d2cc4bb6} 
+\#define {\bfseries NETWORK\+\_\+\+INCREMENTAL\+\_\+\+UPDATE\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+INCREMENTAL\+\_\+\+UPDATE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a453bcb46341022ae2495455d08799835}\label{access__test_8h_a453bcb46341022ae2495455d08799835} 
+\#define {\bfseries NETWORK\+\_\+\+INCREMENTAL\+\_\+\+UPDATE\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a8fd596282ab3706257e51f1ce9d131b5}\label{access__test_8h_a8fd596282ab3706257e51f1ce9d131b5} 
+\#define {\bfseries NETWORK\+\_\+\+INCREMENTAL\+\_\+\+UPDATE\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+INCREMENTAL\+\_\+\+UPDATE\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a3f0aa9120aa09fd0411ddfab59276f75}\label{access__test_8h_a3f0aa9120aa09fd0411ddfab59276f75} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a201a6ddfa243911dd3be5e97793bc73a}\label{access__test_8h_a201a6ddfa243911dd3be5e97793bc73a} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+JOIN\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a4f72b48ea8f501269c6f3e5b30701999}\label{access__test_8h_a4f72b48ea8f501269c6f3e5b30701999} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_af87d48e4b1d1a62cbd7b29cfc11da6aa}\label{access__test_8h_af87d48e4b1d1a62cbd7b29cfc11da6aa} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+JOIN\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a680809abf12e434ec015a52ae416f2a9}\label{access__test_8h_a680809abf12e434ec015a52ae416f2a9} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+UPDATE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_aa67299475466a52684e297d87161f96a}\label{access__test_8h_aa67299475466a52684e297d87161f96a} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+UPDATE\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+JOIN\+\_\+\+UPDATE\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a72546ee2693f414ab8435c9b69694f0b}\label{access__test_8h_a72546ee2693f414ab8435c9b69694f0b} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+UPDATE\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a8d7662e874ecf82bc532eafd71088a6a}\label{access__test_8h_a8d7662e874ecf82bc532eafd71088a6a} 
+\#define {\bfseries NETWORK\+\_\+\+JOIN\+\_\+\+UPDATE\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+JOIN\+\_\+\+UPDATE\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_aa39550e725c9f862722e06cb594b6ff3}\label{access__test_8h_aa39550e725c9f862722e06cb594b6ff3} 
+\#define {\bfseries NETWORK\+\_\+\+MFK\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_aaf84b8f9a2acf1de9eb7ee36d1fbfc81}\label{access__test_8h_aaf84b8f9a2acf1de9eb7ee36d1fbfc81} 
+\#define {\bfseries NETWORK\+\_\+\+MFK\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+MFK\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_aa550e28f204210dedceafde7ecf705e4}\label{access__test_8h_aa550e28f204210dedceafde7ecf705e4} 
+\#define {\bfseries NETWORK\+\_\+\+MFK\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + AERN\+\_\+\+ASYMMETRIC\+\_\+\+PUBLIC\+\_\+\+KEY\+\_\+\+SIZE + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_af580b1660d0f6262e86d71cdd44ae30e}\label{access__test_8h_af580b1660d0f6262e86d71cdd44ae30e} 
+\#define {\bfseries NETWORK\+\_\+\+MFK\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+MFK\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_adfc77c3a64c3891aed04e22491d71355}\label{access__test_8h_adfc77c3a64c3891aed04e22491d71355} 
+\#define {\bfseries NETWORK\+\_\+\+MFK\+\_\+\+ESTABLISH\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + AERN\+\_\+\+ASYMMETRIC\+\_\+\+CIPHERTEXT\+\_\+\+SIZE + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_ad7bc760d258ec1f0d8ebdaef64ad4bd7}\label{access__test_8h_ad7bc760d258ec1f0d8ebdaef64ad4bd7} 
+\#define {\bfseries NETWORK\+\_\+\+MFK\+\_\+\+ESTABLISH\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+MFK\+\_\+\+ESTABLISH\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a881e339b79d8b7ca54ba163f77ab9a73}\label{access__test_8h_a881e339b79d8b7ca54ba163f77ab9a73} 
+\#define {\bfseries NETWORK\+\_\+\+REMOTE\+\_\+\+SIGNING\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a29d3a164dfebb72cc6e0773321a64d1f}\label{access__test_8h_a29d3a164dfebb72cc6e0773321a64d1f} 
+\#define {\bfseries NETWORK\+\_\+\+REMOTE\+\_\+\+SIGNING\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+REMOTE\+\_\+\+SIGNING\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_ac365b202d83f04a8511c0e05ca926240}\label{access__test_8h_ac365b202d83f04a8511c0e05ca926240} 
+\#define {\bfseries NETWORK\+\_\+\+REMOTE\+\_\+\+SIGNING\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a32787cceb2e337d19877ac25338c4c32}{AERN\+\_\+\+CERTIFICATE\+\_\+\+CHILD\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a8cd113beb0d4070860f904386b009845}\label{access__test_8h_a8cd113beb0d4070860f904386b009845} 
+\#define {\bfseries NETWORK\+\_\+\+REMOTE\+\_\+\+SIGNING\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+REMOTE\+\_\+\+SIGNING\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a7539f971b356719ead9686b2b4d68ce0}\label{access__test_8h_a7539f971b356719ead9686b2b4d68ce0} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}{AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a1b5174ddd302fd7cd551775a0049bbf9}\label{access__test_8h_a1b5174ddd302fd7cd551775a0049bbf9} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+SIZE + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a9a32e505e36fb6198740de120bdfea40}\label{access__test_8h_a9a32e505e36fb6198740de120bdfea40} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_ada8efc44427915bb80b2945479925a75}\label{access__test_8h_ada8efc44427915bb80b2945479925a75} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{topology_8h_a7e4028217871f12591a915691849a5cc}{AERN\+\_\+\+NETWORK\+\_\+\+TOPOLOGY\+\_\+\+NODE\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_afba983b5b1d3125ca69c4c5000e420c2}\label{access__test_8h_afba983b5b1d3125ca69c4c5000e420c2} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+TOPOLOGY\+\_\+\+QUERY\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_a3dbc002e7b800fe32dbc6cdc143d5d39}\label{access__test_8h_a3dbc002e7b800fe32dbc6cdc143d5d39} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+STATUS\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_abf825a6646146aeba4c0500bf1c1cd52}\label{access__test_8h_abf825a6646146aeba4c0500bf1c1cd52} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+STATUS\+\_\+\+REQUEST\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+TOPOLOGY\+\_\+\+STATUS\+\_\+\+REQUEST\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\item 
+\Hypertarget{access__test_8h_aea2f605cd43eaac0c88a701954f967f2}\label{access__test_8h_aea2f605cd43eaac0c88a701954f967f2} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+STATUS\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a65280709b2a62ecac126a76ca0e88d52}{AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}} + \mbox{\hyperlink{aern_8h_a4a223f442a1553dd153be8a2eedf23cc}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SIGNED\+\_\+\+HASH\+\_\+\+SIZE}})
+\item 
+\Hypertarget{access__test_8h_a20fce952e5821d4551a01ef008d75aa8}\label{access__test_8h_a20fce952e5821d4551a01ef008d75aa8} 
+\#define {\bfseries NETWORK\+\_\+\+TOPOLOGY\+\_\+\+STATUS\+\_\+\+RESPONSE\+\_\+\+PACKET\+\_\+\+SIZE}~(\mbox{\hyperlink{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}{AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}} + NETWORK\+\_\+\+TOPOLOGY\+\_\+\+STATUS\+\_\+\+RESPONSE\+\_\+\+MESSAGE\+\_\+\+SIZE)
+\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{access__test_8h_a543256030c3b2cc3c870db776f5ab7df}{route\+\_\+dummy\+\_\+traffic\+\_\+allowed}} (\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}cache, uint32\+\_\+t utilization, uint64\+\_\+t nowms)
+\begin{DoxyCompactList}\small\item\em Determine whether dummy traffic may be generated for a relay cache state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{access__test_8h_a87a7f2315501ec6daef6c73e292feb59}{network\+\_\+derive\+\_\+fkey}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}ckey, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}mfk, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}lhash, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}rhash, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}token)
+\begin{DoxyCompactList}\small\item\em Derive a fragment encryption key from the MFK exchange inputs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{access__test_8h_ab0c954cd01395c3884b754dc2dbcaf3d}{network\+\_\+mac\+\_\+message}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}mtag, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}ckey, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}ctxt, size\+\_\+t ctxlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}adata)
+\begin{DoxyCompactList}\small\item\em Compute the network message authentication tag used by packet tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a138c006389a5f204cc6b5f0e8f297e1d}{network\+\_\+announce\+\_\+broadcast\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__announce__request__state}{aern\+\_\+network\+\_\+announce\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an announce-\/broadcast packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_aadf0fff36f2c8f873f0a7572c7eb0308}{network\+\_\+converge\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__converge__request__state}{aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}snode)
+\begin{DoxyCompactList}\small\item\em Create a converge-\/request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a69f19928969bf32bc057ff32c50b14f4}{network\+\_\+converge\+\_\+response\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__converge__request__state}{aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a converge-\/response packet against the original request state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_adc06b9c01314eb2bbbba60846240f741}{network\+\_\+converge\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__converge__response__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create a converge-\/response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a165974fb93a59262aca716bf5537080e}{network\+\_\+converge\+\_\+request\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__converge__response__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a converge-\/request packet against the response-\/side state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{access__test_8h_aebffe7b270d109eede6a055bae3a84db}{network\+\_\+fkey\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, \mbox{\hyperlink{structaern__network__fkey__request__state}{aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an FKEY request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_afcbf7a3bb2034eb7d78bb7f711706100}{network\+\_\+fkey\+\_\+response\+\_\+verify}} (\mbox{\hyperlink{structaern__network__fkey__request__state}{aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify an FKEY response packet against the request state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a5aebaa6e1f9bcb8b6a76c388ce22fb6a}{network\+\_\+fkey\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin, \mbox{\hyperlink{structaern__network__fkey__response__state}{aern\+\_\+network\+\_\+fkey\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an FKEY response packet for network protocol tests. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{access__test_8h_a8232301fb15d0874a604834d1b6176df}{network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an incremental-\/update request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_aaba8f108d3259864879ae44d1291b08c}{network\+\_\+incremental\+\_\+update\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify an incremental-\/update request packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a2230400cce3023e22069f77e6f20af4d}{network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin, const \mbox{\hyperlink{structaern__network__incremental__update__response__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an incremental-\/update response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a687f992928d5db83b197c97b3c1fa837}{network\+\_\+mfk\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__mfk__request__state}{aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an MFK request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a7ba97954f0547687a1e7402805cdf8db}{network\+\_\+mfk\+\_\+establish\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin, \mbox{\hyperlink{structaern__network__mfk__request__state}{aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an MFK establish packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_aae6453b1c10483b161bc98f23484cca8}{network\+\_\+mfk\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin, \mbox{\hyperlink{structaern__network__mfk__response__state}{aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create an MFK response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a4bdaafd66299b7a630fb49d18eb20d05}{network\+\_\+mfk\+\_\+verify\+\_\+packet}} (const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin, \mbox{\hyperlink{structaern__network__mfk__response__state}{aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Verify an MFK response packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a4d6210610b80e19aa36156b4502f5c5f}{network\+\_\+register\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__register__request__state}{aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create a register-\/request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_aa944bd547659741253d5a5c47107f116}{network\+\_\+register\+\_\+verify}} (\mbox{\hyperlink{structaern__network__register__request__state}{aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a register-\/request packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a78a656bb3e530874f5eff1022ad668f5}{network\+\_\+register\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, \mbox{\hyperlink{structaern__network__register__response__state}{aern\+\_\+network\+\_\+register\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Create a register-\/response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a36d5ff7cba357e50beab2c742e8cfc97}{network\+\_\+register\+\_\+update\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__register__update__request__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create a register-\/update request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a0a17c75257d1dd45958ba83fc7af5269}{network\+\_\+register\+\_\+update\+\_\+verify}} (\mbox{\hyperlink{structaern__network__register__update__request__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a register-\/update request packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a7993900c9e29f8941184a626c61cb99a}{network\+\_\+register\+\_\+update\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, \mbox{\hyperlink{structaern__network__register__update__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Create a register-\/update response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a9fbd2ac6b2a9654e0c4c623f8a39b237}{network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout)
+\begin{DoxyCompactList}\small\item\em Create a remote-\/signing request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_ad4f8e02a5eea56ec44a9db59b276ab38}{network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a remote-\/signing request packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a545c2e9caf33f8dbbf78b6323885dd57}{network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout)
+\begin{DoxyCompactList}\small\item\em Create a remote-\/signing response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a8cbc61c5f52198a4c1b63e44f9032731}{network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a remote-\/signing response packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a4b377bfae2cc6937143a41b532a910d8}{network\+\_\+topological\+\_\+query\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create a topological-\/query request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a3de1550f8b8b16f49e97593e9ed8a6ad}{network\+\_\+topological\+\_\+query\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Create a topological-\/query response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_ac845b6d95c4a6c40c39f29eb498d0fc5}{network\+\_\+topological\+\_\+query\+\_\+request\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a topological-\/query response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a979aa34c6abb50cdd7a180800c9a3ded}{network\+\_\+topological\+\_\+query\+\_\+response\+\_\+verify}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, const \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a topological-\/query response packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a2d399fc61acce36e9d963b823b4f65bf}{network\+\_\+topological\+\_\+status\+\_\+request\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create a topological-\/status request packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a951db740924935174bdf4285dbd1b377}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a topological-\/status request packet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_ae2867355054033b8cadf2adc8209d71e}{network\+\_\+topological\+\_\+status\+\_\+response\+\_\+packet}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetout, const \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Create a topological-\/status response packet for network protocol tests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{access__test_8h_a9a365736024c2df602071d694a040a5f}{network\+\_\+topological\+\_\+status\+\_\+response\+\_\+verify}} (const \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Verify a topological-\/status response packet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{access__test_8h_a700e39f86db523e88a03aac3a5b4d507}{mek\+\_\+derive\+\_\+and\+\_\+init\+\_\+ciphers}} (\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cns, uint8\+\_\+t secret\mbox{[}\mbox{\hyperlink{aern_8h_ae973c0fec90018921f0eff6a381dbba9}{AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+SECRET\+\_\+\+SIZE}}\mbox{]}, const uint8\+\_\+t initiator\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}, const uint8\+\_\+t responder\mbox{[}\mbox{\hyperlink{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}{AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}}\mbox{]}, bool initiatorrole)
+\begin{DoxyCompactList}\small\item\em Derive and initialize MEK connection ciphers for unit tests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Private AERN implementation declarations used by AERNTest. 
+
+This header exposes selected internal AERN implementation symbols to the AERNTest harness so protocol packet tests can be kept outside the production implementation files. The constants mirror private packet-\/size definitions used by the AERN network implementation. The function declarations mirror internal route and network helpers exercised by negative-\/path and codec tests.
+
+\begin{DoxyNote}{Note}
+These declarations are test-\/only. They must not be treated as public AERN API declarations and must not be included by production consumers. 
+\end{DoxyNote}
+
+
+\label{doc-func-members}
+\Hypertarget{access__test_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{access__test_8h_a951db740924935174bdf4285dbd1b377}\index{access\_test.h@{access\_test.h}!aern\_network\_topological\_status\_request\_verify@{aern\_network\_topological\_status\_request\_verify}}
+\index{aern\_network\_topological\_status\_request\_verify@{aern\_network\_topological\_status\_request\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_topological\_status\_request\_verify()}{aern\_network\_topological\_status\_request\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_a951db740924935174bdf4285dbd1b377} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a topological-\/status request packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the topological-\/status request state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a700e39f86db523e88a03aac3a5b4d507}\index{access\_test.h@{access\_test.h}!mek\_derive\_and\_init\_ciphers@{mek\_derive\_and\_init\_ciphers}}
+\index{mek\_derive\_and\_init\_ciphers@{mek\_derive\_and\_init\_ciphers}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{mek\_derive\_and\_init\_ciphers()}{mek\_derive\_and\_init\_ciphers()}}
+{\footnotesize\ttfamily \label{access__test_8h_a700e39f86db523e88a03aac3a5b4d507} 
+void mek\+\_\+derive\+\_\+and\+\_\+init\+\_\+ciphers (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cns}{, }\item[{uint8\+\_\+t}]{secret}{\mbox{[}\+AERN\+\_\+\+CRYPTO\+\_\+\+SYMMETRIC\+\_\+\+SECRET\+\_\+\+SIZE\mbox{]}, }\item[{const uint8\+\_\+t}]{initiator}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE\mbox{]}, }\item[{const uint8\+\_\+t}]{responder}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE\mbox{]}, }\item[{bool}]{initiatorrole}{}\end{DoxyParamCaption})}
+
+
+
+Derive and initialize MEK connection ciphers for unit tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cns} & \mbox{[}aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Output connection state. \\
+\hline
+{\em secret} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Shared secret buffer, cleared by the function. \\
+\hline
+{\em initiator} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Initiator certificate serial. \\
+\hline
+{\em responder} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Responder certificate serial. \\
+\hline
+{\em initiatorrole} & \mbox{[}bool\mbox{]} True when initializing initiator-\/local state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{access__test_8h_a138c006389a5f204cc6b5f0e8f297e1d}\index{access\_test.h@{access\_test.h}!network\_announce\_broadcast\_packet@{network\_announce\_broadcast\_packet}}
+\index{network\_announce\_broadcast\_packet@{network\_announce\_broadcast\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_announce\_broadcast\_packet()}{network\_announce\_broadcast\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a138c006389a5f204cc6b5f0e8f297e1d} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+announce\+\_\+broadcast\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__announce__request__state}{aern\+\_\+network\+\_\+announce\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an announce-\/broadcast packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the announce request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_aadf0fff36f2c8f873f0a7572c7eb0308}\index{access\_test.h@{access\_test.h}!network\_converge\_request\_packet@{network\_converge\_request\_packet}}
+\index{network\_converge\_request\_packet@{network\_converge\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_converge\_request\_packet()}{network\_converge\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_aadf0fff36f2c8f873f0a7572c7eb0308} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+converge\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__converge__request__state}{aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{snode}{}\end{DoxyParamCaption})}
+
+
+
+Create a converge-\/request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the converge request state. \\
+\hline
+{\em snode} & A pointer to the serialized sender node value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a165974fb93a59262aca716bf5537080e}\index{access\_test.h@{access\_test.h}!network\_converge\_request\_verify@{network\_converge\_request\_verify}}
+\index{network\_converge\_request\_verify@{network\_converge\_request\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_converge\_request\_verify()}{network\_converge\_request\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_a165974fb93a59262aca716bf5537080e} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+converge\+\_\+request\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__converge__response__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a converge-\/request packet against the response-\/side state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the converge response state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_adc06b9c01314eb2bbbba60846240f741}\index{access\_test.h@{access\_test.h}!network\_converge\_response\_packet@{network\_converge\_response\_packet}}
+\index{network\_converge\_response\_packet@{network\_converge\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_converge\_response\_packet()}{network\_converge\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_adc06b9c01314eb2bbbba60846240f741} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+converge\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__converge__response__state}{aern\+\_\+network\+\_\+converge\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create a converge-\/response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the converge response state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a69f19928969bf32bc057ff32c50b14f4}\index{access\_test.h@{access\_test.h}!network\_converge\_response\_verify@{network\_converge\_response\_verify}}
+\index{network\_converge\_response\_verify@{network\_converge\_response\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_converge\_response\_verify()}{network\_converge\_response\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_a69f19928969bf32bc057ff32c50b14f4} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+converge\+\_\+response\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__converge__request__state}{aern\+\_\+network\+\_\+converge\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a converge-\/response packet against the original request state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the converge request state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a87a7f2315501ec6daef6c73e292feb59}\index{access\_test.h@{access\_test.h}!network\_derive\_fkey@{network\_derive\_fkey}}
+\index{network\_derive\_fkey@{network\_derive\_fkey}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_derive\_fkey()}{network\_derive\_fkey()}}
+{\footnotesize\ttfamily \label{access__test_8h_a87a7f2315501ec6daef6c73e292feb59} 
+void network\+\_\+derive\+\_\+fkey (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ckey}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mfk}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{lhash}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{rhash}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{token}{}\end{DoxyParamCaption})}
+
+
+
+Derive a fragment encryption key from the MFK exchange inputs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ckey} & A pointer to the derived cipher key output array. \\
+\hline
+{\em mfk} & A pointer to the master fragment key input. \\
+\hline
+{\em lhash} & A pointer to the local certificate hash input. \\
+\hline
+{\em rhash} & A pointer to the remote certificate hash input. \\
+\hline
+{\em token} & A pointer to the exchange token input. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{access__test_8h_aebffe7b270d109eede6a055bae3a84db}\index{access\_test.h@{access\_test.h}!network\_fkey\_request\_packet@{network\_fkey\_request\_packet}}
+\index{network\_fkey\_request\_packet@{network\_fkey\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_fkey\_request\_packet()}{network\_fkey\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_aebffe7b270d109eede6a055bae3a84db} 
+void network\+\_\+fkey\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{\mbox{\hyperlink{structaern__network__fkey__request__state}{aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an FKEY request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the FKEY request state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{access__test_8h_a5aebaa6e1f9bcb8b6a76c388ce22fb6a}\index{access\_test.h@{access\_test.h}!network\_fkey\_response\_packet@{network\_fkey\_response\_packet}}
+\index{network\_fkey\_response\_packet@{network\_fkey\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_fkey\_response\_packet()}{network\_fkey\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a5aebaa6e1f9bcb8b6a76c388ce22fb6a} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+fkey\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{, }\item[{\mbox{\hyperlink{structaern__network__fkey__response__state}{aern\+\_\+network\+\_\+fkey\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an FKEY response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em packetin} & A pointer to the input request packet. \\
+\hline
+{\em state} & A pointer to the FKEY response state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_afcbf7a3bb2034eb7d78bb7f711706100}\index{access\_test.h@{access\_test.h}!network\_fkey\_response\_verify@{network\_fkey\_response\_verify}}
+\index{network\_fkey\_response\_verify@{network\_fkey\_response\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_fkey\_response\_verify()}{network\_fkey\_response\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_afcbf7a3bb2034eb7d78bb7f711706100} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+fkey\+\_\+response\+\_\+verify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__fkey__request__state}{aern\+\_\+network\+\_\+fkey\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify an FKEY response packet against the request state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the FKEY request state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a8232301fb15d0874a604834d1b6176df}\index{access\_test.h@{access\_test.h}!network\_incremental\_update\_request\_packet@{network\_incremental\_update\_request\_packet}}
+\index{network\_incremental\_update\_request\_packet@{network\_incremental\_update\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_incremental\_update\_request\_packet()}{network\_incremental\_update\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a8232301fb15d0874a604834d1b6176df} 
+void network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an incremental-\/update request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the incremental-\/update request state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{access__test_8h_a2230400cce3023e22069f77e6f20af4d}\index{access\_test.h@{access\_test.h}!network\_incremental\_update\_response\_packet@{network\_incremental\_update\_response\_packet}}
+\index{network\_incremental\_update\_response\_packet@{network\_incremental\_update\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_incremental\_update\_response\_packet()}{network\_incremental\_update\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a2230400cce3023e22069f77e6f20af4d} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{, }\item[{const \mbox{\hyperlink{structaern__network__incremental__update__response__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an incremental-\/update response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em packetin} & A pointer to the input request packet. \\
+\hline
+{\em state} & A pointer to the incremental-\/update response state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_aaba8f108d3259864879ae44d1291b08c}\index{access\_test.h@{access\_test.h}!network\_incremental\_update\_verify@{network\_incremental\_update\_verify}}
+\index{network\_incremental\_update\_verify@{network\_incremental\_update\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_incremental\_update\_verify()}{network\_incremental\_update\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_aaba8f108d3259864879ae44d1291b08c} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+incremental\+\_\+update\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__incremental__update__request__state}{aern\+\_\+network\+\_\+incremental\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify an incremental-\/update request packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the incremental-\/update request state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_ab0c954cd01395c3884b754dc2dbcaf3d}\index{access\_test.h@{access\_test.h}!network\_mac\_message@{network\_mac\_message}}
+\index{network\_mac\_message@{network\_mac\_message}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_mac\_message()}{network\_mac\_message()}}
+{\footnotesize\ttfamily \label{access__test_8h_ab0c954cd01395c3884b754dc2dbcaf3d} 
+void network\+\_\+mac\+\_\+message (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mtag}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ckey}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ctxt}{, }\item[{size\+\_\+t}]{ctxlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{adata}{}\end{DoxyParamCaption})}
+
+
+
+Compute the network message authentication tag used by packet tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtag} & A pointer to the authentication tag output array. \\
+\hline
+{\em ckey} & A pointer to the message authentication key. \\
+\hline
+{\em ctxt} & A pointer to the authenticated context buffer. \\
+\hline
+{\em ctxlen} & The length of the authenticated context buffer in bytes. \\
+\hline
+{\em adata} & A pointer to the associated data buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{access__test_8h_a7ba97954f0547687a1e7402805cdf8db}\index{access\_test.h@{access\_test.h}!network\_mfk\_establish\_packet@{network\_mfk\_establish\_packet}}
+\index{network\_mfk\_establish\_packet@{network\_mfk\_establish\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_mfk\_establish\_packet()}{network\_mfk\_establish\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a7ba97954f0547687a1e7402805cdf8db} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+mfk\+\_\+establish\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{, }\item[{\mbox{\hyperlink{structaern__network__mfk__request__state}{aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an MFK establish packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em packetin} & A pointer to the input request packet. \\
+\hline
+{\em state} & A pointer to the MFK request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a687f992928d5db83b197c97b3c1fa837}\index{access\_test.h@{access\_test.h}!network\_mfk\_request\_packet@{network\_mfk\_request\_packet}}
+\index{network\_mfk\_request\_packet@{network\_mfk\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_mfk\_request\_packet()}{network\_mfk\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a687f992928d5db83b197c97b3c1fa837} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+mfk\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__mfk__request__state}{aern\+\_\+network\+\_\+mfk\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an MFK request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the MFK request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_aae6453b1c10483b161bc98f23484cca8}\index{access\_test.h@{access\_test.h}!network\_mfk\_response\_packet@{network\_mfk\_response\_packet}}
+\index{network\_mfk\_response\_packet@{network\_mfk\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_mfk\_response\_packet()}{network\_mfk\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_aae6453b1c10483b161bc98f23484cca8} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+mfk\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{, }\item[{\mbox{\hyperlink{structaern__network__mfk__response__state}{aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create an MFK response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em packetin} & A pointer to the input establish packet. \\
+\hline
+{\em state} & A pointer to the MFK response state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a4bdaafd66299b7a630fb49d18eb20d05}\index{access\_test.h@{access\_test.h}!network\_mfk\_verify\_packet@{network\_mfk\_verify\_packet}}
+\index{network\_mfk\_verify\_packet@{network\_mfk\_verify\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_mfk\_verify\_packet()}{network\_mfk\_verify\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a4bdaafd66299b7a630fb49d18eb20d05} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+mfk\+\_\+verify\+\_\+packet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{, }\item[{\mbox{\hyperlink{structaern__network__mfk__response__state}{aern\+\_\+network\+\_\+mfk\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Verify an MFK response packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetin} & A pointer to the input network packet. \\
+\hline
+{\em state} & A pointer to the MFK response state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a4d6210610b80e19aa36156b4502f5c5f}\index{access\_test.h@{access\_test.h}!network\_register\_request\_packet@{network\_register\_request\_packet}}
+\index{network\_register\_request\_packet@{network\_register\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_register\_request\_packet()}{network\_register\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a4d6210610b80e19aa36156b4502f5c5f} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+register\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__register__request__state}{aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create a register-\/request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the register request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a78a656bb3e530874f5eff1022ad668f5}\index{access\_test.h@{access\_test.h}!network\_register\_response\_packet@{network\_register\_response\_packet}}
+\index{network\_register\_response\_packet@{network\_register\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_register\_response\_packet()}{network\_register\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a78a656bb3e530874f5eff1022ad668f5} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+register\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{\mbox{\hyperlink{structaern__network__register__response__state}{aern\+\_\+network\+\_\+register\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Create a register-\/response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the register response state. \\
+\hline
+{\em packetin} & A pointer to the input request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a36d5ff7cba357e50beab2c742e8cfc97}\index{access\_test.h@{access\_test.h}!network\_register\_update\_request\_packet@{network\_register\_update\_request\_packet}}
+\index{network\_register\_update\_request\_packet@{network\_register\_update\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_register\_update\_request\_packet()}{network\_register\_update\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a36d5ff7cba357e50beab2c742e8cfc97} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+register\+\_\+update\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__register__update__request__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create a register-\/update request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the register-\/update request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a7993900c9e29f8941184a626c61cb99a}\index{access\_test.h@{access\_test.h}!network\_register\_update\_response\_packet@{network\_register\_update\_response\_packet}}
+\index{network\_register\_update\_response\_packet@{network\_register\_update\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_register\_update\_response\_packet()}{network\_register\_update\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a7993900c9e29f8941184a626c61cb99a} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+register\+\_\+update\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{\mbox{\hyperlink{structaern__network__register__update__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Create a register-\/update response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the register-\/update response state. \\
+\hline
+{\em buffer} & A pointer to the serialized certificate or topology buffer. \\
+\hline
+{\em packetin} & A pointer to the input request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a0a17c75257d1dd45958ba83fc7af5269}\index{access\_test.h@{access\_test.h}!network\_register\_update\_verify@{network\_register\_update\_verify}}
+\index{network\_register\_update\_verify@{network\_register\_update\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_register\_update\_verify()}{network\_register\_update\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_a0a17c75257d1dd45958ba83fc7af5269} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+register\+\_\+update\+\_\+verify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__register__update__request__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a register-\/update request packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the register-\/update request state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_aa944bd547659741253d5a5c47107f116}\index{access\_test.h@{access\_test.h}!network\_register\_verify@{network\_register\_verify}}
+\index{network\_register\_verify@{network\_register\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_register\_verify()}{network\_register\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_aa944bd547659741253d5a5c47107f116} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+register\+\_\+verify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__register__request__state}{aern\+\_\+network\+\_\+register\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a register-\/request packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the register request state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a9fbd2ac6b2a9654e0c4c623f8a39b237}\index{access\_test.h@{access\_test.h}!network\_remote\_signing\_request\_packet@{network\_remote\_signing\_request\_packet}}
+\index{network\_remote\_signing\_request\_packet@{network\_remote\_signing\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_remote\_signing\_request\_packet()}{network\_remote\_signing\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a9fbd2ac6b2a9654e0c4c623f8a39b237} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{}\end{DoxyParamCaption})}
+
+
+
+Create a remote-\/signing request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the remote-\/signing request state. \\
+\hline
+{\em packetout} & A pointer to the output network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_ad4f8e02a5eea56ec44a9db59b276ab38}\index{access\_test.h@{access\_test.h}!network\_remote\_signing\_request\_verify@{network\_remote\_signing\_request\_verify}}
+\index{network\_remote\_signing\_request\_verify@{network\_remote\_signing\_request\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_remote\_signing\_request\_verify()}{network\_remote\_signing\_request\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_ad4f8e02a5eea56ec44a9db59b276ab38} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__remote__signing__request__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a remote-\/signing request packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the remote-\/signing request state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a545c2e9caf33f8dbbf78b6323885dd57}\index{access\_test.h@{access\_test.h}!network\_remote\_signing\_response\_packet@{network\_remote\_signing\_response\_packet}}
+\index{network\_remote\_signing\_response\_packet@{network\_remote\_signing\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_remote\_signing\_response\_packet()}{network\_remote\_signing\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a545c2e9caf33f8dbbf78b6323885dd57} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{}\end{DoxyParamCaption})}
+
+
+
+Create a remote-\/signing response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the remote-\/signing response state. \\
+\hline
+{\em packetout} & A pointer to the output network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a8cbc61c5f52198a4c1b63e44f9032731}\index{access\_test.h@{access\_test.h}!network\_remote\_signing\_response\_verify@{network\_remote\_signing\_response\_verify}}
+\index{network\_remote\_signing\_response\_verify@{network\_remote\_signing\_response\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_remote\_signing\_response\_verify()}{network\_remote\_signing\_response\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_a8cbc61c5f52198a4c1b63e44f9032731} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__remote__signing__response__state}{aern\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a remote-\/signing response packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the remote-\/signing response state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a4b377bfae2cc6937143a41b532a910d8}\index{access\_test.h@{access\_test.h}!network\_topological\_query\_request\_packet@{network\_topological\_query\_request\_packet}}
+\index{network\_topological\_query\_request\_packet@{network\_topological\_query\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_topological\_query\_request\_packet()}{network\_topological\_query\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a4b377bfae2cc6937143a41b532a910d8} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+topological\+\_\+query\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create a topological-\/query request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the topological-\/query request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_ac845b6d95c4a6c40c39f29eb498d0fc5}\index{access\_test.h@{access\_test.h}!network\_topological\_query\_request\_verify@{network\_topological\_query\_request\_verify}}
+\index{network\_topological\_query\_request\_verify@{network\_topological\_query\_request\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_topological\_query\_request\_verify()}{network\_topological\_query\_request\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_ac845b6d95c4a6c40c39f29eb498d0fc5} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+topological\+\_\+query\+\_\+request\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__topological__query__request__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a topological-\/query response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the topological-\/query request state. \\
+\hline
+{\em packetin} & A pointer to the input response packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a3de1550f8b8b16f49e97593e9ed8a6ad}\index{access\_test.h@{access\_test.h}!network\_topological\_query\_response\_packet@{network\_topological\_query\_response\_packet}}
+\index{network\_topological\_query\_response\_packet@{network\_topological\_query\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_topological\_query\_response\_packet()}{network\_topological\_query\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a3de1550f8b8b16f49e97593e9ed8a6ad} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+topological\+\_\+query\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Create a topological-\/query response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the topological-\/query response state. \\
+\hline
+{\em packetin} & A pointer to the input request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a979aa34c6abb50cdd7a180800c9a3ded}\index{access\_test.h@{access\_test.h}!network\_topological\_query\_response\_verify@{network\_topological\_query\_response\_verify}}
+\index{network\_topological\_query\_response\_verify@{network\_topological\_query\_response\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_topological\_query\_response\_verify()}{network\_topological\_query\_response\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_a979aa34c6abb50cdd7a180800c9a3ded} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+topological\+\_\+query\+\_\+response\+\_\+verify (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{const \mbox{\hyperlink{structaern__network__topological__query__response__state}{aern\+\_\+network\+\_\+topological\+\_\+query\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a topological-\/query response packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & A pointer to the topology query buffer. \\
+\hline
+{\em state} & A pointer to the topological-\/query response state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a2d399fc61acce36e9d963b823b4f65bf}\index{access\_test.h@{access\_test.h}!network\_topological\_status\_request\_packet@{network\_topological\_status\_request\_packet}}
+\index{network\_topological\_status\_request\_packet@{network\_topological\_status\_request\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_topological\_status\_request\_packet()}{network\_topological\_status\_request\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_a2d399fc61acce36e9d963b823b4f65bf} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+topological\+\_\+status\+\_\+request\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__topological__status__request__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create a topological-\/status request packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the topological-\/status request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_ae2867355054033b8cadf2adc8209d71e}\index{access\_test.h@{access\_test.h}!network\_topological\_status\_response\_packet@{network\_topological\_status\_response\_packet}}
+\index{network\_topological\_status\_response\_packet@{network\_topological\_status\_response\_packet}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_topological\_status\_response\_packet()}{network\_topological\_status\_response\_packet()}}
+{\footnotesize\ttfamily \label{access__test_8h_ae2867355054033b8cadf2adc8209d71e} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+topological\+\_\+status\+\_\+response\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetout}{, }\item[{const \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Create a topological-\/status response packet for network protocol tests. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetout} & A pointer to the output network packet. \\
+\hline
+{\em state} & A pointer to the topological-\/status response state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol status produced by packet construction. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a9a365736024c2df602071d694a040a5f}\index{access\_test.h@{access\_test.h}!network\_topological\_status\_response\_verify@{network\_topological\_status\_response\_verify}}
+\index{network\_topological\_status\_response\_verify@{network\_topological\_status\_response\_verify}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{network\_topological\_status\_response\_verify()}{network\_topological\_status\_response\_verify()}}
+{\footnotesize\ttfamily \label{access__test_8h_a9a365736024c2df602071d694a040a5f} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} network\+\_\+topological\+\_\+status\+\_\+response\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__topological__status__response__state}{aern\+\_\+network\+\_\+topological\+\_\+status\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Verify a topological-\/status response packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & A pointer to the topological-\/status response state. \\
+\hline
+{\em packetin} & A pointer to the input network packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the protocol verification status. 
+\end{DoxyReturn}
+\Hypertarget{access__test_8h_a543256030c3b2cc3c870db776f5ab7df}\index{access\_test.h@{access\_test.h}!route\_dummy\_traffic\_allowed@{route\_dummy\_traffic\_allowed}}
+\index{route\_dummy\_traffic\_allowed@{route\_dummy\_traffic\_allowed}!access\_test.h@{access\_test.h}}
+\doxysubsubsection{\texorpdfstring{route\_dummy\_traffic\_allowed()}{route\_dummy\_traffic\_allowed()}}
+{\footnotesize\ttfamily \label{access__test_8h_a543256030c3b2cc3c870db776f5ab7df} 
+bool route\+\_\+dummy\+\_\+traffic\+\_\+allowed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cache}{, }\item[{uint32\+\_\+t}]{utilization}{, }\item[{uint64\+\_\+t}]{nowms}{}\end{DoxyParamCaption})}
+
+
+
+Determine whether dummy traffic may be generated for a relay cache state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & A pointer to the relay cache state. \\
+\hline
+{\em utilization} & The current relay utilization value. \\
+\hline
+{\em nowms} & The current time in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true when dummy traffic is allowed by the route policy. 
+\end{DoxyReturn}

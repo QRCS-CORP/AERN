@@ -53,6 +53,7 @@
 #define AERN_TOPOLOGY_H
 
 #include "aern.h"
+#include "async.h"
 #include "certificate.h"
 #include "ipinfo.h"
 #include "list.h"
@@ -89,10 +90,6 @@
  * Issuer network paths are mirrored in the storage subsystem and used as storage path substrings (e.g., C:\AERN\xyz\mas),
  * enabling file system certificate retrieval based on the issuer's topological path.
  */
-
-/*---------------------------------------------------------------------------
-  MACRO DEFINITIONS
----------------------------------------------------------------------------*/
 
 /*!
  * \def AERN_TOPOLOGY_NODE_ENCODED_SIZE
@@ -148,10 +145,6 @@
 	AERN_CERTIFICATE_EXPIRATION_SIZE + \
 	AERN_CERTIFICATE_DESIGNATION_SIZE)
 
-/*---------------------------------------------------------------------------
-  STATIC CONSTANTS
----------------------------------------------------------------------------*/
-
 /*!
  * \brief The delimiter used in network topology for network path segments.
  */
@@ -166,10 +159,6 @@ static const char AERN_TOPOLOGY_CTYPE_DELIMITER[] = ".";
  * \brief The delimiter used for alias in the issuer string.
  */
 static const char AERN_TOPOLOGY_ALIAS_DELIMITER[] = ":";
-
-/*---------------------------------------------------------------------------
-  DATA STRUCTURES
----------------------------------------------------------------------------*/
 
 /*!
  * \struct aern_topology_node_state
@@ -197,11 +186,77 @@ AERN_EXPORT_API typedef struct aern_topology_list_state
 {
 	uint8_t* topology;									/*!< Pointer to the serialized topology array. */
 	uint32_t count;										/*!< The number of active nodes in the topology. */
+	uint64_t version;									/*!< The monotonic topology version; zero means uninitialized or disposed. */
+	qsc_mutex gmtx;										/*!< The global thread mutex. */
 } aern_topology_list_state;
 
-/*---------------------------------------------------------------------------
-  FUNCTION PROTOTYPES
----------------------------------------------------------------------------*/
+/**
+ * \brief Add or replace a node in a topology list.
+ *
+ * This function inserts a node into the topology list and increments the topology version.
+ * Existing entries with the same issuer are replaced by the underlying topology insertion logic.
+ *
+ * \param list: [aern_topology_list_state*] The topology state.
+ * \param node: [const aern_topology_node_state*] The topology node to add.
+ */
+AERN_EXPORT_API void aern_topology_add(aern_topology_list_state* list, const aern_topology_node_state* node);
+
+/**
+ * \brief Compute the canonical topology hash.
+ *
+ * This function copies the serialized topology, sorts the copy by certificate serial number, and computes
+ * a SHAKE-256 digest over the canonical serialized form.
+ *
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param hash: [uint8_t*] The output hash buffer; must be AERN_CERTIFICATE_HASH_SIZE bytes.
+ */
+AERN_EXPORT_API void aern_topology_hash(const aern_topology_list_state* list, uint8_t hash[AERN_CERTIFICATE_HASH_SIZE]);
+
+/**
+ * \brief Increment the topology version.
+ *
+ * This function increments the version counter in a topology state and returns the new value.
+ *
+ * \param list: [aern_topology_list_state*] The topology state.
+ * 
+ * \return Returns the incremented topology version, or zero on failure.
+ */
+AERN_EXPORT_API uint64_t aern_topology_increment_version(aern_topology_list_state* list);
+
+/**
+ * \brief Remove a node from a topology list.
+ *
+ * This function removes a node matching the supplied certificate serial number and increments the version
+ * only when a matching node is removed.
+ *
+ * \param list: [aern_topology_list_state*] The topology state.
+ * \param serial [const uint8_t*] The certificate serial number to remove.
+ */
+AERN_EXPORT_API void aern_topology_remove(aern_topology_list_state* list, const uint8_t* serial);
+
+/**
+ * \brief Update a node in a topology list.
+ *
+ * This function replaces an existing node matching the supplied serial number and increments the topology version.
+ *
+ * \param list: [aern_topology_list_state*] The topology state.
+ * \param node [const aern_topology_node_state*] The replacement topology node.
+ * 
+ * \return Returns aern_protocol_error_none on success, or an error code on failure.
+ */
+AERN_EXPORT_API aern_protocol_errors aern_topology_update(aern_topology_list_state* list, const aern_topology_node_state* node);
+
+/**
+ * \brief Verify an incoming topology version.
+ *
+ * This function verifies that an incoming topology version is strictly greater than the local version.
+ *
+ * \param list: [const aern_topology_list_state*] The local topology state.
+ * \param incomingver[uint64_t] The incoming topology version.
+ * 
+ * \return Returns aern_protocol_error_none when the incoming version is accepted.
+ */
+AERN_EXPORT_API aern_protocol_errors aern_topology_version_verify(const aern_topology_list_state* list, uint64_t incomingver);
 
 /**
  * \brief Returns an IP address from an issuer string.
@@ -209,9 +264,9 @@ AERN_EXPORT_API typedef struct aern_topology_list_state
  * This function extracts and returns the network address associated with a given issuer string,
  * using the topology list to resolve the address.
  *
- * \param address The output buffer to receive the node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE).
- * \param issuer [const] The issuer string.
- * \param list [const] A pointer to the topology list.
+ * \param address: [char*] The output buffer to receive the node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE).
+ * \param issuer: [const char*] The issuer string.
+ * \param list: [const aern_topology_list_state*] A pointer to the topology list.
  */
 AERN_EXPORT_API void aern_topology_address_from_issuer(char* address, const char* issuer, const aern_topology_list_state* list);
 
@@ -220,8 +275,8 @@ AERN_EXPORT_API void aern_topology_address_from_issuer(char* address, const char
  *
  * This function appends an alias to the issuer string of a node.
  *
- * \param node The network node to update.
- * \param alias [const] The host alias to add.
+ * \param node: [aern_topology_node_state*] The network node to update.
+ * \param alias [const char*] The host alias to add.
  */
 AERN_EXPORT_API void aern_topology_node_add_alias(aern_topology_node_state* node, const char* alias);
 
@@ -230,8 +285,9 @@ AERN_EXPORT_API void aern_topology_node_add_alias(aern_topology_node_state* node
  *
  * This function compares two topology node structures and returns true if they are identical.
  *
- * \param a [const] The first node.
- * \param b [const] The second node.
+ * \param a: [const aern_topology_node_state*] The first node.
+ * \param b: [const aern_topology_node_state*] The second node.
+ * 
  * \return Returns true if the nodes are identical; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_nodes_are_equal(const aern_topology_node_state* a, const aern_topology_node_state* b);
@@ -242,7 +298,8 @@ AERN_EXPORT_API bool aern_topology_nodes_are_equal(const aern_topology_node_stat
  * This function returns a pointer to an empty node entry in the topology list.
  * \note This function is not thread safe.
  *
- * \param list A pointer to the topology list.
+ * \param list: [aern_topology_list_state*] A pointer to the topology list.
+ * 
  * \return Returns a pointer to the empty node entry or NULL if none is available.
  */
 AERN_EXPORT_API uint8_t* aern_topology_child_add_empty_node(aern_topology_list_state* list);
@@ -252,8 +309,8 @@ AERN_EXPORT_API uint8_t* aern_topology_child_add_empty_node(aern_topology_list_s
  *
  * This function adds a new node item to the topology list.
  *
- * \param list A pointer to the topology list.
- * \param node [const] The node to add.
+ * \param list: [aern_topology_list_state*] A pointer to the topology list.
+ * \param node: [const aern_topology_node_state*] The node to add.
  */
 AERN_EXPORT_API void aern_topology_child_add_item(aern_topology_list_state* list, const aern_topology_node_state* node);
 
@@ -262,10 +319,11 @@ AERN_EXPORT_API void aern_topology_child_add_item(aern_topology_list_state* list
  *
  * This function converts a device canonical name into its corresponding issuer name based on the domain.
  *
- * \param issuer The output issuer string.
- * \param isslen The length of the issuer buffer.
- * \param domain The domain name.
- * \param cname The input device canonical name.
+ * \param issuer: [char*] The output issuer string.
+ * \param isslen: [size_t] The length of the issuer buffer.
+ * \param domain: [const char*] The domain name.
+ * \param cname: [const char*] The input device canonical name.
+ * 
  * \return Returns false if the conversion fails.
  */
 AERN_EXPORT_API bool aern_topology_canonical_to_issuer_name(char* issuer, size_t isslen, const char* domain, const char* cname);
@@ -275,9 +333,10 @@ AERN_EXPORT_API bool aern_topology_canonical_to_issuer_name(char* issuer, size_t
  *
  * This function converts an issuer name back into its canonical form.
  *
- * \param cname The output canonical name.
- * \param namelen The length of the canonical name buffer.
- * \param issuer The input issuer name string.
+ * \param cname: [char*] The output canonical name.
+ * \param namelen: [size_t] The length of the canonical name buffer.
+ * \param issuer: [const char*] The input issuer name string.
+ * 
  * \return Returns false if the conversion fails.
  */
 AERN_EXPORT_API bool aern_topology_issuer_to_canonical_name(char* cname, size_t namelen, const char* issuer);
@@ -287,9 +346,9 @@ AERN_EXPORT_API bool aern_topology_issuer_to_canonical_name(char* cname, size_t 
  *
  * This function registers a new child node in the topology list based on its certificate.
  *
- * \param list A pointer to the topology list.
- * \param ccert [const] The node's child certificate.
- * \param address [const] The node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE).
+ * \param list: [aern_topology_list_state*] A pointer to the topology list.
+ * \param ccert: [const aern_child_certificate*] The node's child certificate.
+ * \param address: [const char*] The node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE).
  */
 AERN_EXPORT_API void aern_topology_child_register(aern_topology_list_state* list, const aern_child_certificate* ccert, const char* address);
 
@@ -298,8 +357,8 @@ AERN_EXPORT_API void aern_topology_child_register(aern_topology_list_state* list
  *
  * This function creates a clone of the given topology list.
  *
- * \param tlist [const] A pointer to the source topology list.
- * \param tcopy A pointer to the destination topology list.
+ * \param tlist: [const aern_topology_list_state*] A pointer to the source topology list.
+ * \param tcopy: [aern_topology_list_state*] A pointer to the destination topology list.
  */
 AERN_EXPORT_API void aern_topology_list_clone(const aern_topology_list_state* tlist, aern_topology_list_state* tcopy);
 
@@ -308,9 +367,9 @@ AERN_EXPORT_API void aern_topology_list_clone(const aern_topology_list_state* tl
  *
  * This function deserializes a topology list from a given input array.
  *
- * \param list A pointer to the topology list state to populate.
- * \param input [const] The serialized topology array.
- * \param inplen The size of the input array.
+ * \param list: [aern_topology_list_state*] A pointer to the topology list state to populate.
+ * \param input: [const uint8_t*] The serialized topology array.
+ * \param inplen: [size_t] The size of the input array.
  */
 AERN_EXPORT_API void aern_topology_list_deserialize(aern_topology_list_state* list, const uint8_t* input, size_t inplen);
 
@@ -319,7 +378,7 @@ AERN_EXPORT_API void aern_topology_list_deserialize(aern_topology_list_state* li
  *
  * This function releases all memory allocated for the topology list.
  *
- * \param list A pointer to the topology list state.
+ * \param list: [aern_topology_list_state*] A pointer to the topology list state.
  */
 AERN_EXPORT_API void aern_topology_list_dispose(aern_topology_list_state* list);
 
@@ -328,7 +387,7 @@ AERN_EXPORT_API void aern_topology_list_dispose(aern_topology_list_state* list);
  *
  * This function initializes the topology list state.
  *
- * \param list The topology list state to initialize.
+ * \param list: [aern_topology_list_state*] The topology list state to initialize.
  */
 AERN_EXPORT_API void aern_topology_list_initialize(aern_topology_list_state* list);
 
@@ -337,9 +396,10 @@ AERN_EXPORT_API void aern_topology_list_initialize(aern_topology_list_state* lis
  *
  * This function retrieves the node at the specified index in the topology list.
  *
- * \param list The topology list state.
- * \param node A pointer to the node structure to populate.
- * \param index The index of the node.
+ * \param list [aern_topology_list_state*] The topology list state.
+ * \param node: [aern_topology_node_state*] A pointer to the node structure to populate.
+ * \param index: [size_t] The index of the node.
+ * 
  * \return Returns false if the node was not found.
  */
 AERN_EXPORT_API bool aern_topology_list_item(const aern_topology_list_state* list, aern_topology_node_state* node, size_t index);
@@ -349,7 +409,8 @@ AERN_EXPORT_API bool aern_topology_list_item(const aern_topology_list_state* lis
  *
  * This function removes duplicate entries from the topology list.
  *
- * \param list The topology list state.
+ * \param list: [aern_topology_list_state*] The topology list state.
+ * 
  * \return Returns the number of items remaining in the list.
  */
 AERN_EXPORT_API size_t aern_topology_list_remove_duplicates(aern_topology_list_state* list);
@@ -359,8 +420,9 @@ AERN_EXPORT_API size_t aern_topology_list_remove_duplicates(aern_topology_list_s
  *
  * This function counts the number of nodes of a specific type in the topology list.
  *
- * \param list [const] The topology list state.
- * \param ntype The type of node entry to count.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param ntype: [aern_network_designations] The type of node entry to count.
+ * 
  * \return Returns the number of nodes matching the given type.
  */
 AERN_EXPORT_API size_t aern_topology_list_server_count(const aern_topology_list_state* list, aern_network_designations ntype);
@@ -370,8 +432,9 @@ AERN_EXPORT_API size_t aern_topology_list_server_count(const aern_topology_list_
  *
  * This function serializes the topology list into a byte array.
  *
- * \param output The output buffer for the serialized topology.
- * \param list [const] The topology list state.
+ * \param output: [uint8_t*] The output buffer for the serialized topology.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * 
  * \return Returns the size of the serialized topology.
  */
 AERN_EXPORT_API size_t aern_topology_list_serialize(uint8_t* output, const aern_topology_list_state* list);
@@ -381,7 +444,8 @@ AERN_EXPORT_API size_t aern_topology_list_serialize(uint8_t* output, const aern_
  *
  * This function returns the size in bytes of the serialized topology list.
  *
- * \param list [const] The topology list state.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * 
  * \return Returns the byte size of the serialized topology.
  */
 AERN_EXPORT_API size_t aern_topology_list_size(const aern_topology_list_state* list);
@@ -391,9 +455,10 @@ AERN_EXPORT_API size_t aern_topology_list_size(const aern_topology_list_state* l
  *
  * This function converts the topology list into a human?readable string.
  *
- * \param list [const] The topology list state.
- * \param output The output string buffer.
- * \param outlen The length of the output buffer.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param output: [char*] The output string buffer.
+ * \param outlen: [size_t] The length of the output buffer.
+ * 
  * \return Returns the size of the resulting string.
  */
 AERN_EXPORT_API size_t aern_topology_list_to_string(const aern_topology_list_state* list, char* output, size_t outlen);
@@ -403,9 +468,10 @@ AERN_EXPORT_API size_t aern_topology_list_to_string(const aern_topology_list_sta
  *
  * This function serializes a subset of nodes from the topology list (of a given type) into an array.
  *
- * \param output The output buffer for the serialized node update set.
- * \param list [const] The topology list state.
- * \param ntype The type of node entry to pack.
+ * \param output: [uint8_t*] The output buffer for the serialized node update set.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param ntype: [aern_network_designations] The type of node entry to pack.
+ * 
  * \return Returns the size of the serialized node update set.
  */
 AERN_EXPORT_API size_t aern_topology_list_update_pack(uint8_t* output, const aern_topology_list_state* list, aern_network_designations ntype);
@@ -415,9 +481,10 @@ AERN_EXPORT_API size_t aern_topology_list_update_pack(uint8_t* output, const aer
  *
  * This function deserializes an update set and adds the nodes to the topology list.
  *
- * \param list The topology list state to update.
- * \param input The input serialized node update set.
- * \param inplen The length of the input array.
+ * \param list: [aern_topology_list_state*] The topology list state to update.
+ * \param input: [const uint8_t*] The input serialized node update set.
+ * \param inplen: [size_t] The length of the input array.
+ * 
  * \return Returns the number of bytes processed.
  */
 AERN_EXPORT_API size_t aern_topology_list_update_unpack(aern_topology_list_state* list, const uint8_t* input, size_t inplen);
@@ -428,9 +495,10 @@ AERN_EXPORT_API size_t aern_topology_list_update_unpack(aern_topology_list_state
  * This function returns a new topology list containing nodes of a specific type, sorted by their serial number.
  * \note The caller is responsible for disposing the output list.
  *
- * \param olist The sorted output topology list.
- * \param tlist The unsorted input topology list.
- * \param ntype The type of node to filter and sort.
+ * \param olist: [aern_topology_list_state*] The sorted output topology list.
+ * \param tlist: [aern_topology_list_state*] The unsorted input topology list.
+ * \param ntype: [aern_network_designations] The type of node to filter and sort.
+ * 
  * \return Returns the number of nodes in the sorted list.
  */
 AERN_EXPORT_API size_t aern_topology_ordered_server_list(aern_topology_list_state* olist, const aern_topology_list_state* tlist, aern_network_designations ntype);
@@ -440,7 +508,7 @@ AERN_EXPORT_API size_t aern_topology_ordered_server_list(aern_topology_list_stat
  *
  * This function clears all data in a topology node structure.
  *
- * \param node A pointer to the topology node structure to erase.
+ * \param node: [aern_topology_node_state*] A pointer to the topology node structure to erase.
  */
 AERN_EXPORT_API void aern_topology_node_clear(aern_topology_node_state* node);
 
@@ -449,8 +517,8 @@ AERN_EXPORT_API void aern_topology_node_clear(aern_topology_node_state* node);
  *
  * This function copies the contents of one topology node structure to another.
  *
- * \param source [const] A pointer to the source node structure.
- * \param destination A pointer to the destination node structure.
+ * \param source [const aern_topology_node_state*] A pointer to the source node structure.
+ * \param destination: [aern_topology_node_state*] A pointer to the destination node structure.
  */
 AERN_EXPORT_API void aern_topology_node_copy(const aern_topology_node_state* source, aern_topology_node_state* destination);
 
@@ -459,8 +527,8 @@ AERN_EXPORT_API void aern_topology_node_copy(const aern_topology_node_state* sou
  *
  * This function converts a serialized topology node array into a topology node structure.
  *
- * \param node A pointer to the topology node structure to populate.
- * \param input [const] The input serialized topology node data.
+ * \param node: [aern_topology_node_state*] A pointer to the topology node structure to populate.
+ * \param input: [const uint8_t*] The input serialized topology node data.
  */
 AERN_EXPORT_API void aern_topology_node_deserialize(aern_topology_node_state* node, const uint8_t* input);
 
@@ -469,8 +537,9 @@ AERN_EXPORT_API void aern_topology_node_deserialize(aern_topology_node_state* no
  *
  * This function encodes a topology node into a human?readable string format.
  *
- * \param node A pointer to the topology node structure.
- * \param output The output buffer for the encoded node string.
+ * \param node: [const aern_topology_node_state*] A pointer to the topology node structure.
+ * \param output: [char*] The output buffer for the encoded node string.
+ * 
  * \return Returns the size of the encoded node string.
  */
 AERN_EXPORT_API size_t aern_topology_node_encode(const aern_topology_node_state* node, char output[AERN_TOPOLOGY_NODE_ENCODED_SIZE]);
@@ -480,8 +549,9 @@ AERN_EXPORT_API size_t aern_topology_node_encode(const aern_topology_node_state*
  *
  * This function checks whether a node with the specified serial number exists in the topology list.
  *
- * \param list [const] The topology list state.
- * \param serial The serial number to search for.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param serial: [const uint8_t*] The serial number to search for.
+ * 
  * \return Returns true if the node exists; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_exists(const aern_topology_list_state* list, const uint8_t* serial);
@@ -491,8 +561,9 @@ AERN_EXPORT_API bool aern_topology_node_exists(const aern_topology_list_state* l
  *
  * This function searches for a node by its serial number and returns its index in the topology list.
  *
- * \param list [const] The topology list state.
- * \param serial The serial number to search for.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param serial: [const uint8_t*] The serial number to search for.
+ * 
  * \return Returns the index of the node, or AERN_TOPOLOGY_NODE_NOT_FOUND if not found.
  */
 AERN_EXPORT_API int32_t aern_topology_node_get_index(const aern_topology_list_state* list, const uint8_t* serial);
@@ -502,9 +573,10 @@ AERN_EXPORT_API int32_t aern_topology_node_get_index(const aern_topology_list_st
  *
  * This function finds a node in the topology list that matches the given serial number.
  *
- * \param list [const] The topology list state.
- * \param node A pointer to the destination node structure to populate.
- * \param serial [const] The certificate serial number to search for.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param node: [aern_topology_node_state*] A pointer to the destination node structure to populate.
+ * \param serial: [const uint8_t*] The certificate serial number to search for.
+ * 
  * \return Returns true if the node was found; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_find(const aern_topology_list_state* list, aern_topology_node_state* node, const uint8_t* serial);
@@ -514,9 +586,10 @@ AERN_EXPORT_API bool aern_topology_node_find(const aern_topology_list_state* lis
  *
  * This function searches the topology list for a node that matches the given network address.
  *
- * \param list [const] The topology list state.
- * \param node A pointer to the destination node structure.
- * \param address [const] The network address to search for.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param node: [aern_topology_node_state*] A pointer to the destination node structure.
+ * \param address: [const char*] The network address to search for.
+ * 
  * \return Returns true if the node was found; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_find_address(const aern_topology_list_state* list, aern_topology_node_state* node, const char* address);
@@ -526,9 +599,10 @@ AERN_EXPORT_API bool aern_topology_node_find_address(const aern_topology_list_st
  *
  * This function searches the topology list for a node that matches the given alias.
  *
- * \param list [const] The topology list state.
- * \param node A pointer to the destination node structure.
- * \param alias [const] The alias to search for.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param node: [aern_topology_node_state*] A pointer to the destination node structure.
+ * \param alias: [const char*] The alias to search for.
+ * 
  * \return Returns true if the node was found; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_find_alias(const aern_topology_list_state* list, aern_topology_node_state* node, const char* alias);
@@ -538,20 +612,58 @@ AERN_EXPORT_API bool aern_topology_node_find_alias(const aern_topology_list_stat
  *
  * This function finds the ADC node in the topology list.
  *
- * \param list [const] The topology list state.
- * \param node A pointer to the destination node structure.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param node: [aern_topology_node_state*] A pointer to the destination node structure.
+ * 
  * \return Returns true if the ADC node was found; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_find_ads(const aern_topology_list_state* list, aern_topology_node_state* node);
+
+/**
+* \brief
+* Searches a topology list for an active ADC node and copies the matching node state.
+*
+* \details
+* This function scans the supplied topology list for a node whose designation identifies it
+* as an ADC. When a matching ADC node is found, the complete node state is copied to the
+* caller-supplied \c node output structure.
+*
+* The function is intended for topology-dependent routing and policy operations that require
+* discovery of the active Access Domain Controller from the local topology view.
+*
+* The function validates its pointer arguments before use. If either \c list or \c node is
+* \c NULL, the function returns \c false. If no ADC node is present in the supplied topology
+* list, the function also returns \c false.
+*
+* \param list: [const aern_topology_list_state*] A pointer to the topology list state to search.
+* \param node: [aern_topology_node_state*] A pointer to the output node state receiving the discovered ADC node.
+*
+* \return Returns \c true if an ADC node was found and copied to \c node; otherwise returns \c false.
+*/
+AERN_EXPORT_API bool aern_topology_node_find_adc(const aern_topology_list_state* list, aern_topology_node_state* node);
+
+/**
+ * \brief Return the first APS node from the list.
+ *
+ * This function scans the topology list for the first node designated as an APS and copies
+ * the matching node into the caller supplied output structure.
+ *
+ * \param list: [const aern_topology_list_state*] A pointer to the topology list state to search.
+ * \param node: [aern_topology_node_state*] A pointer to the output node state receiving the discovered APS node.
+ * 
+ * \return Returns true if an APS node was found; otherwise returns false.
+ */
+AERN_EXPORT_API bool aern_topology_node_find_aps(const aern_topology_list_state* list, aern_topology_node_state* node);
 
 /**
  * \brief Return the node pointer in the list matching the name string.
  *
  * This function finds a node in the topology list that matches the given issuer name.
  *
- * \param list [const] The topology list state.
- * \param node A pointer to the destination node structure.
- * \param issuer [const] The certificate issuer name.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param node: [aern_topology_node_state*] A pointer to the destination node structure.
+ * \param issuer: [const char*] The certificate issuer name.
+ * 
  * \return Returns true if the node was found; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_find_issuer(const aern_topology_list_state* list, aern_topology_node_state* node, const char* issuer);
@@ -561,8 +673,9 @@ AERN_EXPORT_API bool aern_topology_node_find_issuer(const aern_topology_list_sta
  *
  * This function retrieves the ARS server node from the topology list.
  *
- * \param list [const] The topology list state.
- * \param node A pointer to the destination node structure.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param node: [aern_topology_node_state*] A pointer to the destination node structure.
+ * 
  * \return Returns true if the ARS server node was found; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_find_root(const aern_topology_list_state* list, aern_topology_node_state* node);
@@ -572,8 +685,8 @@ AERN_EXPORT_API bool aern_topology_node_find_root(const aern_topology_list_state
  *
  * This function searches for a node by its serial number and removes it from the topology list.
  *
- * \param list The topology list state.
- * \param serial The serial number of the node to remove (AERN_CERTIFICATE_SERIAL_SIZE bytes).
+ * \param list: [aern_topology_list_state*] The topology list state.
+ * \param serial: [const uint8_t*] The serial number of the node to remove (AERN_CERTIFICATE_SERIAL_SIZE bytes).
  */
 AERN_EXPORT_API void aern_topology_node_remove(aern_topology_list_state* list, const uint8_t* serial);
 
@@ -582,8 +695,8 @@ AERN_EXPORT_API void aern_topology_node_remove(aern_topology_list_state* list, c
  *
  * This function removes duplicate nodes from the topology list that have the same issuer name.
  *
- * \param list The topology list state.
- * \param issuer The issuer name to match for removal.
+ * \param list: [aern_topology_list_state*] The topology list state.
+ * \param issuer: [const char*] The issuer name to match for removal.
  */
 AERN_EXPORT_API void aern_topology_node_remove_duplicate(aern_topology_list_state* list, const char* issuer);
 
@@ -592,20 +705,34 @@ AERN_EXPORT_API void aern_topology_node_remove_duplicate(aern_topology_list_stat
  *
  * This function verifies that the ADC certificate in the topology list matches the certificate hash.
  *
- * \param list [const] The topology list state.
- * \param ccert [const] The ADC certificate structure.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param ccert: [const aern_child_certificate*] The ADC certificate structure.
+ * 
  * \return Returns true if the certificate matches the stored hash; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_verify_ads(const aern_topology_list_state* list, const aern_child_certificate* ccert);
+
+/**
+ * \brief Verify that the ADC certificate matches the hash stored in the topology.
+ *
+ * This function is the AERN-specific alias for the legacy ADS verification name.
+ *
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param ccert: [const aern_child_certificate*] The ADC certificate structure.
+ * 
+ * \return Returns true if the certificate matches the stored hash; false otherwise.
+ */
+AERN_EXPORT_API bool aern_topology_node_verify_adc(const aern_topology_list_state* list, const aern_child_certificate* ccert);
 
 /**
  * \brief Verify that an issuing node's certificate matches the hash stored in the topology.
  *
  * This function verifies that the certificate for a given issuer matches the stored hash in the topology list.
  *
- * \param list [const] The topology list state.
- * \param ccert [const] The node's certificate structure.
- * \param issuer [const] The certificate issuer name.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param ccert: [const aern_child_certificate*] The node's certificate structure.
+ * \param issuer: [const char*] The certificate issuer name.
+ * 
  * \return Returns true if the certificate is valid and matches; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_verify_issuer(const aern_topology_list_state* list, const aern_child_certificate* ccert, const char* issuer);
@@ -615,8 +742,9 @@ AERN_EXPORT_API bool aern_topology_node_verify_issuer(const aern_topology_list_s
  *
  * This function verifies that the root certificate matches the hash stored in the topology list.
  *
- * \param list [const] The topology list state.
- * \param rcert [const] The root certificate structure.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param rcert: [const aern_root_certificate*] The root certificate structure.
+ * 
  * \return Returns true if the root certificate is valid; false otherwise.
  */
 AERN_EXPORT_API bool aern_topology_node_verify_root(const aern_topology_list_state* list, const aern_root_certificate* rcert);
@@ -626,8 +754,9 @@ AERN_EXPORT_API bool aern_topology_node_verify_root(const aern_topology_list_sta
  *
  * This function serializes the topology node structure into a byte array.
  *
- * \param output The output buffer to receive the serialized node.
- * \param node [const] A pointer to the topology node structure.
+ * \param output: [uint8_t*] The output buffer to receive the serialized node.
+ * \param node: [const aern_topology_node_state*] A pointer to the topology node structure.
+ * 
  * \return Returns the size of the serialized node.
  */
 AERN_EXPORT_API size_t aern_topology_node_serialize(uint8_t* output, const aern_topology_node_state* node);
@@ -637,9 +766,9 @@ AERN_EXPORT_API size_t aern_topology_node_serialize(uint8_t* output, const aern_
  *
  * This function registers a root certificate into the topology list.
  *
- * \param list A pointer to the topology list.
- * \param rcert [const] The root certificate.
- * \param address [const] The network address of the root.
+ * \param list: [aern_topology_list_state*] A pointer to the topology list.
+ * \param rcert: [const aern_root_certificate*] The root certificate.
+ * \param address: [const char*] The network address of the root.
  */
 AERN_EXPORT_API void aern_topology_root_register(aern_topology_list_state* list, const aern_root_certificate* rcert, const char* address);
 
@@ -648,8 +777,8 @@ AERN_EXPORT_API void aern_topology_root_register(aern_topology_list_state* list,
  *
  * This function loads a topology list from a file.
  *
- * \param fpath [const] The full path to the topology list file.
- * \param list A pointer to the topology list state to populate.
+ * \param fpath: [const char*] The full path to the topology list file.
+ * \param list: [aern_topology_list_state*] A pointer to the topology list state to populate.
  */
 AERN_EXPORT_API void aern_topology_from_file(const char* fpath, aern_topology_list_state* list);
 
@@ -658,20 +787,9 @@ AERN_EXPORT_API void aern_topology_from_file(const char* fpath, aern_topology_li
  *
  * This function writes the current topology list to a file.
  *
- * \param list [const] The topology list state.
- * \param fpath [const] The destination file path for the topology list.
+ * \param list: [const aern_topology_list_state*] The topology list state.
+ * \param fpath: [const char*] The destination file path for the topology list.
  */
 AERN_EXPORT_API void aern_topology_to_file(const aern_topology_list_state* list, const char* fpath);
-
-#if defined(AERN_DEBUG_MODE)
-/**
- * \brief Test the topology functions.
- *
- * This function runs a series of tests on the topology functions.
- *
- * \return Returns true if all tests pass.
- */
-AERN_EXPORT_API bool aern_topology_functions_test();
-#endif
 
 #endif

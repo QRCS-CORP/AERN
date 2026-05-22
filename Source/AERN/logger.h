@@ -73,9 +73,8 @@
  *
  * The following macros are defined to specify the maximum message length and the dimensions of the
  * log string storage:
- *   - \ref AERN_LOGGING_MESSAGE_MAX defines the maximum number of characters for a log message.
- *   - \ref AERN_LOG_STRING_DEPTH and \ref AERN_LOG_STRING_SIZE specify the dimensions used for storing
- *     pre-defined log strings.
+ * - \ref AERN_LOGGING_MESSAGE_MAX defines the maximum number of characters for a log message.
+ * - \ref AERN_LOG_STRING_DEPTH and \ref AERN_LOG_STRING_SIZE specify the dimensions used for storing pre-defined log strings.
  *
  * Additionally, static constants provide the default logger path, file name, and header string.
  *
@@ -119,8 +118,8 @@ static const char AERN_LOGGER_HEAD[] = "AERN Version 1.0";
  * This function retrieves the default log file path by obtaining the user's documents directory,
  * appending the AERN logger directory name, and finally the log file name.
  *
- * \param path [out] The output buffer that will receive the full log file path.
- * \param pathlen The length of the output buffer.
+ * \param path: [char*] The output buffer that will receive the full log file path.
+ * \param pathlen: [size_t] The length of the output buffer.
  */
 AERN_EXPORT_API void logger_default_path(char* path, size_t pathlen);
 
@@ -129,7 +128,7 @@ AERN_EXPORT_API void logger_default_path(char* path, size_t pathlen);
  *
  * This function deletes the log file at the specified path.
  *
- * \param path [in] The log file path.
+ * \param path: [const char*] The log file path.
  *
  * \return Returns true on success.
  */
@@ -140,7 +139,7 @@ AERN_EXPORT_API bool aern_logger_dispose(const char* path);
  *
  * This function clears the contents of the log file without deleting the file itself.
  *
- * \param path [in] The log file path.
+ * \param path: [const char*] The log file path.
  *
  * \return Returns true on success.
  */
@@ -149,7 +148,7 @@ AERN_EXPORT_API bool aern_logger_erase_all(const char* path);
 /**
  * \brief Check if the log file exists.
  *
- * \param path [in] The log file path.
+ * \param path: [const char*] The log file path.
  *
  * \return Returns true if the log file exists.
  */
@@ -160,7 +159,7 @@ AERN_EXPORT_API bool aern_logger_exists(const char* path);
  *
  * This function creates or resets the log file at the specified path if it does not already exist.
  *
- * \param path [in] The log file path.
+ * \param path: [const char*] The log file path.
  */
 AERN_EXPORT_API void aern_logger_initialize(const char* path);
 
@@ -169,7 +168,7 @@ AERN_EXPORT_API void aern_logger_initialize(const char* path);
  *
  * This function returns the size (in characters) of the log file.
  *
- * \param path [in] The log file path.
+ * \param path: [const char*] The log file path.
  *
  * \return Returns the character size of the log file.
  */
@@ -180,7 +179,7 @@ AERN_EXPORT_API size_t aern_logger_get_size(const char* path);
  *
  * Erases the log file (or creates a new empty log file if it does not exist).
  *
- * \param path [in] The log file path.
+ * \param path: [const char*] The log file path.
  */
 AERN_EXPORT_API void aern_logger_reset(const char* path);
 
@@ -189,9 +188,9 @@ AERN_EXPORT_API void aern_logger_reset(const char* path);
  *
  * This function appends a terminated line (with a newline) to the log file.
  *
- * \param path [in] The log file path.
- * \param line [in, const] The null-terminated string to write.
- * \param linelen The length of the line.
+ * \param path: [const char*] The log file path.
+ * \param line: [const char*] The null-terminated string to write.
+ * \param linelen: [size_t] The length of the line.
  *
  * \return Returns the number of characters written.
  */
@@ -203,10 +202,10 @@ AERN_EXPORT_API size_t aern_logger_write_message(const char* path, const char* l
  * This function prepends a predefined message (based on the provided message type) to the given
  * message text and writes the result to the log.
  *
- * \param path [in] The log file path.
- * \param msgtype The predefined message type (from aern_application_messages).
- * \param message [in, const] The message to write.
- * \param msglen The length of the message.
+ * \param path: [const char*] The log file path.
+ * \param msgtype: [aern_application_messages] The predefined message type (from aern_application_messages).
+ * \param message: [const char*] The message to write.
+ * \param msglen: [size_t] The length of the message.
  *
  * \return Returns the number of characters written.
  */
@@ -217,9 +216,9 @@ AERN_EXPORT_API size_t aern_logger_write_decorated_message(const char* path, aer
  *
  * This function writes a log entry that begins with a current timestamp.
  *
- * \param path [in] The log file path.
- * \param message [in, const] The message to log.
- * \param msglen The length of the message.
+ * \param path: [const char*] The log file path.
+ * \param message: [const char*] The message to log.
+ * \param msglen: [size_t] The length of the message.
  *
  * \return Returns the number of characters written.
  */
@@ -231,10 +230,10 @@ AERN_EXPORT_API size_t aern_logger_write_time_stamped_message(const char* path, 
  * This function first obtains a current timestamp, then prepends a predefined message based on the
  * given message type, and finally writes the complete entry to the log file.
  *
- * \param path [in] The full log file path.
- * \param msgtype The predefined message type.
- * \param message [in, const] The message to write.
- * \param msglen The length of the message.
+ * \param path: [const char*] The full log file path.
+ * \param msgtype: [aern_application_messages] The predefined message type.
+ * \param message: [const char*] The message to write.
+ * \param msglen: [size_t] The length of the message.
  *
  * \return Returns the number of characters written.
  */
@@ -243,9 +242,9 @@ AERN_EXPORT_API size_t aern_logger_write_decorated_time_stamped_message(const ch
 /**
  * \brief Read the entire log into a character array.
  *
- * \param path [in] The full path to the log file.
- * \param output [out] The output string receiving the log contents.
- * \param outlen The length of the output array.
+ * \param path: [const char*] The full path to the log file.
+ * \param output: [char*] The output string receiving the log contents.
+ * \param outlen: [size_t] The length of the output array.
  *
  * \return Returns the number of characters read.
  */
@@ -254,10 +253,10 @@ AERN_EXPORT_API size_t aern_logger_read_all(const char* path, char* output, size
 /**
  * \brief Read a single line from the log file.
  *
- * \param path [in] The full path to the log file.
- * \param output [out] The output string receiving the line.
- * \param outlen The length of the output string.
- * \param linenum The 0-based line number to read.
+ * \param path: [const char*] The full path to the log file.
+ * \param output: [char*] The output string receiving the line.
+ * \param outlen: [size_t] The length of the output string.
+ * \param linenum: [size_t] The 0-based line number to read.
  *
  * \return Returns the number of characters read.
  */
@@ -268,8 +267,8 @@ AERN_EXPORT_API int64_t aern_logger_read_line(const char* path, char* output, si
  *
  * This function retrieves the current date and time in a formatted string.
  *
- * \param output [out] The output string receiving the timestamp.
- * \param outlen The length of the output array.
+ * \param output: [char*] The output string receiving the timestamp.
+ * \param outlen: [size_t] The length of the output array.
  *
  * \return Returns the number of characters in the timestamp string.
  */

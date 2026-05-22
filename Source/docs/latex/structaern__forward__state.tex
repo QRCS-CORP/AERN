@@ -1,0 +1,75 @@
+\doxysection{aern\+\_\+forward\+\_\+state Struct Reference}
+\hypertarget{structaern__forward__state}{}\label{structaern__forward__state}\index{aern\_forward\_state@{aern\_forward\_state}}
+
+
+State passed to aern\+\_\+packet\+\_\+forward.  
+
+
+
+
+{\ttfamily \#include $<$route.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__forward__state_a96c03683256b34c9740fb81eed5cdf49}{conn\+\_\+table}}
+\item 
+\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__forward__state_a36bef4937cf391c307f3e96dac9caa00}{relay\+\_\+cache}}
+\item 
+const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__forward__state_a4d541aa6fec485fe70bb3fa73c333aad}{topology}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__forward__state_a2431f6dce89f60445fcb01071192370d}{apscount}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__forward__state_a6558e20e2127c3e7d957958f420e2806}{ownhint}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__forward__state_a1209ffa3b1b3c630a49b7499d1aa8632}{own\+\_\+address}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State passed to aern\+\_\+packet\+\_\+forward. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__forward__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__forward__state_a2431f6dce89f60445fcb01071192370d}\index{aern\_forward\_state@{aern\_forward\_state}!apscount@{apscount}}
+\index{apscount@{apscount}!aern\_forward\_state@{aern\_forward\_state}}
+\doxysubsubsection{\texorpdfstring{apscount}{apscount}}
+{\footnotesize\ttfamily \label{structaern__forward__state_a2431f6dce89f60445fcb01071192370d} 
+uint8\+\_\+t apscount}
+
+Number of APS entries \Hypertarget{structaern__forward__state_a96c03683256b34c9740fb81eed5cdf49}\index{aern\_forward\_state@{aern\_forward\_state}!conn\_table@{conn\_table}}
+\index{conn\_table@{conn\_table}!aern\_forward\_state@{aern\_forward\_state}}
+\doxysubsubsection{\texorpdfstring{conn\_table}{conn\_table}}
+{\footnotesize\ttfamily \label{structaern__forward__state_a96c03683256b34c9740fb81eed5cdf49} 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}}\texorpdfstring{$\ast$}{*} conn\+\_\+table}
+
+Cipher table (all peer connections) \Hypertarget{structaern__forward__state_a1209ffa3b1b3c630a49b7499d1aa8632}\index{aern\_forward\_state@{aern\_forward\_state}!own\_address@{own\_address}}
+\index{own\_address@{own\_address}!aern\_forward\_state@{aern\_forward\_state}}
+\doxysubsubsection{\texorpdfstring{own\_address}{own\_address}}
+{\footnotesize\ttfamily \label{structaern__forward__state_a1209ffa3b1b3c630a49b7499d1aa8632} 
+const char\texorpdfstring{$\ast$}{*} own\+\_\+address}
+
+This node\textquotesingle{}s IP address \Hypertarget{structaern__forward__state_a6558e20e2127c3e7d957958f420e2806}\index{aern\_forward\_state@{aern\_forward\_state}!ownhint@{ownhint}}
+\index{ownhint@{ownhint}!aern\_forward\_state@{aern\_forward\_state}}
+\doxysubsubsection{\texorpdfstring{ownhint}{ownhint}}
+{\footnotesize\ttfamily \label{structaern__forward__state_a6558e20e2127c3e7d957958f420e2806} 
+uint8\+\_\+t ownhint}
+
+This node\textquotesingle{}s one-\/based APS route hint \Hypertarget{structaern__forward__state_a36bef4937cf391c307f3e96dac9caa00}\index{aern\_forward\_state@{aern\_forward\_state}!relay\_cache@{relay\_cache}}
+\index{relay\_cache@{relay\_cache}!aern\_forward\_state@{aern\_forward\_state}}
+\doxysubsubsection{\texorpdfstring{relay\_cache}{relay\_cache}}
+{\footnotesize\ttfamily \label{structaern__forward__state_a36bef4937cf391c307f3e96dac9caa00} 
+\mbox{\hyperlink{structaern__relay__cache__state}{aern\+\_\+relay\+\_\+cache\+\_\+state}}\texorpdfstring{$\ast$}{*} relay\+\_\+cache}
+
+Relay session, fragment, and queue cache \Hypertarget{structaern__forward__state_a4d541aa6fec485fe70bb3fa73c333aad}\index{aern\_forward\_state@{aern\_forward\_state}!topology@{topology}}
+\index{topology@{topology}!aern\_forward\_state@{aern\_forward\_state}}
+\doxysubsubsection{\texorpdfstring{topology}{topology}}
+{\footnotesize\ttfamily \label{structaern__forward__state_a4d541aa6fec485fe70bb3fa73c333aad} 
+const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}}\texorpdfstring{$\ast$}{*} topology}
+
+APS topology list 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{route_8h}{route.\+h}}\end{DoxyCompactItemize}

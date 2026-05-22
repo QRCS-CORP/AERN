@@ -1,0 +1,282 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/relayqueue.h File Reference}
+\hypertarget{relayqueue_8h}{}\label{relayqueue_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/relayqueue.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/relayqueue.h}}
+
+
+Relay pending and delay queue interface.  
+
+
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}}
+\begin{DoxyCompactList}\small\item\em Relay packet queued while an ingress session waits for egress acknowledgement or delay expiry. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Fixed-\/slot relay queue with heap-\/backed packet storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{relayqueue_8h_acc01dea44c8bcf0128bebc7cebbf7935}\label{relayqueue_8h_acc01dea44c8bcf0128bebc7cebbf7935} 
+typedef struct aern\+\_\+ingress\+\_\+pending\+\_\+item {\bfseries aern\+\_\+ingress\+\_\+pending\+\_\+item}
+\item 
+\Hypertarget{relayqueue_8h_ad8f40e95a9592b36844ecf08b16e8f78}\label{relayqueue_8h_ad8f40e95a9592b36844ecf08b16e8f78} 
+typedef struct aern\+\_\+relayqueue\+\_\+state {\bfseries aern\+\_\+relayqueue\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{relayqueue_8h_ab5f7f9826891efbb517b35cb57d268ec}{aern\+\_\+relayqueue\+\_\+item\+\_\+dispose}} (\mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Dispose of a relay queue item and release owned packet storage. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{relayqueue_8h_a82b0cb807b7b0021d418d9c1e2e20c75}{aern\+\_\+relayqueue\+\_\+initialize}} (\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue, size\+\_\+t depth)
+\begin{DoxyCompactList}\small\item\em Initialize a relay queue with a fixed number of item slots. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{relayqueue_8h_a1a0a7588e157fe4fd5a0ff00081bf008}{aern\+\_\+relayqueue\+\_\+dispose}} (\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Dispose of a relay queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{relayqueue_8h_ab21f5d5b3829fd0dc767bb2ddb1e0d47}{aern\+\_\+relayqueue\+\_\+clear}} (\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Clear all active items from a relay queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{relayqueue_8h_af7db7006b7ff314a9a64e44d9035509d}{aern\+\_\+relayqueue\+\_\+push}} (\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue, const \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Push a relay packet item into the queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{relayqueue_8h_adf7242b282644b2aac184eaca5eb4f1c}{aern\+\_\+relayqueue\+\_\+pop}} (\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue, \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Pop the oldest relay packet item from the queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t \mbox{\hyperlink{relayqueue_8h_af13e0a8283528c652edb48265c346e0d}{aern\+\_\+relayqueue\+\_\+remove\+\_\+session}} (\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue, uint64\+\_\+t sessionid, uint64\+\_\+t tnow)
+\begin{DoxyCompactList}\small\item\em Remove all queued items that belong to a relay session. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t \mbox{\hyperlink{relayqueue_8h_ab59b89dc9b44bfb646af96660be3f03b}{aern\+\_\+relayqueue\+\_\+cleanup\+\_\+expired}} (\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue, uint64\+\_\+t tnow)
+\begin{DoxyCompactList}\small\item\em Remove expired relay queue items. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t \mbox{\hyperlink{relayqueue_8h_adfe4406256c7ff28c19c4cd8823261b4}{aern\+\_\+relayqueue\+\_\+count}} (const \mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Get the number of active items in a relay queue. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{relayqueue_8h_af4fe810d33faa3d436950126349438e2}{aern\+\_\+relayqueue\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Test whether a relay queue is empty. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{relayqueue_8h_a66e500e78da944c4c416a98ce01f6753}{aern\+\_\+relayqueue\+\_\+is\+\_\+full}} (const \mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Test whether a relay queue is full. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Relay pending and delay queue interface. 
+
+This header defines the bounded relay queue used by the AERN route engine for packets that are waiting for session establishment or delayed ingress release. The queue stores a fixed number of item slots, while each queued packet is held in heap-\/backed storage owned by the queue entry. The queue does not use qsc\+\_\+queue\+\_\+state and does not expose internal ring indexes to callers.
+
+Queue ownership rules\+:
+\begin{DoxyItemize}
+\item Push copies the caller-\/provided packet into queue-\/owned storage.
+\item Pop transfers the queue-\/owned packet storage to the caller-\/owned item.
+\item Remove, cleanup, clear, and dispose securely erase and release all owned packet storage before clearing queue state.
+\end{DoxyItemize}
+
+Callers that receive an item through a successful pop operation must release the transferred packet storage with \doxylink{relayqueue_8h_ab5f7f9826891efbb517b35cb57d268ec}{aern\+\_\+relayqueue\+\_\+item\+\_\+dispose()}. 
+
+\label{doc-func-members}
+\Hypertarget{relayqueue_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{relayqueue_8h_ab59b89dc9b44bfb646af96660be3f03b}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_cleanup\_expired@{aern\_relayqueue\_cleanup\_expired}}
+\index{aern\_relayqueue\_cleanup\_expired@{aern\_relayqueue\_cleanup\_expired}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_cleanup\_expired()}{aern\_relayqueue\_cleanup\_expired()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_ab59b89dc9b44bfb646af96660be3f03b} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t aern\+\_\+relayqueue\+\_\+cleanup\+\_\+expired (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{, }\item[{uint64\+\_\+t}]{tnow}{}\end{DoxyParamCaption})}
+
+
+
+Remove expired relay queue items. 
+
+This function removes and securely disposes all active items whose expiry has elapsed. Non-\/expired items remain queued in FIFO order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue to clean. \\
+\hline
+{\em tnow} & \mbox{[}uint64\+\_\+t\mbox{]} The current UTC time in seconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}uint32\+\_\+t\mbox{]} Returns the number of expired items removed. 
+\end{DoxyReturn}
+\Hypertarget{relayqueue_8h_ab21f5d5b3829fd0dc767bb2ddb1e0d47}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_clear@{aern\_relayqueue\_clear}}
+\index{aern\_relayqueue\_clear@{aern\_relayqueue\_clear}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_clear()}{aern\_relayqueue\_clear()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_ab21f5d5b3829fd0dc767bb2ddb1e0d47} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relayqueue\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{}\end{DoxyParamCaption})}
+
+
+
+Clear all active items from a relay queue. 
+
+This function securely disposes all active items and resets the queue ring indexes while preserving the allocated slot array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue state to clear. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{relayqueue_8h_adfe4406256c7ff28c19c4cd8823261b4}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_count@{aern\_relayqueue\_count}}
+\index{aern\_relayqueue\_count@{aern\_relayqueue\_count}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_count()}{aern\_relayqueue\_count()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_adfe4406256c7ff28c19c4cd8823261b4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t aern\+\_\+relayqueue\+\_\+count (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{}\end{DoxyParamCaption})}
+
+
+
+Get the number of active items in a relay queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}const aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue to query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}uint32\+\_\+t\mbox{]} Returns the number of active items. 
+\end{DoxyReturn}
+\Hypertarget{relayqueue_8h_a1a0a7588e157fe4fd5a0ff00081bf008}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_dispose@{aern\_relayqueue\_dispose}}
+\index{aern\_relayqueue\_dispose@{aern\_relayqueue\_dispose}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_dispose()}{aern\_relayqueue\_dispose()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_a1a0a7588e157fe4fd5a0ff00081bf008} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relayqueue\+\_\+dispose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{}\end{DoxyParamCaption})}
+
+
+
+Dispose of a relay queue. 
+
+This function securely disposes all active queue items, releases the queue slot array, and clears the queue state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue state to dispose. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{relayqueue_8h_a82b0cb807b7b0021d418d9c1e2e20c75}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_initialize@{aern\_relayqueue\_initialize}}
+\index{aern\_relayqueue\_initialize@{aern\_relayqueue\_initialize}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_initialize()}{aern\_relayqueue\_initialize()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_a82b0cb807b7b0021d418d9c1e2e20c75} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relayqueue\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{, }\item[{size\+\_\+t}]{depth}{}\end{DoxyParamCaption})}
+
+
+
+Initialize a relay queue with a fixed number of item slots. 
+
+This function allocates the queue slot array and initializes the ring state. Packet payload storage is not allocated until items are pushed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue state to initialize. \\
+\hline
+{\em depth} & \mbox{[}size\+\_\+t\mbox{]} The maximum number of queue items. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{relayqueue_8h_af4fe810d33faa3d436950126349438e2}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_is\_empty@{aern\_relayqueue\_is\_empty}}
+\index{aern\_relayqueue\_is\_empty@{aern\_relayqueue\_is\_empty}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_is\_empty()}{aern\_relayqueue\_is\_empty()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_af4fe810d33faa3d436950126349438e2} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relayqueue\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{}\end{DoxyParamCaption})}
+
+
+
+Test whether a relay queue is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}const aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue to query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}bool\mbox{]} Returns true if the queue has no active items. 
+\end{DoxyReturn}
+\Hypertarget{relayqueue_8h_a66e500e78da944c4c416a98ce01f6753}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_is\_full@{aern\_relayqueue\_is\_full}}
+\index{aern\_relayqueue\_is\_full@{aern\_relayqueue\_is\_full}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_is\_full()}{aern\_relayqueue\_is\_full()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_a66e500e78da944c4c416a98ce01f6753} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relayqueue\+\_\+is\+\_\+full (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{}\end{DoxyParamCaption})}
+
+
+
+Test whether a relay queue is full. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}const aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue to query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}bool\mbox{]} Returns true if the queue has no available item slots. 
+\end{DoxyReturn}
+\Hypertarget{relayqueue_8h_ab5f7f9826891efbb517b35cb57d268ec}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_item\_dispose@{aern\_relayqueue\_item\_dispose}}
+\index{aern\_relayqueue\_item\_dispose@{aern\_relayqueue\_item\_dispose}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_item\_dispose()}{aern\_relayqueue\_item\_dispose()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_ab5f7f9826891efbb517b35cb57d268ec} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+relayqueue\+\_\+item\+\_\+dispose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Dispose of a relay queue item and release owned packet storage. 
+
+This function securely erases the packet buffer when present, releases it through the QSC memory allocator, and clears the item metadata. It is safe to call on a zeroed or inactive item.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \mbox{[}aern\+\_\+ingress\+\_\+pending\+\_\+item\texorpdfstring{$\ast$}{*}\mbox{]} The queue item to dispose. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{relayqueue_8h_adf7242b282644b2aac184eaca5eb4f1c}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_pop@{aern\_relayqueue\_pop}}
+\index{aern\_relayqueue\_pop@{aern\_relayqueue\_pop}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_pop()}{aern\_relayqueue\_pop()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_adf7242b282644b2aac184eaca5eb4f1c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relayqueue\+\_\+pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{, }\item[{\mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Pop the oldest relay packet item from the queue. 
+
+On success, this function transfers the queue-\/owned packet buffer to the caller-\/provided output item. The caller is responsible for releasing the transferred buffer by calling \doxylink{relayqueue_8h_ab5f7f9826891efbb517b35cb57d268ec}{aern\+\_\+relayqueue\+\_\+item\+\_\+dispose()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue to remove an item from. \\
+\hline
+{\em item} & \mbox{[}aern\+\_\+ingress\+\_\+pending\+\_\+item\texorpdfstring{$\ast$}{*}\mbox{]} The output item that receives the transferred packet ownership.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}bool\mbox{]} Returns true if an item was removed; otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{relayqueue_8h_af7db7006b7ff314a9a64e44d9035509d}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_push@{aern\_relayqueue\_push}}
+\index{aern\_relayqueue\_push@{aern\_relayqueue\_push}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_push()}{aern\_relayqueue\_push()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_af7db7006b7ff314a9a64e44d9035509d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+relayqueue\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{, }\item[{const \mbox{\hyperlink{structaern__ingress__pending__item}{aern\+\_\+ingress\+\_\+pending\+\_\+item}} \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Push a relay packet item into the queue. 
+
+The queue copies item-\/\texorpdfstring{$>$}{>}packet into newly allocated queue-\/owned storage. The caller retains ownership of the input item and may dispose or reuse it after this function returns. The queue rejects inactive, oversized, empty, or malformed packet items.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue to receive the item. \\
+\hline
+{\em item} & \mbox{[}const aern\+\_\+ingress\+\_\+pending\+\_\+item\texorpdfstring{$\ast$}{*}\mbox{]} The item metadata and packet buffer to copy into the queue.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}bool\mbox{]} Returns true if the item was copied into the queue; otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{relayqueue_8h_af13e0a8283528c652edb48265c346e0d}\index{relayqueue.h@{relayqueue.h}!aern\_relayqueue\_remove\_session@{aern\_relayqueue\_remove\_session}}
+\index{aern\_relayqueue\_remove\_session@{aern\_relayqueue\_remove\_session}!relayqueue.h@{relayqueue.h}}
+\doxysubsubsection{\texorpdfstring{aern\_relayqueue\_remove\_session()}{aern\_relayqueue\_remove\_session()}}
+{\footnotesize\ttfamily \label{relayqueue_8h_af13e0a8283528c652edb48265c346e0d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint32\+\_\+t aern\+\_\+relayqueue\+\_\+remove\+\_\+session (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__relayqueue__state}{aern\+\_\+relayqueue\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{queue}{, }\item[{uint64\+\_\+t}]{sessionid}{, }\item[{uint64\+\_\+t}]{tnow}{}\end{DoxyParamCaption})}
+
+
+
+Remove all queued items that belong to a relay session. 
+
+This function removes and securely disposes each active queue item whose session identifier matches the supplied value. The current time value is used by the implementation when reinserting retained items through cleanup logic.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & \mbox{[}aern\+\_\+relayqueue\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The queue to scan. \\
+\hline
+{\em sessionid} & \mbox{[}uint64\+\_\+t\mbox{]} The relay session identifier to remove. \\
+\hline
+{\em tnow} & \mbox{[}uint64\+\_\+t\mbox{]} The current UTC time in seconds or milliseconds, according to the caller\textquotesingle{}s queue policy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}uint32\+\_\+t\mbox{]} Returns the number of removed items. 
+\end{DoxyReturn}

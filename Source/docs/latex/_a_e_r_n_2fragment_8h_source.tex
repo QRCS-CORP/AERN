@@ -1,0 +1,66 @@
+\doxysection{fragment.\+h}
+\hypertarget{_a_e_r_n_2fragment_8h_source}{}\label{_a_e_r_n_2fragment_8h_source}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/fragment.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/fragment.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AERN\_FRAGMENT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AERN\_FRAGMENT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{route_8h}{route.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ AERN\_FRAGMENT\_TABLE\_DEPTH}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_FRAGMENT\_TABLE\_DEPTH\ 16U}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ AERN\_FRAGMENT\_CACHE\_MEMORY\_MAX}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#\ \ \ define\ AERN\_FRAGMENT\_CACHE\_MEMORY\_MAX\ (16U\ *\ 1024U\ *\ 1024U)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_part\_dispose(\mbox{\hyperlink{structaern__fragment__part__state}{aern\_fragment\_part\_state}}*\ part);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_cache\_initialize(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00045\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_cache\_allocate(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ uint32\_t\ fragcount,\ \textcolor{keywordtype}{size\_t}\ declaredlen);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_cache\_dispose(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_cache\_clear(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00071\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_cache\_add(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ \textcolor{keyword}{const}\ uint8\_t*\ data,\ \textcolor{keywordtype}{size\_t}\ dlen,\ uint32\_t\ seq);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00085\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_cache\_add\_fragment(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ data,\ \textcolor{keywordtype}{size\_t}\ dlen,\ uint8\_t\ direction,\ \textcolor{keywordtype}{bool}*\ complete);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00098\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_cache\_add\_relay\_fragment(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ fragment,\ \textcolor{keywordtype}{size\_t}\ fraglen,\ uint8\_t\ direction);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00109\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_cache\_set\_key(\mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction,\ uint64\_t\ expiry);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00120\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_cache\_assemble\_alloc(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ uint8\_t**\ output,\ \textcolor{keywordtype}{size\_t}*\ msglen);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00132\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_cache\_assemble\_packet(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ uint8\_t*\ output,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \textcolor{keywordtype}{size\_t}*\ msglen);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00141\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_cache\_assemble(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ cache,\ uint8\_t*\ out,\ \textcolor{keywordtype}{size\_t}*\ outlen);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00152\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_table\_initialize(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ \textcolor{keywordtype}{size\_t}\ setscap,\ \textcolor{keywordtype}{size\_t}\ memorymax);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00159\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_table\_dispose(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00166\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_table\_clear(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00178\ AERN\_EXPORT\_API\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ aern\_fragment\_table\_find(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00190\ AERN\_EXPORT\_API\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ aern\_fragment\_table\_find\_const(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00205\ AERN\_EXPORT\_API\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}*\ aern\_fragment\_table\_get\_or\_add(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction,\ uint32\_t\ fragcount,\ uint64\_t\ expiry,\ \textcolor{keywordtype}{size\_t}\ declaredlen);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00221\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{bool}\ aern\_fragment\_table\_add\_relay\_fragment(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__relay__payload__header}{aern\_relay\_payload\_header}}*\ header,\ \textcolor{keyword}{const}\ uint8\_t*\ fragment,\ \textcolor{keywordtype}{size\_t}\ fraglen,\ uint8\_t\ direction,\ uint64\_t\ expiry,\ \mbox{\hyperlink{structaern__fragment__cache}{aern\_fragment\_cache}}**\ set,\ \textcolor{keywordtype}{bool}*\ complete);}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00231\ AERN\_EXPORT\_API\ \textcolor{keywordtype}{void}\ aern\_fragment\_table\_remove(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ uint64\_t\ sessionid,\ uint64\_t\ packetid,\ uint8\_t\ direction);}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00241\ AERN\_EXPORT\_API\ uint32\_t\ aern\_fragment\_table\_remove\_session(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ uint64\_t\ sessionid);}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00251\ AERN\_EXPORT\_API\ uint32\_t\ aern\_fragment\_table\_cleanup\_expired(\mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table,\ uint64\_t\ now);}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00260\ AERN\_EXPORT\_API\ uint32\_t\ aern\_fragment\_table\_count(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaern__fragment__table}{aern\_fragment\_table}}*\ table);}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

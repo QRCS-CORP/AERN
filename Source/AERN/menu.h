@@ -94,7 +94,8 @@
  * This function returns the appropriate prompt string based on the specified
  * console mode. The prompt is selected from an internal array of mode strings.
  *
- * \param mode The current console mode.
+ * \param mode: [aern_console_modes] The current console mode.
+ * 
  * \return A pointer to the prompt string.
  */
 AERN_EXPORT_API const char* aern_menu_get_prompt(aern_console_modes mode);
@@ -103,12 +104,11 @@ AERN_EXPORT_API const char* aern_menu_get_prompt(aern_console_modes mode);
  * \brief Print an error message to the console.
  *
  * This function converts a protocol error code into a descriptive string and
- * prints it to the console. It prints the prompt first (based on the mode and
- * host) and then the error message.
+ * prints it to the console. It prints the prompt first (based on the mode and host) and then the error message.
  *
- * \param error The protocol error enumerator.
- * \param mode The current console mode.
- * \param host The host name.
+ * \param error: [aern_protocol_errors] The protocol error enumerator.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
  */
 AERN_EXPORT_API void aern_menu_print_error(aern_protocol_errors error, aern_console_modes mode, const char* host);
 
@@ -118,21 +118,22 @@ AERN_EXPORT_API void aern_menu_print_error(aern_protocol_errors error, aern_cons
  * This function prints the given message string to the console. It first prints
  * the prompt (using the current mode and host) and then the message on a new line.
  *
- * \param message The message string to print.
- * \param mode The current console mode.
- * \param host The host name.
+ * \param message: [const char*] The message string to print.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
  */
 AERN_EXPORT_API void aern_menu_print_message(const char* message, aern_console_modes mode, const char* host);
 
 /**
  * \brief Print a message to the console and wait for confirmation.
  *
- * This function prints a message and then waits for the user to input a single
- * character. If the user enters 'y' or 'Y', the function returns true.
+ * This function prints a message and then waits for the user to input a single character. 
+ * If the user enters 'y' or 'Y', the function returns true.
  *
- * \param message The message string.
- * \param mode The current console mode.
- * \param host The host name.
+ * \param message: [const char*] The message string.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
+ * 
  * \return True if the user confirms (answers 'y' or 'Y'); false otherwise.
  */
 AERN_EXPORT_API bool aern_menu_print_message_confirm(const char* message, aern_console_modes mode, const char* host);
@@ -140,12 +141,12 @@ AERN_EXPORT_API bool aern_menu_print_message_confirm(const char* message, aern_c
 /**
  * \brief Print a predefined message to the console.
  *
- * This function prints a message that is predefined in the AERN application. The
- * message is chosen based on the msgnum parameter.
+ * This function prints a message that is predefined in the AERN application.
+ * The message is chosen based on the msgnum parameter.
  *
- * \param msgnum The predefined message enumerator.
- * \param mode The current console mode.
- * \param host The host name.
+ * \param msgnum: [aern_application_messages] The predefined message enumerator.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
  */
 AERN_EXPORT_API void aern_menu_print_predefined_message(aern_application_messages msgnum, aern_console_modes mode, const char* host);
 
@@ -155,9 +156,10 @@ AERN_EXPORT_API void aern_menu_print_predefined_message(aern_application_message
  * This function prints a predefined message and then waits for the user to provide
  * confirmation. A response of 'y' or 'Y' returns true.
  *
- * \param msgnum The predefined message enumerator.
- * \param mode The current console mode.
- * \param host The host name.
+ * \param msgnum: [aern_application_messages] The predefined message enumerator.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
+ * 
  * \return True if the user confirms; false otherwise.
  */
 AERN_EXPORT_API bool aern_menu_print_predefined_message_confirm(aern_application_messages msgnum, aern_console_modes mode, const char* host);
@@ -168,8 +170,8 @@ AERN_EXPORT_API bool aern_menu_print_predefined_message_confirm(aern_application
  * This function prints the application prompt string to the console using the
  * current console mode and host name.
  *
- * \param mode The current console mode.
- * \param host The host name.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
  */
 AERN_EXPORT_API void aern_menu_print_prompt(aern_console_modes mode, const char* host);
 
@@ -179,21 +181,20 @@ AERN_EXPORT_API void aern_menu_print_prompt(aern_console_modes mode, const char*
  * This function prints a prompt followed by a message string. The message is
  * printed without appending a newline character.
  *
- * \param message The message string to print.
- * \param mode The current console mode.
- * \param host The host name.
+ * \param message: [const char*] The message string to print.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
  */
 AERN_EXPORT_API void aern_menu_print_prompt_text(const char* message, aern_console_modes mode, const char* host);
 
 /**
  * \brief Print a predefined message with no line terminator.
  *
- * This function prints a predefined message (as defined in the AERN application
- * messages) without a newline at the end.
+ * This function prints a predefined message (as defined in the AERN application messages) without a newline at the end.
  *
- * \param msgnum The predefined message enumerator.
- * \param mode The current console mode.
- * \param host The host name.
+ * \param msgnum: [aern_application_messages] The predefined message enumerator.
+ * \param mode: [aern_console_modes] The current console mode.
+ * \param host: [const char*] The host name.
  */
 AERN_EXPORT_API void aern_menu_print_predefined_text(aern_application_messages msgnum, aern_console_modes mode, const char* host);
 
@@ -203,7 +204,7 @@ AERN_EXPORT_API void aern_menu_print_predefined_text(aern_application_messages m
  * This function prints the specified text string using a safe console print,
  * without appending a newline.
  *
- * \param message The message string to print.
+ * \param message: [const char*] The message string to print.
  */
 AERN_EXPORT_API void aern_menu_print_text(const char* message);
 
@@ -212,7 +213,7 @@ AERN_EXPORT_API void aern_menu_print_text(const char* message);
  *
  * This function prints the specified text string and then appends a newline.
  *
- * \param message The message string to print.
+ * \param message: [const char*] The message string to print.
  */
 AERN_EXPORT_API void aern_menu_print_text_line(const char* message);
 

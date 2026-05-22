@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -105,8 +105,8 @@ Functions</h2></td></tr>
 <p>This function prints a context-specific help message corresponding to the given command action. The help string is printed using the provided console prompt.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prompt</td><td>[in] The console prompt string. </td></tr>
-    <tr><td class="paramname">command</td><td>The command action (from the <a class="el" href="commands_8h.html#ad68782564f96643016e3bd878aa0b53c" title="The ARS command actions.">aern_command_actions</a> enumeration) for which to display help. </td></tr>
+    <tr><td class="paramname">prompt</td><td>[const char*] The console prompt string. </td></tr>
+    <tr><td class="paramname">command</td><td>[<a class="el" href="commands_8h.html#ad68782564f96643016e3bd878aa0b53c" title="The ARS command actions.">aern_command_actions</a>] The command action (from the <a class="el" href="commands_8h.html#ad68782564f96643016e3bd878aa0b53c" title="The ARS command actions.">aern_command_actions</a> enumeration) for which to display help. </td></tr>
   </table>
   </dd>
 </dl>
@@ -141,9 +141,9 @@ Functions</h2></td></tr>
 <p>This function prints a set of help messages that are appropriate for the current console mode and the server type designation. It guides the user by displaying available commands and their context based on whether the console is in configuration, enable, or user mode.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prompt</td><td>[in] The console prompt string. </td></tr>
-    <tr><td class="paramname">mode</td><td>The current console mode (from the <a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a> enumeration). </td></tr>
-    <tr><td class="paramname">designation</td><td>The network designation (from the <a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a> enumeration) for which the help messages should be tailored. </td></tr>
+    <tr><td class="paramname">prompt</td><td>[const char*] The console prompt string. </td></tr>
+    <tr><td class="paramname">mode</td><td>[<a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a>] The current console mode (from the <a class="el" href="commands_8h.html#a8349f058d50bece2f4e2b38ac00ddbdb" title="The ARS console modes.">aern_console_modes</a> enumeration). </td></tr>
+    <tr><td class="paramname">designation</td><td>[<a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a>] The network designation (from the <a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a> enumeration) for which the help messages should be tailored. </td></tr>
   </table>
   </dd>
 </dl>

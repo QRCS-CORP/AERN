@@ -1,0 +1,75 @@
+\doxysection{aern\+\_\+adc\+\_\+alive\+\_\+poll\+\_\+state Struct Reference}
+\hypertarget{structaern__adc__alive__poll__state}{}\label{structaern__adc__alive__poll__state}\index{aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}}
+
+
+State for the ADC background node-\/alive poller.  
+
+
+
+
+{\ttfamily \#include $<$lifecycle.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__adc__alive__poll__state_ac264d0a53843400fd4cd8375d718455f}{lcert}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__adc__alive__poll__state_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}
+\item 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__adc__alive__poll__state_a113e8f9eb6955551654df290e61b60ff}{root}}
+\item 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__adc__alive__poll__state_a09a0ab043e3153b694ea860b58b7ea6f}{vtopo}}
+\item 
+const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__adc__alive__poll__state_a38f094f8303f5f309d6cfcef82706480}{appstate}}
+\item 
+volatile bool \mbox{\hyperlink{structaern__adc__alive__poll__state_a7c10027ca174fc9d529796f04aca6bd4}{running}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State for the ADC background node-\/alive poller. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__adc__alive__poll__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__adc__alive__poll__state_a38f094f8303f5f309d6cfcef82706480}\index{aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}!appstate@{appstate}}
+\index{appstate@{appstate}!aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}}
+\doxysubsubsection{\texorpdfstring{appstate}{appstate}}
+{\footnotesize\ttfamily \label{structaern__adc__alive__poll__state_a38f094f8303f5f309d6cfcef82706480} 
+const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}}\texorpdfstring{$\ast$}{*} appstate}
+
+App state for error log \Hypertarget{structaern__adc__alive__poll__state_ac264d0a53843400fd4cd8375d718455f}\index{aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}!lcert@{lcert}}
+\index{lcert@{lcert}!aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}}
+\doxysubsubsection{\texorpdfstring{lcert}{lcert}}
+{\footnotesize\ttfamily \label{structaern__adc__alive__poll__state_ac264d0a53843400fd4cd8375d718455f} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} lcert}
+
+ADC local certificate \Hypertarget{structaern__adc__alive__poll__state_a113e8f9eb6955551654df290e61b60ff}\index{aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}!root@{root}}
+\index{root@{root}!aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__adc__alive__poll__state_a113e8f9eb6955551654df290e61b60ff} 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}}\texorpdfstring{$\ast$}{*} root}
+
+Root certificate \Hypertarget{structaern__adc__alive__poll__state_a7c10027ca174fc9d529796f04aca6bd4}\index{aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}!running@{running}}
+\index{running@{running}!aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily \label{structaern__adc__alive__poll__state_a7c10027ca174fc9d529796f04aca6bd4} 
+volatile bool running}
+
+Set false to stop thread \Hypertarget{structaern__adc__alive__poll__state_a5cbd2b117e930d8f469c924a8b27ea21}\index{aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__adc__alive__poll__state_a5cbd2b117e930d8f469c924a8b27ea21} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+ADC signing key \Hypertarget{structaern__adc__alive__poll__state_a09a0ab043e3153b694ea860b58b7ea6f}\index{aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}!vtopo@{vtopo}}
+\index{vtopo@{vtopo}!aern\_adc\_alive\_poll\_state@{aern\_adc\_alive\_poll\_state}}
+\doxysubsubsection{\texorpdfstring{vtopo}{vtopo}}
+{\footnotesize\ttfamily \label{structaern__adc__alive__poll__state_a09a0ab043e3153b694ea860b58b7ea6f} 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}}\texorpdfstring{$\ast$}{*} vtopo}
+
+Versioned topology 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{lifecycle_8h}{lifecycle.\+h}}\end{DoxyCompactItemize}

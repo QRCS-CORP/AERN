@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -60,6 +60,7 @@ $(function(){initNavTree('topology_8h.html','',''); });
 <p>The AERN topology functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="aern_8h_source.html">aern.h</a>&quot;</code><br />
+<code>#include &quot;async.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="certificate_8h_source.html">certificate.h</a>&quot;</code><br />
 <code>#include &quot;ipinfo.h&quot;</code><br />
 <code>#include &quot;list.h&quot;</code><br />
@@ -99,6 +100,18 @@ typedef AERN_EXPORT_API struct aern_topology_list_state&#160;</td><td class="mem
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad45f40ca1657497a0defae2523d754a4" id="r_ad45f40ca1657497a0defae2523d754a4"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad45f40ca1657497a0defae2523d754a4">aern_topology_add</a> (<a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, const <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node)</td></tr>
+<tr class="memdesc:ad45f40ca1657497a0defae2523d754a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add or replace a node in a topology list.  <br /></td></tr>
+<tr class="memitem:a110dd3f7ea7c277485186b9a7b262779" id="r_a110dd3f7ea7c277485186b9a7b262779"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a110dd3f7ea7c277485186b9a7b262779">aern_topology_hash</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, uint8_t hash[<a class="el" href="aern_8h.html#acc789b9281e03dddcda4c72eed21404c">AERN_CERTIFICATE_HASH_SIZE</a>])</td></tr>
+<tr class="memdesc:a110dd3f7ea7c277485186b9a7b262779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the canonical topology hash.  <br /></td></tr>
+<tr class="memitem:a33bb07671be179f9ccdf7f0bfb8d4e75" id="r_a33bb07671be179f9ccdf7f0bfb8d4e75"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33bb07671be179f9ccdf7f0bfb8d4e75">aern_topology_increment_version</a> (<a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list)</td></tr>
+<tr class="memdesc:a33bb07671be179f9ccdf7f0bfb8d4e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment the topology version.  <br /></td></tr>
+<tr class="memitem:a1cdff03b202d9bb427e74a42cbc29d0f" id="r_a1cdff03b202d9bb427e74a42cbc29d0f"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cdff03b202d9bb427e74a42cbc29d0f">aern_topology_remove</a> (<a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, const uint8_t *serial)</td></tr>
+<tr class="memdesc:a1cdff03b202d9bb427e74a42cbc29d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a node from a topology list.  <br /></td></tr>
+<tr class="memitem:ab7ccfee631624554907b3b42b532fc54" id="r_ab7ccfee631624554907b3b42b532fc54"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API <a class="el" href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724">aern_protocol_errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7ccfee631624554907b3b42b532fc54">aern_topology_update</a> (<a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, const <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node)</td></tr>
+<tr class="memdesc:ab7ccfee631624554907b3b42b532fc54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update a node in a topology list.  <br /></td></tr>
+<tr class="memitem:a9e7fb06e3f0b40d14b43c97e3a1b0f52" id="r_a9e7fb06e3f0b40d14b43c97e3a1b0f52"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API <a class="el" href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724">aern_protocol_errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e7fb06e3f0b40d14b43c97e3a1b0f52">aern_topology_version_verify</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, uint64_t incomingver)</td></tr>
+<tr class="memdesc:a9e7fb06e3f0b40d14b43c97e3a1b0f52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify an incoming topology version.  <br /></td></tr>
 <tr class="memitem:ae228d7f793cf285c21550c5563cf3539" id="r_ae228d7f793cf285c21550c5563cf3539"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae228d7f793cf285c21550c5563cf3539">aern_topology_address_from_issuer</a> (char *address, const char *issuer, const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list)</td></tr>
 <tr class="memdesc:ae228d7f793cf285c21550c5563cf3539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an IP address from an issuer string.  <br /></td></tr>
 <tr class="memitem:ab2a963793b864e86ba9fea2bbd856d86" id="r_ab2a963793b864e86ba9fea2bbd856d86"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2a963793b864e86ba9fea2bbd856d86">aern_topology_node_add_alias</a> (<a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node, const char *alias)</td></tr>
@@ -161,6 +174,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a919641ea29231d298a70a805d58dd4c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the node pointer in the list matching the alias string.  <br /></td></tr>
 <tr class="memitem:a00d1721d9035453c3c8fb6396259794e" id="r_a00d1721d9035453c3c8fb6396259794e"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00d1721d9035453c3c8fb6396259794e">aern_topology_node_find_ads</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node)</td></tr>
 <tr class="memdesc:a00d1721d9035453c3c8fb6396259794e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the ADC node from the list.  <br /></td></tr>
+<tr class="memitem:afdc3c6cf8c247953c84802a2b6c0c540" id="r_afdc3c6cf8c247953c84802a2b6c0c540"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdc3c6cf8c247953c84802a2b6c0c540">aern_topology_node_find_adc</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node)</td></tr>
+<tr class="memdesc:afdc3c6cf8c247953c84802a2b6c0c540"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches a topology list for an active ADC node and copies the matching node state.  <br /></td></tr>
+<tr class="memitem:a1ced3436748f4b596f3d34b814a1951c" id="r_a1ced3436748f4b596f3d34b814a1951c"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ced3436748f4b596f3d34b814a1951c">aern_topology_node_find_aps</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node)</td></tr>
+<tr class="memdesc:a1ced3436748f4b596f3d34b814a1951c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the first APS node from the list.  <br /></td></tr>
 <tr class="memitem:a28e22608bcc42bc5c6eb60198ed7fea1" id="r_a28e22608bcc42bc5c6eb60198ed7fea1"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28e22608bcc42bc5c6eb60198ed7fea1">aern_topology_node_find_issuer</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node, const char *issuer)</td></tr>
 <tr class="memdesc:a28e22608bcc42bc5c6eb60198ed7fea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the node pointer in the list matching the name string.  <br /></td></tr>
 <tr class="memitem:aa063936c5158251e438b0024e4f81fad" id="r_aa063936c5158251e438b0024e4f81fad"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa063936c5158251e438b0024e4f81fad">aern_topology_node_find_root</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *node)</td></tr>
@@ -171,6 +188,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:a00b47ba40d757b930e5741d60e833d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a node from the topology with the same issuer name.  <br /></td></tr>
 <tr class="memitem:a7cd8e44ae826afced77c2209fdac7d8c" id="r_a7cd8e44ae826afced77c2209fdac7d8c"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cd8e44ae826afced77c2209fdac7d8c">aern_topology_node_verify_ads</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, const <a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *ccert)</td></tr>
 <tr class="memdesc:a7cd8e44ae826afced77c2209fdac7d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify that the ADC certificate matches the hash stored in the topology.  <br /></td></tr>
+<tr class="memitem:a6afc8d6fa9a33aa9436f96a07e87420d" id="r_a6afc8d6fa9a33aa9436f96a07e87420d"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6afc8d6fa9a33aa9436f96a07e87420d">aern_topology_node_verify_adc</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, const <a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *ccert)</td></tr>
+<tr class="memdesc:a6afc8d6fa9a33aa9436f96a07e87420d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify that the ADC certificate matches the hash stored in the topology.  <br /></td></tr>
 <tr class="memitem:a69d4de114861db56d8ff2139d017c1ea" id="r_a69d4de114861db56d8ff2139d017c1ea"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69d4de114861db56d8ff2139d017c1ea">aern_topology_node_verify_issuer</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, const <a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *ccert, const char *issuer)</td></tr>
 <tr class="memdesc:a69d4de114861db56d8ff2139d017c1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify that an issuing node's certificate matches the hash stored in the topology.  <br /></td></tr>
 <tr class="memitem:a574517482a327eda7c8e3ac6df2b9e19" id="r_a574517482a327eda7c8e3ac6df2b9e19"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a574517482a327eda7c8e3ac6df2b9e19">aern_topology_node_verify_root</a> (const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *list, const <a class="el" href="structaern__root__certificate.html">aern_root_certificate</a> *rcert)</td></tr>
@@ -206,12 +225,12 @@ Functions</h2></td></tr>
 <div class="line">    <a class="code hl_define" href="aern_8h.html#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a> + \</div>
 <div class="line">    <a class="code hl_define" href="aern_8h.html#a2593a7ecd841afe60a7b882f202cd82f">AERN_CERTIFICATE_EXPIRATION_SIZE</a> + \</div>
 <div class="line">    <a class="code hl_define" href="aern_8h.html#a6836977c34ee21da3a738579aad21ad9">AERN_CERTIFICATE_DESIGNATION_SIZE</a>)</div>
-<div class="ttc" id="aaern_8h_html_a2593a7ecd841afe60a7b882f202cd82f"><div class="ttname"><a href="aern_8h.html#a2593a7ecd841afe60a7b882f202cd82f">AERN_CERTIFICATE_EXPIRATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_EXPIRATION_SIZE</div><div class="ttdoc">The certificate expiration date length.</div><div class="ttdef"><b>Definition</b> aern.h:800</div></div>
-<div class="ttc" id="aaern_8h_html_a28a75ced9057b99eb5ed59645ce7fe43"><div class="ttname"><a href="aern_8h.html#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ISSUER_SIZE</div><div class="ttdoc">The maximum certificate issuer string length. The last character must be a string terminator.</div><div class="ttdef"><b>Definition</b> aern.h:813</div></div>
-<div class="ttc" id="aaern_8h_html_a447144cb8944c8553cfd9fcc7ac73eb9"><div class="ttname"><a href="aern_8h.html#a447144cb8944c8553cfd9fcc7ac73eb9">AERN_CERTIFICATE_ADDRESS_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ADDRESS_SIZE</div><div class="ttdoc">The maximum IP address length.</div><div class="ttdef"><b>Definition</b> aern.h:776</div></div>
-<div class="ttc" id="aaern_8h_html_a6836977c34ee21da3a738579aad21ad9"><div class="ttname"><a href="aern_8h.html#a6836977c34ee21da3a738579aad21ad9">AERN_CERTIFICATE_DESIGNATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_DESIGNATION_SIZE</div><div class="ttdoc">The size of the child certificate designation field.</div><div class="ttdef"><b>Definition</b> aern.h:794</div></div>
-<div class="ttc" id="aaern_8h_html_acc789b9281e03dddcda4c72eed21404c"><div class="ttname"><a href="aern_8h.html#acc789b9281e03dddcda4c72eed21404c">AERN_CERTIFICATE_HASH_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_HASH_SIZE</div><div class="ttdoc">The size of the certificate hash in bytes.</div><div class="ttdef"><b>Definition</b> aern.h:806</div></div>
-<div class="ttc" id="aaern_8h_html_ad809002d7ee1fe8f6e5dea4fadbda241"><div class="ttname"><a href="aern_8h.html#ad809002d7ee1fe8f6e5dea4fadbda241">AERN_CERTIFICATE_SERIAL_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_SERIAL_SIZE</div><div class="ttdoc">The certificate serial number field length.</div><div class="ttdef"><b>Definition</b> aern.h:837</div></div>
+<div class="ttc" id="aaern_8h_html_a2593a7ecd841afe60a7b882f202cd82f"><div class="ttname"><a href="aern_8h.html#a2593a7ecd841afe60a7b882f202cd82f">AERN_CERTIFICATE_EXPIRATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_EXPIRATION_SIZE</div><div class="ttdoc">The certificate expiration date length.</div><div class="ttdef"><b>Definition</b> aern.h:894</div></div>
+<div class="ttc" id="aaern_8h_html_a28a75ced9057b99eb5ed59645ce7fe43"><div class="ttname"><a href="aern_8h.html#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ISSUER_SIZE</div><div class="ttdoc">The maximum certificate issuer string length. The last character must be a string terminator.</div><div class="ttdef"><b>Definition</b> aern.h:907</div></div>
+<div class="ttc" id="aaern_8h_html_a447144cb8944c8553cfd9fcc7ac73eb9"><div class="ttname"><a href="aern_8h.html#a447144cb8944c8553cfd9fcc7ac73eb9">AERN_CERTIFICATE_ADDRESS_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ADDRESS_SIZE</div><div class="ttdoc">The maximum IP address length.</div><div class="ttdef"><b>Definition</b> aern.h:870</div></div>
+<div class="ttc" id="aaern_8h_html_a6836977c34ee21da3a738579aad21ad9"><div class="ttname"><a href="aern_8h.html#a6836977c34ee21da3a738579aad21ad9">AERN_CERTIFICATE_DESIGNATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_DESIGNATION_SIZE</div><div class="ttdoc">The size of the child certificate designation field.</div><div class="ttdef"><b>Definition</b> aern.h:888</div></div>
+<div class="ttc" id="aaern_8h_html_acc789b9281e03dddcda4c72eed21404c"><div class="ttname"><a href="aern_8h.html#acc789b9281e03dddcda4c72eed21404c">AERN_CERTIFICATE_HASH_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_HASH_SIZE</div><div class="ttdoc">The size of the certificate hash in bytes.</div><div class="ttdef"><b>Definition</b> aern.h:900</div></div>
+<div class="ttc" id="aaern_8h_html_ad809002d7ee1fe8f6e5dea4fadbda241"><div class="ttname"><a href="aern_8h.html#ad809002d7ee1fe8f6e5dea4fadbda241">AERN_CERTIFICATE_SERIAL_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_SERIAL_SIZE</div><div class="ttdoc">The certificate serial number field length.</div><div class="ttdef"><b>Definition</b> aern.h:931</div></div>
 </div><!-- fragment -->
 <p>The size in bytes of a serialized topological node. </p>
 
@@ -242,6 +261,37 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="ad45f40ca1657497a0defae2523d754a4" name="ad45f40ca1657497a0defae2523d754a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad45f40ca1657497a0defae2523d754a4">&#9670;&#160;</a></span>aern_topology_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API void aern_topology_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *</td>          <td class="paramname"><span class="paramname"><em>node</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add or replace a node in a topology list. </p>
+<p>This function inserts a node into the topology list and increments the topology version. Existing entries with the same issuer are replaced by the underlying topology insertion logic.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology state. </td></tr>
+    <tr><td class="paramname">node</td><td>[const aern_topology_node_state*] The topology node to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ae228d7f793cf285c21550c5563cf3539" name="ae228d7f793cf285c21550c5563cf3539"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae228d7f793cf285c21550c5563cf3539">&#9670;&#160;</a></span>aern_topology_address_from_issuer()</h2>
 
@@ -270,9 +320,9 @@ Functions</h2></td></tr>
 <p>This function extracts and returns the network address associated with a given issuer string, using the topology list to resolve the address.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">address</td><td>The output buffer to receive the node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE). </td></tr>
-    <tr><td class="paramname">issuer</td><td>[const] The issuer string. </td></tr>
-    <tr><td class="paramname">list</td><td>[const] A pointer to the topology list. </td></tr>
+    <tr><td class="paramname">address</td><td>[char*] The output buffer to receive the node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE). </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The issuer string. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] A pointer to the topology list. </td></tr>
   </table>
   </dd>
 </dl>
@@ -312,10 +362,10 @@ Functions</h2></td></tr>
 <p>This function converts a device canonical name into its corresponding issuer name based on the domain.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">issuer</td><td>The output issuer string. </td></tr>
-    <tr><td class="paramname">isslen</td><td>The length of the issuer buffer. </td></tr>
-    <tr><td class="paramname">domain</td><td>The domain name. </td></tr>
-    <tr><td class="paramname">cname</td><td>The input device canonical name. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[char*] The output issuer string. </td></tr>
+    <tr><td class="paramname">isslen</td><td>[size_t] The length of the issuer buffer. </td></tr>
+    <tr><td class="paramname">domain</td><td>[const char*] The domain name. </td></tr>
+    <tr><td class="paramname">cname</td><td>[const char*] The input device canonical name.</td></tr>
   </table>
   </dd>
 </dl>
@@ -342,7 +392,7 @@ Functions</h2></td></tr>
 <p>This function returns a pointer to an empty node entry in the topology list. </p><dl class="section note"><dt>Note</dt><dd>This function is not thread safe.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>A pointer to the topology list. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] A pointer to the topology list.</td></tr>
   </table>
   </dd>
 </dl>
@@ -373,8 +423,8 @@ Functions</h2></td></tr>
 <p>This function adds a new node item to the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>A pointer to the topology list. </td></tr>
-    <tr><td class="paramname">node</td><td>[const] The node to add. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] A pointer to the topology list. </td></tr>
+    <tr><td class="paramname">node</td><td>[const aern_topology_node_state*] The node to add. </td></tr>
   </table>
   </dd>
 </dl>
@@ -409,9 +459,9 @@ Functions</h2></td></tr>
 <p>This function registers a new child node in the topology list based on its certificate.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>A pointer to the topology list. </td></tr>
-    <tr><td class="paramname">ccert</td><td>[const] The node's child certificate. </td></tr>
-    <tr><td class="paramname">address</td><td>[const] The node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE). </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] A pointer to the topology list. </td></tr>
+    <tr><td class="paramname">ccert</td><td>[const aern_child_certificate*] The node's child certificate. </td></tr>
+    <tr><td class="paramname">address</td><td>[const char*] The node's network address (max AERN_CERTIFICATE_ADDRESS_SIZE). </td></tr>
   </table>
   </dd>
 </dl>
@@ -441,11 +491,69 @@ Functions</h2></td></tr>
 <p>This function loads a topology list from a file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fpath</td><td>[const] The full path to the topology list file. </td></tr>
-    <tr><td class="paramname">list</td><td>A pointer to the topology list state to populate. </td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The full path to the topology list file. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] A pointer to the topology list state to populate. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a110dd3f7ea7c277485186b9a7b262779" name="a110dd3f7ea7c277485186b9a7b262779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110dd3f7ea7c277485186b9a7b262779">&#9670;&#160;</a></span>aern_topology_hash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API void aern_topology_hash </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>hash</em></span>[AERN_CERTIFICATE_HASH_SIZE]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the canonical topology hash. </p>
+<p>This function copies the serialized topology, sorts the copy by certificate serial number, and computes a SHAKE-256 digest over the canonical serialized form.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">hash</td><td>[uint8_t*] The output hash buffer; must be AERN_CERTIFICATE_HASH_SIZE bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a33bb07671be179f9ccdf7f0bfb8d4e75" name="a33bb07671be179f9ccdf7f0bfb8d4e75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33bb07671be179f9ccdf7f0bfb8d4e75">&#9670;&#160;</a></span>aern_topology_increment_version()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API uint64_t aern_topology_increment_version </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increment the topology version. </p>
+<p>This function increments the version counter in a topology state and returns the new value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology state.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the incremented topology version, or zero on failure. </dd></dl>
 
 </div>
 </div>
@@ -477,9 +585,9 @@ Functions</h2></td></tr>
 <p>This function converts an issuer name back into its canonical form.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cname</td><td>The output canonical name. </td></tr>
-    <tr><td class="paramname">namelen</td><td>The length of the canonical name buffer. </td></tr>
-    <tr><td class="paramname">issuer</td><td>The input issuer name string. </td></tr>
+    <tr><td class="paramname">cname</td><td>[char*] The output canonical name. </td></tr>
+    <tr><td class="paramname">namelen</td><td>[size_t] The length of the canonical name buffer. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The input issuer name string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -510,8 +618,8 @@ Functions</h2></td></tr>
 <p>This function creates a clone of the given topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tlist</td><td>[const] A pointer to the source topology list. </td></tr>
-    <tr><td class="paramname">tcopy</td><td>A pointer to the destination topology list. </td></tr>
+    <tr><td class="paramname">tlist</td><td>[const aern_topology_list_state*] A pointer to the source topology list. </td></tr>
+    <tr><td class="paramname">tcopy</td><td>[aern_topology_list_state*] A pointer to the destination topology list. </td></tr>
   </table>
   </dd>
 </dl>
@@ -546,9 +654,9 @@ Functions</h2></td></tr>
 <p>This function deserializes a topology list from a given input array.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>A pointer to the topology list state to populate. </td></tr>
-    <tr><td class="paramname">input</td><td>[const] The serialized topology array. </td></tr>
-    <tr><td class="paramname">inplen</td><td>The size of the input array. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] A pointer to the topology list state to populate. </td></tr>
+    <tr><td class="paramname">input</td><td>[const uint8_t*] The serialized topology array. </td></tr>
+    <tr><td class="paramname">inplen</td><td>[size_t] The size of the input array. </td></tr>
   </table>
   </dd>
 </dl>
@@ -574,7 +682,7 @@ Functions</h2></td></tr>
 <p>This function releases all memory allocated for the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>A pointer to the topology list state. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] A pointer to the topology list state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -600,7 +708,7 @@ Functions</h2></td></tr>
 <p>This function initializes the topology list state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>The topology list state to initialize. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology list state to initialize. </td></tr>
   </table>
   </dd>
 </dl>
@@ -635,9 +743,9 @@ Functions</h2></td></tr>
 <p>This function retrieves the node at the specified index in the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>The topology list state. </td></tr>
-    <tr><td class="paramname">node</td><td>A pointer to the node structure to populate. </td></tr>
-    <tr><td class="paramname">index</td><td>The index of the node. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the node structure to populate. </td></tr>
+    <tr><td class="paramname">index</td><td>[size_t] The index of the node.</td></tr>
   </table>
   </dd>
 </dl>
@@ -664,7 +772,7 @@ Functions</h2></td></tr>
 <p>This function removes duplicate entries from the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>The topology list state. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology list state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -695,8 +803,8 @@ Functions</h2></td></tr>
 <p>This function serializes the topology list into a byte array.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>The output buffer for the serialized topology. </td></tr>
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output buffer for the serialized topology. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -727,8 +835,8 @@ Functions</h2></td></tr>
 <p>This function counts the number of nodes of a specific type in the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">ntype</td><td>The type of node entry to count. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">ntype</td><td>[<a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a>] The type of node entry to count.</td></tr>
   </table>
   </dd>
 </dl>
@@ -755,7 +863,7 @@ Functions</h2></td></tr>
 <p>This function returns the size in bytes of the serialized topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -791,9 +899,9 @@ Functions</h2></td></tr>
 <p>This function converts the topology list into a human?readable string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">output</td><td>The output string buffer. </td></tr>
-    <tr><td class="paramname">outlen</td><td>The length of the output buffer. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">output</td><td>[char*] The output string buffer. </td></tr>
+    <tr><td class="paramname">outlen</td><td>[size_t] The length of the output buffer.</td></tr>
   </table>
   </dd>
 </dl>
@@ -829,9 +937,9 @@ Functions</h2></td></tr>
 <p>This function serializes a subset of nodes from the topology list (of a given type) into an array.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>The output buffer for the serialized node update set. </td></tr>
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">ntype</td><td>The type of node entry to pack. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output buffer for the serialized node update set. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">ntype</td><td>[<a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a>] The type of node entry to pack.</td></tr>
   </table>
   </dd>
 </dl>
@@ -867,9 +975,9 @@ Functions</h2></td></tr>
 <p>This function deserializes an update set and adds the nodes to the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>The topology list state to update. </td></tr>
-    <tr><td class="paramname">input</td><td>The input serialized node update set. </td></tr>
-    <tr><td class="paramname">inplen</td><td>The length of the input array. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology list state to update. </td></tr>
+    <tr><td class="paramname">input</td><td>[const uint8_t*] The input serialized node update set. </td></tr>
+    <tr><td class="paramname">inplen</td><td>[size_t] The length of the input array.</td></tr>
   </table>
   </dd>
 </dl>
@@ -900,8 +1008,8 @@ Functions</h2></td></tr>
 <p>This function appends an alias to the issuer string of a node.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">node</td><td>The network node to update. </td></tr>
-    <tr><td class="paramname">alias</td><td>[const] The host alias to add. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] The network node to update. </td></tr>
+    <tr><td class="paramname">alias</td><td>[const char*] The host alias to add. </td></tr>
   </table>
   </dd>
 </dl>
@@ -927,7 +1035,7 @@ Functions</h2></td></tr>
 <p>This function clears all data in a topology node structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">node</td><td>A pointer to the topology node structure to erase. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the topology node structure to erase. </td></tr>
   </table>
   </dd>
 </dl>
@@ -957,8 +1065,8 @@ Functions</h2></td></tr>
 <p>This function copies the contents of one topology node structure to another.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">source</td><td>[const] A pointer to the source node structure. </td></tr>
-    <tr><td class="paramname">destination</td><td>A pointer to the destination node structure. </td></tr>
+    <tr><td class="paramname">source</td><td>[const aern_topology_node_state*] A pointer to the source node structure. </td></tr>
+    <tr><td class="paramname">destination</td><td>[aern_topology_node_state*] A pointer to the destination node structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -988,8 +1096,8 @@ Functions</h2></td></tr>
 <p>This function converts a serialized topology node array into a topology node structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">node</td><td>A pointer to the topology node structure to populate. </td></tr>
-    <tr><td class="paramname">input</td><td>[const] The input serialized topology node data. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the topology node structure to populate. </td></tr>
+    <tr><td class="paramname">input</td><td>[const uint8_t*] The input serialized topology node data. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1019,8 +1127,8 @@ Functions</h2></td></tr>
 <p>This function encodes a topology node into a human?readable string format.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">node</td><td>A pointer to the topology node structure. </td></tr>
-    <tr><td class="paramname">output</td><td>The output buffer for the encoded node string. </td></tr>
+    <tr><td class="paramname">node</td><td>[const aern_topology_node_state*] A pointer to the topology node structure. </td></tr>
+    <tr><td class="paramname">output</td><td>[char*] The output buffer for the encoded node string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1051,8 +1159,8 @@ Functions</h2></td></tr>
 <p>This function checks whether a node with the specified serial number exists in the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">serial</td><td>The serial number to search for. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">serial</td><td>[const uint8_t*] The serial number to search for.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1088,13 +1196,47 @@ Functions</h2></td></tr>
 <p>This function finds a node in the topology list that matches the given serial number.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">node</td><td>A pointer to the destination node structure to populate. </td></tr>
-    <tr><td class="paramname">serial</td><td>[const] The certificate serial number to search for. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the destination node structure to populate. </td></tr>
+    <tr><td class="paramname">serial</td><td>[const uint8_t*] The certificate serial number to search for.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns true if the node was found; false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="afdc3c6cf8c247953c84802a2b6c0c540" name="afdc3c6cf8c247953c84802a2b6c0c540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdc3c6cf8c247953c84802a2b6c0c540">&#9670;&#160;</a></span>aern_topology_node_find_adc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API bool aern_topology_node_find_adc </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *</td>          <td class="paramname"><span class="paramname"><em>node</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Searches a topology list for an active ADC node and copies the matching node state. </p>
+<p>This function scans the supplied topology list for a node whose designation identifies it as an ADC. When a matching ADC node is found, the complete node state is copied to the caller-supplied <code>node</code> output structure.</p>
+<p>The function is intended for topology-dependent routing and policy operations that require discovery of the active Access Domain Controller from the local topology view.</p>
+<p>The function validates its pointer arguments before use. If either <code>list</code> or <code>node</code> is <code>NULL</code>, the function returns <code>false</code>. If no ADC node is present in the supplied topology list, the function also returns <code>false</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] A pointer to the topology list state to search. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the output node state receiving the discovered ADC node.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> if an ADC node was found and copied to <code>node</code>; otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
@@ -1126,9 +1268,9 @@ Functions</h2></td></tr>
 <p>This function searches the topology list for a node that matches the given network address.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">node</td><td>A pointer to the destination node structure. </td></tr>
-    <tr><td class="paramname">address</td><td>[const] The network address to search for. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the destination node structure. </td></tr>
+    <tr><td class="paramname">address</td><td>[const char*] The network address to search for.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1159,8 +1301,8 @@ Functions</h2></td></tr>
 <p>This function finds the ADC node in the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">node</td><td>A pointer to the destination node structure. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the destination node structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1196,13 +1338,45 @@ Functions</h2></td></tr>
 <p>This function searches the topology list for a node that matches the given alias.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">node</td><td>A pointer to the destination node structure. </td></tr>
-    <tr><td class="paramname">alias</td><td>[const] The alias to search for. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the destination node structure. </td></tr>
+    <tr><td class="paramname">alias</td><td>[const char*] The alias to search for.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns true if the node was found; false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a1ced3436748f4b596f3d34b814a1951c" name="a1ced3436748f4b596f3d34b814a1951c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ced3436748f4b596f3d34b814a1951c">&#9670;&#160;</a></span>aern_topology_node_find_aps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API bool aern_topology_node_find_aps </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *</td>          <td class="paramname"><span class="paramname"><em>node</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the first APS node from the list. </p>
+<p>This function scans the topology list for the first node designated as an APS and copies the matching node into the caller supplied output structure.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] A pointer to the topology list state to search. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the output node state receiving the discovered APS node.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if an APS node was found; otherwise returns false. </dd></dl>
 
 </div>
 </div>
@@ -1234,9 +1408,9 @@ Functions</h2></td></tr>
 <p>This function finds a node in the topology list that matches the given issuer name.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">node</td><td>A pointer to the destination node structure. </td></tr>
-    <tr><td class="paramname">issuer</td><td>[const] The certificate issuer name. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the destination node structure. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The certificate issuer name.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1267,8 +1441,8 @@ Functions</h2></td></tr>
 <p>This function retrieves the ARS server node from the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">node</td><td>A pointer to the destination node structure. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">node</td><td>[aern_topology_node_state*] A pointer to the destination node structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1299,8 +1473,8 @@ Functions</h2></td></tr>
 <p>This function searches for a node by its serial number and returns its index in the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">serial</td><td>The serial number to search for. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">serial</td><td>[const uint8_t*] The serial number to search for.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1331,8 +1505,8 @@ Functions</h2></td></tr>
 <p>This function searches for a node by its serial number and removes it from the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>The topology list state. </td></tr>
-    <tr><td class="paramname">serial</td><td>The serial number of the node to remove (AERN_CERTIFICATE_SERIAL_SIZE bytes). </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">serial</td><td>[const uint8_t*] The serial number of the node to remove (AERN_CERTIFICATE_SERIAL_SIZE bytes). </td></tr>
   </table>
   </dd>
 </dl>
@@ -1362,8 +1536,8 @@ Functions</h2></td></tr>
 <p>This function removes duplicate nodes from the topology list that have the same issuer name.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>The topology list state. </td></tr>
-    <tr><td class="paramname">issuer</td><td>The issuer name to match for removal. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The issuer name to match for removal. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1393,12 +1567,44 @@ Functions</h2></td></tr>
 <p>This function serializes the topology node structure into a byte array.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>The output buffer to receive the serialized node. </td></tr>
-    <tr><td class="paramname">node</td><td>[const] A pointer to the topology node structure. </td></tr>
+    <tr><td class="paramname">output</td><td>[uint8_t*] The output buffer to receive the serialized node. </td></tr>
+    <tr><td class="paramname">node</td><td>[const aern_topology_node_state*] A pointer to the topology node structure.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the size of the serialized node. </dd></dl>
+
+</div>
+</div>
+<a id="a6afc8d6fa9a33aa9436f96a07e87420d" name="a6afc8d6fa9a33aa9436f96a07e87420d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6afc8d6fa9a33aa9436f96a07e87420d">&#9670;&#160;</a></span>aern_topology_node_verify_adc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API bool aern_topology_node_verify_adc </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structaern__child__certificate.html">aern_child_certificate</a> *</td>          <td class="paramname"><span class="paramname"><em>ccert</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verify that the ADC certificate matches the hash stored in the topology. </p>
+<p>This function is the AERN-specific alias for the legacy ADS verification name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">ccert</td><td>[const aern_child_certificate*] The ADC certificate structure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the certificate matches the stored hash; false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -1425,8 +1631,8 @@ Functions</h2></td></tr>
 <p>This function verifies that the ADC certificate in the topology list matches the certificate hash.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">ccert</td><td>[const] The ADC certificate structure. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">ccert</td><td>[const aern_child_certificate*] The ADC certificate structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1462,9 +1668,9 @@ Functions</h2></td></tr>
 <p>This function verifies that the certificate for a given issuer matches the stored hash in the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">ccert</td><td>[const] The node's certificate structure. </td></tr>
-    <tr><td class="paramname">issuer</td><td>[const] The certificate issuer name. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">ccert</td><td>[const aern_child_certificate*] The node's certificate structure. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The certificate issuer name.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1495,8 +1701,8 @@ Functions</h2></td></tr>
 <p>This function verifies that the root certificate matches the hash stored in the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">rcert</td><td>[const] The root certificate structure. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">rcert</td><td>[const aern_root_certificate*] The root certificate structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1527,8 +1733,8 @@ Functions</h2></td></tr>
 <p>This function compares two topology node structures and returns true if they are identical.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>[const] The first node. </td></tr>
-    <tr><td class="paramname">b</td><td>[const] The second node. </td></tr>
+    <tr><td class="paramname">a</td><td>[const aern_topology_node_state*] The first node. </td></tr>
+    <tr><td class="paramname">b</td><td>[const aern_topology_node_state*] The second node.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1564,13 +1770,44 @@ Functions</h2></td></tr>
 <p>This function returns a new topology list containing nodes of a specific type, sorted by their serial number. </p><dl class="section note"><dt>Note</dt><dd>The caller is responsible for disposing the output list.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">olist</td><td>The sorted output topology list. </td></tr>
-    <tr><td class="paramname">tlist</td><td>The unsorted input topology list. </td></tr>
-    <tr><td class="paramname">ntype</td><td>The type of node to filter and sort. </td></tr>
+    <tr><td class="paramname">olist</td><td>[aern_topology_list_state*] The sorted output topology list. </td></tr>
+    <tr><td class="paramname">tlist</td><td>[aern_topology_list_state*] The unsorted input topology list. </td></tr>
+    <tr><td class="paramname">ntype</td><td>[<a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a>] The type of node to filter and sort.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the number of nodes in the sorted list. </dd></dl>
+
+</div>
+</div>
+<a id="a1cdff03b202d9bb427e74a42cbc29d0f" name="a1cdff03b202d9bb427e74a42cbc29d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cdff03b202d9bb427e74a42cbc29d0f">&#9670;&#160;</a></span>aern_topology_remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API void aern_topology_remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>serial</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a node from a topology list. </p>
+<p>This function removes a node matching the supplied certificate serial number and increments the version only when a matching node is removed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology state. </td></tr>
+    <tr><td class="paramname">serial</td><td>[const uint8_t*] The certificate serial number to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1602,9 +1839,9 @@ Functions</h2></td></tr>
 <p>This function registers a root certificate into the topology list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>A pointer to the topology list. </td></tr>
-    <tr><td class="paramname">rcert</td><td>[const] The root certificate. </td></tr>
-    <tr><td class="paramname">address</td><td>[const] The network address of the root. </td></tr>
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] A pointer to the topology list. </td></tr>
+    <tr><td class="paramname">rcert</td><td>[const aern_root_certificate*] The root certificate. </td></tr>
+    <tr><td class="paramname">address</td><td>[const char*] The network address of the root. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1634,11 +1871,75 @@ Functions</h2></td></tr>
 <p>This function writes the current topology list to a file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>[const] The topology list state. </td></tr>
-    <tr><td class="paramname">fpath</td><td>[const] The destination file path for the topology list. </td></tr>
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The topology list state. </td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The destination file path for the topology list. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ab7ccfee631624554907b3b42b532fc54" name="ab7ccfee631624554907b3b42b532fc54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7ccfee631624554907b3b42b532fc54">&#9670;&#160;</a></span>aern_topology_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API <a class="el" href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724">aern_protocol_errors</a> aern_topology_update </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structaern__topology__node__state.html">aern_topology_node_state</a> *</td>          <td class="paramname"><span class="paramname"><em>node</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update a node in a topology list. </p>
+<p>This function replaces an existing node matching the supplied serial number and increments the topology version.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[aern_topology_list_state*] The topology state. </td></tr>
+    <tr><td class="paramname">node</td><td>[const aern_topology_node_state*] The replacement topology node.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns aern_protocol_error_none on success, or an error code on failure. </dd></dl>
+
+</div>
+</div>
+<a id="a9e7fb06e3f0b40d14b43c97e3a1b0f52" name="a9e7fb06e3f0b40d14b43c97e3a1b0f52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e7fb06e3f0b40d14b43c97e3a1b0f52">&#9670;&#160;</a></span>aern_topology_version_verify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API <a class="el" href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724">aern_protocol_errors</a> aern_topology_version_verify </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>incomingver</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verify an incoming topology version. </p>
+<p>This function verifies that an incoming topology version is strictly greater than the local version.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>[const aern_topology_list_state*] The local topology state. </td></tr>
+    <tr><td class="paramname">incomingver[uint64_t]</td><td>The incoming topology version.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns aern_protocol_error_none when the incoming version is accepted. </dd></dl>
 
 </div>
 </div>

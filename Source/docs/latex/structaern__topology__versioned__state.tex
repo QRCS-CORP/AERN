@@ -1,0 +1,45 @@
+\doxysection{aern\+\_\+topology\+\_\+versioned\+\_\+state Struct Reference}
+\hypertarget{structaern__topology__versioned__state}{}\label{structaern__topology__versioned__state}\index{aern\_topology\_versioned\_state@{aern\_topology\_versioned\_state}}
+
+
+Wraps a topology list with a monotonically increasing version counter.  
+
+
+
+
+{\ttfamily \#include $<$topology2.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \mbox{\hyperlink{structaern__topology__versioned__state_a3de4b205e56f33951804dad48c533e02}{list}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structaern__topology__versioned__state_aa38fd391d6e9522074df6743fcd3d323}{version}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wraps a topology list with a monotonically increasing version counter. 
+
+The version starts at 1 after initialisation and is incremented every time the topology is structurally modified (add, update, or remove). Version 0 is reserved as "{}uninitialised"{}; any peer sending version 0 is rejected. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__topology__versioned__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__topology__versioned__state_a3de4b205e56f33951804dad48c533e02}\index{aern\_topology\_versioned\_state@{aern\_topology\_versioned\_state}!list@{list}}
+\index{list@{list}!aern\_topology\_versioned\_state@{aern\_topology\_versioned\_state}}
+\doxysubsubsection{\texorpdfstring{list}{list}}
+{\footnotesize\ttfamily \label{structaern__topology__versioned__state_a3de4b205e56f33951804dad48c533e02} 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} list}
+
+The underlying node list. \Hypertarget{structaern__topology__versioned__state_aa38fd391d6e9522074df6743fcd3d323}\index{aern\_topology\_versioned\_state@{aern\_topology\_versioned\_state}!version@{version}}
+\index{version@{version}!aern\_topology\_versioned\_state@{aern\_topology\_versioned\_state}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{structaern__topology__versioned__state_aa38fd391d6e9522074df6743fcd3d323} 
+uint64\+\_\+t version}
+
+Monotonically increasing version counter. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+Saved/\mbox{\hyperlink{topology2_8h}{topology2.\+h}}\end{DoxyCompactItemize}

@@ -49,9 +49,9 @@ This function prints a context-\/specific help message corresponding to the give
 
 
 \begin{DoxyParams}{Parameters}
-{\em prompt} & \mbox{[}in\mbox{]} The console prompt string. \\
+{\em prompt} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The console prompt string. \\
 \hline
-{\em command} & The command action (from the \doxylink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions} enumeration) for which to display help. \\
+{\em command} & \mbox{[}\doxylink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions}\mbox{]} The command action (from the \doxylink{commands_8h_ad68782564f96643016e3bd878aa0b53c}{aern\+\_\+command\+\_\+actions} enumeration) for which to display help. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{help_8h_a71789921a7ccef3bafc0013c7d18af30}\index{help.h@{help.h}!aern\_help\_print\_mode@{aern\_help\_print\_mode}}
@@ -68,10 +68,10 @@ This function prints a set of help messages that are appropriate for the current
 
 
 \begin{DoxyParams}{Parameters}
-{\em prompt} & \mbox{[}in\mbox{]} The console prompt string. \\
+{\em prompt} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The console prompt string. \\
 \hline
-{\em mode} & The current console mode (from the \doxylink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes} enumeration). \\
+{\em mode} & \mbox{[}\doxylink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes}\mbox{]} The current console mode (from the \doxylink{commands_8h_a8349f058d50bece2f4e2b38ac00ddbdb}{aern\+\_\+console\+\_\+modes} enumeration). \\
 \hline
-{\em designation} & The network designation (from the \doxylink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations} enumeration) for which the help messages should be tailored. \\
+{\em designation} & \mbox{[}\doxylink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}\mbox{]} The network designation (from the \doxylink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations} enumeration) for which the help messages should be tailored. \\
 \hline
 \end{DoxyParams}

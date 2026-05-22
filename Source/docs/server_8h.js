@@ -33,7 +33,7 @@ var server_8h =
     [ "aern_server_print_configuration", "server_8h.html#a735a79991504e0c84441d0a8c6b1ee3a", null ],
     [ "aern_server_print_error", "server_8h.html#aa15cbe1c15942a16edb20bc5727609d2", null ],
     [ "aern_server_root_certificate_export", "server_8h.html#a6502acf736dab3ea1499544da28a6c01", null ],
-    [ "aern_server_root_certificate_generate", "server_8h.html#af0ff95cea003f6081496b5896cbfd4d1", null ],
+    [ "aern_server_root_certificate_generate", "server_8h.html#a4ab60f25b169cd3ffe8c18d223ccd9a7", null ],
     [ "aern_server_root_certificate_load", "server_8h.html#a75239baeec4dcbec1023999cfbf5dc18", null ],
     [ "aern_server_root_certificate_print", "server_8h.html#ad97e033f7d9d9ac0c71499c032dcc6f9", null ],
     [ "aern_server_root_certificate_store", "server_8h.html#a9e594553af5644637b745af0abc40787", null ],

@@ -1,0 +1,83 @@
+\doxysection{aern\+\_\+exit\+\_\+state Struct Reference}
+\hypertarget{structaern__exit__state}{}\label{structaern__exit__state}\index{aern\_exit\_state@{aern\_exit\_state}}
+
+
+State held at the exit node per active circuit.  
+
+
+
+
+{\ttfamily \#include $<$route.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \mbox{\hyperlink{structaern__exit__state_a8ac9f670be160ba2cadcd2c2b6a974a3}{return\+\_\+route}}
+\item 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__exit__state_a96c03683256b34c9740fb81eed5cdf49}{conn\+\_\+table}}
+\item 
+const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__exit__state_a4d541aa6fec485fe70bb3fa73c333aad}{topology}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__exit__state_a2431f6dce89f60445fcb01071192370d}{apscount}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__exit__state_a6558e20e2127c3e7d957958f420e2806}{ownhint}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__exit__state_abfb895c417dd9db179a8311c0c1f12e7}{entryhint}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__exit__state_a946f27f64a6c7500925f6d10c0b007aa}{session\+\_\+id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State held at the exit node per active circuit. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__exit__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__exit__state_a2431f6dce89f60445fcb01071192370d}\index{aern\_exit\_state@{aern\_exit\_state}!apscount@{apscount}}
+\index{apscount@{apscount}!aern\_exit\_state@{aern\_exit\_state}}
+\doxysubsubsection{\texorpdfstring{apscount}{apscount}}
+{\footnotesize\ttfamily \label{structaern__exit__state_a2431f6dce89f60445fcb01071192370d} 
+uint8\+\_\+t apscount}
+
+Number of APS entries \Hypertarget{structaern__exit__state_a96c03683256b34c9740fb81eed5cdf49}\index{aern\_exit\_state@{aern\_exit\_state}!conn\_table@{conn\_table}}
+\index{conn\_table@{conn\_table}!aern\_exit\_state@{aern\_exit\_state}}
+\doxysubsubsection{\texorpdfstring{conn\_table}{conn\_table}}
+{\footnotesize\ttfamily \label{structaern__exit__state_a96c03683256b34c9740fb81eed5cdf49} 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}}\texorpdfstring{$\ast$}{*} conn\+\_\+table}
+
+Cipher table \Hypertarget{structaern__exit__state_abfb895c417dd9db179a8311c0c1f12e7}\index{aern\_exit\_state@{aern\_exit\_state}!entryhint@{entryhint}}
+\index{entryhint@{entryhint}!aern\_exit\_state@{aern\_exit\_state}}
+\doxysubsubsection{\texorpdfstring{entryhint}{entryhint}}
+{\footnotesize\ttfamily \label{structaern__exit__state_abfb895c417dd9db179a8311c0c1f12e7} 
+uint8\+\_\+t entryhint}
+
+Entry node one-\/based APS route hint \Hypertarget{structaern__exit__state_a6558e20e2127c3e7d957958f420e2806}\index{aern\_exit\_state@{aern\_exit\_state}!ownhint@{ownhint}}
+\index{ownhint@{ownhint}!aern\_exit\_state@{aern\_exit\_state}}
+\doxysubsubsection{\texorpdfstring{ownhint}{ownhint}}
+{\footnotesize\ttfamily \label{structaern__exit__state_a6558e20e2127c3e7d957958f420e2806} 
+uint8\+\_\+t ownhint}
+
+This exit node\textquotesingle{}s one-\/based APS route hint \Hypertarget{structaern__exit__state_a8ac9f670be160ba2cadcd2c2b6a974a3}\index{aern\_exit\_state@{aern\_exit\_state}!return\_route@{return\_route}}
+\index{return\_route@{return\_route}!aern\_exit\_state@{aern\_exit\_state}}
+\doxysubsubsection{\texorpdfstring{return\_route}{return\_route}}
+{\footnotesize\ttfamily \label{structaern__exit__state_a8ac9f670be160ba2cadcd2c2b6a974a3} 
+\mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} return\+\_\+route}
+
+Pre-\/computed return route \Hypertarget{structaern__exit__state_a946f27f64a6c7500925f6d10c0b007aa}\index{aern\_exit\_state@{aern\_exit\_state}!session\_id@{session\_id}}
+\index{session\_id@{session\_id}!aern\_exit\_state@{aern\_exit\_state}}
+\doxysubsubsection{\texorpdfstring{session\_id}{session\_id}}
+{\footnotesize\ttfamily \label{structaern__exit__state_a946f27f64a6c7500925f6d10c0b007aa} 
+uint32\+\_\+t session\+\_\+id}
+
+Session ID for logging \Hypertarget{structaern__exit__state_a4d541aa6fec485fe70bb3fa73c333aad}\index{aern\_exit\_state@{aern\_exit\_state}!topology@{topology}}
+\index{topology@{topology}!aern\_exit\_state@{aern\_exit\_state}}
+\doxysubsubsection{\texorpdfstring{topology}{topology}}
+{\footnotesize\ttfamily \label{structaern__exit__state_a4d541aa6fec485fe70bb3fa73c333aad} 
+const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}}\texorpdfstring{$\ast$}{*} topology}
+
+APS topology list 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{route_8h}{route.\+h}}\end{DoxyCompactItemize}

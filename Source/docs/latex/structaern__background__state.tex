@@ -1,0 +1,51 @@
+\doxysection{aern\+\_\+background\+\_\+state Struct Reference}
+\hypertarget{structaern__background__state}{}\label{structaern__background__state}\index{aern\_background\_state@{aern\_background\_state}}
+
+
+State for the APS background cover-\/traffic thread.  
+
+
+
+
+{\ttfamily \#include $<$admin.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__background__state_acab78afff273f2d0a6492c288331cf57}{ctable}}
+\item 
+volatile bool \mbox{\hyperlink{structaern__background__state_a7c10027ca174fc9d529796f04aca6bd4}{running}}
+\item 
+volatile bool \mbox{\hyperlink{structaern__background__state_ad71e2e034f44ef36f708d241de4770d5}{synchronized}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State for the APS background cover-\/traffic thread. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__background__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__background__state_acab78afff273f2d0a6492c288331cf57}\index{aern\_background\_state@{aern\_background\_state}!ctable@{ctable}}
+\index{ctable@{ctable}!aern\_background\_state@{aern\_background\_state}}
+\doxysubsubsection{\texorpdfstring{ctable}{ctable}}
+{\footnotesize\ttfamily \label{structaern__background__state_acab78afff273f2d0a6492c288331cf57} 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}}\texorpdfstring{$\ast$}{*} ctable}
+
+Cipher table (one packet per active tunnel) \Hypertarget{structaern__background__state_a7c10027ca174fc9d529796f04aca6bd4}\index{aern\_background\_state@{aern\_background\_state}!running@{running}}
+\index{running@{running}!aern\_background\_state@{aern\_background\_state}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily \label{structaern__background__state_a7c10027ca174fc9d529796f04aca6bd4} 
+volatile bool running}
+
+Set false to stop the thread \Hypertarget{structaern__background__state_ad71e2e034f44ef36f708d241de4770d5}\index{aern\_background\_state@{aern\_background\_state}!synchronized@{synchronized}}
+\index{synchronized@{synchronized}!aern\_background\_state@{aern\_background\_state}}
+\doxysubsubsection{\texorpdfstring{synchronized}{synchronized}}
+{\footnotesize\ttfamily \label{structaern__background__state_ad71e2e034f44ef36f708d241de4770d5} 
+volatile bool synchronized}
+
+Only run when APS is synchronized 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{admin_8h}{admin.\+h}}\end{DoxyCompactItemize}

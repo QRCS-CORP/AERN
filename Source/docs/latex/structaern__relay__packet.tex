@@ -1,0 +1,43 @@
+\doxysection{aern\+\_\+relay\+\_\+packet Struct Reference}
+\hypertarget{structaern__relay__packet}{}\label{structaern__relay__packet}\index{aern\_relay\_packet@{aern\_relay\_packet}}
+
+
+A pre-\/padded, fixed-\/1500-\/byte relay packet ready for transmission.  
+
+
+
+
+{\ttfamily \#include $<$route.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structaern__relay__packet_a609ed667da15eb798998f349471beb7f}{wire}} \mbox{[}AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structaern__relay__packet_a7bdb6636b876390054040ffa406dc454}{fragseq}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A pre-\/padded, fixed-\/1500-\/byte relay packet ready for transmission. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__relay__packet_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__relay__packet_a7bdb6636b876390054040ffa406dc454}\index{aern\_relay\_packet@{aern\_relay\_packet}!fragseq@{fragseq}}
+\index{fragseq@{fragseq}!aern\_relay\_packet@{aern\_relay\_packet}}
+\doxysubsubsection{\texorpdfstring{fragseq}{fragseq}}
+{\footnotesize\ttfamily \label{structaern__relay__packet_a7bdb6636b876390054040ffa406dc454} 
+uint32\+\_\+t fragseq}
+
+Fragment sequence (UINT32\+\_\+\+MAX = last) \Hypertarget{structaern__relay__packet_a609ed667da15eb798998f349471beb7f}\index{aern\_relay\_packet@{aern\_relay\_packet}!wire@{wire}}
+\index{wire@{wire}!aern\_relay\_packet@{aern\_relay\_packet}}
+\doxysubsubsection{\texorpdfstring{wire}{wire}}
+{\footnotesize\ttfamily \label{structaern__relay__packet_a609ed667da15eb798998f349471beb7f} 
+uint8\+\_\+t wire\mbox{[}AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}}
+
+Raw on-\/wire bytes (exactly 1500) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{route_8h}{route.\+h}}\end{DoxyCompactItemize}

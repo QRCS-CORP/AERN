@@ -1,0 +1,295 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+Saved/network2.h File Reference}
+\hypertarget{network2_8h}{}\label{network2_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/Saved/network2.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/Saved/network2.h}}
+
+
+Phase-\/2 network protocol corrections and hardening.  
+
+
+{\ttfamily \#include "{}network.\+h"{}}\newline
+{\ttfamily \#include "{}topology2.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__ars__signing__state}{aern\+\_\+ars\+\_\+signing\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The ARS remote signing handler state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__register__update__v2__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The ADC register-\/update response state with versioned topology support. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__join__request__state}{aern\+\_\+network\+\_\+join\+\_\+request\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The client-\/side domain-\/join request state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__join__response__state}{aern\+\_\+network\+\_\+join\+\_\+response\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The ADC-\/side domain-\/join response state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__network__converge__update__state}{aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em The ADC convergence-\/update processing state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{network2_8h_ae9891e91a364b5e8f4ca7bbb1780c949}\label{network2_8h_ae9891e91a364b5e8f4ca7bbb1780c949} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+ars\+\_\+signing\+\_\+state {\bfseries aern\+\_\+ars\+\_\+signing\+\_\+state}
+\item 
+\Hypertarget{network2_8h_aab00d3af7a1562a6a752379a25dc8dda}\label{network2_8h_aab00d3af7a1562a6a752379a25dc8dda} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network2_8h_adcac0e28daf4e5711c92c76cc32bb9ac}\label{network2_8h_adcac0e28daf4e5711c92c76cc32bb9ac} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+join\+\_\+request\+\_\+state {\bfseries aern\+\_\+network\+\_\+join\+\_\+request\+\_\+state}
+\item 
+\Hypertarget{network2_8h_abe0a603c6a862b032bddf4d3cbe8faba}\label{network2_8h_abe0a603c6a862b032bddf4d3cbe8faba} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+join\+\_\+response\+\_\+state {\bfseries aern\+\_\+network\+\_\+join\+\_\+response\+\_\+state}
+\item 
+\Hypertarget{network2_8h_a176c9fd32f3aa0f287339743e3f3d01e}\label{network2_8h_a176c9fd32f3aa0f287339743e3f3d01e} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+state {\bfseries aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network2_8h_a6e6d4a220035cd94c94387fc0fce6f7f}{aern\+\_\+ars\+\_\+remote\+\_\+signing\+\_\+handle}} (\mbox{\hyperlink{structaern__ars__signing__state}{aern\+\_\+ars\+\_\+signing\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em ARS-\/side handler\+: verify ADC signature, sign the certificate, respond. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network2_8h_affeb1cf2ee8935a0e1252c6f1b6f1a7d}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response}} (\mbox{\hyperlink{structaern__network__register__update__v2__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em ADC register-\/update response with monotonic version number. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network2_8h_a0b710c00f845cc2e163455c20f33fd1a}{aern\+\_\+network\+\_\+join\+\_\+request}} (\mbox{\hyperlink{structaern__network__join__request__state}{aern\+\_\+network\+\_\+join\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Client domain-\/join request. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network2_8h_aa6a18f01312fdc5732e12c3c947a4ce5}{aern\+\_\+network\+\_\+join\+\_\+response}} (\mbox{\hyperlink{structaern__network__join__response__state}{aern\+\_\+network\+\_\+join\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em ADC-\/side join response handler. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{network2_8h_a394ada06ec22cbd56d6a9196b0088bba}{aern\+\_\+network\+\_\+converge\+\_\+update}} (\mbox{\hyperlink{structaern__network__converge__update__state}{aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em ADC processes an APS-\/provided convergence update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Phase-\/2 network protocol corrections and hardening. 
+
+Spec\+: AERN-\/2025 Rev. 1a, §5–6, Phase-\/2 tasks 2a–2d.
+
+This header exposes\+:
+
+2a ARS-\/side remote\+\_\+signing\+\_\+response — the corrected handler that explicitly verifies the ADC message signature, the timestamp, and the certificate format before signing, then sends the signed cert back.
+
+2b register\+\_\+update hardening — topology version-\/number propagation. The ADC stamps the outgoing topology with the current version; the device verifies incoming\+\_\+version \texorpdfstring{$>$}{>} current\+\_\+version before accepting.
+
+2c Client join (aern\+\_\+network\+\_\+join\+\_\+request / response) — full hash-\/or-\/full topology logic. Maps to existing register\+\_\+update\+\_\+request/response but adds the topology-\/hash acknowledgement short-\/path.
+
+2d Convergence update (aern\+\_\+network\+\_\+converge\+\_\+update) — the ADC applies an APS-\/provided updated node entry after a mismatch is detected.
+
+All functions in this file are additive wrappers or corrections; they do not replace the Phase-\/1 implementations in network.\+c (which handle the wire protocol correctly at the packet level). 
+
+\label{doc-func-members}
+\Hypertarget{network2_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{network2_8h_a6e6d4a220035cd94c94387fc0fce6f7f}\index{network2.h@{network2.h}!aern\_ars\_remote\_signing\_handle@{aern\_ars\_remote\_signing\_handle}}
+\index{aern\_ars\_remote\_signing\_handle@{aern\_ars\_remote\_signing\_handle}!network2.h@{network2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_ars\_remote\_signing\_handle()}{aern\_ars\_remote\_signing\_handle()}}
+{\footnotesize\ttfamily \label{network2_8h_a6e6d4a220035cd94c94387fc0fce6f7f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+ars\+\_\+remote\+\_\+signing\+\_\+handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__ars__signing__state}{aern\+\_\+ars\+\_\+signing\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+ARS-\/side handler\+: verify ADC signature, sign the certificate, respond. 
+
+Implements the full spec §2a protocol\+:
+\begin{DoxyEnumerate}
+\item Validate header flag, sequence, msglen.
+\item Verify ADC message signature against cached ADC verification key.
+\item Verify the sub-\/header timestamp ≤ AERN\+\_\+\+PACKET\+\_\+\+TIME\+\_\+\+THRESHOLD.
+\item Deserialize the certificate to be signed.
+\item Hash the cert fields\+: h = SHA3-\/256 over child cert fields.
+\item Sign\+: ars\+\_\+csig = ML-\/\+DSA-\/\+Sign(ars\+\_\+signing\+\_\+key, h), store in cert csig.
+\item Serialize the signed cert.
+\item Compute\+: resp\+\_\+hash = SHA3-\/256(signed\+\_\+cert \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} timestamp\+\_\+bytes).
+\item Sign response\+: resp\+\_\+sig = ML-\/\+DSA-\/\+Sign(ars\+\_\+signing\+\_\+key, resp\+\_\+hash).
+\end{DoxyEnumerate}
+
+Send\+: \{ subheader \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} signed\+\_\+cert \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} resp\+\_\+sig \}.
+\begin{DoxyEnumerate}
+\item Zero all intermediate material before returning.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in,out\mbox{]} ARS signing state. \\
+\hline
+{\em packetin} & \mbox{[}in\mbox{]} Incoming remote-\/signing-\/request packet. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success.
+\end{DoxyReturn}
+ARS-\/side handler\+: verify ADC signature, sign the certificate, respond.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+ars\+\_\+signing\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The ARS remote signing handler state. \\
+\hline
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} The remote signing request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the error code. 
+\end{DoxyReturn}
+\Hypertarget{network2_8h_a394ada06ec22cbd56d6a9196b0088bba}\index{network2.h@{network2.h}!aern\_network\_converge\_update@{aern\_network\_converge\_update}}
+\index{aern\_network\_converge\_update@{aern\_network\_converge\_update}!network2.h@{network2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_converge\_update()}{aern\_network\_converge\_update()}}
+{\footnotesize\ttfamily \label{network2_8h_a394ada06ec22cbd56d6a9196b0088bba} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+converge\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__converge__update__state}{aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+ADC processes an APS-\/provided convergence update. 
+
+Implements Phase-\/2 task 2d (ADC convergence resolution)\+:
+\begin{DoxyEnumerate}
+\item Verify APS certificate and message signature.
+\item Verify timestamp.
+\item Update topology entry (remove old, insert new).
+\item Increment topology version monotonically. If verification fails, calls aern\+\_\+network\+\_\+revoke\+\_\+broadcast for that node.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in,out\mbox{]} Convergence update state. \\
+\hline
+{\em packetin} & \mbox{[}in\mbox{]} Incoming converge-\/update packet from the APS. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success.
+\end{DoxyReturn}
+ADC processes an APS-\/provided convergence update.
+
+This function verifies an APS-\/signed topology correction and updates the ADC versioned topology state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The convergence-\/update processing state. \\
+\hline
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} The received convergence-\/update packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success, or an error code on failure. 
+\end{DoxyReturn}
+\Hypertarget{network2_8h_a0b710c00f845cc2e163455c20f33fd1a}\index{network2.h@{network2.h}!aern\_network\_join\_request@{aern\_network\_join\_request}}
+\index{aern\_network\_join\_request@{aern\_network\_join\_request}!network2.h@{network2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_join\_request()}{aern\_network\_join\_request()}}
+{\footnotesize\ttfamily \label{network2_8h_a0b710c00f845cc2e163455c20f33fd1a} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+join\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__join__request__state}{aern\+\_\+network\+\_\+join\+\_\+request\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Client domain-\/join request. 
+
+Implements Phase-\/2 task 2c (client side)\+:
+\begin{DoxyEnumerate}
+\item Serialize\+: msg = \{ client\+\_\+cert \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} topology\+\_\+hash \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} timestamp \}.
+\item Sign\+: msg\+\_\+sig = ML-\/\+DSA-\/\+Sign(client\+\_\+key, SHA3-\/256(msg)).
+\item Send \{ msg \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} msg\+\_\+sig \} to ADC.
+\item Receive response from ADC.
+\item Verify ADC cert root signature and response signature.
+\item If full topology received\+: flush cache, store new list, update version.
+\item If hash-\/only\+: confirm cache is current.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in,out\mbox{]} Join request state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success.
+\end{DoxyReturn}
+Client domain-\/join request.
+
+This function sends the client\textquotesingle{}s certificate and cached topology hash to the ADC, then accepts either a hash acknowledgement or a full APS topology update.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+network\+\_\+join\+\_\+request\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The join request state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success, or an error code on failure. 
+\end{DoxyReturn}
+\Hypertarget{network2_8h_aa6a18f01312fdc5732e12c3c947a4ce5}\index{network2.h@{network2.h}!aern\_network\_join\_response@{aern\_network\_join\_response}}
+\index{aern\_network\_join\_response@{aern\_network\_join\_response}!network2.h@{network2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_join\_response()}{aern\_network\_join\_response()}}
+{\footnotesize\ttfamily \label{network2_8h_aa6a18f01312fdc5732e12c3c947a4ce5} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+join\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__join__response__state}{aern\+\_\+network\+\_\+join\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+ADC-\/side join response handler. 
+
+Implements Phase-\/2 task 2c (ADC side)\+:
+\begin{DoxyEnumerate}
+\item Verify client cert root signature.
+\item Verify message signature and timestamp.
+\item Compute current topology hash.
+\item If client topology\+\_\+hash matches current\+: send hash-\/acknowledgement only.
+\item If mismatch\+: serialize full APS topology, sign, send.
+\item resp\+\_\+sig covers\+: adc\+\_\+cert \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} topology\+\_\+or\+\_\+hash \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} timestamp.
+\item Increment topology version if client was newly added.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in,out\mbox{]} Join response state. \\
+\hline
+{\em packetin} & \mbox{[}in\mbox{]} Incoming join-\/request packet. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success.
+\end{DoxyReturn}
+ADC-\/side join response handler.
+
+This function verifies the client certificate and message signature, compares the client\textquotesingle{}s topology hash with the ADC topology hash, and sends either a hash acknowledgement or full APS topology update.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+network\+\_\+join\+\_\+response\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The join response state. \\
+\hline
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} The received join-\/request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success, or an error code on failure. 
+\end{DoxyReturn}
+\Hypertarget{network2_8h_affeb1cf2ee8935a0e1252c6f1b6f1a7d}\index{network2.h@{network2.h}!aern\_network\_register\_update\_v2\_response@{aern\_network\_register\_update\_v2\_response}}
+\index{aern\_network\_register\_update\_v2\_response@{aern\_network\_register\_update\_v2\_response}!network2.h@{network2.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_register\_update\_v2\_response()}{aern\_network\_register\_update\_v2\_response()}}
+{\footnotesize\ttfamily \label{network2_8h_affeb1cf2ee8935a0e1252c6f1b6f1a7d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__network__register__update__v2__response__state}{aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+ADC register-\/update response with monotonic version number. 
+
+Wraps the Phase-\/1 aern\+\_\+network\+\_\+register\+\_\+update\+\_\+response to\+:
+\begin{DoxyItemize}
+\item Stamp the outgoing topology with vtopo-\/\texorpdfstring{$>$}{>}version.
+\item Increment the version after a successful registration.
+\end{DoxyItemize}
+
+The device side calls aern\+\_\+topology\+\_\+version\+\_\+verify() on receipt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in,out\mbox{]} Phase-\/2 response state. \\
+\hline
+{\em packetin} & \mbox{[}in\mbox{]} Incoming register-\/update-\/request packet. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success.
+\end{DoxyReturn}
+ADC register-\/update response with monotonic version number.
+
+This function wraps the canonical register-\/update response path and increments the versioned topology state after a successful registration update.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+network\+\_\+register\+\_\+update\+\_\+v2\+\_\+response\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The versioned register-\/update response state. \\
+\hline
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} The received register-\/update request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success, or an error code on failure. 
+\end{DoxyReturn}

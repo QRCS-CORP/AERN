@@ -1,0 +1,83 @@
+\doxysection{aern\+\_\+revoke\+\_\+v2\+\_\+state Struct Reference}
+\hypertarget{structaern__revoke__v2__state}{}\label{structaern__revoke__v2__state}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+
+
+Phase-\/5 revoke response state (any receiving node).  
+
+
+
+
+{\ttfamily \#include $<$lifecycle.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const qsc\+\_\+socket \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__revoke__v2__state_a5a54676e53cc1837094dad7fa95a09bf}{csock}}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__revoke__v2__state_ac264d0a53843400fd4cd8375d718455f}{lcert}}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__revoke__v2__state_a937b8452335d2a17d656ac79219f0796}{dcert}}
+\item 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__revoke__v2__state_a113e8f9eb6955551654df290e61b60ff}{root}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__revoke__v2__state_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}
+\item 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__revoke__v2__state_a09a0ab043e3153b694ea860b58b7ea6f}{vtopo}}
+\item 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__revoke__v2__state_acab78afff273f2d0a6492c288331cf57}{ctable}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Phase-\/5 revoke response state (any receiving node). 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__revoke__v2__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__revoke__v2__state_a5a54676e53cc1837094dad7fa95a09bf}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}!csock@{csock}}
+\index{csock@{csock}!aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+\doxysubsubsection{\texorpdfstring{csock}{csock}}
+{\footnotesize\ttfamily \label{structaern__revoke__v2__state_a5a54676e53cc1837094dad7fa95a09bf} 
+const qsc\+\_\+socket\texorpdfstring{$\ast$}{*} csock}
+
+Socket (for tunnel teardown + ack) \Hypertarget{structaern__revoke__v2__state_acab78afff273f2d0a6492c288331cf57}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}!ctable@{ctable}}
+\index{ctable@{ctable}!aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+\doxysubsubsection{\texorpdfstring{ctable}{ctable}}
+{\footnotesize\ttfamily \label{structaern__revoke__v2__state_acab78afff273f2d0a6492c288331cf57} 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}}\texorpdfstring{$\ast$}{*} ctable}
+
+Cipher table (tunnel zeroed) \Hypertarget{structaern__revoke__v2__state_a937b8452335d2a17d656ac79219f0796}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}!dcert@{dcert}}
+\index{dcert@{dcert}!aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+\doxysubsubsection{\texorpdfstring{dcert}{dcert}}
+{\footnotesize\ttfamily \label{structaern__revoke__v2__state_a937b8452335d2a17d656ac79219f0796} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} dcert}
+
+ADC cert (for broadcast sig verify) \Hypertarget{structaern__revoke__v2__state_ac264d0a53843400fd4cd8375d718455f}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}!lcert@{lcert}}
+\index{lcert@{lcert}!aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+\doxysubsubsection{\texorpdfstring{lcert}{lcert}}
+{\footnotesize\ttfamily \label{structaern__revoke__v2__state_ac264d0a53843400fd4cd8375d718455f} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} lcert}
+
+Local certificate (for ack sig) \Hypertarget{structaern__revoke__v2__state_a113e8f9eb6955551654df290e61b60ff}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}!root@{root}}
+\index{root@{root}!aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__revoke__v2__state_a113e8f9eb6955551654df290e61b60ff} 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}}\texorpdfstring{$\ast$}{*} root}
+
+Root certificate \Hypertarget{structaern__revoke__v2__state_a5cbd2b117e930d8f469c924a8b27ea21}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__revoke__v2__state_a5cbd2b117e930d8f469c924a8b27ea21} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+Local signing key (for ack) \Hypertarget{structaern__revoke__v2__state_a09a0ab043e3153b694ea860b58b7ea6f}\index{aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}!vtopo@{vtopo}}
+\index{vtopo@{vtopo}!aern\_revoke\_v2\_state@{aern\_revoke\_v2\_state}}
+\doxysubsubsection{\texorpdfstring{vtopo}{vtopo}}
+{\footnotesize\ttfamily \label{structaern__revoke__v2__state_a09a0ab043e3153b694ea860b58b7ea6f} 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}}\texorpdfstring{$\ast$}{*} vtopo}
+
+Versioned topology (node removed) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{lifecycle_8h}{lifecycle.\+h}}\end{DoxyCompactItemize}

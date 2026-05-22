@@ -60,9 +60,33 @@
     <ClInclude Include="adc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Notes.txt" />
+    <ClInclude Include="admin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lifecycle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mek.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fragment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="relayqueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="relaysession.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="route.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="aern.c">
@@ -96,6 +120,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="adc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="aps.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lifecycle.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mek.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fragment.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="relayqueue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="relaysession.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="route.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="admin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="client.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

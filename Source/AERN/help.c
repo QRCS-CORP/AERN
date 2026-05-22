@@ -114,7 +114,7 @@ void aern_help_print_mode(const char* prompt, aern_console_modes mode, aern_netw
 					help_print_line(prompt, AERN_APPLICATION_HELP_STRINGS[aern_command_action_client_connect_quit]);
 				}
 			}
-			else if (designation == aern_network_designation_ads)
+			else if (designation == aern_network_designation_adc)
 			{
 				if (mode == aern_console_mode_certificate)
 				{
@@ -161,10 +161,6 @@ void aern_help_print_mode(const char* prompt, aern_console_modes mode, aern_netw
 					help_print_line(prompt, AERN_APPLICATION_HELP_STRINGS[aern_command_action_server_restore]);
 					help_print_line(prompt, AERN_APPLICATION_HELP_STRINGS[aern_command_action_server_service]);	
 				}
-			}
-			else
-			{
-				// TODO: IDG
 			}
 		}
 	}

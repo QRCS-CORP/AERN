@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -154,7 +154,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:a2bfc9e9b4a2a66e4354081fca548e6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">The algorithm type. <br /></td></tr>
 <tr class="memitem:a3812ef33969d44086258072e4e7fa1cd" id="r_a3812ef33969d44086258072e4e7fa1cd"><td class="memItemLeft" align="right" valign="top"><a id="a3812ef33969d44086258072e4e7fa1cd" name="a3812ef33969d44086258072e4e7fa1cd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_DEFAULT_PERIOD</b>&#160;&#160;&#160;((uint64_t)365U * 24U * 60U * 60U)</td></tr>
-<tr class="memdesc:a3812ef33969d44086258072e4e7fa1cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default certificate validity period in milliseconds. <br /></td></tr>
+<tr class="memdesc:a3812ef33969d44086258072e4e7fa1cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default certificate validity period in seconds. <br /></td></tr>
 <tr class="memitem:a6836977c34ee21da3a738579aad21ad9" id="r_a6836977c34ee21da3a738579aad21ad9"><td class="memItemLeft" align="right" valign="top"><a id="a6836977c34ee21da3a738579aad21ad9" name="a6836977c34ee21da3a738579aad21ad9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_DESIGNATION_SIZE</b>&#160;&#160;&#160;1U</td></tr>
 <tr class="memdesc:a6836977c34ee21da3a738579aad21ad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the child certificate designation field. <br /></td></tr>
@@ -165,17 +165,17 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_HASH_SIZE</b>&#160;&#160;&#160;32U</td></tr>
 <tr class="memdesc:acc789b9281e03dddcda4c72eed21404c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the certificate hash in bytes. <br /></td></tr>
 <tr class="memitem:a28a75ced9057b99eb5ed59645ce7fe43" id="r_a28a75ced9057b99eb5ed59645ce7fe43"><td class="memItemLeft" align="right" valign="top"><a id="a28a75ced9057b99eb5ed59645ce7fe43" name="a28a75ced9057b99eb5ed59645ce7fe43"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_ISSUER_SIZE</b>&#160;&#160;&#160;256U</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_ISSUER_SIZE</b>&#160;&#160;&#160;128U</td></tr>
 <tr class="memdesc:a28a75ced9057b99eb5ed59645ce7fe43"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum certificate issuer string length. The last character must be a string terminator. <br /></td></tr>
 <tr class="memitem:a86c5cd9be73f89f00b1758a9657a1a80" id="r_a86c5cd9be73f89f00b1758a9657a1a80"><td class="memItemLeft" align="right" valign="top"><a id="a86c5cd9be73f89f00b1758a9657a1a80" name="a86c5cd9be73f89f00b1758a9657a1a80"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_LINE_LENGTH</b>&#160;&#160;&#160;64U</td></tr>
 <tr class="memdesc:a86c5cd9be73f89f00b1758a9657a1a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">The line length of the printed AERN certificate. <br /></td></tr>
 <tr class="memitem:a50d5ab9369b3923eb7dec7e8d44beb5c" id="r_a50d5ab9369b3923eb7dec7e8d44beb5c"><td class="memItemLeft" align="right" valign="top"><a id="a50d5ab9369b3923eb7dec7e8d44beb5c" name="a50d5ab9369b3923eb7dec7e8d44beb5c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_MAXIMUM_PERIOD</b>&#160;&#160;&#160;(<a class="el" href="#a3812ef33969d44086258072e4e7fa1cd">AERN_CERTIFICATE_DEFAULT_PERIOD</a> * 2U)</td></tr>
-<tr class="memdesc:a50d5ab9369b3923eb7dec7e8d44beb5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum certificate validity period in milliseconds. <br /></td></tr>
+<tr class="memdesc:a50d5ab9369b3923eb7dec7e8d44beb5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum certificate validity period in seconds. <br /></td></tr>
 <tr class="memitem:a76124e82c3370128b7f193f3f30cd972" id="r_a76124e82c3370128b7f193f3f30cd972"><td class="memItemLeft" align="right" valign="top"><a id="a76124e82c3370128b7f193f3f30cd972" name="a76124e82c3370128b7f193f3f30cd972"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_MINIMUM_PERIOD</b>&#160;&#160;&#160;((uint64_t)1U * 24U * 60U * 60U)</td></tr>
-<tr class="memdesc:a76124e82c3370128b7f193f3f30cd972"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum certificate validity period in milliseconds. <br /></td></tr>
+<tr class="memdesc:a76124e82c3370128b7f193f3f30cd972"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum certificate validity period in seconds. <br /></td></tr>
 <tr class="memitem:ad809002d7ee1fe8f6e5dea4fadbda241" id="r_ad809002d7ee1fe8f6e5dea4fadbda241"><td class="memItemLeft" align="right" valign="top"><a id="ad809002d7ee1fe8f6e5dea4fadbda241" name="ad809002d7ee1fe8f6e5dea4fadbda241"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_CERTIFICATE_SERIAL_SIZE</b>&#160;&#160;&#160;16U</td></tr>
 <tr class="memdesc:ad809002d7ee1fe8f6e5dea4fadbda241"><td class="mdescLeft">&#160;</td><td class="mdescRight">The certificate serial number field length. <br /></td></tr>
@@ -231,19 +231,38 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_ADC_REDUCTION_INTERVAL</b>&#160;&#160;&#160;1000000UL</td></tr>
 <tr class="memdesc:a38c9967f4245bba166da9fe5fb2c4b7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The time before a penalty is reduced for a flapping ADC in milliseconds. <br /></td></tr>
 <tr class="memitem:adba9c258399bdf3c7fe1e2c37a7888cc" id="r_adba9c258399bdf3c7fe1e2c37a7888cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adba9c258399bdf3c7fe1e2c37a7888cc">AERN_ADC_UPDATE_WAIT_TIME</a>&#160;&#160;&#160;(7U * 24U * 60U * 60U)</td></tr>
-<tr class="memdesc:adba9c258399bdf3c7fe1e2c37a7888cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interval in milliseconds between topology full updates.  <br /></td></tr>
+<tr class="memdesc:adba9c258399bdf3c7fe1e2c37a7888cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The interval in seconds between topology full updates.  <br /></td></tr>
 <tr class="memitem:acc368cea234b96d9c849a8aed4c0062c" id="r_acc368cea234b96d9c849a8aed4c0062c"><td class="memItemLeft" align="right" valign="top"><a id="acc368cea234b96d9c849a8aed4c0062c" name="acc368cea234b96d9c849a8aed4c0062c"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_ERROR_STRING_DEPTH</b>&#160;&#160;&#160;26U</td></tr>
 <tr class="memdesc:acc368cea234b96d9c849a8aed4c0062c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of error strings. <br /></td></tr>
 <tr class="memitem:a142b20cdbeee92ea893ba7cdfe57fefe" id="r_a142b20cdbeee92ea893ba7cdfe57fefe"><td class="memItemLeft" align="right" valign="top"><a id="a142b20cdbeee92ea893ba7cdfe57fefe" name="a142b20cdbeee92ea893ba7cdfe57fefe"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_ERROR_STRING_WIDTH</b>&#160;&#160;&#160;128U</td></tr>
 <tr class="memdesc:a142b20cdbeee92ea893ba7cdfe57fefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum size in characters of an error string. <br /></td></tr>
+<tr class="memitem:ab7c79b3243d2e841fe3346fc0d300ff1" id="r_ab7c79b3243d2e841fe3346fc0d300ff1"><td class="memItemLeft" align="right" valign="top"><a id="ab7c79b3243d2e841fe3346fc0d300ff1" name="ab7c79b3243d2e841fe3346fc0d300ff1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_JITTER_MAX_MS</b>&#160;&#160;&#160;50U</td></tr>
+<tr class="memdesc:ab7c79b3243d2e841fe3346fc0d300ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum jitter added to each packet send (milliseconds). <br /></td></tr>
+<tr class="memitem:ac9d38a725ffb59c76100ec9074d6dc92" id="r_ac9d38a725ffb59c76100ec9074d6dc92"><td class="memItemLeft" align="right" valign="top"><a id="ac9d38a725ffb59c76100ec9074d6dc92" name="ac9d38a725ffb59c76100ec9074d6dc92"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_BACKGROUND_INTERVAL_MS</b>&#160;&#160;&#160;1000U</td></tr>
+<tr class="memdesc:ac9d38a725ffb59c76100ec9074d6dc92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interval between background cover-traffic packets (milliseconds). <br /></td></tr>
+<tr class="memitem:a051525a2a76641fe97c861bfd0f72a63" id="r_a051525a2a76641fe97c861bfd0f72a63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a051525a2a76641fe97c861bfd0f72a63">AERN_LOG_DEVICE_NAME_SIZE</a>&#160;&#160;&#160;32U</td></tr>
+<tr class="memdesc:a051525a2a76641fe97c861bfd0f72a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of a log device-name field (bytes, null-terminated).  <br /></td></tr>
+<tr class="memitem:a3ed1d5c052b8f09e403cd357d917a901" id="r_a3ed1d5c052b8f09e403cd357d917a901"><td class="memItemLeft" align="right" valign="top"><a id="a3ed1d5c052b8f09e403cd357d917a901" name="a3ed1d5c052b8f09e403cd357d917a901"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_LOG_ENTRY_SIZE</b>&#160;&#160;&#160;(32U + 1U + 32U + 1U + 10U + 1U + 64U + 1U)</td></tr>
+<tr class="memitem:ab13752f4de1a5d248237b4155eaf844f" id="r_ab13752f4de1a5d248237b4155eaf844f"><td class="memItemLeft" align="right" valign="top"><a id="ab13752f4de1a5d248237b4155eaf844f" name="ab13752f4de1a5d248237b4155eaf844f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_LOG_ERROR_STRING_SIZE</b>&#160;&#160;&#160;64U</td></tr>
+<tr class="memdesc:ab13752f4de1a5d248237b4155eaf844f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of a log error-string field (bytes, null-terminated). <br /></td></tr>
+<tr class="memitem:a972738ee5693d48a653aa8d047e7e411" id="r_a972738ee5693d48a653aa8d047e7e411"><td class="memItemLeft" align="right" valign="top"><a id="a972738ee5693d48a653aa8d047e7e411" name="a972738ee5693d48a653aa8d047e7e411"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_LOG_SALT_SIZE</b>&#160;&#160;&#160;32U</td></tr>
+<tr class="memdesc:a972738ee5693d48a653aa8d047e7e411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the random log salt stored alongside the encrypted log. <br /></td></tr>
+<tr class="memitem:a1ef3a3ed2b26810620b436b91c3c67e2" id="r_a1ef3a3ed2b26810620b436b91c3c67e2"><td class="memItemLeft" align="right" valign="top"><a id="a1ef3a3ed2b26810620b436b91c3c67e2" name="a1ef3a3ed2b26810620b436b91c3c67e2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_LOG_SEED_SIZE</b>&#160;&#160;&#160;64U</td></tr>
+<tr class="memdesc:a1ef3a3ed2b26810620b436b91c3c67e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the password-derived log encryption seed (key + nonce). <br /></td></tr>
 <tr class="memitem:aec19e4948ffac205bcd2254af9f84dcd" id="r_aec19e4948ffac205bcd2254af9f84dcd"><td class="memItemLeft" align="right" valign="top"><a id="aec19e4948ffac205bcd2254af9f84dcd" name="aec19e4948ffac205bcd2254af9f84dcd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_MESSAGE_MAX_SIZE</b>&#160;&#160;&#160;1400000UL</td></tr>
 <tr class="memdesc:aec19e4948ffac205bcd2254af9f84dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum message size (max signature + max certificate sizes). <br /></td></tr>
 <tr class="memitem:a2382672e9a39a489207781944f1167ed" id="r_a2382672e9a39a489207781944f1167ed"><td class="memItemLeft" align="right" valign="top"><a id="a2382672e9a39a489207781944f1167ed" name="a2382672e9a39a489207781944f1167ed"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_MFK_EXPIRATION_PERIOD</b>&#160;&#160;&#160;((uint64_t)60U * 24U * 60U * 60U)</td></tr>
-<tr class="memdesc:a2382672e9a39a489207781944f1167ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">The MFK validity period in milliseconds. <br /></td></tr>
+<tr class="memdesc:a2382672e9a39a489207781944f1167ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">The MFK validity period in seconds. <br /></td></tr>
 <tr class="memitem:a64182cb49fd0a4eb0c3742a3b6f36c82" id="r_a64182cb49fd0a4eb0c3742a3b6f36c82"><td class="memItemLeft" align="right" valign="top"><a id="a64182cb49fd0a4eb0c3742a3b6f36c82" name="a64182cb49fd0a4eb0c3742a3b6f36c82"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_MINIMUM_PATH_LENGTH</b>&#160;&#160;&#160;9U</td></tr>
 <tr class="memdesc:a64182cb49fd0a4eb0c3742a3b6f36c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minimum file path length. <br /></td></tr>
@@ -271,6 +290,30 @@ Macros</h2></td></tr>
 <tr class="memitem:a1e4c716459c858f6354c623dc94f8c9f" id="r_a1e4c716459c858f6354c623dc94f8c9f"><td class="memItemLeft" align="right" valign="top"><a id="a1e4c716459c858f6354c623dc94f8c9f" name="a1e4c716459c858f6354c623dc94f8c9f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_PACKET_HEADER_SIZE</b>&#160;&#160;&#160;22U</td></tr>
 <tr class="memdesc:a1e4c716459c858f6354c623dc94f8c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The AERN packet header size. <br /></td></tr>
+<tr class="memitem:a14c2d53118af4d612ec8a680dd7285e8" id="r_a14c2d53118af4d612ec8a680dd7285e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14c2d53118af4d612ec8a680dd7285e8">AERN_RELAY_AUTH_FAILURE_LIMIT</a>&#160;&#160;&#160;8U</td></tr>
+<tr class="memdesc:a14c2d53118af4d612ec8a680dd7285e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of relay authentication failures tolerated for a peer tunnel.  <br /></td></tr>
+<tr class="memitem:a3288781d8c403a4aedf7f468cd370802" id="r_a3288781d8c403a4aedf7f468cd370802"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3288781d8c403a4aedf7f468cd370802">AERN_RELAY_REPLAY_WINDOW_SIZE</a>&#160;&#160;&#160;0U</td></tr>
+<tr class="memdesc:a3288781d8c403a4aedf7f468cd370802"><td class="mdescLeft">&#160;</td><td class="mdescRight">The per-hop relay replay acceptance window size.  <br /></td></tr>
+<tr class="memitem:ab0754d9545aceb6234fba8549936955b" id="r_ab0754d9545aceb6234fba8549936955b"><td class="memItemLeft" align="right" valign="top"><a id="ab0754d9545aceb6234fba8549936955b" name="ab0754d9545aceb6234fba8549936955b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_RELAY_STRICT_SEQUENCING</b>&#160;&#160;&#160;1U</td></tr>
+<tr class="memdesc:ab0754d9545aceb6234fba8549936955b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables strict next-sequence replay protection for ordered peer tunnels. <br /></td></tr>
+<tr class="memitem:ad1a713180018b9d35ee65371a351ecdf" id="r_ad1a713180018b9d35ee65371a351ecdf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1a713180018b9d35ee65371a351ecdf">AERN_RELAY_PAYLOAD_HEADER_SIZE</a>&#160;&#160;&#160;32U</td></tr>
+<tr class="memitem:a8fb26b7fa45e2eb7fa570e500f01d043" id="r_a8fb26b7fa45e2eb7fa570e500f01d043"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fb26b7fa45e2eb7fa570e500f01d043">AERN_RELAY_SESSION_OPEN_SIZE</a>&#160;&#160;&#160;36U</td></tr>
+<tr class="memitem:ab98e0c3aaae38eae8f478262a37c9487" id="r_ab98e0c3aaae38eae8f478262a37c9487"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab98e0c3aaae38eae8f478262a37c9487">AERN_RELAY_SESSION_OPEN_ACK_SIZE</a>&#160;&#160;&#160;12U</td></tr>
+<tr class="memitem:ae9ff40c2a7eddcedc2e2924fe70dd35c" id="r_ae9ff40c2a7eddcedc2e2924fe70dd35c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9ff40c2a7eddcedc2e2924fe70dd35c">AERN_INGRESS_DELAY_ENABLED</a>&#160;&#160;&#160;1U</td></tr>
+<tr class="memitem:a548fcf5026698e0451f612af912dbce5" id="r_a548fcf5026698e0451f612af912dbce5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a548fcf5026698e0451f612af912dbce5">AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS</a>&#160;&#160;&#160;0U</td></tr>
+<tr class="memitem:a01c1397626c5214a9bd8da80ae1a7563" id="r_a01c1397626c5214a9bd8da80ae1a7563"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01c1397626c5214a9bd8da80ae1a7563">AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS</a>&#160;&#160;&#160;25U</td></tr>
+<tr class="memitem:a8092690592feab13d4a9bf09a380a7c4" id="r_a8092690592feab13d4a9bf09a380a7c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8092690592feab13d4a9bf09a380a7c4">AERN_DUMMY_TRAFFIC_ENABLED</a>&#160;&#160;&#160;1U</td></tr>
+<tr class="memitem:ab7d38c329a414f0d682c4e45f270e100" id="r_ab7d38c329a414f0d682c4e45f270e100"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7d38c329a414f0d682c4e45f270e100">AERN_DUMMY_TRAFFIC_BANDWIDTH_FLOOR_PERCENT</a>&#160;&#160;&#160;10U</td></tr>
+<tr class="memitem:a4d77ae350525f3b25ea4c0d98189eec6" id="r_a4d77ae350525f3b25ea4c0d98189eec6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d77ae350525f3b25ea4c0d98189eec6">AERN_DUMMY_TRAFFIC_BANDWIDTH_CEILING_PERCENT</a>&#160;&#160;&#160;25U</td></tr>
+<tr class="memitem:a85873db5e2515b8ce71c0fbec6e710b0" id="r_a85873db5e2515b8ce71c0fbec6e710b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85873db5e2515b8ce71c0fbec6e710b0">AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS</a>&#160;&#160;&#160;50U</td></tr>
+<tr class="memitem:a5928294b4b23687ba1027d78b37d3fb2" id="r_a5928294b4b23687ba1027d78b37d3fb2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5928294b4b23687ba1027d78b37d3fb2">AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS</a>&#160;&#160;&#160;250U</td></tr>
+<tr class="memitem:ac35e9b14395ede7411190fd64991c620" id="r_ac35e9b14395ede7411190fd64991c620"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac35e9b14395ede7411190fd64991c620">AERN_DUMMY_TRAFFIC_WINDOW_TARGET_BYTES</a>&#160;&#160;&#160;(AERN_RELAY_MTU * 128U)</td></tr>
+<tr class="memitem:a4b1abdfcf44e030c6502077044f67fc9" id="r_a4b1abdfcf44e030c6502077044f67fc9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b1abdfcf44e030c6502077044f67fc9">AERN_DUMMY_TRAFFIC_MAXIMUM_PER_WINDOW</a>&#160;&#160;&#160;8U</td></tr>
+<tr class="memitem:a536cbb22701e440928ca2aedcf4500dc" id="r_a536cbb22701e440928ca2aedcf4500dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a536cbb22701e440928ca2aedcf4500dc">AERN_RELAY_FRAGMENT_CACHE_TIMEOUT_MILLISECONDS</a>&#160;&#160;&#160;30000U</td></tr>
+<tr class="memitem:ade82e11aae9b8da4806b813c62971b75" id="r_ade82e11aae9b8da4806b813c62971b75"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade82e11aae9b8da4806b813c62971b75">AERN_RELAY_SESSION_OPEN_TIMEOUT_MILLISECONDS</a>&#160;&#160;&#160;10000U</td></tr>
+<tr class="memitem:af0b4244be804af73df514ccbdc018c86" id="r_af0b4244be804af73df514ccbdc018c86"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0b4244be804af73df514ccbdc018c86">AERN_RELAY_TRAFFIC_WINDOW_MILLISECONDS</a>&#160;&#160;&#160;1000U</td></tr>
+<tr class="memdesc:af0b4244be804af73df514ccbdc018c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local relay traffic accounting window in milliseconds.  <br /></td></tr>
 <tr class="memitem:a65280709b2a62ecac126a76ca0e88d52" id="r_a65280709b2a62ecac126a76ca0e88d52"><td class="memItemLeft" align="right" valign="top"><a id="a65280709b2a62ecac126a76ca0e88d52" name="a65280709b2a62ecac126a76ca0e88d52"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_PACKET_SUBHEADER_SIZE</b>&#160;&#160;&#160;16U</td></tr>
 <tr class="memdesc:a65280709b2a62ecac126a76ca0e88d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">The AERN packet sub-header size. <br /></td></tr>
@@ -299,7 +342,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_PROTOCOL_SET_SIZE</b>&#160;&#160;&#160;41U</td></tr>
 <tr class="memdesc:a6e3b9b22e9f59f2ffa61498426ca444f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the protocol configuration string. <br /></td></tr>
 <tr class="memitem:a4d82b84958203892b078d8b70e53c88f" id="r_a4d82b84958203892b078d8b70e53c88f"><td class="memItemLeft" align="right" valign="top"><a id="a4d82b84958203892b078d8b70e53c88f" name="a4d82b84958203892b078d8b70e53c88f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_NETWORK_ERROR_STRING_DEPTH</b>&#160;&#160;&#160;28U</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_NETWORK_ERROR_STRING_DEPTH</b>&#160;&#160;&#160;29U</td></tr>
 <tr class="memitem:af7276c7e7cf5e7413324ec4ba144e026" id="r_af7276c7e7cf5e7413324ec4ba144e026"><td class="memItemLeft" align="right" valign="top"><a id="af7276c7e7cf5e7413324ec4ba144e026" name="af7276c7e7cf5e7413324ec4ba144e026"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>AERN_NETWORK_ERROR_STRING_SIZE</b>&#160;&#160;&#160;128U</td></tr>
 </table><table class="memberdecls">
@@ -370,7 +413,7 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="#ac7ca2a3bb609d399444bb84336afa62aaaf64dfba91eebe0afb406b6ffee41410">aern_network_designation_none</a> = 0x00U
 , <a class="el" href="#ac7ca2a3bb609d399444bb84336afa62aacf426b6eb22e163768b5155582e8ec16">aern_network_designation_aps</a> = 0x01U
 , <a class="el" href="#ac7ca2a3bb609d399444bb84336afa62aad2fae914cf3f6aea5ca57d7e2d0f676e">aern_network_designation_client</a> = 0x02U
-, <a class="el" href="#ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae">aern_network_designation_ads</a> = 0x03U
+, <a class="el" href="#ac7ca2a3bb609d399444bb84336afa62aa97f9d05dbf9210e02332c949b89c8a87">aern_network_designation_adc</a> = 0x03U
 , <br />
 &#160;&#160;<a class="el" href="#ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa">aern_network_designation_remote</a> = 0x04U
 , <a class="el" href="#ac7ca2a3bb609d399444bb84336afa62aa63066aa50699bb1cbfb515b82c74c1c4">aern_network_designation_ars</a> = 0x05U
@@ -416,6 +459,8 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0ae608b54145023f9bd2d5156a9372db7a">aern_network_error_unknown_protocol</a> = 0x28U
 , <a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0a797ca028c0d4cfa9c0fdc9a7c60f721b">aern_network_error_unsequenced</a> = 0x29U
 , <a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0a6fb12f12ac8cce604551878bae9a4d05">aern_network_error_verify_failure</a> = 0x2AU
+, <br />
+&#160;&#160;<a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0acbfc1203155bc01418cb20bf49c5c1d5">aern_network_error_time_invalid</a> = 0x2BU
 <br />
  }</td></tr>
 <tr class="memdesc:ab9ccd46c9402a020ca690439ec6961c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The AERN network error values.  <a href="#ab9ccd46c9402a020ca690439ec6961c0">More...</a><br /></td></tr>
@@ -475,7 +520,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#ae24cb3d879182c83bd3349e930176dc5a520314004d09025765af3c4f55dc4555">aern_network_flag_network_remote_signing_response</a> = 0x2AU
 <br />
  }</td></tr>
-<tr class="memdesc:ae24cb3d879182c83bd3349e930176dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The AERN network flags.  <a href="#ae24cb3d879182c83bd3349e930176dc5">More...</a><br /></td></tr>
+<tr class="memdesc:ae24cb3d879182c83bd3349e930176dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The AERN network control and tunnel packet flags.  <a href="#ae24cb3d879182c83bd3349e930176dc5">More...</a><br /></td></tr>
 <tr class="memitem:a69dc871c4b6d5d947f6afdda81464724" id="r_a69dc871c4b6d5d947f6afdda81464724"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69dc871c4b6d5d947f6afdda81464724">aern_protocol_errors</a> { <br />
 &#160;&#160;<a class="el" href="#a69dc871c4b6d5d947f6afdda81464724aa7f1199026b486871b3ffe0fbd36cf0a">aern_protocol_error_none</a> = 0x00U
 , <a class="el" href="#a69dc871c4b6d5d947f6afdda81464724a21df65386393579abe6b3dcfffc90e24">aern_protocol_error_authentication_failure</a> = 0x01U
@@ -561,6 +606,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:a6fc4dadfffa09d47a24ca5ed442deab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a byte array into a packet header.  <br /></td></tr>
 <tr class="memitem:a43040bf7a96fe91043d2af94b7139034" id="r_a43040bf7a96fe91043d2af94b7139034"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43040bf7a96fe91043d2af94b7139034">aern_packet_header_serialize</a> (const <a class="el" href="structaern__network__packet.html">aern_network_packet</a> *packet, uint8_t *header)</td></tr>
 <tr class="memdesc:a43040bf7a96fe91043d2af94b7139034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a packet header into a byte array.  <br /></td></tr>
+<tr class="memitem:abd2133522768c9b0246e5ee116b24417" id="r_abd2133522768c9b0246e5ee116b24417"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API <a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0">aern_network_errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd2133522768c9b0246e5ee116b24417">aern_header_validate</a> (const <a class="el" href="structaern__network__packet.html">aern_network_packet</a> *packetin, <a class="el" href="#ae24cb3d879182c83bd3349e930176dc5">aern_network_flags</a> pktflag, uint64_t sequence, uint32_t msglen)</td></tr>
+<tr class="memdesc:abd2133522768c9b0246e5ee116b24417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate a packet header and timestamp.  <br /></td></tr>
 <tr class="memitem:a56507e954bca6540934e1154c3e3d8e7" id="r_a56507e954bca6540934e1154c3e3d8e7"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56507e954bca6540934e1154c3e3d8e7">aern_packet_set_utc_time</a> (<a class="el" href="structaern__network__packet.html">aern_network_packet</a> *packet)</td></tr>
 <tr class="memdesc:a56507e954bca6540934e1154c3e3d8e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the local UTC time in the packet header.  <br /></td></tr>
 <tr class="memitem:aca1e36b6ef4e422a309c984894555e85" id="r_aca1e36b6ef4e422a309c984894555e85"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca1e36b6ef4e422a309c984894555e85">aern_packet_time_valid</a> (const <a class="el" href="structaern__network__packet.html">aern_network_packet</a> *packet)</td></tr>
@@ -605,7 +652,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The interval in milliseconds between topology full updates. </p>
+<p>The interval in seconds between topology full updates. </p>
 <p>Note: Default is 7 days. </p>
 
 </div>
@@ -630,13 +677,13 @@ Functions</h2></td></tr>
 <div class="line">    <a class="code hl_define" href="#a6836977c34ee21da3a738579aad21ad9">AERN_CERTIFICATE_DESIGNATION_SIZE</a> + \</div>
 <div class="line">    <a class="code hl_define" href="#a2bfc9e9b4a2a66e4354081fca548e6da">AERN_CERTIFICATE_ALGORITHM_SIZE</a> + \</div>
 <div class="line">    <a class="code hl_define" href="#aabf1462d0b80bda01d5205156398f1fe">AERN_CERTIFICATE_VERSION_SIZE</a>)</div>
-<div class="ttc" id="aaern_8h_html_a2593a7ecd841afe60a7b882f202cd82f"><div class="ttname"><a href="#a2593a7ecd841afe60a7b882f202cd82f">AERN_CERTIFICATE_EXPIRATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_EXPIRATION_SIZE</div><div class="ttdoc">The certificate expiration date length.</div><div class="ttdef"><b>Definition</b> aern.h:800</div></div>
-<div class="ttc" id="aaern_8h_html_a28a75ced9057b99eb5ed59645ce7fe43"><div class="ttname"><a href="#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ISSUER_SIZE</div><div class="ttdoc">The maximum certificate issuer string length. The last character must be a string terminator.</div><div class="ttdef"><b>Definition</b> aern.h:813</div></div>
-<div class="ttc" id="aaern_8h_html_a2bfc9e9b4a2a66e4354081fca548e6da"><div class="ttname"><a href="#a2bfc9e9b4a2a66e4354081fca548e6da">AERN_CERTIFICATE_ALGORITHM_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ALGORITHM_SIZE</div><div class="ttdoc">The algorithm type.</div><div class="ttdef"><b>Definition</b> aern.h:782</div></div>
-<div class="ttc" id="aaern_8h_html_a4a223f442a1553dd153be8a2eedf23cc"><div class="ttname"><a href="#a4a223f442a1553dd153be8a2eedf23cc">AERN_CERTIFICATE_SIGNED_HASH_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_SIGNED_HASH_SIZE</div><div class="ttdoc">The size of the signature and hash field in a certificate.</div><div class="ttdef"><b>Definition</b> aern.h:849</div></div>
-<div class="ttc" id="aaern_8h_html_a6836977c34ee21da3a738579aad21ad9"><div class="ttname"><a href="#a6836977c34ee21da3a738579aad21ad9">AERN_CERTIFICATE_DESIGNATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_DESIGNATION_SIZE</div><div class="ttdoc">The size of the child certificate designation field.</div><div class="ttdef"><b>Definition</b> aern.h:794</div></div>
-<div class="ttc" id="aaern_8h_html_aabf1462d0b80bda01d5205156398f1fe"><div class="ttname"><a href="#aabf1462d0b80bda01d5205156398f1fe">AERN_CERTIFICATE_VERSION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_VERSION_SIZE</div><div class="ttdoc">The version id.</div><div class="ttdef"><b>Definition</b> aern.h:855</div></div>
-<div class="ttc" id="aaern_8h_html_ad809002d7ee1fe8f6e5dea4fadbda241"><div class="ttname"><a href="#ad809002d7ee1fe8f6e5dea4fadbda241">AERN_CERTIFICATE_SERIAL_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_SERIAL_SIZE</div><div class="ttdoc">The certificate serial number field length.</div><div class="ttdef"><b>Definition</b> aern.h:837</div></div>
+<div class="ttc" id="aaern_8h_html_a2593a7ecd841afe60a7b882f202cd82f"><div class="ttname"><a href="#a2593a7ecd841afe60a7b882f202cd82f">AERN_CERTIFICATE_EXPIRATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_EXPIRATION_SIZE</div><div class="ttdoc">The certificate expiration date length.</div><div class="ttdef"><b>Definition</b> aern.h:894</div></div>
+<div class="ttc" id="aaern_8h_html_a28a75ced9057b99eb5ed59645ce7fe43"><div class="ttname"><a href="#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ISSUER_SIZE</div><div class="ttdoc">The maximum certificate issuer string length. The last character must be a string terminator.</div><div class="ttdef"><b>Definition</b> aern.h:907</div></div>
+<div class="ttc" id="aaern_8h_html_a2bfc9e9b4a2a66e4354081fca548e6da"><div class="ttname"><a href="#a2bfc9e9b4a2a66e4354081fca548e6da">AERN_CERTIFICATE_ALGORITHM_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ALGORITHM_SIZE</div><div class="ttdoc">The algorithm type.</div><div class="ttdef"><b>Definition</b> aern.h:876</div></div>
+<div class="ttc" id="aaern_8h_html_a4a223f442a1553dd153be8a2eedf23cc"><div class="ttname"><a href="#a4a223f442a1553dd153be8a2eedf23cc">AERN_CERTIFICATE_SIGNED_HASH_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_SIGNED_HASH_SIZE</div><div class="ttdoc">The size of the signature and hash field in a certificate.</div><div class="ttdef"><b>Definition</b> aern.h:943</div></div>
+<div class="ttc" id="aaern_8h_html_a6836977c34ee21da3a738579aad21ad9"><div class="ttname"><a href="#a6836977c34ee21da3a738579aad21ad9">AERN_CERTIFICATE_DESIGNATION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_DESIGNATION_SIZE</div><div class="ttdoc">The size of the child certificate designation field.</div><div class="ttdef"><b>Definition</b> aern.h:888</div></div>
+<div class="ttc" id="aaern_8h_html_aabf1462d0b80bda01d5205156398f1fe"><div class="ttname"><a href="#aabf1462d0b80bda01d5205156398f1fe">AERN_CERTIFICATE_VERSION_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_VERSION_SIZE</div><div class="ttdoc">The version id.</div><div class="ttdef"><b>Definition</b> aern.h:949</div></div>
+<div class="ttc" id="aaern_8h_html_ad809002d7ee1fe8f6e5dea4fadbda241"><div class="ttname"><a href="#ad809002d7ee1fe8f6e5dea4fadbda241">AERN_CERTIFICATE_SERIAL_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_SERIAL_SIZE</div><div class="ttdoc">The certificate serial number field length.</div><div class="ttdef"><b>Definition</b> aern.h:931</div></div>
 </div><!-- fragment -->
 <p>The length of a child certificate. </p>
 
@@ -664,8 +711,8 @@ Functions</h2></td></tr>
 <div class="line">    <a class="code hl_define" href="#a6836977c34ee21da3a738579aad21ad9">AERN_CERTIFICATE_DESIGNATION_SIZE</a> + \</div>
 <div class="line">    <a class="code hl_define" href="#a2bfc9e9b4a2a66e4354081fca548e6da">AERN_CERTIFICATE_ALGORITHM_SIZE</a> + \</div>
 <div class="line">    <a class="code hl_define" href="#aabf1462d0b80bda01d5205156398f1fe">AERN_CERTIFICATE_VERSION_SIZE</a>)</div>
-<div class="ttc" id="aaern_8h_html_a447144cb8944c8553cfd9fcc7ac73eb9"><div class="ttname"><a href="#a447144cb8944c8553cfd9fcc7ac73eb9">AERN_CERTIFICATE_ADDRESS_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ADDRESS_SIZE</div><div class="ttdoc">The maximum IP address length.</div><div class="ttdef"><b>Definition</b> aern.h:776</div></div>
-<div class="ttc" id="aaern_8h_html_acc789b9281e03dddcda4c72eed21404c"><div class="ttname"><a href="#acc789b9281e03dddcda4c72eed21404c">AERN_CERTIFICATE_HASH_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_HASH_SIZE</div><div class="ttdoc">The size of the certificate hash in bytes.</div><div class="ttdef"><b>Definition</b> aern.h:806</div></div>
+<div class="ttc" id="aaern_8h_html_a447144cb8944c8553cfd9fcc7ac73eb9"><div class="ttname"><a href="#a447144cb8944c8553cfd9fcc7ac73eb9">AERN_CERTIFICATE_ADDRESS_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ADDRESS_SIZE</div><div class="ttdoc">The maximum IP address length.</div><div class="ttdef"><b>Definition</b> aern.h:870</div></div>
+<div class="ttc" id="aaern_8h_html_acc789b9281e03dddcda4c72eed21404c"><div class="ttname"><a href="#acc789b9281e03dddcda4c72eed21404c">AERN_CERTIFICATE_HASH_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_HASH_SIZE</div><div class="ttdoc">The size of the certificate hash in bytes.</div><div class="ttdef"><b>Definition</b> aern.h:900</div></div>
 </div><!-- fragment -->
 <p>The length of an IDG certificate. </p>
 
@@ -691,6 +738,301 @@ Functions</h2></td></tr>
 <div class="line">    <a class="code hl_define" href="#aabf1462d0b80bda01d5205156398f1fe">AERN_CERTIFICATE_VERSION_SIZE</a>)</div>
 </div><!-- fragment -->
 <p>The length of the root certificate. </p>
+
+</div>
+</div>
+<a id="a4d77ae350525f3b25ea4c0d98189eec6" name="a4d77ae350525f3b25ea4c0d98189eec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d77ae350525f3b25ea4c0d98189eec6">&#9670;&#160;</a></span>AERN_DUMMY_TRAFFIC_BANDWIDTH_CEILING_PERCENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_DUMMY_TRAFFIC_BANDWIDTH_CEILING_PERCENT&#160;&#160;&#160;25U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The traffic-utilization ceiling above which dummy traffic is suppressed. </p>
+
+</div>
+</div>
+<a id="ab7d38c329a414f0d682c4e45f270e100" name="ab7d38c329a414f0d682c4e45f270e100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7d38c329a414f0d682c4e45f270e100">&#9670;&#160;</a></span>AERN_DUMMY_TRAFFIC_BANDWIDTH_FLOOR_PERCENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_DUMMY_TRAFFIC_BANDWIDTH_FLOOR_PERCENT&#160;&#160;&#160;10U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The traffic-utilization floor below which dummy traffic may be generated. </p>
+
+</div>
+</div>
+<a id="a8092690592feab13d4a9bf09a380a7c4" name="a8092690592feab13d4a9bf09a380a7c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8092690592feab13d4a9bf09a380a7c4">&#9670;&#160;</a></span>AERN_DUMMY_TRAFFIC_ENABLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_DUMMY_TRAFFIC_ENABLED&#160;&#160;&#160;1U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief Enables APS dummy relay traffic generation. </p>
+
+</div>
+</div>
+<a id="a5928294b4b23687ba1027d78b37d3fb2" name="a5928294b4b23687ba1027d78b37d3fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5928294b4b23687ba1027d78b37d3fb2">&#9670;&#160;</a></span>AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS&#160;&#160;&#160;250U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The maximum interval between dummy packet generation attempts. </p>
+
+</div>
+</div>
+<a id="a85873db5e2515b8ce71c0fbec6e710b0" name="a85873db5e2515b8ce71c0fbec6e710b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85873db5e2515b8ce71c0fbec6e710b0">&#9670;&#160;</a></span>AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS&#160;&#160;&#160;50U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The minimum interval between dummy packet generation attempts. </p>
+
+</div>
+</div>
+<a id="a4b1abdfcf44e030c6502077044f67fc9" name="a4b1abdfcf44e030c6502077044f67fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b1abdfcf44e030c6502077044f67fc9">&#9670;&#160;</a></span>AERN_DUMMY_TRAFFIC_MAXIMUM_PER_WINDOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_DUMMY_TRAFFIC_MAXIMUM_PER_WINDOW&#160;&#160;&#160;8U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The maximum number of dummy packets an APS may emit per accounting window. </p>
+
+</div>
+</div>
+<a id="ac35e9b14395ede7411190fd64991c620" name="ac35e9b14395ede7411190fd64991c620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac35e9b14395ede7411190fd64991c620">&#9670;&#160;</a></span>AERN_DUMMY_TRAFFIC_WINDOW_TARGET_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_DUMMY_TRAFFIC_WINDOW_TARGET_BYTES&#160;&#160;&#160;(AERN_RELAY_MTU * 128U)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The local traffic-window byte target used to estimate utilization.</p>
+<p>The APS dummy-traffic policy estimates utilization by comparing local relay transmit and receive byte counters against this per-window target. The value is local policy only and is not transmitted or logged. </p>
+
+</div>
+</div>
+<a id="ae9ff40c2a7eddcedc2e2924fe70dd35c" name="ae9ff40c2a7eddcedc2e2924fe70dd35c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9ff40c2a7eddcedc2e2924fe70dd35c">&#9670;&#160;</a></span>AERN_INGRESS_DELAY_ENABLED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_INGRESS_DELAY_ENABLED&#160;&#160;&#160;1U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief Enables optional ingress-side randomized data-packet delay. </p>
+
+</div>
+</div>
+<a id="a01c1397626c5214a9bd8da80ae1a7563" name="a01c1397626c5214a9bd8da80ae1a7563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c1397626c5214a9bd8da80ae1a7563">&#9670;&#160;</a></span>AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS&#160;&#160;&#160;25U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The maximum randomized ingress packet delay in milliseconds. </p>
+
+</div>
+</div>
+<a id="a548fcf5026698e0451f612af912dbce5" name="a548fcf5026698e0451f612af912dbce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a548fcf5026698e0451f612af912dbce5">&#9670;&#160;</a></span>AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS&#160;&#160;&#160;0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The minimum randomized ingress packet delay in milliseconds. </p>
+
+</div>
+</div>
+<a id="a051525a2a76641fe97c861bfd0f72a63" name="a051525a2a76641fe97c861bfd0f72a63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a051525a2a76641fe97c861bfd0f72a63">&#9670;&#160;</a></span>AERN_LOG_DEVICE_NAME_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_LOG_DEVICE_NAME_SIZE&#160;&#160;&#160;32U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximum length of a log device-name field (bytes, null-terminated). </p>
+<p>Fixed-width size of one log entry on disk (before encryption). </p>
+
+</div>
+</div>
+<a id="a14c2d53118af4d612ec8a680dd7285e8" name="a14c2d53118af4d612ec8a680dd7285e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14c2d53118af4d612ec8a680dd7285e8">&#9670;&#160;</a></span>AERN_RELAY_AUTH_FAILURE_LIMIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_AUTH_FAILURE_LIMIT&#160;&#160;&#160;8U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The number of relay authentication failures tolerated for a peer tunnel. </p>
+<p>This value is a policy threshold used by relay processing to count repeated authentication failures on an established APS tunnel. A single failed relay packet is discarded and SHALL NOT by itself invalidate the tunnel. </p>
+
+</div>
+</div>
+<a id="a536cbb22701e440928ca2aedcf4500dc" name="a536cbb22701e440928ca2aedcf4500dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a536cbb22701e440928ca2aedcf4500dc">&#9670;&#160;</a></span>AERN_RELAY_FRAGMENT_CACHE_TIMEOUT_MILLISECONDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_FRAGMENT_CACHE_TIMEOUT_MILLISECONDS&#160;&#160;&#160;30000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The default timeout for incomplete relay fragment cache entries. </p>
+
+</div>
+</div>
+<a id="ad1a713180018b9d35ee65371a351ecdf" name="ad1a713180018b9d35ee65371a351ecdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a713180018b9d35ee65371a351ecdf">&#9670;&#160;</a></span>AERN_RELAY_PAYLOAD_HEADER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_PAYLOAD_HEADER_SIZE&#160;&#160;&#160;32U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The byte size of the encrypted relay payload header.</p>
+<p>The relay payload header is serialized inside the encrypted relay body after the length prefix and encrypted route map. It identifies the logical session, packet, fragment ordering, payload type, reserved relay byte, and control flags. The active relay payload header does not carry a protocol field; backend protocol interpretation is performed at the backend transport boundary. </p>
+
+</div>
+</div>
+<a id="a3288781d8c403a4aedf7f468cd370802" name="a3288781d8c403a4aedf7f468cd370802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3288781d8c403a4aedf7f468cd370802">&#9670;&#160;</a></span>AERN_RELAY_REPLAY_WINDOW_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_REPLAY_WINDOW_SIZE&#160;&#160;&#160;0U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The per-hop relay replay acceptance window size. </p>
+<p>AERN currently uses ordered APS-to-APS tunnel transport. Each encrypted tunnel packet MUST carry exactly the next expected sequence number. A value of zero records that no out-of-order replay window is active for per-hop tunnel packets. Relay payload fragments remain independently reorderable at the session-fragment cache layer after successful tunnel authentication. </p>
+
+</div>
+</div>
+<a id="ab98e0c3aaae38eae8f478262a37c9487" name="ab98e0c3aaae38eae8f478262a37c9487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab98e0c3aaae38eae8f478262a37c9487">&#9670;&#160;</a></span>AERN_RELAY_SESSION_OPEN_ACK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_SESSION_OPEN_ACK_SIZE&#160;&#160;&#160;12U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The byte size of an encrypted relay session-open acknowledgement payload. </p>
+
+</div>
+</div>
+<a id="a8fb26b7fa45e2eb7fa570e500f01d043" name="a8fb26b7fa45e2eb7fa570e500f01d043"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fb26b7fa45e2eb7fa570e500f01d043">&#9670;&#160;</a></span>AERN_RELAY_SESSION_OPEN_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_SESSION_OPEN_SIZE&#160;&#160;&#160;36U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The byte size of an encrypted relay session-open payload. </p>
+
+</div>
+</div>
+<a id="ade82e11aae9b8da4806b813c62971b75" name="ade82e11aae9b8da4806b813c62971b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade82e11aae9b8da4806b813c62971b75">&#9670;&#160;</a></span>AERN_RELAY_SESSION_OPEN_TIMEOUT_MILLISECONDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_SESSION_OPEN_TIMEOUT_MILLISECONDS&#160;&#160;&#160;10000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Brief The default timeout for ingress packets queued before session-open acknowledgement. </p>
+
+</div>
+</div>
+<a id="af0b4244be804af73df514ccbdc018c86" name="af0b4244be804af73df514ccbdc018c86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0b4244be804af73df514ccbdc018c86">&#9670;&#160;</a></span>AERN_RELAY_TRAFFIC_WINDOW_MILLISECONDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AERN_RELAY_TRAFFIC_WINDOW_MILLISECONDS&#160;&#160;&#160;1000U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The local relay traffic accounting window in milliseconds. </p>
+<p>This value controls how often local relay byte counters used by traffic shaping and dummy-packet policy are reset. The counters are local to the APS process and do not expose or retain packet contents, addresses, or session metadata. </p>
 
 </div>
 </div>
@@ -763,7 +1105,7 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ac7ca2a3bb609d399444bb84336afa62aad2fae914cf3f6aea5ca57d7e2d0f676e" name="ac7ca2a3bb609d399444bb84336afa62aad2fae914cf3f6aea5ca57d7e2d0f676e"></a>aern_network_designation_client&#160;</td><td class="fielddoc"><p>The device is a client </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae" name="ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae"></a>aern_network_designation_ads&#160;</td><td class="fielddoc"><p>The device is the ADC </p>
+<tr><td class="fieldname"><a id="ac7ca2a3bb609d399444bb84336afa62aa97f9d05dbf9210e02332c949b89c8a87" name="ac7ca2a3bb609d399444bb84336afa62aa97f9d05dbf9210e02332c949b89c8a87"></a>aern_network_designation_adc&#160;</td><td class="fielddoc"><p>The device is the ADC </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa" name="ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa"></a>aern_network_designation_remote&#160;</td><td class="fielddoc"><p>The device is a remote aps </p>
 </td></tr>
@@ -849,6 +1191,8 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ab9ccd46c9402a020ca690439ec6961c0a6fb12f12ac8cce604551878bae9a4d05" name="ab9ccd46c9402a020ca690439ec6961c0a6fb12f12ac8cce604551878bae9a4d05"></a>aern_network_error_verify_failure&#160;</td><td class="fielddoc"><p>The expected data could not be verified </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ab9ccd46c9402a020ca690439ec6961c0acbfc1203155bc01418cb20bf49c5c1d5" name="ab9ccd46c9402a020ca690439ec6961c0acbfc1203155bc01418cb20bf49c5c1d5"></a>aern_network_error_time_invalid&#160;</td><td class="fielddoc"><p>The packet utc time has expired </p>
+</td></tr>
 </table>
 
 </div>
@@ -865,7 +1209,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The AERN network flags. </p>
+<p>The AERN network control and tunnel packet flags. </p>
+<p>The values in this enumeration define the expanded AERN control-plane message namespace used for registration, topology management, remote certificate signing, status exchange, and tunnel control. The ARS root server accepts only the remote-signing request and system-error flags; relay packet processing is handled by the APS/ACD tunnel layer. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5ac4224ad812f79d4255ba8a8fa2a8a641" name="ae24cb3d879182c83bd3349e930176dc5ac4224ad812f79d4255ba8a8fa2a8a641"></a>aern_network_flag_none&#160;</td><td class="fielddoc"><p>No flag was selected </p>
 </td></tr>
@@ -873,17 +1218,17 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5afd68dfa140a99a87e5ced34ea501f8f3" name="ae24cb3d879182c83bd3349e930176dc5afd68dfa140a99a87e5ced34ea501f8f3"></a>aern_network_flag_error_condition&#160;</td><td class="fielddoc"><p>The connection experienced an error message </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8" name="ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8"></a>aern_network_flag_fragment_collection_request&#160;</td><td class="fielddoc"><p>The packet contains a server fragment collection request message </p>
+<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8" name="ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8"></a>aern_network_flag_fragment_collection_request&#160;</td><td class="fielddoc"><p>Reserved obsolete fragment collection request flag </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba" name="ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba"></a>aern_network_flag_fragment_collection_response&#160;</td><td class="fielddoc"><p>The packet contains an aps fragment collection response message </p>
+<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba" name="ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba"></a>aern_network_flag_fragment_collection_response&#160;</td><td class="fielddoc"><p>Reserved obsolete fragment collection response flag </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e" name="ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e"></a>aern_network_flag_fragment_request&#160;</td><td class="fielddoc"><p>The packet contains a server fragment key request message </p>
+<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e" name="ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e"></a>aern_network_flag_fragment_request&#160;</td><td class="fielddoc"><p>Reserved legacy fragment request flag </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42" name="ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42"></a>aern_network_flag_fragment_response&#160;</td><td class="fielddoc"><p>The packet contains an aps fragment key response message </p>
+<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42" name="ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42"></a>aern_network_flag_fragment_response&#160;</td><td class="fielddoc"><p>Reserved legacy fragment response flag </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb" name="ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb"></a>aern_network_flag_fragment_query_request&#160;</td><td class="fielddoc"><p>The packet contains a server fragment key request message </p>
+<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb" name="ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb"></a>aern_network_flag_fragment_query_request&#160;</td><td class="fielddoc"><p>Reserved obsolete fragment query request flag </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022" name="ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022"></a>aern_network_flag_fragment_query_response&#160;</td><td class="fielddoc"><p>The packet contains an aps fragment key response message </p>
+<tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022" name="ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022"></a>aern_network_flag_fragment_query_response&#160;</td><td class="fielddoc"><p>Reserved obsolete fragment query response flag </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ae24cb3d879182c83bd3349e930176dc5aa9227ce68893342c6c5f446c94aec798" name="ae24cb3d879182c83bd3349e930176dc5aa9227ce68893342c6c5f446c94aec798"></a>aern_network_flag_incremental_update_request&#160;</td><td class="fielddoc"><p>The packet contains an incremental update request message </p>
 </td></tr>
@@ -1113,9 +1458,9 @@ Functions</h2></td></tr>
 <p>Close the network connection between hosts. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rsock</td><td>A pointer to the socket structure representing the connection. </td></tr>
-    <tr><td class="paramname">err</td><td>The network error code to report. </td></tr>
-    <tr><td class="paramname">notify</td><td>If true, notify the remote host that the connection is closing. </td></tr>
+    <tr><td class="paramname">rsock</td><td>[qsc_socket*] A pointer to the socket structure representing the connection. </td></tr>
+    <tr><td class="paramname">err</td><td>[<a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0" title="The AERN network error values.">aern_network_errors</a>] The network error code to report. </td></tr>
+    <tr><td class="paramname">notify</td><td>[bool] If true, notify the remote host that the connection is closing. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1140,7 +1485,7 @@ Functions</h2></td></tr>
 <p>Dispose of the tunnel connection state. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cns</td><td>A pointer to the connection state structure to dispose. </td></tr>
+    <tr><td class="paramname">cns</td><td>[aern_connection_state*] A pointer to the connection state structure to dispose. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1179,10 +1524,10 @@ Functions</h2></td></tr>
 <p>Decrypt a message and copy it to the output buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cns</td><td>A pointer to the connection state structure. </td></tr>
-    <tr><td class="paramname">message</td><td>The output array for the decrypted message. </td></tr>
-    <tr><td class="paramname">msglen</td><td>A pointer to a variable that will receive the length of the decrypted message. </td></tr>
-    <tr><td class="paramname">packetin</td><td>[const] A pointer to the input packet structure.</td></tr>
+    <tr><td class="paramname">cns</td><td>[aern_connection_state*] A pointer to the connection state structure. </td></tr>
+    <tr><td class="paramname">message</td><td>[uint8_t*] The output array for the decrypted message. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[const aern_network_packet*] A pointer to a variable that will receive the length of the decrypted message. </td></tr>
+    <tr><td class="paramname">packetin</td><td>[const aern_network_packet*] A pointer to the input packet structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1222,14 +1567,57 @@ Functions</h2></td></tr>
 <p>Encrypt a message and build an output packet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cns</td><td>A pointer to the connection state structure. </td></tr>
-    <tr><td class="paramname">packetout</td><td>A pointer to the output packet structure. </td></tr>
-    <tr><td class="paramname">message</td><td>[const] The input message array. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the input message.</td></tr>
+    <tr><td class="paramname">cns</td><td>[aern_connection_state*] A pointer to the connection state structure. </td></tr>
+    <tr><td class="paramname">packetout</td><td>[aern_network_packet*] A pointer to the output packet structure. </td></tr>
+    <tr><td class="paramname">message</td><td>[const uint8_t*] The input message array. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the input message.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the network error state. </dd></dl>
+
+</div>
+</div>
+<a id="abd2133522768c9b0246e5ee116b24417" name="abd2133522768c9b0246e5ee116b24417"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd2133522768c9b0246e5ee116b24417">&#9670;&#160;</a></span>aern_header_validate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AERN_EXPORT_API <a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0">aern_network_errors</a> aern_header_validate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structaern__network__packet.html">aern_network_packet</a> *</td>          <td class="paramname"><span class="paramname"><em>packetin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ae24cb3d879182c83bd3349e930176dc5">aern_network_flags</a></td>          <td class="paramname"><span class="paramname"><em>pktflag</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>sequence</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>msglen</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Validate a packet header and timestamp. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">packetin</td><td>A pointer to the input packet structure </td></tr>
+    <tr><td class="paramname">pktflag</td><td>The packet flag </td></tr>
+    <tr><td class="paramname">sequence</td><td>The packet sequence number </td></tr>
+    <tr><td class="paramname">msglen</td><td>The length of the message array, or zero if dynamic</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>: Returns the function error state </dd></dl>
 
 </div>
 </div>
@@ -1251,7 +1639,7 @@ Functions</h2></td></tr>
 <p>Return a pointer to a string description of a network error code. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">error</td><td>The network error code.</td></tr>
+    <tr><td class="paramname">error</td><td>[<a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0" title="The AERN network error values.">aern_network_errors</a>] The network error code.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1277,7 +1665,7 @@ Functions</h2></td></tr>
 <p>Clear the state of a network packet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">packet</td><td>A pointer to the packet structure to clear. </td></tr>
+    <tr><td class="paramname">packet</td><td>[aern_network_packet*] A pointer to the packet structure to clear. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1306,8 +1694,8 @@ Functions</h2></td></tr>
 <p>Populate a packet structure with an error message. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">packet</td><td>A pointer to the packet structure. </td></tr>
-    <tr><td class="paramname">error</td><td>The protocol error code to embed in the packet. </td></tr>
+    <tr><td class="paramname">packet</td><td>[aern_network_packet*] A pointer to the packet structure. </td></tr>
+    <tr><td class="paramname">error</td><td>[<a class="el" href="#a69dc871c4b6d5d947f6afdda81464724" title="The AERN protocol error values.">aern_protocol_errors</a>] The protocol error code to embed in the packet. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1336,8 +1724,8 @@ Functions</h2></td></tr>
 <p>Deserialize a byte array into a packet header. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">header</td><td>[const] The header byte array to deserialize. </td></tr>
-    <tr><td class="paramname">packet</td><td>A pointer to the packet structure that will be populated. </td></tr>
+    <tr><td class="paramname">header</td><td>[const uint8_t*] The header byte array to deserialize. </td></tr>
+    <tr><td class="paramname">packet</td><td>[aern_network_packet*] A pointer to the packet structure that will be populated. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1366,8 +1754,8 @@ Functions</h2></td></tr>
 <p>Serialize a packet header into a byte array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">packet</td><td>[const] A pointer to the packet structure to serialize. </td></tr>
-    <tr><td class="paramname">header</td><td>The byte array that will receive the serialized header. </td></tr>
+    <tr><td class="paramname">packet</td><td>[const aern_network_packet*] A pointer to the packet structure to serialize. </td></tr>
+    <tr><td class="paramname">header</td><td>[uint8_t*] The byte array that will receive the serialized header. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1392,7 +1780,7 @@ Functions</h2></td></tr>
 <p>Set the local UTC time in the packet header. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">packet</td><td>A pointer to the network packet. </td></tr>
+    <tr><td class="paramname">packet</td><td>[aern_network_packet*] A pointer to the network packet. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1417,7 +1805,7 @@ Functions</h2></td></tr>
 <p>Check if the packet's UTC time is within the valid time threshold. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">packet</td><td>[const] A pointer to the network packet.</td></tr>
+    <tr><td class="paramname">packet</td><td>[const aern_network_packet*] A pointer to the network packet.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1447,8 +1835,8 @@ Functions</h2></td></tr>
 <p>Serialize a network packet to a byte stream. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">packet</td><td>[const] A pointer to the packet. </td></tr>
-    <tr><td class="paramname">pstream</td><td>A pointer to the output byte stream.</td></tr>
+    <tr><td class="paramname">packet</td><td>[const aern_network_packet*] A pointer to the packet. </td></tr>
+    <tr><td class="paramname">pstream</td><td>[uint8_t*] A pointer to the output byte stream.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1474,7 +1862,7 @@ Functions</h2></td></tr>
 <p>Return a pointer to a string description of a protocol error code. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">error</td><td>The protocol error code.</td></tr>
+    <tr><td class="paramname">error</td><td>[<a class="el" href="#ab9ccd46c9402a020ca690439ec6961c0" title="The AERN network error values.">aern_network_errors</a>] The protocol error code.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1504,8 +1892,8 @@ Functions</h2></td></tr>
 <p>Deserialize a byte stream into a network packet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pstream</td><td>[const] The byte stream containing the packet data. </td></tr>
-    <tr><td class="paramname">packet</td><td>A pointer to the packet structure to populate. </td></tr>
+    <tr><td class="paramname">pstream</td><td>[const uint8_t*] The byte stream containing the packet data. </td></tr>
+    <tr><td class="paramname">packet</td><td>[aern_network_packet*] A pointer to the packet structure to populate. </td></tr>
   </table>
   </dd>
 </dl>

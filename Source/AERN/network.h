@@ -97,9 +97,9 @@
 */
 AERN_EXPORT_API typedef struct aern_network_announce_request_state
 {
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const aern_topology_list_state* list;			/*!< A pointer to the topology list */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_announce_request_state;
 
 /**
@@ -108,9 +108,9 @@ AERN_EXPORT_API typedef struct aern_network_announce_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_announce_response_state
 {
-	const aern_child_certificate* dcert;				/*!< A pointer to the ads certificate */
-	aern_topology_node_state* rnode;					/*!< A pointer to the remote node */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
+	const aern_child_certificate* dcert;			/*!< A pointer to the ADC certificate */
+	aern_topology_node_state* rnode;				/*!< A pointer to the remote node */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
 } aern_network_announce_response_state;
 
 /**
@@ -119,9 +119,9 @@ AERN_EXPORT_API typedef struct aern_network_announce_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_converge_request_state
 {
-	const aern_child_certificate* rcert;				/*!< A pointer to the remote certificate */
-	aern_topology_node_state* rnode;					/*!< A pointer to the remote node */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const aern_child_certificate* rcert;			/*!< A pointer to the remote certificate */
+	aern_topology_node_state* rnode;				/*!< A pointer to the remote node */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_converge_request_state;
 
 /**
@@ -130,11 +130,11 @@ AERN_EXPORT_API typedef struct aern_network_converge_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_converge_response_state
 {
-	const qsc_socket* csock;							/*!< A pointer to the connected socket */
-	const aern_child_certificate* lcert;				/*!< A pointer to the local certificate */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node structure */
-	const aern_child_certificate* rcert;				/*!< A pointer to the remote certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< A pointer to the connected socket */
+	const aern_child_certificate* lcert;			/*!< A pointer to the local certificate */
+	const aern_topology_node_state* lnode;			/*!< A pointer to the local node structure */
+	const aern_child_certificate* rcert;			/*!< A pointer to the remote certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_converge_response_state;
 
 /**
@@ -143,9 +143,9 @@ AERN_EXPORT_API typedef struct aern_network_converge_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_converge_response_verify_state
 {
-	const qsc_socket* csock;							/*!< A pointer to the connected socket */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-	const aern_child_certificate* rcert;				/*!< A pointer to the remote certificate */
+	const qsc_socket* csock;						/*!< A pointer to the connected socket */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node structure */
+	const aern_child_certificate* rcert;			/*!< A pointer to the remote certificate */
 } aern_network_converge_response_verify_state;
 
 /**
@@ -154,11 +154,26 @@ AERN_EXPORT_API typedef struct aern_network_converge_response_verify_state
 */
 AERN_EXPORT_API typedef struct aern_network_converge_update_verify_state
 {
-	const qsc_socket* csock;									/*!< A pointer to the connected socket */
-	aern_child_certificate* rcert;						/*!< A pointer to the remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< A pointer to the connected socket */
+	aern_child_certificate* rcert;					/*!< A pointer to the remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_converge_update_verify_state;
+
+
+/*! 
+ * \struct aern_network_converge_update_state
+ * \brief The ADC convergence-update processing state.
+ *
+ * This structure contains the authenticated APS certificate and the versioned topology state that is updated
+ * when a convergence correction message is accepted.
+ */
+AERN_EXPORT_API typedef struct aern_network_converge_update_state
+{
+	const aern_child_certificate* rcert;			/*!< The remote APS certificate. */
+	const aern_root_certificate* root;				/*!< The ARS root certificate. */
+	aern_topology_list_state* vtopo;				/*!< The versioned topology state. */
+} aern_network_converge_update_state;
 
 /**
 * \struct aern_network_fkey_request_state
@@ -166,11 +181,11 @@ AERN_EXPORT_API typedef struct aern_network_converge_update_verify_state
 */
 AERN_EXPORT_API typedef struct aern_network_fkey_request_state
 {
-	uint8_t* frag;										/*!< A pointer to the key fragment */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node */
-	const uint8_t* mfk;									/*!< A pointer to the master fragment key */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node */
-	uint8_t* token;										/*!< A pointer to the exchange token */
+	uint8_t* frag;									/*!< A pointer to the key fragment */
+	const aern_topology_node_state* lnode;			/*!< A pointer to the local node */
+	const uint8_t* mfk;								/*!< A pointer to the master fragment key */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node */
+	uint8_t* token;									/*!< A pointer to the exchange token */
 } aern_network_fkey_request_state;
 
 /**
@@ -179,11 +194,11 @@ AERN_EXPORT_API typedef struct aern_network_fkey_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_fkey_response_state
 {
-	qsc_socket* csock;									/*!< A pointer to the connected socket */
-	uint8_t* frag;										/*!< A pointer to the key fragment */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node */
-	const uint8_t* mfk;									/*!< A pointer to the master fragment key */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node */
+	qsc_socket* csock;								/*!< A pointer to the connected socket */
+	uint8_t* frag;									/*!< A pointer to the key fragment */
+	const aern_topology_node_state* lnode;			/*!< A pointer to the local node */
+	const uint8_t* mfk;								/*!< A pointer to the master fragment key */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node */
 } aern_network_fkey_response_state;
 
 /**
@@ -192,9 +207,9 @@ AERN_EXPORT_API typedef struct aern_network_fkey_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_incremental_update_request_state
 {
-	aern_child_certificate* rcert;						/*!< A pointer to the output remote certificate */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
+	aern_child_certificate* rcert;					/*!< A pointer to the output remote certificate */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
 } aern_network_incremental_update_request_state;
 
 /**
@@ -203,10 +218,39 @@ AERN_EXPORT_API typedef struct aern_network_incremental_update_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_incremental_update_response_state
 {
-	const qsc_socket* csock;							/*!< The connected socket */
-	const aern_child_certificate* rcert;				/*!< A pointer to the output remote certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< The connected socket */
+	const aern_child_certificate* rcert;			/*!< A pointer to the output remote certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_incremental_update_response_state;
+
+
+/*! 
+ * \struct aern_network_join_request_state
+ * \brief The client-side domain-join request state.
+ */
+AERN_EXPORT_API typedef struct aern_network_join_request_state
+{
+	const char* address;							/*!< The ADC network address. */
+	const aern_child_certificate* lcert;			/*!< The local client certificate. */
+	aern_child_certificate* rcert;					/*!< The received ADC certificate. */
+	const aern_root_certificate* root;				/*!< The ARS root certificate. */
+	const uint8_t* sigkey;							/*!< The local client signing key. */
+	aern_topology_list_state* vtopo;				/*!< The local versioned topology state. */
+} aern_network_join_request_state;
+
+/*! 
+ * \struct aern_network_join_response_state
+ * \brief The ADC-side domain-join response state.
+ */
+AERN_EXPORT_API typedef struct aern_network_join_response_state
+{
+	const qsc_socket* csock;						/*!< The connected client socket. */
+	const aern_child_certificate* lcert;			/*!< The local ADC certificate. */
+	aern_child_certificate* rcert;					/*!< The received client certificate. */
+	const aern_root_certificate* root;				/*!< The ARS root certificate. */
+	const uint8_t* sigkey;							/*!< The ADC signing key. */
+	aern_topology_list_state* vtopo;				/*!< The ADC versioned topology state. */
+} aern_network_join_response_state;
 
 /**
 * \struct aern_network_register_request_state
@@ -214,11 +258,11 @@ AERN_EXPORT_API typedef struct aern_network_incremental_update_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_register_request_state
 {
-	const char* address;								/*!< The ads server address */
-	const aern_child_certificate* lcert;				/*!< A pointer to the local certificate */
-	aern_child_certificate* rcert;						/*!< A pointer to the remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const char* address;							/*!< The ADC server address */
+	const aern_child_certificate* lcert;			/*!< A pointer to the local certificate */
+	aern_child_certificate* rcert;					/*!< A pointer to the remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_register_request_state;
 
 /**
@@ -227,11 +271,11 @@ AERN_EXPORT_API typedef struct aern_network_register_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_register_response_state
 {
-	const qsc_socket* csock;							/*!< A pointer to the connected socket */
-	const aern_child_certificate* lcert;				/*!< A pointer to the local certificate */
-	aern_child_certificate* rcert;						/*!< A pointer to the output remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< A pointer to the connected socket */
+	const aern_child_certificate* lcert;			/*!< A pointer to the local certificate */
+	aern_child_certificate* rcert;					/*!< A pointer to the output remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_register_response_state;
 
 /**
@@ -240,12 +284,12 @@ AERN_EXPORT_API typedef struct aern_network_register_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_register_update_request_state
 {
-	const char* address;								/*!< The server address */
-	const aern_child_certificate* lcert;				/*!< A pointer to the local certificate */
-	aern_topology_list_state* list;						/*!< A pointer to the topology list */
-	aern_child_certificate* rcert;						/*!< A pointer to the remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const char* address;							/*!< The server address */
+	const aern_child_certificate* lcert;			/*!< A pointer to the local certificate */
+	aern_topology_list_state* list;					/*!< A pointer to the topology list */
+	aern_child_certificate* rcert;					/*!< A pointer to the remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_register_update_request_state;
 
 /**
@@ -254,13 +298,28 @@ AERN_EXPORT_API typedef struct aern_network_register_update_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_register_update_response_state
 {
-	const qsc_socket* csock;							/*!< A pointer to the connected socket */
-	const aern_child_certificate* lcert;				/*!< A pointer to the local certificate */
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	aern_child_certificate* rcert;						/*!< A pointer to the output remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< A pointer to the connected socket */
+	const aern_child_certificate* lcert;			/*!< A pointer to the local certificate */
+	const aern_topology_list_state* list;			/*!< A pointer to the topology list */
+	aern_child_certificate* rcert;					/*!< A pointer to the output remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_register_update_response_state;
+
+
+/*! 
+ * \struct aern_network_register_update_v2_response_state
+ * \brief The ADC register-update response state with versioned topology support.
+ */
+AERN_EXPORT_API typedef struct aern_network_register_update_v2_response_state
+{
+	const qsc_socket* csock;						/*!< The connected socket. */
+	const aern_child_certificate* lcert;			/*!< The local ADC certificate. */
+	aern_child_certificate* rcert;					/*!< The remote device certificate. */
+	const aern_root_certificate* root;				/*!< The ARS root certificate. */
+	const uint8_t* sigkey;							/*!< The local signing key. */
+	aern_topology_list_state* vtopo;				/*!< The versioned topology state. */
+} aern_network_register_update_v2_response_state;
 
 /**
 * \struct aern_network_mfk_request_state
@@ -268,12 +327,12 @@ AERN_EXPORT_API typedef struct aern_network_register_update_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_mfk_request_state
 {
-	const aern_child_certificate* lcert;				/*!< A pointer to the local certificate */
-	uint8_t* mfk;										/*!< A pointer to the master fragment key */
-	const aern_child_certificate* rcert;				/*!< A pointer to the remote certificate */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const aern_child_certificate* lcert;			/*!< A pointer to the local certificate */
+	uint8_t* mfk;									/*!< A pointer to the master fragment key */
+	const aern_child_certificate* rcert;			/*!< A pointer to the remote certificate */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node structure */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_mfk_request_state;
 
 /**
@@ -282,14 +341,31 @@ AERN_EXPORT_API typedef struct aern_network_mfk_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_mfk_response_state
 {
-	const qsc_socket* csock;							/*!< A pointer to the connected socket */
-	aern_cipher_keypair ckp;							/*!< The asymmetric encryption keypair */
-	const aern_child_certificate* lcert;				/*!< A pointer to the local certificate */
-	uint8_t* mfk;										/*!< A pointer to the master fragment key */
-	aern_child_certificate* rcert;						/*!< A pointer to the remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< A pointer to the connected socket */
+	aern_cipher_keypair ckp;						/*!< The asymmetric encryption keypair */
+	const aern_child_certificate* lcert;			/*!< A pointer to the local certificate */
+	uint8_t* mfk;									/*!< A pointer to the master fragment key */
+	aern_child_certificate* rcert;					/*!< A pointer to the remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_mfk_response_state;
+
+
+/**
+* \struct aern_ars_signing_state
+* \brief The ARS remote signing handler state.
+*
+* This structure binds the accepted ADC socket, the cached ADC certificate,
+* the ARS root certificate, and the ARS private signing key used to process
+* an authenticated remote certificate signing request.
+*/
+AERN_EXPORT_API typedef struct aern_ars_signing_state
+{
+	qsc_socket* csock;								/*!< A pointer to the connected ADC socket. */
+	const aern_child_certificate* dcert;			/*!< A pointer to the ADC certificate. */
+	const aern_root_certificate* root;				/*!< A pointer to the ARS root certificate. */
+	const uint8_t* sigkey;							/*!< A pointer to the ARS secret signing key. */
+} aern_ars_signing_state;
 
 /**
 * \struct aern_network_remote_signing_request_state
@@ -297,10 +373,10 @@ AERN_EXPORT_API typedef struct aern_network_mfk_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_remote_signing_request_state
 {
-	const char* address;								/*!< The rds server address */
-	aern_child_certificate* rcert;						/*!< A pointer to the remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const char* address;							/*!< The rds server address */
+	aern_child_certificate* rcert;					/*!< A pointer to the remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_remote_signing_request_state;
 
 /**
@@ -309,11 +385,11 @@ AERN_EXPORT_API typedef struct aern_network_remote_signing_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_remote_signing_response_state
 {
-	qsc_socket* csock;									/*!< A pointer to the connected socket */
-	aern_child_certificate* dcert;						/*!< A pointer to the ads certificate */
-	aern_child_certificate* rcert;						/*!< A pointer to the remote certificate */
-	const aern_root_certificate* root;					/*!< A pointer to the root certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	qsc_socket* csock;								/*!< A pointer to the connected socket */
+	aern_child_certificate* dcert;					/*!< A pointer to the ADC certificate */
+	aern_child_certificate* rcert;					/*!< A pointer to the remote certificate */
+	const aern_root_certificate* root;				/*!< A pointer to the root certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_remote_signing_response_state;
 
 /**
@@ -322,9 +398,9 @@ AERN_EXPORT_API typedef struct aern_network_remote_signing_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_resign_request_state
 {
-	const char* address;								/*!< The server address */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node structure */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const char* address;							/*!< The server address */
+	const aern_topology_node_state* lnode;			/*!< A pointer to the local node structure */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_resign_request_state;
 
 /**
@@ -333,10 +409,10 @@ AERN_EXPORT_API typedef struct aern_network_resign_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_resign_response_state
 {
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	aern_child_certificate* rcert;						/*!< A pointer to the remote certificate */
-	aern_topology_node_state* rnode;					/*!< A pointer to the remote node structure */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const aern_topology_list_state* list;			/*!< A pointer to the topology list */
+	aern_child_certificate* rcert;					/*!< A pointer to the remote certificate */
+	aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_resign_response_state;
 
 /**
@@ -345,10 +421,10 @@ AERN_EXPORT_API typedef struct aern_network_resign_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_revoke_request_state
 {
-	aern_network_designations designation;				/*!< The node type designation */
-	const aern_topology_list_state* list;				/*!< A pointer to the node database */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	aern_network_designations designation;			/*!< The node type designation */
+	const aern_topology_list_state* list;			/*!< A pointer to the node database */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node structure */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_revoke_request_state;
 
 /**
@@ -357,9 +433,9 @@ AERN_EXPORT_API typedef struct aern_network_revoke_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_revoke_response_state
 {
-	const aern_topology_list_state* list;				/*!< A pointer to the node database */
-	aern_topology_node_state* rnode;					/*!< A pointer to the remote node structure */
-	const aern_child_certificate* dcert;				/*!< A pointer to the ads certificate */
+	const aern_topology_list_state* list;			/*!< A pointer to the node database */
+	aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
+	const aern_child_certificate* dcert;			/*!< A pointer to the ADC certificate */
 } aern_network_revoke_response_state;
 
 /**
@@ -368,12 +444,12 @@ AERN_EXPORT_API typedef struct aern_network_revoke_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_topological_query_request_state
 {
-	const aern_child_certificate* dcert;				/*!< A pointer to the ads certificate */
-	aern_topology_node_state* dnode;					/*!< A pointer to the ads node node structure */
-	const char* issuer;									/*!< A pointer to the query issuer string */
-	aern_topology_node_state* rnode;					/*!< A pointer to the return remote node structure */
-	const uint8_t* serial;								/*!< A pointer to the local serial number */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const aern_child_certificate* dcert;			/*!< A pointer to the ADC certificate */
+	aern_topology_node_state* dnode;				/*!< A pointer to the ADC node node structure */
+	const char* issuer;								/*!< A pointer to the query issuer string */
+	aern_topology_node_state* rnode;				/*!< A pointer to the return remote node structure */
+	const uint8_t* serial;							/*!< A pointer to the local serial number */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_topological_query_request_state;
 
 /**
@@ -382,10 +458,10 @@ AERN_EXPORT_API typedef struct aern_network_topological_query_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_topological_query_response_state
 {
-	const qsc_socket* csock;							/*!< The connected socket */
-	const aern_child_certificate* ccert;				/*!< A pointer to the remote clients certificate */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< The connected socket */
+	const aern_child_certificate* ccert;			/*!< A pointer to the remote clients certificate */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node structure */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_topological_query_response_state;
 
 /**
@@ -394,10 +470,10 @@ AERN_EXPORT_API typedef struct aern_network_topological_query_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_topological_status_request_state
 {
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node structure */
-	const aern_child_certificate* rcert;				/*!< A pointer to the client responder certificate */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const aern_topology_node_state* lnode;			/*!< A pointer to the local node structure */
+	const aern_child_certificate* rcert;			/*!< A pointer to the client responder certificate */
+	const aern_topology_node_state* rnode;			/*!< A pointer to the remote node structure */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_topological_status_request_state;
 
 /**
@@ -406,69 +482,19 @@ AERN_EXPORT_API typedef struct aern_network_topological_status_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_topological_status_response_state
 {
-	const qsc_socket* csock;							/*!< The connected socket */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node structure */
-	const aern_child_certificate* rcert;				/*!< A pointer to the remote certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	const qsc_socket* csock;						/*!< The connected socket */
+	const aern_topology_node_state* lnode;			/*!< A pointer to the local node structure */
+	const aern_child_certificate* rcert;			/*!< A pointer to the remote certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_topological_status_response_state;
 
 /**
-* \struct aern_network_fragment_collection_request_state
-* \brief The fkey collection request function state
+* \note Legacy fragment-collection and fragment-query control structures were
+* removed from the active AERN network API. AERN relay payload fragmentation
+* is implemented by route.c and is bound to relay sessions, packet identifiers,
+* and return-direction state. The MPDC multi-party key-fragment collection
+* protocol is intentionally not part of AERN.
 */
-AERN_EXPORT_API typedef struct aern_network_fragment_collection_request_state
-{
-	qsc_socket* csock;									/*!< The connected socket */
-	uint8_t* hfkey;										/*!< A pointer to the fkeys hash */
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	qsc_collection_state* lmfk;							/*!< A pointer to the mfk collection */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the remote node structure */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-	uint8_t* token;										/*!< A pointer to the client token */
-} aern_network_fragment_collection_request_state;
-
-/**
-* \struct aern_network_fragment_collection_response_state
-* \brief The fkey collection response function state
-*/
-AERN_EXPORT_API typedef struct aern_network_fragment_collection_response_state
-{
-	const qsc_socket* csock;							/*!< The connected socket */
-	uint8_t* frag;										/*!< A pointer to the key fragment */
-	uint8_t* hfkey;										/*!< A pointer to the fkeys hash */
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	qsc_collection_state* lmfk;							/*!< A pointer to the mfk collection */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node structure */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-	uint8_t* ctok;										/*!< A pointer to the client token */
-	uint8_t* mtok;										/*!< A pointer to the server token */
-} aern_network_fragment_collection_response_state;
-
-/**
-* \struct aern_network_fragment_query_request_state
-* \brief The fkey query request function state
-*/
-AERN_EXPORT_API typedef struct aern_network_fragment_query_request_state
-{
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	qsc_collection_state* lmfk;							/*!< A pointer to the mfk collection */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node structure */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the client node structure */
-	const uint8_t* token;								/*!< A pointer to the local token */
-} aern_network_fragment_query_request_state;
-
-/**
-* \struct aern_network_fragment_query_response_state
-* \brief The fkey query response function state
-*/
-AERN_EXPORT_API typedef struct aern_network_fragment_query_response_state
-{
-	const qsc_socket* csock;							/*!< The connected socket */
-	const aern_topology_node_state* lnode;				/*!< A pointer to the local node structure */
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	qsc_collection_state* lmfk;							/*!< A pointer to the mfk collection */
-	const aern_topology_node_state* rnode;				/*!< A pointer to the remote node structure */
-} aern_network_fragment_query_response_state;
 
 /**
 * \struct aern_network_key_exchange_request_state
@@ -476,11 +502,11 @@ AERN_EXPORT_API typedef struct aern_network_fragment_query_response_state
 */
 AERN_EXPORT_API typedef struct aern_network_key_exchange_request_state
 {
-	const char* address;								/*!< The server address */
-	aern_connection_state* cns;							/*!< The connection state */
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	const aern_child_certificate* rcert;				/*!< A pointer to the output remote certificate */
-	const uint8_t* token;								/*!< A pointer to a token */
+	const char* address;							/*!< The server address */
+	aern_connection_state* cns;						/*!< The connection state */
+	const aern_topology_list_state* list;			/*!< A pointer to the topology list */
+	const aern_child_certificate* rcert;			/*!< A pointer to the output remote certificate */
+	const uint8_t* token;							/*!< A pointer to a token */
 } aern_network_key_exchange_request_state;
 
 /**
@@ -489,21 +515,18 @@ AERN_EXPORT_API typedef struct aern_network_key_exchange_request_state
 */
 AERN_EXPORT_API typedef struct aern_network_key_exchange_response_state
 {
-	aern_connection_state* cns;							/*!< The connection state */
-	const qsc_socket* csock;							/*!< The connected socket */
-	const aern_topology_list_state* list;				/*!< A pointer to the topology list */
-	const aern_child_certificate* rcert;				/*!< A pointer to the output remote certificate */
-	const uint8_t* sigkey;								/*!< A pointer to the secret signing key */
+	aern_connection_state* cns;						/*!< The connection state */
+	const qsc_socket* csock;						/*!< The connected socket */
+	const aern_topology_list_state* list;			/*!< A pointer to the topology list */
+	const aern_child_certificate* rcert;			/*!< A pointer to the output remote certificate */
+	const uint8_t* sigkey;							/*!< A pointer to the secret signing key */
 } aern_network_key_exchange_response_state;
 
-/*---------------------------------------------------------------------------
-  Public Function Prototypes
----------------------------------------------------------------------------*/
-
 /**
-* \brief Announce a certificate using the ads, and broadcast it to the network
+* \brief Announce a certificate using the ADC, and broadcast it to the network
 *
-* \param state: The announce state structure
+* \param state: [aern_network_announce_request_state*] The announce state structure
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_announce_broadcast(aern_network_announce_request_state* state);
@@ -511,8 +534,9 @@ AERN_EXPORT_API aern_protocol_errors aern_network_announce_broadcast(aern_networ
 /**
 * \brief Process a announce response message
 *
-* \param state: The announce response state structure
-* \param packetin: [const] The input packet containing the announce request
+* \param state: [aern_network_announce_request_state*] The announce response state structure
+* \param packetin: [const aern_network_packet*] The input packet containing the announce request
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_announce_response(aern_network_announce_response_state* state, const aern_network_packet* packetin);
@@ -520,7 +544,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_announce_response(aern_network
 /**
 * \brief Gets the network designation from a port number
 *
-* \param tnode: The target network designation type
+* \param tnode: [aern_network_designations] The target network designation type
+* 
 * \return Returns the port number, or zero if the node type is invalid
 */
 AERN_EXPORT_API uint16_t aern_network_application_to_port(aern_network_designations tnode);
@@ -528,19 +553,20 @@ AERN_EXPORT_API uint16_t aern_network_application_to_port(aern_network_designati
 /**
 * \brief Broadcast a message to a node type on the network
 *
-* \param list: [const] A pointer to the topology list
-* \param message: The message to send
-* \param msglen: The length of the message
-* \param tnode: The target node-type designation
+* \param list: [const aern_topology_list_state*] A pointer to the topology list
+* \param message: [const uint8_t*] The message to send
+* \param msglen: [size_t] The length of the message
+* \param tnode: [aern_network_designations] The target node-type designation
 */
 AERN_EXPORT_API void aern_network_broadcast_message(const aern_topology_list_state* list, const uint8_t* message, size_t msglen, aern_network_designations tnode);
 
 /**
 * \brief Connect a socket to a remote address
 *
-* \param csock: A pointer to the socket
-* \param address: [const] The remote hosts address
-* \param designation: The remote hosts designation
+* \param csock: [qsc_socket*] A pointer to the socket
+* \param address: [const char*] The remote hosts address
+* \param designation: [aern_network_designations] The remote hosts designation
+* 
 * \return Returns the socket error
 */
 AERN_EXPORT_API qsc_socket_exceptions aern_network_connect_to_device(qsc_socket* csock, const char* address, aern_network_designations designation);
@@ -548,26 +574,41 @@ AERN_EXPORT_API qsc_socket_exceptions aern_network_connect_to_device(qsc_socket*
 /**
 * \brief The ADC sends out a convergence request, and broadcast it to the network
 *
-* \param state: The converge request state structure
+* \param state: [const aern_network_converge_request_state*] The converge request state structure
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_converge_request(const aern_network_converge_request_state* state);
 
 /**
-* \brief Respond to a ads network converge request
+* \brief Respond to a ADC network converge request
 *
-* \param state: The converge response state structure
-* \param packetin: [const] The input packet containing the verify response
+* \param state: [const aern_network_converge_response_state*] The converge response state structure
+* \param packetin: [const aern_network_packet*] The input packet containing the verify response
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_converge_response(const aern_network_converge_response_state* state, const aern_network_packet* packetin);
 
 /**
+ * \brief Process an APS convergence-update message.
+ *
+ * This function verifies an APS-signed topology correction and updates the ADC versioned topology state.
+ *
+ * \param state [aern_network_converge_update_state*] The convergence-update processing state.
+ * \param packetin [const aern_network_packet*] The received convergence-update packet.
+ * 
+ * \return Returns aern_protocol_error_none on success, or an error code on failure.
+ */
+AERN_EXPORT_API aern_protocol_errors aern_network_converge_update(aern_network_converge_update_state* state, const aern_network_packet* packetin);
+
+/**
 * \brief Connect a socket to a remote address and port
 *
-* \param csock: A pointer to the socket
-* \param address: [const] The remote hosts address
-* \param port: The application port number
+* \param csock: [qsc_socket*] A pointer to the socket
+* \param address: [const char*] The remote hosts address
+* \param port: [uint16_t] The application port number
+* 
 * \return Returns the socket error
 */
 AERN_EXPORT_API qsc_socket_exceptions aern_network_connect_to_address(qsc_socket* csock, const char* address, uint16_t port);
@@ -575,7 +616,8 @@ AERN_EXPORT_API qsc_socket_exceptions aern_network_connect_to_address(qsc_socket
 /**
 * \brief Request and execute a key exchange for a fragmentation key
 *
-* \param state: The fkey request state structure
+* \param state: [aern_network_fkey_request_state*] The fkey request state structure
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_fkey_request(aern_network_fkey_request_state* state);
@@ -583,8 +625,9 @@ AERN_EXPORT_API aern_protocol_errors aern_network_fkey_request(aern_network_fkey
 /**
 * \brief Respond and execute a key exchange for a fragmentation key
 *
-* \param state: The fkey response state structure
-* \param packetin: [const] The input packet containing the request
+* \param state: [aern_network_fkey_response_state*] The fkey response state structure
+* \param packetin: [const aern_network_packet*] The input packet containing the request
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_fkey_response(aern_network_fkey_response_state* state, const aern_network_packet* packetin);
@@ -592,7 +635,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_fkey_response(aern_network_fke
 /**
 * \brief Get the local IP address
 *
-* \param address: The output address byte array
+* \param address: [char*] The output address byte array
+* 
 * \return Returns true if the address is retrieved
 */
 AERN_EXPORT_API bool aern_network_get_local_address(char address[AERN_CERTIFICATE_ADDRESS_SIZE]);
@@ -600,8 +644,9 @@ AERN_EXPORT_API bool aern_network_get_local_address(char address[AERN_CERTIFICAT
 /**
 * \brief Send an error message
 *
-* \param csock: A pointer to the socket
-* \param error: The error code
+* \param csock: [const qsc_socket*] A pointer to the socket
+* \param error: [aern_protocol_errors] The error code
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_send_error(const qsc_socket* csock, aern_protocol_errors error);
@@ -609,14 +654,15 @@ AERN_EXPORT_API aern_protocol_errors aern_network_send_error(const qsc_socket* c
 /**
 * \brief Shut down and dispose of a socket instance
 *
-* \param csock: A pointer to the socket
+* \param csock: [qsc_socket*] A pointer to the socket
 */
 AERN_EXPORT_API void aern_network_socket_dispose(qsc_socket* csock);
 
 /**
 * \brief Send an incremental update request
 *
-* \param state: The incremental update request function state
+* \param state: [const aern_network_incremental_update_request_state*] The incremental update request function state
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_incremental_update_request(const aern_network_incremental_update_request_state* state);
@@ -624,15 +670,43 @@ AERN_EXPORT_API aern_protocol_errors aern_network_incremental_update_request(con
 /**
 * \brief Send a copy of a certificate to a remote host
 *
-* \param state: The update response function state
+* \param state: [const aern_network_incremental_update_response_state*] The update response function state
+* \param packetin: [const aern_network_packet*] The inbound network packet
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_incremental_update_response(const aern_network_incremental_update_response_state* state, const aern_network_packet* packetin);
 
 /**
+ * \brief Send a client domain-join request.
+ *
+ * This function sends the client's certificate and cached topology hash to the ADC, then accepts either a
+ * hash acknowledgement or a full APS topology update.
+ *
+ * \param state [aern_network_join_request_state*] The join request state.
+ * 
+ * \return Returns aern_protocol_error_none on success, or an error code on failure.
+ */
+AERN_EXPORT_API aern_protocol_errors aern_network_join_request(aern_network_join_request_state* state);
+
+/**
+ * \brief Process a client domain-join request at the ADC.
+ *
+ * This function verifies the client certificate and message signature, compares the client's topology hash
+ * with the ADC topology hash, and sends either a hash acknowledgement or full APS topology update.
+ *
+ * \param state [aern_network_join_response_state*] The join response state.
+ * \param packetin [const aern_network_packet*] The received join-request packet.
+ * 
+ * \return Returns aern_protocol_error_none on success, or an error code on failure.
+ */
+AERN_EXPORT_API aern_protocol_errors aern_network_join_response(aern_network_join_response_state* state, const aern_network_packet* packetin);
+
+/**
 * \brief Send an APS join request to the ADC
 *
-* \param state: The join request function state
+* \param state: [aern_network_register_request_state*] The join request function state
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_register_request(aern_network_register_request_state* state);
@@ -640,7 +714,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_register_request(aern_network_
 /**
 * \brief Send a MAS or Client join update request to the ADC
 *
-* \param state: The join update request function state
+* \param state: [aern_network_register_update_request_state*] The join update request function state
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_register_update_request(aern_network_register_update_request_state* state);
@@ -648,8 +723,9 @@ AERN_EXPORT_API aern_protocol_errors aern_network_register_update_request(aern_n
 /**
 * \brief Send a join response to the aps
 *
-* \param state: The join response function state
-* \param packetin: [const] The input packet containing the request
+* \param state: [aern_network_register_response_state*] The join response function state
+* \param packetin: [const aern_network_packet*] The input packet containing the request
+* 
 * \return Returns a protocol error flag
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_register_response(aern_network_register_response_state* state, const aern_network_packet* packetin);
@@ -657,25 +733,51 @@ AERN_EXPORT_API aern_protocol_errors aern_network_register_response(aern_network
 /**
 * \brief Send a join update response to the server or client
 *
-* \param state: The join response function state
-* \param packetin: [const] The input packet containing the request
+* \param state: [aern_network_register_update_response_state*] The join response function state
+* \param packetin: [const aern_network_packet*] The input packet containing the request
+* 
 * \return Returns a protocol error flag
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_register_update_response(aern_network_register_update_response_state* state, const aern_network_packet* packetin);
 
 /**
-* \brief Send a certificate signing request from the ADC to the ARS
+ * \brief Process a register-update request with versioned topology support.
+ *
+ * This function wraps the canonical register-update response path and increments the versioned topology
+ * state after a successful registration update.
+ *
+ * \param state [aern_network_register_update_v2_response_state*] The versioned register-update response state.
+ * \param packetin [const aern_network_packet*] The received register-update request packet.
+ * 
+ * \return Returns aern_protocol_error_none on success, or an error code on failure.
+ */
+AERN_EXPORT_API aern_protocol_errors aern_network_register_update_v2_response(aern_network_register_update_v2_response_state* state, const aern_network_packet* packetin);
+
+/**
+* \brief Process an ARS remote signing handle.
 *
-* \param state: The remote signing request state
-* \return Returns a protocol error flag
+* \param state: [aern_ars_signing_state*] The ARS remote signing handler state.
+* \param packetin: [const aern_network_packet*] The remote signing request packet.
+* 
+* \return Returns the error code.
+*/
+AERN_EXPORT_API aern_protocol_errors aern_ars_remote_signing_handle(aern_ars_signing_state* state, const aern_network_packet* packetin);
+
+/**
+* \brief Process an ARS remote signing request from the ADC.
+*
+* \param state: [aern_network_remote_signing_request_state*] The ARS remote signing handler state.
+* 
+* \return Returns the error code.
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_remote_signing_request(aern_network_remote_signing_request_state* state);
 
 /**
 * \brief Send a signed certificate response from the ARS to the ADC
 *
-* \param state: The remote signing response state
-* \param packetin: [const] The input packet containing the request
+* \param state: [aern_network_remote_signing_response_state*] The remote signing response state
+* \param packetin: [const aern_network_packet*] The input packet containing the request
+* 
 * \return Returns a protocol error flag
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_remote_signing_response(aern_network_remote_signing_response_state* state, const aern_network_packet* packetin);
@@ -683,7 +785,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_remote_signing_response(aern_n
 /**
 * \brief Request and execute a key exchange request for a master fragmentation key
 *
-* \param state: The mfk request state structure
+* \param state: [aern_network_mfk_request_state*] The mfk request state structure
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_mfk_exchange_request(aern_network_mfk_request_state* state);
@@ -691,8 +794,9 @@ AERN_EXPORT_API aern_protocol_errors aern_network_mfk_exchange_request(aern_netw
 /**
 * \brief Request and execute a key exchange response for a master fragmentation key
 *
-* \param state: The mfk response state structure
-* \param packetin: [const] The input packet containing the request
+* \param state: [aern_network_mfk_response_state*] The mfk response state structure
+* \param packetin: [const aern_network_packet*] The input packet containing the request
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_mfk_exchange_response(aern_network_mfk_response_state* state, const aern_network_packet* packetin);
@@ -700,7 +804,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_mfk_exchange_response(aern_net
 /**
 * \brief Gets the network designation from a port number
 *
-* \param port: The network application port
+* \param port: [uint16_t] The network application port
+* 
 * \return Returns the network designation type
 */
 AERN_EXPORT_API aern_network_designations aern_network_port_to_application(uint16_t port);
@@ -708,16 +813,18 @@ AERN_EXPORT_API aern_network_designations aern_network_port_to_application(uint1
 /**
 * \brief Verify a certificates format and root signature
 *
-* \param ccert: [const] The child certificate
-* \param root: [const] The root certificate
+* \param ccert: [const aern_child_certificate*] The child certificate
+* \param root: [const aern_root_certificate*] The root certificate
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_certificate_verify(const aern_child_certificate* ccert, const aern_root_certificate* root);
 
 /**
-* \brief Send a resign request to the ads
+* \brief Send a resign request to the ADC
 *
-* \param state: The resign request state structure
+* \param state: [const aern_network_resign_request_state*] The resign request state structure
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_resign_request(const aern_network_resign_request_state* state);
@@ -725,8 +832,9 @@ AERN_EXPORT_API aern_protocol_errors aern_network_resign_request(const aern_netw
 /**
 * \brief Send a resign response to the aps or server
 *
-* \param state: The resign response state structure
-* \param packetin: [const] The input packet containing the request
+* \param state: [aern_network_resign_response_state*] The resign response state structure
+* \param packetin: [const aern_network_packet*] The input packet containing the request
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_resign_response(aern_network_resign_response_state* state, const aern_network_packet* packetin);
@@ -734,7 +842,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_resign_response(aern_network_r
 /**
 * \brief Send a revocation request from the ADC
 *
-* \param state: The revocation broadcast function state
+* \param state: [aern_network_revoke_request_state*] The revocation broadcast function state
+* 
 * \return Returns a protocol error flag
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_revoke_broadcast(aern_network_revoke_request_state* state);
@@ -742,8 +851,9 @@ AERN_EXPORT_API aern_protocol_errors aern_network_revoke_broadcast(aern_network_
 /**
 * \brief Verify a revocation request sent from the ADC
 *
-* \param state: The revocation verify function state
-* \param packetin: [const] The input packet containing the request
+* \param state: [aern_network_revoke_response_state*] The revocation verify function state
+* \param packetin: [const aern_network_packet*] The input packet containing the request
+* 
 * \return Returns a protocol error flag
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_revoke_response(aern_network_revoke_response_state* state, const aern_network_packet* packetin);
@@ -751,7 +861,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_revoke_response(aern_network_r
 /**
 * \brief Query a device for its topological information
 *
-* \param state: The topological query request state
+* \param state: [const aern_network_topological_query_request_state*] The topological query request state
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_topological_query_request(const aern_network_topological_query_request_state* state);
@@ -759,8 +870,9 @@ AERN_EXPORT_API aern_protocol_errors aern_network_topological_query_request(cons
 /**
 * \brief Respond to a topological query request
 *
-* \param state: topological query response state
-* \param packetin: The packet containing the topological query request
+* \param state: [const aern_network_topological_query_response_state*] The topological query response state
+* \param packetin: [const aern_network_packet*] The packet containing the topological query request
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_topological_query_response(const aern_network_topological_query_response_state* state, const aern_network_packet* packetin);
@@ -768,8 +880,8 @@ AERN_EXPORT_API aern_protocol_errors aern_network_topological_query_response(con
 /**
 * \brief Send a status request from the ADC to a client device
 *
-* \param state: The topological status request state
-* \param query: The device query string
+* \param state: [const aern_network_topological_status_request_state*] The topological status request state
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_topological_status_request(const aern_network_topological_status_request_state* state);
@@ -777,14 +889,11 @@ AERN_EXPORT_API aern_protocol_errors aern_network_topological_status_request(con
 /**
 * \brief Process the status response from the client device and send a response
 *
-* \param state: The topological status response state
-* \param packetin: The packet containing the topological status request
+* \param state: [const aern_network_topological_status_response_state*] The topological status response state
+* \param packetin: [const aern_network_packet*] The packet containing the topological status request
+* 
 * \return Returns the error code
 */
 AERN_EXPORT_API aern_protocol_errors aern_network_topological_status_response(const aern_network_topological_status_response_state* state, const aern_network_packet* packetin);
-
-#if defined(AERN_DEBUG_MODE)
-AERN_EXPORT_API bool aern_network_protocols_test(void);
-#endif
 
 #endif

@@ -1,0 +1,75 @@
+\doxysection{aern\+\_\+aps\+\_\+state Struct Reference}
+\hypertarget{structaern__aps__state}{}\label{structaern__aps__state}\index{aern\_aps\_state@{aern\_aps\_state}}
+
+
+APS runtime state for mesh operations.  
+
+
+
+
+{\ttfamily \#include $<$mek.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__aps__state_ac264d0a53843400fd4cd8375d718455f}{lcert}}
+\item 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__aps__state_a113e8f9eb6955551654df290e61b60ff}{root}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__aps__state_a5cbd2b117e930d8f469c924a8b27ea21}{sigkey}}
+\item 
+const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__aps__state_a38f094f8303f5f309d6cfcef82706480}{appstate}}
+\item 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__aps__state_a09a0ab043e3153b694ea860b58b7ea6f}{vtopo}}
+\item 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__aps__state_acab78afff273f2d0a6492c288331cf57}{ctable}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+APS runtime state for mesh operations. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__aps__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__aps__state_a38f094f8303f5f309d6cfcef82706480}\index{aern\_aps\_state@{aern\_aps\_state}!appstate@{appstate}}
+\index{appstate@{appstate}!aern\_aps\_state@{aern\_aps\_state}}
+\doxysubsubsection{\texorpdfstring{appstate}{appstate}}
+{\footnotesize\ttfamily \label{structaern__aps__state_a38f094f8303f5f309d6cfcef82706480} 
+const \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}}\texorpdfstring{$\ast$}{*} appstate}
+
+Application state used for certificate-\/cache lookup. \Hypertarget{structaern__aps__state_acab78afff273f2d0a6492c288331cf57}\index{aern\_aps\_state@{aern\_aps\_state}!ctable@{ctable}}
+\index{ctable@{ctable}!aern\_aps\_state@{aern\_aps\_state}}
+\doxysubsubsection{\texorpdfstring{ctable}{ctable}}
+{\footnotesize\ttfamily \label{structaern__aps__state_acab78afff273f2d0a6492c288331cf57} 
+\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}}\texorpdfstring{$\ast$}{*} ctable}
+
+Cipher state table \Hypertarget{structaern__aps__state_ac264d0a53843400fd4cd8375d718455f}\index{aern\_aps\_state@{aern\_aps\_state}!lcert@{lcert}}
+\index{lcert@{lcert}!aern\_aps\_state@{aern\_aps\_state}}
+\doxysubsubsection{\texorpdfstring{lcert}{lcert}}
+{\footnotesize\ttfamily \label{structaern__aps__state_ac264d0a53843400fd4cd8375d718455f} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}}\texorpdfstring{$\ast$}{*} lcert}
+
+Local APS certificate \Hypertarget{structaern__aps__state_a113e8f9eb6955551654df290e61b60ff}\index{aern\_aps\_state@{aern\_aps\_state}!root@{root}}
+\index{root@{root}!aern\_aps\_state@{aern\_aps\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__aps__state_a113e8f9eb6955551654df290e61b60ff} 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}}\texorpdfstring{$\ast$}{*} root}
+
+Root certificate \Hypertarget{structaern__aps__state_a5cbd2b117e930d8f469c924a8b27ea21}\index{aern\_aps\_state@{aern\_aps\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_aps\_state@{aern\_aps\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__aps__state_a5cbd2b117e930d8f469c924a8b27ea21} 
+const uint8\+\_\+t\texorpdfstring{$\ast$}{*} sigkey}
+
+Local ML-\/\+DSA signing key \Hypertarget{structaern__aps__state_a09a0ab043e3153b694ea860b58b7ea6f}\index{aern\_aps\_state@{aern\_aps\_state}!vtopo@{vtopo}}
+\index{vtopo@{vtopo}!aern\_aps\_state@{aern\_aps\_state}}
+\doxysubsubsection{\texorpdfstring{vtopo}{vtopo}}
+{\footnotesize\ttfamily \label{structaern__aps__state_a09a0ab043e3153b694ea860b58b7ea6f} 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}}\texorpdfstring{$\ast$}{*} vtopo}
+
+Versioned topology 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{mek_8h}{mek.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,184 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/client.h File Reference}
+\hypertarget{client_8h}{}\label{client_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/client.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/client.h}}
+
+
+AERN Client Device application interface.  
+
+
+{\ttfamily \#include "{}aerncommon.\+h"{}}\newline
+{\ttfamily \#include "{}mek.\+h"{}}\newline
+{\ttfamily \#include "{}route.\+h"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{client_8h_acb66c2beb36199fe5f65027434f60450}{aern\+\_\+client\+\_\+transport\+\_\+receive\+\_\+callback}}) (const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen, void \texorpdfstring{$\ast$}{*}context)
+\begin{DoxyCompactList}\small\item\em Backend callback used to deliver authenticated return packets to the local client transport. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{client_8h_afbee67736e47a8ac27968e112168cd93}{aern\+\_\+client\+\_\+entry\+\_\+context\+\_\+is\+\_\+valid}} (const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}root, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}lcert, const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}topology, const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}entry, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}entrycert, const \mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}ctable)
+\begin{DoxyCompactList}\small\item\em Validate the client entry-\/node readiness context. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{client_8h_afb64947e608427de9cf6c70b46a8a004}{aern\+\_\+client\+\_\+transport\+\_\+set\+\_\+callback}} (\mbox{\hyperlink{client_8h_acb66c2beb36199fe5f65027434f60450}{aern\+\_\+client\+\_\+transport\+\_\+receive\+\_\+callback}} callback, void \texorpdfstring{$\ast$}{*}context)
+\begin{DoxyCompactList}\small\item\em Register the client local receive backend callback. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API int32\+\_\+t \mbox{\hyperlink{client_8h_abe03b5e81f9974ecb6664714d14e4e68}{aern\+\_\+client\+\_\+start}} (void)
+\begin{DoxyCompactList}\small\item\em Start the AERN client application. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{client_8h_a1c05fe0c51fcbe147ee9a99eabb5ab50}{aern\+\_\+client\+\_\+receive\+\_\+once}} (void)
+\begin{DoxyCompactList}\small\item\em Receive and process one encrypted return relay packet from the selected entry APS. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{client_8h_ad14efe6eafe7d8642868db509159b00c}{aern\+\_\+client\+\_\+transport\+\_\+receive\+\_\+serialized\+\_\+packet}} (const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen)
+\begin{DoxyCompactList}\small\item\em Backend-\/neutral client-\/side serialized packet receive boundary. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{client_8h_ac01ff5b6ded3ebd628f6ad052b95388e}{aern\+\_\+client\+\_\+stop}} (void)
+\begin{DoxyCompactList}\small\item\em Stop the AERN client application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+AERN Client Device application interface. 
+
+The AERN Client Device registers with the AERN Domain Controller, receives the authenticated APS topology set, retrieves and verifies APS certificates, prepares the local APS cache used for entry-\/node selection, selects an APS entry node, and establishes the client-\/to-\/entry APS MEK tunnel and transmits fixed-\/size relay packets to the selected APS entry node. 
+
+\label{doc-typedef-members}
+\Hypertarget{client_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{client_8h_acb66c2beb36199fe5f65027434f60450}\index{client.h@{client.h}!aern\_client\_transport\_receive\_callback@{aern\_client\_transport\_receive\_callback}}
+\index{aern\_client\_transport\_receive\_callback@{aern\_client\_transport\_receive\_callback}!client.h@{client.h}}
+\doxysubsubsection{\texorpdfstring{aern\_client\_transport\_receive\_callback}{aern\_client\_transport\_receive\_callback}}
+{\footnotesize\ttfamily \label{client_8h_acb66c2beb36199fe5f65027434f60450} 
+typedef \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}(\texorpdfstring{$\ast$}{*} aern\+\_\+client\+\_\+transport\+\_\+receive\+\_\+callback) (const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}header, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, size\+\_\+t pktlen, void \texorpdfstring{$\ast$}{*}context)}
+
+
+
+Backend callback used to deliver authenticated return packets to the local client transport. 
+
+The callback is invoked only after a return packet has been authenticated by the client-\/to-\/entry tunnel, associated with the active client session, and reassembled when fragmented. Implementations may bind this callback to a local tunnel adapter, packet injector, socket shim, userspace transport, or application callback.
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & \mbox{[}const aern\+\_\+relay\+\_\+payload\+\_\+header\texorpdfstring{$\ast$}{*}\mbox{]} Authenticated return relay payload header. \\
+\hline
+{\em packet} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Serialized TCP/\+UDP packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}size\+\_\+t\mbox{]} Number of serialized packet bytes. \\
+\hline
+{\em context} & \mbox{[}void\texorpdfstring{$\ast$}{*}\mbox{]} Opaque backend context supplied during registration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none only when the backend accepts delivery. 
+\end{DoxyReturn}
+
+
+\label{doc-func-members}
+\Hypertarget{client_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{client_8h_afbee67736e47a8ac27968e112168cd93}\index{client.h@{client.h}!aern\_client\_entry\_context\_is\_valid@{aern\_client\_entry\_context\_is\_valid}}
+\index{aern\_client\_entry\_context\_is\_valid@{aern\_client\_entry\_context\_is\_valid}!client.h@{client.h}}
+\doxysubsubsection{\texorpdfstring{aern\_client\_entry\_context\_is\_valid()}{aern\_client\_entry\_context\_is\_valid()}}
+{\footnotesize\ttfamily \label{client_8h_afbee67736e47a8ac27968e112168cd93} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+client\+\_\+entry\+\_\+context\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{root}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{lcert}{, }\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{topology}{, }\item[{const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{entry}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{entrycert}{, }\item[{const \mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{ctable}{}\end{DoxyParamCaption})}
+
+
+
+Validate the client entry-\/node readiness context. 
+
+The function verifies that a client has a valid root-\/signed client certificate, an initialized topology, a selected APS topology node, a matching cached APS certificate, and an established client-\/to-\/entry APS tunnel in the cipher table. This predicate is intended for production readiness checks and for deterministic client-\/initialization tests.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{[}const aern\+\_\+root\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} Accepted ARS root certificate. \\
+\hline
+{\em lcert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} Local client certificate. \\
+\hline
+{\em topology} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Client APS topology. \\
+\hline
+{\em entry} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Selected entry APS topology node. \\
+\hline
+{\em entrycert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} Cached entry APS certificate. \\
+\hline
+{\em ctable} & \mbox{[}const aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} Client cipher table.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true only when the entry-\/node certificate, topology binding, and tunnel state are coherent. 
+\end{DoxyReturn}
+\Hypertarget{client_8h_a1c05fe0c51fcbe147ee9a99eabb5ab50}\index{client.h@{client.h}!aern\_client\_receive\_once@{aern\_client\_receive\_once}}
+\index{aern\_client\_receive\_once@{aern\_client\_receive\_once}!client.h@{client.h}}
+\doxysubsubsection{\texorpdfstring{aern\_client\_receive\_once()}{aern\_client\_receive\_once()}}
+{\footnotesize\ttfamily \label{client_8h_a1c05fe0c51fcbe147ee9a99eabb5ab50} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+client\+\_\+receive\+\_\+once (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Receive and process one encrypted return relay packet from the selected entry APS. 
+
+The function reads one fixed-\/size AERN relay packet from the active client-\/to-\/entry APS tunnel, authenticates and decrypts it using the tunnel receive cipher state, parses the encrypted relay payload header, and either delivers an unfragmented return packet to the client transport abstraction or caches a return fragment until the complete serialized packet is available.
+
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none only when the packet is authenticated and accepted by the receive path. 
+\end{DoxyReturn}
+\Hypertarget{client_8h_abe03b5e81f9974ecb6664714d14e4e68}\index{client.h@{client.h}!aern\_client\_start@{aern\_client\_start}}
+\index{aern\_client\_start@{aern\_client\_start}!client.h@{client.h}}
+\doxysubsubsection{\texorpdfstring{aern\_client\_start()}{aern\_client\_start()}}
+{\footnotesize\ttfamily \label{client_8h_abe03b5e81f9974ecb6664714d14e4e68} 
+AERN\+\_\+\+EXPORT\+\_\+\+API int32\+\_\+t aern\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Start the AERN client application. 
+
+The client initializes its local application state and enters the client command loop. The command loop supports client registration with the ADC, APS topology synchronization, and client-\/to-\/entry APS tunnel establishment.
+
+\begin{DoxyReturn}{Returns}
+Returns zero on normal termination. 
+\end{DoxyReturn}
+\Hypertarget{client_8h_ac01ff5b6ded3ebd628f6ad052b95388e}\index{client.h@{client.h}!aern\_client\_stop@{aern\_client\_stop}}
+\index{aern\_client\_stop@{aern\_client\_stop}!client.h@{client.h}}
+\doxysubsubsection{\texorpdfstring{aern\_client\_stop()}{aern\_client\_stop()}}
+{\footnotesize\ttfamily \label{client_8h_ac01ff5b6ded3ebd628f6ad052b95388e} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+client\+\_\+stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Stop the AERN client application. 
+
+The function stops the client command loop, clears the local client certificate cache, and unloads the client application state. \Hypertarget{client_8h_ad14efe6eafe7d8642868db509159b00c}\index{client.h@{client.h}!aern\_client\_transport\_receive\_serialized\_packet@{aern\_client\_transport\_receive\_serialized\_packet}}
+\index{aern\_client\_transport\_receive\_serialized\_packet@{aern\_client\_transport\_receive\_serialized\_packet}!client.h@{client.h}}
+\doxysubsubsection{\texorpdfstring{aern\_client\_transport\_receive\_serialized\_packet()}{aern\_client\_transport\_receive\_serialized\_packet()}}
+{\footnotesize\ttfamily \label{client_8h_ad14efe6eafe7d8642868db509159b00c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+client\+\_\+transport\+\_\+receive\+\_\+serialized\+\_\+packet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__relay__payload__header}{aern\+\_\+relay\+\_\+payload\+\_\+header}} \texorpdfstring{$\ast$}{*}}]{header}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{packet}{, }\item[{size\+\_\+t}]{pktlen}{}\end{DoxyParamCaption})}
+
+
+
+Backend-\/neutral client-\/side serialized packet receive boundary. 
+
+This function is called after an authenticated return packet has been associated with the active client session and reassembled if fragmented. Platform-\/specific delivery to a local tunnel, packet injector, socket shim, or application callback is intentionally deferred behind this boundary.
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & \mbox{[}const aern\+\_\+relay\+\_\+payload\+\_\+header\texorpdfstring{$\ast$}{*}\mbox{]} Authenticated relay payload header. \\
+\hline
+{\em packet} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Serialized TCP/\+UDP packet bytes. \\
+\hline
+{\em pktlen} & \mbox{[}size\+\_\+t\mbox{]} Number of packet bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none only when a backend reports delivery. 
+\end{DoxyReturn}
+\Hypertarget{client_8h_afb64947e608427de9cf6c70b46a8a004}\index{client.h@{client.h}!aern\_client\_transport\_set\_callback@{aern\_client\_transport\_set\_callback}}
+\index{aern\_client\_transport\_set\_callback@{aern\_client\_transport\_set\_callback}!client.h@{client.h}}
+\doxysubsubsection{\texorpdfstring{aern\_client\_transport\_set\_callback()}{aern\_client\_transport\_set\_callback()}}
+{\footnotesize\ttfamily \label{client_8h_afb64947e608427de9cf6c70b46a8a004} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+client\+\_\+transport\+\_\+set\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{client_8h_acb66c2beb36199fe5f65027434f60450}{aern\+\_\+client\+\_\+transport\+\_\+receive\+\_\+callback}}}]{callback}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Register the client local receive backend callback. 
+
+Passing a NULL callback disables client local delivery and causes authenticated return packets to return a controlled non-\/success status. The callback is not invoked until tunnel authentication, session validation, and fragment reassembly have succeeded.
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & \mbox{[}\doxylink{client_8h_acb66c2beb36199fe5f65027434f60450}{aern\+\_\+client\+\_\+transport\+\_\+receive\+\_\+callback}\mbox{]} Client receive callback, or NULL to disable. \\
+\hline
+{\em context} & \mbox{[}void\texorpdfstring{$\ast$}{*}\mbox{]} Opaque backend context passed to the callback. \\
+\hline
+\end{DoxyParams}

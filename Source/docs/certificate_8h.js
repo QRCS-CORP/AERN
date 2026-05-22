@@ -14,6 +14,7 @@ var certificate_8h =
     [ "aern_certificate_child_hash", "certificate_8h.html#a1719b17581ad8fc6c73606e510f2f7b5", null ],
     [ "aern_certificate_child_is_valid", "certificate_8h.html#aec4ca63a4148b0ce39816d54501df985", null ],
     [ "aern_certificate_child_message_verify", "certificate_8h.html#ade0a08cce83a1fe69b18dd0bc4c12f4a", null ],
+    [ "aern_certificate_child_revoke", "certificate_8h.html#a17ed72de8cf1eef68bd6f2ee027b42e3", null ],
     [ "aern_certificate_child_serialize", "certificate_8h.html#ac72818eca22be9110bd5e50aa58c889d", null ],
     [ "aern_certificate_child_struct_to_file", "certificate_8h.html#ac2e15260ffa833f8ced4edd71f80c8cb", null ],
     [ "aern_certificate_designation_decode", "certificate_8h.html#ae0a359fddcaea24a71a30ee948fae0d8", null ],
@@ -35,7 +36,7 @@ var certificate_8h =
     [ "aern_certificate_root_sign", "certificate_8h.html#aece512c156c16091b6cc13d317aab882", null ],
     [ "aern_certificate_root_signature_verify", "certificate_8h.html#a6f19af38d69925d8719ac91e6952a915", null ],
     [ "aern_certificate_root_struct_to_file", "certificate_8h.html#a423b59c4e8b7b5f6d4cbd797430adcbd", null ],
-    [ "aern_certificate_signature_generate_keypair", "certificate_8h.html#a94552dd32d8a368951482ab9100de510", null ],
+    [ "aern_certificate_signature_generate_keypair", "certificate_8h.html#a4460c848d4167ba21ef6d2e27194c437", null ],
     [ "aern_certificate_signature_hash_verify", "certificate_8h.html#a5b1017abbba37e44186ef02a6da6dc7a", null ],
     [ "aern_certificate_signature_sign_message", "certificate_8h.html#a7dc8dd7fe1430dffeea483608dc22f38", null ],
     [ "aern_certificate_signature_verify_message", "certificate_8h.html#ac4f715ab52aac1516b83b2b8ff40fec1", null ]

@@ -1,0 +1,312 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/admin.h File Reference}
+\hypertarget{admin_8h}{}\label{admin_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/admin.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/admin.h}}
+
+
+Phase-\/6\+: Administrative controls and security hardening.  
+
+
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+{\ttfamily \#include "{}certificate.\+h"{}}\newline
+{\ttfamily \#include "{}lifecycle.\+h"{}}\newline
+{\ttfamily \#include "{}mek.\+h"{}}\newline
+{\ttfamily \#include "{}network.\+h"{}}\newline
+{\ttfamily \#include "{}route.\+h"{}}\newline
+{\ttfamily \#include "{}server.\+h"{}}\newline
+{\ttfamily \#include "{}topology.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em State for the ADC encrypted log. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__console__state}{aern\+\_\+console\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Runtime state for the ADC administrative console. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__background__state}{aern\+\_\+background\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em State for the APS background cover-\/traffic thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{admin_8h_a5f31b0fe4782de8150d838f1195ef6d1}\label{admin_8h_a5f31b0fe4782de8150d838f1195ef6d1} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+log\+\_\+state {\bfseries aern\+\_\+log\+\_\+state}
+\item 
+\Hypertarget{admin_8h_a06f696723a35ab7b95d637c3ccbb0614}\label{admin_8h_a06f696723a35ab7b95d637c3ccbb0614} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+console\+\_\+state {\bfseries aern\+\_\+console\+\_\+state}
+\item 
+\Hypertarget{admin_8h_a00c44f12be37e60c5fa32c4080db6406}\label{admin_8h_a00c44f12be37e60c5fa32c4080db6406} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+background\+\_\+state {\bfseries aern\+\_\+background\+\_\+state}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{admin_8h_a9644e2b93e4ff0598147dbbec1b9f56b}{aern\+\_\+log\+\_\+open}} (\mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}ls, const char \texorpdfstring{$\ast$}{*}logpath, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}password, size\+\_\+t pwlen)
+\begin{DoxyCompactList}\small\item\em Open the ADC encrypted log and derive the encryption key. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{admin_8h_aeb7f06ac2bc1632930d8f99914054204}{aern\+\_\+log\+\_\+write}} (\mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}ls, const char \texorpdfstring{$\ast$}{*}devname, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Append one entry to the encrypted ADC log. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{admin_8h_afccbbd86ae1cc8cb2dda916c9f923d3d}{aern\+\_\+log\+\_\+close}} (\mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}ls)
+\begin{DoxyCompactList}\small\item\em Close the log and zero the derived key material. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{admin_8h_acc0479701b091d1415217a6f08cec6bf}{aern\+\_\+log\+\_\+read\+\_\+all}} (const \mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}ls, char \texorpdfstring{$\ast$}{*}out, size\+\_\+t outsize, size\+\_\+t \texorpdfstring{$\ast$}{*}entrycount)
+\begin{DoxyCompactList}\small\item\em Decrypt and read all log entries into a caller-\/provided buffer. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{admin_8h_a5ebcb5a9b3fb2a0da621eb7412b3a77b}{aern\+\_\+console\+\_\+run}} (\mbox{\hyperlink{structaern__console__state}{aern\+\_\+console\+\_\+state}} \texorpdfstring{$\ast$}{*}cs)
+\begin{DoxyCompactList}\small\item\em Run the ADC administrative console (blocking loop). \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{admin_8h_ab4147e06e67cd703978bde2d24809af8}{aern\+\_\+certificate\+\_\+is\+\_\+expired}} (const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}cert, uint64\+\_\+t now)
+\begin{DoxyCompactList}\small\item\em Test whether a child certificate has expired. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API int64\+\_\+t \mbox{\hyperlink{admin_8h_a128666ffc32659fdccaf7f63fea54abd}{aern\+\_\+certificate\+\_\+time\+\_\+remaining}} (const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}cert, uint64\+\_\+t now)
+\begin{DoxyCompactList}\small\item\em Return the seconds remaining until the certificate expires. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{admin_8h_a621833648fa6bdaca3564340e1eb64f1}{aern\+\_\+certificate\+\_\+enforce\+\_\+expiry}} (const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}cert, \mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}appstate)
+\begin{DoxyCompactList}\small\item\em Enforce certificate expiration on an incoming certificate. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t \mbox{\hyperlink{admin_8h_a5ef27811e68479bc2612a6437e61f916}{aern\+\_\+jitter\+\_\+send}} (qsc\+\_\+socket \texorpdfstring{$\ast$}{*}csock, const uint8\+\_\+t wire\mbox{[}AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}, uint32\+\_\+t basedelayms)
+\begin{DoxyCompactList}\small\item\em Add a CSPRNG-\/derived random delay then transmit a packet. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{admin_8h_a9ed442db500892da17254045fd12ca08}{aern\+\_\+background\+\_\+start}} (\mbox{\hyperlink{structaern__background__state}{aern\+\_\+background\+\_\+state}} \texorpdfstring{$\ast$}{*}bg)
+\begin{DoxyCompactList}\small\item\em Start the background cover-\/traffic thread. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{admin_8h_ad7527e1eb70763d11f6dc0aaf2f03c11}{aern\+\_\+background\+\_\+stop}} (\mbox{\hyperlink{structaern__background__state}{aern\+\_\+background\+\_\+state}} \texorpdfstring{$\ast$}{*}bg)
+\begin{DoxyCompactList}\small\item\em Stop the background cover-\/traffic thread. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{admin_8h_a2be6ddfdf79ad78b936b4ccd05061d09}{aern\+\_\+background\+\_\+thread}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Background cover-\/traffic thread function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Phase-\/6\+: Administrative controls and security hardening. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{admin_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{admin_8h_a9ed442db500892da17254045fd12ca08}\index{admin.h@{admin.h}!aern\_background\_start@{aern\_background\_start}}
+\index{aern\_background\_start@{aern\_background\_start}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_background\_start()}{aern\_background\_start()}}
+{\footnotesize\ttfamily \label{admin_8h_a9ed442db500892da17254045fd12ca08} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+background\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__background__state}{aern\+\_\+background\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{bg}{}\end{DoxyParamCaption})}
+
+
+
+Start the background cover-\/traffic thread. 
+
+Spawns a thread that calls the background traffic loop. Must call \doxylink{admin_8h_ad7527e1eb70763d11f6dc0aaf2f03c11}{aern\+\_\+background\+\_\+stop()} before process exit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bg} & \mbox{[}aern\+\_\+background\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Background state; running is set to true. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{admin_8h_ad7527e1eb70763d11f6dc0aaf2f03c11}\index{admin.h@{admin.h}!aern\_background\_stop@{aern\_background\_stop}}
+\index{aern\_background\_stop@{aern\_background\_stop}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_background\_stop()}{aern\_background\_stop()}}
+{\footnotesize\ttfamily \label{admin_8h_ad7527e1eb70763d11f6dc0aaf2f03c11} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+background\+\_\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__background__state}{aern\+\_\+background\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{bg}{}\end{DoxyParamCaption})}
+
+
+
+Stop the background cover-\/traffic thread. 
+
+Sets running to false and waits for the thread to exit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bg} & \mbox{[}aern\+\_\+background\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Background state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{admin_8h_a2be6ddfdf79ad78b936b4ccd05061d09}\index{admin.h@{admin.h}!aern\_background\_thread@{aern\_background\_thread}}
+\index{aern\_background\_thread@{aern\_background\_thread}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_background\_thread()}{aern\_background\_thread()}}
+{\footnotesize\ttfamily \label{admin_8h_a2be6ddfdf79ad78b936b4ccd05061d09} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+background\+\_\+thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Background cover-\/traffic thread function. 
+
+Every AERN\+\_\+\+BACKGROUND\+\_\+\+INTERVAL\+\_\+\+MS, sends one random-\/padded 1500-\/byte encrypted packet on each active cipher-\/table entry. Thread exits when bg-\/\texorpdfstring{$>$}{>}running == false.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \mbox{[}void\texorpdfstring{$\ast$}{*}\mbox{]} Pointer to \doxylink{structaern__background__state}{aern\+\_\+background\+\_\+state}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{admin_8h_a621833648fa6bdaca3564340e1eb64f1}\index{admin.h@{admin.h}!aern\_certificate\_enforce\_expiry@{aern\_certificate\_enforce\_expiry}}
+\index{aern\_certificate\_enforce\_expiry@{aern\_certificate\_enforce\_expiry}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_enforce\_expiry()}{aern\_certificate\_enforce\_expiry()}}
+{\footnotesize\ttfamily \label{admin_8h_a621833648fa6bdaca3564340e1eb64f1} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+certificate\+\_\+enforce\+\_\+expiry (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{cert}{, }\item[{\mbox{\hyperlink{structaern__server__application__state}{aern\+\_\+server\+\_\+application\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{appstate}{}\end{DoxyParamCaption})}
+
+
+
+Enforce certificate expiration on an incoming certificate. 
+
+Calls aern\+\_\+certificate\+\_\+is\+\_\+expired; on expiry logs to ADC and returns aern\+\_\+protocol\+\_\+error\+\_\+certificate\+\_\+expired.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} Certificate to enforce. \\
+\hline
+{\em appstate} & \mbox{[}aern\+\_\+server\+\_\+application\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} ADC app state (for logging).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none if valid. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_ab4147e06e67cd703978bde2d24809af8}\index{admin.h@{admin.h}!aern\_certificate\_is\_expired@{aern\_certificate\_is\_expired}}
+\index{aern\_certificate\_is\_expired@{aern\_certificate\_is\_expired}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_is\_expired()}{aern\_certificate\_is\_expired()}}
+{\footnotesize\ttfamily \label{admin_8h_ab4147e06e67cd703978bde2d24809af8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+certificate\+\_\+is\+\_\+expired (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{cert}{, }\item[{uint64\+\_\+t}]{now}{}\end{DoxyParamCaption})}
+
+
+
+Test whether a child certificate has expired. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The certificate to check. \\
+\hline
+{\em now} & \mbox{[}uint64\+\_\+t\mbox{]} Current UTC epoch seconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if cert.\+expiration.\+to \texorpdfstring{$<$}{<} now OR now \texorpdfstring{$<$}{<} cert.\+expiration.\+from. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a128666ffc32659fdccaf7f63fea54abd}\index{admin.h@{admin.h}!aern\_certificate\_time\_remaining@{aern\_certificate\_time\_remaining}}
+\index{aern\_certificate\_time\_remaining@{aern\_certificate\_time\_remaining}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_certificate\_time\_remaining()}{aern\_certificate\_time\_remaining()}}
+{\footnotesize\ttfamily \label{admin_8h_a128666ffc32659fdccaf7f63fea54abd} 
+AERN\+\_\+\+EXPORT\+\_\+\+API int64\+\_\+t aern\+\_\+certificate\+\_\+time\+\_\+remaining (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{cert}{, }\item[{uint64\+\_\+t}]{now}{}\end{DoxyParamCaption})}
+
+
+
+Return the seconds remaining until the certificate expires. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The certificate to check. \\
+\hline
+{\em now} & \mbox{[}uint64\+\_\+t\mbox{]} Current UTC epoch seconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Positive seconds remaining, zero or negative. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a5ebcb5a9b3fb2a0da621eb7412b3a77b}\index{admin.h@{admin.h}!aern\_console\_run@{aern\_console\_run}}
+\index{aern\_console\_run@{aern\_console\_run}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_console\_run()}{aern\_console\_run()}}
+{\footnotesize\ttfamily \label{admin_8h_a5ebcb5a9b3fb2a0da621eb7412b3a77b} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+console\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__console__state}{aern\+\_\+console\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cs}{}\end{DoxyParamCaption})}
+
+
+
+Run the ADC administrative console (blocking loop). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cs} & \mbox{[}aern\+\_\+console\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Console state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{admin_8h_a5ef27811e68479bc2612a6437e61f916}\index{admin.h@{admin.h}!aern\_jitter\_send@{aern\_jitter\_send}}
+\index{aern\_jitter\_send@{aern\_jitter\_send}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_jitter\_send()}{aern\_jitter\_send()}}
+{\footnotesize\ttfamily \label{admin_8h_a5ef27811e68479bc2612a6437e61f916} 
+AERN\+\_\+\+EXPORT\+\_\+\+API size\+\_\+t aern\+\_\+jitter\+\_\+send (\begin{DoxyParamCaption}\item[{qsc\+\_\+socket \texorpdfstring{$\ast$}{*}}]{csock}{, }\item[{const uint8\+\_\+t}]{wire}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+MTU\mbox{]}, }\item[{uint32\+\_\+t}]{basedelayms}{}\end{DoxyParamCaption})}
+
+
+
+Add a CSPRNG-\/derived random delay then transmit a packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em csock} & \mbox{[}qsc\+\_\+socket\texorpdfstring{$\ast$}{*}\mbox{]} Socket to transmit on. \\
+\hline
+{\em wire} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Packet buffer (exactly AERN\+\_\+\+RELAY\+\_\+\+MTU bytes). \\
+\hline
+{\em basedelayms} & \mbox{[}uint32\+\_\+t\mbox{]} Maximum jitter in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bytes sent, or 0 on failure. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_afccbbd86ae1cc8cb2dda916c9f923d3d}\index{admin.h@{admin.h}!aern\_log\_close@{aern\_log\_close}}
+\index{aern\_log\_close@{aern\_log\_close}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_log\_close()}{aern\_log\_close()}}
+{\footnotesize\ttfamily \label{admin_8h_afccbbd86ae1cc8cb2dda916c9f923d3d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+log\+\_\+close (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{ls}{}\end{DoxyParamCaption})}
+
+
+
+Close the log and zero the derived key material. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ls} & \mbox{[}aern\+\_\+log\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Log state to close. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{admin_8h_a9644e2b93e4ff0598147dbbec1b9f56b}\index{admin.h@{admin.h}!aern\_log\_open@{aern\_log\_open}}
+\index{aern\_log\_open@{aern\_log\_open}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_log\_open()}{aern\_log\_open()}}
+{\footnotesize\ttfamily \label{admin_8h_a9644e2b93e4ff0598147dbbec1b9f56b} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+log\+\_\+open (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{ls}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{logpath}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{password}{, }\item[{size\+\_\+t}]{pwlen}{}\end{DoxyParamCaption})}
+
+
+
+Open the ADC encrypted log and derive the encryption key. 
+
+If the salt file does not exist it is created with a freshly generated AERN\+\_\+\+LOG\+\_\+\+SALT\+\_\+\+SIZE-\/byte random salt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ls} & \mbox{[}aern\+\_\+log\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Log state to populate. \\
+\hline
+{\em logpath} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Path to the encrypted log file. \\
+\hline
+{\em password} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Admin password string (not stored; used only for KDF). \\
+\hline
+{\em pwlen} & \mbox{[}size\+\_\+t\mbox{]} Password length in bytes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_acc0479701b091d1415217a6f08cec6bf}\index{admin.h@{admin.h}!aern\_log\_read\_all@{aern\_log\_read\_all}}
+\index{aern\_log\_read\_all@{aern\_log\_read\_all}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_log\_read\_all()}{aern\_log\_read\_all()}}
+{\footnotesize\ttfamily \label{admin_8h_acc0479701b091d1415217a6f08cec6bf} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+log\+\_\+read\+\_\+all (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{ls}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{out}{, }\item[{size\+\_\+t}]{outsize}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{entrycount}{}\end{DoxyParamCaption})}
+
+
+
+Decrypt and read all log entries into a caller-\/provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ls} & \mbox{[}const aern\+\_\+log\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Open log state. \\
+\hline
+{\em out} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} Output buffer for formatted log text. \\
+\hline
+{\em outsize} & \mbox{[}size\+\_\+t\mbox{]} Size of the output buffer in bytes. \\
+\hline
+{\em entrycount} & \mbox{[}size\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Number of complete entries read.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_aeb7f06ac2bc1632930d8f99914054204}\index{admin.h@{admin.h}!aern\_log\_write@{aern\_log\_write}}
+\index{aern\_log\_write@{aern\_log\_write}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{aern\_log\_write()}{aern\_log\_write()}}
+{\footnotesize\ttfamily \label{admin_8h_aeb7f06ac2bc1632930d8f99914054204} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+log\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__log__state}{aern\+\_\+log\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{ls}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{devname}{, }\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Append one entry to the encrypted ADC log. 
+
+The entry is formatted, appended to the plaintext, and the entire file is re-\/encrypted. This is consistent with the pattern in server.\+c.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ls} & \mbox{[}aern\+\_\+log\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Open log state. \\
+\hline
+{\em devname} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Device name string (up to AERN\+\_\+\+LOG\+\_\+\+DEVICE\+\_\+\+NAME\+\_\+\+SIZE bytes). \\
+\hline
+{\em error} & \mbox{[}\doxylink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}\mbox{]} Protocol error code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}

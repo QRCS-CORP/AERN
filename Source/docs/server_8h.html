@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -149,8 +149,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:a6502acf736dab3ea1499544da28a6c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export the root certificate to a directory.  <br /></td></tr>
 <tr class="memitem:adff89671b1f6b65241e033c46a251f5c" id="r_adff89671b1f6b65241e033c46a251f5c"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adff89671b1f6b65241e033c46a251f5c">aern_server_root_import_dialogue</a> (<a class="el" href="structaern__server__application__state.html">aern_server_application_state</a> *state)</td></tr>
 <tr class="memdesc:adff89671b1f6b65241e033c46a251f5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Import the root certificate.  <br /></td></tr>
-<tr class="memitem:af0ff95cea003f6081496b5896cbfd4d1" id="r_af0ff95cea003f6081496b5896cbfd4d1"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0ff95cea003f6081496b5896cbfd4d1">aern_server_root_certificate_generate</a> (<a class="el" href="structaern__server__application__state.html">aern_server_application_state</a> *state, <a class="el" href="structaern__root__certificate.html">aern_root_certificate</a> *rcert, uint64_t period)</td></tr>
-<tr class="memdesc:af0ff95cea003f6081496b5896cbfd4d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a new root certificate.  <br /></td></tr>
+<tr class="memitem:a4ab60f25b169cd3ffe8c18d223ccd9a7" id="r_a4ab60f25b169cd3ffe8c18d223ccd9a7"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ab60f25b169cd3ffe8c18d223ccd9a7">aern_server_root_certificate_generate</a> (<a class="el" href="structaern__server__application__state.html">aern_server_application_state</a> *state, <a class="el" href="structaern__root__certificate.html">aern_root_certificate</a> *rcert, uint64_t period)</td></tr>
+<tr class="memdesc:a4ab60f25b169cd3ffe8c18d223ccd9a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a new root certificate.  <br /></td></tr>
 <tr class="memitem:a75239baeec4dcbec1023999cfbf5dc18" id="r_a75239baeec4dcbec1023999cfbf5dc18"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75239baeec4dcbec1023999cfbf5dc18">aern_server_root_certificate_load</a> (const <a class="el" href="structaern__server__application__state.html">aern_server_application_state</a> *state, <a class="el" href="structaern__root__certificate.html">aern_root_certificate</a> *root, const <a class="el" href="structaern__topology__list__state.html">aern_topology_list_state</a> *tlist)</td></tr>
 <tr class="memdesc:a75239baeec4dcbec1023999cfbf5dc18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a root certificate using the issuer name.  <br /></td></tr>
 <tr class="memitem:ad97e033f7d9d9ac0c71499c032dcc6f9" id="r_ad97e033f7d9d9ac0c71499c032dcc6f9"><td class="memItemLeft" align="right" valign="top">AERN_EXPORT_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad97e033f7d9d9ac0c71499c032dcc6f9">aern_server_root_certificate_print</a> (const char *fpath, size_t pathlen)</td></tr>
@@ -227,7 +227,7 @@ Functions</h2></td></tr>
 <div class="line">    AERN_STORAGE_ADDRESS_MAX + AERN_STORAGE_PATH_MAX + AERN_STORAGE_USERNAME_MAX + <a class="code hl_define" href="aern_8h.html#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a> + \</div>
 <div class="line">    sizeof(uint16_t) + <span class="keyword">sizeof</span>(uint8_t) + <span class="keyword">sizeof</span>(uint8_t) + <span class="keyword">sizeof</span>(uint16_t) + <span class="keyword">sizeof</span>(<span class="keywordtype">bool</span>) + <span class="keyword">sizeof</span>(bool) + \</div>
 <div class="line">    AERN_ASYMMETRIC_SIGNING_KEY_SIZE)</div>
-<div class="ttc" id="aaern_8h_html_a28a75ced9057b99eb5ed59645ce7fe43"><div class="ttname"><a href="aern_8h.html#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ISSUER_SIZE</div><div class="ttdoc">The maximum certificate issuer string length. The last character must be a string terminator.</div><div class="ttdef"><b>Definition</b> aern.h:813</div></div>
+<div class="ttc" id="aaern_8h_html_a28a75ced9057b99eb5ed59645ce7fe43"><div class="ttname"><a href="aern_8h.html#a28a75ced9057b99eb5ed59645ce7fe43">AERN_CERTIFICATE_ISSUER_SIZE</a></div><div class="ttdeci">#define AERN_CERTIFICATE_ISSUER_SIZE</div><div class="ttdoc">The maximum certificate issuer string length. The last character must be a string terminator.</div><div class="ttdef"><b>Definition</b> aern.h:907</div></div>
 </div><!-- fragment -->
 <p>Calculates the size of the AERN server application state. </p>
 <p>This macro sums the sizes of various maximum string lengths and fixed?size fields used in the server state structure. </p>
@@ -289,9 +289,9 @@ Functions</h2></td></tr>
 <p>This function builds the full directory path where certificates are stored, based on the server's configuration in the application state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">dpath</td><td>The output buffer that receives the certificate storage directory path. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the dpath buffer. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">dpath</td><td>[char*] The output buffer that receives the certificate storage directory path. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the dpath buffer. </td></tr>
   </table>
   </dd>
 </dl>
@@ -331,10 +331,10 @@ Functions</h2></td></tr>
 <p>This function constructs the full file path to a certificate based on the certificate issuer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">fpath</td><td>The output buffer that receives the certificate file path. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the fpath buffer. </td></tr>
-    <tr><td class="paramname">issuer</td><td>[const] The issuer name of the certificate. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">fpath</td><td>[char*] The output buffer that receives the certificate file path. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the fpath buffer. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The issuer name of the certificate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -364,8 +364,8 @@ Functions</h2></td></tr>
 <p>This function exports the local child certificate to the specified destination directory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">dpath</td><td>The destination directory path.</td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">dpath</td><td>[const char*] The destination directory path.</td></tr>
   </table>
   </dd>
 </dl>
@@ -401,9 +401,9 @@ Functions</h2></td></tr>
 <p>This function loads a child certificate from file using the issuer string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ccert</td><td>The output child certificate. </td></tr>
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">issuer</td><td>[const] The certificate issuer string.</td></tr>
+    <tr><td class="paramname">ccert</td><td>[aern_child_certificate*] The output child certificate. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The certificate issuer string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -439,9 +439,9 @@ Functions</h2></td></tr>
 <p>This function loads a child certificate from file using its serial number.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ccert</td><td>The output child certificate. </td></tr>
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">serial</td><td>[const] The certificate serial number.</td></tr>
+    <tr><td class="paramname">ccert</td><td>[aern_child_certificate*] The output child certificate. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">serial</td><td>[const uint8_t*] The certificate serial number.</td></tr>
   </table>
   </dd>
 </dl>
@@ -477,9 +477,9 @@ Functions</h2></td></tr>
 <p>This function generates a new child certificate, writes the signature private key to the server state, and populates the child certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. The private key is written to state-&gt;sigkey. </td></tr>
-    <tr><td class="paramname">ccert</td><td>The output child certificate. </td></tr>
-    <tr><td class="paramname">period</td><td>The number of seconds the certificate is valid. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. The private key is written to state-&gt;sigkey. </td></tr>
+    <tr><td class="paramname">ccert</td><td>[aern_child_certificate*] The output child certificate. </td></tr>
+    <tr><td class="paramname">period</td><td>[uint64_t] The number of seconds the certificate is valid. </td></tr>
   </table>
   </dd>
 </dl>
@@ -514,9 +514,9 @@ Functions</h2></td></tr>
 <p>This function imports the local certificate that has been signed by the root certificate.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">lcert</td><td>The local certificate structure to populate. </td></tr>
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">fpath</td><td>The full file path to the certificate file.</td></tr>
+    <tr><td class="paramname">lcert</td><td>[aern_child_certificate*] The local certificate structure to populate. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The full file path to the certificate file.</td></tr>
   </table>
   </dd>
 </dl>
@@ -552,9 +552,9 @@ Functions</h2></td></tr>
 <p>This function retrieves the full file path of the child certificate based on the server state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">fpath</td><td>The output buffer that receives the certificate file path. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the fpath buffer. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">fpath</td><td>[char*] The output buffer that receives the certificate file path. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the fpath buffer. </td></tr>
   </table>
   </dd>
 </dl>
@@ -594,10 +594,10 @@ Functions</h2></td></tr>
 <p>This function constructs the file path to a certificate using the issuer name.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">fpath</td><td>The output buffer that receives the file path. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the file path buffer. </td></tr>
-    <tr><td class="paramname">issuer</td><td>The certificate's issuer name. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">fpath</td><td>[char*] The output buffer that receives the file path. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the file path buffer. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The certificate's issuer name. </td></tr>
   </table>
   </dd>
 </dl>
@@ -627,8 +627,8 @@ Functions</h2></td></tr>
 <p>This function prints the local child certificate (read from file) to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fpath</td><td>The file path to the certificate. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the file path buffer.</td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The file path to the certificate. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the file path buffer.</td></tr>
   </table>
   </dd>
 </dl>
@@ -655,7 +655,7 @@ Functions</h2></td></tr>
 <p>This function erases the current configuration file and resets it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -681,7 +681,7 @@ Functions</h2></td></tr>
 <p>This function erases the server log file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -707,7 +707,7 @@ Functions</h2></td></tr>
 <p>This function erases all persistent state and log files, effectively resetting the server.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -733,7 +733,7 @@ Functions</h2></td></tr>
 <p>This function erases the signing key stored in the server state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -768,9 +768,9 @@ Functions</h2></td></tr>
 <p>This function stores the local child certificate to file using the server state information.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">ccert</td><td>The child certificate to store. </td></tr>
-    <tr><td class="paramname">address</td><td>The network address associated with the certificate. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">ccert</td><td>[const aern_child_certificate*] The child certificate to store. </td></tr>
+    <tr><td class="paramname">address</td><td>[const char*] The network address associated with the certificate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -796,7 +796,7 @@ Functions</h2></td></tr>
 <p>This function enables host logging for the server.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -822,7 +822,7 @@ Functions</h2></td></tr>
 <p>This function outputs the contents of the server log file to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -862,10 +862,10 @@ Functions</h2></td></tr>
 <p>This function writes a log message with an optional predefined message header.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">msgtype</td><td>The predefined message enumerator. </td></tr>
-    <tr><td class="paramname">message</td><td>[const] The optional text message. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the text message.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">msgtype</td><td>[<a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>] The predefined message enumerator. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The optional text message. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the text message.</td></tr>
   </table>
   </dd>
 </dl>
@@ -896,8 +896,8 @@ Functions</h2></td></tr>
 <p>This function reads the encrypted mfk collection from file and converts it into the internal collection state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mfkcol</td><td>The empty collection state that will be populated. </td></tr>
-    <tr><td class="paramname">state</td><td>[const] The server application state.</td></tr>
+    <tr><td class="paramname">mfkcol</td><td>[qsc_collection_state*] The empty collection state that will be populated. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -933,9 +933,9 @@ Functions</h2></td></tr>
 <p>This function constructs the full file path for the master fragmentation key (mfk) collection.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">fpath</td><td>The output buffer that receives the file path. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the fpath buffer. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">fpath</td><td>[char*] The output buffer that receives the file path. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the fpath buffer. </td></tr>
   </table>
   </dd>
 </dl>
@@ -965,8 +965,8 @@ Functions</h2></td></tr>
 <p>This function writes the current mfk collection state to an encrypted file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mfkcol</td><td>[const] The mfk collection state. </td></tr>
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
+    <tr><td class="paramname">mfkcol</td><td>[const qsc_collection_state*] The mfk collection state. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -992,7 +992,7 @@ Functions</h2></td></tr>
 <p>This function prints the server banner to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1018,7 +1018,7 @@ Functions</h2></td></tr>
 <p>This function prints the current server configuration to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1058,10 +1058,10 @@ Functions</h2></td></tr>
 <p>This function prints a formatted error message for network errors.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">appmsg</td><td>The predefined application message enumerator. </td></tr>
-    <tr><td class="paramname">message</td><td>The error message text. </td></tr>
-    <tr><td class="paramname">error</td><td>The protocol error code. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">appmsg</td><td>[<a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>] The predefined application message enumerator. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The error message text. </td></tr>
+    <tr><td class="paramname">error</td><td>[<a class="el" href="aern_8h.html#a69dc871c4b6d5d947f6afdda81464724" title="The AERN protocol error values.">aern_protocol_errors</a>] The protocol error code. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1091,8 +1091,8 @@ Functions</h2></td></tr>
 <p>This function exports the server's root certificate to the specified destination directory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">dpath</td><td>The destination directory path.</td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">dpath</td><td>[const char*] The destination directory path.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1100,14 +1100,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af0ff95cea003f6081496b5896cbfd4d1" name="af0ff95cea003f6081496b5896cbfd4d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0ff95cea003f6081496b5896cbfd4d1">&#9670;&#160;</a></span>aern_server_root_certificate_generate()</h2>
+<a id="a4ab60f25b169cd3ffe8c18d223ccd9a7" name="a4ab60f25b169cd3ffe8c18d223ccd9a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ab60f25b169cd3ffe8c18d223ccd9a7">&#9670;&#160;</a></span>aern_server_root_certificate_generate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">AERN_EXPORT_API void aern_server_root_certificate_generate </td>
+          <td class="memname">AERN_EXPORT_API bool aern_server_root_certificate_generate </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structaern__server__application__state.html">aern_server_application_state</a> *</td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
         </tr>
@@ -1128,12 +1128,13 @@ Functions</h2></td></tr>
 <p>This function generates a new root certificate, writes the signature private key to the server state, and populates the root certificate structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state; the private key is written to state-&gt;sigkey. </td></tr>
-    <tr><td class="paramname">rcert</td><td>The output root certificate. </td></tr>
-    <tr><td class="paramname">period</td><td>The validity period (in seconds) for the certificate. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state; the private key is written to state-&gt;sigkey. </td></tr>
+    <tr><td class="paramname">rcert</td><td>[aern_root_certificate*] The output root certificate. </td></tr>
+    <tr><td class="paramname">period</td><td>[uint64_t] The validity period (in seconds) for the certificate.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the root certificate is successfully created. </dd></dl>
 
 </div>
 </div>
@@ -1165,9 +1166,9 @@ Functions</h2></td></tr>
 <p>This function loads the root certificate from file using the issuer name.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">root</td><td>The output root certificate. </td></tr>
-    <tr><td class="paramname">tlist</td><td>[const] A pointer to the topology list.</td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">root</td><td>[aern_root_certificate*] The output root certificate. </td></tr>
+    <tr><td class="paramname">tlist</td><td>[const aern_topology_list_state*] A pointer to the topology list.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1198,8 +1199,8 @@ Functions</h2></td></tr>
 <p>This function prints a formatted version of the root certificate to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fpath</td><td>The file path to the root certificate. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the file path buffer.</td></tr>
+    <tr><td class="paramname">fpath</td><td>[const char*] The file path to the root certificate. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the file path buffer.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1230,9 +1231,8 @@ Functions</h2></td></tr>
 <p>This function stores the root certificate to file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">rcert</td><td>The root certificate to store. </td></tr>
-    <tr><td class="paramname">address</td><td>The root certificate's address. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">rcert</td><td>[const aern_root_certificate*] The root certificate to store. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1258,7 +1258,7 @@ Functions</h2></td></tr>
 <p>This function prompts the user to import the root certificate through a dialogue.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1285,7 +1285,7 @@ Functions</h2></td></tr>
 <p>This function sets the command prompt based on the current console mode in the server state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1320,9 +1320,9 @@ Functions</h2></td></tr>
 <p>This function configures the console timeout period (in minutes) for automatic user logout.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">snum</td><td>The number string representing the timeout period in minutes. </td></tr>
-    <tr><td class="paramname">numlen</td><td>The length of the number string.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">snum</td><td>[const char*] The number string representing the timeout period in minutes. </td></tr>
+    <tr><td class="paramname">numlen</td><td>[size_t] The length of the number string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1358,9 +1358,9 @@ Functions</h2></td></tr>
 <p>This function renames the network domain in the server configuration.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">name</td><td>The new domain name. </td></tr>
-    <tr><td class="paramname">namelen</td><td>The length of the domain name string.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">name</td><td>[const char*] The new domain name. </td></tr>
+    <tr><td class="paramname">namelen</td><td>[size_t] The length of the domain name string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1396,9 +1396,9 @@ Functions</h2></td></tr>
 <p>This function renames the server host in the configuration.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">name</td><td>The new host name. </td></tr>
-    <tr><td class="paramname">namelen</td><td>The length of the host name string.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">name</td><td>[const char*] The new host name. </td></tr>
+    <tr><td class="paramname">namelen</td><td>[size_t] The length of the host name string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1434,9 +1434,9 @@ Functions</h2></td></tr>
 <p>This function sets the server's IP address.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">address</td><td>The IP address string. </td></tr>
-    <tr><td class="paramname">addlen</td><td>The length of the address string.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">address</td><td>[const char*] The IP address string. </td></tr>
+    <tr><td class="paramname">addlen</td><td>[size_t] The length of the address string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1472,9 +1472,9 @@ Functions</h2></td></tr>
 <p>This function sets the maximum number of failed password attempts allowed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">snum</td><td>The number string representing the number of retries. </td></tr>
-    <tr><td class="paramname">numlen</td><td>The length of the number string.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">snum</td><td>[const char*] The number string representing the number of retries. </td></tr>
+    <tr><td class="paramname">numlen</td><td>[size_t] The length of the number string.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1501,7 +1501,7 @@ Functions</h2></td></tr>
 <p>This function restores the server state from a previously saved backup.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1527,7 +1527,7 @@ Functions</h2></td></tr>
 <p>This function saves the current server state to a backup file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1557,8 +1557,8 @@ Functions</h2></td></tr>
 <p>This function initializes the AERN server state for a given server type.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">srvtype</td><td>The server type designation. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">srvtype</td><td>[<a class="el" href="aern_8h.html#ac7ca2a3bb609d399444bb84336afa62a" title="The AERN device designation.">aern_network_designations</a>] The server type designation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1584,7 +1584,7 @@ Functions</h2></td></tr>
 <p>This function writes the current server state to an encrypted file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1611,7 +1611,7 @@ Functions</h2></td></tr>
 <p>This function unloads and clears the current server state from memory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1641,8 +1641,8 @@ Functions</h2></td></tr>
 <p>This function loads the ADC certificate from the server state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">dcert</td><td>The output ADC certificate.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">dcert</td><td>[aern_child_certificate*] The output ADC certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1669,7 +1669,7 @@ Functions</h2></td></tr>
 <p>This function loads the network topology from an encrypted file into the server state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1700,8 +1700,8 @@ Functions</h2></td></tr>
 <p>This function loads the local child certificate from the server state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">ccert</td><td>The output local certificate.</td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">ccert</td><td>[aern_child_certificate*] The output local certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1728,7 +1728,7 @@ Functions</h2></td></tr>
 <p>This function prints the network topology list to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1754,7 +1754,7 @@ Functions</h2></td></tr>
 <p>This function purges the topology list by deleting all nodes except for the root and local nodes.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1784,8 +1784,8 @@ Functions</h2></td></tr>
 <p>This function deletes a certificate from the topology based on its issuer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">issuer</td><td>The target node's issuer string. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The target node's issuer string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1815,8 +1815,8 @@ Functions</h2></td></tr>
 <p>This function removes a node from the topology list based on its issuer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
-    <tr><td class="paramname">issuer</td><td>The target node's issuer string. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">issuer</td><td>[const char*] The target node's issuer string. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1842,7 +1842,7 @@ Functions</h2></td></tr>
 <p>This function resets the topology list by deleting all nodes and certificates except the root.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1868,7 +1868,7 @@ Functions</h2></td></tr>
 <p>This function checks whether the root certificate file exists.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state.</td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1899,8 +1899,8 @@ Functions</h2></td></tr>
 <p>This function loads the root certificate from the server state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>[const] The server application state. </td></tr>
-    <tr><td class="paramname">rcert</td><td>The output root certificate.</td></tr>
+    <tr><td class="paramname">state</td><td>[const aern_server_application_state*] The server application state. </td></tr>
+    <tr><td class="paramname">rcert</td><td>[aern_root_certificate*] The output root certificate.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1927,7 +1927,7 @@ Functions</h2></td></tr>
 <p>This function writes the current network topology from the server state to an encrypted file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1953,7 +1953,7 @@ Functions</h2></td></tr>
 <p>This function initiates the user login process and prompts for credentials.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state.</td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1980,7 +1980,7 @@ Functions</h2></td></tr>
 <p>This function logs out the current user and resets the session.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The server application state. </td></tr>
+    <tr><td class="paramname">state</td><td>[aern_server_application_state*] The server application state. </td></tr>
   </table>
   </dd>
 </dl>

@@ -27,6 +27,11 @@ const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__netwo
 \doxysubsection{Detailed Description}
 The key exchange request function state. 
 
+\begin{DoxyNote}{Note}
+Legacy fragment-\/collection and fragment-\/query control structures were removed from the active AERN network API. AERN relay payload fragmentation is implemented by route.\+c and is bound to relay sessions, packet identifiers, and return-\/direction state. The MPDC multi-\/party key-\/fragment collection protocol is intentionally not part of AERN. 
+\end{DoxyNote}
+
+
 \label{doc-variable-members}
 \Hypertarget{structaern__network__key__exchange__request__state_doc-variable-members}
 \doxysubsection{Field Documentation}

@@ -1,0 +1,107 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+Saved/fragment.c File Reference}
+\hypertarget{_saved_2fragment_8c}{}\label{_saved_2fragment_8c}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/Saved/fragment.c@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/Saved/fragment.c}}
+
+
+Deprecated MPDC-\/derived fragment-\/control message compatibility layer.  
+
+
+{\ttfamily \#include "{}fragment.\+h"{}}\newline
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+{\ttfamily \#include "{}memutils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{_saved_2fragment_8c_a26b9226cf4813cc3ff48517dc004ee3e}{aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+request}} (aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+request\+\_\+state \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Reject an obsolete fragment-\/collection request path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{_saved_2fragment_8c_ab4a25300d58cae68068249e3d084c2df}{aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+response}} (aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+response\+\_\+state \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Reject an obsolete fragment-\/collection response path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{_saved_2fragment_8c_a03a0d8ca4576b8e42bed5be3664171c0}{aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+request}} (const aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+request\+\_\+state \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Reject an obsolete fragment-\/query request path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{_saved_2fragment_8c_aa69ef297cd892bfa14259aab460f10dd}{aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+response}} (const aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+response\+\_\+state \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Reject an obsolete fragment-\/query response path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Deprecated MPDC-\/derived fragment-\/control message compatibility layer. 
+
+AERN does not use the MPDC multi-\/party fragment-\/strengthening protocol. Relay payload fragmentation and out-\/of-\/order reassembly are implemented by the route layer. The functions in this file are retained only to satisfy existing link references and to reject obsolete network control flags safely. 
+
+\label{doc-func-members}
+\Hypertarget{_saved_2fragment_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_saved_2fragment_8c_a26b9226cf4813cc3ff48517dc004ee3e}\index{fragment.c@{fragment.c}!aern\_network\_fragment\_collection\_request@{aern\_network\_fragment\_collection\_request}}
+\index{aern\_network\_fragment\_collection\_request@{aern\_network\_fragment\_collection\_request}!fragment.c@{fragment.c}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_fragment\_collection\_request()}{aern\_network\_fragment\_collection\_request()}}
+{\footnotesize\ttfamily \label{_saved_2fragment_8c_a26b9226cf4813cc3ff48517dc004ee3e} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+request (\begin{DoxyParamCaption}\item[{aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+request\+\_\+state \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Reject an obsolete fragment-\/collection request path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in\mbox{]} The obsolete request state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request. 
+\end{DoxyReturn}
+\Hypertarget{_saved_2fragment_8c_ab4a25300d58cae68068249e3d084c2df}\index{fragment.c@{fragment.c}!aern\_network\_fragment\_collection\_response@{aern\_network\_fragment\_collection\_response}}
+\index{aern\_network\_fragment\_collection\_response@{aern\_network\_fragment\_collection\_response}!fragment.c@{fragment.c}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_fragment\_collection\_response()}{aern\_network\_fragment\_collection\_response()}}
+{\footnotesize\ttfamily \label{_saved_2fragment_8c_ab4a25300d58cae68068249e3d084c2df} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+response (\begin{DoxyParamCaption}\item[{aern\+\_\+network\+\_\+fragment\+\_\+collection\+\_\+response\+\_\+state \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Reject an obsolete fragment-\/collection response path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in\mbox{]} The obsolete response state. \\
+\hline
+{\em packetin} & \mbox{[}in\mbox{]} The received obsolete request packet. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request or a timestamp error. 
+\end{DoxyReturn}
+\Hypertarget{_saved_2fragment_8c_a03a0d8ca4576b8e42bed5be3664171c0}\index{fragment.c@{fragment.c}!aern\_network\_fragment\_query\_request@{aern\_network\_fragment\_query\_request}}
+\index{aern\_network\_fragment\_query\_request@{aern\_network\_fragment\_query\_request}!fragment.c@{fragment.c}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_fragment\_query\_request()}{aern\_network\_fragment\_query\_request()}}
+{\footnotesize\ttfamily \label{_saved_2fragment_8c_a03a0d8ca4576b8e42bed5be3664171c0} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+request (\begin{DoxyParamCaption}\item[{const aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+request\+\_\+state \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Reject an obsolete fragment-\/query request path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in\mbox{]} The obsolete query request state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request. 
+\end{DoxyReturn}
+\Hypertarget{_saved_2fragment_8c_aa69ef297cd892bfa14259aab460f10dd}\index{fragment.c@{fragment.c}!aern\_network\_fragment\_query\_response@{aern\_network\_fragment\_query\_response}}
+\index{aern\_network\_fragment\_query\_response@{aern\_network\_fragment\_query\_response}!fragment.c@{fragment.c}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_fragment\_query\_response()}{aern\_network\_fragment\_query\_response()}}
+{\footnotesize\ttfamily \label{_saved_2fragment_8c_aa69ef297cd892bfa14259aab460f10dd} 
+\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+response (\begin{DoxyParamCaption}\item[{const aern\+\_\+network\+\_\+fragment\+\_\+query\+\_\+response\+\_\+state \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Reject an obsolete fragment-\/query response path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}in\mbox{]} The obsolete query response state. \\
+\hline
+{\em packetin} & \mbox{[}in\mbox{]} The received obsolete query packet. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+invalid\+\_\+request or a timestamp error. 
+\end{DoxyReturn}

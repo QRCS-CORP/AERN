@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aern_utils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adc_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="certificate_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="client_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="network_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="replay_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="route_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="topology_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="e2e_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="aern_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ars_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="aps_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="virtual_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="aern_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adc_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="access_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="certificate_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="client_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="network_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="replay_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="route_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="topology_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="e2e_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ars_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aps_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="virtual_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -104,7 +104,7 @@ struct \mbox{\hyperlink{structaern__cipher__keypair}{aern\+\_\+cipher\+\_\+keypa
 \begin{DoxyCompactList}\small\item\em The algorithm type. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a3812ef33969d44086258072e4e7fa1cd}\label{aern_8h_a3812ef33969d44086258072e4e7fa1cd} 
 \#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+DEFAULT\+\_\+\+PERIOD}~((uint64\+\_\+t)365U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
-\begin{DoxyCompactList}\small\item\em The default certificate validity period in milliseconds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The default certificate validity period in seconds. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a6836977c34ee21da3a738579aad21ad9}\label{aern_8h_a6836977c34ee21da3a738579aad21ad9} 
 \#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+DESIGNATION\+\_\+\+SIZE}~1U
 \begin{DoxyCompactList}\small\item\em The size of the child certificate designation field. \end{DoxyCompactList}\item 
@@ -115,17 +115,17 @@ struct \mbox{\hyperlink{structaern__cipher__keypair}{aern\+\_\+cipher\+\_\+keypa
 \#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}~32U
 \begin{DoxyCompactList}\small\item\em The size of the certificate hash in bytes. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43}\label{aern_8h_a28a75ced9057b99eb5ed59645ce7fe43} 
-\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}~256U
+\#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+ISSUER\+\_\+\+SIZE}~128U
 \begin{DoxyCompactList}\small\item\em The maximum certificate issuer string length. The last character must be a string terminator. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a86c5cd9be73f89f00b1758a9657a1a80}\label{aern_8h_a86c5cd9be73f89f00b1758a9657a1a80} 
 \#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+LINE\+\_\+\+LENGTH}~64U
 \begin{DoxyCompactList}\small\item\em The line length of the printed AERN certificate. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a50d5ab9369b3923eb7dec7e8d44beb5c}\label{aern_8h_a50d5ab9369b3923eb7dec7e8d44beb5c} 
 \#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+MAXIMUM\+\_\+\+PERIOD}~(\mbox{\hyperlink{aern_8h_a3812ef33969d44086258072e4e7fa1cd}{AERN\+\_\+\+CERTIFICATE\+\_\+\+DEFAULT\+\_\+\+PERIOD}} \texorpdfstring{$\ast$}{*} 2U)
-\begin{DoxyCompactList}\small\item\em The maximum certificate validity period in milliseconds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The maximum certificate validity period in seconds. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a76124e82c3370128b7f193f3f30cd972}\label{aern_8h_a76124e82c3370128b7f193f3f30cd972} 
 \#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+MINIMUM\+\_\+\+PERIOD}~((uint64\+\_\+t)1U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
-\begin{DoxyCompactList}\small\item\em The minimum certificate validity period in milliseconds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The minimum certificate validity period in seconds. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241}\label{aern_8h_ad809002d7ee1fe8f6e5dea4fadbda241} 
 \#define {\bfseries AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE}~16U
 \begin{DoxyCompactList}\small\item\em The certificate serial number field length. \end{DoxyCompactList}\item 
@@ -181,19 +181,39 @@ struct \mbox{\hyperlink{structaern__cipher__keypair}{aern\+\_\+cipher\+\_\+keypa
 \#define {\bfseries AERN\+\_\+\+ADC\+\_\+\+REDUCTION\+\_\+\+INTERVAL}~1000000\+UL
 \begin{DoxyCompactList}\small\item\em The time before a penalty is reduced for a flapping ADC in milliseconds. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{aern_8h_adba9c258399bdf3c7fe1e2c37a7888cc}{AERN\+\_\+\+ADC\+\_\+\+UPDATE\+\_\+\+WAIT\+\_\+\+TIME}}~(7U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
-\begin{DoxyCompactList}\small\item\em The interval in milliseconds between topology full updates. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The interval in seconds between topology full updates. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_acc368cea234b96d9c849a8aed4c0062c}\label{aern_8h_acc368cea234b96d9c849a8aed4c0062c} 
 \#define {\bfseries AERN\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+DEPTH}~26U
 \begin{DoxyCompactList}\small\item\em The number of error strings. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a142b20cdbeee92ea893ba7cdfe57fefe}\label{aern_8h_a142b20cdbeee92ea893ba7cdfe57fefe} 
 \#define {\bfseries AERN\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+WIDTH}~128U
 \begin{DoxyCompactList}\small\item\em The maximum size in characters of an error string. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ab7c79b3243d2e841fe3346fc0d300ff1}\label{aern_8h_ab7c79b3243d2e841fe3346fc0d300ff1} 
+\#define {\bfseries AERN\+\_\+\+JITTER\+\_\+\+MAX\+\_\+\+MS}~50U
+\begin{DoxyCompactList}\small\item\em Maximum jitter added to each packet send (milliseconds). \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ac9d38a725ffb59c76100ec9074d6dc92}\label{aern_8h_ac9d38a725ffb59c76100ec9074d6dc92} 
+\#define {\bfseries AERN\+\_\+\+BACKGROUND\+\_\+\+INTERVAL\+\_\+\+MS}~1000U
+\begin{DoxyCompactList}\small\item\em Interval between background cover-\/traffic packets (milliseconds). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_a051525a2a76641fe97c861bfd0f72a63}{AERN\+\_\+\+LOG\+\_\+\+DEVICE\+\_\+\+NAME\+\_\+\+SIZE}}~32U
+\begin{DoxyCompactList}\small\item\em Maximum length of a log device-\/name field (bytes, null-\/terminated). \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a3ed1d5c052b8f09e403cd357d917a901}\label{aern_8h_a3ed1d5c052b8f09e403cd357d917a901} 
+\#define {\bfseries AERN\+\_\+\+LOG\+\_\+\+ENTRY\+\_\+\+SIZE}~(32U + 1U + 32U + 1U + 10U + 1U + 64U + 1U)
+\item 
+\Hypertarget{aern_8h_ab13752f4de1a5d248237b4155eaf844f}\label{aern_8h_ab13752f4de1a5d248237b4155eaf844f} 
+\#define {\bfseries AERN\+\_\+\+LOG\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+SIZE}~64U
+\begin{DoxyCompactList}\small\item\em Maximum length of a log error-\/string field (bytes, null-\/terminated). \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a972738ee5693d48a653aa8d047e7e411}\label{aern_8h_a972738ee5693d48a653aa8d047e7e411} 
+\#define {\bfseries AERN\+\_\+\+LOG\+\_\+\+SALT\+\_\+\+SIZE}~32U
+\begin{DoxyCompactList}\small\item\em Size of the random log salt stored alongside the encrypted log. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_a1ef3a3ed2b26810620b436b91c3c67e2}\label{aern_8h_a1ef3a3ed2b26810620b436b91c3c67e2} 
+\#define {\bfseries AERN\+\_\+\+LOG\+\_\+\+SEED\+\_\+\+SIZE}~64U
+\begin{DoxyCompactList}\small\item\em Size of the password-\/derived log encryption seed (key + nonce). \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_aec19e4948ffac205bcd2254af9f84dcd}\label{aern_8h_aec19e4948ffac205bcd2254af9f84dcd} 
 \#define {\bfseries AERN\+\_\+\+MESSAGE\+\_\+\+MAX\+\_\+\+SIZE}~1400000\+UL
 \begin{DoxyCompactList}\small\item\em The maximum message size (max signature + max certificate sizes). \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a2382672e9a39a489207781944f1167ed}\label{aern_8h_a2382672e9a39a489207781944f1167ed} 
 \#define {\bfseries AERN\+\_\+\+MFK\+\_\+\+EXPIRATION\+\_\+\+PERIOD}~((uint64\+\_\+t)60U \texorpdfstring{$\ast$}{*} 24U \texorpdfstring{$\ast$}{*} 60U \texorpdfstring{$\ast$}{*} 60U)
-\begin{DoxyCompactList}\small\item\em The MFK validity period in milliseconds. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The MFK validity period in seconds. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a64182cb49fd0a4eb0c3742a3b6f36c82}\label{aern_8h_a64182cb49fd0a4eb0c3742a3b6f36c82} 
 \#define {\bfseries AERN\+\_\+\+MINIMUM\+\_\+\+PATH\+\_\+\+LENGTH}~9U
 \begin{DoxyCompactList}\small\item\em The minimum file path length. \end{DoxyCompactList}\item 
@@ -221,6 +241,45 @@ struct \mbox{\hyperlink{structaern__cipher__keypair}{aern\+\_\+cipher\+\_\+keypa
 \Hypertarget{aern_8h_a1e4c716459c858f6354c623dc94f8c9f}\label{aern_8h_a1e4c716459c858f6354c623dc94f8c9f} 
 \#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+HEADER\+\_\+\+SIZE}~22U
 \begin{DoxyCompactList}\small\item\em The AERN packet header size. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_a14c2d53118af4d612ec8a680dd7285e8}{AERN\+\_\+\+RELAY\+\_\+\+AUTH\+\_\+\+FAILURE\+\_\+\+LIMIT}}~8U
+\begin{DoxyCompactList}\small\item\em The number of relay authentication failures tolerated for a peer tunnel. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_a3288781d8c403a4aedf7f468cd370802}{AERN\+\_\+\+RELAY\+\_\+\+REPLAY\+\_\+\+WINDOW\+\_\+\+SIZE}}~0U
+\begin{DoxyCompactList}\small\item\em The per-\/hop relay replay acceptance window size. \end{DoxyCompactList}\item 
+\Hypertarget{aern_8h_ab0754d9545aceb6234fba8549936955b}\label{aern_8h_ab0754d9545aceb6234fba8549936955b} 
+\#define {\bfseries AERN\+\_\+\+RELAY\+\_\+\+STRICT\+\_\+\+SEQUENCING}~1U
+\begin{DoxyCompactList}\small\item\em Enables strict next-\/sequence replay protection for ordered peer tunnels. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{aern_8h_ad1a713180018b9d35ee65371a351ecdf}{AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE}}~32U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a8fb26b7fa45e2eb7fa570e500f01d043}{AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE}}~36U
+\item 
+\#define \mbox{\hyperlink{aern_8h_ab98e0c3aaae38eae8f478262a37c9487}{AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE}}~12U
+\item 
+\#define \mbox{\hyperlink{aern_8h_ae9ff40c2a7eddcedc2e2924fe70dd35c}{AERN\+\_\+\+INGRESS\+\_\+\+DELAY\+\_\+\+ENABLED}}~1U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a548fcf5026698e0451f612af912dbce5}{AERN\+\_\+\+INGRESS\+\_\+\+DELAY\+\_\+\+MINIMUM\+\_\+\+MILLISECONDS}}~0U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a01c1397626c5214a9bd8da80ae1a7563}{AERN\+\_\+\+INGRESS\+\_\+\+DELAY\+\_\+\+MAXIMUM\+\_\+\+MILLISECONDS}}~25U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a8092690592feab13d4a9bf09a380a7c4}{AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+ENABLED}}~1U
+\item 
+\#define \mbox{\hyperlink{aern_8h_ab7d38c329a414f0d682c4e45f270e100}{AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+BANDWIDTH\+\_\+\+FLOOR\+\_\+\+PERCENT}}~10U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a4d77ae350525f3b25ea4c0d98189eec6}{AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+BANDWIDTH\+\_\+\+CEILING\+\_\+\+PERCENT}}~25U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a85873db5e2515b8ce71c0fbec6e710b0}{AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+INTERVAL\+\_\+\+MINIMUM\+\_\+\+MILLISECONDS}}~50U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a5928294b4b23687ba1027d78b37d3fb2}{AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+INTERVAL\+\_\+\+MAXIMUM\+\_\+\+MILLISECONDS}}~250U
+\item 
+\#define \mbox{\hyperlink{aern_8h_ac35e9b14395ede7411190fd64991c620}{AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+WINDOW\+\_\+\+TARGET\+\_\+\+BYTES}}~(AERN\+\_\+\+RELAY\+\_\+\+MTU \texorpdfstring{$\ast$}{*} 128U)
+\item 
+\#define \mbox{\hyperlink{aern_8h_a4b1abdfcf44e030c6502077044f67fc9}{AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+MAXIMUM\+\_\+\+PER\+\_\+\+WINDOW}}~8U
+\item 
+\#define \mbox{\hyperlink{aern_8h_a536cbb22701e440928ca2aedcf4500dc}{AERN\+\_\+\+RELAY\+\_\+\+FRAGMENT\+\_\+\+CACHE\+\_\+\+TIMEOUT\+\_\+\+MILLISECONDS}}~30000U
+\item 
+\#define \mbox{\hyperlink{aern_8h_ade82e11aae9b8da4806b813c62971b75}{AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+TIMEOUT\+\_\+\+MILLISECONDS}}~10000U
+\item 
+\#define \mbox{\hyperlink{aern_8h_af0b4244be804af73df514ccbdc018c86}{AERN\+\_\+\+RELAY\+\_\+\+TRAFFIC\+\_\+\+WINDOW\+\_\+\+MILLISECONDS}}~1000U
+\begin{DoxyCompactList}\small\item\em The local relay traffic accounting window in milliseconds. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a65280709b2a62ecac126a76ca0e88d52}\label{aern_8h_a65280709b2a62ecac126a76ca0e88d52} 
 \#define {\bfseries AERN\+\_\+\+PACKET\+\_\+\+SUBHEADER\+\_\+\+SIZE}~16U
 \begin{DoxyCompactList}\small\item\em The AERN packet sub-\/header size. \end{DoxyCompactList}\item 
@@ -249,7 +308,7 @@ struct \mbox{\hyperlink{structaern__cipher__keypair}{aern\+\_\+cipher\+\_\+keypa
 \#define {\bfseries AERN\+\_\+\+PROTOCOL\+\_\+\+SET\+\_\+\+SIZE}~41U
 \begin{DoxyCompactList}\small\item\em The size of the protocol configuration string. \end{DoxyCompactList}\item 
 \Hypertarget{aern_8h_a4d82b84958203892b078d8b70e53c88f}\label{aern_8h_a4d82b84958203892b078d8b70e53c88f} 
-\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+DEPTH}~28U
+\#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+DEPTH}~29U
 \item 
 \Hypertarget{aern_8h_af7276c7e7cf5e7413324ec4ba144e026}\label{aern_8h_af7276c7e7cf5e7413324ec4ba144e026} 
 \#define {\bfseries AERN\+\_\+\+NETWORK\+\_\+\+ERROR\+\_\+\+STRING\+\_\+\+SIZE}~128U
@@ -339,7 +398,7 @@ enum \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+netwo
 \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aaaf64dfba91eebe0afb406b6ffee41410}{aern\+\_\+network\+\_\+designation\+\_\+none}} = 0x00U
 , \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aacf426b6eb22e163768b5155582e8ec16}{aern\+\_\+network\+\_\+designation\+\_\+aps}} = 0x01U
 , \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aad2fae914cf3f6aea5ca57d7e2d0f676e}{aern\+\_\+network\+\_\+designation\+\_\+client}} = 0x02U
-, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae}{aern\+\_\+network\+\_\+designation\+\_\+ads}} = 0x03U
+, \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa97f9d05dbf9210e02332c949b89c8a87}{aern\+\_\+network\+\_\+designation\+\_\+adc}} = 0x03U
 , \newline
 \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa}{aern\+\_\+network\+\_\+designation\+\_\+remote}} = 0x04U
 , \mbox{\hyperlink{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa63066aa50699bb1cbfb515b82c74c1c4}{aern\+\_\+network\+\_\+designation\+\_\+ars}} = 0x05U
@@ -384,6 +443,8 @@ enum \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+netwo
 , \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0ae608b54145023f9bd2d5156a9372db7a}{aern\+\_\+network\+\_\+error\+\_\+unknown\+\_\+protocol}} = 0x28U
 , \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a797ca028c0d4cfa9c0fdc9a7c60f721b}{aern\+\_\+network\+\_\+error\+\_\+unsequenced}} = 0x29U
 , \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0a6fb12f12ac8cce604551878bae9a4d05}{aern\+\_\+network\+\_\+error\+\_\+verify\+\_\+failure}} = 0x2\+AU
+, \newline
+\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0acbfc1203155bc01418cb20bf49c5c1d5}{aern\+\_\+network\+\_\+error\+\_\+time\+\_\+invalid}} = 0x2\+BU
  \}
 \begin{DoxyCompactList}\small\item\em The AERN network error values. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}} \{ \newline
@@ -441,7 +502,7 @@ enum \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+netwo
 , \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a9b2fe85395733b7107d4aabce65e8cf3}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+remote\+\_\+signing\+\_\+request}} = 0x29U
 , \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5a520314004d09025765af3c4f55dc4555}{aern\+\_\+network\+\_\+flag\+\_\+network\+\_\+remote\+\_\+signing\+\_\+response}} = 0x2\+AU
  \}
-\begin{DoxyCompactList}\small\item\em The AERN network flags. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The AERN network control and tunnel packet flags. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \{ \newline
 \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724aa7f1199026b486871b3ffe0fbd36cf0a}{aern\+\_\+protocol\+\_\+error\+\_\+none}} = 0x00U
 , \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724a21df65386393579abe6b3dcfffc90e24}{aern\+\_\+protocol\+\_\+error\+\_\+authentication\+\_\+failure}} = 0x01U
@@ -526,6 +587,8 @@ AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a6fc4dadfffa09d47a24
 \begin{DoxyCompactList}\small\item\em Deserialize a byte array into a packet header. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a43040bf7a96fe91043d2af94b7139034}{aern\+\_\+packet\+\_\+header\+\_\+serialize}} (const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet, uint8\+\_\+t \texorpdfstring{$\ast$}{*}header)
 \begin{DoxyCompactList}\small\item\em Serialize a packet header into a byte array. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}} \mbox{\hyperlink{aern_8h_abd2133522768c9b0246e5ee116b24417}{aern\+\_\+header\+\_\+validate}} (const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin, \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}} pktflag, uint64\+\_\+t sequence, uint32\+\_\+t msglen)
+\begin{DoxyCompactList}\small\item\em Validate a packet header and timestamp. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{aern_8h_a56507e954bca6540934e1154c3e3d8e7}{aern\+\_\+packet\+\_\+set\+\_\+utc\+\_\+time}} (\mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet)
 \begin{DoxyCompactList}\small\item\em Set the local UTC time in the packet header. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{aern_8h_aca1e36b6ef4e422a309c984894555e85}{aern\+\_\+packet\+\_\+time\+\_\+valid}} (const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packet)
@@ -580,7 +643,7 @@ These tests collectively ensure the robustness, consistency, and security of the
 
 
 
-The interval in milliseconds between topology full updates. 
+The interval in seconds between topology full updates. 
 
 Note\+: Default is 7 days. \Hypertarget{aern_8h_a32787cceb2e337d19877ac25338c4c32}\index{aern.h@{aern.h}!AERN\_CERTIFICATE\_CHILD\_SIZE@{AERN\_CERTIFICATE\_CHILD\_SIZE}}
 \index{AERN\_CERTIFICATE\_CHILD\_SIZE@{AERN\_CERTIFICATE\_CHILD\_SIZE}!aern.h@{aern.h}}
@@ -651,7 +714,141 @@ The length of an IDG certificate.
 
 The length of the root certificate. 
 
+\Hypertarget{aern_8h_a4d77ae350525f3b25ea4c0d98189eec6}\index{aern.h@{aern.h}!AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_CEILING\_PERCENT@{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_CEILING\_PERCENT}}
+\index{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_CEILING\_PERCENT@{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_CEILING\_PERCENT}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_CEILING\_PERCENT}{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_CEILING\_PERCENT}}
+{\footnotesize\ttfamily \label{aern_8h_a4d77ae350525f3b25ea4c0d98189eec6} 
+\#define AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+BANDWIDTH\+\_\+\+CEILING\+\_\+\+PERCENT~25U}
 
+Brief The traffic-\/utilization ceiling above which dummy traffic is suppressed. \Hypertarget{aern_8h_ab7d38c329a414f0d682c4e45f270e100}\index{aern.h@{aern.h}!AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_FLOOR\_PERCENT@{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_FLOOR\_PERCENT}}
+\index{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_FLOOR\_PERCENT@{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_FLOOR\_PERCENT}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_FLOOR\_PERCENT}{AERN\_DUMMY\_TRAFFIC\_BANDWIDTH\_FLOOR\_PERCENT}}
+{\footnotesize\ttfamily \label{aern_8h_ab7d38c329a414f0d682c4e45f270e100} 
+\#define AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+BANDWIDTH\+\_\+\+FLOOR\+\_\+\+PERCENT~10U}
+
+Brief The traffic-\/utilization floor below which dummy traffic may be generated. \Hypertarget{aern_8h_a8092690592feab13d4a9bf09a380a7c4}\index{aern.h@{aern.h}!AERN\_DUMMY\_TRAFFIC\_ENABLED@{AERN\_DUMMY\_TRAFFIC\_ENABLED}}
+\index{AERN\_DUMMY\_TRAFFIC\_ENABLED@{AERN\_DUMMY\_TRAFFIC\_ENABLED}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_DUMMY\_TRAFFIC\_ENABLED}{AERN\_DUMMY\_TRAFFIC\_ENABLED}}
+{\footnotesize\ttfamily \label{aern_8h_a8092690592feab13d4a9bf09a380a7c4} 
+\#define AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+ENABLED~1U}
+
+Brief Enables APS dummy relay traffic generation. \Hypertarget{aern_8h_a5928294b4b23687ba1027d78b37d3fb2}\index{aern.h@{aern.h}!AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MAXIMUM\_MILLISECONDS@{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MAXIMUM\_MILLISECONDS}}
+\index{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MAXIMUM\_MILLISECONDS@{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MAXIMUM\_MILLISECONDS}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MAXIMUM\_MILLISECONDS}{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MAXIMUM\_MILLISECONDS}}
+{\footnotesize\ttfamily \label{aern_8h_a5928294b4b23687ba1027d78b37d3fb2} 
+\#define AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+INTERVAL\+\_\+\+MAXIMUM\+\_\+\+MILLISECONDS~250U}
+
+Brief The maximum interval between dummy packet generation attempts. \Hypertarget{aern_8h_a85873db5e2515b8ce71c0fbec6e710b0}\index{aern.h@{aern.h}!AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MINIMUM\_MILLISECONDS@{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MINIMUM\_MILLISECONDS}}
+\index{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MINIMUM\_MILLISECONDS@{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MINIMUM\_MILLISECONDS}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MINIMUM\_MILLISECONDS}{AERN\_DUMMY\_TRAFFIC\_INTERVAL\_MINIMUM\_MILLISECONDS}}
+{\footnotesize\ttfamily \label{aern_8h_a85873db5e2515b8ce71c0fbec6e710b0} 
+\#define AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+INTERVAL\+\_\+\+MINIMUM\+\_\+\+MILLISECONDS~50U}
+
+Brief The minimum interval between dummy packet generation attempts. \Hypertarget{aern_8h_a4b1abdfcf44e030c6502077044f67fc9}\index{aern.h@{aern.h}!AERN\_DUMMY\_TRAFFIC\_MAXIMUM\_PER\_WINDOW@{AERN\_DUMMY\_TRAFFIC\_MAXIMUM\_PER\_WINDOW}}
+\index{AERN\_DUMMY\_TRAFFIC\_MAXIMUM\_PER\_WINDOW@{AERN\_DUMMY\_TRAFFIC\_MAXIMUM\_PER\_WINDOW}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_DUMMY\_TRAFFIC\_MAXIMUM\_PER\_WINDOW}{AERN\_DUMMY\_TRAFFIC\_MAXIMUM\_PER\_WINDOW}}
+{\footnotesize\ttfamily \label{aern_8h_a4b1abdfcf44e030c6502077044f67fc9} 
+\#define AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+MAXIMUM\+\_\+\+PER\+\_\+\+WINDOW~8U}
+
+Brief The maximum number of dummy packets an APS may emit per accounting window. \Hypertarget{aern_8h_ac35e9b14395ede7411190fd64991c620}\index{aern.h@{aern.h}!AERN\_DUMMY\_TRAFFIC\_WINDOW\_TARGET\_BYTES@{AERN\_DUMMY\_TRAFFIC\_WINDOW\_TARGET\_BYTES}}
+\index{AERN\_DUMMY\_TRAFFIC\_WINDOW\_TARGET\_BYTES@{AERN\_DUMMY\_TRAFFIC\_WINDOW\_TARGET\_BYTES}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_DUMMY\_TRAFFIC\_WINDOW\_TARGET\_BYTES}{AERN\_DUMMY\_TRAFFIC\_WINDOW\_TARGET\_BYTES}}
+{\footnotesize\ttfamily \label{aern_8h_ac35e9b14395ede7411190fd64991c620} 
+\#define AERN\+\_\+\+DUMMY\+\_\+\+TRAFFIC\+\_\+\+WINDOW\+\_\+\+TARGET\+\_\+\+BYTES~(AERN\+\_\+\+RELAY\+\_\+\+MTU \texorpdfstring{$\ast$}{*} 128U)}
+
+Brief The local traffic-\/window byte target used to estimate utilization.
+
+The APS dummy-\/traffic policy estimates utilization by comparing local relay transmit and receive byte counters against this per-\/window target. The value is local policy only and is not transmitted or logged. \Hypertarget{aern_8h_ae9ff40c2a7eddcedc2e2924fe70dd35c}\index{aern.h@{aern.h}!AERN\_INGRESS\_DELAY\_ENABLED@{AERN\_INGRESS\_DELAY\_ENABLED}}
+\index{AERN\_INGRESS\_DELAY\_ENABLED@{AERN\_INGRESS\_DELAY\_ENABLED}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_INGRESS\_DELAY\_ENABLED}{AERN\_INGRESS\_DELAY\_ENABLED}}
+{\footnotesize\ttfamily \label{aern_8h_ae9ff40c2a7eddcedc2e2924fe70dd35c} 
+\#define AERN\+\_\+\+INGRESS\+\_\+\+DELAY\+\_\+\+ENABLED~1U}
+
+Brief Enables optional ingress-\/side randomized data-\/packet delay. \Hypertarget{aern_8h_a01c1397626c5214a9bd8da80ae1a7563}\index{aern.h@{aern.h}!AERN\_INGRESS\_DELAY\_MAXIMUM\_MILLISECONDS@{AERN\_INGRESS\_DELAY\_MAXIMUM\_MILLISECONDS}}
+\index{AERN\_INGRESS\_DELAY\_MAXIMUM\_MILLISECONDS@{AERN\_INGRESS\_DELAY\_MAXIMUM\_MILLISECONDS}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_INGRESS\_DELAY\_MAXIMUM\_MILLISECONDS}{AERN\_INGRESS\_DELAY\_MAXIMUM\_MILLISECONDS}}
+{\footnotesize\ttfamily \label{aern_8h_a01c1397626c5214a9bd8da80ae1a7563} 
+\#define AERN\+\_\+\+INGRESS\+\_\+\+DELAY\+\_\+\+MAXIMUM\+\_\+\+MILLISECONDS~25U}
+
+Brief The maximum randomized ingress packet delay in milliseconds. \Hypertarget{aern_8h_a548fcf5026698e0451f612af912dbce5}\index{aern.h@{aern.h}!AERN\_INGRESS\_DELAY\_MINIMUM\_MILLISECONDS@{AERN\_INGRESS\_DELAY\_MINIMUM\_MILLISECONDS}}
+\index{AERN\_INGRESS\_DELAY\_MINIMUM\_MILLISECONDS@{AERN\_INGRESS\_DELAY\_MINIMUM\_MILLISECONDS}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_INGRESS\_DELAY\_MINIMUM\_MILLISECONDS}{AERN\_INGRESS\_DELAY\_MINIMUM\_MILLISECONDS}}
+{\footnotesize\ttfamily \label{aern_8h_a548fcf5026698e0451f612af912dbce5} 
+\#define AERN\+\_\+\+INGRESS\+\_\+\+DELAY\+\_\+\+MINIMUM\+\_\+\+MILLISECONDS~0U}
+
+Brief The minimum randomized ingress packet delay in milliseconds. \Hypertarget{aern_8h_a051525a2a76641fe97c861bfd0f72a63}\index{aern.h@{aern.h}!AERN\_LOG\_DEVICE\_NAME\_SIZE@{AERN\_LOG\_DEVICE\_NAME\_SIZE}}
+\index{AERN\_LOG\_DEVICE\_NAME\_SIZE@{AERN\_LOG\_DEVICE\_NAME\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_LOG\_DEVICE\_NAME\_SIZE}{AERN\_LOG\_DEVICE\_NAME\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_a051525a2a76641fe97c861bfd0f72a63} 
+\#define AERN\+\_\+\+LOG\+\_\+\+DEVICE\+\_\+\+NAME\+\_\+\+SIZE~32U}
+
+
+
+Maximum length of a log device-\/name field (bytes, null-\/terminated). 
+
+Fixed-\/width size of one log entry on disk (before encryption). \Hypertarget{aern_8h_a14c2d53118af4d612ec8a680dd7285e8}\index{aern.h@{aern.h}!AERN\_RELAY\_AUTH\_FAILURE\_LIMIT@{AERN\_RELAY\_AUTH\_FAILURE\_LIMIT}}
+\index{AERN\_RELAY\_AUTH\_FAILURE\_LIMIT@{AERN\_RELAY\_AUTH\_FAILURE\_LIMIT}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_AUTH\_FAILURE\_LIMIT}{AERN\_RELAY\_AUTH\_FAILURE\_LIMIT}}
+{\footnotesize\ttfamily \label{aern_8h_a14c2d53118af4d612ec8a680dd7285e8} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+AUTH\+\_\+\+FAILURE\+\_\+\+LIMIT~8U}
+
+
+
+The number of relay authentication failures tolerated for a peer tunnel. 
+
+This value is a policy threshold used by relay processing to count repeated authentication failures on an established APS tunnel. A single failed relay packet is discarded and SHALL NOT by itself invalidate the tunnel. \Hypertarget{aern_8h_a536cbb22701e440928ca2aedcf4500dc}\index{aern.h@{aern.h}!AERN\_RELAY\_FRAGMENT\_CACHE\_TIMEOUT\_MILLISECONDS@{AERN\_RELAY\_FRAGMENT\_CACHE\_TIMEOUT\_MILLISECONDS}}
+\index{AERN\_RELAY\_FRAGMENT\_CACHE\_TIMEOUT\_MILLISECONDS@{AERN\_RELAY\_FRAGMENT\_CACHE\_TIMEOUT\_MILLISECONDS}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_FRAGMENT\_CACHE\_TIMEOUT\_MILLISECONDS}{AERN\_RELAY\_FRAGMENT\_CACHE\_TIMEOUT\_MILLISECONDS}}
+{\footnotesize\ttfamily \label{aern_8h_a536cbb22701e440928ca2aedcf4500dc} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+FRAGMENT\+\_\+\+CACHE\+\_\+\+TIMEOUT\+\_\+\+MILLISECONDS~30000U}
+
+Brief The default timeout for incomplete relay fragment cache entries. \Hypertarget{aern_8h_ad1a713180018b9d35ee65371a351ecdf}\index{aern.h@{aern.h}!AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE@{AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE}}
+\index{AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE@{AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE}{AERN\_RELAY\_PAYLOAD\_HEADER\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_ad1a713180018b9d35ee65371a351ecdf} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+PAYLOAD\+\_\+\+HEADER\+\_\+\+SIZE~32U}
+
+Brief The byte size of the encrypted relay payload header.
+
+The relay payload header is serialized inside the encrypted relay body after the length prefix and encrypted route map. It identifies the logical session, packet, fragment ordering, payload type, reserved relay byte, and control flags. The active relay payload header does not carry a protocol field; backend protocol interpretation is performed at the backend transport boundary. \Hypertarget{aern_8h_a3288781d8c403a4aedf7f468cd370802}\index{aern.h@{aern.h}!AERN\_RELAY\_REPLAY\_WINDOW\_SIZE@{AERN\_RELAY\_REPLAY\_WINDOW\_SIZE}}
+\index{AERN\_RELAY\_REPLAY\_WINDOW\_SIZE@{AERN\_RELAY\_REPLAY\_WINDOW\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_REPLAY\_WINDOW\_SIZE}{AERN\_RELAY\_REPLAY\_WINDOW\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_a3288781d8c403a4aedf7f468cd370802} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+REPLAY\+\_\+\+WINDOW\+\_\+\+SIZE~0U}
+
+
+
+The per-\/hop relay replay acceptance window size. 
+
+AERN currently uses ordered APS-\/to-\/\+APS tunnel transport. Each encrypted tunnel packet MUST carry exactly the next expected sequence number. A value of zero records that no out-\/of-\/order replay window is active for per-\/hop tunnel packets. Relay payload fragments remain independently reorderable at the session-\/fragment cache layer after successful tunnel authentication. \Hypertarget{aern_8h_ab98e0c3aaae38eae8f478262a37c9487}\index{aern.h@{aern.h}!AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE@{AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE}}
+\index{AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE@{AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE}{AERN\_RELAY\_SESSION\_OPEN\_ACK\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_ab98e0c3aaae38eae8f478262a37c9487} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+ACK\+\_\+\+SIZE~12U}
+
+Brief The byte size of an encrypted relay session-\/open acknowledgement payload. \Hypertarget{aern_8h_a8fb26b7fa45e2eb7fa570e500f01d043}\index{aern.h@{aern.h}!AERN\_RELAY\_SESSION\_OPEN\_SIZE@{AERN\_RELAY\_SESSION\_OPEN\_SIZE}}
+\index{AERN\_RELAY\_SESSION\_OPEN\_SIZE@{AERN\_RELAY\_SESSION\_OPEN\_SIZE}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_SESSION\_OPEN\_SIZE}{AERN\_RELAY\_SESSION\_OPEN\_SIZE}}
+{\footnotesize\ttfamily \label{aern_8h_a8fb26b7fa45e2eb7fa570e500f01d043} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+SIZE~36U}
+
+Brief The byte size of an encrypted relay session-\/open payload. \Hypertarget{aern_8h_ade82e11aae9b8da4806b813c62971b75}\index{aern.h@{aern.h}!AERN\_RELAY\_SESSION\_OPEN\_TIMEOUT\_MILLISECONDS@{AERN\_RELAY\_SESSION\_OPEN\_TIMEOUT\_MILLISECONDS}}
+\index{AERN\_RELAY\_SESSION\_OPEN\_TIMEOUT\_MILLISECONDS@{AERN\_RELAY\_SESSION\_OPEN\_TIMEOUT\_MILLISECONDS}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_SESSION\_OPEN\_TIMEOUT\_MILLISECONDS}{AERN\_RELAY\_SESSION\_OPEN\_TIMEOUT\_MILLISECONDS}}
+{\footnotesize\ttfamily \label{aern_8h_ade82e11aae9b8da4806b813c62971b75} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+SESSION\+\_\+\+OPEN\+\_\+\+TIMEOUT\+\_\+\+MILLISECONDS~10000U}
+
+Brief The default timeout for ingress packets queued before session-\/open acknowledgement. \Hypertarget{aern_8h_af0b4244be804af73df514ccbdc018c86}\index{aern.h@{aern.h}!AERN\_RELAY\_TRAFFIC\_WINDOW\_MILLISECONDS@{AERN\_RELAY\_TRAFFIC\_WINDOW\_MILLISECONDS}}
+\index{AERN\_RELAY\_TRAFFIC\_WINDOW\_MILLISECONDS@{AERN\_RELAY\_TRAFFIC\_WINDOW\_MILLISECONDS}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_RELAY\_TRAFFIC\_WINDOW\_MILLISECONDS}{AERN\_RELAY\_TRAFFIC\_WINDOW\_MILLISECONDS}}
+{\footnotesize\ttfamily \label{aern_8h_af0b4244be804af73df514ccbdc018c86} 
+\#define AERN\+\_\+\+RELAY\+\_\+\+TRAFFIC\+\_\+\+WINDOW\+\_\+\+MILLISECONDS~1000U}
+
+
+
+The local relay traffic accounting window in milliseconds. 
+
+This value controls how often local relay byte counters used by traffic shaping and dummy-\/packet policy are reset. The counters are local to the APS process and do not expose or retain packet contents, addresses, or session metadata. 
 
 \label{doc-enum-members}
 \Hypertarget{aern_8h_doc-enum-members}
@@ -751,8 +948,8 @@ aern\+\_\+network\+\_\+designation\+\_\+aps&The device is an APS \\
 aern\+\_\+network\+\_\+designation\+\_\+client&The device is a client \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_ads@{aern\_network\_designation\_ads}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_ads@{aern\_network\_designation\_ads}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa911c4eb9b1b49b65cc181ff96f9855ae} 
-aern\+\_\+network\+\_\+designation\+\_\+ads&The device is the ADC \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_adc@{aern\_network\_designation\_adc}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_adc@{aern\_network\_designation\_adc}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa97f9d05dbf9210e02332c949b89c8a87}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa97f9d05dbf9210e02332c949b89c8a87} 
+aern\+\_\+network\+\_\+designation\+\_\+adc&The device is the ADC \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_designation\_remote@{aern\_network\_designation\_remote}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_designation\_remote@{aern\_network\_designation\_remote}}}\Hypertarget{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa}\label{aern_8h_ac7ca2a3bb609d399444bb84336afa62aa6ed2999fcafe8d7a87d01a9db3fc06fa} 
@@ -899,6 +1096,10 @@ aern\+\_\+network\+\_\+error\+\_\+unsequenced&The packet was received out of seq
 aern\+\_\+network\+\_\+error\+\_\+verify\+\_\+failure&The expected data could not be verified \\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_error\_time\_invalid@{aern\_network\_error\_time\_invalid}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_error\_time\_invalid@{aern\_network\_error\_time\_invalid}}}\Hypertarget{aern_8h_ab9ccd46c9402a020ca690439ec6961c0acbfc1203155bc01418cb20bf49c5c1d5}\label{aern_8h_ab9ccd46c9402a020ca690439ec6961c0acbfc1203155bc01418cb20bf49c5c1d5} 
+aern\+\_\+network\+\_\+error\+\_\+time\+\_\+invalid&The packet utc time has expired \\
+\hline
+
 \end{DoxyEnumFields}
 \Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5}\index{aern.h@{aern.h}!aern\_network\_flags@{aern\_network\_flags}}
 \index{aern\_network\_flags@{aern\_network\_flags}!aern.h@{aern.h}}
@@ -908,9 +1109,9 @@ enum \mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+netwo
 
 
 
-The AERN network flags. 
+The AERN network control and tunnel packet flags. 
 
-\begin{DoxyEnumFields}[2]{Enumerator}
+The values in this enumeration define the expanded AERN control-\/plane message namespace used for registration, topology management, remote certificate signing, status exchange, and tunnel control. The ARS root server accepts only the remote-\/signing request and system-\/error flags; relay packet processing is handled by the APS/\+ACD tunnel layer. \begin{DoxyEnumFields}[2]{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_none@{aern\_network\_flag\_none}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_none@{aern\_network\_flag\_none}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac4224ad812f79d4255ba8a8fa2a8a641}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5ac4224ad812f79d4255ba8a8fa2a8a641} 
 aern\+\_\+network\+\_\+flag\+\_\+none&No flag was selected \\
 \hline
@@ -924,27 +1125,27 @@ aern\+\_\+network\+\_\+flag\+\_\+error\+\_\+condition&The connection experienced
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_collection\_request@{aern\_network\_flag\_fragment\_collection\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_collection\_request@{aern\_network\_flag\_fragment\_collection\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a0d9a2576a6d1502f8954e104d3fa7be8} 
-aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+request&The packet contains a server fragment collection request message \\
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+request&Reserved obsolete fragment collection request flag \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_collection\_response@{aern\_network\_flag\_fragment\_collection\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_collection\_response@{aern\_network\_flag\_fragment\_collection\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a2f42cd76a9411020178a123b9afa8cba} 
-aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+response&The packet contains an aps fragment collection response message \\
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+collection\+\_\+response&Reserved obsolete fragment collection response flag \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_request@{aern\_network\_flag\_fragment\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_request@{aern\_network\_flag\_fragment\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5af3d63683ebf702a6d5e082a2514fbd0e} 
-aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+request&The packet contains a server fragment key request message \\
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+request&Reserved legacy fragment request flag \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_response@{aern\_network\_flag\_fragment\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_response@{aern\_network\_flag\_fragment\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a1f4e0e9e792da1e50da4cf9f6c983f42} 
-aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+response&The packet contains an aps fragment key response message \\
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+response&Reserved legacy fragment response flag \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_query\_request@{aern\_network\_flag\_fragment\_query\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_query\_request@{aern\_network\_flag\_fragment\_query\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a12ad2c56389780b35ce9b568ddc79ccb} 
-aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+request&The packet contains a server fragment key request message \\
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+request&Reserved obsolete fragment query request flag \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_fragment\_query\_response@{aern\_network\_flag\_fragment\_query\_response}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_fragment\_query\_response@{aern\_network\_flag\_fragment\_query\_response}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5a52744199560e329579f9d5ec906e2022} 
-aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+response&The packet contains an aps fragment key response message \\
+aern\+\_\+network\+\_\+flag\+\_\+fragment\+\_\+query\+\_\+response&Reserved obsolete fragment query response flag \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{aern\_network\_flag\_incremental\_update\_request@{aern\_network\_flag\_incremental\_update\_request}!aern.h@{aern.h}}\index{aern.h@{aern.h}!aern\_network\_flag\_incremental\_update\_request@{aern\_network\_flag\_incremental\_update\_request}}}\Hypertarget{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa9227ce68893342c6c5f446c94aec798}\label{aern_8h_ae24cb3d879182c83bd3349e930176dc5aa9227ce68893342c6c5f446c94aec798} 
@@ -1309,11 +1510,11 @@ Close the network connection between hosts.
 
 
 \begin{DoxyParams}{Parameters}
-{\em rsock} & A pointer to the socket structure representing the connection. \\
+{\em rsock} & \mbox{[}qsc\+\_\+socket\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the socket structure representing the connection. \\
 \hline
-{\em err} & The network error code to report. \\
+{\em err} & \mbox{[}\doxylink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}\mbox{]} The network error code to report. \\
 \hline
-{\em notify} & If true, notify the remote host that the connection is closing. \\
+{\em notify} & \mbox{[}bool\mbox{]} If true, notify the remote host that the connection is closing. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{aern_8h_ac7faf9729e19882b72f97b9988e1a885}\index{aern.h@{aern.h}!aern\_connection\_state\_dispose@{aern\_connection\_state\_dispose}}
@@ -1328,7 +1529,7 @@ Dispose of the tunnel connection state.
 
 
 \begin{DoxyParams}{Parameters}
-{\em cns} & A pointer to the connection state structure to dispose. \\
+{\em cns} & \mbox{[}aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the connection state structure to dispose. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{aern_8h_a73c3f452a923f12a50956a10421060a5}\index{aern.h@{aern.h}!aern\_decrypt\_packet@{aern\_decrypt\_packet}}
@@ -1343,13 +1544,13 @@ Decrypt a message and copy it to the output buffer.
 
 
 \begin{DoxyParams}{Parameters}
-{\em cns} & A pointer to the connection state structure. \\
+{\em cns} & \mbox{[}aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the connection state structure. \\
 \hline
-{\em message} & The output array for the decrypted message. \\
+{\em message} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The output array for the decrypted message. \\
 \hline
-{\em msglen} & A pointer to a variable that will receive the length of the decrypted message. \\
+{\em msglen} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to a variable that will receive the length of the decrypted message. \\
 \hline
-{\em packetin} & \mbox{[}const\mbox{]} A pointer to the input packet structure.\\
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the input packet structure.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1367,17 +1568,41 @@ Encrypt a message and build an output packet.
 
 
 \begin{DoxyParams}{Parameters}
-{\em cns} & A pointer to the connection state structure. \\
+{\em cns} & \mbox{[}aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the connection state structure. \\
 \hline
-{\em packetout} & A pointer to the output packet structure. \\
+{\em packetout} & \mbox{[}aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the output packet structure. \\
 \hline
-{\em message} & \mbox{[}const\mbox{]} The input message array. \\
+{\em message} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The input message array. \\
 \hline
-{\em msglen} & The length of the input message.\\
+{\em msglen} & \mbox{[}size\+\_\+t\mbox{]} The length of the input message.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Returns the network error state. 
+\end{DoxyReturn}
+\Hypertarget{aern_8h_abd2133522768c9b0246e5ee116b24417}\index{aern.h@{aern.h}!aern\_header\_validate@{aern\_header\_validate}}
+\index{aern\_header\_validate@{aern\_header\_validate}!aern.h@{aern.h}}
+\doxysubsubsection{\texorpdfstring{aern\_header\_validate()}{aern\_header\_validate()}}
+{\footnotesize\ttfamily \label{aern_8h_abd2133522768c9b0246e5ee116b24417} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}} aern\+\_\+header\+\_\+validate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{, }\item[{\mbox{\hyperlink{aern_8h_ae24cb3d879182c83bd3349e930176dc5}{aern\+\_\+network\+\_\+flags}}}]{pktflag}{, }\item[{uint64\+\_\+t}]{sequence}{, }\item[{uint32\+\_\+t}]{msglen}{}\end{DoxyParamCaption})}
+
+
+
+Validate a packet header and timestamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packetin} & A pointer to the input packet structure \\
+\hline
+{\em pktflag} & The packet flag \\
+\hline
+{\em sequence} & The packet sequence number \\
+\hline
+{\em msglen} & The length of the message array, or zero if dynamic\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: Returns the function error state 
 \end{DoxyReturn}
 \Hypertarget{aern_8h_a9ff6e0fed5834e3ad6fe15f21fa5ad98}\index{aern.h@{aern.h}!aern\_network\_error\_to\_string@{aern\_network\_error\_to\_string}}
 \index{aern\_network\_error\_to\_string@{aern\_network\_error\_to\_string}!aern.h@{aern.h}}
@@ -1391,7 +1616,7 @@ Return a pointer to a string description of a network error code.
 
 
 \begin{DoxyParams}{Parameters}
-{\em error} & The network error code.\\
+{\em error} & \mbox{[}\doxylink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}\mbox{]} The network error code.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1409,7 +1634,7 @@ Clear the state of a network packet.
 
 
 \begin{DoxyParams}{Parameters}
-{\em packet} & A pointer to the packet structure to clear. \\
+{\em packet} & \mbox{[}aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the packet structure to clear. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{aern_8h_a8e3439f91fff1df3184b8aeee1fc68f5}\index{aern.h@{aern.h}!aern\_packet\_error\_message@{aern\_packet\_error\_message}}
@@ -1424,9 +1649,9 @@ Populate a packet structure with an error message.
 
 
 \begin{DoxyParams}{Parameters}
-{\em packet} & A pointer to the packet structure. \\
+{\em packet} & \mbox{[}aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the packet structure. \\
 \hline
-{\em error} & The protocol error code to embed in the packet. \\
+{\em error} & \mbox{[}\doxylink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}\mbox{]} The protocol error code to embed in the packet. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{aern_8h_a6fc4dadfffa09d47a24ca5ed442deab5}\index{aern.h@{aern.h}!aern\_packet\_header\_deserialize@{aern\_packet\_header\_deserialize}}
@@ -1441,9 +1666,9 @@ Deserialize a byte array into a packet header.
 
 
 \begin{DoxyParams}{Parameters}
-{\em header} & \mbox{[}const\mbox{]} The header byte array to deserialize. \\
+{\em header} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The header byte array to deserialize. \\
 \hline
-{\em packet} & A pointer to the packet structure that will be populated. \\
+{\em packet} & \mbox{[}aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the packet structure that will be populated. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{aern_8h_a43040bf7a96fe91043d2af94b7139034}\index{aern.h@{aern.h}!aern\_packet\_header\_serialize@{aern\_packet\_header\_serialize}}
@@ -1458,9 +1683,9 @@ Serialize a packet header into a byte array.
 
 
 \begin{DoxyParams}{Parameters}
-{\em packet} & \mbox{[}const\mbox{]} A pointer to the packet structure to serialize. \\
+{\em packet} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the packet structure to serialize. \\
 \hline
-{\em header} & The byte array that will receive the serialized header. \\
+{\em header} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The byte array that will receive the serialized header. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{aern_8h_a56507e954bca6540934e1154c3e3d8e7}\index{aern.h@{aern.h}!aern\_packet\_set\_utc\_time@{aern\_packet\_set\_utc\_time}}
@@ -1475,7 +1700,7 @@ Set the local UTC time in the packet header.
 
 
 \begin{DoxyParams}{Parameters}
-{\em packet} & A pointer to the network packet. \\
+{\em packet} & \mbox{[}aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the network packet. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{aern_8h_aca1e36b6ef4e422a309c984894555e85}\index{aern.h@{aern.h}!aern\_packet\_time\_valid@{aern\_packet\_time\_valid}}
@@ -1490,7 +1715,7 @@ Check if the packet\textquotesingle{}s UTC time is within the valid time thresho
 
 
 \begin{DoxyParams}{Parameters}
-{\em packet} & \mbox{[}const\mbox{]} A pointer to the network packet.\\
+{\em packet} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the network packet.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1508,9 +1733,9 @@ Serialize a network packet to a byte stream.
 
 
 \begin{DoxyParams}{Parameters}
-{\em packet} & \mbox{[}const\mbox{]} A pointer to the packet. \\
+{\em packet} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the packet. \\
 \hline
-{\em pstream} & A pointer to the output byte stream.\\
+{\em pstream} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the output byte stream.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1528,7 +1753,7 @@ Return a pointer to a string description of a protocol error code.
 
 
 \begin{DoxyParams}{Parameters}
-{\em error} & The protocol error code.\\
+{\em error} & \mbox{[}\doxylink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}\mbox{]} The protocol error code.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1546,8 +1771,8 @@ Deserialize a byte stream into a network packet.
 
 
 \begin{DoxyParams}{Parameters}
-{\em pstream} & \mbox{[}const\mbox{]} The byte stream containing the packet data. \\
+{\em pstream} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The byte stream containing the packet data. \\
 \hline
-{\em packet} & A pointer to the packet structure to populate. \\
+{\em packet} & \mbox{[}aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the packet structure to populate. \\
 \hline
 \end{DoxyParams}

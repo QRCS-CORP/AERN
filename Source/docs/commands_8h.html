@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -540,7 +540,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731a10fd58d76b4857c563dbafc03310149b" name="a7ca4a182ee1fe9fc43629ff3d1a20731a10fd58d76b4857c563dbafc03310149b"></a>aern_application_register_success&#160;</td><td class="fielddoc"><p>The network join request has succeeded. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635" name="a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635"></a>aern_application_register_existing&#160;</td><td class="fielddoc"><p>The node is joined to an existing network, rejoin the ads? Y|N </p>
+<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635" name="a7ca4a182ee1fe9fc43629ff3d1a20731aa5c95ce72f35168180327ca714f80635"></a>aern_application_register_existing&#160;</td><td class="fielddoc"><p>The node is joined to an existing network, rejoin the ADC? Y|N </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731adcc0e0005ddb576ce5f3e2b37e5f8902" name="a7ca4a182ee1fe9fc43629ff3d1a20731adcc0e0005ddb576ce5f3e2b37e5f8902"></a>aern_application_announce_failure&#160;</td><td class="fielddoc"><p>The certificate has been announced to the network. </p>
 </td></tr>
@@ -552,7 +552,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731a23231ec8a4c728bf993dd68307916b01" name="a7ca4a182ee1fe9fc43629ff3d1a20731a23231ec8a4c728bf993dd68307916b01"></a>aern_application_message_time_invalid&#160;</td><td class="fielddoc"><p>The network time is invalid or has substantial delay. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64" name="a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64"></a>aern_application_certificate_not_found&#160;</td><td class="fielddoc"><p>The root, ads, or aps certificate could not be found. </p>
+<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64" name="a7ca4a182ee1fe9fc43629ff3d1a20731adf79a3a986938bc38e942af0b6f03f64"></a>aern_application_certificate_not_found&#160;</td><td class="fielddoc"><p>The root, ADC, or APS certificate could not be found. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731a5d792f8355dc5497964bdbc2178b53a3" name="a7ca4a182ee1fe9fc43629ff3d1a20731a5d792f8355dc5497964bdbc2178b53a3"></a>aern_application_signature_failure&#160;</td><td class="fielddoc"><p>The signature could not be generated for a message. </p>
 </td></tr>
@@ -704,9 +704,9 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731a375206bb789fa64608f97dab63f9bcf8" name="a7ca4a182ee1fe9fc43629ff3d1a20731a375206bb789fa64608f97dab63f9bcf8"></a>aern_application_log_receive_failure&#160;</td><td class="fielddoc"><p>The network session has timed out </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29" name="a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29"></a>aern_application_log_register_failure&#160;</td><td class="fielddoc"><p>The network ads join request was denied </p>
+<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29" name="a7ca4a182ee1fe9fc43629ff3d1a20731a4db2d07b358fb2b73d75798d944a7a29"></a>aern_application_log_register_failure&#160;</td><td class="fielddoc"><p>The network ADC join request was denied </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f" name="a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f"></a>aern_application_log_register_success&#160;</td><td class="fielddoc"><p>The network ads join request has succeeded </p>
+<tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f" name="a7ca4a182ee1fe9fc43629ff3d1a20731af36ec05487368374a76497410c42083f"></a>aern_application_log_register_success&#160;</td><td class="fielddoc"><p>The network ADC join request has succeeded </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a7ca4a182ee1fe9fc43629ff3d1a20731aeed854b80b305cde18e92420fd7662a9" name="a7ca4a182ee1fe9fc43629ff3d1a20731aeed854b80b305cde18e92420fd7662a9"></a>aern_application_log_fragment_exchange_failure&#160;</td><td class="fielddoc"><p>The key fragment exchange has failed </p>
 </td></tr>

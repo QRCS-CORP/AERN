@@ -1,5 +1,4 @@
 #include "topology.h"
-#include "async.h"
 #include "fileutils.h"
 #include "intutils.h"
 #include "memutils.h"
@@ -8,6 +7,306 @@
 #if defined(AERN_DEBUG_MODE)
 #	include "acp.h"
 #endif
+
+static int32_t topology_node_serial_compare(const uint8_t* a, const uint8_t* b)
+{
+	AERN_ASSERT(a != NULL);
+	AERN_ASSERT(b != NULL);
+
+	const uint8_t* aser;
+	const uint8_t* bser;
+	int32_t res;
+
+	res = 0;
+
+	if (a != NULL && b != NULL)
+	{
+		aser = a + AERN_CERTIFICATE_ISSUER_SIZE;
+		bser = b + AERN_CERTIFICATE_ISSUER_SIZE;
+
+		if (qsc_memutils_are_equal_128(aser, bser) == false)
+		{
+			res = (qsc_memutils_greater_than_le128(aser, bser) == true) ? 1 : -1;
+		}
+	}
+
+	return res;
+}
+
+static void topology_node_swap(uint8_t* a, uint8_t* b)
+{
+	AERN_ASSERT(a != NULL);
+	AERN_ASSERT(b != NULL);
+
+	uint8_t tmp[AERN_NETWORK_TOPOLOGY_NODE_SIZE] = { 0U };
+
+	if (a != NULL && b != NULL)
+	{
+		qsc_memutils_copy(tmp, a, AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+		qsc_memutils_copy(a, b, AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+		qsc_memutils_copy(b, tmp, AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+		qsc_memutils_secure_erase(tmp, sizeof(tmp));
+	}
+}
+
+static void topology_sort_by_serial(uint8_t* nodes, uint32_t count)
+{
+	AERN_ASSERT(nodes != NULL);
+
+	size_t i;
+	size_t j;
+	uint8_t* left;
+	uint8_t* right;
+
+	if (nodes != NULL && count > 1U)
+	{
+		for (i = 0U; i < (size_t)count - 1U; ++i)
+		{
+			left = nodes + (i * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+
+			for (j = i + 1U; j < (size_t)count; ++j)
+			{
+				right = nodes + (j * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+
+				if (topology_node_serial_compare(left, right) > 0)
+				{
+					topology_node_swap(left, right);
+				}
+			}
+		}
+	}
+}
+
+static size_t topology_designation_count(const aern_topology_list_state* list, aern_network_designations designation)
+{
+	AERN_ASSERT(list != NULL);
+
+	aern_topology_node_state node = { 0 };
+	size_t cnt;
+
+	cnt = 0U;
+
+	if (list != NULL)
+	{
+		for (size_t i = 0U; i < list->count; ++i)
+		{
+			qsc_memutils_clear(&node, sizeof(node));
+
+			if (aern_topology_list_item(list, &node, i) == true && node.designation == designation)
+			{
+				++cnt;
+			}
+		}
+	}
+
+	return cnt;
+}
+
+static bool topology_issuer_matches(const char* a, const char* b)
+{
+	AERN_ASSERT(a != NULL);
+	AERN_ASSERT(b != NULL);
+
+	bool res;
+
+	res = false;
+
+	if (a != NULL && b != NULL)
+	{
+		res = qsc_memutils_are_equal((const uint8_t*)a, (const uint8_t*)b, AERN_CERTIFICATE_ISSUER_SIZE);
+	}
+
+	return res;
+}
+
+static bool topology_node_can_insert(const aern_topology_list_state* list, const aern_topology_node_state* node)
+{
+	AERN_ASSERT(list != NULL);
+	AERN_ASSERT(node != NULL);
+
+	aern_topology_node_state exnode = { 0 };
+	bool replacing;
+	bool res;
+
+	replacing = false;
+	res = false;
+
+	if (list != NULL && node != NULL)
+	{
+		replacing = aern_topology_node_find_issuer(list, &exnode, node->issuer);
+
+		if (list->count < AERN_NETWORK_TOPOLOGY_MAX_SIZE || replacing == true)
+		{
+			qsc_memutils_clear(&exnode, sizeof(exnode));
+			res = true;
+
+			if (aern_topology_node_find(list, &exnode, node->serial) == true &&
+				topology_issuer_matches(exnode.issuer, node->issuer) == false)
+			{
+				res = false;
+			}
+			else if (node->designation == aern_network_designation_aps && replacing == false &&
+				topology_designation_count(list, aern_network_designation_aps) >= 255U)
+			{
+				res = false;
+			}
+		}
+	}
+
+	return res;
+}
+
+void aern_topology_add(aern_topology_list_state* list, const aern_topology_node_state* node)
+{
+	AERN_ASSERT(list != NULL);
+	AERN_ASSERT(node != NULL);
+
+	uint32_t count;
+
+	if (list != NULL && node != NULL)
+	{
+		count = list->count;
+		aern_topology_child_add_item(list, node);
+
+		if (list->count != count)
+		{
+			(void)aern_topology_increment_version(list);
+		}
+	}
+}
+
+void aern_topology_hash(const aern_topology_list_state* list, uint8_t hash[AERN_CERTIFICATE_HASH_SIZE])
+{
+	AERN_ASSERT(list != NULL);
+	AERN_ASSERT(hash != NULL);
+
+	uint8_t* scratch;
+	size_t len;
+
+	scratch = NULL;
+	len = 0U;
+
+	if (hash != NULL)
+	{
+		qsc_memutils_clear(hash, AERN_CERTIFICATE_HASH_SIZE);
+	}
+
+	if (list != NULL && hash != NULL)
+	{
+		if (list->topology != NULL && list->count > 0U)
+		{
+			len = (size_t)list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE;
+			scratch = qsc_memutils_malloc(len);
+
+			if (scratch != NULL)
+			{
+				qsc_memutils_copy(scratch, list->topology, len);
+				topology_sort_by_serial(scratch, list->count);
+				qsc_shake256_compute(hash, AERN_CERTIFICATE_HASH_SIZE, scratch, len);
+				qsc_memutils_secure_erase(scratch, len);
+				qsc_memutils_alloc_free(scratch);
+			}
+		}
+		else
+		{
+			qsc_shake256_compute(hash, AERN_CERTIFICATE_HASH_SIZE, (const uint8_t*)"aern-empty-topology", 19U);
+		}
+	}
+}
+
+uint64_t aern_topology_increment_version(aern_topology_list_state* list)
+{
+	AERN_ASSERT(list != NULL);
+
+	uint64_t res;
+
+	res = 0U;
+
+	if (list != NULL)
+	{
+		qsc_async_mutex_lock(list->gmtx);
+
+		if (list->version == 0U)
+		{
+			list->version = 1U;
+		}
+		else
+		{
+			++list->version;
+
+			if (list->version == 0U)
+			{
+				list->version = 1U;
+			}
+		}
+
+		res = list->version;
+		qsc_async_mutex_unlock(list->gmtx);
+	}
+
+	return res;
+}
+
+void aern_topology_remove(aern_topology_list_state* list, const uint8_t* serial)
+{
+	AERN_ASSERT(list != NULL);
+	AERN_ASSERT(serial != NULL);
+
+	if (list != NULL && serial != NULL)
+	{
+		if (aern_topology_node_exists(list, serial) == true)
+		{
+			aern_topology_node_remove(list, serial);
+			(void)aern_topology_increment_version(list);
+		}
+	}
+}
+
+aern_protocol_errors aern_topology_update(aern_topology_list_state* list, const aern_topology_node_state* node)
+{
+	AERN_ASSERT(list != NULL);
+	AERN_ASSERT(node != NULL);
+
+	aern_protocol_errors res;
+
+	res = aern_protocol_error_invalid_request;
+
+	if (list != NULL && node != NULL)
+	{
+		if (aern_topology_node_exists(list, node->serial) == true)
+		{
+			aern_topology_node_remove(list, node->serial);
+			aern_topology_child_add_item(list, node);
+			(void)aern_topology_increment_version(list);
+			res = aern_protocol_error_none;
+		}
+		else
+		{
+			res = aern_protocol_error_node_not_found;
+		}
+	}
+
+	return res;
+}
+
+aern_protocol_errors aern_topology_version_verify(const aern_topology_list_state* list, uint64_t incomingver)
+{
+	AERN_ASSERT(list != NULL);
+
+	aern_protocol_errors res;
+
+	res = aern_protocol_error_invalid_request;
+
+	if (list != NULL)
+	{
+		if (incomingver > list->version)
+		{
+			res = aern_protocol_error_none;
+		}
+	}
+
+	return res;
+}
 
 void aern_topology_address_from_issuer(char* address, const char* issuer, const aern_topology_list_state* list)
 {
@@ -51,34 +350,26 @@ uint8_t* aern_topology_child_add_empty_node(aern_topology_list_state* list)
 	nptr = NULL;
 	ttmp = NULL;
 
-	if (list != NULL)
+	if (list != NULL && list->count < AERN_NETWORK_TOPOLOGY_MAX_SIZE)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
-
 		nctx = list->count + 1U;
 
 		if (list->topology != NULL)
 		{
 			ttmp = qsc_memutils_realloc(list->topology, nctx * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
-
-			if (ttmp != NULL)
-			{
-				list->topology = ttmp;
-			}
 		}
 		else
 		{
-			list->topology = qsc_memutils_malloc(nctx * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+			ttmp = qsc_memutils_malloc(nctx * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
 		}
 
-		nptr = (uint8_t*)(list->topology + (list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE));
-
-		qsc_memutils_clear(nptr, AERN_NETWORK_TOPOLOGY_NODE_SIZE);
-		++list->count;
-
-		qsc_async_mutex_unlock_ex(mtx);
+		if (ttmp != NULL)
+		{
+			list->topology = ttmp;
+			nptr = list->topology + ((size_t)list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+			qsc_memutils_secure_erase(nptr, AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+			++list->count;
+		}
 	}
 
 	return nptr;
@@ -91,18 +382,20 @@ void aern_topology_child_add_item(aern_topology_list_state* list, const aern_top
 
 	uint8_t* nptr;
 
-	if (list != NULL && node != NULL)
+	if (list != NULL && node != NULL && topology_node_can_insert(list, node) == true)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
+		qsc_async_mutex_lock(list->gmtx);
 
 		aern_topology_node_remove_duplicate(list, node->issuer);
-
 		nptr = aern_topology_child_add_empty_node(list);
-		aern_topology_node_serialize(nptr, node);
 
-		qsc_async_mutex_unlock_ex(mtx);
+		if (nptr != NULL)
+		{
+			aern_topology_node_serialize(nptr, node);
+			topology_sort_by_serial(list->topology, list->count);
+		}
+
+		qsc_async_mutex_unlock(list->gmtx);
 	}
 }
 
@@ -197,12 +490,6 @@ void aern_topology_child_register(aern_topology_list_state* list, const aern_chi
 
 	if (list != NULL && ccert != NULL && address != NULL)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
-
-		aern_topology_node_remove_duplicate(list, ccert->issuer);
-
 		qsc_memutils_copy(node.issuer, ccert->issuer, AERN_CERTIFICATE_ISSUER_SIZE);
 		qsc_memutils_copy(node.serial, ccert->serial, AERN_CERTIFICATE_SERIAL_SIZE);
 		qsc_memutils_copy(node.address, address, AERN_CERTIFICATE_ADDRESS_SIZE);
@@ -210,24 +497,52 @@ void aern_topology_child_register(aern_topology_list_state* list, const aern_chi
 		node.designation = ccert->designation;
 		aern_certificate_child_hash(node.chash, ccert);
 
-		nptr = aern_topology_child_add_empty_node(list);
-		aern_topology_node_serialize(nptr, &node);
+		if (topology_node_can_insert(list, &node) == true)
+		{
+			qsc_async_mutex_lock(list->gmtx);
 
-		qsc_async_mutex_unlock_ex(mtx);
+			aern_topology_node_remove_duplicate(list, ccert->issuer);
+			nptr = aern_topology_child_add_empty_node(list);
+
+			if (nptr != NULL)
+			{
+				aern_topology_node_serialize(nptr, &node);
+				topology_sort_by_serial(list->topology, list->count);
+			}
+
+			qsc_async_mutex_unlock(list->gmtx);
+		}
 	}
 }
 
 void aern_topology_list_clone(const aern_topology_list_state* tlist, aern_topology_list_state* tcopy)
 {
-	for (size_t i = 0U; i < tlist->count; ++i)
-	{
-		aern_topology_node_state node = { 0 };
-		uint8_t* nptr;
+	AERN_ASSERT(tlist != NULL);
+	AERN_ASSERT(tcopy != NULL);
 
-		if (aern_topology_list_item(tlist, &node, i) == true)
+	if (tlist != NULL && tcopy != NULL)
+	{
+		tcopy->version = tlist->version;
+
+		for (size_t i = 0U; i < tlist->count; ++i)
 		{
-			nptr = aern_topology_child_add_empty_node(tcopy);
-			aern_topology_node_serialize(nptr, &node);
+			aern_topology_node_state node = { 0 };
+			uint8_t* nptr;
+
+			if (aern_topology_list_item(tlist, &node, i) == true)
+			{
+				nptr = aern_topology_child_add_empty_node(tcopy);
+
+				if (nptr != NULL)
+				{
+					aern_topology_node_serialize(nptr, &node);
+				}
+			}
+		}
+
+		if (tcopy->topology != NULL && tcopy->count > 1U)
+		{
+			topology_sort_by_serial(tcopy->topology, tcopy->count);
 		}
 	}
 }
@@ -239,27 +554,41 @@ void aern_topology_list_deserialize(aern_topology_list_state* list, const uint8_
 
 	size_t cnt;
 	size_t pos;
+	size_t rlen;
 
-	if (list != NULL && input != NULL)
+	if (list != NULL && input != NULL && inplen >= sizeof(uint32_t))
 	{
 		cnt = (size_t)qsc_intutils_le8to32(input);
 		pos = sizeof(uint32_t);
+		rlen = pos + (cnt * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
 
-		for (size_t i = 0U; i < cnt; ++i)
+		if (cnt <= AERN_NETWORK_TOPOLOGY_MAX_SIZE && rlen >= pos && rlen == inplen)
 		{
-			aern_topology_node_state node = { 0 };
-			uint8_t* nptr;
-
-			if (pos >= inplen)
+			for (size_t i = 0U; i < cnt; ++i)
 			{
-				break;
+				aern_topology_node_state node = { 0 };
+				uint8_t* nptr;
+
+				aern_topology_node_deserialize(&node, input + pos);
+				nptr = aern_topology_child_add_empty_node(list);
+
+				if (nptr != NULL)
+				{
+					aern_topology_node_serialize(nptr, &node);
+				}
+
+				pos += AERN_NETWORK_TOPOLOGY_NODE_SIZE;
 			}
 
-			aern_topology_node_deserialize(&node, input + pos);
-			nptr = aern_topology_child_add_empty_node(list);
-			aern_topology_node_serialize(nptr, &node);
+			if (list->topology != NULL && list->count > 1U)
+			{
+				topology_sort_by_serial(list->topology, list->count);
+			}
 
-			pos += AERN_NETWORK_TOPOLOGY_NODE_SIZE;
+			if (list->version == 0U)
+			{
+				list->version = 1U;
+			}
 		}
 	}
 }
@@ -272,11 +601,22 @@ void aern_topology_list_dispose(aern_topology_list_state* list)
 	{
 		if (list->topology != NULL)
 		{
-			qsc_memutils_clear(list->topology, list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+			if (list->count != 0U)
+			{
+				qsc_memutils_secure_erase(list->topology, list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+			}
+
 			qsc_memutils_alloc_free(list->topology);
 			list->topology = NULL;
 			list->count = 0U;
+
+			if (list->gmtx != NULL)
+			{
+				qsc_async_mutex_destroy(list->gmtx);
+			}
 		}
+
+		list->version = 0U;
 	}
 }
 
@@ -288,6 +628,8 @@ void aern_topology_list_initialize(aern_topology_list_state* list)
 	{
 		list->count = 0U;
 		list->topology = NULL;
+		list->version = 1U;
+		list->gmtx = qsc_async_mutex_create();
 	}
 }
 
@@ -303,15 +645,10 @@ bool aern_topology_list_item(const aern_topology_list_state* list, aern_topology
 	if (list != NULL && node != NULL && index < list->count)
 	{
 		const uint8_t* nptr;
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
 
 		nptr = (uint8_t*)(list->topology + (index * AERN_NETWORK_TOPOLOGY_NODE_SIZE));
 		aern_topology_node_deserialize(node, nptr);
 		res = true;
-
-		qsc_async_mutex_unlock_ex(mtx);
 	}
 
 	return res;
@@ -327,13 +664,12 @@ size_t aern_topology_list_remove_duplicates(aern_topology_list_state* list)
 	size_t ctr;
 	size_t len;
 	size_t pos;
-	qsc_mutex mtx;
 
 	ctr = 0U;
 
 	if (list != NULL)
 	{
-		mtx = qsc_async_mutex_lock_ex();
+		qsc_async_mutex_lock(list->gmtx);
 
 		pos = 0U;
 		len = list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE;
@@ -384,7 +720,7 @@ size_t aern_topology_list_remove_duplicates(aern_topology_list_state* list)
 			qsc_memutils_alloc_free(ntop);
 		}
 
-		qsc_async_mutex_unlock_ex(mtx);
+		qsc_async_mutex_unlock(list->gmtx);
 	}
 
 	return ctr;
@@ -504,20 +840,44 @@ size_t aern_topology_list_update_unpack(aern_topology_list_state* list, const ui
 
 	cnt = 0U;
 
-	if (list != NULL && input != NULL && inplen >= AERN_NETWORK_TOPOLOGY_NODE_SIZE)
+	if (list != NULL && input != NULL &&
+		inplen >= AERN_NETWORK_TOPOLOGY_NODE_SIZE &&
+		(inplen % AERN_NETWORK_TOPOLOGY_NODE_SIZE) == 0U)
 	{
 		pos = 0U;
 		cnt = inplen / AERN_NETWORK_TOPOLOGY_NODE_SIZE;
 
-		for (size_t i = 0U; i < cnt; ++i)
+		if (cnt <= AERN_NETWORK_TOPOLOGY_MAX_SIZE && list->count <= AERN_NETWORK_TOPOLOGY_MAX_SIZE - cnt)
 		{
-			aern_topology_node_state node = { 0 };
-			uint8_t* nptr;
+			for (size_t i = 0U; i < cnt; ++i)
+			{
+				aern_topology_node_state node = { 0 };
+				uint8_t* nptr;
 
-			aern_topology_node_deserialize(&node, input + pos);
-			nptr = aern_topology_child_add_empty_node(list);
-			aern_topology_node_serialize(nptr, &node);
-			pos += AERN_NETWORK_TOPOLOGY_NODE_SIZE;
+				aern_topology_node_deserialize(&node, input + pos);
+				nptr = aern_topology_child_add_empty_node(list);
+
+				if (nptr != NULL)
+				{
+					aern_topology_node_serialize(nptr, &node);
+				}
+
+				pos += AERN_NETWORK_TOPOLOGY_NODE_SIZE;
+			}
+
+			if (list->topology != NULL && list->count > 1U)
+			{
+				topology_sort_by_serial(list->topology, list->count);
+			}
+
+			if (list->version == 0U)
+			{
+				list->version = 1U;
+			}
+		}
+		else
+		{
+			cnt = 0U;
 		}
 	}
 
@@ -529,52 +889,62 @@ size_t aern_topology_ordered_server_list(aern_topology_list_state* olist, const 
 	AERN_ASSERT(olist != NULL);
 	AERN_ASSERT(tlist != NULL);
 
+	aern_topology_node_state node;
+	uint8_t* scratch;
+	uint8_t* nptr;
 	size_t dcnt;
+	size_t i;
 	size_t scnt;
+	size_t slen;
 
+	scratch = NULL;
 	scnt = 0U;
 
 	if (olist != NULL && tlist != NULL)
 	{
-		qsc_list_state slst = { 0 };
-		aern_topology_node_state node = { 0 };
+		aern_topology_list_dispose(olist);
+		aern_topology_list_initialize(olist);
 
 		dcnt = aern_topology_list_server_count(tlist, ntype);
 
-		if (dcnt > 0U)
+		if (dcnt > 0U && dcnt <= tlist->count)
 		{
-			/* iterate through the topology list and add nodes of the device type */
-			qsc_list_initialize(&slst, AERN_CERTIFICATE_SERIAL_SIZE);
+			slen = dcnt * AERN_NETWORK_TOPOLOGY_NODE_SIZE;
 
-			for (size_t i = 0U; i < tlist->count; ++i)
+			if (slen / AERN_NETWORK_TOPOLOGY_NODE_SIZE == dcnt)
 			{
-				aern_topology_list_item(tlist, &node, i);
-
-				if (node.designation == ntype || ntype == aern_network_designation_all)
-				{
-					qsc_list_add(&slst, node.serial);
-				}
+				scratch = qsc_memutils_malloc(slen);
 			}
 
-			if (slst.count > 0U)
+			if (scratch != NULL)
 			{
-				uint8_t sern[AERN_CERTIFICATE_SERIAL_SIZE] = { 0U };
+				qsc_memutils_clear(scratch, slen);
 
-				scnt = slst.count;
-
-				/* sort the list of serial numbers */
-				qsc_list_sort(&slst);
-
-				/* fill the output topology state with nodes ordered by serial number  */
-				for (size_t i = 0U; i < slst.count; ++i)
+				for (i = 0U; i < tlist->count; ++i)
 				{
-					qsc_list_item(&slst, sern, i);
-
-					if (aern_topology_node_find(tlist, &node, sern) == true)
+					if (aern_topology_list_item(tlist, &node, i) == true &&
+						(node.designation == ntype || ntype == aern_network_designation_all))
 					{
-						aern_topology_child_add_item(olist, &node);
+						nptr = scratch + (scnt * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+						aern_topology_node_serialize(nptr, &node);
+						++scnt;
 					}
 				}
+
+				if (scnt > 1U)
+				{
+					topology_sort_by_serial(scratch, (uint32_t)scnt);
+				}
+
+				for (i = 0U; i < scnt; ++i)
+				{
+					nptr = scratch + (i * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+					aern_topology_node_deserialize(&node, nptr);
+					aern_topology_child_add_item(olist, &node);
+				}
+
+				qsc_memutils_secure_erase(scratch, slen);
+				qsc_memutils_alloc_free(scratch);
 			}
 		}
 	}
@@ -592,10 +962,6 @@ void aern_topology_node_add_alias(aern_topology_node_state* node, const char* al
 
 	if (node != NULL && alias != NULL && qsc_stringutils_string_size(alias) >= AERN_TOPOLOGY_NODE_MINIMUM_ISSUER_SIZE)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
-
 		ilen = qsc_stringutils_string_size(node->issuer);
 
 		if (ilen >= AERN_TOPOLOGY_NODE_MINIMUM_ISSUER_SIZE)
@@ -610,8 +976,6 @@ void aern_topology_node_add_alias(aern_topology_node_state* node, const char* al
 		}
 
 		qsc_stringutils_concat_strings(node->issuer, AERN_CERTIFICATE_ISSUER_SIZE, alias);
-
-		qsc_async_mutex_unlock_ex(mtx);
 	}
 }
 
@@ -656,10 +1020,10 @@ void aern_topology_node_clear(aern_topology_node_state* node)
 
 	if (node != NULL)
 	{
-		qsc_memutils_clear(node->issuer, AERN_CERTIFICATE_ISSUER_SIZE);
-		qsc_memutils_clear(node->address, AERN_CERTIFICATE_ADDRESS_SIZE);
-		qsc_memutils_clear(node->chash, AERN_CRYPTO_SYMMETRIC_HASH_SIZE);
-		qsc_memutils_clear(node->serial, AERN_CERTIFICATE_SERIAL_SIZE);
+		qsc_memutils_secure_erase(node->issuer, AERN_CERTIFICATE_ISSUER_SIZE);
+		qsc_memutils_secure_erase(node->address, AERN_CERTIFICATE_ADDRESS_SIZE);
+		qsc_memutils_secure_erase(node->chash, AERN_CRYPTO_SYMMETRIC_HASH_SIZE);
+		qsc_memutils_secure_erase(node->serial, AERN_CERTIFICATE_SERIAL_SIZE);
 		node->expiration.from = 0U;
 		node->expiration.to = 0U;
 		node->designation = aern_network_designation_none;
@@ -720,10 +1084,6 @@ bool aern_topology_node_find(const aern_topology_list_state* list, aern_topology
 
 	if (list != NULL && node != NULL && serial != NULL)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
-
 		for (size_t i = 0U; i < list->count; ++i)
 		{
 			aern_topology_node_state ntmp = { 0 };
@@ -738,8 +1098,6 @@ bool aern_topology_node_find(const aern_topology_list_state* list, aern_topology
 				}
 			}
 		}
-
-		qsc_async_mutex_unlock_ex(mtx);
 	}
 
 	return res;
@@ -757,9 +1115,6 @@ bool aern_topology_node_find_address(const aern_topology_list_state* list, aern_
 
 	if (list != NULL && node != NULL && address != NULL)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
 
 		for (size_t i = 0U; i < list->count; ++i)
 		{
@@ -767,7 +1122,7 @@ bool aern_topology_node_find_address(const aern_topology_list_state* list, aern_
 
 			if (aern_topology_list_item(list, &ntmp, i) == true)
 			{
-				if (qsc_memutils_are_equal_128((const uint8_t*)ntmp.address, (const uint8_t*)address) == true)
+				if (qsc_memutils_are_equal((const uint8_t*)ntmp.address, (const uint8_t*)address, AERN_CERTIFICATE_ADDRESS_SIZE) == true)
 				{
 					aern_topology_node_copy(&ntmp, node);
 					res = true;
@@ -775,8 +1130,6 @@ bool aern_topology_node_find_address(const aern_topology_list_state* list, aern_
 				}
 			}
 		}
-		
-		qsc_async_mutex_unlock_ex(mtx);
 	}
 
 	return res;
@@ -794,10 +1147,6 @@ bool aern_topology_node_find_alias(const aern_topology_list_state* list, aern_to
 
 	if (list != NULL && node != NULL && alias != NULL && qsc_stringutils_string_size(alias) >= AERN_TOPOLOGY_NODE_MINIMUM_ISSUER_SIZE)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
-
 		for (size_t i = 0U; i < list->count; ++i)
 		{
 			aern_topology_node_state ntmp = { 0 };
@@ -812,8 +1161,6 @@ bool aern_topology_node_find_alias(const aern_topology_list_state* list, aern_to
 				}
 			}
 		}
-
-		qsc_async_mutex_unlock_ex(mtx);
 	}
 
 	return res;
@@ -830,17 +1177,13 @@ bool aern_topology_node_find_ads(const aern_topology_list_state* list, aern_topo
 
 	if (list != NULL && node != NULL)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
-
 		for (size_t i = 0U; i < list->count; ++i)
 		{
 			aern_topology_node_state ntmp = { 0 };
 
 			if (aern_topology_list_item(list, &ntmp, i) == true)
 			{
-				if (ntmp.designation == aern_network_designation_ads)
+				if (ntmp.designation == aern_network_designation_adc)
 				{
 					aern_topology_node_copy(&ntmp, node);
 					res = true;
@@ -848,8 +1191,68 @@ bool aern_topology_node_find_ads(const aern_topology_list_state* list, aern_topo
 				}
 			}
 		}
+	}
 
-		qsc_async_mutex_unlock_ex(mtx);
+	return res;
+}
+
+bool aern_topology_node_find_adc(const aern_topology_list_state* list, aern_topology_node_state* node)
+{
+	AERN_ASSERT(list != NULL);
+	AERN_ASSERT(node != NULL);
+
+	aern_topology_node_state ntmp = { 0 };
+	size_t pos;
+	bool res;
+
+	pos = 0U;
+	res = false;
+
+	if (list != NULL && node != NULL)
+	{
+		for (pos = 0U; pos < list->count; ++pos)
+		{
+			qsc_memutils_clear(&ntmp, sizeof(ntmp));
+
+			if (aern_topology_list_item(list, &ntmp, pos) == true &&
+				ntmp.designation == aern_network_designation_adc)
+			{
+				aern_topology_node_copy(&ntmp, node);
+				res = true;
+				break;
+			}
+		}
+	}
+
+	return res;
+}
+
+bool aern_topology_node_find_aps(const aern_topology_list_state* list, aern_topology_node_state* node)
+{
+	AERN_ASSERT(list != NULL);
+	AERN_ASSERT(node != NULL);
+
+	aern_topology_node_state ntmp = { 0 };
+	size_t pos;
+	bool res;
+
+	pos = 0U;
+	res = false;
+
+	if (list != NULL && node != NULL)
+	{
+		for (pos = 0U; pos < list->count; ++pos)
+		{
+			qsc_memutils_clear(&ntmp, sizeof(ntmp));
+
+			if (aern_topology_list_item(list, &ntmp, pos) == true &&
+				ntmp.designation == aern_network_designation_aps)
+			{
+				aern_topology_node_copy(&ntmp, node);
+				res = true;
+				break;
+			}
+		}
 	}
 
 	return res;
@@ -868,9 +1271,6 @@ bool aern_topology_node_find_issuer(const aern_topology_list_state* list, aern_t
 
 	if (list != NULL && node != NULL && issuer != NULL)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
 		clen = qsc_stringutils_string_size(issuer);
 
 		if (clen >= AERN_TOPOLOGY_NODE_MINIMUM_ISSUER_SIZE)
@@ -895,8 +1295,6 @@ bool aern_topology_node_find_issuer(const aern_topology_list_state* list, aern_t
 				}
 			}
 		}
-
-		qsc_async_mutex_unlock_ex(mtx);
 	}
 
 	return res;
@@ -913,10 +1311,6 @@ bool aern_topology_node_find_root(const aern_topology_list_state* list, aern_top
 
 	if (list != NULL && node != NULL)
 	{
-		qsc_mutex mtx;
-
-		mtx = qsc_async_mutex_lock_ex();
-
 		for (size_t i = 0; i < list->count; ++i)
 		{
 			aern_topology_node_state ntmp = { 0 };
@@ -931,8 +1325,6 @@ bool aern_topology_node_find_root(const aern_topology_list_state* list, aern_top
 				}
 			}
 		}
-
-		qsc_async_mutex_unlock_ex(mtx);
 	}
 
 	return res;
@@ -1002,24 +1394,22 @@ void aern_topology_node_remove(aern_topology_list_state* list, const uint8_t* se
 			{
 				uint8_t* ttmp;
 
-				lpos = list->count - 1;
+				lpos = (int32_t)list->count - 1;
 
-				if (npos != lpos && lpos > 0)
+				for (int32_t i = npos; i < lpos; ++i)
 				{
-					qsc_memutils_copy(list->topology + (npos * AERN_NETWORK_TOPOLOGY_NODE_SIZE), list->topology + (lpos * AERN_NETWORK_TOPOLOGY_NODE_SIZE), AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+					qsc_memutils_copy(list->topology + ((size_t)i * AERN_NETWORK_TOPOLOGY_NODE_SIZE), list->topology + (((size_t)i + 1U) * AERN_NETWORK_TOPOLOGY_NODE_SIZE), AERN_NETWORK_TOPOLOGY_NODE_SIZE);
 				}
 
-				qsc_memutils_clear(list->topology + (lpos * AERN_NETWORK_TOPOLOGY_NODE_SIZE), AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+				qsc_memutils_secure_erase(list->topology + ((size_t)lpos * AERN_NETWORK_TOPOLOGY_NODE_SIZE), AERN_NETWORK_TOPOLOGY_NODE_SIZE);
 				list->count -= 1U;
 
 				if (list->count > 0U)
 				{
-					/* resize the array */
-					ttmp = qsc_memutils_realloc(list->topology, list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
+					ttmp = qsc_memutils_realloc(list->topology, (size_t)list->count * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
 				}
 				else
 				{
-					/* array placeholder */
 					ttmp = qsc_memutils_realloc(list->topology, sizeof(uint8_t));
 				}
 
@@ -1102,6 +1492,11 @@ bool aern_topology_node_verify_ads(const aern_topology_list_state* list, const a
 	}
 
 	return res;
+}
+
+bool aern_topology_node_verify_adc(const aern_topology_list_state* list, const aern_child_certificate* ccert)
+{
+	return aern_topology_node_verify_ads(list, ccert);
 }
 
 bool aern_topology_node_verify_issuer(const aern_topology_list_state* list, const aern_child_certificate* ccert, const char* issuer)
@@ -1346,259 +1741,3 @@ void aern_topology_to_file(const aern_topology_list_state* list, const char* fpa
 		}
 	}
 }
-
-#if defined(AERN_DEBUG_MODE)
-typedef struct topology_device_package
-{
-	aern_signature_keypair akp;
-	aern_signature_keypair ckp;
-	aern_signature_keypair dkp;
-	aern_signature_keypair mkp;
-	aern_signature_keypair rkp;
-	aern_child_certificate acrt;
-	aern_child_certificate ccrt;
-	aern_child_certificate dcrt;
-	aern_child_certificate mcrt;
-	aern_root_certificate root;
-	aern_topology_node_state ande;
-	aern_topology_node_state and2;
-	aern_topology_node_state and3;
-	aern_topology_node_state and4;
-	aern_topology_node_state and5;
-	aern_topology_node_state and6;
-	aern_topology_node_state and7;
-	aern_topology_node_state and8;
-	aern_topology_node_state cnde;
-	aern_topology_node_state dnde;
-	aern_topology_node_state mnde;
-	aern_topology_list_state list;
-} topology_device_package;
-
-static void topology_load_child_node(aern_topology_list_state* list, aern_topology_node_state* node, const aern_child_certificate* ccert)
-{
-	uint8_t ipa[AERN_CERTIFICATE_ADDRESS_SIZE] = { 192U, 168U, 1U };
-
-	qsc_acp_generate(ipa + 3U, 1U);
-	aern_topology_child_register(list, ccert, ipa);
-	aern_topology_node_find(list, node, (const uint8_t*)ccert->serial);
-}
-
-static void topology_device_destroy(topology_device_package* spkg)
-{
-	aern_topology_list_dispose(&spkg->list);
-}
-
-static void topology_device_instantiate(topology_device_package* spkg)
-{
-	aern_certificate_expiration exp = { 0 };
-
-	/* generate the root certificate */
-	aern_certificate_signature_generate_keypair(&spkg->rkp);
-	aern_certificate_expiration_set_days(&exp, 0U, 30U);
-	aern_certificate_root_create(&spkg->root, spkg->rkp.pubkey, &exp, "XYZ/ARS-1:rds1.xyz.com");
-	
-	/* create the aps responder */
-	aern_certificate_signature_generate_keypair(&spkg->akp);
-	aern_certificate_expiration_set_days(&exp, 0U, 100U);
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-1:aps1.xyz.com", aern_network_designation_aps);
-	aern_certificate_root_sign(&spkg->acrt, &spkg->root, spkg->rkp.prikey);
-	topology_load_child_node(&spkg->list, &spkg->ande, &spkg->acrt);
-
-	/* aps copies for list test */
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-2:aps2.xyz.com", aern_network_designation_aps);
-	topology_load_child_node(&spkg->list, &spkg->and2, &spkg->acrt);
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-3:aps3.xyz.com", aern_network_designation_aps);
-	topology_load_child_node(&spkg->list, &spkg->and3, &spkg->acrt);
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-4:aps4.xyz.com", aern_network_designation_aps);
-	topology_load_child_node(&spkg->list, &spkg->and4, &spkg->acrt);
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-5:aps5.xyz.com", aern_network_designation_aps);
-	topology_load_child_node(&spkg->list, &spkg->and5, &spkg->acrt);
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-6:aps6.xyz.com", aern_network_designation_aps);
-	topology_load_child_node(&spkg->list, &spkg->and6, &spkg->acrt);
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-7:aps7.xyz.com", aern_network_designation_aps);
-	topology_load_child_node(&spkg->list, &spkg->and7, &spkg->acrt);
-	aern_certificate_child_create(&spkg->acrt, spkg->akp.pubkey, &exp, "XYZ/APS-8:aps8.xyz.com", aern_network_designation_aps);
-	topology_load_child_node(&spkg->list, &spkg->and8, &spkg->acrt);
-
-	/* create a client */
-	aern_certificate_signature_generate_keypair(&spkg->ckp);
-	aern_certificate_expiration_set_days(&exp, 0U, 100U);
-	aern_certificate_child_create(&spkg->ccrt, spkg->ckp.pubkey, &exp, "XYZ/Client-1:client1.xyz.com", aern_network_designation_client);
-	aern_certificate_root_sign(&spkg->ccrt, &spkg->root, spkg->rkp.prikey);
-	topology_load_child_node(&spkg->list, &spkg->cnde, &spkg->ccrt);
-
-	/* create the ads */
-	aern_certificate_signature_generate_keypair(&spkg->dkp);
-	aern_certificate_expiration_set_days(&exp, 0U, 100U);
-	aern_certificate_child_create(&spkg->dcrt, spkg->dkp.pubkey, &exp, "XYZ/ADC-1:ads1.xyz.com", aern_network_designation_ads);
-	aern_certificate_root_sign(&spkg->dcrt, &spkg->root, spkg->rkp.prikey);
-	topology_load_child_node(&spkg->list, &spkg->dnde, &spkg->dcrt);
-}
-
-static bool topology_find_test(topology_device_package* spkg)
-{
-	aern_topology_node_state tand = { 0 };
-	aern_topology_node_state tmnd = { 0 };
-	bool res;
-
-	res = false;
-
-	if (spkg != NULL)
-	{
-		/* test find related functions */
-		aern_topology_node_find(&spkg->list, &tand, spkg->ande.serial);
-
-		if (aern_topology_nodes_are_equal(&tand, &spkg->ande) == true)
-		{
-			aern_topology_node_find_alias(&spkg->list, &tmnd, "mas1.xyz.com");
-
-			if (aern_topology_nodes_are_equal(&tmnd, &spkg->mnde) == true)
-			{
-				aern_topology_node_find_issuer(&spkg->list, &tand, spkg->ande.issuer);
-
-				if (aern_topology_nodes_are_equal(&tand, &spkg->ande) == true)
-				{
-					aern_topology_node_add_alias(&spkg->cnde, "client.xyz.com");
-
-					if (qsc_stringutils_string_contains(spkg->cnde.issuer, "client.xyz.com") == true)
-					{
-						res = true;
-					}
-				}
-			}
-		}
-	}
-
-	return res;
-}
-
-static bool topology_serialization_test(topology_device_package* spkg)
-{
-	aern_topology_list_state lstc = { 0 };
-	aern_topology_node_state itma;
-	aern_topology_node_state itmb;
-	uint8_t* lbuf;
-	size_t mlen;
-	bool res;
-	
-	res = false;
-
-	if (spkg != NULL)
-	{
-		mlen = sizeof(uint32_t) + (spkg->list.count * AERN_NETWORK_TOPOLOGY_NODE_SIZE);
-		lbuf = (uint8_t*)qsc_memutils_malloc(mlen);
-
-		if (lbuf != NULL)
-		{
-			aern_topology_list_serialize(lbuf, &spkg->list);
-			aern_topology_list_initialize(&lstc);
-			aern_topology_list_deserialize(&lstc, lbuf, mlen);
-			qsc_memutils_alloc_free(lbuf);
-			res = true;
-
-			for (size_t i = 0; i < lstc.count; ++i)
-			{
-				if (aern_topology_list_item(&lstc, &itma, i) == true)
-				{
-					if (aern_topology_list_item(&spkg->list, &itmb, i) == true)
-					{
-						if (aern_topology_nodes_are_equal(&itma, &itmb) == false)
-						{
-							res = false;
-							break;
-						}
-					}
-				}
-			}
-
-			if (res == true)
-			{
-				aern_topology_node_state ncpy = { 0 };
-				uint8_t nser[AERN_NETWORK_TOPOLOGY_NODE_SIZE] = { 0U };
-
-				for (size_t i = 0U; i < lstc.count; ++i)
-				{
-					if (aern_topology_list_item(&lstc, &itma, i) == true)
-					{
-						aern_topology_node_serialize(nser, &itma);
-						aern_topology_node_deserialize(&ncpy, nser);
-
-						if (aern_topology_nodes_are_equal(&itma, &ncpy) == false)
-						{
-							res = false;
-							break;
-						}
-					}
-				}
-			}
-
-			aern_topology_list_dispose(&lstc);
-		}
-	}
-
-	return res;
-}
-
-static bool topology_sorted_list_test(topology_device_package* spkg)
-{
-	aern_topology_list_state olst = { 0 };
-	aern_topology_node_state itma;
-	aern_topology_node_state itmb;
-	size_t acnt;
-	size_t ncnt;
-	bool res;
-
-	/* test the count */
-	acnt = aern_topology_list_server_count(&spkg->list, aern_network_designation_aps);
-	ncnt = aern_topology_ordered_server_list(&olst, &spkg->list, aern_network_designation_aps);
-
-	res = (acnt == ncnt);
-
-	if (res == true)
-	{
-		/* test the sort */
-		for (size_t i = 0U; i < olst.count - 1U; ++i)
-		{
-			aern_topology_list_item(&olst, &itma, i);
-			aern_topology_list_item(&olst, &itmb, i + 1U);
-
-			if (qsc_memutils_greater_than_le128(itma.serial, itmb.serial) == false)
-			{
-				res = false;
-				break;
-			}
-		}
-
-		aern_topology_list_dispose(&olst);
-	}
-
-	return res;
-}
-
-bool aern_topology_functions_test(void)
-{
-	topology_device_package spkg = { 0 };
-	bool res;
-
-	res = false;
-	topology_device_instantiate(&spkg);
-
-	/* test the find functions */
-	if (topology_find_test(&spkg) == true)
-	{
-		/* test add, remove, and serialization functions */
-		if (topology_serialization_test(&spkg) == true)
-		{
-			/* test sort and ordered list */
-			if (topology_sorted_list_test(&spkg) == true)
-			{
-				res = true;
-			}
-		}
-	}
-
-	topology_device_destroy(&spkg);
-
-	return res;
-}
-#endif

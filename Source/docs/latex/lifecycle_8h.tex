@@ -1,0 +1,313 @@
+\doxysection{C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/lifecycle.h File Reference}
+\hypertarget{lifecycle_8h}{}\label{lifecycle_8h}\index{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/lifecycle.h@{C:/Users/stepp/Documents/Visual Studio 2022/Projects/C/AERN/AERN/lifecycle.h}}
+
+
+Phase-\/5\+: Session lifecycle and fault handling.  
+
+
+{\ttfamily \#include "{}aern.\+h"{}}\newline
+{\ttfamily \#include "{}mek.\+h"{}}\newline
+{\ttfamily \#include "{}network.\+h"{}}\newline
+{\ttfamily \#include "{}route.\+h"{}}\newline
+{\ttfamily \#include "{}server.\+h"{}}\newline
+{\ttfamily \#include "{}topology.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaern__resign__request__v2__state}{aern\+\_\+resign\+\_\+request\+\_\+v2\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Phase-\/5 resign request state (augments \doxylink{network_8h}{network.\+h} state with cipher teardown). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__resign__response__v2__state}{aern\+\_\+resign\+\_\+response\+\_\+v2\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Phase-\/5 resign response state (ADC side, spec-\/complete). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__revoke__v2__state}{aern\+\_\+revoke\+\_\+v2\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Phase-\/5 revoke response state (any receiving node). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__adc__alive__poll__state}{aern\+\_\+adc\+\_\+alive\+\_\+poll\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em State for the ADC background node-\/alive poller. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structaern__error__context}{aern\+\_\+error\+\_\+context}}
+\begin{DoxyCompactList}\small\item\em Context for error dispatch and logging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lifecycle_8h_a93666d0fa3d8707d8c5faaf7ee1c7cda}{AERN\+\_\+\+KEEP\+\_\+\+ALIVE\+\_\+\+INTERVAL\+\_\+S}}~30U
+\item 
+\#define \mbox{\hyperlink{lifecycle_8h_a21f9b8c732254239b7480b47d4a35e9e}{AERN\+\_\+\+KEEP\+\_\+\+ALIVE\+\_\+\+RETRY\+\_\+\+MS}}~5000U
+\item 
+\#define \mbox{\hyperlink{lifecycle_8h_af0f704e5acc85436bb7b8e875324b562}{AERN\+\_\+\+SESSION\+\_\+\+TIMEOUT\+\_\+S}}~1800U
+\item 
+\#define \mbox{\hyperlink{lifecycle_8h_a5f9bf987aed518497cd551b8b93e883a}{AERN\+\_\+\+NODE\+\_\+\+ALIVE\+\_\+\+POLL\+\_\+S}}~10U
+\item 
+\#define \mbox{\hyperlink{lifecycle_8h_ac2a72b2717960d4f9c2f6e36dc4a43cc}{AERN\+\_\+\+NODE\+\_\+\+ALIVE\+\_\+\+TIMEOUT\+\_\+S}}~300U
+\item 
+\#define \mbox{\hyperlink{lifecycle_8h_aeb37c91802cf8fc355638eeb98ae425d}{AERN\+\_\+\+REVOKE\+\_\+\+TIMEOUT\+\_\+S}}~60U
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{lifecycle_8h_a1fae7f777ef670566a464548f8240770}\label{lifecycle_8h_a1fae7f777ef670566a464548f8240770} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+resign\+\_\+request\+\_\+v2\+\_\+state {\bfseries aern\+\_\+resign\+\_\+request\+\_\+v2\+\_\+state}
+\item 
+\Hypertarget{lifecycle_8h_a3dff084a8a2dc824ba696ce58f8c5f1c}\label{lifecycle_8h_a3dff084a8a2dc824ba696ce58f8c5f1c} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+resign\+\_\+response\+\_\+v2\+\_\+state {\bfseries aern\+\_\+resign\+\_\+response\+\_\+v2\+\_\+state}
+\item 
+\Hypertarget{lifecycle_8h_a2d97206be56735567b58cce8ec87e71c}\label{lifecycle_8h_a2d97206be56735567b58cce8ec87e71c} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+revoke\+\_\+v2\+\_\+state {\bfseries aern\+\_\+revoke\+\_\+v2\+\_\+state}
+\item 
+\Hypertarget{lifecycle_8h_aab623be4b2f073190911aff2cc585d92}\label{lifecycle_8h_aab623be4b2f073190911aff2cc585d92} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+adc\+\_\+alive\+\_\+poll\+\_\+state {\bfseries aern\+\_\+adc\+\_\+alive\+\_\+poll\+\_\+state}
+\item 
+\Hypertarget{lifecycle_8h_ac6172f9e4f81f40615badc1aa4f13a8c}\label{lifecycle_8h_ac6172f9e4f81f40615badc1aa4f13a8c} 
+typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+error\+\_\+context {\bfseries aern\+\_\+error\+\_\+context}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{lifecycle_8h_af16fef561ec6ea1b287f1985ad07eeb8}{aern\+\_\+resign\+\_\+request\+\_\+v2}} (\mbox{\hyperlink{structaern__resign__request__v2__state}{aern\+\_\+resign\+\_\+request\+\_\+v2\+\_\+state}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Send a resign request to the ADC and process the acknowledgement. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{lifecycle_8h_a6af7647ee0b19f237ecb51d2f000b81f}{aern\+\_\+resign\+\_\+response\+\_\+v2}} (\mbox{\hyperlink{structaern__resign__response__v2__state}{aern\+\_\+resign\+\_\+response\+\_\+v2\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em ADC-\/side resign response handler. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{lifecycle_8h_a1839dac2c5af91522026ea07db0d5687}{aern\+\_\+revoke\+\_\+response\+\_\+v2}} (\mbox{\hyperlink{structaern__revoke__v2__state}{aern\+\_\+revoke\+\_\+v2\+\_\+state}} \texorpdfstring{$\ast$}{*}state, const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}packetin)
+\begin{DoxyCompactList}\small\item\em Node-\/side revoke broadcast handler. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{lifecycle_8h_a1fa5846fbc5f939e060f269b4aa8f530}{aern\+\_\+adc\+\_\+alive\+\_\+poll\+\_\+thread}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Background thread\+: ADC polls each APS every AERN\+\_\+\+NODE\+\_\+\+ALIVE\+\_\+\+POLL\+\_\+S seconds. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{lifecycle_8h_a436c95af6ebb27d93acca0ed892eddab}{aern\+\_\+teardown\+\_\+connection}} (\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}cstate, qsc\+\_\+socket \texorpdfstring{$\ast$}{*}csock, const char \texorpdfstring{$\ast$}{*}address, \mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}ctable)
+\begin{DoxyCompactList}\small\item\em Gracefully tear down a connection with ephemeral key erasure. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{lifecycle_8h_aac8610ad671eb08490f269df2348dab6}{aern\+\_\+forward\+\_\+hop\+\_\+bypass}} (\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}fwd, uint8\+\_\+t plaintext\mbox{[}AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE\mbox{]}, \mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}rm, const char \texorpdfstring{$\ast$}{*}failed\+\_\+addr, const char \texorpdfstring{$\ast$}{*}entry\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Forward-\/path transmit failure\+: attempt hop bypass. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{lifecycle_8h_af0262df53240cc9936234205c9fc0081}{aern\+\_\+error\+\_\+handle}} (\mbox{\hyperlink{structaern__error__context}{aern\+\_\+error\+\_\+context}} \texorpdfstring{$\ast$}{*}ctx, \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Dispatch an error code\+: log to ADC and perform the correct action. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{lifecycle_8h_a49adc841fa2709d7cbf8cafa94bc8a5d}{aern\+\_\+error\+\_\+to\+\_\+string}} (\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Map a protocol error code to a human-\/readable string. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{lifecycle_8h_af21f0163599651e73a97f4c6d2c63574}{aern\+\_\+network\+\_\+error\+\_\+to\+\_\+string\+\_\+v2}} (\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}} error)
+\begin{DoxyCompactList}\small\item\em Map a network error code to a human-\/readable string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Phase-\/5\+: Session lifecycle and fault handling. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{lifecycle_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{lifecycle_8h_a93666d0fa3d8707d8c5faaf7ee1c7cda}\index{lifecycle.h@{lifecycle.h}!AERN\_KEEP\_ALIVE\_INTERVAL\_S@{AERN\_KEEP\_ALIVE\_INTERVAL\_S}}
+\index{AERN\_KEEP\_ALIVE\_INTERVAL\_S@{AERN\_KEEP\_ALIVE\_INTERVAL\_S}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_KEEP\_ALIVE\_INTERVAL\_S}{AERN\_KEEP\_ALIVE\_INTERVAL\_S}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a93666d0fa3d8707d8c5faaf7ee1c7cda} 
+\#define AERN\+\_\+\+KEEP\+\_\+\+ALIVE\+\_\+\+INTERVAL\+\_\+S~30U}
+
+Seconds between keep-\/alive probes \Hypertarget{lifecycle_8h_a21f9b8c732254239b7480b47d4a35e9e}\index{lifecycle.h@{lifecycle.h}!AERN\_KEEP\_ALIVE\_RETRY\_MS@{AERN\_KEEP\_ALIVE\_RETRY\_MS}}
+\index{AERN\_KEEP\_ALIVE\_RETRY\_MS@{AERN\_KEEP\_ALIVE\_RETRY\_MS}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_KEEP\_ALIVE\_RETRY\_MS}{AERN\_KEEP\_ALIVE\_RETRY\_MS}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a21f9b8c732254239b7480b47d4a35e9e} 
+\#define AERN\+\_\+\+KEEP\+\_\+\+ALIVE\+\_\+\+RETRY\+\_\+\+MS~5000U}
+
+Retry interval if no response (ms) \Hypertarget{lifecycle_8h_a5f9bf987aed518497cd551b8b93e883a}\index{lifecycle.h@{lifecycle.h}!AERN\_NODE\_ALIVE\_POLL\_S@{AERN\_NODE\_ALIVE\_POLL\_S}}
+\index{AERN\_NODE\_ALIVE\_POLL\_S@{AERN\_NODE\_ALIVE\_POLL\_S}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_NODE\_ALIVE\_POLL\_S}{AERN\_NODE\_ALIVE\_POLL\_S}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a5f9bf987aed518497cd551b8b93e883a} 
+\#define AERN\+\_\+\+NODE\+\_\+\+ALIVE\+\_\+\+POLL\+\_\+S~10U}
+
+ADC polls each APS every 10 s \Hypertarget{lifecycle_8h_ac2a72b2717960d4f9c2f6e36dc4a43cc}\index{lifecycle.h@{lifecycle.h}!AERN\_NODE\_ALIVE\_TIMEOUT\_S@{AERN\_NODE\_ALIVE\_TIMEOUT\_S}}
+\index{AERN\_NODE\_ALIVE\_TIMEOUT\_S@{AERN\_NODE\_ALIVE\_TIMEOUT\_S}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_NODE\_ALIVE\_TIMEOUT\_S}{AERN\_NODE\_ALIVE\_TIMEOUT\_S}}
+{\footnotesize\ttfamily \label{lifecycle_8h_ac2a72b2717960d4f9c2f6e36dc4a43cc} 
+\#define AERN\+\_\+\+NODE\+\_\+\+ALIVE\+\_\+\+TIMEOUT\+\_\+S~300U}
+
+Max silence before APS marked inactive \Hypertarget{lifecycle_8h_aeb37c91802cf8fc355638eeb98ae425d}\index{lifecycle.h@{lifecycle.h}!AERN\_REVOKE\_TIMEOUT\_S@{AERN\_REVOKE\_TIMEOUT\_S}}
+\index{AERN\_REVOKE\_TIMEOUT\_S@{AERN\_REVOKE\_TIMEOUT\_S}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_REVOKE\_TIMEOUT\_S}{AERN\_REVOKE\_TIMEOUT\_S}}
+{\footnotesize\ttfamily \label{lifecycle_8h_aeb37c91802cf8fc355638eeb98ae425d} 
+\#define AERN\+\_\+\+REVOKE\+\_\+\+TIMEOUT\+\_\+S~60U}
+
+Revoke ack timeout per node \Hypertarget{lifecycle_8h_af0f704e5acc85436bb7b8e875324b562}\index{lifecycle.h@{lifecycle.h}!AERN\_SESSION\_TIMEOUT\_S@{AERN\_SESSION\_TIMEOUT\_S}}
+\index{AERN\_SESSION\_TIMEOUT\_S@{AERN\_SESSION\_TIMEOUT\_S}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{AERN\_SESSION\_TIMEOUT\_S}{AERN\_SESSION\_TIMEOUT\_S}}
+{\footnotesize\ttfamily \label{lifecycle_8h_af0f704e5acc85436bb7b8e875324b562} 
+\#define AERN\+\_\+\+SESSION\+\_\+\+TIMEOUT\+\_\+S~1800U}
+
+Session idle timeout (30 min) 
+
+\label{doc-func-members}
+\Hypertarget{lifecycle_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{lifecycle_8h_a1fa5846fbc5f939e060f269b4aa8f530}\index{lifecycle.h@{lifecycle.h}!aern\_adc\_alive\_poll\_thread@{aern\_adc\_alive\_poll\_thread}}
+\index{aern\_adc\_alive\_poll\_thread@{aern\_adc\_alive\_poll\_thread}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_adc\_alive\_poll\_thread()}{aern\_adc\_alive\_poll\_thread()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a1fa5846fbc5f939e060f269b4aa8f530} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+adc\+\_\+alive\+\_\+poll\+\_\+thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Background thread\+: ADC polls each APS every AERN\+\_\+\+NODE\+\_\+\+ALIVE\+\_\+\+POLL\+\_\+S seconds. 
+
+
+\begin{DoxyItemize}
+\item Sends \{ adc\+\_\+cert \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} timestamp \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} adc\+\_\+sig \} to each APS.
+\item Expects a response within AERN\+\_\+\+NODE\+\_\+\+ALIVE\+\_\+\+TIMEOUT\+\_\+S seconds from last response.
+\item On timeout\+: marks inactive, calls aern\+\_\+network\+\_\+revoke\+\_\+broadcast, logs.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \mbox{[}void\texorpdfstring{$\ast$}{*}\mbox{]} Pointer to \doxylink{structaern__adc__alive__poll__state}{aern\+\_\+adc\+\_\+alive\+\_\+poll\+\_\+state}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lifecycle_8h_af0262df53240cc9936234205c9fc0081}\index{lifecycle.h@{lifecycle.h}!aern\_error\_handle@{aern\_error\_handle}}
+\index{aern\_error\_handle@{aern\_error\_handle}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_error\_handle()}{aern\_error\_handle()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_af0262df53240cc9936234205c9fc0081} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+error\+\_\+handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__error__context}{aern\+\_\+error\+\_\+context}} \texorpdfstring{$\ast$}{*}}]{ctx}{, }\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Dispatch an error code\+: log to ADC and perform the correct action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & \mbox{[}aern\+\_\+error\+\_\+context\texorpdfstring{$\ast$}{*}\mbox{]} Error context. \\
+\hline
+{\em error} & \mbox{[}\doxylink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}\mbox{]} The error code to handle. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lifecycle_8h_a49adc841fa2709d7cbf8cafa94bc8a5d}\index{lifecycle.h@{lifecycle.h}!aern\_error\_to\_string@{aern\_error\_to\_string}}
+\index{aern\_error\_to\_string@{aern\_error\_to\_string}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_error\_to\_string()}{aern\_error\_to\_string()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a49adc841fa2709d7cbf8cafa94bc8a5d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} aern\+\_\+error\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Map a protocol error code to a human-\/readable string. 
+
+Returns a static const string. Returns "{}(unknown error)"{} for out-\/of-\/range values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & \mbox{[}\doxylink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}\mbox{]} The protocol error code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A non-\/\+NULL string describing the error. 
+\end{DoxyReturn}
+\Hypertarget{lifecycle_8h_aac8610ad671eb08490f269df2348dab6}\index{lifecycle.h@{lifecycle.h}!aern\_forward\_hop\_bypass@{aern\_forward\_hop\_bypass}}
+\index{aern\_forward\_hop\_bypass@{aern\_forward\_hop\_bypass}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_forward\_hop\_bypass()}{aern\_forward\_hop\_bypass()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_aac8610ad671eb08490f269df2348dab6} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+forward\+\_\+hop\+\_\+bypass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__forward__state}{aern\+\_\+forward\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{fwd}{, }\item[{uint8\+\_\+t}]{plaintext}{\mbox{[}\+AERN\+\_\+\+RELAY\+\_\+\+PLAINTEXT\+\_\+\+SIZE\mbox{]}, }\item[{\mbox{\hyperlink{structaern__route__map}{aern\+\_\+route\+\_\+map}} \texorpdfstring{$\ast$}{*}}]{rm}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{failed\+\_\+addr}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{entry\+\_\+addr}{}\end{DoxyParamCaption})}
+
+
+
+Forward-\/path transmit failure\+: attempt hop bypass. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fwd} & \mbox{[}aern\+\_\+forward\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Forward state. \\
+\hline
+{\em plaintext} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} Decrypted plaintext (1446 bytes) to re-\/route. \\
+\hline
+{\em rm} & \mbox{[}aern\+\_\+route\+\_\+map\texorpdfstring{$\ast$}{*}\mbox{]} Route map whose future-\/hop slots may be consumed. \\
+\hline
+{\em failed\+\_\+addr} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} IP of the unresponsive hop. \\
+\hline
+{\em entry\+\_\+addr} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Entry node IP (for error report).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none if bypass succeeded. 
+\end{DoxyReturn}
+\Hypertarget{lifecycle_8h_af21f0163599651e73a97f4c6d2c63574}\index{lifecycle.h@{lifecycle.h}!aern\_network\_error\_to\_string\_v2@{aern\_network\_error\_to\_string\_v2}}
+\index{aern\_network\_error\_to\_string\_v2@{aern\_network\_error\_to\_string\_v2}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_network\_error\_to\_string\_v2()}{aern\_network\_error\_to\_string\_v2()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_af21f0163599651e73a97f4c6d2c63574} 
+AERN\+\_\+\+EXPORT\+\_\+\+API const char \texorpdfstring{$\ast$}{*} aern\+\_\+network\+\_\+error\+\_\+to\+\_\+string\+\_\+v2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}}}]{error}{}\end{DoxyParamCaption})}
+
+
+
+Map a network error code to a human-\/readable string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & \mbox{[}\doxylink{aern_8h_ab9ccd46c9402a020ca690439ec6961c0}{aern\+\_\+network\+\_\+errors}\mbox{]} The network error code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A non-\/\+NULL string describing the error. 
+\end{DoxyReturn}
+\Hypertarget{lifecycle_8h_af16fef561ec6ea1b287f1985ad07eeb8}\index{lifecycle.h@{lifecycle.h}!aern\_resign\_request\_v2@{aern\_resign\_request\_v2}}
+\index{aern\_resign\_request\_v2@{aern\_resign\_request\_v2}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_resign\_request\_v2()}{aern\_resign\_request\_v2()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_af16fef561ec6ea1b287f1985ad07eeb8} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+resign\+\_\+request\+\_\+v2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__resign__request__v2__state}{aern\+\_\+resign\+\_\+request\+\_\+v2\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Send a resign request to the ADC and process the acknowledgement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+resign\+\_\+request\+\_\+v2\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Resign state; cipher and session tables are cleared on success.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{lifecycle_8h_a6af7647ee0b19f237ecb51d2f000b81f}\index{lifecycle.h@{lifecycle.h}!aern\_resign\_response\_v2@{aern\_resign\_response\_v2}}
+\index{aern\_resign\_response\_v2@{aern\_resign\_response\_v2}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_resign\_response\_v2()}{aern\_resign\_response\_v2()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a6af7647ee0b19f237ecb51d2f000b81f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+resign\+\_\+response\+\_\+v2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__resign__response__v2__state}{aern\+\_\+resign\+\_\+response\+\_\+v2\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+ADC-\/side resign response handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+resign\+\_\+response\+\_\+v2\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Resign response state. \\
+\hline
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} Incoming resign-\/request packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{lifecycle_8h_a1839dac2c5af91522026ea07db0d5687}\index{lifecycle.h@{lifecycle.h}!aern\_revoke\_response\_v2@{aern\_revoke\_response\_v2}}
+\index{aern\_revoke\_response\_v2@{aern\_revoke\_response\_v2}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_revoke\_response\_v2()}{aern\_revoke\_response\_v2()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a1839dac2c5af91522026ea07db0d5687} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+revoke\+\_\+response\+\_\+v2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__revoke__v2__state}{aern\+\_\+revoke\+\_\+v2\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{state}{, }\item[{const \mbox{\hyperlink{structaern__network__packet}{aern\+\_\+network\+\_\+packet}} \texorpdfstring{$\ast$}{*}}]{packetin}{}\end{DoxyParamCaption})}
+
+
+
+Node-\/side revoke broadcast handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \mbox{[}aern\+\_\+revoke\+\_\+v2\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Revoke response state. \\
+\hline
+{\em packetin} & \mbox{[}const aern\+\_\+network\+\_\+packet\texorpdfstring{$\ast$}{*}\mbox{]} Incoming revoke-\/broadcast packet.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success. 
+\end{DoxyReturn}
+\Hypertarget{lifecycle_8h_a436c95af6ebb27d93acca0ed892eddab}\index{lifecycle.h@{lifecycle.h}!aern\_teardown\_connection@{aern\_teardown\_connection}}
+\index{aern\_teardown\_connection@{aern\_teardown\_connection}!lifecycle.h@{lifecycle.h}}
+\doxysubsubsection{\texorpdfstring{aern\_teardown\_connection()}{aern\_teardown\_connection()}}
+{\footnotesize\ttfamily \label{lifecycle_8h_a436c95af6ebb27d93acca0ed892eddab} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+teardown\+\_\+connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__connection__state}{aern\+\_\+connection\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{cstate}{, }\item[{qsc\+\_\+socket \texorpdfstring{$\ast$}{*}}]{csock}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{\mbox{\hyperlink{structaern__cipher__table}{aern\+\_\+cipher\+\_\+table}} \texorpdfstring{$\ast$}{*}}]{ctable}{}\end{DoxyParamCaption})}
+
+
+
+Gracefully tear down a connection with ephemeral key erasure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cstate} & \mbox{[}aern\+\_\+connection\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} Connection state to tear down. \\
+\hline
+{\em csock} & \mbox{[}qsc\+\_\+socket\texorpdfstring{$\ast$}{*}\mbox{]} Socket (may be NULL if already closed). \\
+\hline
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} Peer IP (used to remove from ctable; may be NULL). \\
+\hline
+{\em ctable} & \mbox{[}aern\+\_\+cipher\+\_\+table\texorpdfstring{$\ast$}{*}\mbox{]} Cipher table (may be NULL). \\
+\hline
+\end{DoxyParams}

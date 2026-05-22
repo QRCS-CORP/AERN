@@ -131,13 +131,13 @@ static const char AERN_APPLICATION_MESSAGE_STRINGS[AERN_APPLICATION_MESSAGE_STRI
 	"The command input was invalid, operation failed.",
 	"The network join request has failed, check the address.",
 	"The network join request has succeeded.",
-	"The node is joined to an existing network, rejoin the ads ? Y | N",
+	"The node is joined to an existing network, rejoin the ADC ? Y | N",
 	"The certificate announce operation has failed, check the path.",
 	"The certificate has been announced to the network.",
 	"The topology convergence has been processed by the network.",
 	"The topology update has failed, memory or signing failure.",
 	"The network time is invalid or has substantial delay.",
-	"The root, ads, or aps certificate could not be found.",
+	"The root, ADC, or APS certificate could not be found.",
 	"The signature could not be generated for a message.",
 	"The network resign has failed, check the address.",
 	"This node has resigned from the network.",
@@ -213,8 +213,8 @@ static const char AERN_APPLICATION_MESSAGE_STRINGS[AERN_APPLICATION_MESSAGE_STRI
 	" - Connection terminated by remote host ",
 	" - The configuration was erased by user: ",
 	" - The network session has timed out ",
-	" - The network ads join request was denied ",
-	" - The network ads join request has succeeded ",
+	" - The network ADC join request was denied ",
+	" - The network ADC join request has succeeded ",
 	" - The key fragment exchange has failed ",
 	" - The key fragment exchange has succeeded ",
 	" - The host resignation from the network failed ",
@@ -287,9 +287,9 @@ static const char AERN_APPLICATION_HELP_STRINGS[AERN_APPLICATION_HELP_STRING_DEP
 	"query [canonical-name] -Request node information for a device from the ADC",
 	"help -connect mode command help",
 	"quit -quits the remote server connection",
-	/* ads config-certificate commands */
+	/* ADC config-certificate commands */
 	"revoke [certificate-path] -revoke the local device certificate",
-	/* ads config-server commands */
+	/* ADC config-server commands */
 	"announce [certificate-path, ip-address] -announce an aps to servers in the network",
 	"converge -announce a topology update to the network",
 	"revoke [certificate-path] -revoke an aps's credentials by announcing it to the network",

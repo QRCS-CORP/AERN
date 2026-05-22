@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.0.0.0a (A1)</span>
+   <div id="projectname">AERN: Authenticated Encrypted Relay Network<span id="projectnumber">&#160;1.1.0.0c (A1)</span>
    </div>
    <div id="projectbrief">A post quantum authenticated and encrypted proxy chain network</div>
   </td>
@@ -144,7 +144,7 @@ Functions</h2></td></tr>
 <p>This function deletes the log file at the specified path.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path.</td></tr>
   </table>
   </dd>
 </dl>
@@ -171,7 +171,7 @@ Functions</h2></td></tr>
 <p>This function clears the contents of the log file without deleting the file itself.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path.</td></tr>
   </table>
   </dd>
 </dl>
@@ -197,7 +197,7 @@ Functions</h2></td></tr>
 <p>Check if the log file exists. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path.</td></tr>
   </table>
   </dd>
 </dl>
@@ -224,7 +224,7 @@ Functions</h2></td></tr>
 <p>This function returns the size (in characters) of the log file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path.</td></tr>
   </table>
   </dd>
 </dl>
@@ -251,7 +251,7 @@ Functions</h2></td></tr>
 <p>This function creates or resets the log file at the specified path if it does not already exist.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path. </td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path. </td></tr>
   </table>
   </dd>
 </dl>
@@ -285,9 +285,9 @@ Functions</h2></td></tr>
 <p>Read the entire log into a character array. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The full path to the log file. </td></tr>
-    <tr><td class="paramname">output</td><td>[out] The output string receiving the log contents. </td></tr>
-    <tr><td class="paramname">outlen</td><td>The length of the output array.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The full path to the log file. </td></tr>
+    <tr><td class="paramname">output</td><td>[char*] The output string receiving the log contents. </td></tr>
+    <tr><td class="paramname">outlen</td><td>[size_t] The length of the output array.</td></tr>
   </table>
   </dd>
 </dl>
@@ -327,10 +327,10 @@ Functions</h2></td></tr>
 <p>Read a single line from the log file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The full path to the log file. </td></tr>
-    <tr><td class="paramname">output</td><td>[out] The output string receiving the line. </td></tr>
-    <tr><td class="paramname">outlen</td><td>The length of the output string. </td></tr>
-    <tr><td class="paramname">linenum</td><td>The 0-based line number to read.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The full path to the log file. </td></tr>
+    <tr><td class="paramname">output</td><td>[char*] The output string receiving the line. </td></tr>
+    <tr><td class="paramname">outlen</td><td>[size_t] The length of the output string. </td></tr>
+    <tr><td class="paramname">linenum</td><td>[size_t] The 0-based line number to read.</td></tr>
   </table>
   </dd>
 </dl>
@@ -357,7 +357,7 @@ Functions</h2></td></tr>
 <p>Erases the log file (or creates a new empty log file if it does not exist).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path. </td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path. </td></tr>
   </table>
   </dd>
 </dl>
@@ -387,8 +387,8 @@ Functions</h2></td></tr>
 <p>This function retrieves the current date and time in a formatted string.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>[out] The output string receiving the timestamp. </td></tr>
-    <tr><td class="paramname">outlen</td><td>The length of the output array.</td></tr>
+    <tr><td class="paramname">output</td><td>[char*] The output string receiving the timestamp. </td></tr>
+    <tr><td class="paramname">outlen</td><td>[size_t] The length of the output array.</td></tr>
   </table>
   </dd>
 </dl>
@@ -429,10 +429,10 @@ Functions</h2></td></tr>
 <p>This function prepends a predefined message (based on the provided message type) to the given message text and writes the result to the log.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path. </td></tr>
-    <tr><td class="paramname">msgtype</td><td>The predefined message type (from <a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>). </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] The message to write. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path. </td></tr>
+    <tr><td class="paramname">msgtype</td><td>[<a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>] The predefined message type (from <a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>). </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message to write. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message.</td></tr>
   </table>
   </dd>
 </dl>
@@ -473,10 +473,10 @@ Functions</h2></td></tr>
 <p>This function first obtains a current timestamp, then prepends a predefined message based on the given message type, and finally writes the complete entry to the log file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The full log file path. </td></tr>
-    <tr><td class="paramname">msgtype</td><td>The predefined message type. </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] The message to write. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The full log file path. </td></tr>
+    <tr><td class="paramname">msgtype</td><td>[<a class="el" href="commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731" title="The ARS application messages.">aern_application_messages</a>] The predefined message type. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message to write. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message.</td></tr>
   </table>
   </dd>
 </dl>
@@ -512,9 +512,9 @@ Functions</h2></td></tr>
 <p>This function appends a terminated line (with a newline) to the log file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path. </td></tr>
-    <tr><td class="paramname">line</td><td>[in, const] The null-terminated string to write. </td></tr>
-    <tr><td class="paramname">linelen</td><td>The length of the line.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path. </td></tr>
+    <tr><td class="paramname">line</td><td>[const char*] The null-terminated string to write. </td></tr>
+    <tr><td class="paramname">linelen</td><td>[size_t] The length of the line.</td></tr>
   </table>
   </dd>
 </dl>
@@ -550,9 +550,9 @@ Functions</h2></td></tr>
 <p>This function writes a log entry that begins with a current timestamp.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[in] The log file path. </td></tr>
-    <tr><td class="paramname">message</td><td>[in, const] The message to log. </td></tr>
-    <tr><td class="paramname">msglen</td><td>The length of the message.</td></tr>
+    <tr><td class="paramname">path</td><td>[const char*] The log file path. </td></tr>
+    <tr><td class="paramname">message</td><td>[const char*] The message to log. </td></tr>
+    <tr><td class="paramname">msglen</td><td>[size_t] The length of the message.</td></tr>
   </table>
   </dd>
 </dl>
@@ -583,8 +583,8 @@ Functions</h2></td></tr>
 <p>This function retrieves the default log file path by obtaining the user's documents directory, appending the AERN logger directory name, and finally the log file name.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>[out] The output buffer that will receive the full log file path. </td></tr>
-    <tr><td class="paramname">pathlen</td><td>The length of the output buffer. </td></tr>
+    <tr><td class="paramname">path</td><td>[char*] The output buffer that will receive the full log file path. </td></tr>
+    <tr><td class="paramname">pathlen</td><td>[size_t] The length of the output buffer. </td></tr>
   </table>
   </dd>
 </dl>

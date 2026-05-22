@@ -40,6 +40,7 @@ var NAVTREE =
       [ "Globals", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
+        [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", "globals_eval" ],
         [ "Macros", "globals_defs.html", null ]
@@ -50,11 +51,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"adc_8h.html",
-"certificate_8h.html#a4a4b34e632c37eef521e8676d85cebe1",
-"commands_8h.html#ad68782564f96643016e3bd878aa0b53ca7d6be118350b169d9477f5c84b51051c",
-"server_8h.html#ad6c82f9d3e12f5396817de8163d87d7e",
-"structaern__root__certificate.html#a65c4b2bf20a2a2d125705570a9b8b582"
+"_a_e_r_n_2fragment_8h_source.html",
+"aern_8h.html#ac2f75e44c9e423c072030f8b51d641e7",
+"commands_8h.html#a7ca4a182ee1fe9fc43629ff3d1a20731a6e3bceb557de157bd8e73876ade1c1d3",
+"globals_eval.html",
+"route_8h.html#aac64b4c6d59c072b8e6464bb617695b3",
+"structaern__keep__alive__state.html#af9c9d33a13c7df6c73f89251087a823b",
+"structaern__relay__payload__header.html#acb7bc06bed6f6408d719334fc41698c7"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

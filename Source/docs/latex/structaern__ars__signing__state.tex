@@ -1,0 +1,72 @@
+\doxysection{aern\+\_\+ars\+\_\+signing\+\_\+state Struct Reference}
+\hypertarget{structaern__ars__signing__state}{}\label{structaern__ars__signing__state}\index{aern\_ars\_signing\_state@{aern\_ars\_signing\_state}}
+
+
+The ARS remote signing handler state.  
+
+
+
+
+{\ttfamily \#include $<$network.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+qsc\+\_\+socket \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__ars__signing__state_ab19e8331ef887e834a329f990ff72baa}{csock}}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__ars__signing__state_aa4d47afab5dd60f1ad6832763084254b}{dcert}}
+\item 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__ars__signing__state_a384fad4415a70a73ee4c1432e6e7f0c9}{root}}
+\item 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__ars__signing__state_aafe05d17b90266dc887b543cf1a068b9}{sigkey}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The ARS remote signing handler state. 
+
+State for the ARS-\/side signing handler.
+
+This structure binds the accepted ADC socket, the cached ADC certificate, the ARS root certificate, and the ARS private signing key used to process an authenticated remote certificate signing request. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__ars__signing__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__ars__signing__state_ab19e8331ef887e834a329f990ff72baa}\index{aern\_ars\_signing\_state@{aern\_ars\_signing\_state}!csock@{csock}}
+\index{csock@{csock}!aern\_ars\_signing\_state@{aern\_ars\_signing\_state}}
+\doxysubsubsection{\texorpdfstring{csock}{csock}}
+{\footnotesize\ttfamily \label{structaern__ars__signing__state_ab19e8331ef887e834a329f990ff72baa} 
+qsc\+\_\+socket \texorpdfstring{$\ast$}{*} csock}
+
+A pointer to the connected ADC socket.
+
+Connected socket to the ADC \Hypertarget{structaern__ars__signing__state_aa4d47afab5dd60f1ad6832763084254b}\index{aern\_ars\_signing\_state@{aern\_ars\_signing\_state}!dcert@{dcert}}
+\index{dcert@{dcert}!aern\_ars\_signing\_state@{aern\_ars\_signing\_state}}
+\doxysubsubsection{\texorpdfstring{dcert}{dcert}}
+{\footnotesize\ttfamily \label{structaern__ars__signing__state_aa4d47afab5dd60f1ad6832763084254b} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} dcert}
+
+A pointer to the ADC certificate.
+
+ADC certificate (for msg-\/sig verify) \Hypertarget{structaern__ars__signing__state_a384fad4415a70a73ee4c1432e6e7f0c9}\index{aern\_ars\_signing\_state@{aern\_ars\_signing\_state}!root@{root}}
+\index{root@{root}!aern\_ars\_signing\_state@{aern\_ars\_signing\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__ars__signing__state_a384fad4415a70a73ee4c1432e6e7f0c9} 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} root}
+
+A pointer to the ARS root certificate.
+
+Root certificate \Hypertarget{structaern__ars__signing__state_aafe05d17b90266dc887b543cf1a068b9}\index{aern\_ars\_signing\_state@{aern\_ars\_signing\_state}!sigkey@{sigkey}}
+\index{sigkey@{sigkey}!aern\_ars\_signing\_state@{aern\_ars\_signing\_state}}
+\doxysubsubsection{\texorpdfstring{sigkey}{sigkey}}
+{\footnotesize\ttfamily \label{structaern__ars__signing__state_aafe05d17b90266dc887b543cf1a068b9} 
+const uint8\+\_\+t \texorpdfstring{$\ast$}{*} sigkey}
+
+A pointer to the ARS secret signing key.
+
+ARS private signing key 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{network_8h}{network.\+h}}\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+Saved/\mbox{\hyperlink{network2_8h}{network2.\+h}}\end{DoxyCompactItemize}

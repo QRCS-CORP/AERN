@@ -6,6 +6,7 @@ The AERN topology functions.
 
 
 {\ttfamily \#include "{}aern.\+h"{}}\newline
+{\ttfamily \#include "{}async.\+h"{}}\newline
 {\ttfamily \#include "{}certificate.\+h"{}}\newline
 {\ttfamily \#include "{}ipinfo.\+h"{}}\newline
 {\ttfamily \#include "{}list.\+h"{}}\newline
@@ -45,6 +46,18 @@ typedef AERN\+\_\+\+EXPORT\+\_\+\+API struct aern\+\_\+topology\+\_\+list\+\_\+s
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology_8h_ad45f40ca1657497a0defae2523d754a4}{aern\+\_\+topology\+\_\+add}} (\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Add or replace a node in a topology list. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology_8h_a110dd3f7ea7c277485186b9a7b262779}{aern\+\_\+topology\+\_\+hash}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, uint8\+\_\+t hash\mbox{[}\mbox{\hyperlink{aern_8h_acc789b9281e03dddcda4c72eed21404c}{AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Compute the canonical topology hash. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint64\+\_\+t \mbox{\hyperlink{topology_8h_a33bb07671be179f9ccdf7f0bfb8d4e75}{aern\+\_\+topology\+\_\+increment\+\_\+version}} (\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Increment the topology version. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology_8h_a1cdff03b202d9bb427e74a42cbc29d0f}{aern\+\_\+topology\+\_\+remove}} (\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}serial)
+\begin{DoxyCompactList}\small\item\em Remove a node from a topology list. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{topology_8h_ab7ccfee631624554907b3b42b532fc54}{aern\+\_\+topology\+\_\+update}} (\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Update a node in a topology list. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} \mbox{\hyperlink{topology_8h_a9e7fb06e3f0b40d14b43c97e3a1b0f52}{aern\+\_\+topology\+\_\+version\+\_\+verify}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, uint64\+\_\+t incomingver)
+\begin{DoxyCompactList}\small\item\em Verify an incoming topology version. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology_8h_ae228d7f793cf285c21550c5563cf3539}{aern\+\_\+topology\+\_\+address\+\_\+from\+\_\+issuer}} (char \texorpdfstring{$\ast$}{*}address, const char \texorpdfstring{$\ast$}{*}issuer, const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list)
 \begin{DoxyCompactList}\small\item\em Returns an IP address from an issuer string. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology_8h_ab2a963793b864e86ba9fea2bbd856d86}{aern\+\_\+topology\+\_\+node\+\_\+add\+\_\+alias}} (\mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}alias)
@@ -107,6 +120,10 @@ AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_a919641ea29231d2
 \begin{DoxyCompactList}\small\item\em Return the node pointer in the list matching the alias string. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_a00d1721d9035453c3c8fb6396259794e}{aern\+\_\+topology\+\_\+node\+\_\+find\+\_\+ads}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
 \begin{DoxyCompactList}\small\item\em Return the ADC node from the list. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_afdc3c6cf8c247953c84802a2b6c0c540}{aern\+\_\+topology\+\_\+node\+\_\+find\+\_\+adc}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Searches a topology list for an active ADC node and copies the matching node state. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_a1ced3436748f4b596f3d34b814a1951c}{aern\+\_\+topology\+\_\+node\+\_\+find\+\_\+aps}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Return the first APS node from the list. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_a28e22608bcc42bc5c6eb60198ed7fea1}{aern\+\_\+topology\+\_\+node\+\_\+find\+\_\+issuer}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}issuer)
 \begin{DoxyCompactList}\small\item\em Return the node pointer in the list matching the name string. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_aa063936c5158251e438b0024e4f81fad}{aern\+\_\+topology\+\_\+node\+\_\+find\+\_\+root}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}node)
@@ -116,6 +133,8 @@ AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology_8h_ab8ee8b35362ee97
 AERN\+\_\+\+EXPORT\+\_\+\+API void \mbox{\hyperlink{topology_8h_a00b47ba40d757b930e5741d60e833d08}{aern\+\_\+topology\+\_\+node\+\_\+remove\+\_\+duplicate}} (\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const char \texorpdfstring{$\ast$}{*}issuer)
 \begin{DoxyCompactList}\small\item\em Remove a node from the topology with the same issuer name. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_a7cd8e44ae826afced77c2209fdac7d8c}{aern\+\_\+topology\+\_\+node\+\_\+verify\+\_\+ads}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert)
+\begin{DoxyCompactList}\small\item\em Verify that the ADC certificate matches the hash stored in the topology. \end{DoxyCompactList}\item 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_a6afc8d6fa9a33aa9436f96a07e87420d}{aern\+\_\+topology\+\_\+node\+\_\+verify\+\_\+adc}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert)
 \begin{DoxyCompactList}\small\item\em Verify that the ADC certificate matches the hash stored in the topology. \end{DoxyCompactList}\item 
 AERN\+\_\+\+EXPORT\+\_\+\+API bool \mbox{\hyperlink{topology_8h_a69d4de114861db56d8ff2139d017c1ea}{aern\+\_\+topology\+\_\+node\+\_\+verify\+\_\+issuer}} (const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}list, const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}ccert, const char \texorpdfstring{$\ast$}{*}issuer)
 \begin{DoxyCompactList}\small\item\em Verify that an issuing node\textquotesingle{}s certificate matches the hash stored in the topology. \end{DoxyCompactList}\item 
@@ -187,6 +206,25 @@ This macro defines the size of a printable, encoded node string. Its value depen
 \label{doc-func-members}
 \Hypertarget{topology_8h_doc-func-members}
 \doxysubsection{Function Documentation}
+\Hypertarget{topology_8h_ad45f40ca1657497a0defae2523d754a4}\index{topology.h@{topology.h}!aern\_topology\_add@{aern\_topology\_add}}
+\index{aern\_topology\_add@{aern\_topology\_add}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_add()}{aern\_topology\_add()}}
+{\footnotesize\ttfamily \label{topology_8h_ad45f40ca1657497a0defae2523d754a4} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Add or replace a node in a topology list. 
+
+This function inserts a node into the topology list and increments the topology version. Existing entries with the same issuer are replaced by the underlying topology insertion logic.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology state. \\
+\hline
+{\em node} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology node to add. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{topology_8h_ae228d7f793cf285c21550c5563cf3539}\index{topology.h@{topology.h}!aern\_topology\_address\_from\_issuer@{aern\_topology\_address\_from\_issuer}}
 \index{aern\_topology\_address\_from\_issuer@{aern\_topology\_address\_from\_issuer}!topology.h@{topology.h}}
 \doxysubsubsection{\texorpdfstring{aern\_topology\_address\_from\_issuer()}{aern\_topology\_address\_from\_issuer()}}
@@ -201,11 +239,11 @@ This function extracts and returns the network address associated with a given i
 
 
 \begin{DoxyParams}{Parameters}
-{\em address} & The output buffer to receive the node\textquotesingle{}s network address (max AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE). \\
+{\em address} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output buffer to receive the node\textquotesingle{}s network address (max AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE). \\
 \hline
-{\em issuer} & \mbox{[}const\mbox{]} The issuer string. \\
+{\em issuer} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The issuer string. \\
 \hline
-{\em list} & \mbox{[}const\mbox{]} A pointer to the topology list. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_a918afa7cf062923f793a7541a5be57f5}\index{topology.h@{topology.h}!aern\_topology\_canonical\_to\_issuer\_name@{aern\_topology\_canonical\_to\_issuer\_name}}
@@ -222,13 +260,13 @@ This function converts a device canonical name into its corresponding issuer nam
 
 
 \begin{DoxyParams}{Parameters}
-{\em issuer} & The output issuer string. \\
+{\em issuer} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output issuer string. \\
 \hline
-{\em isslen} & The length of the issuer buffer. \\
+{\em isslen} & \mbox{[}size\+\_\+t\mbox{]} The length of the issuer buffer. \\
 \hline
-{\em domain} & The domain name. \\
+{\em domain} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The domain name. \\
 \hline
-{\em cname} & The input device canonical name. \\
+{\em cname} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The input device canonical name.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -249,7 +287,7 @@ This function is not thread safe.
 \end{DoxyNote}
 
 \begin{DoxyParams}{Parameters}
-{\em list} & A pointer to the topology list. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -269,9 +307,9 @@ This function adds a new node item to the topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & A pointer to the topology list. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list. \\
 \hline
-{\em node} & \mbox{[}const\mbox{]} The node to add. \\
+{\em node} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The node to add. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_a568887d36a55d279486545dceedb568b}\index{topology.h@{topology.h}!aern\_topology\_child\_register@{aern\_topology\_child\_register}}
@@ -288,11 +326,11 @@ This function registers a new child node in the topology list based on its certi
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & A pointer to the topology list. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list. \\
 \hline
-{\em ccert} & \mbox{[}const\mbox{]} The node\textquotesingle{}s child certificate. \\
+{\em ccert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The node\textquotesingle{}s child certificate. \\
 \hline
-{\em address} & \mbox{[}const\mbox{]} The node\textquotesingle{}s network address (max AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE). \\
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The node\textquotesingle{}s network address (max AERN\+\_\+\+CERTIFICATE\+\_\+\+ADDRESS\+\_\+\+SIZE). \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_a36637c20013b6aee523425f26e9569d1}\index{topology.h@{topology.h}!aern\_topology\_from\_file@{aern\_topology\_from\_file}}
@@ -309,11 +347,50 @@ This function loads a topology list from a file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em fpath} & \mbox{[}const\mbox{]} The full path to the topology list file. \\
+{\em fpath} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The full path to the topology list file. \\
 \hline
-{\em list} & A pointer to the topology list state to populate. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list state to populate. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{topology_8h_a110dd3f7ea7c277485186b9a7b262779}\index{topology.h@{topology.h}!aern\_topology\_hash@{aern\_topology\_hash}}
+\index{aern\_topology\_hash@{aern\_topology\_hash}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_hash()}{aern\_topology\_hash()}}
+{\footnotesize\ttfamily \label{topology_8h_a110dd3f7ea7c277485186b9a7b262779} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+hash (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{uint8\+\_\+t}]{hash}{\mbox{[}\+AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Compute the canonical topology hash. 
+
+This function copies the serialized topology, sorts the copy by certificate serial number, and computes a SHAKE-\/256 digest over the canonical serialized form.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
+\hline
+{\em hash} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The output hash buffer; must be AERN\+\_\+\+CERTIFICATE\+\_\+\+HASH\+\_\+\+SIZE bytes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{topology_8h_a33bb07671be179f9ccdf7f0bfb8d4e75}\index{topology.h@{topology.h}!aern\_topology\_increment\_version@{aern\_topology\_increment\_version}}
+\index{aern\_topology\_increment\_version@{aern\_topology\_increment\_version}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_increment\_version()}{aern\_topology\_increment\_version()}}
+{\footnotesize\ttfamily \label{topology_8h_a33bb07671be179f9ccdf7f0bfb8d4e75} 
+AERN\+\_\+\+EXPORT\+\_\+\+API uint64\+\_\+t aern\+\_\+topology\+\_\+increment\+\_\+version (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Increment the topology version. 
+
+This function increments the version counter in a topology state and returns the new value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology state.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the incremented topology version, or zero on failure. 
+\end{DoxyReturn}
 \Hypertarget{topology_8h_aaa77b6a969cd4c870070a4d25a70a058}\index{topology.h@{topology.h}!aern\_topology\_issuer\_to\_canonical\_name@{aern\_topology\_issuer\_to\_canonical\_name}}
 \index{aern\_topology\_issuer\_to\_canonical\_name@{aern\_topology\_issuer\_to\_canonical\_name}!topology.h@{topology.h}}
 \doxysubsubsection{\texorpdfstring{aern\_topology\_issuer\_to\_canonical\_name()}{aern\_topology\_issuer\_to\_canonical\_name()}}
@@ -328,11 +405,11 @@ This function converts an issuer name back into its canonical form.
 
 
 \begin{DoxyParams}{Parameters}
-{\em cname} & The output canonical name. \\
+{\em cname} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output canonical name. \\
 \hline
-{\em namelen} & The length of the canonical name buffer. \\
+{\em namelen} & \mbox{[}size\+\_\+t\mbox{]} The length of the canonical name buffer. \\
 \hline
-{\em issuer} & The input issuer name string. \\
+{\em issuer} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The input issuer name string.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -352,9 +429,9 @@ This function creates a clone of the given topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em tlist} & \mbox{[}const\mbox{]} A pointer to the source topology list. \\
+{\em tlist} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the source topology list. \\
 \hline
-{\em tcopy} & A pointer to the destination topology list. \\
+{\em tcopy} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination topology list. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_a2e0d3a219a8f35eeb8851fef54678cde}\index{topology.h@{topology.h}!aern\_topology\_list\_deserialize@{aern\_topology\_list\_deserialize}}
@@ -371,11 +448,11 @@ This function deserializes a topology list from a given input array.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & A pointer to the topology list state to populate. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list state to populate. \\
 \hline
-{\em input} & \mbox{[}const\mbox{]} The serialized topology array. \\
+{\em input} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The serialized topology array. \\
 \hline
-{\em inplen} & The size of the input array. \\
+{\em inplen} & \mbox{[}size\+\_\+t\mbox{]} The size of the input array. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_aaba156e2d7ffbaf91d776834fee1129e}\index{topology.h@{topology.h}!aern\_topology\_list\_dispose@{aern\_topology\_list\_dispose}}
@@ -392,7 +469,7 @@ This function releases all memory allocated for the topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & A pointer to the topology list state. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list state. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_aa1bc0f7777717c15b698a10ac9a533ae}\index{topology.h@{topology.h}!aern\_topology\_list\_initialize@{aern\_topology\_list\_initialize}}
@@ -409,7 +486,7 @@ This function initializes the topology list state.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & The topology list state to initialize. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state to initialize. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_ac1f4724bd207fa070c81592c0a389c9c}\index{topology.h@{topology.h}!aern\_topology\_list\_item@{aern\_topology\_list\_item}}
@@ -426,11 +503,11 @@ This function retrieves the node at the specified index in the topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & The topology list state. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em node} & A pointer to the node structure to populate. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the node structure to populate. \\
 \hline
-{\em index} & The index of the node. \\
+{\em index} & \mbox{[}size\+\_\+t\mbox{]} The index of the node.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -450,7 +527,7 @@ This function removes duplicate entries from the topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & The topology list state. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -470,9 +547,9 @@ This function serializes the topology list into a byte array.
 
 
 \begin{DoxyParams}{Parameters}
-{\em output} & The output buffer for the serialized topology. \\
+{\em output} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The output buffer for the serialized topology. \\
 \hline
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -492,9 +569,9 @@ This function counts the number of nodes of a specific type in the topology list
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em ntype} & The type of node entry to count. \\
+{\em ntype} & \mbox{[}\doxylink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}\mbox{]} The type of node entry to count.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -514,7 +591,7 @@ This function returns the size in bytes of the serialized topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -534,11 +611,11 @@ This function converts the topology list into a human?readable string.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em output} & The output string buffer. \\
+{\em output} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output string buffer. \\
 \hline
-{\em outlen} & The length of the output buffer. \\
+{\em outlen} & \mbox{[}size\+\_\+t\mbox{]} The length of the output buffer.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -558,11 +635,11 @@ This function serializes a subset of nodes from the topology list (of a given ty
 
 
 \begin{DoxyParams}{Parameters}
-{\em output} & The output buffer for the serialized node update set. \\
+{\em output} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The output buffer for the serialized node update set. \\
 \hline
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em ntype} & The type of node entry to pack. \\
+{\em ntype} & \mbox{[}\doxylink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}\mbox{]} The type of node entry to pack.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -582,11 +659,11 @@ This function deserializes an update set and adds the nodes to the topology list
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & The topology list state to update. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state to update. \\
 \hline
-{\em input} & The input serialized node update set. \\
+{\em input} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The input serialized node update set. \\
 \hline
-{\em inplen} & The length of the input array. \\
+{\em inplen} & \mbox{[}size\+\_\+t\mbox{]} The length of the input array.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -606,9 +683,9 @@ This function appends an alias to the issuer string of a node.
 
 
 \begin{DoxyParams}{Parameters}
-{\em node} & The network node to update. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The network node to update. \\
 \hline
-{\em alias} & \mbox{[}const\mbox{]} The host alias to add. \\
+{\em alias} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The host alias to add. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_ac1244fd5967f1363a515324ee4011c26}\index{topology.h@{topology.h}!aern\_topology\_node\_clear@{aern\_topology\_node\_clear}}
@@ -625,7 +702,7 @@ This function clears all data in a topology node structure.
 
 
 \begin{DoxyParams}{Parameters}
-{\em node} & A pointer to the topology node structure to erase. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology node structure to erase. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_a7bdd8a07e8b2d54a17f3d6a7e1b7758b}\index{topology.h@{topology.h}!aern\_topology\_node\_copy@{aern\_topology\_node\_copy}}
@@ -642,9 +719,9 @@ This function copies the contents of one topology node structure to another.
 
 
 \begin{DoxyParams}{Parameters}
-{\em source} & \mbox{[}const\mbox{]} A pointer to the source node structure. \\
+{\em source} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the source node structure. \\
 \hline
-{\em destination} & A pointer to the destination node structure. \\
+{\em destination} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination node structure. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_abf635171357f5048f26d834df39fba9e}\index{topology.h@{topology.h}!aern\_topology\_node\_deserialize@{aern\_topology\_node\_deserialize}}
@@ -661,9 +738,9 @@ This function converts a serialized topology node array into a topology node str
 
 
 \begin{DoxyParams}{Parameters}
-{\em node} & A pointer to the topology node structure to populate. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology node structure to populate. \\
 \hline
-{\em input} & \mbox{[}const\mbox{]} The input serialized topology node data. \\
+{\em input} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The input serialized topology node data. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_a6648a673bfa558426c3f8c1bf3bc7484}\index{topology.h@{topology.h}!aern\_topology\_node\_encode@{aern\_topology\_node\_encode}}
@@ -680,9 +757,9 @@ This function encodes a topology node into a human?readable string format.
 
 
 \begin{DoxyParams}{Parameters}
-{\em node} & A pointer to the topology node structure. \\
+{\em node} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology node structure. \\
 \hline
-{\em output} & The output buffer for the encoded node string. \\
+{\em output} & \mbox{[}char\texorpdfstring{$\ast$}{*}\mbox{]} The output buffer for the encoded node string.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -702,9 +779,9 @@ This function checks whether a node with the specified serial number exists in t
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em serial} & The serial number to search for. \\
+{\em serial} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The serial number to search for.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -724,15 +801,41 @@ This function finds a node in the topology list that matches the given serial nu
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em node} & A pointer to the destination node structure to populate. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination node structure to populate. \\
 \hline
-{\em serial} & \mbox{[}const\mbox{]} The certificate serial number to search for. \\
+{\em serial} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The certificate serial number to search for.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Returns true if the node was found; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{topology_8h_afdc3c6cf8c247953c84802a2b6c0c540}\index{topology.h@{topology.h}!aern\_topology\_node\_find\_adc@{aern\_topology\_node\_find\_adc}}
+\index{aern\_topology\_node\_find\_adc@{aern\_topology\_node\_find\_adc}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_node\_find\_adc()}{aern\_topology\_node\_find\_adc()}}
+{\footnotesize\ttfamily \label{topology_8h_afdc3c6cf8c247953c84802a2b6c0c540} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+topology\+\_\+node\+\_\+find\+\_\+adc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{\mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Searches a topology list for an active ADC node and copies the matching node state. 
+
+This function scans the supplied topology list for a node whose designation identifies it as an ADC. When a matching ADC node is found, the complete node state is copied to the caller-\/supplied {\ttfamily node} output structure.
+
+The function is intended for topology-\/dependent routing and policy operations that require discovery of the active Access Domain Controller from the local topology view.
+
+The function validates its pointer arguments before use. If either {\ttfamily list} or {\ttfamily node} is {\ttfamily NULL}, the function returns {\ttfamily false}. If no ADC node is present in the supplied topology list, the function also returns {\ttfamily false}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list state to search. \\
+\hline
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the output node state receiving the discovered ADC node.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns {\ttfamily true} if an ADC node was found and copied to {\ttfamily node}; otherwise returns {\ttfamily false}. 
 \end{DoxyReturn}
 \Hypertarget{topology_8h_a0963f09c7e395c790decfa78c182e65a}\index{topology.h@{topology.h}!aern\_topology\_node\_find\_address@{aern\_topology\_node\_find\_address}}
 \index{aern\_topology\_node\_find\_address@{aern\_topology\_node\_find\_address}!topology.h@{topology.h}}
@@ -748,11 +851,11 @@ This function searches the topology list for a node that matches the given netwo
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em node} & A pointer to the destination node structure. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination node structure. \\
 \hline
-{\em address} & \mbox{[}const\mbox{]} The network address to search for. \\
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The network address to search for.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -772,9 +875,9 @@ This function finds the ADC node in the topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em node} & A pointer to the destination node structure. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination node structure.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -794,15 +897,37 @@ This function searches the topology list for a node that matches the given alias
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em node} & A pointer to the destination node structure. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination node structure. \\
 \hline
-{\em alias} & \mbox{[}const\mbox{]} The alias to search for. \\
+{\em alias} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The alias to search for.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Returns true if the node was found; false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{topology_8h_a1ced3436748f4b596f3d34b814a1951c}\index{topology.h@{topology.h}!aern\_topology\_node\_find\_aps@{aern\_topology\_node\_find\_aps}}
+\index{aern\_topology\_node\_find\_aps@{aern\_topology\_node\_find\_aps}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_node\_find\_aps()}{aern\_topology\_node\_find\_aps()}}
+{\footnotesize\ttfamily \label{topology_8h_a1ced3436748f4b596f3d34b814a1951c} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+topology\+\_\+node\+\_\+find\+\_\+aps (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{\mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Return the first APS node from the list. 
+
+This function scans the topology list for the first node designated as an APS and copies the matching node into the caller supplied output structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list state to search. \\
+\hline
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the output node state receiving the discovered APS node.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if an APS node was found; otherwise returns false. 
 \end{DoxyReturn}
 \Hypertarget{topology_8h_a28e22608bcc42bc5c6eb60198ed7fea1}\index{topology.h@{topology.h}!aern\_topology\_node\_find\_issuer@{aern\_topology\_node\_find\_issuer}}
 \index{aern\_topology\_node\_find\_issuer@{aern\_topology\_node\_find\_issuer}!topology.h@{topology.h}}
@@ -818,11 +943,11 @@ This function finds a node in the topology list that matches the given issuer na
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em node} & A pointer to the destination node structure. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination node structure. \\
 \hline
-{\em issuer} & \mbox{[}const\mbox{]} The certificate issuer name. \\
+{\em issuer} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The certificate issuer name.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -842,9 +967,9 @@ This function retrieves the ARS server node from the topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em node} & A pointer to the destination node structure. \\
+{\em node} & \mbox{[}aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the destination node structure.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -864,9 +989,9 @@ This function searches for a node by its serial number and returns its index in 
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em serial} & The serial number to search for. \\
+{\em serial} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The serial number to search for.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -886,9 +1011,9 @@ This function searches for a node by its serial number and removes it from the t
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & The topology list state. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em serial} & The serial number of the node to remove (AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE bytes). \\
+{\em serial} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The serial number of the node to remove (AERN\+\_\+\+CERTIFICATE\+\_\+\+SERIAL\+\_\+\+SIZE bytes). \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_a00b47ba40d757b930e5741d60e833d08}\index{topology.h@{topology.h}!aern\_topology\_node\_remove\_duplicate@{aern\_topology\_node\_remove\_duplicate}}
@@ -905,9 +1030,9 @@ This function removes duplicate nodes from the topology list that have the same 
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & The topology list state. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em issuer} & The issuer name to match for removal. \\
+{\em issuer} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The issuer name to match for removal. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_aa7c47e845d521be09de7060e607adf41}\index{topology.h@{topology.h}!aern\_topology\_node\_serialize@{aern\_topology\_node\_serialize}}
@@ -924,13 +1049,35 @@ This function serializes the topology node structure into a byte array.
 
 
 \begin{DoxyParams}{Parameters}
-{\em output} & The output buffer to receive the serialized node. \\
+{\em output} & \mbox{[}uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The output buffer to receive the serialized node. \\
 \hline
-{\em node} & \mbox{[}const\mbox{]} A pointer to the topology node structure. \\
+{\em node} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology node structure.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Returns the size of the serialized node. 
+\end{DoxyReturn}
+\Hypertarget{topology_8h_a6afc8d6fa9a33aa9436f96a07e87420d}\index{topology.h@{topology.h}!aern\_topology\_node\_verify\_adc@{aern\_topology\_node\_verify\_adc}}
+\index{aern\_topology\_node\_verify\_adc@{aern\_topology\_node\_verify\_adc}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_node\_verify\_adc()}{aern\_topology\_node\_verify\_adc()}}
+{\footnotesize\ttfamily \label{topology_8h_a6afc8d6fa9a33aa9436f96a07e87420d} 
+AERN\+\_\+\+EXPORT\+\_\+\+API bool aern\+\_\+topology\+\_\+node\+\_\+verify\+\_\+adc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*}}]{ccert}{}\end{DoxyParamCaption})}
+
+
+
+Verify that the ADC certificate matches the hash stored in the topology. 
+
+This function is the AERN-\/specific alias for the legacy ADS verification name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
+\hline
+{\em ccert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The ADC certificate structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the certificate matches the stored hash; false otherwise. 
 \end{DoxyReturn}
 \Hypertarget{topology_8h_a7cd8e44ae826afced77c2209fdac7d8c}\index{topology.h@{topology.h}!aern\_topology\_node\_verify\_ads@{aern\_topology\_node\_verify\_ads}}
 \index{aern\_topology\_node\_verify\_ads@{aern\_topology\_node\_verify\_ads}!topology.h@{topology.h}}
@@ -946,9 +1093,9 @@ This function verifies that the ADC certificate in the topology list matches the
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em ccert} & \mbox{[}const\mbox{]} The ADC certificate structure. \\
+{\em ccert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The ADC certificate structure.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -968,11 +1115,11 @@ This function verifies that the certificate for a given issuer matches the store
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em ccert} & \mbox{[}const\mbox{]} The node\textquotesingle{}s certificate structure. \\
+{\em ccert} & \mbox{[}const aern\+\_\+child\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The node\textquotesingle{}s certificate structure. \\
 \hline
-{\em issuer} & \mbox{[}const\mbox{]} The certificate issuer name. \\
+{\em issuer} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The certificate issuer name.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -992,9 +1139,9 @@ This function verifies that the root certificate matches the hash stored in the 
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em rcert} & \mbox{[}const\mbox{]} The root certificate structure. \\
+{\em rcert} & \mbox{[}const aern\+\_\+root\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The root certificate structure.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1014,9 +1161,9 @@ This function compares two topology node structures and returns true if they are
 
 
 \begin{DoxyParams}{Parameters}
-{\em a} & \mbox{[}const\mbox{]} The first node. \\
+{\em a} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The first node. \\
 \hline
-{\em b} & \mbox{[}const\mbox{]} The second node. \\
+{\em b} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The second node.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1037,16 +1184,35 @@ The caller is responsible for disposing the output list.
 \end{DoxyNote}
 
 \begin{DoxyParams}{Parameters}
-{\em olist} & The sorted output topology list. \\
+{\em olist} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The sorted output topology list. \\
 \hline
-{\em tlist} & The unsorted input topology list. \\
+{\em tlist} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The unsorted input topology list. \\
 \hline
-{\em ntype} & The type of node to filter and sort. \\
+{\em ntype} & \mbox{[}\doxylink{aern_8h_ac7ca2a3bb609d399444bb84336afa62a}{aern\+\_\+network\+\_\+designations}\mbox{]} The type of node to filter and sort.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Returns the number of nodes in the sorted list. 
 \end{DoxyReturn}
+\Hypertarget{topology_8h_a1cdff03b202d9bb427e74a42cbc29d0f}\index{topology.h@{topology.h}!aern\_topology\_remove@{aern\_topology\_remove}}
+\index{aern\_topology\_remove@{aern\_topology\_remove}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_remove()}{aern\_topology\_remove()}}
+{\footnotesize\ttfamily \label{topology_8h_a1cdff03b202d9bb427e74a42cbc29d0f} 
+AERN\+\_\+\+EXPORT\+\_\+\+API void aern\+\_\+topology\+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{serial}{}\end{DoxyParamCaption})}
+
+
+
+Remove a node from a topology list. 
+
+This function removes a node matching the supplied certificate serial number and increments the version only when a matching node is removed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology state. \\
+\hline
+{\em serial} & \mbox{[}const uint8\+\_\+t\texorpdfstring{$\ast$}{*}\mbox{]} The certificate serial number to remove. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{topology_8h_aadcf4363f8f44f245f8c38b89efbd238}\index{topology.h@{topology.h}!aern\_topology\_root\_register@{aern\_topology\_root\_register}}
 \index{aern\_topology\_root\_register@{aern\_topology\_root\_register}!topology.h@{topology.h}}
 \doxysubsubsection{\texorpdfstring{aern\_topology\_root\_register()}{aern\_topology\_root\_register()}}
@@ -1061,11 +1227,11 @@ This function registers a root certificate into the topology list.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & A pointer to the topology list. \\
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} A pointer to the topology list. \\
 \hline
-{\em rcert} & \mbox{[}const\mbox{]} The root certificate. \\
+{\em rcert} & \mbox{[}const aern\+\_\+root\+\_\+certificate\texorpdfstring{$\ast$}{*}\mbox{]} The root certificate. \\
 \hline
-{\em address} & \mbox{[}const\mbox{]} The network address of the root. \\
+{\em address} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The network address of the root. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{topology_8h_aa58bd8ad8f8cb17a67748b318262d610}\index{topology.h@{topology.h}!aern\_topology\_to\_file@{aern\_topology\_to\_file}}
@@ -1082,8 +1248,52 @@ This function writes the current topology list to a file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em list} & \mbox{[}const\mbox{]} The topology list state. \\
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology list state. \\
 \hline
-{\em fpath} & \mbox{[}const\mbox{]} The destination file path for the topology list. \\
+{\em fpath} & \mbox{[}const char\texorpdfstring{$\ast$}{*}\mbox{]} The destination file path for the topology list. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{topology_8h_ab7ccfee631624554907b3b42b532fc54}\index{topology.h@{topology.h}!aern\_topology\_update@{aern\_topology\_update}}
+\index{aern\_topology\_update@{aern\_topology\_update}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_update()}{aern\_topology\_update()}}
+{\footnotesize\ttfamily \label{topology_8h_ab7ccfee631624554907b3b42b532fc54} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+topology\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{const \mbox{\hyperlink{structaern__topology__node__state}{aern\+\_\+topology\+\_\+node\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Update a node in a topology list. 
+
+This function replaces an existing node matching the supplied serial number and increments the topology version.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The topology state. \\
+\hline
+{\em node} & \mbox{[}const aern\+\_\+topology\+\_\+node\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The replacement topology node.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none on success, or an error code on failure. 
+\end{DoxyReturn}
+\Hypertarget{topology_8h_a9e7fb06e3f0b40d14b43c97e3a1b0f52}\index{topology.h@{topology.h}!aern\_topology\_version\_verify@{aern\_topology\_version\_verify}}
+\index{aern\_topology\_version\_verify@{aern\_topology\_version\_verify}!topology.h@{topology.h}}
+\doxysubsubsection{\texorpdfstring{aern\_topology\_version\_verify()}{aern\_topology\_version\_verify()}}
+{\footnotesize\ttfamily \label{topology_8h_a9e7fb06e3f0b40d14b43c97e3a1b0f52} 
+AERN\+\_\+\+EXPORT\+\_\+\+API \mbox{\hyperlink{aern_8h_a69dc871c4b6d5d947f6afdda81464724}{aern\+\_\+protocol\+\_\+errors}} aern\+\_\+topology\+\_\+version\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{list}{, }\item[{uint64\+\_\+t}]{incomingver}{}\end{DoxyParamCaption})}
+
+
+
+Verify an incoming topology version. 
+
+This function verifies that an incoming topology version is strictly greater than the local version.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}const aern\+\_\+topology\+\_\+list\+\_\+state\texorpdfstring{$\ast$}{*}\mbox{]} The local topology state. \\
+\hline
+{\em incomingver\mbox{[}uint64\+\_\+t\mbox{]}} & The incoming topology version.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns aern\+\_\+protocol\+\_\+error\+\_\+none when the incoming version is accepted. 
+\end{DoxyReturn}

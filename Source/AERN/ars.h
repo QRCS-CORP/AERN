@@ -64,8 +64,7 @@
  * the AERN system. This includes handling operations related to the creation, storage, signing,
  * and verification of the root certificate as well as coordinating secure communications with
  * other nodes in the network. The public functions declared here allow the ARS server to be started,
- * paused, and stopped. In addition, when the macro AERN_DEBUG_TESTS_RUN is defined, a test function
- * is provided to run self-diagnostic tests on the ARS server functionality.
+ * paused, and stopped.
  *
  * Every function declared in this header file is documented with its purpose, parameters, and return
  * value (if any).
@@ -94,17 +93,5 @@ AERN_EXPORT_API void aern_ars_start_server(void);
  * resources. After calling this function, the server will no longer process incoming network messages.
  */
 AERN_EXPORT_API void aern_ars_stop_server(void);
-
-#if defined(AERN_DEBUG_TESTS_RUN)
-/**
- * \brief Test the ARS server's functions.
- *
- * This function runs a suite of tests on the ARS server functions to verify proper operation of the
- * server's core features, such as certificate management and network communication.
- *
- * \return Returns true if all tests pass successfully, otherwise returns false.
- */
-AERN_EXPORT_API bool aern_ars_appserv_test(void);
-#endif
 
 #endif

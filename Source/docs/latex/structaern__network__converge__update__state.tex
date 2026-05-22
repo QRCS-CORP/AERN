@@ -1,0 +1,68 @@
+\doxysection{aern\+\_\+network\+\_\+converge\+\_\+update\+\_\+state Struct Reference}
+\hypertarget{structaern__network__converge__update__state}{}\label{structaern__network__converge__update__state}\index{aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}}
+
+
+The ADC convergence-\/update processing state.  
+
+
+
+
+{\ttfamily \#include $<$network.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__converge__update__state_a8381ac9f2991c35dc8e1a7b12b4fcde5}{rcert}}
+\item 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__converge__update__state_a384fad4415a70a73ee4c1432e6e7f0c9}{root}}
+\item 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__converge__update__state_a09a0ab043e3153b694ea860b58b7ea6f}{vtopo}}
+\item 
+\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structaern__network__converge__update__state_ad058bf1b178395c662d6339fd40b9c2b}{vtopo}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The ADC convergence-\/update processing state. 
+
+State for processing an APS-\/initiated convergence update.
+
+This structure contains the authenticated APS certificate and the versioned topology state that is updated when a convergence correction message is accepted. 
+
+\label{doc-variable-members}
+\Hypertarget{structaern__network__converge__update__state_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{structaern__network__converge__update__state_a8381ac9f2991c35dc8e1a7b12b4fcde5}\index{aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}!rcert@{rcert}}
+\index{rcert@{rcert}!aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}}
+\doxysubsubsection{\texorpdfstring{rcert}{rcert}}
+{\footnotesize\ttfamily \label{structaern__network__converge__update__state_a8381ac9f2991c35dc8e1a7b12b4fcde5} 
+const \mbox{\hyperlink{structaern__child__certificate}{aern\+\_\+child\+\_\+certificate}} \texorpdfstring{$\ast$}{*} rcert}
+
+The remote APS certificate.
+
+APS certificate (for sig verify) \Hypertarget{structaern__network__converge__update__state_a384fad4415a70a73ee4c1432e6e7f0c9}\index{aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}!root@{root}}
+\index{root@{root}!aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily \label{structaern__network__converge__update__state_a384fad4415a70a73ee4c1432e6e7f0c9} 
+const \mbox{\hyperlink{structaern__root__certificate}{aern\+\_\+root\+\_\+certificate}} \texorpdfstring{$\ast$}{*} root}
+
+The ARS root certificate.
+
+Root certificate \Hypertarget{structaern__network__converge__update__state_a09a0ab043e3153b694ea860b58b7ea6f}\index{aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}!vtopo@{vtopo}}
+\index{vtopo@{vtopo}!aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}}
+\doxysubsubsection{\texorpdfstring{vtopo}{vtopo}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structaern__network__converge__update__state_a09a0ab043e3153b694ea860b58b7ea6f} 
+\mbox{\hyperlink{structaern__topology__list__state}{aern\+\_\+topology\+\_\+list\+\_\+state}}\texorpdfstring{$\ast$}{*} vtopo}
+
+The versioned topology state. \Hypertarget{structaern__network__converge__update__state_ad058bf1b178395c662d6339fd40b9c2b}\index{aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}!vtopo@{vtopo}}
+\index{vtopo@{vtopo}!aern\_network\_converge\_update\_state@{aern\_network\_converge\_update\_state}}
+\doxysubsubsection{\texorpdfstring{vtopo}{vtopo}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structaern__network__converge__update__state_ad058bf1b178395c662d6339fd40b9c2b} 
+\mbox{\hyperlink{structaern__topology__versioned__state}{aern\+\_\+topology\+\_\+versioned\+\_\+state}}\texorpdfstring{$\ast$}{*} vtopo}
+
+ADC versioned topology (mutated) 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+AERN/\mbox{\hyperlink{network_8h}{network.\+h}}\item 
+C\+:/\+Users/stepp/\+Documents/\+Visual Studio 2022/\+Projects/\+C/\+AERN/\+Saved/\mbox{\hyperlink{network2_8h}{network2.\+h}}\end{DoxyCompactItemize}

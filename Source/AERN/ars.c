@@ -19,19 +19,24 @@
 #include "timerex.h"
 #include "timestamp.h"
 
-/** \cond */
 typedef struct ars_receive_state
 {
 	qsc_socket csock;
 } ars_receive_state;
-/** \endcond */
 
 static aern_server_application_state m_ars_application_state = { 0 };
 static aern_server_server_loop_status m_ars_command_loop_status;
 static aern_server_server_loop_status m_ars_server_loop_status;
+static qsc_socket m_ars_listener_socket = { 0 };
 static uint64_t m_ars_idle_timer;
 
 /* rds functions */
+
+static void ars_server_listener_close(void)
+{
+	qsc_socket_close_socket(&m_ars_listener_socket);
+	qsc_memutils_clear(&m_ars_listener_socket, sizeof(qsc_socket));
+}
 
 static bool ars_certificate_export(const char* dpath)
 {
@@ -77,7 +82,7 @@ static bool ars_certificate_generate_root(const char* sprd)
 		period = qsc_stringutils_string_to_int(sprd);
 		period *= AERN_PERIOD_DAY_TO_SECONDS;
 
-		if (period >= AERN_CERTIFICATE_MINIMUM_PERIOD || period <= AERN_CERTIFICATE_MAXIMUM_PERIOD)
+		if (period >= AERN_CERTIFICATE_MINIMUM_PERIOD && period <= AERN_CERTIFICATE_MAXIMUM_PERIOD)
 		{
 			if (qsc_fileutils_exists(fpath) == true)
 			{
@@ -88,13 +93,20 @@ static bool ars_certificate_generate_root(const char* sprd)
 					aern_topology_node_remove(&m_ars_application_state.tlist, m_ars_application_state.root.serial);
 					/* delete the original */
 					qsc_fileutils_delete(fpath);
+
 					/* create the certificate and copy the signing key to state */
-					aern_server_root_certificate_generate(&m_ars_application_state, &m_ars_application_state.root, period);
-					/* write the certificate to file */
-					aern_server_root_certificate_store(&m_ars_application_state, &m_ars_application_state.root);
-					/* store the state */
-					res = aern_server_state_store(&m_ars_application_state);
-					res = ars_server_load_root();
+					if (aern_server_root_certificate_generate(&m_ars_application_state, &m_ars_application_state.root, period) == true)
+					{
+						/* write the certificate to file */
+						aern_server_root_certificate_store(&m_ars_application_state, &m_ars_application_state.root);
+						/* store the state */
+						res = aern_server_state_store(&m_ars_application_state);
+
+						if (res == true)
+						{
+							res = ars_server_load_root();
+						}
+					}
 				}
 				else
 				{
@@ -107,7 +119,11 @@ static bool ars_certificate_generate_root(const char* sprd)
 				aern_server_root_certificate_generate(&m_ars_application_state, &m_ars_application_state.root, period);
 				aern_server_root_certificate_store(&m_ars_application_state, &m_ars_application_state.root);
 				res = aern_server_state_store(&m_ars_application_state);
-				res = ars_server_load_root();
+
+				if (res == true)
+				{
+					res = ars_server_load_root();
+				}
 			}
 		}
 		else
@@ -144,31 +160,46 @@ static bool ars_certificate_sign(const char* fpath)
 	return res;
 }
 
-static aern_protocol_errors ads_remote_signing_response(qsc_socket* csock, const aern_network_packet* packetin)
+static aern_protocol_errors adc_remote_signing_response(qsc_socket* csock, const aern_network_packet* packetin)
 {
 	AERN_ASSERT(csock != NULL);
 	AERN_ASSERT(packetin != NULL);
 
 	aern_topology_node_state dnode = { 0 };
+	aern_child_certificate rcert = { 0 };
+	aern_network_remote_signing_response_state rsr = { 0 };
 	aern_protocol_errors merr;
+	bool valid;
 
-	if (m_ars_application_state.joined == true)
+	merr = aern_protocol_error_invalid_request;
+	valid = false;
+
+	if (csock != NULL && packetin != NULL)
 	{
-		if (aern_topology_node_find(&m_ars_application_state.tlist, &dnode, m_ars_application_state.ads.serial) == true)
+		if (m_ars_application_state.joined == true)
 		{
-			if (qsc_memutils_are_equal((const uint8_t*)dnode.address, (const uint8_t*)csock->address, AERN_CERTIFICATE_ADDRESS_SIZE) == true)
+			if (m_ars_application_state.adc.designation == aern_network_designation_adc)
 			{
-				aern_child_certificate rcert = { 0 };
-
-				aern_network_remote_signing_response_state rsr = {
-					.csock = csock,
-					.dcert = &m_ars_application_state.ads,
-					.rcert = &rcert,
-					.root = &m_ars_application_state.root,
-					.sigkey = m_ars_application_state.sigkey
-				};
-
-				merr = aern_network_remote_signing_response(&rsr, packetin);
+				if (aern_certificate_child_is_valid(&m_ars_application_state.adc) == true &&
+					aern_certificate_root_signature_verify(&m_ars_application_state.adc, &m_ars_application_state.root) == true &&
+					aern_topology_node_verify_adc(&m_ars_application_state.tlist, &m_ars_application_state.adc) == true)
+				{
+					if (aern_topology_node_find(&m_ars_application_state.tlist, &dnode, m_ars_application_state.adc.serial) == true)
+					{
+						valid = (qsc_memutils_are_equal((const uint8_t*)dnode.address, (const uint8_t*)csock->address, AERN_CERTIFICATE_ADDRESS_SIZE) == true &&
+							qsc_memutils_are_equal(dnode.serial, m_ars_application_state.adc.serial, AERN_CERTIFICATE_SERIAL_SIZE) == true &&
+							qsc_memutils_are_equal((const uint8_t*)dnode.issuer, (const uint8_t*)m_ars_application_state.adc.issuer, AERN_CERTIFICATE_ISSUER_SIZE) == true &&
+							dnode.designation == aern_network_designation_adc);
+					}
+					else
+					{
+						merr = aern_protocol_error_node_not_found;
+					}
+				}
+				else
+				{
+					merr = aern_protocol_error_verification_failure;
+				}
 			}
 			else
 			{
@@ -177,12 +208,22 @@ static aern_protocol_errors ads_remote_signing_response(qsc_socket* csock, const
 		}
 		else
 		{
-			merr = aern_protocol_error_node_not_found;
+			merr = aern_protocol_error_certificate_not_found;
 		}
-	}
-	else
-	{
-		merr = aern_protocol_error_certificate_not_found;
+
+		if (valid == true)
+		{
+			rsr.csock = csock;
+			rsr.dcert = &m_ars_application_state.adc;
+			rsr.rcert = &rcert;
+			rsr.root = &m_ars_application_state.root;
+			rsr.sigkey = m_ars_application_state.sigkey;
+			merr = aern_network_remote_signing_response(&rsr, packetin);
+		}
+		else
+		{
+			aern_network_send_error(csock, merr);
+		}
 	}
 
 	return merr;
@@ -190,29 +231,31 @@ static aern_protocol_errors ads_remote_signing_response(qsc_socket* csock, const
 
 static void ars_server_dispose(void)
 {
+	ars_server_listener_close();
 	aern_server_state_initialize(&m_ars_application_state, aern_network_designation_ars);
 	m_ars_command_loop_status = aern_server_loop_status_stopped;
 	m_ars_server_loop_status = aern_server_loop_status_stopped;
 	m_ars_idle_timer = 0U;
 }
 
-static bool ars_server_load_ads(void)
+static bool ars_server_load_adc(void)
 {
 	bool res;
 
 	res = false;
 
-	/* load the ads certificate */
-	if (aern_server_topology_adc_fetch(&m_ars_application_state, &m_ars_application_state.ads) == true)
+	/* load the ADC certificate */
+	if (aern_server_topology_adc_fetch(&m_ars_application_state, &m_ars_application_state.adc) == true)
 	{
-		/* check the ads certificate structure */
-		if (aern_certificate_child_is_valid(&m_ars_application_state.ads) == true)
+		/* check the ADC certificate structure */
+		if (aern_certificate_child_is_valid(&m_ars_application_state.adc) == true &&
+			m_ars_application_state.adc.designation == aern_network_designation_adc)
 		{
 			/* verify the root signature */
-			if (aern_certificate_root_signature_verify(&m_ars_application_state.ads, &m_ars_application_state.root) == true)
+			if (aern_certificate_root_signature_verify(&m_ars_application_state.adc, &m_ars_application_state.root) == true)
 			{
 				/* verify a hash of the certificate against the hash stored on the topological node */
-				res = aern_topology_node_verify_ads(&m_ars_application_state.tlist, &m_ars_application_state.ads);
+				res = aern_topology_node_verify_adc(&m_ars_application_state.tlist, &m_ars_application_state.adc);
 			}
 		}
 	}
@@ -253,7 +296,8 @@ static bool ars_server_adc_dialogue(void)
 
 			if (aern_certificate_child_file_to_struct(cmsg, &ccert) == true)
 			{
-				if (aern_certificate_child_is_valid(&ccert) == true && 
+				if (aern_certificate_child_is_valid(&ccert) == true &&
+					ccert.designation == aern_network_designation_adc &&
 					aern_certificate_root_signature_verify(&ccert, &m_ars_application_state.root) == true)
 				{
 					/* get the ADC ip address */
@@ -293,7 +337,7 @@ static bool ars_server_adc_dialogue(void)
 								if (aern_certificate_child_struct_to_file(fpath, &ccert) == true)
 								{
 									/* copy certificate to state */
-									aern_certificate_child_copy(&m_ars_application_state.ads, &ccert);
+									aern_certificate_child_copy(&m_ars_application_state.adc, &ccert);
 									m_ars_application_state.joined = true;
 									/* store the state */
 									res = aern_server_state_store(&m_ars_application_state);
@@ -380,7 +424,7 @@ static void ars_receive_loop(void* ras)
 
 					if (pkt.flag == aern_network_flag_network_remote_signing_request)
 					{
-						merr = ads_remote_signing_response(&pras->csock, &pkt);
+						merr = adc_remote_signing_response(&pras->csock, &pkt);
 
 						if (merr == aern_protocol_error_none)
 						{
@@ -452,7 +496,6 @@ static void ars_receive_loop(void* ras)
 
 static void ars_ipv6_server_start(void)
 {
-	qsc_socket lsock = { 0 };
 	qsc_ipinfo_ipv6_address addt = { 0 };
 	qsc_socket_exceptions serr;
 
@@ -460,20 +503,21 @@ static void ars_ipv6_server_start(void)
 
 	if (qsc_ipinfo_ipv6_address_is_valid(&addt) == true)
 	{
-		qsc_socket_server_initialize(&lsock);
-		serr = qsc_socket_create(&lsock, qsc_socket_address_family_ipv6, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
+		ars_server_listener_close();
+		qsc_socket_server_initialize(&m_ars_listener_socket);
+		serr = qsc_socket_create(&m_ars_listener_socket, qsc_socket_address_family_ipv6, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
 
 		if (serr == qsc_socket_exception_success)
 		{
-			serr = qsc_socket_bind_ipv6(&lsock, &addt, AERN_APPLICATION_ARS_PORT);
+			serr = qsc_socket_bind_ipv6(&m_ars_listener_socket, &addt, AERN_APPLICATION_ARS_PORT);
 
 			if (serr == qsc_socket_exception_success)
 			{
-				serr = qsc_socket_listen(&lsock, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
+				serr = qsc_socket_listen(&m_ars_listener_socket, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
 
 				if (serr == qsc_socket_exception_success)
 				{
-					while (true)
+					while (m_ars_server_loop_status == aern_server_loop_status_started)
 					{
 						ars_receive_state* ras;
 
@@ -485,13 +529,13 @@ static void ars_ipv6_server_start(void)
 
 							if (serr == qsc_socket_exception_success)
 							{
-								serr = qsc_socket_accept(&lsock, &ras->csock);
+								serr = qsc_socket_accept(&m_ars_listener_socket, &ras->csock);
 							}
 							else
 							{
 								/* free the resources if connect fails */
 								qsc_memutils_alloc_free(ras);
-								aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)lsock.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
+								aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)m_ars_listener_socket.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
 							}
 
 							if (serr == qsc_socket_exception_success)
@@ -502,7 +546,7 @@ static void ars_ipv6_server_start(void)
 							{
 								/* free the resources if connect fails */
 								qsc_memutils_alloc_free(ras);
-								aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)lsock.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
+								aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)m_ars_listener_socket.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
 							}
 						}
 						else
@@ -521,7 +565,6 @@ static void ars_ipv6_server_start(void)
 
 static void ars_ipv4_server_start(void)
 {
-	qsc_socket lsock = { 0 };
 	qsc_ipinfo_ipv4_address addt = { 0 };
 	qsc_socket_exceptions serr;
 
@@ -529,20 +572,21 @@ static void ars_ipv4_server_start(void)
 
 	if (qsc_ipinfo_ipv4_address_is_valid(&addt) == true)
 	{
-		qsc_socket_server_initialize(&lsock);
-		serr = qsc_socket_create(&lsock, qsc_socket_address_family_ipv4, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
+		ars_server_listener_close();
+		qsc_socket_server_initialize(&m_ars_listener_socket);
+		serr = qsc_socket_create(&m_ars_listener_socket, qsc_socket_address_family_ipv4, qsc_socket_transport_stream, qsc_socket_protocol_tcp);
 
 		if (serr == qsc_socket_exception_success)
 		{
-			serr = qsc_socket_bind_ipv4(&lsock, &addt, AERN_APPLICATION_ARS_PORT);
+			serr = qsc_socket_bind_ipv4(&m_ars_listener_socket, &addt, AERN_APPLICATION_ARS_PORT);
 
 			if (serr == qsc_socket_exception_success)
 			{
-				serr = qsc_socket_listen(&lsock, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
+				serr = qsc_socket_listen(&m_ars_listener_socket, QSC_SOCKET_SERVER_LISTEN_BACKLOG);
 
 				if (serr == qsc_socket_exception_success)
 				{
-					while (true)
+					while (m_ars_server_loop_status == aern_server_loop_status_started)
 					{
 						ars_receive_state* ras;
 
@@ -554,7 +598,7 @@ static void ars_ipv4_server_start(void)
 
 							if (serr == qsc_socket_exception_success)
 							{
-								serr = qsc_socket_accept(&lsock, &ras->csock);
+								serr = qsc_socket_accept(&m_ars_listener_socket, &ras->csock);
 							}
 
 							if (serr == qsc_socket_exception_success)
@@ -565,13 +609,13 @@ static void ars_ipv4_server_start(void)
 							{
 								/* free the resources if connect fails */
 								qsc_memutils_alloc_free(ras);
-								aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)lsock.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
+								aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)m_ars_listener_socket.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
 							}
 						}
 						else
 						{
 							/* exit on memory allocation failure */
-							aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)lsock.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
+							aern_server_log_write_message(&m_ars_application_state, aern_application_log_allocation_failure, (const char*)m_ars_listener_socket.address, QSC_SOCKET_ADDRESS_MAX_SIZE);
 						}
 					};
 				}
@@ -584,14 +628,20 @@ static void ars_ipv4_server_start(void)
 
 static bool ars_server_service_start(void)
 {
+	bool res;
+
+	m_ars_server_loop_status = aern_server_loop_status_started;
+
 #if defined(AERN_NETWORK_PROTOCOL_IPV6)
 	/* start the main receive loop on a new thread */
-	if (qsc_async_thread_create_noargs(&ars_ipv6_server_start))
+	res = qsc_async_thread_create_noargs(&ars_ipv6_server_start);
 #else
-	if (qsc_async_thread_create_noargs(&ars_ipv4_server_start))
+	res = qsc_async_thread_create_noargs(&ars_ipv4_server_start);
 #endif
+
+	if (res == false)
 	{
-		m_ars_server_loop_status = aern_server_loop_status_started;
+		m_ars_server_loop_status = aern_server_loop_status_stopped;
 	}
 
 	return (m_ars_server_loop_status == aern_server_loop_status_started);
@@ -1308,6 +1358,7 @@ static void ars_command_execute(const char* command)
 				if (m_ars_server_loop_status == aern_server_loop_status_started)
 				{
 					m_ars_server_loop_status = aern_server_loop_status_stopped;
+						ars_server_listener_close();
 					aern_menu_print_predefined_message(aern_application_server_service_stopped, m_ars_application_state.mode, m_ars_application_state.hostname);
 					aern_server_log_write_message(&m_ars_application_state, aern_application_log_service_stopped, m_ars_application_state.hostname, slen);
 				}
@@ -1349,7 +1400,7 @@ static void ars_command_execute(const char* command)
 		{
 			if (ars_server_load_root() == true)
 			{
-				m_ars_application_state.joined = ars_server_load_ads();
+				m_ars_application_state.joined = ars_server_load_adc();
 			}
 		}
 		else
@@ -1501,11 +1552,6 @@ void aern_ars_start_server(void)
 void aern_ars_stop_server(void)
 {
 	m_ars_command_loop_status = aern_server_loop_status_stopped;
+	m_ars_server_loop_status = aern_server_loop_status_stopped;
+	ars_server_listener_close();
 }
-
-#if defined(AERN_DEBUG_TESTS_RUN)
-bool aern_ars_appserv_test(void)
-{
-	return false;
-}
-#endif
