@@ -266,7 +266,7 @@ static bool client_aps_node_count(uint16_t* count)
             {
                 if (node.designation == aern_network_designation_aps)
                 {
-                    if (*count < (uint16_t)~0U)
+                    if (*count < UINT16_MAX)
                     {
                         ++(*count);
                     }

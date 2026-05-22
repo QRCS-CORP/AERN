@@ -442,19 +442,15 @@ static uint64_t route_random_delay_milliseconds(void)
     range = 0U;
     res = 0U;
 
-    if (AERN_INGRESS_DELAY_ENABLED != 0U)
-    {
-        if (AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS > AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS)
-        {
+#if (AERN_INGRESS_DELAY_ENABLED != 0U)
+#   if (AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS > AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS)
             range = ((uint64_t)AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS - (uint64_t)AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS) + 1U;
             delta = rng_uint64_range(range);
             res = (uint64_t)AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS + delta;
-        }
-        else
-        {
+#   else
             res = (uint64_t)AERN_INGRESS_DELAY_MINIMUM_MILLISECONDS;
-        }
-    }
+#   endif
+#endif
 
     return res;
 }
@@ -465,10 +461,9 @@ static bool route_ingress_delay_enabled(void)
 
     res = false;
 
-    if (AERN_INGRESS_DELAY_ENABLED != 0U && AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS != 0U)
-    {
+#if (AERN_INGRESS_DELAY_ENABLED != 0U && AERN_INGRESS_DELAY_MAXIMUM_MILLISECONDS != 0U)
         res = true;
-    }
+#endif
 
     return res;
 }
@@ -483,19 +478,15 @@ static uint64_t route_random_dummy_interval_milliseconds(void)
     range = 0U;
     res = 0U;
 
-    if (AERN_DUMMY_TRAFFIC_ENABLED != 0U)
-    {
-        if (AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS > AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS)
-        {
+#if (AERN_DUMMY_TRAFFIC_ENABLED != 0U)
+#   if (AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS > AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS)
             range = ((uint64_t)AERN_DUMMY_TRAFFIC_INTERVAL_MAXIMUM_MILLISECONDS - (uint64_t)AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS) + 1U;
             delta = rng_uint64_range(range);
             res = (uint64_t)AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS + delta;
-        }
-        else
-        {
+#   else
             res = (uint64_t)AERN_DUMMY_TRAFFIC_INTERVAL_MINIMUM_MILLISECONDS;
-        }
-    }
+#   endif
+#endif
 
     return res;
 }
