@@ -1,0 +1,10 @@
+# Exclude website and documentation markup from GitHub language statistics.
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.md linguist-documentation=true
+docs/** linguist-documentation=true
+Documentation/** linguist-documentation=true
+
+# Ensure C source and headers remain counted as implementation code.
+*.c linguist-detectable=true
+*.h linguist-detectable=true
