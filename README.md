@@ -1,4 +1,4 @@
-# AERN – Authenticated Encrypted Relay Network
+# AERN: Authenticated Encrypted Relay Network
 
 ## Introduction
 
