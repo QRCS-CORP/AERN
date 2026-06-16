@@ -23,7 +23,6 @@ AERN is designed for private, administered relay domains rather than open volunt
 [AERN Protocol Specification](https://qrcs-corp.github.io/AERN/pdf/aern_specification.pdf)  
 [AERN Summary Document](https://qrcs-corp.github.io/AERN/pdf/aern_summary.pdf)  
 [AERN Formal Analysis](https://qrcs-corp.github.io/AERN/pdf/aern_formal.pdf)  
-[AERN Integration Guide](https://qrcscorp.ca/documents/aern_integration.pdf)  
 [RCS Formal Analysis](https://qrcscorp.ca/documents/rcs_formal.pdf)  
 
 > This repository provides the C-language reference implementation of the AERN protocol, developed by QRCS – Quantum Resistant Cryptographic Solutions Corporation.
