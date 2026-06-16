@@ -12,6 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
@@ -22,12 +23,21 @@ jobs:
     - name: Set up CMake
       uses: lukka/get-cmake@v3.27.0
 
-    - name: Configure AERN (CMake)
+    - name: Configure AERN Windows
+      if: runner.os == 'Windows'
+      run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+
+    - name: Configure AERN POSIX
+      if: runner.os != 'Windows'
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 
-    - name: Build AERN (CMake)
+    - name: Build AERN
       run: cmake --build build --config Release
 
-    - name: Run Tests (if available)
+    - name: Run Tests Windows
+      if: runner.os == 'Windows'
+      run: ctest --test-dir build -C Release --output-on-failure
+
+    - name: Run Tests POSIX
+      if: runner.os != 'Windows'
       run: ctest --test-dir build --output-on-failure
-      if: always()
